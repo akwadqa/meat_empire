@@ -1,0 +1,66 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'search.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$SearchImpl _$$SearchImplFromJson(Map<String, dynamic> json) => _$SearchImpl(
+      area: json['area'] as String,
+      useCaching: json['use_caching'] as bool,
+      extend:
+          (json['extend'] as List<dynamic>).map((e) => e as String).toList(),
+      customExtend: json['custom_extend'] as List<dynamic>,
+      pname: json['pname'] as String,
+      pshort: json['pshort'] as String,
+      pfull: json['pfull'] as String,
+      pkeywords: json['pkeywords'] as String,
+      feature: json['feature'] as List<dynamic>,
+      type: json['type'] as String,
+      page: (json['page'] as num).toInt(),
+      action: json['action'] as String,
+      filterVariants: json['filter_variants'] as List<dynamic>,
+      featuresHash: json['features_hash'] as String,
+      limit: (json['limit'] as num).toInt(),
+      bid: (json['bid'] as num).toInt(),
+      match: json['match'] as String,
+      tracking: json['tracking'] as List<dynamic>,
+      getFrontendUrls: json['get_frontend_urls'] as bool,
+      itemsPerPage: (json['items_per_page'] as num).toInt(),
+      applyDisabledFilters: json['apply_disabled_filters'] as String,
+      loadProductsExtraData: json['load_products_extra_data'] as bool,
+      storefront: json['storefront'],
+      companyIds: json['company_ids'] as String,
+      additionalData: json['additional_data'] as bool,
+      getOptions: json['get_options'] as bool,
+      getDiscounts: json['get_discounts'] as bool,
+      getFeatures: json['get_features'] as bool,
+      getDetailed: json['get_detailed'] as bool,
+      getIcon: json['get_icon'] as bool,
+      langCode: json['lang_code'] as String,
+      currencyCode: json['currency_code'] as String,
+      bannerWidth: (json['banner_width'] as num).toInt(),
+      productListWidth: (json['product_list_width'] as num).toInt(),
+      imageWidth: (json['image_width'] as num).toInt(),
+      imageSize: (json['image_size'] as num).toInt(),
+      productDetailsWidth: (json['product_details_width'] as num).toInt(),
+      userType: json['user_type'] as String,
+      applyPagination: json['apply_pagination'] as String,
+      cid: (json['cid'] as num).toInt(),
+      searchPerformed: json['search_performed'] as String,
+      subcats: json['subcats'] as String,
+      hideOutOfStockProducts: json['hide_out_of_stock_products'] as bool,
+      sortBy: json['sort_by'] as String,
+      sortOrder: json['sort_order'] as String,
+      forCurrentStorefront: json['for_current_storefront'] as bool,
+      companyStatus: json['company_status'] as String,
+      usergroupIds: (json['usergroup_ids'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
+      includeChildVariations: json['include_child_variations'] as bool,
+      groupChildVariations: json['group_child_variations'] as bool,
+      parentProductId: (json['parent_product_id'] as num).toInt(),
+      sortOrderRev: json['sort_order_rev'] as String,
+      totalItems: json['total_items'] as String,
+    );

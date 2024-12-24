@@ -1,0 +1,11 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+          to_json: false
+          field_rename: snake
+      json_serializable:
+        options:
+          field_rename: snake
+          generic_argument_factories: true

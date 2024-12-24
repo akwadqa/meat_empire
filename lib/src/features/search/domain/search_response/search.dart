@@ -1,0 +1,65 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'search.freezed.dart';
+part 'search.g.dart';
+
+@freezed
+class Search with _$Search {
+  factory Search({
+    required String area,
+    required bool useCaching,
+    required List<String> extend,
+    required List<dynamic> customExtend,
+    required String pname,
+    required String pshort,
+    required String pfull,
+    required String pkeywords,
+    required List<dynamic> feature,
+    required String type,
+    required int page,
+    required String action,
+    required List<dynamic> filterVariants,
+    required String featuresHash,
+    required int limit,
+    required int bid,
+    required String match,
+    required List<dynamic> tracking,
+    required bool getFrontendUrls,
+    required int itemsPerPage,
+    required String applyDisabledFilters,
+    required bool loadProductsExtraData,
+    required dynamic storefront,
+    required String companyIds,
+    required bool additionalData,
+    required bool getOptions,
+    required bool getDiscounts,
+    required bool getFeatures,
+    required bool getDetailed,
+    required bool getIcon,
+    required String langCode,
+    required String currencyCode,
+    required int bannerWidth,
+    required int productListWidth,
+    required int imageWidth,
+    required int imageSize,
+    required int productDetailsWidth,
+    required String userType,
+    required String applyPagination,
+    required int cid,
+    required String searchPerformed,
+    required String subcats,
+    required bool hideOutOfStockProducts,
+    required String sortBy,
+    required String sortOrder,
+    required bool forCurrentStorefront,
+    required String companyStatus,
+    required List<int> usergroupIds,
+    required bool includeChildVariations,
+    required bool groupChildVariations,
+    required int parentProductId,
+    required String sortOrderRev,
+    required String totalItems,
+  }) = _Search;
+
+  factory Search.fromJson(Map<String, dynamic> json) => _$SearchFromJson(json);
+}
