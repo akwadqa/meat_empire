@@ -1,13 +1,16 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/features/cart/presentation/add_to_cart_controller/add_to_cart_controller.dart';
 import 'package:meat_empire/src/features/products/data/products_repository.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/product_details.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/products_block.dart';
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_scroller_view.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/app_close_button.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
@@ -92,7 +95,10 @@ class ProductDetailsView extends StatelessWidget {
           final totalPrice = calculateTotalPrice(ref, product);
 
           return _AddToCartButton(
-              productPrice: (totalPrice * quantity).toStringAsFixed(2));
+            productPrice: (totalPrice * quantity).toStringAsFixed(2),
+            productId: product.productId,
+            amount: product.amount,
+          );
         }),
       ],
     );
@@ -216,7 +222,7 @@ class ProductDetailsInfo extends StatelessWidget {
         if (product.productOptions != null)
           ProductOptionsList(productOptions: product.productOptions!),
         if (product.variationFeatures.isNotEmpty)
-          Text('specifications'.tr(),
+          Text(context.tr('specifications'),
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
@@ -346,9 +352,14 @@ class _ProductsBlockList extends StatelessWidget {
 }
 
 class _AddToCartButton extends StatelessWidget {
-  const _AddToCartButton({required this.productPrice});
+  const _AddToCartButton(
+      {required this.productPrice,
+      required this.productId,
+      required this.amount});
 
   final String productPrice;
+  final int productId;
+  final int amount;
 
   @override
   Widget build(BuildContext context) {
@@ -366,13 +377,19 @@ class _AddToCartButton extends StatelessWidget {
                 offset: Offset(0, -4), blurRadius: 15, color: Colors.black26),
           ],
         ),
-        child: ElevatedButton.icon(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
-          icon: const Icon(Icons.add_shopping_cart_rounded,
-              color: Colors.white, size: 25),
-          label: Text('${'addToCart'.tr()} ($productPrice)'),
-        ),
+        child: Consumer(builder: (context, ref, child) {
+          final asyncAddToCart = ref.watch(addToCartControllerProvider);
+          if (asyncAddToCart is AsyncLoading) {
+            return AppLoadingIndicator();
+          }
+          return ElevatedButton.icon(
+            onPressed: () => addToCart(context, ref, amount, productId),
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
+            icon: const Icon(Icons.add_shopping_cart_rounded,
+                color: Colors.white, size: 25),
+            label: Text('${context.tr('addToCart')} ($productPrice)'),
+          );
+        }),
       ),
     );
   }

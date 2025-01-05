@@ -13,7 +13,7 @@ class SearchResponse with _$SearchResponse {
     required List<Product> products,
     required Search search,
     required List<Sorting> sortings,
-    required int totalProducts,
+    required dynamic totalProducts,
     required String message,
     required bool success,
   }) = _SearchResponse;

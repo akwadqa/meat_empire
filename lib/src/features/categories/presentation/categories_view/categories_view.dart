@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
@@ -19,8 +21,16 @@ class CategoriesView extends StatelessWidget {
         itemBuilder: (context, index) {
           final isAllCategory = index == 0;
           return _CategoryItem(
-            onTap: () {}, // Update with your actual onTap logic
-            label: isAllCategory ? 'all'.tr() : categories[index - 1].category,
+            onTap: isAllCategory
+                ? null
+                : () {
+                    context.router.replaceAll([
+                      SearchRoute(categoryId: categories[index - 1].categoryId)
+                    ]);
+                  },
+            label: isAllCategory
+                ? context.tr('all')
+                : categories[index - 1].category,
             image: isAllCategory
                 ? Assets.icons.categoriesIcon.svg()
                 : AppCachedNetworkImage(
@@ -42,7 +52,7 @@ class _CategoryItem extends StatelessWidget {
     required this.image,
   });
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String label;
   final Widget image;
 

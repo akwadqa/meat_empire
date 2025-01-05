@@ -1,9 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+
+import '../../../../shared_widgets/app_logo.dart';
+
+enum DrawerItems { home, myAccount, logout }
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -15,7 +21,7 @@ class HomeScreen extends StatelessWidget {
     const colorFilter = ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
     return AutoTabsScaffold(
       extendBody: true,
-      routes: const [LayoutRoute(), SearchRoute(), CartRoute(), AccountRoute()],
+      routes: [LayoutRoute(), SearchRoute(), CartRoute(), AccountRoute()],
       appBarBuilder: (context, _) => AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -23,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {},
             icon: Badge(
               backgroundColor: AppColors.primary,
-              label: Text('3'),
+              label: Text(''),
               child: Assets.icons.cartIcon.svg(
                   height: 22,
                   width: 26,
@@ -31,32 +37,46 @@ class HomeScreen extends StatelessWidget {
                       ColorFilter.mode(Colors.black87, BlendMode.srcIn)),
             )),
         actions: [
-          IconButton(onPressed: () {}, icon: Assets.icons.menuIcon.svg())
+          Consumer(builder: (context, ref, child) {
+            return PopupMenuButton<DrawerItems>(
+              onSelected: (value) {
+                if (value == DrawerItems.logout) {
+                  ref.read(userTokenProvider.notifier).removeToken();
+                }
+              },
+              itemBuilder: (BuildContext context) =>
+                  <PopupMenuEntry<DrawerItems>>[
+                _popupMenuItem(
+                    value: DrawerItems.home,
+                    icon: Assets.icons.homeIcon.svg(),
+                    text: context.tr('home')),
+                _popupMenuItem(
+                    value: DrawerItems.myAccount,
+                    icon: Assets.icons.circulePersonIcon.svg(),
+                    text: context.tr('myAccount')),
+                if (ref.watch(isAuthinticatedProvider))
+                  _popupMenuItem(
+                      value: DrawerItems.logout,
+                      icon: Assets.icons.logoutIcon.svg(),
+                      text: context.tr('logout')),
+              ],
+              icon: Assets.icons.menuIcon.svg(),
+            );
+          }),
         ],
         title: context.tabsRouter.activeIndex == 1
-            ? Text('search'.tr(),
+            ? Text(context.tr('search'),
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
                     .copyWith(fontSize: 18))
             : context.tabsRouter.activeIndex == 2
-                ? Text('myCart'.tr(),
+                ? Text(context.tr('myCart'),
                     style: Theme.of(context)
                         .textTheme
                         .displayMedium!
                         .copyWith(fontSize: 18))
-                : Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Assets.images.logo.image(),
-                      SizedBox(width: 8),
-                      Text('MEAT EMPIRE',
-                          style: TextStyle(
-                              color: AppColors.primary,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold))
-                    ],
-                  ),
+                : AppLogo(),
       ),
       bottomNavigationBuilder: (context, tabsRouter) {
         return Container(
@@ -84,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                   colorFilter: tabsRouter.activeIndex == 0 ? colorFilter : null,
                   height: iconHeight,
                 ),
-                label: 'products'.tr(),
+                label: context.tr('products'),
                 isActive: tabsRouter.activeIndex == 0,
                 onTap: () => tabsRouter.setActiveIndex(0),
               ),
@@ -93,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                   colorFilter: tabsRouter.activeIndex == 1 ? colorFilter : null,
                   height: iconHeight,
                 ),
-                label: 'search'.tr(),
+                label: context.tr('search'),
                 isActive: tabsRouter.activeIndex == 1,
                 onTap: () => tabsRouter.setActiveIndex(1),
               ),
@@ -102,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                   colorFilter: tabsRouter.activeIndex == 2 ? colorFilter : null,
                   height: iconHeight,
                 ),
-                label: 'cart'.tr(),
+                label: context.tr('cart'),
                 isActive: tabsRouter.activeIndex == 2,
                 onTap: () => tabsRouter.setActiveIndex(2),
               ),
@@ -111,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                   colorFilter: tabsRouter.activeIndex == 3 ? colorFilter : null,
                   height: iconHeight,
                 ),
-                label: 'myAccount'.tr(),
+                label: context.tr('myAccount'),
                 isActive: tabsRouter.activeIndex == 3,
                 onTap: () => tabsRouter.setActiveIndex(3),
               ),
@@ -119,6 +139,21 @@ class HomeScreen extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  PopupMenuItem<DrawerItems> _popupMenuItem(
+      {required DrawerItems value,
+      required Widget icon,
+      required String text,
+      void Function()? onTap}) {
+    return PopupMenuItem(
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 8,
+        children: [icon, Text(text)],
+      ),
     );
   }
 }

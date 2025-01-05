@@ -23,7 +23,7 @@ mixin _$SearchResponse {
   List<Product> get products => throw _privateConstructorUsedError;
   Search get search => throw _privateConstructorUsedError;
   List<Sorting> get sortings => throw _privateConstructorUsedError;
-  int get totalProducts => throw _privateConstructorUsedError;
+  dynamic get totalProducts => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
@@ -44,7 +44,7 @@ abstract class $SearchResponseCopyWith<$Res> {
       {List<Product> products,
       Search search,
       List<Sorting> sortings,
-      int totalProducts,
+      dynamic totalProducts,
       String message,
       bool success});
 
@@ -69,7 +69,7 @@ class _$SearchResponseCopyWithImpl<$Res, $Val extends SearchResponse>
     Object? products = null,
     Object? search = null,
     Object? sortings = null,
-    Object? totalProducts = null,
+    Object? totalProducts = freezed,
     Object? message = null,
     Object? success = null,
   }) {
@@ -86,10 +86,10 @@ class _$SearchResponseCopyWithImpl<$Res, $Val extends SearchResponse>
           ? _value.sortings
           : sortings // ignore: cast_nullable_to_non_nullable
               as List<Sorting>,
-      totalProducts: null == totalProducts
+      totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as int,
+              as dynamic,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -124,7 +124,7 @@ abstract class _$$SearchResponseImplCopyWith<$Res>
       {List<Product> products,
       Search search,
       List<Sorting> sortings,
-      int totalProducts,
+      dynamic totalProducts,
       String message,
       bool success});
 
@@ -148,7 +148,7 @@ class __$$SearchResponseImplCopyWithImpl<$Res>
     Object? products = null,
     Object? search = null,
     Object? sortings = null,
-    Object? totalProducts = null,
+    Object? totalProducts = freezed,
     Object? message = null,
     Object? success = null,
   }) {
@@ -165,10 +165,10 @@ class __$$SearchResponseImplCopyWithImpl<$Res>
           ? _value._sortings
           : sortings // ignore: cast_nullable_to_non_nullable
               as List<Sorting>,
-      totalProducts: null == totalProducts
+      totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as int,
+              as dynamic,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -216,7 +216,7 @@ class _$SearchResponseImpl implements _SearchResponse {
   }
 
   @override
-  final int totalProducts;
+  final dynamic totalProducts;
   @override
   final String message;
   @override
@@ -235,8 +235,8 @@ class _$SearchResponseImpl implements _SearchResponse {
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.search, search) || other.search == search) &&
             const DeepCollectionEquality().equals(other._sortings, _sortings) &&
-            (identical(other.totalProducts, totalProducts) ||
-                other.totalProducts == totalProducts) &&
+            const DeepCollectionEquality()
+                .equals(other.totalProducts, totalProducts) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.success, success) || other.success == success));
   }
@@ -248,7 +248,7 @@ class _$SearchResponseImpl implements _SearchResponse {
       const DeepCollectionEquality().hash(_products),
       search,
       const DeepCollectionEquality().hash(_sortings),
-      totalProducts,
+      const DeepCollectionEquality().hash(totalProducts),
       message,
       success);
 
@@ -267,7 +267,7 @@ abstract class _SearchResponse implements SearchResponse {
       {required final List<Product> products,
       required final Search search,
       required final List<Sorting> sortings,
-      required final int totalProducts,
+      required final dynamic totalProducts,
       required final String message,
       required final bool success}) = _$SearchResponseImpl;
 
@@ -281,7 +281,7 @@ abstract class _SearchResponse implements SearchResponse {
   @override
   List<Sorting> get sortings;
   @override
-  int get totalProducts;
+  dynamic get totalProducts;
   @override
   String get message;
   @override

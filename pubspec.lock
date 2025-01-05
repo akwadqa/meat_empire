@@ -358,6 +358,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.2"
+  email_validator:
+    dependency: transitive
+    description:
+      name: email_validator
+      sha256: e9a90f27ab2b915a27d7f9c2a7ddda5dd752d6942616ee83529b686fc086221b
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.17"
   fake_async:
     dependency: transitive
     description:
@@ -834,6 +842,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  queen_validators:
+    dependency: "direct main"
+    description:
+      name: queen_validators
+      sha256: e71b8ce8aeddc91f103d18c15849d43324f364c57dbb7c9d7e29b4c47fe75e94
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   riverpod:
     dependency: transitive
     description:
@@ -883,7 +899,7 @@ packages:
     source: hosted
     version: "0.28.0"
   shared_preferences:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences
       sha256: "3c7e73920c694a436afaf65ab60ce3453d91f84208d761fbd83fc21182134d93"

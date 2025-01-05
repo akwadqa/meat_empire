@@ -26,7 +26,7 @@ class ProductsView extends StatelessWidget {
               const Spacer(),
               TextButton(
                 onPressed: () {},
-                child: Text('more'.tr()),
+                child: Text(context.tr('more')),
               ),
             ],
           ),

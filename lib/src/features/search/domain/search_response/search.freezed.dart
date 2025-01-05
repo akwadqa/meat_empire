@@ -59,7 +59,7 @@ mixin _$Search {
   int get productDetailsWidth => throw _privateConstructorUsedError;
   String get userType => throw _privateConstructorUsedError;
   String get applyPagination => throw _privateConstructorUsedError;
-  int get cid => throw _privateConstructorUsedError;
+  dynamic get cid => throw _privateConstructorUsedError;
   String get searchPerformed => throw _privateConstructorUsedError;
   String get subcats => throw _privateConstructorUsedError;
   bool get hideOutOfStockProducts => throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ mixin _$Search {
   String get sortOrder => throw _privateConstructorUsedError;
   bool get forCurrentStorefront => throw _privateConstructorUsedError;
   String get companyStatus => throw _privateConstructorUsedError;
-  List<int> get usergroupIds => throw _privateConstructorUsedError;
+  List<dynamic> get usergroupIds => throw _privateConstructorUsedError;
   bool get includeChildVariations => throw _privateConstructorUsedError;
   bool get groupChildVariations => throw _privateConstructorUsedError;
   int get parentProductId => throw _privateConstructorUsedError;
@@ -125,7 +125,7 @@ abstract class $SearchCopyWith<$Res> {
       int productDetailsWidth,
       String userType,
       String applyPagination,
-      int cid,
+      dynamic cid,
       String searchPerformed,
       String subcats,
       bool hideOutOfStockProducts,
@@ -133,7 +133,7 @@ abstract class $SearchCopyWith<$Res> {
       String sortOrder,
       bool forCurrentStorefront,
       String companyStatus,
-      List<int> usergroupIds,
+      List<dynamic> usergroupIds,
       bool includeChildVariations,
       bool groupChildVariations,
       int parentProductId,
@@ -195,7 +195,7 @@ class _$SearchCopyWithImpl<$Res, $Val extends Search>
     Object? productDetailsWidth = null,
     Object? userType = null,
     Object? applyPagination = null,
-    Object? cid = null,
+    Object? cid = freezed,
     Object? searchPerformed = null,
     Object? subcats = null,
     Object? hideOutOfStockProducts = null,
@@ -367,10 +367,10 @@ class _$SearchCopyWithImpl<$Res, $Val extends Search>
           ? _value.applyPagination
           : applyPagination // ignore: cast_nullable_to_non_nullable
               as String,
-      cid: null == cid
+      cid: freezed == cid
           ? _value.cid
           : cid // ignore: cast_nullable_to_non_nullable
-              as int,
+              as dynamic,
       searchPerformed: null == searchPerformed
           ? _value.searchPerformed
           : searchPerformed // ignore: cast_nullable_to_non_nullable
@@ -402,7 +402,7 @@ class _$SearchCopyWithImpl<$Res, $Val extends Search>
       usergroupIds: null == usergroupIds
           ? _value.usergroupIds
           : usergroupIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<dynamic>,
       includeChildVariations: null == includeChildVariations
           ? _value.includeChildVariations
           : includeChildVariations // ignore: cast_nullable_to_non_nullable
@@ -474,7 +474,7 @@ abstract class _$$SearchImplCopyWith<$Res> implements $SearchCopyWith<$Res> {
       int productDetailsWidth,
       String userType,
       String applyPagination,
-      int cid,
+      dynamic cid,
       String searchPerformed,
       String subcats,
       bool hideOutOfStockProducts,
@@ -482,7 +482,7 @@ abstract class _$$SearchImplCopyWith<$Res> implements $SearchCopyWith<$Res> {
       String sortOrder,
       bool forCurrentStorefront,
       String companyStatus,
-      List<int> usergroupIds,
+      List<dynamic> usergroupIds,
       bool includeChildVariations,
       bool groupChildVariations,
       int parentProductId,
@@ -542,7 +542,7 @@ class __$$SearchImplCopyWithImpl<$Res>
     Object? productDetailsWidth = null,
     Object? userType = null,
     Object? applyPagination = null,
-    Object? cid = null,
+    Object? cid = freezed,
     Object? searchPerformed = null,
     Object? subcats = null,
     Object? hideOutOfStockProducts = null,
@@ -714,10 +714,10 @@ class __$$SearchImplCopyWithImpl<$Res>
           ? _value.applyPagination
           : applyPagination // ignore: cast_nullable_to_non_nullable
               as String,
-      cid: null == cid
+      cid: freezed == cid
           ? _value.cid
           : cid // ignore: cast_nullable_to_non_nullable
-              as int,
+              as dynamic,
       searchPerformed: null == searchPerformed
           ? _value.searchPerformed
           : searchPerformed // ignore: cast_nullable_to_non_nullable
@@ -749,7 +749,7 @@ class __$$SearchImplCopyWithImpl<$Res>
       usergroupIds: null == usergroupIds
           ? _value._usergroupIds
           : usergroupIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<dynamic>,
       includeChildVariations: null == includeChildVariations
           ? _value.includeChildVariations
           : includeChildVariations // ignore: cast_nullable_to_non_nullable
@@ -825,7 +825,7 @@ class _$SearchImpl implements _Search {
       required this.sortOrder,
       required this.forCurrentStorefront,
       required this.companyStatus,
-      required final List<int> usergroupIds,
+      required final List<dynamic> usergroupIds,
       required this.includeChildVariations,
       required this.groupChildVariations,
       required this.parentProductId,
@@ -950,7 +950,7 @@ class _$SearchImpl implements _Search {
   @override
   final String applyPagination;
   @override
-  final int cid;
+  final dynamic cid;
   @override
   final String searchPerformed;
   @override
@@ -965,9 +965,9 @@ class _$SearchImpl implements _Search {
   final bool forCurrentStorefront;
   @override
   final String companyStatus;
-  final List<int> _usergroupIds;
+  final List<dynamic> _usergroupIds;
   @override
-  List<int> get usergroupIds {
+  List<dynamic> get usergroupIds {
     if (_usergroupIds is EqualUnmodifiableListView) return _usergroupIds;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_usergroupIds);
@@ -1058,7 +1058,7 @@ class _$SearchImpl implements _Search {
                 other.userType == userType) &&
             (identical(other.applyPagination, applyPagination) ||
                 other.applyPagination == applyPagination) &&
-            (identical(other.cid, cid) || other.cid == cid) &&
+            const DeepCollectionEquality().equals(other.cid, cid) &&
             (identical(other.searchPerformed, searchPerformed) ||
                 other.searchPerformed == searchPerformed) &&
             (identical(other.subcats, subcats) || other.subcats == subcats) &&
@@ -1128,7 +1128,7 @@ class _$SearchImpl implements _Search {
         productDetailsWidth,
         userType,
         applyPagination,
-        cid,
+        const DeepCollectionEquality().hash(cid),
         searchPerformed,
         subcats,
         hideOutOfStockProducts,
@@ -1194,7 +1194,7 @@ abstract class _Search implements Search {
       required final int productDetailsWidth,
       required final String userType,
       required final String applyPagination,
-      required final int cid,
+      required final dynamic cid,
       required final String searchPerformed,
       required final String subcats,
       required final bool hideOutOfStockProducts,
@@ -1202,7 +1202,7 @@ abstract class _Search implements Search {
       required final String sortOrder,
       required final bool forCurrentStorefront,
       required final String companyStatus,
-      required final List<int> usergroupIds,
+      required final List<dynamic> usergroupIds,
       required final bool includeChildVariations,
       required final bool groupChildVariations,
       required final int parentProductId,
@@ -1290,7 +1290,7 @@ abstract class _Search implements Search {
   @override
   String get applyPagination;
   @override
-  int get cid;
+  dynamic get cid;
   @override
   String get searchPerformed;
   @override
@@ -1306,7 +1306,7 @@ abstract class _Search implements Search {
   @override
   String get companyStatus;
   @override
-  List<int> get usergroupIds;
+  List<dynamic> get usergroupIds;
   @override
   bool get includeChildVariations;
   @override

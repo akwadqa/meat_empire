@@ -22,7 +22,7 @@ class Home {
   final AppConfiguration appConfiguration;
   final String termsConditionPageId;
   final List<Page> pages;
-  final int totalProducts;
+  final dynamic totalProducts;
   final String message;
   final bool success;
 
@@ -74,7 +74,7 @@ class Home {
       pages: (json['pages'] as List)
           .map((e) => Page.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalProducts: json['total_products'] as int,
+      totalProducts: json['total_products'] as dynamic,
       message: json['message'] as String,
       success: json['success'] as bool,
     );

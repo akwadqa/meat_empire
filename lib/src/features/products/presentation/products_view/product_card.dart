@@ -1,11 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 
 import '../../../../routing/app_router.gr.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
+import '../../../../shared_widgets/app_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
+import '../../../cart/presentation/add_to_cart_controller/add_to_cart_controller.dart';
 import '../../domain/product/product.dart';
 
 class ProductCard extends StatelessWidget {
@@ -34,7 +38,15 @@ class ProductCard extends StatelessWidget {
                         BorderRadius.vertical(top: Radius.circular(10)),
                     child: _ProductImage(product: product))),
             _PriceRow(product: product),
-            _AddToCartButton(),
+            ProviderScope(
+              overrides: [
+                addToCartControllerProvider
+                    .overrideWith(() => AddToCartController())
+              ],
+              child: _AddToCartButton(
+                  productId: int.parse(product.productId),
+                  amount: product.amount),
+            ),
             const SizedBox(height: 6),
           ],
         ),
@@ -86,7 +98,7 @@ class _ProductImage extends StatelessWidget {
             top: 20,
             child: _DiscountBanner(
               text:
-                  '${'save'.tr()} ${discountPercentage.toStringAsFixed(0)}%', // Display percentage rounded to integer
+                  '${context.tr('save')} ${discountPercentage.toStringAsFixed(0)}%', // Display percentage rounded to integer
             ),
           ),
         PositionedDirectional(
@@ -187,11 +199,21 @@ class _PriceRow extends StatelessWidget {
   }
 }
 
-class _AddToCartButton extends StatelessWidget {
+class _AddToCartButton extends ConsumerWidget {
+  final int productId;
+  final int amount;
+
+  const _AddToCartButton(
+      {required this.productId, required this.amount});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncAddToCart = ref.watch(addToCartControllerProvider);
+    if (asyncAddToCart is AsyncLoading) {
+      return AppLoadingIndicator();
+    }
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () => addToCart(context, ref, amount, productId),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
             fontSize: 12,
@@ -200,7 +222,7 @@ class _AddToCartButton extends StatelessWidget {
         backgroundColor: AppColors.green,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       ),
-      label: Text('addToCart'.tr()),
+      label: Text(context.tr('addToCart')),
       icon: const Icon(Icons.add_shopping_cart_rounded, color: Colors.white),
     );
   }

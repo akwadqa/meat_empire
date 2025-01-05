@@ -2,9 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/services_urls.dart';
+
+import '../localization/current_language.dart';
 
 part 'network_service.g.dart';
 
@@ -32,12 +35,12 @@ Dio dio(Ref ref) {
     sendTimeout: duration,
   ));
 
-  // final languageCode = ref.watch(currentLanguageProvider);
-  // final token = ref.watch(userDataProvider)?.token;
+  final languageCode = ref.watch(currentLanguageProvider());
+  final token = ref.watch(userTokenProvider);
   dio.interceptors.addAll({
     DioAppInterceptors(
-      languageCode: 'ar',
-      token: null,
+      languageCode: languageCode,
+      token: token,
       onUnauthorized: () {},
     ),
   });
@@ -98,7 +101,7 @@ class DioAppInterceptors extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     if (token != null) {
-      options.headers['Authorization'] = 'token $token';
+      options.headers['Authorization'] = token;
     }
     options.headers['Accept-Language'] = languageCode;
     super.onRequest(options, handler);

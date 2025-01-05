@@ -22,7 +22,7 @@ _$DetailedParamsImpl _$$DetailedParamsImplFromJson(Map<String, dynamic> json) =>
       getActiveOptions: json['get_active_options'] as bool,
       getOnlySelectableOptions: json['get_only_selectable_options'] as bool,
       additionalData: json['additional_data'] as bool?,
-      userId: (json['user_id'] as num?)?.toInt(),
+      userId: json['user_id'],
       imageWidth: (json['image_width'] as num?)?.toInt(),
       currencyCode: json['currency_code'] as String?,
       getVariationInfo: json['get_variation_info'] as bool,

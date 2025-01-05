@@ -34,7 +34,7 @@ mixin _$DetailedParams {
   bool get getActiveOptions => throw _privateConstructorUsedError;
   bool get getOnlySelectableOptions => throw _privateConstructorUsedError;
   bool? get additionalData => throw _privateConstructorUsedError;
-  int? get userId => throw _privateConstructorUsedError;
+  dynamic get userId => throw _privateConstructorUsedError;
   int? get imageWidth => throw _privateConstructorUsedError;
   String? get currencyCode => throw _privateConstructorUsedError;
   bool get getVariationInfo => throw _privateConstructorUsedError;
@@ -70,7 +70,7 @@ abstract class $DetailedParamsCopyWith<$Res> {
       bool getActiveOptions,
       bool getOnlySelectableOptions,
       bool? additionalData,
-      int? userId,
+      dynamic userId,
       int? imageWidth,
       String? currencyCode,
       bool getVariationInfo,
@@ -176,7 +176,7 @@ class _$DetailedParamsCopyWithImpl<$Res, $Val extends DetailedParams>
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       imageWidth: freezed == imageWidth
           ? _value.imageWidth
           : imageWidth // ignore: cast_nullable_to_non_nullable
@@ -228,7 +228,7 @@ abstract class _$$DetailedParamsImplCopyWith<$Res>
       bool getActiveOptions,
       bool getOnlySelectableOptions,
       bool? additionalData,
-      int? userId,
+      dynamic userId,
       int? imageWidth,
       String? currencyCode,
       bool getVariationInfo,
@@ -332,7 +332,7 @@ class __$$DetailedParamsImplCopyWithImpl<$Res>
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       imageWidth: freezed == imageWidth
           ? _value.imageWidth
           : imageWidth // ignore: cast_nullable_to_non_nullable
@@ -419,7 +419,7 @@ class _$DetailedParamsImpl implements _DetailedParams {
   @override
   final bool? additionalData;
   @override
-  final int? userId;
+  final dynamic userId;
   @override
   final int? imageWidth;
   @override
@@ -471,7 +471,7 @@ class _$DetailedParamsImpl implements _DetailedParams {
                 other.getOnlySelectableOptions == getOnlySelectableOptions) &&
             (identical(other.additionalData, additionalData) ||
                 other.additionalData == additionalData) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
             (identical(other.imageWidth, imageWidth) ||
                 other.imageWidth == imageWidth) &&
             (identical(other.currencyCode, currencyCode) ||
@@ -506,7 +506,7 @@ class _$DetailedParamsImpl implements _DetailedParams {
         getActiveOptions,
         getOnlySelectableOptions,
         additionalData,
-        userId,
+        const DeepCollectionEquality().hash(userId),
         imageWidth,
         currencyCode,
         getVariationInfo,
@@ -541,7 +541,7 @@ abstract class _DetailedParams implements DetailedParams {
       required final bool getActiveOptions,
       required final bool getOnlySelectableOptions,
       required final bool? additionalData,
-      required final int? userId,
+      required final dynamic userId,
       required final int? imageWidth,
       required final String? currencyCode,
       required final bool getVariationInfo,
@@ -581,7 +581,7 @@ abstract class _DetailedParams implements DetailedParams {
   @override
   bool? get additionalData;
   @override
-  int? get userId;
+  dynamic get userId;
   @override
   int? get imageWidth;
   @override

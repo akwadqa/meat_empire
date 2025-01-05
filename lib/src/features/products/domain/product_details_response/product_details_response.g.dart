@@ -16,7 +16,7 @@ _$ProductDetailsResponseImpl _$$ProductDetailsResponseImplFromJson(
       productsBlock: (json['products_block'] as List<dynamic>)
           .map((e) => ProductsBlock.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalProducts: (json['total_products'] as num).toInt(),
+      totalProducts: json['total_products'],
       message: json['message'] as String,
       success: json['success'] as bool,
     );

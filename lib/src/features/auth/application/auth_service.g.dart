@@ -1,0 +1,58 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'auth_service.dart';
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$sharedPreferencesHash() => r'ca329d21cb9532acf76436fc839fde21c0b7f1e6';
+
+/// See also [sharedPreferences].
+@ProviderFor(sharedPreferences)
+final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
+  sharedPreferences,
+  name: r'sharedPreferencesProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sharedPreferencesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
+String _$isAuthinticatedHash() => r'68f345d18437967f169d6e969cdd28e7de8b6354';
+
+/// See also [isAuthinticated].
+@ProviderFor(isAuthinticated)
+final isAuthinticatedProvider = AutoDisposeProvider<bool>.internal(
+  isAuthinticated,
+  name: r'isAuthinticatedProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$isAuthinticatedHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef IsAuthinticatedRef = AutoDisposeProviderRef<bool>;
+String _$userTokenHash() => r'db7dd6c668e4fe9087059352e27d1cb2c0134e43';
+
+/// See also [UserToken].
+@ProviderFor(UserToken)
+final userTokenProvider = NotifierProvider<UserToken, String?>.internal(
+  UserToken.new,
+  name: r'userTokenProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userTokenHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$UserToken = Notifier<String?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

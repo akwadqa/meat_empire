@@ -26,8 +26,19 @@ class $AssetsIconsGen {
   SvgGenImage get circulePersonIcon =>
       const SvgGenImage('assets/icons/circule_person_icon.svg');
 
+  /// File path: assets/icons/delete_icon.svg
+  SvgGenImage get deleteIcon =>
+      const SvgGenImage('assets/icons/delete_icon.svg');
+
   /// File path: assets/icons/home_icon.svg
   SvgGenImage get homeIcon => const SvgGenImage('assets/icons/home_icon.svg');
+
+  /// File path: assets/icons/logout_icon.svg
+  SvgGenImage get logoutIcon =>
+      const SvgGenImage('assets/icons/logout_icon.svg');
+
+  /// File path: assets/icons/mark_icon.svg
+  SvgGenImage get markIcon => const SvgGenImage('assets/icons/mark_icon.svg');
 
   /// File path: assets/icons/menu_icon.svg
   SvgGenImage get menuIcon => const SvgGenImage('assets/icons/menu_icon.svg');
@@ -41,7 +52,10 @@ class $AssetsIconsGen {
         cartIcon,
         categoriesIcon,
         circulePersonIcon,
+        deleteIcon,
         homeIcon,
+        logoutIcon,
+        markIcon,
         menuIcon,
         searchIcon
       ];
@@ -50,11 +64,19 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/login_image.svg
+  SvgGenImage get loginImage =>
+      const SvgGenImage('assets/images/login_image.svg');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/qatar_flag.png
+  AssetGenImage get qatarFlag =>
+      const AssetGenImage('assets/images/qatar_flag.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logo];
+  List<dynamic> get values => [loginImage, logo, qatarFlag];
 }
 
 class $AssetsTranslationsGen {

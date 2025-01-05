@@ -15,7 +15,7 @@ class ProductDetailsResponse with _$ProductDetailsResponse {
     required ProductDetails product,
     required Currency currency,
     required List<ProductsBlock> productsBlock,
-    required int totalProducts,
+    required dynamic totalProducts,
     required String message,
     required bool success,
   }) = _ProductDetailsResponse;

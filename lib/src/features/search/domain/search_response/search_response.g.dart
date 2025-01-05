@@ -15,7 +15,7 @@ _$SearchResponseImpl _$$SearchResponseImplFromJson(Map<String, dynamic> json) =>
       sortings: (json['sortings'] as List<dynamic>)
           .map((e) => Sorting.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalProducts: (json['total_products'] as num).toInt(),
+      totalProducts: json['total_products'],
       message: json['message'] as String,
       success: json['success'] as bool,
     );

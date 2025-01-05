@@ -47,7 +47,7 @@ _$SearchImpl _$$SearchImplFromJson(Map<String, dynamic> json) => _$SearchImpl(
       productDetailsWidth: (json['product_details_width'] as num).toInt(),
       userType: json['user_type'] as String,
       applyPagination: json['apply_pagination'] as String,
-      cid: (json['cid'] as num).toInt(),
+      cid: json['cid'],
       searchPerformed: json['search_performed'] as String,
       subcats: json['subcats'] as String,
       hideOutOfStockProducts: json['hide_out_of_stock_products'] as bool,
@@ -55,9 +55,7 @@ _$SearchImpl _$$SearchImplFromJson(Map<String, dynamic> json) => _$SearchImpl(
       sortOrder: json['sort_order'] as String,
       forCurrentStorefront: json['for_current_storefront'] as bool,
       companyStatus: json['company_status'] as String,
-      usergroupIds: (json['usergroup_ids'] as List<dynamic>)
-          .map((e) => (e as num).toInt())
-          .toList(),
+      usergroupIds: json['usergroup_ids'] as List<dynamic>,
       includeChildVariations: json['include_child_variations'] as bool,
       groupChildVariations: json['group_child_variations'] as bool,
       parentProductId: (json['parent_product_id'] as num).toInt(),

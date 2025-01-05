@@ -14,18 +14,22 @@ import '../search_controller/search_controller.dart';
 
 @RoutePage()
 class SearchScreen extends ConsumerWidget {
-  const SearchScreen({super.key});
+  const SearchScreen({super.key, this.categoryId});
+
+  final String? categoryId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: _SearchContent(),
+      body: _SearchContent(categoryId),
     );
   }
 }
 
 class _SearchContent extends ConsumerWidget {
-  const _SearchContent();
+  const _SearchContent(this.categoryId);
+
+  final String? categoryId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,18 +41,18 @@ class _SearchContent extends ConsumerWidget {
             children: [
               Expanded(
                 flex: 6,
-                child: _SortingDropdown(),
+                child: _SortingDropdown(categoryId),
               ),
               const Spacer(),
               Expanded(
                 flex: 8,
-                child: _SearchField(),
+                child: _SearchField(categoryId),
               ),
             ],
           ),
           SizedBox(height: 26),
           Expanded(
-            child: _ProductsGridView(),
+            child: _ProductsGridView(categoryId),
           ),
         ],
       ),
@@ -57,14 +61,18 @@ class _SearchContent extends ConsumerWidget {
 }
 
 class _ProductsGridView extends ConsumerWidget {
-  const _ProductsGridView();
+  const _ProductsGridView(this.categoryId);
+
+  final String? categoryId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final searchControllerAsync = ref.watch(searchControllerProvider);
+    final searchControllerAsync =
+        ref.watch(searchControllerProvider(categoryId));
     return searchControllerAsync.when(
       data: (data) => AppPaginationWidget(
-        onLoading: ref.read(searchControllerProvider.notifier).loadMore,
+        onLoading:
+            ref.read(searchControllerProvider(categoryId).notifier).loadMore,
         child: ProductsGridView(
           products: data.products,
           shrinkWrap: true,
@@ -78,11 +86,14 @@ class _ProductsGridView extends ConsumerWidget {
 }
 
 class _SortingDropdown extends ConsumerWidget {
-  const _SortingDropdown();
+  const _SortingDropdown(this.categoryId);
+
+  final String? categoryId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final searchControllerAsync = ref.watch(searchControllerProvider);
+    final searchControllerAsync =
+        ref.watch(searchControllerProvider(categoryId));
     final sortings = searchControllerAsync.asData?.value.sortings;
     return DropdownButtonFormField<Sorting>(
       isExpanded: true,
@@ -114,7 +125,7 @@ class _SortingDropdown extends ConsumerWidget {
       elevation: 1,
       icon: const Icon(Icons.keyboard_arrow_down_rounded),
       hint: Text(
-        'sortBy'.tr(),
+        context.tr('sortBy'),
         style: const TextStyle(
           color: Colors.white,
           fontSize: 16,
@@ -138,7 +149,7 @@ class _SortingDropdown extends ConsumerWidget {
       onChanged: (Sorting? value) {
         if (value != null) {
           ref
-              .read(searchControllerProvider.notifier)
+              .read(searchControllerProvider(categoryId).notifier)
               .sort(sortBy: value.sortBy, sortOrder: value.sortOrder);
         }
       },
@@ -147,7 +158,9 @@ class _SortingDropdown extends ConsumerWidget {
 }
 
 class _SearchField extends ConsumerStatefulWidget {
-  const _SearchField();
+  const _SearchField(this.categoryId);
+
+  final String? categoryId;
 
   @override
   ConsumerState<_SearchField> createState() => _SearchFieldState();
@@ -161,7 +174,7 @@ class _SearchFieldState extends ConsumerState<_SearchField> {
     return TextFormField(
       controller: _controller,
       decoration: InputDecoration(
-        hintText: 'searchProducts'.tr(),
+        hintText: context.tr('searchProducts'),
         hintStyle: const TextStyle(color: AppColors.gray02),
         prefixIcon:
             IconButton(onPressed: () => _search(), icon: Icon(Icons.search)),
@@ -171,6 +184,7 @@ class _SearchFieldState extends ConsumerState<_SearchField> {
     );
   }
 
-  Future<void> _search() =>
-      ref.read(searchControllerProvider.notifier).search(_controller.text);
+  Future<void> _search() => ref
+      .read(searchControllerProvider(widget.categoryId).notifier)
+      .search(_controller.text);
 }

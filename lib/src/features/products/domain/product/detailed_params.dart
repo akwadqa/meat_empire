@@ -20,7 +20,7 @@ class DetailedParams with _$DetailedParams {
     required bool getActiveOptions,
     required bool getOnlySelectableOptions,
     required bool? additionalData,
-    required int? userId,
+    required dynamic userId,
     required int? imageWidth,
     required String? currencyCode,
     required bool getVariationInfo,

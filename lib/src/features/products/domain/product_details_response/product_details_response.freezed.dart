@@ -26,7 +26,7 @@ mixin _$ProductDetailsResponse {
   ProductDetails get product => throw _privateConstructorUsedError;
   Currency get currency => throw _privateConstructorUsedError;
   List<ProductsBlock> get productsBlock => throw _privateConstructorUsedError;
-  int get totalProducts => throw _privateConstructorUsedError;
+  dynamic get totalProducts => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
@@ -49,7 +49,7 @@ abstract class $ProductDetailsResponseCopyWith<$Res> {
       ProductDetails product,
       Currency currency,
       List<ProductsBlock> productsBlock,
-      int totalProducts,
+      dynamic totalProducts,
       String message,
       bool success});
 
@@ -78,7 +78,7 @@ class _$ProductDetailsResponseCopyWithImpl<$Res,
     Object? product = null,
     Object? currency = null,
     Object? productsBlock = null,
-    Object? totalProducts = null,
+    Object? totalProducts = freezed,
     Object? message = null,
     Object? success = null,
   }) {
@@ -103,10 +103,10 @@ class _$ProductDetailsResponseCopyWithImpl<$Res,
           ? _value.productsBlock
           : productsBlock // ignore: cast_nullable_to_non_nullable
               as List<ProductsBlock>,
-      totalProducts: null == totalProducts
+      totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as int,
+              as dynamic,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ abstract class _$$ProductDetailsResponseImplCopyWith<$Res>
       ProductDetails product,
       Currency currency,
       List<ProductsBlock> productsBlock,
-      int totalProducts,
+      dynamic totalProducts,
       String message,
       bool success});
 
@@ -184,7 +184,7 @@ class __$$ProductDetailsResponseImplCopyWithImpl<$Res>
     Object? product = null,
     Object? currency = null,
     Object? productsBlock = null,
-    Object? totalProducts = null,
+    Object? totalProducts = freezed,
     Object? message = null,
     Object? success = null,
   }) {
@@ -209,10 +209,10 @@ class __$$ProductDetailsResponseImplCopyWithImpl<$Res>
           ? _value._productsBlock
           : productsBlock // ignore: cast_nullable_to_non_nullable
               as List<ProductsBlock>,
-      totalProducts: null == totalProducts
+      totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as int,
+              as dynamic,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -259,7 +259,7 @@ class _$ProductDetailsResponseImpl implements _ProductDetailsResponse {
   }
 
   @override
-  final int totalProducts;
+  final dynamic totalProducts;
   @override
   final String message;
   @override
@@ -284,8 +284,8 @@ class _$ProductDetailsResponseImpl implements _ProductDetailsResponse {
                 other.currency == currency) &&
             const DeepCollectionEquality()
                 .equals(other._productsBlock, _productsBlock) &&
-            (identical(other.totalProducts, totalProducts) ||
-                other.totalProducts == totalProducts) &&
+            const DeepCollectionEquality()
+                .equals(other.totalProducts, totalProducts) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.success, success) || other.success == success));
   }
@@ -299,7 +299,7 @@ class _$ProductDetailsResponseImpl implements _ProductDetailsResponse {
       product,
       currency,
       const DeepCollectionEquality().hash(_productsBlock),
-      totalProducts,
+      const DeepCollectionEquality().hash(totalProducts),
       message,
       success);
 
@@ -320,7 +320,7 @@ abstract class _ProductDetailsResponse implements ProductDetailsResponse {
       required final ProductDetails product,
       required final Currency currency,
       required final List<ProductsBlock> productsBlock,
-      required final int totalProducts,
+      required final dynamic totalProducts,
       required final String message,
       required final bool success}) = _$ProductDetailsResponseImpl;
 
@@ -338,7 +338,7 @@ abstract class _ProductDetailsResponse implements ProductDetailsResponse {
   @override
   List<ProductsBlock> get productsBlock;
   @override
-  int get totalProducts;
+  dynamic get totalProducts;
   @override
   String get message;
   @override
