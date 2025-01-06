@@ -29,10 +29,13 @@ import 'package:meat_empire/src/features/search/presentation/search_screen/searc
 
 /// generated route for
 /// [_i1.AccountScreen]
-class AccountRoute extends _i9.PageRouteInfo<void> {
-  const AccountRoute({List<_i9.PageRouteInfo>? children})
-      : super(
+class AccountRoute extends _i9.PageRouteInfo<AccountRouteArgs> {
+  AccountRoute({
+    _i10.Key? key,
+    List<_i9.PageRouteInfo>? children,
+  }) : super(
           AccountRoute.name,
+          args: AccountRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -41,9 +44,22 @@ class AccountRoute extends _i9.PageRouteInfo<void> {
   static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i1.AccountScreen();
+      final args =
+          data.argsAs<AccountRouteArgs>(orElse: () => const AccountRouteArgs());
+      return _i1.AccountScreen(key: args.key);
     },
   );
+}
+
+class AccountRouteArgs {
+  const AccountRouteArgs({this.key});
+
+  final _i10.Key? key;
+
+  @override
+  String toString() {
+    return 'AccountRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
