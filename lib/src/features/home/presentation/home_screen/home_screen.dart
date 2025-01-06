@@ -50,15 +50,18 @@ class HomeScreen extends StatelessWidget {
                     value: DrawerItems.home,
                     icon: Assets.icons.homeIcon.svg(),
                     text: context.tr('home')),
+                PopupMenuDivider(),
                 _popupMenuItem(
                     value: DrawerItems.myAccount,
                     icon: Assets.icons.circulePersonIcon.svg(),
                     text: context.tr('myAccount')),
-                if (ref.watch(isAuthinticatedProvider))
+                if (ref.watch(isAuthinticatedProvider)) ...[
+                  PopupMenuDivider(),
                   _popupMenuItem(
                       value: DrawerItems.logout,
                       icon: Assets.icons.logoutIcon.svg(),
                       text: context.tr('logout')),
+                ]
               ],
               icon: Assets.icons.menuIcon.svg(),
             );
@@ -145,10 +148,9 @@ class HomeScreen extends StatelessWidget {
   PopupMenuItem<DrawerItems> _popupMenuItem(
       {required DrawerItems value,
       required Widget icon,
-      required String text,
-      void Function()? onTap}) {
+      required String text}) {
     return PopupMenuItem(
-      onTap: onTap,
+      value: value,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 8,

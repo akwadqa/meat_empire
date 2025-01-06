@@ -36,5 +36,5 @@ class UserToken extends _$UserToken {
 
 @riverpod
 bool isAuthinticated(Ref ref) {
-  return ref.read(userTokenProvider) != null;
+  return ref.watch(userTokenProvider) != null;
 }
