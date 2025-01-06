@@ -80,8 +80,8 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBuilder: (context, tabsRouter) {
         return Container(
-          height: 95,
-          padding: const EdgeInsets.only(bottom: 20),
+          height: 75,
+          padding: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
