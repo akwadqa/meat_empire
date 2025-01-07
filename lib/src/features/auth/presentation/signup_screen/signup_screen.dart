@@ -11,7 +11,7 @@ import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:queen_validators/queen_validators.dart';
 
 import '../../../../shared_functions.dart';
-import '../../../../shared_widgets/app_loading_indicator.dart';
+import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../shared_widgets/app_logo.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../utils/arabic_number_input_formatter.dart';
@@ -170,7 +170,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
           final asyncLogin = ref.watch(authControllerProvider);
           if (asyncLogin is AsyncLoading) {
-            return const AppLoadingIndicator();
+            return const FadeCircleLoadingIndicator();
           }
 
           return ElevatedButton(

@@ -8,7 +8,7 @@ import 'package:meat_empire/src/features/auth/presentation/email_text_form_field
 import 'package:meat_empire/src/features/auth/presentation/auth_controller/auth_controller.dart';
 import 'package:meat_empire/src/features/auth/presentation/password_text_field/password_text_field.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
-import 'package:meat_empire/src/shared_widgets/app_loading_indicator.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/shared_widgets/app_logo.dart';
 import '../../../../shared_functions.dart';
 import '../auth_text/auth_text.dart';
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                       final asyncLogin = ref.watch(authControllerProvider);
                       if (asyncLogin is AsyncLoading) {
-                        return AppLoadingIndicator();
+                        return FadeCircleLoadingIndicator();
                       }
                       return ElevatedButton(
                           onPressed: () {

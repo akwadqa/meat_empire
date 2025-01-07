@@ -7,7 +7,7 @@ import 'package:meat_empire/src/shared_functions.dart';
 
 import '../../../../routing/app_router.gr.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
-import '../../../../shared_widgets/app_loading_indicator.dart';
+import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../cart/presentation/add_to_cart_controller/add_to_cart_controller.dart';
 import '../../domain/product/product.dart';
@@ -210,7 +210,7 @@ class _AddToCartButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncAddToCart = ref.watch(addToCartControllerProvider);
     if (asyncAddToCart is AsyncLoading) {
-      return AppLoadingIndicator();
+      return FadeCircleLoadingIndicator();
     }
     return ElevatedButton.icon(
       onPressed: () => addToCart(context, ref, amount, productId),

@@ -14,7 +14,7 @@ import 'package:meat_empire/src/shared_functions.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/app_close_button.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
-import '../../../../shared_widgets/app_loading_indicator.dart';
+import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../utils/magnetic_scroll_physics.dart';
 import '../../../home/presentation/layout_screen/banner/carousel_dots_indicator.dart';
@@ -42,7 +42,7 @@ class ProductDetailsScreen extends ConsumerWidget {
           currency: data.currency,
         ),
         error: (_, __) => const AppErrorWidget(),
-        loading: () => const AppLoadingIndicator(),
+        loading: () => const FadeCircleLoadingIndicator(),
       ),
     );
   }
@@ -380,7 +380,7 @@ class _AddToCartButton extends StatelessWidget {
         child: Consumer(builder: (context, ref, child) {
           final asyncAddToCart = ref.watch(addToCartControllerProvider);
           if (asyncAddToCart is AsyncLoading) {
-            return AppLoadingIndicator();
+            return FadeCircleLoadingIndicator();
           }
           return ElevatedButton.icon(
             onPressed: () => addToCart(context, ref, amount, productId),

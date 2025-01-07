@@ -7,7 +7,7 @@ import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 
 import '../../../../../gen/assets.gen.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
-import '../../../../shared_widgets/app_loading_indicator.dart';
+import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
 
 @RoutePage()
@@ -37,36 +37,39 @@ class _CartBody extends ConsumerWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text(context.tr('suggestedProducts'),
-                    style: Theme.of(context)
-                        .textTheme
-                        .displaySmall!
-                        .copyWith(fontSize: 18)),
-              ),
-              Container(
-                height: 120,
-                width: double.infinity,
-                color: AppColors.lightGray01,
-                child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        child: AppCachedNetworkImage(
-                            imageUrl: products[index].imageUrl!),
-                      );
-                    },
-                    padding: EdgeInsets.symmetric(horizontal: 18, vertical: 22),
-                    separatorBuilder: (_, __) => const SizedBox(width: 16),
-                    itemCount: products.length),
-              ),
+              if (products.isNotEmpty) ...[
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Text(context.tr('suggestedProducts'),
+                      style: Theme.of(context)
+                          .textTheme
+                          .displaySmall!
+                          .copyWith(fontSize: 18)),
+                ),
+                Container(
+                  height: 120,
+                  width: double.infinity,
+                  color: AppColors.lightGray01,
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: AppCachedNetworkImage(
+                              imageUrl: products[index].imageUrl!),
+                        );
+                      },
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 18, vertical: 22),
+                      separatorBuilder: (_, __) => const SizedBox(width: 16),
+                      itemCount: products.length),
+                ),
+              ],
               SizedBox(height: 24),
               if (cartItems.isNotEmpty)
                 Container(
@@ -161,7 +164,7 @@ class _CartBody extends ConsumerWidget {
             ],
           );
         },
-        loading: () => Center(child: const AppLoadingIndicator()),
+        loading: () => Center(child: const FadeCircleLoadingIndicator()),
         error: (_, __) => Center(child: const AppErrorWidget()));
   }
 }

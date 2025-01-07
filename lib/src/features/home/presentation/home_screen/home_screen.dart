@@ -6,7 +6,6 @@ import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-
 import '../../../../shared_widgets/app_logo.dart';
 
 enum DrawerItems { home, myAccount, logout }
@@ -15,146 +14,209 @@ enum DrawerItems { home, myAccount, logout }
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  static const double _iconHeight = 25.0;
+  static const ColorFilter _activeColorFilter =
+      ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
+
   @override
   Widget build(BuildContext context) {
-    const iconHeight = 25.0;
-    const colorFilter = ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
     return AutoTabsScaffold(
       extendBody: true,
-      routes: [LayoutRoute(), SearchRoute(), CartRoute(), AccountRoute()],
-      appBarBuilder: (context, _) => AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-            onPressed: () {},
-            icon: Badge(
-              backgroundColor: AppColors.primary,
-              label: Text(''),
-              child: Assets.icons.cartIcon.svg(
-                  height: 22,
-                  width: 26,
-                  colorFilter:
-                      ColorFilter.mode(Colors.black87, BlendMode.srcIn)),
-            )),
-        actions: [
-          Consumer(builder: (context, ref, child) {
-            return PopupMenuButton<DrawerItems>(
-              onSelected: (value) {
-                if (value == DrawerItems.logout) {
-                  ref.read(userTokenProvider.notifier).removeToken();
-                }
-              },
-              itemBuilder: (BuildContext context) =>
-                  <PopupMenuEntry<DrawerItems>>[
-                _popupMenuItem(
-                    value: DrawerItems.home,
-                    icon: Assets.icons.homeIcon.svg(),
-                    text: context.tr('home')),
-                PopupMenuDivider(),
-                _popupMenuItem(
-                    value: DrawerItems.myAccount,
-                    icon: Assets.icons.circulePersonIcon.svg(),
-                    text: context.tr('myAccount')),
-                if (ref.watch(isAuthinticatedProvider)) ...[
-                  PopupMenuDivider(),
-                  _popupMenuItem(
-                      value: DrawerItems.logout,
-                      icon: Assets.icons.logoutIcon.svg(),
-                      text: context.tr('logout')),
-                ]
-              ],
-              icon: Assets.icons.menuIcon.svg(),
-            );
-          }),
-        ],
-        title: context.tabsRouter.activeIndex == 1
-            ? Text(context.tr('search'),
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium!
-                    .copyWith(fontSize: 18))
-            : context.tabsRouter.activeIndex == 2
-                ? Text(context.tr('myCart'),
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayMedium!
-                        .copyWith(fontSize: 18))
-                : AppLogo(),
+      routes: [
+        LayoutRoute(),
+        SearchRoute(),
+        CartRoute(),
+        AccountRoute(),
+      ],
+      appBarBuilder: (context, _) => _buildAppBar(context),
+      bottomNavigationBuilder: (context, tabsRouter) =>
+          _buildBottomNavigation(context, tabsRouter),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      backgroundColor: Colors.white,
+      leading: _buildCartIcon(),
+      actions: [_buildPopupMenu(context)],
+      title: _buildAppBarTitle(context),
+    );
+  }
+
+  Widget _buildCartIcon() {
+    return IconButton(
+      onPressed: () {},
+      icon: Badge(
+        backgroundColor: AppColors.primary,
+        label: const Text(''),
+        child: Assets.icons.cartIcon.svg(
+          height: 22,
+          width: 26,
+          colorFilter: const ColorFilter.mode(Colors.black87, BlendMode.srcIn),
+        ),
       ),
-      bottomNavigationBuilder: (context, tabsRouter) {
-        return Container(
-          height: 95,
-          padding: const EdgeInsets.only(bottom: 20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
-                spreadRadius: 5,
-                blurRadius: 10,
-                offset: const Offset(0, -3),
-              ),
-            ],
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(20),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              BottomNavItem(
-                icon: Assets.icons.homeIcon.svg(
-                  colorFilter: tabsRouter.activeIndex == 0 ? colorFilter : null,
-                  height: iconHeight,
-                ),
-                label: context.tr('products'),
-                isActive: tabsRouter.activeIndex == 0,
-                onTap: () => tabsRouter.setActiveIndex(0),
-              ),
-              BottomNavItem(
-                icon: Assets.icons.searchIcon.svg(
-                  colorFilter: tabsRouter.activeIndex == 1 ? colorFilter : null,
-                  height: iconHeight,
-                ),
-                label: context.tr('search'),
-                isActive: tabsRouter.activeIndex == 1,
-                onTap: () => tabsRouter.setActiveIndex(1),
-              ),
-              BottomNavItem(
-                icon: Assets.icons.cartIcon.svg(
-                  colorFilter: tabsRouter.activeIndex == 2 ? colorFilter : null,
-                  height: iconHeight,
-                ),
-                label: context.tr('cart'),
-                isActive: tabsRouter.activeIndex == 2,
-                onTap: () => tabsRouter.setActiveIndex(2),
-              ),
-              BottomNavItem(
-                icon: Assets.icons.circulePersonIcon.svg(
-                  colorFilter: tabsRouter.activeIndex == 3 ? colorFilter : null,
-                  height: iconHeight,
-                ),
-                label: context.tr('myAccount'),
-                isActive: tabsRouter.activeIndex == 3,
-                onTap: () => tabsRouter.setActiveIndex(3),
-              ),
-            ],
-          ),
+    );
+  }
+
+  Widget _buildPopupMenu(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final isAuthenticated = ref.watch(isAuthinticatedProvider);
+        return PopupMenuButton<DrawerItems>(
+          onSelected: (value) => _handleMenuSelection(context, ref, value),
+          itemBuilder: (context) => _buildMenuItems(context, isAuthenticated),
+          icon: Assets.icons.menuIcon.svg(),
         );
       },
     );
   }
 
-  PopupMenuItem<DrawerItems> _popupMenuItem(
-      {required DrawerItems value,
-      required Widget icon,
-      required String text}) {
+  List<PopupMenuEntry<DrawerItems>> _buildMenuItems(
+      BuildContext context, bool isAuthenticated) {
+    return [
+      _popupMenuItem(
+        value: DrawerItems.home,
+        icon: Assets.icons.homeIcon.svg(),
+        text: context.tr('home'),
+      ),
+      const PopupMenuDivider(),
+      _popupMenuItem(
+        value: DrawerItems.myAccount,
+        icon: Assets.icons.circulePersonIcon.svg(),
+        text: context.tr('myAccount'),
+      ),
+      if (isAuthenticated) ...[
+        const PopupMenuDivider(),
+        _popupMenuItem(
+          value: DrawerItems.logout,
+          icon: Assets.icons.logoutIcon.svg(),
+          text: context.tr('logout'),
+        ),
+      ],
+    ];
+  }
+
+  void _handleMenuSelection(
+      BuildContext context, WidgetRef ref, DrawerItems value) {
+    switch (value) {
+      case DrawerItems.logout:
+        ref.read(userTokenProvider.notifier).removeToken();
+        break;
+      case DrawerItems.home:
+        context.tabsRouter.setActiveIndex(0);
+        break;
+      case DrawerItems.myAccount:
+        context.tabsRouter.setActiveIndex(3);
+        break;
+    }
+  }
+
+  Widget _buildAppBarTitle(BuildContext context) {
+    final activeIndex = context.tabsRouter.activeIndex;
+    final titleKey = activeIndex == 1
+        ? 'search'
+        : activeIndex == 2
+            ? 'myCart'
+            : null;
+
+    return titleKey != null
+        ? Text(
+            context.tr(titleKey),
+            style: Theme.of(context)
+                .textTheme
+                .displayMedium!
+                .copyWith(fontSize: 18),
+          )
+        : const AppLogo();
+  }
+
+  Widget _buildBottomNavigation(BuildContext context, TabsRouter tabsRouter) {
+    final items = [
+      _buildBottomNavItem(
+        context,
+        tabsRouter,
+        index: 0,
+        icon: Assets.icons.homeIcon,
+        labelKey: 'products',
+      ),
+      _buildBottomNavItem(
+        context,
+        tabsRouter,
+        index: 1,
+        icon: Assets.icons.searchIcon,
+        labelKey: 'search',
+      ),
+      _buildBottomNavItem(
+        context,
+        tabsRouter,
+        index: 2,
+        icon: Assets.icons.cartIcon,
+        labelKey: 'cart',
+      ),
+      _buildBottomNavItem(
+        context,
+        tabsRouter,
+        index: 3,
+        icon: Assets.icons.circulePersonIcon,
+        labelKey: 'myAccount',
+      ),
+    ];
+
+    return Container(
+      height: 95,
+      padding: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(25),
+            spreadRadius: 5,
+            blurRadius: 10,
+            offset: const Offset(0, -3),
+          ),
+        ],
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: items,
+      ),
+    );
+  }
+
+  Widget _buildBottomNavItem(
+    BuildContext context,
+    TabsRouter tabsRouter, {
+    required int index,
+    required SvgGenImage icon,
+    required String labelKey,
+  }) {
+    final isActive = tabsRouter.activeIndex == index;
+    return BottomNavItem(
+      icon: icon.svg(
+        height: _iconHeight,
+        colorFilter: isActive ? _activeColorFilter : null,
+      ),
+      label: context.tr(labelKey),
+      isActive: isActive,
+      onTap: () => tabsRouter.setActiveIndex(index),
+    );
+  }
+
+  PopupMenuItem<DrawerItems> _popupMenuItem({
+    required DrawerItems value,
+    required Widget icon,
+    required String text,
+  }) {
     return PopupMenuItem(
       value: value,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 8,
-        children: [icon, Text(text)],
+        children: [
+          icon,
+          const SizedBox(width: 8),
+          Text(text),
+        ],
       ),
     );
   }
@@ -182,13 +244,14 @@ class BottomNavItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           icon,
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
-                color: isActive ? AppColors.primary : AppColors.gray,
-                fontSize: 12,
-                fontWeight: FontWeight.w400),
+              color: isActive ? AppColors.primary : AppColors.gray,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ],
       ),

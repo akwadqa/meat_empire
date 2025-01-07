@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meat_empire/src/shared_widgets/app_loading_indicator.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AppPaginationWidget extends StatefulWidget {
@@ -65,7 +65,7 @@ class _AppPaginationWidgetState extends State<AppPaginationWidget> {
               height: 55.0,
               child: Center(
                 child: mode == LoadStatus.loading
-                    ? const AppLoadingIndicator()
+                    ? const FadeCircleLoadingIndicator()
                     : const SizedBox.shrink(),
               ),
             );

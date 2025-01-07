@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'package:meat_empire/src/features/home/domain/home/layout.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
-import 'package:meat_empire/src/shared_widgets/app_loading_indicator.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 
 import '../../domain/home/home.dart';
 import 'layout_block.dart';
@@ -33,7 +33,7 @@ class LayoutScreen extends ConsumerWidget {
     return homeAsync.when(
       data: (data) => _buildLayoutList(data.layout),
       loading: () =>
-          SliverToBoxAdapter(child: Center(child: const AppLoadingIndicator())),
+          SliverToBoxAdapter(child: Center(child: const FadeCircleLoadingIndicator())),
       error: (_, __) =>
           SliverToBoxAdapter(child: Center(child: const AppErrorWidget())),
     );

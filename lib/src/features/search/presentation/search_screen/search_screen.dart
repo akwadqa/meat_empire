@@ -6,7 +6,7 @@ import 'package:meat_empire/gen/fonts.gen.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_grid_view.dart';
 import 'package:meat_empire/src/features/search/domain/search_response/sorting.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
-import 'package:meat_empire/src/shared_widgets/app_loading_indicator.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/shared_widgets/app_pagination_widget.dart';
 
 import '../../../../theme/app_colors.dart';
@@ -80,7 +80,7 @@ class _ProductsGridView extends ConsumerWidget {
         ),
       ),
       error: (_, __) => const AppErrorWidget(),
-      loading: () => const AppLoadingIndicator(),
+      loading: () => const FadeCircleLoadingIndicator(),
     );
   }
 }
