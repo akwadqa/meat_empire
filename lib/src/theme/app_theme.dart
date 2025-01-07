@@ -59,7 +59,7 @@ abstract class AppTheme {
           textStyle: _baseTextStyle.copyWith(fontSize: 18),
         ),
       ),
-      scaffoldBackgroundColor: AppColors.lightGray,
+      scaffoldBackgroundColor: Colors.white,
     );
   }
 }
