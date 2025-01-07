@@ -20,7 +20,9 @@
     "all": "الكل",
     "addToCart": "أضف للسلة",
     "more": "المزيد",
-    "save": "خصم",
+    "discount": "خصم",
+    "save": "حفظ",
+    "cancel": "إالغاء",
     "specifications": "المواصفات",
     "myCart": "سلتي",
     "suggestedProducts": "منتجات مقترحة",
@@ -46,7 +48,14 @@
     "logout": "تسجيل الخروج",
     "edit_account_information": "تعديل معلومات الحساب",
     "change_password": "تغيير كلمة السر",
+    "old_password": "كلمة السر",
+    "new_password": "كلمة السر الجديدة",
+    "confirm_new_password": "تأكيد كلمة السر",
     "address_book": "دفتر العناويين",
     "payment_information": "معلومات الدفع",
-    "my_orders": "طلباتي"
+    "my_orders": "طلباتي",
+    "welcome_message": "أهلا بك في",
+    "access_auth_message": "قم بتسجيل الدخول للوصول إلى معلومات حسابك \nأو قم إنشاء حساب إذا لم تكن تملك حساباً.",
+    "add_new_location": "إضافة عنوان جديد"
+
 }

@@ -41,6 +41,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home_icon.svg
   SvgGenImage get homeIcon => const SvgGenImage('assets/icons/home_icon.svg');
 
+  /// File path: assets/icons/location_icon.svg
+  SvgGenImage get locationIcon =>
+      const SvgGenImage('assets/icons/location_icon.svg');
+
   /// File path: assets/icons/logout_icon.svg
   SvgGenImage get logoutIcon =>
       const SvgGenImage('assets/icons/logout_icon.svg');
@@ -62,6 +66,9 @@ class $AssetsIconsGen {
   SvgGenImage get shieldLockIcon =>
       const SvgGenImage('assets/icons/shield_lock_icon.svg');
 
+  /// File path: assets/icons/trash_icon.svg
+  SvgGenImage get trashIcon => const SvgGenImage('assets/icons/trash_icon.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         cardChecklistIcon,
@@ -71,12 +78,14 @@ class $AssetsIconsGen {
         circulePersonIcon,
         deleteIcon,
         homeIcon,
+        locationIcon,
         logoutIcon,
         markIcon,
         menuIcon,
         orderIcon,
         searchIcon,
-        shieldLockIcon
+        shieldLockIcon,
+        trashIcon
       ];
 }
 

@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:meat_empire/src/core/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class LogoutButtonWidget extends StatefulWidget {
@@ -34,38 +34,33 @@ class _LogoutButtonWidgetState extends State<LogoutButtonWidget>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
+    return ScaleTransition(
+      scale: _tween.animate(
+        CurvedAnimation(
+          parent: _controller,
+          curve: Curves.easeOut,
+          reverseCurve: Curves.easeIn,
+        ),
+      ),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: AppColors.black900,
+            fixedSize: Size(300, 50),
+            shape: RoundedRectangleBorder(
+                side: BorderSide(color: AppColors.primary),
+                borderRadius: BorderRadius.circular(50))),
+        onPressed: () {
           _controller.forward().then((_) {
             _controller.reverse();
           });
         },
-        child: ScaleTransition(
-          scale: _tween.animate(
-            CurvedAnimation(
-              parent: _controller,
-              curve: Curves.easeOut,
-              reverseCurve: Curves.easeIn,
-            ),
-          ),
-          child: Container(
-            width: 300,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(25)),
-              border: Border.all(
-                width: 1,
-                color: AppColors.primary,
-              ),
-            ),
-            child: Center(
-              child: Text(context.tr("logout"),
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500)),
-            ),
-          ).centered().onlyPadding(top: 80),
-        ));
+        child: Text(context.tr("logout"),
+            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                fontSize: 18,
+                color: Colors.black,
+                fontWeight: FontWeight.w500)),
+      ).centered().onlyPadding(top: 120),
+    );
   }
 }

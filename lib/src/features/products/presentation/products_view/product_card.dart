@@ -98,7 +98,7 @@ class _ProductImage extends StatelessWidget {
             top: 20,
             child: _DiscountBanner(
               text:
-                  '${context.tr('save')} ${discountPercentage.toStringAsFixed(0)}%', // Display percentage rounded to integer
+                  '${context.tr('discount')} ${discountPercentage.toStringAsFixed(0)}%', // Display percentage rounded to integer
             ),
           ),
         PositionedDirectional(
@@ -203,8 +203,7 @@ class _AddToCartButton extends ConsumerWidget {
   final int productId;
   final int amount;
 
-  const _AddToCartButton(
-      {required this.productId, required this.amount});
+  const _AddToCartButton({required this.productId, required this.amount});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

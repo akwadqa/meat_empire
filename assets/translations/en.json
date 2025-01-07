@@ -20,7 +20,9 @@
     "all": "All",
     "addToCart": "Add to cart",
     "more": "More",
+    "discount": "Save",
     "save": "Save",
+    "cancel": "Cancel",
     "specifications": "Specifications",
     "myCart": "My Cart",
     "suggestedProducts": "Suggested Products",
@@ -46,7 +48,13 @@
     "logout": "Logout",
     "edit_account_information": "Edit account information",
     "change_password": "Change password",
+    "old_password": "Old password",
+    "new_password": "New password",
+    "confirm_new_password": "Confirm new password",
     "address_book": "Address book",
     "payment_information": "Payment information",
-    "my_orders": "My orders"
+    "my_orders": "My orders",
+    "welcome_message": "Welcome in the",
+    "access_auth_message": "Log in to access your account information\nOr create an account if you don't have one.",
+    "add_new_location": "Add new Location"
 }
