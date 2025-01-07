@@ -15,8 +15,16 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/card-checklist_icon.svg
+  SvgGenImage get cardChecklistIcon =>
+      const SvgGenImage('assets/icons/card-checklist_icon.svg');
+
   /// File path: assets/icons/cart_icon.svg
   SvgGenImage get cartIcon => const SvgGenImage('assets/icons/cart_icon.svg');
+
+  /// File path: assets/icons/cash-stack_icon.svg
+  SvgGenImage get cashStackIcon =>
+      const SvgGenImage('assets/icons/cash-stack_icon.svg');
 
   /// File path: assets/icons/categories_icon.svg
   SvgGenImage get categoriesIcon =>
@@ -43,13 +51,22 @@ class $AssetsIconsGen {
   /// File path: assets/icons/menu_icon.svg
   SvgGenImage get menuIcon => const SvgGenImage('assets/icons/menu_icon.svg');
 
+  /// File path: assets/icons/order_icon.svg
+  SvgGenImage get orderIcon => const SvgGenImage('assets/icons/order_icon.svg');
+
   /// File path: assets/icons/search_icon.svg
   SvgGenImage get searchIcon =>
       const SvgGenImage('assets/icons/search_icon.svg');
 
+  /// File path: assets/icons/shield_lock_icon.svg
+  SvgGenImage get shieldLockIcon =>
+      const SvgGenImage('assets/icons/shield_lock_icon.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
+        cardChecklistIcon,
         cartIcon,
+        cashStackIcon,
         categoriesIcon,
         circulePersonIcon,
         deleteIcon,
@@ -57,7 +74,9 @@ class $AssetsIconsGen {
         logoutIcon,
         markIcon,
         menuIcon,
-        searchIcon
+        orderIcon,
+        searchIcon,
+        shieldLockIcon
       ];
 }
 
