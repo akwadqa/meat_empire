@@ -1,16 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
-import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-import 'package:meat_empire/src/utils/arabic_number_input_formatter.dart';
 import 'package:queen_validators/queen_validators.dart';
 
 Future<void> showChangePasswordDialog({
@@ -19,7 +12,7 @@ Future<void> showChangePasswordDialog({
   TextEditingController oldPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmNewPasswordController = TextEditingController();
-  Widget _buildOldPasswordField(BuildContext context) {
+  Widget buildOldPasswordField(BuildContext context) {
     return TextFormField(
       controller: oldPasswordController,
       style: const TextStyle(color: AppColors.mediumGray01),
@@ -33,7 +26,7 @@ Future<void> showChangePasswordDialog({
     );
   }
 
-  Widget _buildNewPasswordField(BuildContext context) {
+  Widget buildNewPasswordField(BuildContext context) {
     return TextFormField(
       controller: newPasswordController,
       style: const TextStyle(color: AppColors.mediumGray01),
@@ -47,7 +40,7 @@ Future<void> showChangePasswordDialog({
     );
   }
 
-  Widget _buildConfirmNewPasswordField(BuildContext context) {
+  Widget buildConfirmNewPasswordField(BuildContext context) {
     return TextFormField(
       controller: confirmNewPasswordController,
       style: const TextStyle(color: AppColors.mediumGray01),
@@ -66,7 +59,7 @@ Future<void> showChangePasswordDialog({
     );
   }
 
-  String? Function(String?) _passwordValidation(BuildContext context) {
+  String? Function(String?) passwordValidation(BuildContext context) {
     return qValidator([
       IsRequired(context.tr('required')),
       MaxLength(8, context.tr('mustBeEightDigits')),
@@ -101,7 +94,7 @@ Future<void> showChangePasswordDialog({
 
     barrierDismissible: false, // Prevent dismissing dialog by tapping outside
     builder: (BuildContext context) {
-      final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+      final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
       return GestureDetector(
         onTap: () {
@@ -132,7 +125,7 @@ Future<void> showChangePasswordDialog({
                       padding: const EdgeInsets.symmetric(
                           vertical: 30, horizontal: 10),
                       child: Form(
-                        key: _formKey,
+                        key: formKey,
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -156,7 +149,7 @@ Future<void> showChangePasswordDialog({
                                     .labelSmall!
                                     .copyWith(fontSize: 12),
                               ),
-                              _buildOldPasswordField(context),
+                              buildOldPasswordField(context),
                               20.verticalSpace,
                               Text(
                                 "new_password".tr(),
@@ -166,7 +159,7 @@ Future<void> showChangePasswordDialog({
                                     .labelSmall!
                                     .copyWith(fontSize: 12),
                               ),
-                              _buildNewPasswordField(context),
+                              buildNewPasswordField(context),
                               20.verticalSpace,
                               Text(
                                 "confirm_new_password".tr(),
@@ -176,7 +169,7 @@ Future<void> showChangePasswordDialog({
                                     .labelSmall!
                                     .copyWith(fontSize: 12),
                               ),
-                              _buildConfirmNewPasswordField(context),
+                              buildConfirmNewPasswordField(context),
                               // 30.verticalSpace,
                               Row(
                                 mainAxisAlignment:
@@ -199,7 +192,7 @@ Future<void> showChangePasswordDialog({
                                     text: "save",
                                     backgroundColor: AppColors.primary,
                                     onTap: () {
-                                      if (_formKey.currentState!.validate()) {
+                                      if (formKey.currentState!.validate()) {
                                         // Save logic here
                                         Navigator.of(context)
                                             .pop(); // Close dialog

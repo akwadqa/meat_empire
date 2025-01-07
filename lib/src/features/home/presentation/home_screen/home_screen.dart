@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         LayoutRoute(),
         SearchRoute(),
         CartRoute(),
-        AccountRoute(),
+        MainAccountRoute(),
       ],
       appBarBuilder: (context, _) => _buildAppBar(context),
       bottomNavigationBuilder: (context, tabsRouter) =>

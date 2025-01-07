@@ -1,14 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
-import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:meat_empire/src/utils/arabic_number_input_formatter.dart';
 import 'package:queen_validators/queen_validators.dart';
@@ -18,7 +14,7 @@ Future<void> showEditAccountInformationDialog({
   required TextEditingController nameController,
   required TextEditingController phoneController,
 }) {
-  Widget _buildUserNameField(BuildContext context) {
+  Widget buildUserNameField(BuildContext context) {
     return TextFormField(
       controller: nameController,
       style: const TextStyle(color: AppColors.mediumGray01),
@@ -31,7 +27,7 @@ Future<void> showEditAccountInformationDialog({
     );
   }
 
-  Widget _buildPhoneNumberPrefix(BuildContext context) {
+  Widget buildPhoneNumberPrefix(BuildContext context) {
     return SizedBox(
       width: 90,
       child: IntrinsicHeight(
@@ -59,7 +55,7 @@ Future<void> showEditAccountInformationDialog({
     );
   }
 
-  String? Function(String?) _mobileNumberValidation(BuildContext context) {
+  String? Function(String?) mobileNumberValidation(BuildContext context) {
     return qValidator([
       IsRequired(context.tr('required')),
       MaxLength(8, context.tr('mustBeEightDigits')),
@@ -72,12 +68,12 @@ Future<void> showEditAccountInformationDialog({
   }
 
   // Phone number text field
-  Widget _buildPhoneNumberField(BuildContext context) {
+  Widget buildPhoneNumberField(BuildContext context) {
     return TextFormField(
       controller: phoneController,
       style: const TextStyle(color: AppColors.mediumGray01),
       decoration: InputDecoration(
-        prefixIcon: _buildPhoneNumberPrefix(context),
+        prefixIcon: buildPhoneNumberPrefix(context),
       ),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
@@ -85,7 +81,7 @@ Future<void> showEditAccountInformationDialog({
       ],
       textInputAction: TextInputAction.next,
       keyboardType: TextInputType.phone,
-      validator: _mobileNumberValidation(context),
+      validator: mobileNumberValidation(context),
       onSaved: (value) => phoneController.text = value!,
     );
   }
@@ -145,7 +141,7 @@ Future<void> showEditAccountInformationDialog({
                                   .labelSmall!
                                   .copyWith(fontSize: 12),
                             ),
-                            _buildUserNameField(context),
+                            buildUserNameField(context),
                             20.verticalSpace,
                             Text(
                               "phoneNumber".tr(),
@@ -155,7 +151,7 @@ Future<void> showEditAccountInformationDialog({
                                   .labelSmall!
                                   .copyWith(fontSize: 12),
                             ),
-                            _buildPhoneNumberField(context),
+                            buildPhoneNumberField(context),
                             // 30.verticalSpace,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
