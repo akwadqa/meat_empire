@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/products/domain/product/product.dart';
@@ -25,7 +26,7 @@ class ProductsView extends StatelessWidget {
               _Title(title: layout.title),
               const Spacer(),
               TextButton(
-                onPressed: () {},
+                onPressed: () => context.tabsRouter.setActiveIndex(1),
                 child: Text(context.tr('more')),
               ),
             ],
