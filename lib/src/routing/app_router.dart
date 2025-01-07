@@ -9,7 +9,7 @@ class AppRouter extends RootStackRouter {
           AutoRoute(page: LayoutRoute.page),
           AutoRoute(page: SearchRoute.page),
           AutoRoute(page: CartRoute.page),
-          AutoRoute(page: AccountRoute.page),
+          AutoRoute(page: MainAccountRoute.page),
         ]),
         AutoRoute(page: ProductDetailsRoute.page),
         AutoRoute(page: LoginRoute.page),

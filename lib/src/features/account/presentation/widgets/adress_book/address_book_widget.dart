@@ -83,7 +83,7 @@ class _AddressBookWidgetState extends State<AddressBookWidget> {
                           28.verticalSpace,
                           CustomButtonWidget(
                             text: "add_new_location",
-                            color: AppColors.green,
+                            backgroundColor: AppColors.green,
                             onTap: () {
                               Navigator.of(context).pop(); // Close dialog
                             },

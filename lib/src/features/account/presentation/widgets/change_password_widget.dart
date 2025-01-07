@@ -197,7 +197,7 @@ Future<void> showChangePasswordDialog({
                                   ),
                                   CustomButtonWidget(
                                     text: "save",
-                                    color: AppColors.primary,
+                                    backgroundColor: AppColors.primary,
                                     onTap: () {
                                       if (_formKey.currentState!.validate()) {
                                         // Save logic here

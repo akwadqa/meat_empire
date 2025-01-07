@@ -5,21 +5,25 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 
 class CustomButtonWidget extends StatefulWidget {
   final String text;
-  final Color color;
+  final Color? backgroundColor;
+  final Color? color;
   final VoidCallback onTap;
   final bool isFiled;
   final double height;
   final double width;
   final double? radius;
+  final double? topPading;
   const CustomButtonWidget({
     super.key,
     required this.text,
-    required this.color,
+    this.backgroundColor,
+    this.color,
     required this.onTap,
     required this.isFiled,
     required this.height,
     required this.width,
     this.radius,
+    this.topPading,
   });
 
   @override
@@ -61,15 +65,17 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget>
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.zero,
-              backgroundColor:
-                  widget.isFiled ? widget.color : Colors.transparent,
+              backgroundColor: widget.backgroundColor ?? Colors.transparent,
               foregroundColor: AppColors.black900,
               fixedSize: Size(
                 widget.width,
                 widget.height,
               ),
               shape: RoundedRectangleBorder(
-                  side: BorderSide(color: widget.color),
+                  side: BorderSide(
+                      color: widget.color ??
+                          widget.backgroundColor ??
+                          Colors.transparent),
                   borderRadius: BorderRadius.circular(widget.radius ?? 25))),
           onPressed: () {
             _controller.forward().then((_) {
@@ -83,6 +89,6 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget>
                       color: widget.isFiled ? Colors.white : Colors.black,
                       fontWeight: FontWeight.w500))
               .centered(),
-        )).onlyPadding(top: 60);
+        )).onlyPadding(top: widget.topPading ?? 60);
   }
 }

@@ -54,6 +54,8 @@
     "address_book": "دفتر العناويين",
     "payment_information": "معلومات الدفع",
     "my_orders": "طلباتي",
+    "welcome_message": "أهلا بك في",
+    "access_auth_message": "قم بتسجيل الدخول للوصول إلى معلومات حسابك \nأو قم إنشاء حساب إذا لم تكن تملك حساباً.",
     "add_new_location": "إضافة عنوان جديد"
 
 }

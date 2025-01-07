@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
     const colorFilter = ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
     return AutoTabsScaffold(
       extendBody: true,
-      routes: [LayoutRoute(), SearchRoute(), CartRoute(), AccountRoute()],
+      routes: [LayoutRoute(), SearchRoute(), CartRoute(), MainAccountRoute()],
       appBarBuilder: (context, _) => AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,

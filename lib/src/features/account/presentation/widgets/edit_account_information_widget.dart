@@ -173,7 +173,7 @@ Future<void> showEditAccountInformationDialog({
                                 ),
                                 CustomButtonWidget(
                                   text: "save",
-                                  color: AppColors.primary,
+                                  backgroundColor: AppColors.primary,
                                   onTap: () {
                                     // Save logic here
                                     Navigator.of(context).pop(); // Close dialog

@@ -10,13 +10,14 @@ class AuthController extends _$AuthController {
   FutureOr<void> build() => null;
 
   Future<void> _authenticate(
-    Future<String> Function(AuthRepository authRepo) action,
+    Future<(String authToken, String userId)> Function(AuthRepository authRepo)
+        action,
   ) async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       final authRepo = ref.watch(authRepositoryProvider);
-      final token = await action(authRepo);
-      await ref.read(userTokenProvider.notifier).setToken(token);
+      final userData = await action(authRepo);
+      await ref.read(userTokenProvider.notifier).setToken(userData.$1);
     });
   }
 
