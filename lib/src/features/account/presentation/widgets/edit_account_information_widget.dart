@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
+import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:meat_empire/src/utils/arabic_number_input_formatter.dart';
 import 'package:queen_validators/queen_validators.dart';
@@ -14,6 +18,8 @@ Future<void> showEditAccountInformationDialog({
   required TextEditingController nameController,
   required TextEditingController phoneController,
 }) {
+  final _formKey = GlobalKey<FormState>();
+
   Widget buildUserNameField(BuildContext context) {
     return TextFormField(
       controller: nameController,
@@ -119,68 +125,94 @@ Future<void> showEditAccountInformationDialog({
                       padding: const EdgeInsets.symmetric(
                           vertical: 30, horizontal: 10),
                       child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(context.tr("edit_account_information"),
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(context.tr("edit_account_information"),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(
+                                        color: AppColors.black900,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w800,
+                                      )).centered(),
+                              28.verticalSpace,
+                              Text(
+                                "userName".tr(),
+                                textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
-                                    .copyWith(
-                                      color: AppColors.black900,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w800,
-                                    )).centered(),
-                            28.verticalSpace,
-                            Text(
-                              "userName".tr(),
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall!
-                                  .copyWith(fontSize: 12),
-                            ),
-                            buildUserNameField(context),
-                            20.verticalSpace,
-                            Text(
-                              "phoneNumber".tr(),
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall!
-                                  .copyWith(fontSize: 12),
-                            ),
-                            buildPhoneNumberField(context),
-                            // 30.verticalSpace,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                CustomButtonWidget(
-                                  text: "cancel",
-                                  color: AppColors.primary,
-                                  onTap: () {
-                                    debugPrint("cancel");
-                                    Navigator.of(context).pop(); // Close dialog
-                                  },
-                                  isFiled: false,
-                                  height: 40,
-                                  width: 100,
-                                ),
-                                CustomButtonWidget(
-                                  text: "save",
-                                  backgroundColor: AppColors.primary,
-                                  onTap: () {
-                                    // Save logic here
-                                    Navigator.of(context).pop(); // Close dialog
-                                  },
-                                  isFiled: true,
-                                  height: 40,
-                                  width: 120,
-                                ),
-                              ],
-                            )
-                          ],
+                                    .copyWith(fontSize: 12),
+                              ),
+                              buildUserNameField(context),
+                              20.verticalSpace,
+                              Text(
+                                "phoneNumber".tr(),
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelSmall!
+                                    .copyWith(fontSize: 12),
+                              ),
+                              buildPhoneNumberField(context),
+                              // 30.verticalSpace,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  CustomButtonWidget(
+                                    text: "cancel",
+                                    color: AppColors.primary,
+                                    onTap: () {
+                                      debugPrint("cancel");
+                                      Navigator.of(context)
+                                          .pop(); // Close dialog
+                                    },
+                                    isFiled: false,
+                                    height: 40,
+                                    width: 125,
+                                  ),
+                                  Consumer(builder: (context, ref, child) {
+                                    final asyncLogin =
+                                        ref.watch(accountControllerProvider);
+                                    if (asyncLogin is AsyncLoading) {
+                                      return FadeCircleLoadingIndicator();
+                                    }
+                                    return CustomButtonWidget(
+                                      text: "save",
+                                      backgroundColor: AppColors.primary,
+                                      onTap: () {
+                                        // Save logic here
+
+                                        if (_formKey.currentState!.validate()) {
+                                          _formKey.currentState!.save();
+                                          ref
+                                              .read(accountControllerProvider
+                                                  .notifier)
+                                              .editAccountInformation(
+                                                // access to current user profile and copy with updated values
+                                                context,
+                                                nameController.text,
+                                                phoneController.text,
+
+                                                // $UserProfileCopyWith(value, then)
+                                              );
+                                        }
+                                      },
+                                      isFiled: true,
+                                      height: 40,
+                                      width: 125,
+                                    );
+                                  }),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

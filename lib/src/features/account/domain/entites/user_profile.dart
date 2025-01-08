@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_profile.freezed.dart';
 part 'user_profile.g.dart';
 
-@Freezed(toJson: true, fromJson: true)
+@Freezed(toJson: true, fromJson: true, map: FreezedMapOptions())
 class UserProfile with _$UserProfile {
   @JsonSerializable(explicitToJson: true)
   const factory UserProfile({

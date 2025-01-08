@@ -32,7 +32,7 @@ class AuthRepository {
       // Assuming `Record` is a class to hold these two fields
       return (authToken, userId);
     } else {
-      throw Exception('Invalid response format');
+      throw Exception(response.message);
     }
   }
 
@@ -57,7 +57,7 @@ class AuthRepository {
       final String userId = response.data['user_id'];
       return (authToken, userId);
     } else {
-      throw Exception('Invalid response format');
+      throw Exception(response.message);
     }
   }
 }
