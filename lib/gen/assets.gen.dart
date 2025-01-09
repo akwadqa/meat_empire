@@ -15,6 +15,10 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/buildNumber_icon.svg
+  SvgGenImage get buildNumberIcon =>
+      const SvgGenImage('assets/icons/buildNumber_icon.svg');
+
   /// File path: assets/icons/card-checklist_icon.svg
   SvgGenImage get cardChecklistIcon =>
       const SvgGenImage('assets/icons/card-checklist_icon.svg');
@@ -33,6 +37,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/circule_person_icon.svg
   SvgGenImage get circulePersonIcon =>
       const SvgGenImage('assets/icons/circule_person_icon.svg');
+
+  /// File path: assets/icons/city_icon.svg
+  SvgGenImage get cityIcon => const SvgGenImage('assets/icons/city_icon.svg');
+
+  /// File path: assets/icons/country_icon.svg
+  SvgGenImage get countryIcon =>
+      const SvgGenImage('assets/icons/country_icon.svg');
 
   /// File path: assets/icons/delete_icon.svg
   SvgGenImage get deleteIcon =>
@@ -66,16 +77,23 @@ class $AssetsIconsGen {
   SvgGenImage get shieldLockIcon =>
       const SvgGenImage('assets/icons/shield_lock_icon.svg');
 
+  /// File path: assets/icons/street_icon.svg
+  SvgGenImage get streetIcon =>
+      const SvgGenImage('assets/icons/street_icon.svg');
+
   /// File path: assets/icons/trash_icon.svg
   SvgGenImage get trashIcon => const SvgGenImage('assets/icons/trash_icon.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        buildNumberIcon,
         cardChecklistIcon,
         cartIcon,
         cashStackIcon,
         categoriesIcon,
         circulePersonIcon,
+        cityIcon,
+        countryIcon,
         deleteIcon,
         homeIcon,
         locationIcon,
@@ -85,6 +103,7 @@ class $AssetsIconsGen {
         orderIcon,
         searchIcon,
         shieldLockIcon,
+        streetIcon,
         trashIcon
       ];
 }

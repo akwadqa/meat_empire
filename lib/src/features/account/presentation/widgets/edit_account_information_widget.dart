@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,8 +9,10 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+import 'package:meat_empire/src/utils/app_messages.dart';
 import 'package:meat_empire/src/utils/arabic_number_input_formatter.dart';
 import 'package:queen_validators/queen_validators.dart';
 
@@ -178,10 +181,34 @@ Future<void> showEditAccountInformationDialog({
                                     width: 125,
                                   ),
                                   Consumer(builder: (context, ref, child) {
-                                    final asyncLogin =
+                                    final asyncData =
                                         ref.watch(accountControllerProvider);
-                                    if (asyncLogin is AsyncLoading) {
-                                      return FadeCircleLoadingIndicator();
+                                    ref.listen(accountControllerProvider,
+                                        (prev, next) {
+                                      if (next is AsyncData) {
+                                        context.maybePop().then((_) {
+                                          showCustomDialog(
+                                              context: context,
+                                              title: next.value!.message,
+                                              icon: next.value!.success
+                                                  ? Icon(
+                                                      Icons.check_circle,
+                                                      color: Colors.green,
+                                                    )
+                                                  : Icon(
+                                                      Icons.warning,
+                                                      color: Colors.red,
+                                                    ));
+                                          Future.delayed(Duration(seconds: 2))
+                                              .then((onValue) {
+                                            Navigator.pop(context);
+                                          });
+                                        });
+                                      }
+                                    });
+                                    if (asyncData is AsyncLoading) {
+                                      return Center(
+                                          child: CircularProgressIndicator());
                                     }
                                     return CustomButtonWidget(
                                       text: "save",
@@ -191,17 +218,18 @@ Future<void> showEditAccountInformationDialog({
 
                                         if (_formKey.currentState!.validate()) {
                                           _formKey.currentState!.save();
+
                                           ref
                                               .read(accountControllerProvider
                                                   .notifier)
                                               .editAccountInformation(
-                                                // access to current user profile and copy with updated values
-                                                context,
-                                                nameController.text,
-                                                phoneController.text,
-
-                                                // $UserProfileCopyWith(value, then)
-                                              );
+                                                  context,
+                                                  asyncData.value!.userProfile
+                                                      .copyWith(
+                                                    firstname:
+                                                        nameController.text,
+                                                    phone: phoneController.text,
+                                                  ));
                                         }
                                       },
                                       isFiled: true,

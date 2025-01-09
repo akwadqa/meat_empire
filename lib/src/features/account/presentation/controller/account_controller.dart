@@ -15,16 +15,11 @@ class AccountController extends _$AccountController {
   }
 
   Future<void> editAccountInformation(
-      BuildContext context, String name, String phone) async {
+      BuildContext context, UserProfile userProfile) async {
     // Check if the state contains valid data (AsyncData)
     if (state is AsyncData<ProfileResponse>) {
       final currentProfile = state.value;
 
-      // if (currentProfile == null) {
-      //   // If no profile is available, set an error state
-      //   state = AsyncError("No user profile available", StackTrace.current);
-      //   return;
-      // }
       debugPrint("CURRENT PROFILE IS ${currentProfile}");
       debugPrint("CURRENT PROFILE IS ${state.asData}");
       debugPrint("CURRENT PROFILE IS ${state}");
@@ -35,18 +30,17 @@ class AccountController extends _$AccountController {
       // state = const AsyncLoading();
 
       // Perform the update request using the repository and handle the response
+      state = AsyncLoading();
       state = await AsyncValue.guard(
-        () => ref.read(accountRepositoryProvider).updateProfile(currentProfile!
-            .userProfile
-            .copyWith(firstname: name, phone: phone)),
+        () => ref.read(accountRepositoryProvider).updateProfile(userProfile),
       );
       if (state is AsyncData) {
+        debugPrint("Success update data");
         Navigator.pop(context); // Close the dialog
       }
     } else {
       // Handle the case where the state is in an error state
-      state =
-          AsyncError("Unable to retrieve the profile data", StackTrace.current);
+      state = AsyncError(state.error.toString(), StackTrace.current);
     }
   }
 }

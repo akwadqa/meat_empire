@@ -9,6 +9,7 @@ import 'package:meat_empire/src/features/account/presentation/widgets/adress_boo
 import 'package:meat_empire/src/features/account/presentation/widgets/change_password_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/edit_account_information_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/payment_information_widget.dart';
 
 @RoutePage()
 class AccountScreen extends ConsumerWidget {
@@ -60,7 +61,9 @@ class AccountScreen extends ConsumerWidget {
             icon: Assets.icons.cardChecklistIcon,
           ),
           AccountCardsWidget(
-            onTap: () {},
+            onTap: () {
+              showPaymentInformationDialog(context: context);
+            },
             title: "payment_information",
             icon: Assets.icons.cashStackIcon,
           ),

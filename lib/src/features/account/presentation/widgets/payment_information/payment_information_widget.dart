@@ -7,10 +7,12 @@ import 'package:meat_empire/src/features/account/presentation/controller/account
 import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/add_new_address_book_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/address_book_card_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/add_new_payment_information_widget.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/payment_information_card_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
-class AddressBookWidget extends ConsumerWidget {
-  AddressBookWidget({super.key});
+class PaymentInformationWidget extends ConsumerWidget {
+  PaymentInformationWidget({super.key});
 
   int selectedIndex = -1;
 
@@ -53,24 +55,26 @@ class AddressBookWidget extends ConsumerWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(context.tr("address_book"),
+                          Text(context.tr("payment_information"),
                               style: Theme.of(context)
                                   .textTheme
-                                  .labelSmall!
+                                  .displaySmall!
                                   .copyWith(
-                                    color: AppColors.black900,
-                                    fontSize: 16,
+                                    color: AppColors.black800,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w800,
                                   )).centered(),
-                          10.verticalSpace,
-                          if (addressBook
-                              .value!.userProfile.shippingAddress!.isNotEmpty)
-                            AddressBookCardWidget(
-                              title: addressBook
-                                  .value!.userProfile.shippingAddress!,
-                              isSelected: true,
-                              onTap: () {},
-                            ),
+                          20.verticalSpace,
+
+                          PaymentInformationCardWidget(
+                            name: "mahmoud tahsin",
+                            cardNumber: "12345155114652",
+                            endDate: DateTime.now().add(Duration(days: 365)),
+                            isSelected: true,
+                            onTap: () {
+                              // _onCardTap(0);
+                            },
+                          ),
                           // ...List.generate(3, (index) {
                           //   return AddressBookCardWidget(
                           //     title: "title $index",
@@ -80,10 +84,11 @@ class AddressBookWidget extends ConsumerWidget {
                           // }),
                           28.verticalSpace,
                           CustomButtonWidget(
-                            text: "add_new_location",
+                            text: "add_payment_info",
                             backgroundColor: AppColors.green,
                             onTap: () {
-                              showAddNewAddressBookDialog(context: context);
+                              showAddNewPaymentInformationDialog(
+                                  context: context);
                             },
                             isFiled: true,
                             height: 50,
@@ -104,14 +109,14 @@ class AddressBookWidget extends ConsumerWidget {
   }
 }
 
-Future<void> showAddressBookDialog({
+Future<void> showPaymentInformationDialog({
   required BuildContext context,
 }) {
   return showDialog(
     context: context,
     barrierDismissible: false, // Prevent dismissing dialog by tapping outside
     builder: (BuildContext context) {
-      return AddressBookWidget();
+      return PaymentInformationWidget();
     },
   );
 }

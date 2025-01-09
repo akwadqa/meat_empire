@@ -40,7 +40,8 @@ Future<void> handleSplashScreen(ProviderContainer container) async {
   final loadDuration = DateTime.now().difference(startTime).inMilliseconds;
 
   if (loadDuration < minSplashDuration) {
-    await Future.delayed(Duration(milliseconds: minSplashDuration - loadDuration));
+    await Future.delayed(
+        Duration(milliseconds: minSplashDuration - loadDuration));
   }
 
   FlutterNativeSplash.remove();
