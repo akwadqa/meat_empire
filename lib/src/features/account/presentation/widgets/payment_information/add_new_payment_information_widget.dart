@@ -252,6 +252,7 @@ Future<void> showAddNewPaymentInformationDialog({
 
                                 return CustomButtonWidget(
                                   text: "save",
+                                  topPading: 30,
                                   backgroundColor: AppColors.primary,
                                   onTap: () {
                                     if (formKey.currentState!.validate()) {

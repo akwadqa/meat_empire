@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,25 +40,28 @@ Future<void> showEditAccountInformationDialog({
     return SizedBox(
       width: 90,
       child: IntrinsicHeight(
-        child: Row(
-          children: [
-            const SizedBox(width: 4),
-            Assets.images.qatarFlag.image(),
-            const SizedBox(width: 4),
-            Text(
-              '+974',
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.black800,
-                  ),
-            ),
-            const VerticalDivider(
-              color: AppColors.stoneGray,
-              thickness: 0.3,
-              indent: 12,
-              endIndent: 12,
-            ),
-          ],
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Row(
+            children: [
+              const SizedBox(width: 4),
+              Assets.images.qatarFlag.image(),
+              const SizedBox(width: 4),
+              Text(
+                '+974',
+                style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.black800,
+                    ),
+              ),
+              const VerticalDivider(
+                color: AppColors.stoneGray,
+                thickness: 0.3,
+                indent: 12,
+                endIndent: 12,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -82,7 +85,12 @@ Future<void> showEditAccountInformationDialog({
       controller: phoneController,
       style: const TextStyle(color: AppColors.mediumGray01),
       decoration: InputDecoration(
-        prefixIcon: buildPhoneNumberPrefix(context),
+        prefixIcon: context.locale.languageCode == 'ar'
+            ? null
+            : buildPhoneNumberPrefix(context),
+        suffixIcon: context.locale.languageCode == 'en'
+            ? null
+            : buildPhoneNumberPrefix(context),
       ),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
@@ -171,6 +179,7 @@ Future<void> showEditAccountInformationDialog({
                                   CustomButtonWidget(
                                     text: "cancel",
                                     color: AppColors.primary,
+                                    topPading: 50,
                                     onTap: () {
                                       debugPrint("cancel");
                                       Navigator.of(context)
@@ -213,6 +222,7 @@ Future<void> showEditAccountInformationDialog({
                                     return CustomButtonWidget(
                                       text: "save",
                                       backgroundColor: AppColors.primary,
+                                      topPading: 50,
                                       onTap: () {
                                         // Save logic here
 

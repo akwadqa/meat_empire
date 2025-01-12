@@ -1,17 +1,25 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/localization/current_language.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
-class NotAuthMainAccountScreen extends StatelessWidget {
+class NotAuthMainAccountScreen extends ConsumerWidget {
   const NotAuthMainAccountScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLanguage = ref.watch(currentLanguageProvider());
+
+    final currentLanguageNotifier =
+        ref.read(currentLanguageProvider().notifier);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(
@@ -61,6 +69,17 @@ class NotAuthMainAccountScreen extends StatelessWidget {
               topPading: 20,
               height: 50,
               width: 300),
+          100.verticalSpace,
+          AccountCardsWidget(
+            title: "change_Language",
+            icon: Assets.icons.translateIcon.svg(),
+            onTap: () {
+              final newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
+              debugPrint(newLanguage);
+              debugPrint(currentLanguage);
+              currentLanguageNotifier.changeLanguage(context, newLanguage);
+            },
+          ),
         ],
       ),
     );

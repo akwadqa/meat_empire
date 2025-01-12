@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/add_new_address_book_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/address_book_card_widget.dart';
@@ -19,7 +20,7 @@ class AddressBookWidget extends ConsumerWidget {
   // void _onCardTap(int index) {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final addressBook = ref.watch(accountControllerProvider);
+    final accountSyncData = ref.watch(accountControllerProvider);
     return GestureDetector(
       onTap: () {
         // Dismiss keyboard when tapping outside
@@ -47,7 +48,7 @@ class AddressBookWidget extends ConsumerWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 10),
+                        vertical: 40, horizontal: 12),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -63,33 +64,72 @@ class AddressBookWidget extends ConsumerWidget {
                                     fontWeight: FontWeight.w800,
                                   )).centered(),
                           10.verticalSpace,
-                          if (addressBook
-                              .value!.userProfile.shippingAddress!.isNotEmpty)
-                            AddressBookCardWidget(
-                              title: addressBook
-                                  .value!.userProfile.shippingAddress!,
-                              isSelected: true,
-                              onTap: () {},
-                            ),
-                          // ...List.generate(3, (index) {
-                          //   return AddressBookCardWidget(
-                          //     title: "title $index",
-                          //     isSelected: selectedIndex == index,
-                          //     onTap: () => _onCardTap(index),
-                          //   );
-                          // }),
-                          28.verticalSpace,
-                          CustomButtonWidget(
-                            text: "add_new_location",
-                            backgroundColor: AppColors.green,
-                            onTap: () {
-                              showAddNewAddressBookDialog(context: context);
-                            },
-                            isFiled: true,
-                            height: 50,
-                            width: 220,
-                            radius: 8,
-                          ).centered(),
+                          _buildShippingLocationWidget(
+                              context, accountSyncData.value!.userProfile),
+                          15.verticalSpace,
+
+                          _buildBillingLocationWidget(
+                              context, accountSyncData.value!.userProfile),
+                          // if (addressBook
+                          //     .value!.userProfile.billingAddress!.isNotEmpty)
+                          //   Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: [
+                          //       Text(context.tr("billing_location"),
+                          //           style: Theme.of(context)
+                          //               .textTheme
+                          //               .labelSmall!
+                          //               .copyWith(
+                          //                 color: AppColors.black900,
+                          //                 fontSize: 13,
+                          //                 fontWeight: FontWeight.w600,
+                          //               )),
+                          //       4.verticalSpace,
+                          //       AddressBookCardWidget(
+                          //         title: addressBook
+                          //             .value!.userProfile.billingAddress!,
+                          //         isSelected: true,
+                          //         onTap: () {
+                          //           showAddNewAddressBookDialog(
+                          //               context: context,
+                          //               userProfile:
+                          //                   addressBook.value!.userProfile,
+                          //               billMode: true,
+                          //               isEdit: true);
+                          //         },
+                          //       ),
+                          //     ],
+                          //   ),
+                          // 28.verticalSpace,
+                          // if (addressBook
+                          //     .value!.userProfile.shippingAddress!.isEmpty)
+                          //   CustomButtonWidget(
+                          //     text: "add_shipping_location",
+                          //     backgroundColor: AppColors.green,
+                          //     onTap: () {
+                          //       showAddNewAddressBookDialog(
+                          //           context: context, billMode: false);
+                          //     },
+                          //     isFiled: true,
+                          //     height: 50,
+                          //     width: 220,
+                          //     radius: 8,
+                          //   ).centered(),
+                          // 28.verticalSpace,
+                          // if (addressBook
+                          //     .value!.userProfile.billingAddress!.isEmpty)
+                          //   CustomButtonWidget(
+                          //     text: "add_billing_location",
+                          //     backgroundColor: AppColors.green,
+                          //     onTap: () {
+                          //       showAddNewAddressBookDialog(
+                          //           context: context, billMode: true);
+                          //     },
+                          //     isFiled: true,
+                          //     height: 50,
+                          //     width: 220,
+                          //     radius: 8,
+                          //   ).centered(),
                         ],
                       ),
                     ),
@@ -114,4 +154,82 @@ Future<void> showAddressBookDialog({
       return AddressBookWidget();
     },
   );
+}
+
+Widget _buildShippingLocationWidget(
+    BuildContext context, UserProfile userProfile) {
+  return (userProfile.shippingAddress!.isEmpty)
+      ? CustomButtonWidget(
+          text: "add_shipping_location",
+          backgroundColor: AppColors.green,
+          onTap: () {
+            showAddNewAddressBookDialog(context: context, billMode: false);
+          },
+          isFiled: true,
+          height: 50,
+          width: 220,
+          radius: 8,
+        ).centered()
+      : Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(context.tr("shipping_location"),
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: AppColors.black900,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    )),
+            4.verticalSpace,
+            AddressBookCardWidget(
+              title: userProfile.shippingAddress!,
+              isSelected: true,
+              onTap: () {
+                showAddNewAddressBookDialog(
+                    context: context,
+                    userProfile: userProfile,
+                    billMode: false,
+                    isEdit: true);
+              },
+            ),
+          ],
+        );
+}
+
+Widget _buildBillingLocationWidget(
+    BuildContext context, UserProfile userProfile) {
+  return (userProfile.billingAddress!.isEmpty)
+      ? CustomButtonWidget(
+          text: "add_billing_location",
+          backgroundColor: AppColors.green,
+          onTap: () {
+            showAddNewAddressBookDialog(context: context, billMode: true);
+          },
+          isFiled: true,
+          height: 50,
+          width: 220,
+          radius: 8,
+        ).centered()
+      : Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(context.tr("billing_location"),
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: AppColors.black900,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    )),
+            4.verticalSpace,
+            AddressBookCardWidget(
+              title: userProfile.billingAddress!,
+              isSelected: true,
+              onTap: () {
+                showAddNewAddressBookDialog(
+                    context: context,
+                    userProfile: userProfile,
+                    billMode: true,
+                    isEdit: true);
+              },
+            ),
+          ],
+        );
 }

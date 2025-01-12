@@ -6,7 +6,7 @@ part of 'current_language.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentLanguageHash() => r'bb68bf5ca776735d01d1af727392965270acc666';
+String _$currentLanguageHash() => r'1d2f885570e4139d629099c3e06edbc75deabcab';
 
 /// Copied from Dart SDK
 class _SystemHash {

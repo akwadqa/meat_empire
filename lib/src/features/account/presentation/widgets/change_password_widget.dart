@@ -184,6 +184,7 @@ Future<void> showChangePasswordDialog({
                                   CustomButtonWidget(
                                     text: "cancel",
                                     color: AppColors.primary,
+                                    topPading: 50,
                                     onTap: () {
                                       print("CANCEL");
 
@@ -214,6 +215,7 @@ Future<void> showChangePasswordDialog({
                                         return CustomButtonWidget(
                                           text: "save",
                                           backgroundColor: AppColors.primary,
+                                          topPading: 50,
                                           onTap: () {
                                             if (formKey.currentState!
                                                 .validate()) {

@@ -10,6 +10,8 @@ import 'package:meat_empire/src/features/account/presentation/widgets/change_pas
 import 'package:meat_empire/src/features/account/presentation/widgets/edit_account_information_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/payment_information_widget.dart';
+import 'package:meat_empire/src/localization/current_language.dart';
+import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
 class AccountScreen extends ConsumerWidget {
@@ -20,6 +22,11 @@ class AccountScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentLanguage = ref.watch(currentLanguageProvider());
+
+    final currentLanguageNotifier =
+        ref.read(currentLanguageProvider().notifier);
+
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 12,
@@ -35,7 +42,9 @@ class AccountScreen extends ConsumerWidget {
           30.verticalSpace,
           AccountCardsWidget(
             title: "edit_account_information",
-            icon: Assets.icons.circulePersonIcon,
+            icon: Assets.icons.circulePersonIcon.svg(
+              color: AppColors.black900,
+            ),
             onTap: () {
               nameContoller.text = userProfile.firstname;
               phoneContoller.text = userProfile.phone;
@@ -51,26 +60,38 @@ class AccountScreen extends ConsumerWidget {
               showChangePasswordDialog(context: context);
             },
             title: "change_password",
-            icon: Assets.icons.shieldLockIcon,
+            icon: Assets.icons.shieldLockIcon.svg(
+              color: AppColors.black900,
+            ),
           ),
           AccountCardsWidget(
             onTap: () {
               showAddressBookDialog(context: context);
             },
             title: "address_book",
-            icon: Assets.icons.cardChecklistIcon,
+            icon: Assets.icons.orderIcon.svg(),
           ),
           AccountCardsWidget(
             onTap: () {
               showPaymentInformationDialog(context: context);
             },
             title: "payment_information",
-            icon: Assets.icons.cashStackIcon,
+            icon: Assets.icons.cashStackIcon.svg(),
           ),
           AccountCardsWidget(
             title: "my_orders",
-            icon: Assets.icons.orderIcon,
+            icon: Assets.icons.cardChecklistIcon.svg(),
             onTap: () {},
+          ),
+          AccountCardsWidget(
+            title: "change_Language",
+            icon: Assets.icons.translateIcon.svg(),
+            onTap: () {
+              final newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
+              debugPrint(newLanguage);
+              debugPrint(currentLanguage);
+              currentLanguageNotifier.changeLanguage(context, newLanguage);
+            },
           ),
           LogoutButtonWidget(),
         ]),

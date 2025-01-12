@@ -63,7 +63,7 @@ class _LogoutButtonWidgetState extends ConsumerState<LogoutButtonWidget>
                 fontSize: 18,
                 color: Colors.black,
                 fontWeight: FontWeight.w500)),
-      ).centered().onlyPadding(top: 120),
+      ).centered().onlyPadding(top: 80),
     );
   }
 }

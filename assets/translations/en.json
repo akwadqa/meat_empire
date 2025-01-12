@@ -47,6 +47,7 @@
     "home": "Home",
     "logout": "Logout",
     "edit_account_information": "Edit account information",
+    "change_Language": "Change Language",
     "change_password": "Change password",
     "old_password": "Old password",
     "new_password": "New password",
@@ -65,5 +66,9 @@
     "end_date": "End date",
     "secret_nymber": "Secret Number",
     "access_auth_message": "Log in to access your account information\nOr create an account if you don't have one.",
-    "add_new_location": "Add new Location"
+    "add_new_location": "Add new Location",
+    "add_shipping_location": "Add Shipping Location",
+    "shipping_location": "Shipping Location",
+    "billing_location": "Billing Location",
+    "add_billing_location": "Add Billing Location"
 }

@@ -32,22 +32,26 @@ mixin _$UserProfile {
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  @JsonKey(name: 'b_firstname')
-  String? get bFirstname => throw _privateConstructorUsedError;
-  @JsonKey(name: 'b_lastname')
-  String? get bLastname => throw _privateConstructorUsedError;
   @JsonKey(name: 'b_address')
   String? get billingAddress => throw _privateConstructorUsedError;
   @JsonKey(name: 's_address')
   String? get shippingAddress => throw _privateConstructorUsedError;
   @JsonKey(name: 'b_city')
-  String? get bCity => throw _privateConstructorUsedError;
+  String? get bllingCity => throw _privateConstructorUsedError;
+  @JsonKey(name: 's_city')
+  String? get shippingCity => throw _privateConstructorUsedError;
   @JsonKey(name: 'b_state')
-  String? get bState => throw _privateConstructorUsedError;
+  String? get billingStrete => throw _privateConstructorUsedError;
+  @JsonKey(name: 's_state')
+  String? get shippingStrete => throw _privateConstructorUsedError;
+  @JsonKey(name: 'b_county')
+  String? get billingCountry => throw _privateConstructorUsedError;
+  @JsonKey(name: 's_county')
+  String? get shippingCountry => throw _privateConstructorUsedError;
   @JsonKey(name: 'b_country')
-  String? get bCountry => throw _privateConstructorUsedError;
-  @JsonKey(name: 'b_phone')
-  String? get bPhone => throw _privateConstructorUsedError;
+  String? get billingBuildingNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: 's_country')
+  String? get shippingBuildingNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_name')
   String? get profileName => throw _privateConstructorUsedError;
   @JsonKey(name: 'points')
@@ -79,14 +83,16 @@ abstract class $UserProfileCopyWith<$Res> {
       String email,
       String phone,
       String password,
-      @JsonKey(name: 'b_firstname') String? bFirstname,
-      @JsonKey(name: 'b_lastname') String? bLastname,
       @JsonKey(name: 'b_address') String? billingAddress,
       @JsonKey(name: 's_address') String? shippingAddress,
-      @JsonKey(name: 'b_city') String? bCity,
-      @JsonKey(name: 'b_state') String? bState,
-      @JsonKey(name: 'b_country') String? bCountry,
-      @JsonKey(name: 'b_phone') String? bPhone,
+      @JsonKey(name: 'b_city') String? bllingCity,
+      @JsonKey(name: 's_city') String? shippingCity,
+      @JsonKey(name: 'b_state') String? billingStrete,
+      @JsonKey(name: 's_state') String? shippingStrete,
+      @JsonKey(name: 'b_county') String? billingCountry,
+      @JsonKey(name: 's_county') String? shippingCountry,
+      @JsonKey(name: 'b_country') String? billingBuildingNumber,
+      @JsonKey(name: 's_country') String? shippingBuildingNumber,
       @JsonKey(name: 'profile_name') String? profileName,
       @JsonKey(name: 'points') int points});
 }
@@ -115,14 +121,16 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
     Object? email = null,
     Object? phone = null,
     Object? password = null,
-    Object? bFirstname = freezed,
-    Object? bLastname = freezed,
     Object? billingAddress = freezed,
     Object? shippingAddress = freezed,
-    Object? bCity = freezed,
-    Object? bState = freezed,
-    Object? bCountry = freezed,
-    Object? bPhone = freezed,
+    Object? bllingCity = freezed,
+    Object? shippingCity = freezed,
+    Object? billingStrete = freezed,
+    Object? shippingStrete = freezed,
+    Object? billingCountry = freezed,
+    Object? shippingCountry = freezed,
+    Object? billingBuildingNumber = freezed,
+    Object? shippingBuildingNumber = freezed,
     Object? profileName = freezed,
     Object? points = null,
   }) {
@@ -163,14 +171,6 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      bFirstname: freezed == bFirstname
-          ? _value.bFirstname
-          : bFirstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bLastname: freezed == bLastname
-          ? _value.bLastname
-          : bLastname // ignore: cast_nullable_to_non_nullable
-              as String?,
       billingAddress: freezed == billingAddress
           ? _value.billingAddress
           : billingAddress // ignore: cast_nullable_to_non_nullable
@@ -179,21 +179,37 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      bCity: freezed == bCity
-          ? _value.bCity
-          : bCity // ignore: cast_nullable_to_non_nullable
+      bllingCity: freezed == bllingCity
+          ? _value.bllingCity
+          : bllingCity // ignore: cast_nullable_to_non_nullable
               as String?,
-      bState: freezed == bState
-          ? _value.bState
-          : bState // ignore: cast_nullable_to_non_nullable
+      shippingCity: freezed == shippingCity
+          ? _value.shippingCity
+          : shippingCity // ignore: cast_nullable_to_non_nullable
               as String?,
-      bCountry: freezed == bCountry
-          ? _value.bCountry
-          : bCountry // ignore: cast_nullable_to_non_nullable
+      billingStrete: freezed == billingStrete
+          ? _value.billingStrete
+          : billingStrete // ignore: cast_nullable_to_non_nullable
               as String?,
-      bPhone: freezed == bPhone
-          ? _value.bPhone
-          : bPhone // ignore: cast_nullable_to_non_nullable
+      shippingStrete: freezed == shippingStrete
+          ? _value.shippingStrete
+          : shippingStrete // ignore: cast_nullable_to_non_nullable
+              as String?,
+      billingCountry: freezed == billingCountry
+          ? _value.billingCountry
+          : billingCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shippingCountry: freezed == shippingCountry
+          ? _value.shippingCountry
+          : shippingCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      billingBuildingNumber: freezed == billingBuildingNumber
+          ? _value.billingBuildingNumber
+          : billingBuildingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shippingBuildingNumber: freezed == shippingBuildingNumber
+          ? _value.shippingBuildingNumber
+          : shippingBuildingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
       profileName: freezed == profileName
           ? _value.profileName
@@ -225,14 +241,16 @@ abstract class _$$UserProfileImplCopyWith<$Res>
       String email,
       String phone,
       String password,
-      @JsonKey(name: 'b_firstname') String? bFirstname,
-      @JsonKey(name: 'b_lastname') String? bLastname,
       @JsonKey(name: 'b_address') String? billingAddress,
       @JsonKey(name: 's_address') String? shippingAddress,
-      @JsonKey(name: 'b_city') String? bCity,
-      @JsonKey(name: 'b_state') String? bState,
-      @JsonKey(name: 'b_country') String? bCountry,
-      @JsonKey(name: 'b_phone') String? bPhone,
+      @JsonKey(name: 'b_city') String? bllingCity,
+      @JsonKey(name: 's_city') String? shippingCity,
+      @JsonKey(name: 'b_state') String? billingStrete,
+      @JsonKey(name: 's_state') String? shippingStrete,
+      @JsonKey(name: 'b_county') String? billingCountry,
+      @JsonKey(name: 's_county') String? shippingCountry,
+      @JsonKey(name: 'b_country') String? billingBuildingNumber,
+      @JsonKey(name: 's_country') String? shippingBuildingNumber,
       @JsonKey(name: 'profile_name') String? profileName,
       @JsonKey(name: 'points') int points});
 }
@@ -259,14 +277,16 @@ class __$$UserProfileImplCopyWithImpl<$Res>
     Object? email = null,
     Object? phone = null,
     Object? password = null,
-    Object? bFirstname = freezed,
-    Object? bLastname = freezed,
     Object? billingAddress = freezed,
     Object? shippingAddress = freezed,
-    Object? bCity = freezed,
-    Object? bState = freezed,
-    Object? bCountry = freezed,
-    Object? bPhone = freezed,
+    Object? bllingCity = freezed,
+    Object? shippingCity = freezed,
+    Object? billingStrete = freezed,
+    Object? shippingStrete = freezed,
+    Object? billingCountry = freezed,
+    Object? shippingCountry = freezed,
+    Object? billingBuildingNumber = freezed,
+    Object? shippingBuildingNumber = freezed,
     Object? profileName = freezed,
     Object? points = null,
   }) {
@@ -307,14 +327,6 @@ class __$$UserProfileImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      bFirstname: freezed == bFirstname
-          ? _value.bFirstname
-          : bFirstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bLastname: freezed == bLastname
-          ? _value.bLastname
-          : bLastname // ignore: cast_nullable_to_non_nullable
-              as String?,
       billingAddress: freezed == billingAddress
           ? _value.billingAddress
           : billingAddress // ignore: cast_nullable_to_non_nullable
@@ -323,21 +335,37 @@ class __$$UserProfileImplCopyWithImpl<$Res>
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      bCity: freezed == bCity
-          ? _value.bCity
-          : bCity // ignore: cast_nullable_to_non_nullable
+      bllingCity: freezed == bllingCity
+          ? _value.bllingCity
+          : bllingCity // ignore: cast_nullable_to_non_nullable
               as String?,
-      bState: freezed == bState
-          ? _value.bState
-          : bState // ignore: cast_nullable_to_non_nullable
+      shippingCity: freezed == shippingCity
+          ? _value.shippingCity
+          : shippingCity // ignore: cast_nullable_to_non_nullable
               as String?,
-      bCountry: freezed == bCountry
-          ? _value.bCountry
-          : bCountry // ignore: cast_nullable_to_non_nullable
+      billingStrete: freezed == billingStrete
+          ? _value.billingStrete
+          : billingStrete // ignore: cast_nullable_to_non_nullable
               as String?,
-      bPhone: freezed == bPhone
-          ? _value.bPhone
-          : bPhone // ignore: cast_nullable_to_non_nullable
+      shippingStrete: freezed == shippingStrete
+          ? _value.shippingStrete
+          : shippingStrete // ignore: cast_nullable_to_non_nullable
+              as String?,
+      billingCountry: freezed == billingCountry
+          ? _value.billingCountry
+          : billingCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shippingCountry: freezed == shippingCountry
+          ? _value.shippingCountry
+          : shippingCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      billingBuildingNumber: freezed == billingBuildingNumber
+          ? _value.billingBuildingNumber
+          : billingBuildingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shippingBuildingNumber: freezed == shippingBuildingNumber
+          ? _value.shippingBuildingNumber
+          : shippingBuildingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
       profileName: freezed == profileName
           ? _value.profileName
@@ -365,14 +393,16 @@ class _$UserProfileImpl implements _UserProfile {
       required this.email,
       required this.phone,
       required this.password,
-      @JsonKey(name: 'b_firstname') this.bFirstname,
-      @JsonKey(name: 'b_lastname') this.bLastname,
       @JsonKey(name: 'b_address') this.billingAddress,
       @JsonKey(name: 's_address') this.shippingAddress,
-      @JsonKey(name: 'b_city') this.bCity,
-      @JsonKey(name: 'b_state') this.bState,
-      @JsonKey(name: 'b_country') this.bCountry,
-      @JsonKey(name: 'b_phone') this.bPhone,
+      @JsonKey(name: 'b_city') this.bllingCity,
+      @JsonKey(name: 's_city') this.shippingCity,
+      @JsonKey(name: 'b_state') this.billingStrete,
+      @JsonKey(name: 's_state') this.shippingStrete,
+      @JsonKey(name: 'b_county') this.billingCountry,
+      @JsonKey(name: 's_county') this.shippingCountry,
+      @JsonKey(name: 'b_country') this.billingBuildingNumber,
+      @JsonKey(name: 's_country') this.shippingBuildingNumber,
       @JsonKey(name: 'profile_name') this.profileName,
       @JsonKey(name: 'points') this.points = 0});
 
@@ -401,12 +431,6 @@ class _$UserProfileImpl implements _UserProfile {
   @override
   final String password;
   @override
-  @JsonKey(name: 'b_firstname')
-  final String? bFirstname;
-  @override
-  @JsonKey(name: 'b_lastname')
-  final String? bLastname;
-  @override
   @JsonKey(name: 'b_address')
   final String? billingAddress;
   @override
@@ -414,16 +438,28 @@ class _$UserProfileImpl implements _UserProfile {
   final String? shippingAddress;
   @override
   @JsonKey(name: 'b_city')
-  final String? bCity;
+  final String? bllingCity;
+  @override
+  @JsonKey(name: 's_city')
+  final String? shippingCity;
   @override
   @JsonKey(name: 'b_state')
-  final String? bState;
+  final String? billingStrete;
+  @override
+  @JsonKey(name: 's_state')
+  final String? shippingStrete;
+  @override
+  @JsonKey(name: 'b_county')
+  final String? billingCountry;
+  @override
+  @JsonKey(name: 's_county')
+  final String? shippingCountry;
   @override
   @JsonKey(name: 'b_country')
-  final String? bCountry;
+  final String? billingBuildingNumber;
   @override
-  @JsonKey(name: 'b_phone')
-  final String? bPhone;
+  @JsonKey(name: 's_country')
+  final String? shippingBuildingNumber;
   @override
   @JsonKey(name: 'profile_name')
   final String? profileName;
@@ -433,7 +469,7 @@ class _$UserProfileImpl implements _UserProfile {
 
   @override
   String toString() {
-    return 'UserProfile(userId: $userId, status: $status, userType: $userType, userLogin: $userLogin, firstname: $firstname, lastname: $lastname, email: $email, phone: $phone, password: $password, bFirstname: $bFirstname, bLastname: $bLastname, billingAddress: $billingAddress, shippingAddress: $shippingAddress, bCity: $bCity, bState: $bState, bCountry: $bCountry, bPhone: $bPhone, profileName: $profileName, points: $points)';
+    return 'UserProfile(userId: $userId, status: $status, userType: $userType, userLogin: $userLogin, firstname: $firstname, lastname: $lastname, email: $email, phone: $phone, password: $password, billingAddress: $billingAddress, shippingAddress: $shippingAddress, bllingCity: $bllingCity, shippingCity: $shippingCity, billingStrete: $billingStrete, shippingStrete: $shippingStrete, billingCountry: $billingCountry, shippingCountry: $shippingCountry, billingBuildingNumber: $billingBuildingNumber, shippingBuildingNumber: $shippingBuildingNumber, profileName: $profileName, points: $points)';
   }
 
   @override
@@ -455,19 +491,26 @@ class _$UserProfileImpl implements _UserProfile {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.bFirstname, bFirstname) ||
-                other.bFirstname == bFirstname) &&
-            (identical(other.bLastname, bLastname) ||
-                other.bLastname == bLastname) &&
             (identical(other.billingAddress, billingAddress) ||
                 other.billingAddress == billingAddress) &&
             (identical(other.shippingAddress, shippingAddress) ||
                 other.shippingAddress == shippingAddress) &&
-            (identical(other.bCity, bCity) || other.bCity == bCity) &&
-            (identical(other.bState, bState) || other.bState == bState) &&
-            (identical(other.bCountry, bCountry) ||
-                other.bCountry == bCountry) &&
-            (identical(other.bPhone, bPhone) || other.bPhone == bPhone) &&
+            (identical(other.bllingCity, bllingCity) ||
+                other.bllingCity == bllingCity) &&
+            (identical(other.shippingCity, shippingCity) ||
+                other.shippingCity == shippingCity) &&
+            (identical(other.billingStrete, billingStrete) ||
+                other.billingStrete == billingStrete) &&
+            (identical(other.shippingStrete, shippingStrete) ||
+                other.shippingStrete == shippingStrete) &&
+            (identical(other.billingCountry, billingCountry) ||
+                other.billingCountry == billingCountry) &&
+            (identical(other.shippingCountry, shippingCountry) ||
+                other.shippingCountry == shippingCountry) &&
+            (identical(other.billingBuildingNumber, billingBuildingNumber) ||
+                other.billingBuildingNumber == billingBuildingNumber) &&
+            (identical(other.shippingBuildingNumber, shippingBuildingNumber) ||
+                other.shippingBuildingNumber == shippingBuildingNumber) &&
             (identical(other.profileName, profileName) ||
                 other.profileName == profileName) &&
             (identical(other.points, points) || other.points == points));
@@ -486,14 +529,16 @@ class _$UserProfileImpl implements _UserProfile {
         email,
         phone,
         password,
-        bFirstname,
-        bLastname,
         billingAddress,
         shippingAddress,
-        bCity,
-        bState,
-        bCountry,
-        bPhone,
+        bllingCity,
+        shippingCity,
+        billingStrete,
+        shippingStrete,
+        billingCountry,
+        shippingCountry,
+        billingBuildingNumber,
+        shippingBuildingNumber,
         profileName,
         points
       ]);
@@ -525,14 +570,16 @@ abstract class _UserProfile implements UserProfile {
       required final String email,
       required final String phone,
       required final String password,
-      @JsonKey(name: 'b_firstname') final String? bFirstname,
-      @JsonKey(name: 'b_lastname') final String? bLastname,
       @JsonKey(name: 'b_address') final String? billingAddress,
       @JsonKey(name: 's_address') final String? shippingAddress,
-      @JsonKey(name: 'b_city') final String? bCity,
-      @JsonKey(name: 'b_state') final String? bState,
-      @JsonKey(name: 'b_country') final String? bCountry,
-      @JsonKey(name: 'b_phone') final String? bPhone,
+      @JsonKey(name: 'b_city') final String? bllingCity,
+      @JsonKey(name: 's_city') final String? shippingCity,
+      @JsonKey(name: 'b_state') final String? billingStrete,
+      @JsonKey(name: 's_state') final String? shippingStrete,
+      @JsonKey(name: 'b_county') final String? billingCountry,
+      @JsonKey(name: 's_county') final String? shippingCountry,
+      @JsonKey(name: 'b_country') final String? billingBuildingNumber,
+      @JsonKey(name: 's_country') final String? shippingBuildingNumber,
       @JsonKey(name: 'profile_name') final String? profileName,
       @JsonKey(name: 'points') final int points}) = _$UserProfileImpl;
 
@@ -561,12 +608,6 @@ abstract class _UserProfile implements UserProfile {
   @override
   String get password;
   @override
-  @JsonKey(name: 'b_firstname')
-  String? get bFirstname;
-  @override
-  @JsonKey(name: 'b_lastname')
-  String? get bLastname;
-  @override
   @JsonKey(name: 'b_address')
   String? get billingAddress;
   @override
@@ -574,16 +615,28 @@ abstract class _UserProfile implements UserProfile {
   String? get shippingAddress;
   @override
   @JsonKey(name: 'b_city')
-  String? get bCity;
+  String? get bllingCity;
+  @override
+  @JsonKey(name: 's_city')
+  String? get shippingCity;
   @override
   @JsonKey(name: 'b_state')
-  String? get bState;
+  String? get billingStrete;
+  @override
+  @JsonKey(name: 's_state')
+  String? get shippingStrete;
+  @override
+  @JsonKey(name: 'b_county')
+  String? get billingCountry;
+  @override
+  @JsonKey(name: 's_county')
+  String? get shippingCountry;
   @override
   @JsonKey(name: 'b_country')
-  String? get bCountry;
+  String? get billingBuildingNumber;
   @override
-  @JsonKey(name: 'b_phone')
-  String? get bPhone;
+  @JsonKey(name: 's_country')
+  String? get shippingBuildingNumber;
   @override
   @JsonKey(name: 'profile_name')
   String? get profileName;

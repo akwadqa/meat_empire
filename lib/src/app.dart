@@ -13,7 +13,7 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appRouter = ref.watch(appRouterProvider);
-    final currentLanguage = ref.watch(currentLanguageProvider(context));
+    final currentLanguage = ref.watch(currentLanguageProvider());
     return MaterialApp.router(
       routerDelegate: appRouter.delegate(
           deepLinkBuilder: (deepLink) => DeepLink.defaultPath),

@@ -49,6 +49,9 @@ class $AssetsIconsGen {
   SvgGenImage get deleteIcon =>
       const SvgGenImage('assets/icons/delete_icon.svg');
 
+  /// File path: assets/icons/edit_icon.svg
+  SvgGenImage get editIcon => const SvgGenImage('assets/icons/edit_icon.svg');
+
   /// File path: assets/icons/home_icon.svg
   SvgGenImage get homeIcon => const SvgGenImage('assets/icons/home_icon.svg');
 
@@ -81,6 +84,10 @@ class $AssetsIconsGen {
   SvgGenImage get streetIcon =>
       const SvgGenImage('assets/icons/street_icon.svg');
 
+  /// File path: assets/icons/translate_icon.svg
+  SvgGenImage get translateIcon =>
+      const SvgGenImage('assets/icons/translate_icon.svg');
+
   /// File path: assets/icons/trash_icon.svg
   SvgGenImage get trashIcon => const SvgGenImage('assets/icons/trash_icon.svg');
 
@@ -95,6 +102,7 @@ class $AssetsIconsGen {
         cityIcon,
         countryIcon,
         deleteIcon,
+        editIcon,
         homeIcon,
         locationIcon,
         logoutIcon,
@@ -104,6 +112,7 @@ class $AssetsIconsGen {
         searchIcon,
         shieldLockIcon,
         streetIcon,
+        translateIcon,
         trashIcon
       ];
 }

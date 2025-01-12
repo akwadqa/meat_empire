@@ -62,15 +62,15 @@ class PaymentInformationCardWidget extends StatelessWidget {
               Text(cardNumber.toCardNumberFormat(),
                   style: Theme.of(context).textTheme.labelSmall!.copyWith(
                         color: AppColors.black900,
-                        fontSize: 16,
+                        fontSize: 14,
                         // fontWeight: FontWeight.w600,
                       )),
-              4.verticalSpace,
+              2.verticalSpace,
               Text(
                   "${context.tr("end_date")}: ${DateFormat('d/M/yyyy').format(endDate)}",
                   style: Theme.of(context).textTheme.labelMedium!.copyWith(
                         color: AppColors.black900,
-                        fontSize: 16,
+                        fontSize: 14,
                         // fontWeight: FontWeight.w600,
                       )),
             ],

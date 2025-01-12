@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/shared_functions.dart';
@@ -14,15 +15,41 @@ import 'package:bcrypt/bcrypt.dart';
 
 Future<void> showAddNewAddressBookDialog({
   required BuildContext context,
+  required bool billMode,
+  bool isEdit = false,
+  UserProfile? userProfile,
 }) {
-  TextEditingController cityController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
-  TextEditingController streetController = TextEditingController();
-  TextEditingController buildNumberController = TextEditingController();
+  TextEditingController cityController = TextEditingController(
+      text: isEdit
+          ? billMode
+              ? userProfile!.bllingCity
+              : userProfile!.shippingCity
+          : "");
+  TextEditingController countryController = TextEditingController(
+      text: isEdit
+          ? billMode
+              ? userProfile!.billingCountry
+              : userProfile!.shippingCountry
+          : "");
+  TextEditingController streetController = TextEditingController(
+      text: isEdit
+          ? billMode
+              ? userProfile!.billingStrete
+              : userProfile!.shippingStrete
+          : "");
+  TextEditingController buildNumberController = TextEditingController(
+      text: isEdit
+          ? billMode
+              ? userProfile!.billingBuildingNumber
+              : userProfile!.shippingBuildingNumber
+          : "");
   Widget buildCityField(BuildContext context) {
     return TextFormField(
       controller: cityController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+            color: AppColors.black900,
+            fontSize: 12,
+          ),
       decoration: InputDecoration(
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
               color: AppColors.gray02,
@@ -48,7 +75,10 @@ Future<void> showAddNewAddressBookDialog({
   Widget buildCountryField(BuildContext context) {
     return TextFormField(
       controller: countryController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+            color: AppColors.black900,
+            fontSize: 12,
+          ),
       decoration: InputDecoration(
         hintText: "الفيصل",
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -74,7 +104,10 @@ Future<void> showAddNewAddressBookDialog({
   Widget buildStreetField(BuildContext context) {
     return TextFormField(
       controller: streetController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+            color: AppColors.black900,
+            fontSize: 12,
+          ),
       decoration: InputDecoration(
         hintText: "شارع حمد الكبير",
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -99,7 +132,10 @@ Future<void> showAddNewAddressBookDialog({
   Widget buildBuildingNumberField(BuildContext context) {
     return TextFormField(
       controller: buildNumberController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+            color: AppColors.black900,
+            fontSize: 12,
+          ),
       decoration: InputDecoration(
         hintText: "a24",
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -271,18 +307,48 @@ Future<void> showAddNewAddressBookDialog({
                                 return CustomButtonWidget(
                                   text: "save",
                                   backgroundColor: AppColors.primary,
+                                  topPading: 30,
                                   onTap: () {
                                     if (formKey.currentState!.validate()) {
                                       final address =
-                                          "${cityController.text}-${countryController.text}-${streetController.text}";
+                                          "${cityController.text} - ${countryController.text} - ${streetController.text}";
 
                                       ref
-                                          .read(accountControllerProvider
-                                              .notifier)
+                                          .read(
+                                              accountControllerProvider
+                                                  .notifier)
                                           .editAccountInformation(
                                               context,
-                                              data.value!.userProfile.copyWith(
-                                                  shippingAddress: address));
+                                              billMode
+                                                  ? data
+                                                      .value!.userProfile
+                                                      .copyWith(
+                                                          bllingCity: cityController
+                                                              .text,
+                                                          billingCountry:
+                                                              countryController
+                                                                  .text,
+                                                          billingStrete:
+                                                              streetController
+                                                                  .text,
+                                                          billingBuildingNumber:
+                                                              buildNumberController
+                                                                  .text,
+                                                          billingAddress:
+                                                              address)
+                                                  : data.value!.userProfile.copyWith(
+                                                      shippingCity:
+                                                          cityController.text,
+                                                      shippingCountry:
+                                                          countryController
+                                                              .text,
+                                                      shippingStrete:
+                                                          streetController.text,
+                                                      shippingBuildingNumber:
+                                                          buildNumberController
+                                                              .text,
+                                                      shippingAddress:
+                                                          address));
 
                                       SnackBar(
                                         content: Text(data.value!.message),

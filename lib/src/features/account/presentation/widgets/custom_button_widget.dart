@@ -89,6 +89,6 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget>
                       color: widget.isFiled ? Colors.white : Colors.black,
                       fontWeight: FontWeight.w500))
               .centered(),
-        )).onlyPadding(top: widget.topPading ?? 60);
+        )).onlyPadding(top: widget.topPading ?? 0);
   }
 }

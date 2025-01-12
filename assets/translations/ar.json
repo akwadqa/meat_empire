@@ -47,6 +47,7 @@
     "home": "الرئيسية",
     "logout": "تسجيل الخروج",
     "edit_account_information": "تعديل معلومات الحساب",
+    "change_Language": "تغيير اللغة",
     "change_password": "تغيير كلمة السر",
     "old_password": "كلمة السر",
     "new_password": "كلمة السر الجديدة",
@@ -65,6 +66,9 @@
     "end_date": "تاريخ الانتهاء",
     "secret_nymber": "الرقم السري",
     "access_auth_message": "قم بتسجيل الدخول للوصول إلى معلومات حسابك \nأو قم إنشاء حساب إذا لم تكن تملك حساباً.",
-    "add_new_location": "إضافة عنوان جديد"
-
+    "add_new_location": "إضافة عنوان جديد",
+    "add_shipping_location": "إضافة عنوان الشحن",
+    "shipping_location": "عنوان الشحن",
+    "billing_location": "عنوان الدفع",
+    "add_billing_location": "إضافة عنوان الدفع"
 }
