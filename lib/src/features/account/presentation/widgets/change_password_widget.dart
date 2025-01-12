@@ -1,10 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+import 'package:meat_empire/src/utils/app_messages.dart';
 import 'package:queen_validators/queen_validators.dart';
+import 'package:bcrypt/bcrypt.dart';
 
 Future<void> showChangePasswordDialog({
   required BuildContext context,
@@ -178,6 +184,7 @@ Future<void> showChangePasswordDialog({
                                   CustomButtonWidget(
                                     text: "cancel",
                                     color: AppColors.primary,
+                                    topPading: 50,
                                     onTap: () {
                                       print("CANCEL");
 
@@ -188,19 +195,110 @@ Future<void> showChangePasswordDialog({
                                     height: 40,
                                     width: 125,
                                   ),
-                                  CustomButtonWidget(
-                                    text: "save",
-                                    backgroundColor: AppColors.primary,
-                                    onTap: () {
-                                      if (formKey.currentState!.validate()) {
-                                        // Save logic here
-                                        Navigator.of(context)
-                                            .pop(); // Close dialog
+                                  Consumer(
+                                    builder: (context, ref, child) {
+                                      final data =
+                                          ref.watch(accountControllerProvider);
+                                      if (data.value?.userProfile == false) {
+                                        showCustomDialog(
+                                          context: context,
+                                          title: data.value!.message,
+                                          icon: Icon(
+                                            Icons.warning_amber,
+                                            color: Colors.red,
+                                          ),
+                                        );
+                                        return SizedBox();
+                                      } else {
+                                        final hashedPassword = data
+                                            .asData?.value.userProfile.password;
+                                        return CustomButtonWidget(
+                                          text: "save",
+                                          backgroundColor: AppColors.primary,
+                                          topPading: 50,
+                                          onTap: () {
+                                            if (formKey.currentState!
+                                                .validate()) {
+                                              ref.listen(
+                                                  accountControllerProvider,
+                                                  (prev, next) {
+                                                if (next is AsyncData) {
+                                                  context.maybePop().then((_) {
+                                                    showCustomDialog(
+                                                        context: context,
+                                                        title:
+                                                            next.value!.message,
+                                                        icon: next
+                                                                .value!.success
+                                                            ? Icon(
+                                                                Icons
+                                                                    .check_circle,
+                                                                color: Colors
+                                                                    .green,
+                                                              )
+                                                            : Icon(
+                                                                Icons.warning,
+                                                                color:
+                                                                    Colors.red,
+                                                              ));
+                                                    Future.delayed(Duration(
+                                                            seconds: 2))
+                                                        .then((onValue) {
+                                                      Navigator.pop(context);
+                                                    });
+                                                  });
+                                                }
+                                              });
+                                              final isPasswordCorrect =
+                                                  BCrypt.checkpw(
+                                                      oldPasswordController
+                                                          .text,
+                                                      hashedPassword!);
+
+                                              if (!isPasswordCorrect) {
+                                                ref
+                                                    .read(
+                                                        accountControllerProvider
+                                                            .notifier)
+                                                    .editAccountInformation(
+                                                        context,
+                                                        data.value!.userProfile
+                                                            .copyWith(
+                                                                password:
+                                                                    newPasswordController
+                                                                        .text));
+                                                debugPrint(
+                                                    "Password changed successfully");
+                                                SnackBar(
+                                                  content:
+                                                      Text(data.value!.message),
+                                                  backgroundColor: Colors.green,
+                                                );
+                                              } else {
+                                                debugPrint(
+                                                    "password is incorrect ");
+
+                                                showCustomDialog(
+                                                  context: context,
+                                                  title: "كلمة السر غير صحيحة",
+                                                  icon: Icon(
+                                                    Icons.warning_amber,
+                                                    color: Colors.red,
+                                                  ),
+                                                );
+                                                // AppMessages.showError(
+                                                //     message:
+                                                //         "كلمة السر غير صحيحة");
+                                                // }
+                                              }
+                                            }
+                                          },
+                                          isFiled: true,
+                                          height: 40,
+                                          width: 125,
+                                        );
                                       }
                                     },
-                                    isFiled: true,
-                                    height: 40,
-                                    width: 125,
                                   ),
                                 ],
                               )

@@ -12,7 +12,7 @@ class CurrentLanguage extends _$CurrentLanguage {
   }
 
   void changeLanguage(BuildContext context, String languageCode) {
-    state = languageCode;
     context.setLocale(Locale(languageCode));
+    state = languageCode;
   }
 }

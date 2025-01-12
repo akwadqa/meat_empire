@@ -6,7 +6,7 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 
 class AccountCardsWidget extends StatelessWidget {
   final String title;
-  final SvgGenImage icon;
+  final Widget icon;
   final VoidCallback onTap;
   const AccountCardsWidget(
       {super.key,
@@ -28,9 +28,7 @@ class AccountCardsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ListTile(
-                leading: icon.svg(
-                  color: AppColors.black900,
-                ),
+                leading: icon,
                 title: Text(context.tr(title),
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(
                           color: AppColors.black900,

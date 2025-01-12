@@ -23,7 +23,7 @@ final accountRepositoryProvider = Provider<AccountRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AccountRepositoryRef = ProviderRef<AccountRepository>;
-String _$accountProviderHash() => r'faece18288bb6eb7736c0f25cf2f8dbd4b6a5678';
+String _$accountHash() => r'b19db55dfcc610ca8b51bc9f381385b248eaa781';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -46,27 +46,27 @@ class _SystemHash {
   }
 }
 
-/// See also [accountProvider].
-@ProviderFor(accountProvider)
-const accountProviderProvider = AccountProviderFamily();
+/// See also [account].
+@ProviderFor(account)
+const accountProvider = AccountFamily();
 
-/// See also [accountProvider].
-class AccountProviderFamily extends Family<AsyncValue<ProfileResponse>> {
-  /// See also [accountProvider].
-  const AccountProviderFamily();
+/// See also [account].
+class AccountFamily extends Family<AsyncValue<ProfileResponse>> {
+  /// See also [account].
+  const AccountFamily();
 
-  /// See also [accountProvider].
-  AccountProviderProvider call(
+  /// See also [account].
+  AccountProvider call(
     int id,
   ) {
-    return AccountProviderProvider(
+    return AccountProvider(
       id,
     );
   }
 
   @override
-  AccountProviderProvider getProviderOverride(
-    covariant AccountProviderProvider provider,
+  AccountProvider getProviderOverride(
+    covariant AccountProvider provider,
   ) {
     return call(
       provider.id,
@@ -85,33 +85,31 @@ class AccountProviderFamily extends Family<AsyncValue<ProfileResponse>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'accountProviderProvider';
+  String? get name => r'accountProvider';
 }
 
-/// See also [accountProvider].
-class AccountProviderProvider
-    extends AutoDisposeFutureProvider<ProfileResponse> {
-  /// See also [accountProvider].
-  AccountProviderProvider(
+/// See also [account].
+class AccountProvider extends AutoDisposeFutureProvider<ProfileResponse> {
+  /// See also [account].
+  AccountProvider(
     int id,
   ) : this._internal(
-          (ref) => accountProvider(
-            ref as AccountProviderRef,
+          (ref) => account(
+            ref as AccountRef,
             id,
           ),
-          from: accountProviderProvider,
-          name: r'accountProviderProvider',
+          from: accountProvider,
+          name: r'accountProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$accountProviderHash,
-          dependencies: AccountProviderFamily._dependencies,
-          allTransitiveDependencies:
-              AccountProviderFamily._allTransitiveDependencies,
+                  : _$accountHash,
+          dependencies: AccountFamily._dependencies,
+          allTransitiveDependencies: AccountFamily._allTransitiveDependencies,
           id: id,
         );
 
-  AccountProviderProvider._internal(
+  AccountProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -125,12 +123,12 @@ class AccountProviderProvider
 
   @override
   Override overrideWith(
-    FutureOr<ProfileResponse> Function(AccountProviderRef provider) create,
+    FutureOr<ProfileResponse> Function(AccountRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: AccountProviderProvider._internal(
-        (ref) => create(ref as AccountProviderRef),
+      override: AccountProvider._internal(
+        (ref) => create(ref as AccountRef),
         from: from,
         name: null,
         dependencies: null,
@@ -143,12 +141,12 @@ class AccountProviderProvider
 
   @override
   AutoDisposeFutureProviderElement<ProfileResponse> createElement() {
-    return _AccountProviderProviderElement(this);
+    return _AccountProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AccountProviderProvider && other.id == id;
+    return other is AccountProvider && other.id == id;
   }
 
   @override
@@ -162,44 +160,42 @@ class AccountProviderProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin AccountProviderRef on AutoDisposeFutureProviderRef<ProfileResponse> {
+mixin AccountRef on AutoDisposeFutureProviderRef<ProfileResponse> {
   /// The parameter `id` of this provider.
   int get id;
 }
 
-class _AccountProviderProviderElement
-    extends AutoDisposeFutureProviderElement<ProfileResponse>
-    with AccountProviderRef {
-  _AccountProviderProviderElement(super.provider);
+class _AccountProviderElement
+    extends AutoDisposeFutureProviderElement<ProfileResponse> with AccountRef {
+  _AccountProviderElement(super.provider);
 
   @override
-  int get id => (origin as AccountProviderProvider).id;
+  int get id => (origin as AccountProvider).id;
 }
 
-String _$updateAccountProviderHash() =>
-    r'55fc6845ab1c3e5db51ab7d9d474b9d8a997ac74';
+String _$updateAccountHash() => r'0f349439959b170ab34e7e032e2fa6f4c184dad9';
 
-/// See also [updateAccountProvider].
-@ProviderFor(updateAccountProvider)
-const updateAccountProviderProvider = UpdateAccountProviderFamily();
+/// See also [updateAccount].
+@ProviderFor(updateAccount)
+const updateAccountProvider = UpdateAccountFamily();
 
-/// See also [updateAccountProvider].
-class UpdateAccountProviderFamily extends Family<AsyncValue<ProfileResponse>> {
-  /// See also [updateAccountProvider].
-  const UpdateAccountProviderFamily();
+/// See also [updateAccount].
+class UpdateAccountFamily extends Family<AsyncValue<ProfileResponse>> {
+  /// See also [updateAccount].
+  const UpdateAccountFamily();
 
-  /// See also [updateAccountProvider].
-  UpdateAccountProviderProvider call(
+  /// See also [updateAccount].
+  UpdateAccountProvider call(
     UserProfile updatedProfile,
   ) {
-    return UpdateAccountProviderProvider(
+    return UpdateAccountProvider(
       updatedProfile,
     );
   }
 
   @override
-  UpdateAccountProviderProvider getProviderOverride(
-    covariant UpdateAccountProviderProvider provider,
+  UpdateAccountProvider getProviderOverride(
+    covariant UpdateAccountProvider provider,
   ) {
     return call(
       provider.updatedProfile,
@@ -218,33 +214,32 @@ class UpdateAccountProviderFamily extends Family<AsyncValue<ProfileResponse>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'updateAccountProviderProvider';
+  String? get name => r'updateAccountProvider';
 }
 
-/// See also [updateAccountProvider].
-class UpdateAccountProviderProvider
-    extends AutoDisposeFutureProvider<ProfileResponse> {
-  /// See also [updateAccountProvider].
-  UpdateAccountProviderProvider(
+/// See also [updateAccount].
+class UpdateAccountProvider extends AutoDisposeFutureProvider<ProfileResponse> {
+  /// See also [updateAccount].
+  UpdateAccountProvider(
     UserProfile updatedProfile,
   ) : this._internal(
-          (ref) => updateAccountProvider(
-            ref as UpdateAccountProviderRef,
+          (ref) => updateAccount(
+            ref as UpdateAccountRef,
             updatedProfile,
           ),
-          from: updateAccountProviderProvider,
-          name: r'updateAccountProviderProvider',
+          from: updateAccountProvider,
+          name: r'updateAccountProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$updateAccountProviderHash,
-          dependencies: UpdateAccountProviderFamily._dependencies,
+                  : _$updateAccountHash,
+          dependencies: UpdateAccountFamily._dependencies,
           allTransitiveDependencies:
-              UpdateAccountProviderFamily._allTransitiveDependencies,
+              UpdateAccountFamily._allTransitiveDependencies,
           updatedProfile: updatedProfile,
         );
 
-  UpdateAccountProviderProvider._internal(
+  UpdateAccountProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -258,13 +253,12 @@ class UpdateAccountProviderProvider
 
   @override
   Override overrideWith(
-    FutureOr<ProfileResponse> Function(UpdateAccountProviderRef provider)
-        create,
+    FutureOr<ProfileResponse> Function(UpdateAccountRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: UpdateAccountProviderProvider._internal(
-        (ref) => create(ref as UpdateAccountProviderRef),
+      override: UpdateAccountProvider._internal(
+        (ref) => create(ref as UpdateAccountRef),
         from: from,
         name: null,
         dependencies: null,
@@ -277,12 +271,12 @@ class UpdateAccountProviderProvider
 
   @override
   AutoDisposeFutureProviderElement<ProfileResponse> createElement() {
-    return _UpdateAccountProviderProviderElement(this);
+    return _UpdateAccountProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is UpdateAccountProviderProvider &&
+    return other is UpdateAccountProvider &&
         other.updatedProfile == updatedProfile;
   }
 
@@ -297,20 +291,19 @@ class UpdateAccountProviderProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin UpdateAccountProviderRef
-    on AutoDisposeFutureProviderRef<ProfileResponse> {
+mixin UpdateAccountRef on AutoDisposeFutureProviderRef<ProfileResponse> {
   /// The parameter `updatedProfile` of this provider.
   UserProfile get updatedProfile;
 }
 
-class _UpdateAccountProviderProviderElement
+class _UpdateAccountProviderElement
     extends AutoDisposeFutureProviderElement<ProfileResponse>
-    with UpdateAccountProviderRef {
-  _UpdateAccountProviderProviderElement(super.provider);
+    with UpdateAccountRef {
+  _UpdateAccountProviderElement(super.provider);
 
   @override
   UserProfile get updatedProfile =>
-      (origin as UpdateAccountProviderProvider).updatedProfile;
+      (origin as UpdateAccountProvider).updatedProfile;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

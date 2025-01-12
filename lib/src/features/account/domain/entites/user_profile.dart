@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_profile.freezed.dart';
 part 'user_profile.g.dart';
 
-@Freezed(toJson: true, fromJson: true)
+@Freezed(toJson: true, fromJson: true, map: FreezedMapOptions())
 class UserProfile with _$UserProfile {
   @JsonSerializable(explicitToJson: true)
   const factory UserProfile({
@@ -14,13 +14,17 @@ class UserProfile with _$UserProfile {
     required String lastname,
     required String email,
     required String phone,
-    @JsonKey(name: 'b_firstname') String? bFirstname,
-    @JsonKey(name: 'b_lastname') String? bLastname,
-    @JsonKey(name: 'b_address') String? bAddress,
-    @JsonKey(name: 'b_city') String? bCity,
-    @JsonKey(name: 'b_state') String? bState,
-    @JsonKey(name: 'b_country') String? bCountry,
-    @JsonKey(name: 'b_phone') String? bPhone,
+    required String password,
+    @JsonKey(name: 'b_address') String? billingAddress,
+    @JsonKey(name: 's_address') String? shippingAddress,
+    @JsonKey(name: 'b_city') String? bllingCity,
+    @JsonKey(name: 's_city') String? shippingCity,
+    @JsonKey(name: 'b_state') String? billingStrete,
+    @JsonKey(name: 's_state') String? shippingStrete,
+    @JsonKey(name: 'b_county') String? billingCountry,
+    @JsonKey(name: 's_county') String? shippingCountry,
+    @JsonKey(name: 'b_country') String? billingBuildingNumber,
+    @JsonKey(name: 's_country') String? shippingBuildingNumber,
     @JsonKey(name: 'profile_name') String? profileName,
     @JsonKey(name: 'points') @Default(0) int points,
   }) = _UserProfile;

@@ -1,30 +1,26 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
+import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/add_new_address_book_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/address_book_card_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
-class AddressBookWidget extends StatefulWidget {
-  const AddressBookWidget({super.key});
+class AddressBookWidget extends ConsumerWidget {
+  AddressBookWidget({super.key});
 
-  @override
-  _AddressBookWidgetState createState() => _AddressBookWidgetState();
-}
-
-class _AddressBookWidgetState extends State<AddressBookWidget> {
   int selectedIndex = -1;
+
   TextEditingController newLocationController = TextEditingController();
 
-  void _onCardTap(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
-
+  // void _onCardTap(int index) {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final accountSyncData = ref.watch(accountControllerProvider);
     return GestureDetector(
       onTap: () {
         // Dismiss keyboard when tapping outside
@@ -52,7 +48,7 @@ class _AddressBookWidgetState extends State<AddressBookWidget> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 10),
+                        vertical: 40, horizontal: 12),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -67,25 +63,12 @@ class _AddressBookWidgetState extends State<AddressBookWidget> {
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,
                                   )).centered(),
-                          ...List.generate(3, (index) {
-                            return AddressBookCardWidget(
-                              title: "title $index",
-                              isSelected: selectedIndex == index,
-                              onTap: () => _onCardTap(index),
-                            );
-                          }),
-                          28.verticalSpace,
-                          CustomButtonWidget(
-                            text: "add_new_location",
-                            backgroundColor: AppColors.green,
-                            onTap: () {
-                              Navigator.of(context).pop(); // Close dialog
-                            },
-                            isFiled: true,
-                            height: 50,
-                            width: 220,
-                            radius: 8,
-                          ).centered(),
+                          10.verticalSpace,
+                          _buildShippingLocationWidget(
+                              context, accountSyncData.value!.userProfile),
+                          15.verticalSpace,
+                          _buildBillingLocationWidget(
+                              context, accountSyncData.value!.userProfile),
                         ],
                       ),
                     ),
@@ -110,4 +93,84 @@ Future<void> showAddressBookDialog({
       return AddressBookWidget();
     },
   );
+}
+
+Widget _buildShippingLocationWidget(
+    BuildContext context, UserProfile userProfile) {
+  return (userProfile.shippingAddress!.isEmpty)
+      ? CustomButtonWidget(
+          text: "add_shipping_location",
+          backgroundColor: AppColors.green,
+          onTap: () {
+            showAddNewAddressBookDialog(context: context, billMode: false);
+          },
+          isFiled: true,
+          height: 50,
+          width: 230,
+          radius: 8,
+          topPading: 20,
+        ).centered()
+      : Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(context.tr("shipping_location"),
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: AppColors.black900,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    )),
+            4.verticalSpace,
+            AddressBookCardWidget(
+              title: userProfile.shippingAddress!,
+              isSelected: true,
+              onTap: () {
+                showAddNewAddressBookDialog(
+                    context: context,
+                    userProfile: userProfile,
+                    billMode: false,
+                    isEdit: true);
+              },
+            ),
+          ],
+        );
+}
+
+Widget _buildBillingLocationWidget(
+    BuildContext context, UserProfile userProfile) {
+  return (userProfile.billingAddress!.isEmpty)
+      ? CustomButtonWidget(
+          text: "add_billing_location",
+          backgroundColor: AppColors.green,
+          onTap: () {
+            showAddNewAddressBookDialog(context: context, billMode: true);
+          },
+          isFiled: true,
+          height: 50,
+          width: 230,
+          radius: 8,
+          topPading: 10,
+        ).centered()
+      : Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(context.tr("billing_location"),
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: AppColors.black900,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    )),
+            4.verticalSpace,
+            AddressBookCardWidget(
+              title: userProfile.billingAddress!,
+              isSelected: true,
+              onTap: () {
+                showAddNewAddressBookDialog(
+                    context: context,
+                    userProfile: userProfile,
+                    billMode: true,
+                    isEdit: true);
+              },
+            ),
+          ],
+        );
 }

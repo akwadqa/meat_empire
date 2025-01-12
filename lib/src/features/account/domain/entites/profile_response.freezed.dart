@@ -14,14 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) {
-  return _ProfileResponse.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ProfileResponse {
-  @JsonKey(name: 'profile')
-  UserProfile get userProfile => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  UserProfile get userProfile =>
+      throw _privateConstructorUsedError; // Custom parsing logic will handle this
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
@@ -39,7 +36,7 @@ abstract class $ProfileResponseCopyWith<$Res> {
       _$ProfileResponseCopyWithImpl<$Res, ProfileResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'profile') UserProfile userProfile,
+      {@JsonKey(ignore: true) UserProfile userProfile,
       String message,
       bool success});
 
@@ -101,7 +98,7 @@ abstract class _$$ProfileResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'profile') UserProfile userProfile,
+      {@JsonKey(ignore: true) UserProfile userProfile,
       String message,
       bool success});
 
@@ -144,19 +141,17 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
+
 class _$ProfileResponseImpl implements _ProfileResponse {
   const _$ProfileResponseImpl(
-      {@JsonKey(name: 'profile') required this.userProfile,
+      {@JsonKey(ignore: true) required this.userProfile,
       required this.message,
       required this.success});
 
-  factory _$ProfileResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProfileResponseImplFromJson(json);
-
   @override
-  @JsonKey(name: 'profile')
+  @JsonKey(ignore: true)
   final UserProfile userProfile;
+// Custom parsing logic will handle this
   @override
   final String message;
   @override
@@ -178,7 +173,6 @@ class _$ProfileResponseImpl implements _ProfileResponse {
             (identical(other.success, success) || other.success == success));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userProfile, message, success);
 
@@ -194,16 +188,13 @@ class _$ProfileResponseImpl implements _ProfileResponse {
 
 abstract class _ProfileResponse implements ProfileResponse {
   const factory _ProfileResponse(
-      {@JsonKey(name: 'profile') required final UserProfile userProfile,
+      {@JsonKey(ignore: true) required final UserProfile userProfile,
       required final String message,
       required final bool success}) = _$ProfileResponseImpl;
 
-  factory _ProfileResponse.fromJson(Map<String, dynamic> json) =
-      _$ProfileResponseImpl.fromJson;
-
   @override
-  @JsonKey(name: 'profile')
-  UserProfile get userProfile;
+  @JsonKey(ignore: true)
+  UserProfile get userProfile; // Custom parsing logic will handle this
   @override
   String get message;
   @override
