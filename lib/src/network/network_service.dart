@@ -103,7 +103,7 @@ class DioAppInterceptors extends Interceptor {
     if (token != null) {
       options.headers['Authorization'] = token;
     }
-    options.headers['Accept-Language'] = languageCode;
+    options.queryParameters['sl'] = languageCode;
     super.onRequest(options, handler);
   }
 

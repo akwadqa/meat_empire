@@ -1,0 +1,72 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'user_data.freezed.dart';
+part 'user_data.g.dart';
+
+@freezed
+class UserData with _$UserData {
+  factory UserData({
+    String? userId,
+    String? status,
+    String? userType,
+    String? userLogin,
+    String? referer,
+    String? isRoot,
+    String? companyId,
+    String? lastActivity,
+    String? timestamp,
+    String? password,
+    String? salt,
+    String? firstname,
+    String? lastname,
+    String? company,
+    String? email,
+    String? phone,
+    String? fax,
+    String? url,
+    String? taxExempt,
+    String? langCode,
+    String? birthday,
+    String? purchaseTimestampFrom,
+    String? purchaseTimestampTo,
+    String? responsibleEmail,
+    String? passwordChangeTimestamp,
+    String? apiKey,
+    String? helpdeskUserId,
+    String? janrainIdentifier,
+    String? profileId,
+    String? profileType,
+    String? bFirstname,
+    String? bLastname,
+    String? bAddress,
+    String? bAddress2,
+    String? bCity,
+    String? bCounty,
+    String? bState,
+    String? bCountry,
+    String? bZipcode,
+    String? bPhone,
+    String? sFirstname,
+    String? sLastname,
+    String? sAddress,
+    String? sAddress2,
+    String? sCity,
+    String? sCounty,
+    String? sState,
+    String? sCountry,
+    String? sZipcode,
+    String? sPhone,
+    String? sAddressType,
+    String? profileName,
+    String? profileUpdateTimestamp,
+    List<dynamic>? fields,
+    String? bCountryDescr,
+    String? sCountryDescr,
+    String? bStateDescr,
+    String? sStateDescr,
+    int? points,
+  }) = _UserData;
+
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
+}

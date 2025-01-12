@@ -50,9 +50,6 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
     final homeAsync = ref.watch(homeProvider);
 
     return Scaffold(
-      // appBar: widget.category != null
-      //     ? AppBar(title: Text(widget.category!.category))
-      //     : null,
       body: homeAsync.when(
         data: (home) => _buildCategoriesLayout(context, ref, home),
         loading: () => const FadeCircleLoadingIndicator(),
