@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 import '../../../../theme/app_colors.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    super.key,
-    required this.onTap,
-    required this.label,
-    required this.image,
-  });
+  const CategoryItem(
+      {super.key,
+      required this.onTap,
+      required this.label,
+      required this.image,
+      this.height = 74,
+      this.width = 74,
+      this.withBorder = false});
 
   final VoidCallback? onTap;
   final String label;
   final Widget image;
+  final double height;
+  final double width;
+  final bool withBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +36,16 @@ class CategoryItem extends StatelessWidget {
                   blurRadius: 6,
                 ),
               ],
+              border: withBorder
+                  ? Border.all(color: AppColors.newRed, width: 1)
+                  : null,
             ),
-            padding: const EdgeInsets.all(16),
-            height: 74,
-            width: 74,
+            padding: EdgeInsets.all(height >= 74 ? 16 : 8),
+            height: height,
+            width: width,
             child: image,
           ),
-          Spacer(),
+          SizedBox(height: 14),
           Text(
             label,
             style: const TextStyle(

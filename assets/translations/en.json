@@ -56,5 +56,6 @@
     "my_orders": "My orders",
     "welcome_message": "Welcome in the",
     "access_auth_message": "Log in to access your account information\nOr create an account if you don't have one.",
-    "add_new_location": "Add new Location"
+    "add_new_location": "Add new Location",
+    "categories" : "Categories"
 }

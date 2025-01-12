@@ -19,17 +19,17 @@ class CategoriesView extends StatelessWidget {
       height: 110,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
         itemBuilder: (context, index) {
           final isAllCategory = index == 0;
           return CategoryItem(
             onTap: isAllCategory
-                ? (){
-                  context.pushRoute(
-                        CategoriesRoute());
-                }
+                ? () {
+                    context.router.replaceAll([CategoriesRoute()]);
+                  }
                 : () {
-                    context.pushRoute(
-                        CategoriesRoute(category: categories[index - 1]));
+                    context.router.replaceAll(
+                        [CategoriesRoute(category: categories[index - 1])]);
                   },
             label: isAllCategory
                 ? context.tr('all')

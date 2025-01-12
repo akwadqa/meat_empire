@@ -8,10 +8,21 @@ import 'package:meat_empire/src/features/search/presentation/search_screen/searc
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../gen/assets.gen.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../home/data/home_repository.dart';
+
+part 'categories_screen.g.dart';
+
+@riverpod
+class SelectedCategory extends _$SelectedCategory {
+  @override
+  String build() => '';
+
+  void setCategory(String categoryId) => state = categoryId;
+}
 
 @RoutePage()
 class CategoriesScreen extends ConsumerStatefulWidget {
@@ -24,77 +35,91 @@ class CategoriesScreen extends ConsumerStatefulWidget {
 }
 
 class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
-  String _categoryId = '';
-
   @override
   void initState() {
-    _categoryId = widget.category?.categoryId ?? '';
+    Future(() {
+      ref
+          .read(selectedCategoryProvider.notifier)
+          .setCategory(widget.category?.categoryId ?? '');
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final homeAsync = ref.watch(homeProvider);
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.category?.category ?? ''),
-      ),
+      // appBar: widget.category != null
+      //     ? AppBar(title: Text(widget.category!.category))
+      //     : null,
       body: homeAsync.when(
-          data: (home) {
-            final categories = (home.layout
-                    .where((e) => e.type == 'categories')
-                    .first
-                    .data
-                    .toList() as List<Object>)
-                .whereType<Category>()
-                .toList();
-            return Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.offWhite,
-                        border: Border.all(color: AppColors.lightGray02)),
-                    child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        final isAllCategory = index == 0;
-                        return SizedBox(
-                          height: 100,
-                          child: CategoryItem(
-                            onTap: isAllCategory
-                                ? () {
-                                    setState(() {
-                                      _categoryId = '';
-                                    });
-                                  }
-                                : () {
-                                    setState(() {
-                                      _categoryId =
-                                          categories[index - 1].categoryId;
-                                    });
-                                  },
-                            label: isAllCategory
-                                ? context.tr('all')
-                                : categories[index - 1].category,
-                            image: isAllCategory
-                                ? Assets.icons.categoriesIcon.svg()
-                                : AppCachedNetworkImage(
-                                    imageUrl: categories[index - 1].imageUrl,
-                                  ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (_, __) => const SizedBox(height: 10),
-                      itemCount: categories.length + 1,
-                    ),
-                  ),
-                ),
-                Expanded(flex: 4, child: SearchScreen(categoryId: _categoryId))
-              ],
+        data: (home) => _buildCategoriesLayout(context, ref, home),
+        loading: () => const FadeCircleLoadingIndicator(),
+        error: (_, __) => const AppErrorWidget(),
+      ),
+    );
+  }
+
+  Widget _buildCategoriesLayout(
+      BuildContext context, WidgetRef ref, dynamic home) {
+    final categories = (home.layout
+            .firstWhere((e) => e.type == 'categories')
+            .data as List<Object>)
+        .whereType<Category>()
+        .toList();
+
+    return Row(
+      children: [
+        _buildCategoriesList(context, ref, categories),
+        Expanded(
+          flex: 4,
+          child: Consumer(
+            builder: (context, ref, _) {
+              final selectedCategoryId = ref.watch(selectedCategoryProvider);
+              return SearchScreen(categoryId: selectedCategoryId);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCategoriesList(
+      BuildContext context, WidgetRef ref, List<Category> categories) {
+    final selectedCategoryId = ref.watch(selectedCategoryProvider);
+
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.offWhite,
+          border: Border.all(color: AppColors.lightGray02),
+        ),
+        child: ListView.separated(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+          itemCount: categories.length + 1,
+          itemBuilder: (context, index) {
+            final isAllCategory = index == 0;
+            final category = isAllCategory ? null : categories[index - 1];
+
+            return CategoryItem(
+              withBorder: isAllCategory
+                  ? selectedCategoryId.isEmpty
+                  : selectedCategoryId == category!.categoryId,
+              height: 45,
+              width: 45,
+              onTap: () => ref
+                  .read(selectedCategoryProvider.notifier)
+                  .setCategory(isAllCategory ? '' : category!.categoryId),
+              label: isAllCategory ? tr('all') : category!.category,
+              image: isAllCategory
+                  ? Assets.icons.categoriesIcon.svg()
+                  : AppCachedNetworkImage(imageUrl: category!.imageUrl),
             );
           },
-          loading: () => FadeCircleLoadingIndicator(),
-          error: (erro, st) => AppErrorWidget()),
+          separatorBuilder: (_, __) => const SizedBox(height: 10),
+        ),
+      ),
     );
   }
 }

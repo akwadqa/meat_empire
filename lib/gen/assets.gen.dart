@@ -30,6 +30,10 @@ class $AssetsIconsGen {
   SvgGenImage get categoriesIcon =>
       const SvgGenImage('assets/icons/categories_icon.svg');
 
+  /// File path: assets/icons/categories_search_icon.svg
+  SvgGenImage get categoriesSearchIcon =>
+      const SvgGenImage('assets/icons/categories_search_icon.svg');
+
   /// File path: assets/icons/circule_person_icon.svg
   SvgGenImage get circulePersonIcon =>
       const SvgGenImage('assets/icons/circule_person_icon.svg');
@@ -75,6 +79,7 @@ class $AssetsIconsGen {
         cartIcon,
         cashStackIcon,
         categoriesIcon,
+        categoriesSearchIcon,
         circulePersonIcon,
         deleteIcon,
         homeIcon,

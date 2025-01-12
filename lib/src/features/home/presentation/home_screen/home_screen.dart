@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
+import 'package:meat_empire/src/features/categories/presentation/categories_screen/categories_screen.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import '../../../../shared_widgets/app_logo.dart';
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
       extendBody: true,
       routes: [
         LayoutRoute(),
-        SearchRoute(),
+        CategoriesRoute(),
         CartRoute(),
         MainAccountRoute(),
       ],
@@ -115,7 +116,7 @@ class HomeScreen extends StatelessWidget {
   Widget _buildAppBarTitle(BuildContext context) {
     final activeIndex = context.tabsRouter.activeIndex;
     final titleKey = activeIndex == 1
-        ? 'search'
+        ? 'categories'
         : activeIndex == 2
             ? 'myCart'
             : null;
@@ -144,8 +145,8 @@ class HomeScreen extends StatelessWidget {
         context,
         tabsRouter,
         index: 1,
-        icon: Assets.icons.searchIcon,
-        labelKey: 'search',
+        icon: Assets.icons.categoriesSearchIcon,
+        labelKey: 'categories',
       ),
       _buildBottomNavItem(
         context,

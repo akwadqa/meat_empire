@@ -69,6 +69,7 @@ class _ProductImage extends StatelessWidget {
         ((listPrice - basePrice) / listPrice) * 100;
 
     return Stack(
+      fit: StackFit.expand,
       children: [
         AppCachedNetworkImage(
           imageUrl: product.imageUrl,
