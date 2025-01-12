@@ -67,69 +67,8 @@ class AddressBookWidget extends ConsumerWidget {
                           _buildShippingLocationWidget(
                               context, accountSyncData.value!.userProfile),
                           15.verticalSpace,
-
                           _buildBillingLocationWidget(
                               context, accountSyncData.value!.userProfile),
-                          // if (addressBook
-                          //     .value!.userProfile.billingAddress!.isNotEmpty)
-                          //   Column(
-                          //     crossAxisAlignment: CrossAxisAlignment.start,
-                          //     children: [
-                          //       Text(context.tr("billing_location"),
-                          //           style: Theme.of(context)
-                          //               .textTheme
-                          //               .labelSmall!
-                          //               .copyWith(
-                          //                 color: AppColors.black900,
-                          //                 fontSize: 13,
-                          //                 fontWeight: FontWeight.w600,
-                          //               )),
-                          //       4.verticalSpace,
-                          //       AddressBookCardWidget(
-                          //         title: addressBook
-                          //             .value!.userProfile.billingAddress!,
-                          //         isSelected: true,
-                          //         onTap: () {
-                          //           showAddNewAddressBookDialog(
-                          //               context: context,
-                          //               userProfile:
-                          //                   addressBook.value!.userProfile,
-                          //               billMode: true,
-                          //               isEdit: true);
-                          //         },
-                          //       ),
-                          //     ],
-                          //   ),
-                          // 28.verticalSpace,
-                          // if (addressBook
-                          //     .value!.userProfile.shippingAddress!.isEmpty)
-                          //   CustomButtonWidget(
-                          //     text: "add_shipping_location",
-                          //     backgroundColor: AppColors.green,
-                          //     onTap: () {
-                          //       showAddNewAddressBookDialog(
-                          //           context: context, billMode: false);
-                          //     },
-                          //     isFiled: true,
-                          //     height: 50,
-                          //     width: 220,
-                          //     radius: 8,
-                          //   ).centered(),
-                          // 28.verticalSpace,
-                          // if (addressBook
-                          //     .value!.userProfile.billingAddress!.isEmpty)
-                          //   CustomButtonWidget(
-                          //     text: "add_billing_location",
-                          //     backgroundColor: AppColors.green,
-                          //     onTap: () {
-                          //       showAddNewAddressBookDialog(
-                          //           context: context, billMode: true);
-                          //     },
-                          //     isFiled: true,
-                          //     height: 50,
-                          //     width: 220,
-                          //     radius: 8,
-                          //   ).centered(),
                         ],
                       ),
                     ),
@@ -167,8 +106,9 @@ Widget _buildShippingLocationWidget(
           },
           isFiled: true,
           height: 50,
-          width: 220,
+          width: 230,
           radius: 8,
+          topPading: 20,
         ).centered()
       : Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -206,8 +146,9 @@ Widget _buildBillingLocationWidget(
           },
           isFiled: true,
           height: 50,
-          width: 220,
+          width: 230,
           radius: 8,
+          topPading: 10,
         ).centered()
       : Column(
           crossAxisAlignment: CrossAxisAlignment.start,
