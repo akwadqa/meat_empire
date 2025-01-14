@@ -16,5 +16,4 @@ _$OrdersEntityImpl _$$OrdersEntityImplFromJson(Map<String, dynamic> json) =>
       products: (json['products'] as List<dynamic>)
           .map((e) => OrderProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
-      success: json['success'] as bool,
     );

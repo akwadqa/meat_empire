@@ -72,7 +72,7 @@
     "billing_location": "عنوان الدفع",
     "processing": "قيد المعالجة",
     "delivered": "مستلمة",
-    "caceled": "ملغاة",
+    "canceled": "ملغاة",
     "order_date": "تاريخ الطلب: {}",
     "order_number": "رقم الطلب: {}",
     "order_cost": "تكلفة الطلب: {} ر.ق",
