@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:meat_empire/src/features/my_orders/presentation/page/my_order_screen.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 
 @AutoRouterConfig()
@@ -14,6 +15,7 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: ProductDetailsRoute.page),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: SignupRoute.page),
+        AutoRoute(page: MyOrdersRoute.page),
         AutoRoute(page: CategoriesRoute.page, children: [
           AutoRoute(page: SearchRoute.page),
         ])

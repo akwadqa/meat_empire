@@ -1,28 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'network_service.dart';
+part of 'my_orders_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'282ee9b0d7ff225dace01e43164ea67cda3549ce';
+String _$myOrdersRepositoryHash() =>
+    r'dffcb2a81f2197dd5c608a8a8592fa9e97974e06';
 
-/// See also [dio].
-@ProviderFor(dio)
-final dioProvider = Provider<Dio>.internal(
-  dio,
-  name: r'dioProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$dioHash,
+/// See also [myOrdersRepository].
+@ProviderFor(myOrdersRepository)
+final myOrdersRepositoryProvider = Provider<MyOrdersRepository>.internal(
+  myOrdersRepository,
+  name: r'myOrdersRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$myOrdersRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef DioRef = ProviderRef<Dio>;
-String _$networkServiceHash() => r'7aecc727f9e648c49709ba09cd80c82e38d00614';
+typedef MyOrdersRepositoryRef = ProviderRef<MyOrdersRepository>;
+String _$myOrdersHash() => r'df9ed67c6360d464ed5e2843350a77df34a7df67';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -45,30 +47,30 @@ class _SystemHash {
   }
 }
 
-/// See also [networkService].
-@ProviderFor(networkService)
-const networkServiceProvider = NetworkServiceFamily();
+/// See also [myOrders].
+@ProviderFor(myOrders)
+const myOrdersProvider = MyOrdersFamily();
 
-/// See also [networkService].
-class NetworkServiceFamily extends Family<NetworkService> {
-  /// See also [networkService].
-  const NetworkServiceFamily();
+/// See also [myOrders].
+class MyOrdersFamily extends Family<AsyncValue<OrdersResponse>> {
+  /// See also [myOrders].
+  const MyOrdersFamily();
 
-  /// See also [networkService].
-  NetworkServiceProvider call([
-    Dio? dio,
-  ]) {
-    return NetworkServiceProvider(
-      dio,
+  /// See also [myOrders].
+  MyOrdersProvider call(
+    String status,
+  ) {
+    return MyOrdersProvider(
+      status,
     );
   }
 
   @override
-  NetworkServiceProvider getProviderOverride(
-    covariant NetworkServiceProvider provider,
+  MyOrdersProvider getProviderOverride(
+    covariant MyOrdersProvider provider,
   ) {
     return call(
-      provider.dio,
+      provider.status,
     );
   }
 
@@ -84,75 +86,74 @@ class NetworkServiceFamily extends Family<NetworkService> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'networkServiceProvider';
+  String? get name => r'myOrdersProvider';
 }
 
-/// See also [networkService].
-class NetworkServiceProvider extends Provider<NetworkService> {
-  /// See also [networkService].
-  NetworkServiceProvider([
-    Dio? dio,
-  ]) : this._internal(
-          (ref) => networkService(
-            ref as NetworkServiceRef,
-            dio,
+/// See also [myOrders].
+class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
+  /// See also [myOrders].
+  MyOrdersProvider(
+    String status,
+  ) : this._internal(
+          (ref) => myOrders(
+            ref as MyOrdersRef,
+            status,
           ),
-          from: networkServiceProvider,
-          name: r'networkServiceProvider',
+          from: myOrdersProvider,
+          name: r'myOrdersProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$networkServiceHash,
-          dependencies: NetworkServiceFamily._dependencies,
-          allTransitiveDependencies:
-              NetworkServiceFamily._allTransitiveDependencies,
-          dio: dio,
+                  : _$myOrdersHash,
+          dependencies: MyOrdersFamily._dependencies,
+          allTransitiveDependencies: MyOrdersFamily._allTransitiveDependencies,
+          status: status,
         );
 
-  NetworkServiceProvider._internal(
+  MyOrdersProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.dio,
+    required this.status,
   }) : super.internal();
 
-  final Dio? dio;
+  final String status;
 
   @override
   Override overrideWith(
-    NetworkService Function(NetworkServiceRef provider) create,
+    FutureOr<OrdersResponse> Function(MyOrdersRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: NetworkServiceProvider._internal(
-        (ref) => create(ref as NetworkServiceRef),
+      override: MyOrdersProvider._internal(
+        (ref) => create(ref as MyOrdersRef),
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        dio: dio,
+        status: status,
       ),
     );
   }
 
   @override
-  ProviderElement<NetworkService> createElement() {
-    return _NetworkServiceProviderElement(this);
+  AutoDisposeFutureProviderElement<OrdersResponse> createElement() {
+    return _MyOrdersProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is NetworkServiceProvider && other.dio == dio;
+    return other is MyOrdersProvider && other.status == status;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, dio.hashCode);
+    hash = _SystemHash.combine(hash, status.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -160,17 +161,17 @@ class NetworkServiceProvider extends Provider<NetworkService> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin NetworkServiceRef on ProviderRef<NetworkService> {
-  /// The parameter `dio` of this provider.
-  Dio? get dio;
+mixin MyOrdersRef on AutoDisposeFutureProviderRef<OrdersResponse> {
+  /// The parameter `status` of this provider.
+  String get status;
 }
 
-class _NetworkServiceProviderElement extends ProviderElement<NetworkService>
-    with NetworkServiceRef {
-  _NetworkServiceProviderElement(super.provider);
+class _MyOrdersProviderElement
+    extends AutoDisposeFutureProviderElement<OrdersResponse> with MyOrdersRef {
+  _MyOrdersProviderElement(super.provider);
 
   @override
-  Dio? get dio => (origin as NetworkServiceProvider).dio;
+  String get status => (origin as MyOrdersProvider).status;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -70,5 +70,11 @@
     "add_shipping_location": "إضافة عنوان الشحن",
     "shipping_location": "عنوان الشحن",
     "billing_location": "عنوان الدفع",
+    "processing": "قيد المعالجة",
+    "delivered": "مستلمة",
+    "caceled": "ملغاة",
+    "order_date": "تاريخ الطلب: {}",
+    "order_number": "رقم الطلب: {}",
+    "order_cost": "تكلفة الطلب: {} ر.ق",
     "add_billing_location": "إضافة عنوان الدفع"
 }
