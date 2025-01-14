@@ -11,6 +11,7 @@ import 'package:meat_empire/src/features/account/presentation/widgets/edit_accou
 import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/payment_information_widget.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
@@ -81,7 +82,9 @@ class AccountScreen extends ConsumerWidget {
           AccountCardsWidget(
             title: "my_orders",
             icon: Assets.icons.cardChecklistIcon.svg(),
-            onTap: () {},
+            onTap: () {
+              context.navigateTo(MyOrdersRoute());
+            },
           ),
           AccountCardsWidget(
             title: "change_Language",

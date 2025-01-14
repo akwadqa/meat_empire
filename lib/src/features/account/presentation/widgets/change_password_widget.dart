@@ -198,7 +198,7 @@ Future<void> showChangePasswordDialog({
                                     builder: (context, ref, child) {
                                       final data =
                                           ref.watch(accountControllerProvider);
-                                      if (data.value?.userProfile == false) {
+                                      if (data.value?.success == false) {
                                         showCustomDialog(
                                           context: context,
                                           title: data.value!.message,
@@ -209,6 +209,34 @@ Future<void> showChangePasswordDialog({
                                         );
                                         return SizedBox();
                                       } else {
+                                        ref.listen(accountControllerProvider,
+                                            (prev, next) {
+                                          if (next is AsyncData) {
+                                            context.maybePop().then((_) {
+                                              showCustomDialog(
+                                                  context: context,
+                                                  title: next.value!.message,
+                                                  icon: next.value!.success
+                                                      ? Icon(
+                                                          Icons.check_circle,
+                                                          color: Colors.green,
+                                                        )
+                                                      : Icon(
+                                                          Icons.warning,
+                                                          color: Colors.red,
+                                                        ));
+                                              // Future.delayed(Duration(seconds: 2))
+                                              //     .then((onValue) {
+                                              //   Navigator.pop(context);
+                                              // });
+                                            });
+                                          }
+                                        });
+                                        if (data is AsyncLoading) {
+                                          return Center(
+                                              child:
+                                                  CircularProgressIndicator());
+                                        }
                                         final hashedPassword = data
                                             .asData?.value.userProfile.password;
                                         return CustomButtonWidget(
@@ -218,43 +246,13 @@ Future<void> showChangePasswordDialog({
                                           onTap: () {
                                             if (formKey.currentState!
                                                 .validate()) {
-                                              ref.listen(
-                                                  accountControllerProvider,
-                                                  (prev, next) {
-                                                if (next is AsyncData) {
-                                                  context.maybePop().then((_) {
-                                                    showCustomDialog(
-                                                        context: context,
-                                                        title:
-                                                            next.value!.message,
-                                                        icon: next
-                                                                .value!.success
-                                                            ? Icon(
-                                                                Icons
-                                                                    .check_circle,
-                                                                color: Colors
-                                                                    .green,
-                                                              )
-                                                            : Icon(
-                                                                Icons.warning,
-                                                                color:
-                                                                    Colors.red,
-                                                              ));
-                                                    Future.delayed(Duration(
-                                                            seconds: 2))
-                                                        .then((onValue) {
-                                                      Navigator.pop(context);
-                                                    });
-                                                  });
-                                                }
-                                              });
                                               final isPasswordCorrect =
                                                   BCrypt.checkpw(
                                                       oldPasswordController
                                                           .text,
                                                       hashedPassword!);
 
-                                              if (!isPasswordCorrect) {
+                                              if (isPasswordCorrect) {
                                                 ref
                                                     .read(
                                                         accountControllerProvider

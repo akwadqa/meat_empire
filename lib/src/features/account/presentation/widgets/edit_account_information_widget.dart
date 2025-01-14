@@ -205,10 +205,10 @@ Future<void> showEditAccountInformationDialog({
                                                       Icons.warning,
                                                       color: Colors.red,
                                                     ));
-                                          Future.delayed(Duration(seconds: 2))
-                                              .then((onValue) {
-                                            Navigator.pop(context);
-                                          });
+                                          // Future.delayed(Duration(seconds: 2))
+                                          //     .then((onValue) {
+                                          //   Navigator.pop(context);
+                                          // });
                                         });
                                       }
                                     });

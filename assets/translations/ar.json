@@ -79,5 +79,11 @@
     "productsCost" : "تكلفة المنتجات",
     "shippingCost" : "تكلفة الشحن",
     "total" : "المجموع",
-    "orderCost" : "تكلفة الطلب"
+    "orderCost" : "تكلفة الطلب",
+    "processing": "قيد المعالجة",
+    "delivered": "مستلمة",
+    "caceled": "ملغاة",
+    "order_date": "تاريخ الطلب: {}",
+    "order_number": "رقم الطلب: {}",
+    "order_cost": "تكلفة الطلب: {} ر.ق"
 }
