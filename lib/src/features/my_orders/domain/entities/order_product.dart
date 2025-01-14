@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meat_empire/src/features/my_orders/domain/entities/orders_entity.dart';
 
 part 'order_product.freezed.dart';
 part 'order_product.g.dart';

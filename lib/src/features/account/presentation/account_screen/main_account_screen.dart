@@ -20,7 +20,7 @@ class MainAccountScreen extends ConsumerWidget {
     return Scaffold(
         extendBody: true,
         backgroundColor: AppColors.lightGray,
-        body: ref.watch(isAuthinticatedProvider)
+        body: !ref.watch(isAuthinticatedProvider)
             ? NotAuthMainAccountScreen()
             : asyncAccountData.when(
                 data: (data) {

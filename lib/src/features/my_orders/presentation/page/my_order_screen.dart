@@ -9,7 +9,7 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
 class MyOrdersScreen extends ConsumerStatefulWidget {
-  const MyOrdersScreen({Key? key}) : super(key: key);
+  const MyOrdersScreen({super.key});
 
   @override
   _MyOrdersScreenState createState() => _MyOrdersScreenState();
