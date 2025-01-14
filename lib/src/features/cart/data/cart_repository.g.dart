@@ -23,21 +23,5 @@ final cartRepositoryProvider = Provider<CartRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef CartRepositoryRef = ProviderRef<CartRepository>;
-String _$cartHash() => r'c85d7d7886bd4cd61dd818ac3959f79fc5d4620d';
-
-/// See also [cart].
-@ProviderFor(cart)
-final cartProvider = FutureProvider<CartResponse>.internal(
-  cart,
-  name: r'cartProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cartHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CartRef = FutureProviderRef<CartResponse>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

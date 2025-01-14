@@ -16,33 +16,40 @@ class CartRepository {
 
   const CartRepository(this._networkService);
 
-  Future<CartResponse> getCart() async {
-    final response = await _networkService.get(EndPoints.cartApi);
-    CartResponse cartResponse = CartResponse.fromJson(response.data);
+  Future<CartResponse> getCart() async => _processRequest(
+        () => _networkService.get(EndPoints.cartApi),
+      );
+
+  Future<CartResponse> addToCart(int amount, int productId) async =>
+      _processRequest(
+        () => _networkService.post(EndPoints.cartApi, {
+          'product_data': [
+            {'amount': amount, 'product_id': productId, 'product_options': []}
+          ]
+        }),
+      );
+
+  Future<CartResponse> updateItemInCart(int productId, int amount,
+          [int? itemId]) async =>
+      _processRequest(
+        () => _networkService.put('${EndPoints.cartApi}/1', {
+          'cart_product': [
+            {
+              'product_id': productId,
+              if (itemId != null) 'item_id': itemId,
+              'amount': amount
+            }
+          ]
+        }),
+      );
+
+  Future<CartResponse> _processRequest(
+      Future<dynamic> Function() request) async {
+    final response = await request();
+    final cartResponse = CartResponse.fromJson(response.data);
     if (cartResponse.success == true) {
       return cartResponse;
     }
     throw AppException(cartResponse.message);
   }
-
-  Future<CartResponse> addToCart(int amount, int productId) async {
-    final response = await _networkService.post(EndPoints.cartApi, {
-      "product_data": [
-        {"amount": amount, "product_id": productId, "product_options": [
-            ]
-        }
-      ]
-    });
-    CartResponse cartResponse = CartResponse.fromJson(response.data);
-    if (cartResponse.success == true) {
-      return cartResponse;
-    }
-    throw AppException(cartResponse.message);
-  }
-}
-
-@Riverpod(keepAlive: true)
-Future<CartResponse> cart(Ref ref) async {
-  final repository = ref.watch(cartRepositoryProvider);
-  return repository.getCart();
 }

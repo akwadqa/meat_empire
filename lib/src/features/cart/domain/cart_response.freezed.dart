@@ -23,7 +23,7 @@ mixin _$CartResponse {
   bool? get allowMultipleProfiles => throw _privateConstructorUsedError;
   List<UserProfile>? get userProfiles => throw _privateConstructorUsedError;
   Cart? get cart => throw _privateConstructorUsedError;
-  String? get totalProducts => throw _privateConstructorUsedError;
+  dynamic get totalProducts => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   bool? get success => throw _privateConstructorUsedError;
 
@@ -44,7 +44,7 @@ abstract class $CartResponseCopyWith<$Res> {
       {bool? allowMultipleProfiles,
       List<UserProfile>? userProfiles,
       Cart? cart,
-      String? totalProducts,
+      dynamic totalProducts,
       String? message,
       bool? success});
 
@@ -89,7 +89,7 @@ class _$CartResponseCopyWithImpl<$Res, $Val extends CartResponse>
       totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ abstract class _$$CartResponseImplCopyWith<$Res>
       {bool? allowMultipleProfiles,
       List<UserProfile>? userProfiles,
       Cart? cart,
-      String? totalProducts,
+      dynamic totalProducts,
       String? message,
       bool? success});
 
@@ -172,7 +172,7 @@ class __$$CartResponseImplCopyWithImpl<$Res>
       totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -215,7 +215,7 @@ class _$CartResponseImpl implements _CartResponse {
   @override
   final Cart? cart;
   @override
-  final String? totalProducts;
+  final dynamic totalProducts;
   @override
   final String? message;
   @override
@@ -236,8 +236,8 @@ class _$CartResponseImpl implements _CartResponse {
             const DeepCollectionEquality()
                 .equals(other._userProfiles, _userProfiles) &&
             (identical(other.cart, cart) || other.cart == cart) &&
-            (identical(other.totalProducts, totalProducts) ||
-                other.totalProducts == totalProducts) &&
+            const DeepCollectionEquality()
+                .equals(other.totalProducts, totalProducts) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.success, success) || other.success == success));
   }
@@ -249,7 +249,7 @@ class _$CartResponseImpl implements _CartResponse {
       allowMultipleProfiles,
       const DeepCollectionEquality().hash(_userProfiles),
       cart,
-      totalProducts,
+      const DeepCollectionEquality().hash(totalProducts),
       message,
       success);
 
@@ -267,7 +267,7 @@ abstract class _CartResponse implements CartResponse {
       {final bool? allowMultipleProfiles,
       final List<UserProfile>? userProfiles,
       final Cart? cart,
-      final String? totalProducts,
+      final dynamic totalProducts,
       final String? message,
       final bool? success}) = _$CartResponseImpl;
 
@@ -281,7 +281,7 @@ abstract class _CartResponse implements CartResponse {
   @override
   Cart? get cart;
   @override
-  String? get totalProducts;
+  dynamic get totalProducts;
   @override
   String? get message;
   @override

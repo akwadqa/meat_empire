@@ -10,7 +10,7 @@ abstract class AppColors {
       200: Color(0xFFEF9A9A),
       300: Color(0xFFE57373),
       400: Color(0xFFEF5350),
-      500: Color(0xFFFD4057), // Same as primary
+      500: Color(0xFFFD4057),
       600: Color(0xFFE53935),
       700: Color(0xFFD32F2F),
       800: Color(0xFFC62828),
@@ -31,8 +31,10 @@ abstract class AppColors {
   static const Color lightGray02 = Color(0xFFD9D9D9);
   static const Color gray02 = Color(0xFF888888);
   static const Color black800 = Color(0xFF444444);
-  static const Color mediumGray01 = Color(0xFF888888);
   static const Color stoneGray = Color(0xFF949494);
   static const Color offWhite = Color(0xFFF6F6F6);
   static const Color newRed = Color(0xFFD75966);
+  static const Color lightPeach = Color(0xFFFFF5F1);
+  static const Color dimGray = Color(0xFF555555);
+  static const Color grayishCharcoal = Color(0xFF595959);
 }

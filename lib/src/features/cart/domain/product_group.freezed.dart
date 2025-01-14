@@ -24,7 +24,7 @@ mixin _$ProductGroup {
   int? get companyId => throw _privateConstructorUsedError;
   String? get companyName => throw _privateConstructorUsedError;
   List<Shipping>? get shippings => throw _privateConstructorUsedError;
-  String? get selectedShippingId => throw _privateConstructorUsedError;
+  dynamic get selectedShippingId => throw _privateConstructorUsedError;
   dynamic get shippingCost => throw _privateConstructorUsedError;
   List<Product>? get products => throw _privateConstructorUsedError;
 
@@ -46,7 +46,7 @@ abstract class $ProductGroupCopyWith<$Res> {
       int? companyId,
       String? companyName,
       List<Shipping>? shippings,
-      String? selectedShippingId,
+      dynamic selectedShippingId,
       dynamic shippingCost,
       List<Product>? products});
 }
@@ -94,7 +94,7 @@ class _$ProductGroupCopyWithImpl<$Res, $Val extends ProductGroup>
       selectedShippingId: freezed == selectedShippingId
           ? _value.selectedShippingId
           : selectedShippingId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       shippingCost: freezed == shippingCost
           ? _value.shippingCost
           : shippingCost // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$ProductGroupImplCopyWith<$Res>
       int? companyId,
       String? companyName,
       List<Shipping>? shippings,
-      String? selectedShippingId,
+      dynamic selectedShippingId,
       dynamic shippingCost,
       List<Product>? products});
 }
@@ -166,7 +166,7 @@ class __$$ProductGroupImplCopyWithImpl<$Res>
       selectedShippingId: freezed == selectedShippingId
           ? _value.selectedShippingId
           : selectedShippingId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       shippingCost: freezed == shippingCost
           ? _value.shippingCost
           : shippingCost // ignore: cast_nullable_to_non_nullable
@@ -213,7 +213,7 @@ class _$ProductGroupImpl implements _ProductGroup {
   }
 
   @override
-  final String? selectedShippingId;
+  final dynamic selectedShippingId;
   @override
   final dynamic shippingCost;
   final List<Product>? _products;
@@ -243,8 +243,8 @@ class _$ProductGroupImpl implements _ProductGroup {
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
                 .equals(other._shippings, _shippings) &&
-            (identical(other.selectedShippingId, selectedShippingId) ||
-                other.selectedShippingId == selectedShippingId) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedShippingId, selectedShippingId) &&
             const DeepCollectionEquality()
                 .equals(other.shippingCost, shippingCost) &&
             const DeepCollectionEquality().equals(other._products, _products));
@@ -258,7 +258,7 @@ class _$ProductGroupImpl implements _ProductGroup {
       companyId,
       companyName,
       const DeepCollectionEquality().hash(_shippings),
-      selectedShippingId,
+      const DeepCollectionEquality().hash(selectedShippingId),
       const DeepCollectionEquality().hash(shippingCost),
       const DeepCollectionEquality().hash(_products));
 
@@ -277,7 +277,7 @@ abstract class _ProductGroup implements ProductGroup {
       final int? companyId,
       final String? companyName,
       final List<Shipping>? shippings,
-      final String? selectedShippingId,
+      final dynamic selectedShippingId,
       final dynamic shippingCost,
       final List<Product>? products}) = _$ProductGroupImpl;
 
@@ -293,7 +293,7 @@ abstract class _ProductGroup implements ProductGroup {
   @override
   List<Shipping>? get shippings;
   @override
-  String? get selectedShippingId;
+  dynamic get selectedShippingId;
   @override
   dynamic get shippingCost;
   @override

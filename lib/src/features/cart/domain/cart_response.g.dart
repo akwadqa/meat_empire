@@ -15,7 +15,7 @@ _$CartResponseImpl _$$CartResponseImplFromJson(Map<String, dynamic> json) =>
       cart: json['cart'] == null
           ? null
           : Cart.fromJson(json['cart'] as Map<String, dynamic>),
-      totalProducts: json['total_products'] as String?,
+      totalProducts: json['total_products'],
       message: json['message'] as String?,
       success: json['success'] as bool?,
     );

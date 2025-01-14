@@ -12,10 +12,11 @@ class CartResponse with _$CartResponse {
     bool? allowMultipleProfiles,
     List<UserProfile>? userProfiles,
     Cart? cart,
-    String? totalProducts,
+    dynamic totalProducts,
     String? message,
     bool? success,
   }) = _CartResponse;
 
-  factory CartResponse.fromJson(Map<String, dynamic> json) => _$CartResponseFromJson(json);
+  factory CartResponse.fromJson(Map<String, dynamic> json) =>
+      _$CartResponseFromJson(json);
 }

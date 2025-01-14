@@ -20,9 +20,9 @@ class AccountController extends _$AccountController {
     if (state is AsyncData<ProfileResponse>) {
       final currentProfile = state.value;
 
-      debugPrint("CURRENT PROFILE IS ${currentProfile}");
+      debugPrint("CURRENT PROFILE IS $currentProfile");
       debugPrint("CURRENT PROFILE IS ${state.asData}");
-      debugPrint("CURRENT PROFILE IS ${state}");
+      debugPrint("CURRENT PROFILE IS $state");
 
       // // Create the updated profile object by copying the current profile and modifying the fields
       // final UserProfile? updatedProfile = currentProfile.value!.userProfile

@@ -1,7 +1,7 @@
 extension CardNumberFormatter on String {
   String toCardNumberFormat() {
     final buffer = StringBuffer();
-    final cleaned = this.replaceAll(RegExp(r'\D'), ''); // Remove non-digits
+    final cleaned = replaceAll(RegExp(r'\D'), ''); // Remove non-digits
 
     for (int i = 0; i < cleaned.length; i++) {
       buffer.write(cleaned[i]);

@@ -7,8 +7,8 @@ part 'current_language.g.dart';
 @Riverpod(keepAlive: true)
 class CurrentLanguage extends _$CurrentLanguage {
   @override
-  String build([BuildContext? context]) {
-    return context?.locale.languageCode ?? 'ar';
+  String build() {
+    return 'en';
   }
 
   void changeLanguage(BuildContext context, String languageCode) {

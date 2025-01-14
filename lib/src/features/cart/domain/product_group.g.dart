@@ -14,7 +14,7 @@ _$ProductGroupImpl _$$ProductGroupImplFromJson(Map<String, dynamic> json) =>
       shippings: (json['shippings'] as List<dynamic>?)
           ?.map((e) => Shipping.fromJson(e as Map<String, dynamic>))
           .toList(),
-      selectedShippingId: json['selected_shipping_id'] as String?,
+      selectedShippingId: json['selected_shipping_id'],
       shippingCost: json['shipping_cost'],
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => Product.fromJson(e as Map<String, dynamic>))

@@ -16,10 +16,9 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentLanguage = ref.watch(currentLanguageProvider());
+    final currentLanguage = ref.watch(currentLanguageProvider);
 
-    final currentLanguageNotifier =
-        ref.read(currentLanguageProvider().notifier);
+    final currentLanguageNotifier = ref.read(currentLanguageProvider.notifier);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(

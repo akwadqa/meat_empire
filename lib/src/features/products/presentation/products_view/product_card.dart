@@ -2,14 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
-import 'package:meat_empire/src/shared_functions.dart';
+import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 
 import '../../../../routing/app_router.gr.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
-import '../../../cart/presentation/add_to_cart_controller/add_to_cart_controller.dart';
 import '../../domain/product/product.dart';
 
 class ProductCard extends StatelessWidget {
@@ -40,8 +40,8 @@ class ProductCard extends StatelessWidget {
             _PriceRow(product: product),
             ProviderScope(
               overrides: [
-                addToCartControllerProvider
-                    .overrideWith(() => AddToCartController())
+                updateCartControllerProvider
+                    .overrideWith(() => UpdateCartController())
               ],
               child: _AddToCartButton(
                   productId: int.parse(product.productId),
@@ -208,22 +208,31 @@ class _AddToCartButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncAddToCart = ref.watch(addToCartControllerProvider);
+    final asyncAddToCart = ref.watch(updateCartControllerProvider);
+    final isInCart = ref.watch(isInCartProvider(productId.toString()));
     if (asyncAddToCart is AsyncLoading) {
       return FadeCircleLoadingIndicator();
     }
     return ElevatedButton.icon(
-      onPressed: () => addToCart(context, ref, amount, productId),
+      onPressed: isInCart
+          ? () => ref
+              .read(updateCartControllerProvider.notifier)
+              .updateItemInCart(context, 0, productId)
+          : () => ref
+              .read(updateCartControllerProvider.notifier)
+              .addToCart(context, amount, productId),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
             fontSize: 12,
             fontFamily: FontFamily.tajawal,
             fontWeight: FontWeight.w700),
-        backgroundColor: AppColors.green,
+        backgroundColor: isInCart ? AppColors.newRed : AppColors.green,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       ),
-      label: Text(context.tr('addToCart')),
-      icon: const Icon(Icons.add_shopping_cart_rounded, color: Colors.white),
+      label: Text(context.tr(isInCart ? 'addedToCart' : 'addToCart')),
+      icon: isInCart
+          ? Assets.icons.addedToCartIcon.svg()
+          : const Icon(Icons.add_shopping_cart_rounded, color: Colors.white),
     );
   }
 }

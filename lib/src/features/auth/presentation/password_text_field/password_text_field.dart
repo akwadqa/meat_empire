@@ -20,7 +20,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: _obscureText,
-      style: TextStyle(color: AppColors.mediumGray01),
+      style: TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
           labelText: widget.label,
           suffixIcon: IconButton(
@@ -28,7 +28,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
                     _obscureText = !_obscureText;
                   }),
               style:
-                  IconButton.styleFrom(foregroundColor: AppColors.mediumGray01),
+                  IconButton.styleFrom(foregroundColor: AppColors.gray02),
               icon: Icon(_obscureText
                   ? Icons.visibility_off_outlined
                   : Icons.visibility_outlined))),

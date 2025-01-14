@@ -61,6 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           context.maybePop().then((_) {
                             _showDialog();
                           });
+                        } else if (next is AsyncError) {
+                          showErrorDialog(context, next.error.toString());
                         }
                       });
                       final asyncLogin = ref.watch(authControllerProvider);

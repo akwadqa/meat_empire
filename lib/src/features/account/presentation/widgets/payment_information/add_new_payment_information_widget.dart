@@ -7,12 +7,9 @@ import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
-import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/shared_widgets/text_input_formatter.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-import 'package:meat_empire/src/utils/app_messages.dart';
 import 'package:queen_validators/queen_validators.dart';
-import 'package:bcrypt/bcrypt.dart';
 
 Future<void> showAddNewPaymentInformationDialog({
   required BuildContext context,
@@ -26,7 +23,7 @@ Future<void> showAddNewPaymentInformationDialog({
   Widget buildNameField(BuildContext context) {
     return TextFormField(
       controller: nameController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
               color: AppColors.gray02,
@@ -52,7 +49,7 @@ Future<void> showAddNewPaymentInformationDialog({
   Widget buildCardNumberField(BuildContext context) {
     return TextFormField(
       controller: cardNumberController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         hintText: "1555 - 2366 - 8877 - 2200",
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -83,7 +80,7 @@ Future<void> showAddNewPaymentInformationDialog({
   Widget buildSecretField(BuildContext context) {
     return TextFormField(
       controller: secretNumberController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         hintText: "1234",
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -109,7 +106,7 @@ Future<void> showAddNewPaymentInformationDialog({
   Widget buildEndDateField(BuildContext context) {
     return TextFormField(
       controller: endDateController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
               color: AppColors.gray02,

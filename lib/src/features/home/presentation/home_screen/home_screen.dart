@@ -7,6 +7,7 @@ import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import '../../../../shared_widgets/app_logo.dart';
+import '../../../cart/application/cart_service.dart';
 
 enum DrawerItems { home, myAccount, logout }
 
@@ -38,24 +39,33 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       centerTitle: true,
       backgroundColor: Colors.white,
-      leading: _buildCartIcon(),
+      leading: _buildCartIcon(context),
       actions: [_buildPopupMenu(context)],
       title: _buildAppBarTitle(context),
     );
   }
 
-  Widget _buildCartIcon() {
-    return IconButton(
-      onPressed: () {},
-      icon: Badge(
-        backgroundColor: AppColors.primary,
-        label: const Text(''),
-        child: Assets.icons.cartIcon.svg(
+  Widget _buildCartIcon(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final cartCount = ref.watch(cartCountProvider);
+        final cartIcon = Assets.icons.cartIcon.svg(
           height: 22,
           width: 26,
           colorFilter: const ColorFilter.mode(Colors.black87, BlendMode.srcIn),
-        ),
-      ),
+        );
+
+        return IconButton(
+          onPressed: () => context.tabsRouter.setActiveIndex(2),
+          icon: cartCount > 0
+              ? Badge(
+                  backgroundColor: AppColors.primary,
+                  label: Text(cartCount.toString()),
+                  child: cartIcon,
+                )
+              : cartIcon,
+        );
+      },
     );
   }
 

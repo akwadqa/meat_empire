@@ -50,8 +50,8 @@ mixin _$Cart {
   dynamic get taxSummary => throw _privateConstructorUsedError;
   List<Taxes>? get taxes => throw _privateConstructorUsedError;
   String? get discountedSubtotal => throw _privateConstructorUsedError;
-  UserData? get userData => throw _privateConstructorUsedError;
-  String? get profileId => throw _privateConstructorUsedError;
+  dynamic get userData => throw _privateConstructorUsedError;
+  dynamic get profileId => throw _privateConstructorUsedError;
   bool? get guestCheckout => throw _privateConstructorUsedError;
   String? get locationHash => throw _privateConstructorUsedError;
   int? get paymentSurcharge => throw _privateConstructorUsedError;
@@ -112,8 +112,8 @@ abstract class $CartCopyWith<$Res> {
       dynamic taxSummary,
       List<Taxes>? taxes,
       String? discountedSubtotal,
-      UserData? userData,
-      String? profileId,
+      dynamic userData,
+      dynamic profileId,
       bool? guestCheckout,
       String? locationHash,
       int? paymentSurcharge,
@@ -133,7 +133,6 @@ abstract class $CartCopyWith<$Res> {
       List<DeliverySlot>? deliverySlots});
 
   $PointsInfoCopyWith<$Res>? get pointsInfo;
-  $UserDataCopyWith<$Res>? get userData;
 }
 
 /// @nodoc
@@ -325,11 +324,11 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       userData: freezed == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
+              as dynamic,
       profileId: freezed == profileId
           ? _value.profileId
           : profileId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       guestCheckout: freezed == guestCheckout
           ? _value.guestCheckout
           : guestCheckout // ignore: cast_nullable_to_non_nullable
@@ -414,20 +413,6 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       return _then(_value.copyWith(pointsInfo: value) as $Val);
     });
   }
-
-  /// Create a copy of Cart
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDataCopyWith<$Res>? get userData {
-    if (_value.userData == null) {
-      return null;
-    }
-
-    return $UserDataCopyWith<$Res>(_value.userData!, (value) {
-      return _then(_value.copyWith(userData: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -468,8 +453,8 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       dynamic taxSummary,
       List<Taxes>? taxes,
       String? discountedSubtotal,
-      UserData? userData,
-      String? profileId,
+      dynamic userData,
+      dynamic profileId,
       bool? guestCheckout,
       String? locationHash,
       int? paymentSurcharge,
@@ -490,8 +475,6 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
 
   @override
   $PointsInfoCopyWith<$Res>? get pointsInfo;
-  @override
-  $UserDataCopyWith<$Res>? get userData;
 }
 
 /// @nodoc
@@ -680,11 +663,11 @@ class __$$CartImplCopyWithImpl<$Res>
       userData: freezed == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
+              as dynamic,
       profileId: freezed == profileId
           ? _value.profileId
           : profileId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       guestCheckout: freezed == guestCheckout
           ? _value.guestCheckout
           : guestCheckout // ignore: cast_nullable_to_non_nullable
@@ -933,9 +916,9 @@ class _$CartImpl implements _Cart {
   @override
   final String? discountedSubtotal;
   @override
-  final UserData? userData;
+  final dynamic userData;
   @override
-  final String? profileId;
+  final dynamic profileId;
   @override
   final bool? guestCheckout;
   @override
@@ -1067,10 +1050,8 @@ class _$CartImpl implements _Cart {
             const DeepCollectionEquality().equals(other._taxes, _taxes) &&
             (identical(other.discountedSubtotal, discountedSubtotal) ||
                 other.discountedSubtotal == discountedSubtotal) &&
-            (identical(other.userData, userData) ||
-                other.userData == userData) &&
-            (identical(other.profileId, profileId) ||
-                other.profileId == profileId) &&
+            const DeepCollectionEquality().equals(other.userData, userData) &&
+            const DeepCollectionEquality().equals(other.profileId, profileId) &&
             (identical(other.guestCheckout, guestCheckout) ||
                 other.guestCheckout == guestCheckout) &&
             (identical(other.locationHash, locationHash) ||
@@ -1102,7 +1083,8 @@ class _$CartImpl implements _Cart {
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             const DeepCollectionEquality()
                 .equals(other._couponsDetails, _couponsDetails) &&
-            const DeepCollectionEquality().equals(other._deliverySlots, _deliverySlots));
+            const DeepCollectionEquality()
+                .equals(other._deliverySlots, _deliverySlots));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1139,8 +1121,8 @@ class _$CartImpl implements _Cart {
         const DeepCollectionEquality().hash(taxSummary),
         const DeepCollectionEquality().hash(_taxes),
         discountedSubtotal,
-        userData,
-        profileId,
+        const DeepCollectionEquality().hash(userData),
+        const DeepCollectionEquality().hash(profileId),
         guestCheckout,
         locationHash,
         paymentSurcharge,
@@ -1201,8 +1183,8 @@ abstract class _Cart implements Cart {
       final dynamic taxSummary,
       final List<Taxes>? taxes,
       final String? discountedSubtotal,
-      final UserData? userData,
-      final String? profileId,
+      final dynamic userData,
+      final dynamic profileId,
       final bool? guestCheckout,
       final String? locationHash,
       final int? paymentSurcharge,
@@ -1284,9 +1266,9 @@ abstract class _Cart implements Cart {
   @override
   String? get discountedSubtotal;
   @override
-  UserData? get userData;
+  dynamic get userData;
   @override
-  String? get profileId;
+  dynamic get profileId;
   @override
   bool? get guestCheckout;
   @override

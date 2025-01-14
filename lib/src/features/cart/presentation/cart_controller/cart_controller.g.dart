@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'add_to_cart_controller.dart';
+part of 'cart_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addToCartControllerHash() =>
-    r'dfaf1635b35e7ec767fdf158145529c15a56f3e3';
+String _$cartControllerHash() => r'8de580c70ad1dfde12751f712c06a82cf791d5dd';
 
-/// See also [AddToCartController].
-@ProviderFor(AddToCartController)
-final addToCartControllerProvider = AutoDisposeAsyncNotifierProvider<
-    AddToCartController, CartResponse?>.internal(
-  AddToCartController.new,
-  name: r'addToCartControllerProvider',
+/// See also [CartController].
+@ProviderFor(CartController)
+final cartControllerProvider =
+    AsyncNotifierProvider<CartController, CartResponse>.internal(
+  CartController.new,
+  name: r'cartControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$addToCartControllerHash,
+      : _$cartControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AddToCartController = AutoDisposeAsyncNotifier<CartResponse?>;
+typedef _$CartController = AsyncNotifier<CartResponse>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

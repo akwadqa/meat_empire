@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/add_new_address_book_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class AddressBookCardWidget extends StatelessWidget {

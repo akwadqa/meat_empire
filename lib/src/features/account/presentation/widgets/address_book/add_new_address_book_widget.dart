@@ -7,11 +7,8 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
-import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-import 'package:meat_empire/src/utils/app_messages.dart';
 import 'package:queen_validators/queen_validators.dart';
-import 'package:bcrypt/bcrypt.dart';
 
 Future<void> showAddNewAddressBookDialog({
   required BuildContext context,

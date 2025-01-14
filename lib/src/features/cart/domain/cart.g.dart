@@ -47,10 +47,8 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
           ?.map((e) => Taxes.fromJson(e as Map<String, dynamic>))
           .toList(),
       discountedSubtotal: json['discounted_subtotal'] as String?,
-      userData: json['user_data'] == null
-          ? null
-          : UserData.fromJson(json['user_data'] as Map<String, dynamic>),
-      profileId: json['profile_id'] as String?,
+      userData: json['user_data'],
+      profileId: json['profile_id'],
       guestCheckout: json['guest_checkout'] as bool?,
       locationHash: json['location_hash'] as String?,
       paymentSurcharge: (json['payment_surcharge'] as num?)?.toInt(),

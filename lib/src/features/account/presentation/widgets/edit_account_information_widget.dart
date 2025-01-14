@@ -6,13 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/shared_functions.dart';
-import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-import 'package:meat_empire/src/utils/app_messages.dart';
 import 'package:meat_empire/src/utils/arabic_number_input_formatter.dart';
 import 'package:queen_validators/queen_validators.dart';
 
@@ -21,12 +18,12 @@ Future<void> showEditAccountInformationDialog({
   required TextEditingController nameController,
   required TextEditingController phoneController,
 }) {
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   Widget buildUserNameField(BuildContext context) {
     return TextFormField(
       controller: nameController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
       validator: qValidator([
@@ -83,7 +80,7 @@ Future<void> showEditAccountInformationDialog({
   Widget buildPhoneNumberField(BuildContext context) {
     return TextFormField(
       controller: phoneController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         prefixIcon: context.locale.languageCode == 'ar'
             ? null
@@ -137,7 +134,7 @@ Future<void> showEditAccountInformationDialog({
                           vertical: 30, horizontal: 10),
                       child: SingleChildScrollView(
                         child: Form(
-                          key: _formKey,
+                          key: formKey,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,8 +223,8 @@ Future<void> showEditAccountInformationDialog({
                                       onTap: () {
                                         // Save logic here
 
-                                        if (_formKey.currentState!.validate()) {
-                                          _formKey.currentState!.save();
+                                        if (formKey.currentState!.validate()) {
+                                          formKey.currentState!.save();
 
                                           ref
                                               .read(accountControllerProvider

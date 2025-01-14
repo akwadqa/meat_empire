@@ -13,7 +13,7 @@ class ProductGroup with _$ProductGroup {
     int? companyId,
     String? companyName,
     List<Shipping>? shippings,
-    String? selectedShippingId,
+    dynamic selectedShippingId,
     dynamic shippingCost,
     List<Product>? products,
   }) = _ProductGroup;

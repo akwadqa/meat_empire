@@ -7,7 +7,6 @@ import 'product.dart';
 import 'product_group.dart';
 import 'shipping.dart';
 import 'taxes.dart';
-import 'user_data.dart';
 
 part 'cart.freezed.dart';
 part 'cart.g.dart';
@@ -45,8 +44,8 @@ class Cart with _$Cart {
     dynamic taxSummary,
     List<Taxes>? taxes,
     String? discountedSubtotal,
-    UserData? userData,
-    String? profileId,
+    dynamic userData,
+    dynamic profileId,
     bool? guestCheckout,
     String? locationHash,
     int? paymentSurcharge,

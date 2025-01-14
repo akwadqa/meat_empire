@@ -10,7 +10,7 @@ class EmailTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: TextStyle(color: AppColors.mediumGray01),
+      style: TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         labelText: context.tr('email'),
       ),

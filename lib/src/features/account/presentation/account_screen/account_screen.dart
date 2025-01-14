@@ -5,7 +5,7 @@ import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/address_book_widget.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/change_password_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/edit_account_information_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
@@ -22,10 +22,10 @@ class AccountScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentLanguage = ref.watch(currentLanguageProvider());
+    final currentLanguage = ref.watch(currentLanguageProvider);
 
     final currentLanguageNotifier =
-        ref.read(currentLanguageProvider().notifier);
+        ref.read(currentLanguageProvider.notifier);
 
     return Padding(
       padding: EdgeInsets.symmetric(

@@ -29,7 +29,6 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // Form fields
   String? _userName;
   String? _phoneNumber;
   String? _email;
@@ -83,7 +82,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Header text
   Widget _buildHeader(BuildContext context) {
     return Text(
       context.tr('createANewAccount'),
@@ -91,10 +89,9 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Username text field
   Widget _buildUserNameField(BuildContext context) {
     return TextFormField(
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         labelText: context.tr('userName'),
       ),
@@ -106,10 +103,9 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Phone number text field
   Widget _buildPhoneNumberField(BuildContext context) {
     return TextFormField(
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(
         labelText: context.tr('phoneNumber'),
         prefixIcon: _buildPhoneNumberPrefix(context),
@@ -125,7 +121,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Prefix for the phone number field
   Widget _buildPhoneNumberPrefix(BuildContext context) {
     return SizedBox(
       width: 90,
@@ -154,7 +149,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Submit button
   Widget _buildSubmitButton(BuildContext context) {
     return SizedBox(
       width: double.infinity,
@@ -165,6 +159,8 @@ class _SignupScreenState extends State<SignupScreen> {
               context.maybePop().then((_) {
                 _showDialog();
               });
+            } else if (next is AsyncError) {
+              showErrorDialog(context, next.error.toString());
             }
           });
 
@@ -201,7 +197,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Login button
   Widget _buildLoginButton(BuildContext context) {
     return SizedBox(
       width: double.infinity,
@@ -212,7 +207,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Mobile number validation
   String? Function(String?) _mobileNumberValidation(BuildContext context) {
     return qValidator([
       IsRequired(context.tr('required')),

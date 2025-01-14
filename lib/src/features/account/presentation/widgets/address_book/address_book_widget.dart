@@ -5,8 +5,8 @@ import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/add_new_address_book_widget.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/address_book_card_widget.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/address_book/add_new_address_book_widget.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_card_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
@@ -17,7 +17,6 @@ class AddressBookWidget extends ConsumerWidget {
 
   TextEditingController newLocationController = TextEditingController();
 
-  // void _onCardTap(int index) {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accountSyncData = ref.watch(accountControllerProvider);

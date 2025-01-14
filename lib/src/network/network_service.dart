@@ -35,7 +35,7 @@ Dio dio(Ref ref) {
     sendTimeout: duration,
   ));
 
-  final languageCode = ref.watch(currentLanguageProvider());
+  final languageCode = ref.watch(currentLanguageProvider);
   final token = ref.watch(userTokenProvider);
   dio.interceptors.addAll({
     DioAppInterceptors(

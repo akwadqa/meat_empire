@@ -15,6 +15,18 @@ class AuthRepository {
 
   AuthRepository(this._networkService);
 
+  Future<(String authToken, String userId)> _handleAuthResponse(
+      Map<String, dynamic> responseData) async {
+    if (responseData.containsKey('complete_auth_token') &&
+        responseData.containsKey('user_id')) {
+      final String authToken = responseData['complete_auth_token'];
+      final String userId = responseData['user_id'];
+      return (authToken, userId);
+    } else {
+      throw AppException(responseData['message']);
+    }
+  }
+
   Future<(String authToken, String userId)> login(
       String email, String password) async {
     final response = await _networkService.post(EndPoints.loginApi, {
@@ -22,18 +34,7 @@ class AuthRepository {
       'password': password,
     });
 
-    // Check if response data contains the required fields
-    if (response.data != null &&
-        response.data.containsKey('complete_auth_token') &&
-        response.data.containsKey('user_id')) {
-      final String authToken = response.data['complete_auth_token'];
-      final String userId = response.data['user_id'];
-
-      // Assuming `Record` is a class to hold these two fields
-      return (authToken, userId);
-    } else {
-      throw Exception(response.message);
-    }
+    return _handleAuthResponse(response.data);
   }
 
   Future<(String authToken, String userId)> signup(
@@ -50,14 +51,7 @@ class AuthRepository {
       'password2': confirmPassword,
       'phone': phone,
     });
-    if (response.data != null &&
-        response.data.containsKey('complete_auth_token') &&
-        response.data.containsKey('user_id')) {
-      final String authToken = response.data['complete_auth_token'];
-      final String userId = response.data['user_id'];
-      return (authToken, userId);
-    } else {
-      throw Exception(response.message);
-    }
+
+    return _handleAuthResponse(response.data);
   }
 }

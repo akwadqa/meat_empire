@@ -15,6 +15,10 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/added_to_cart_icon.svg
+  SvgGenImage get addedToCartIcon =>
+      const SvgGenImage('assets/icons/added_to_cart_icon.svg');
+
   /// File path: assets/icons/buildNumber_icon.svg
   SvgGenImage get buildNumberIcon =>
       const SvgGenImage('assets/icons/buildNumber_icon.svg');
@@ -97,6 +101,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        addedToCartIcon,
         buildNumberIcon,
         cardChecklistIcon,
         cartIcon,

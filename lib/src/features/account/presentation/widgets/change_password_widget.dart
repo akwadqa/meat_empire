@@ -8,7 +8,6 @@ import 'package:meat_empire/src/features/account/presentation/controller/account
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-import 'package:meat_empire/src/utils/app_messages.dart';
 import 'package:queen_validators/queen_validators.dart';
 import 'package:bcrypt/bcrypt.dart';
 
@@ -21,7 +20,7 @@ Future<void> showChangePasswordDialog({
   Widget buildOldPasswordField(BuildContext context) {
     return TextFormField(
       controller: oldPasswordController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
       validator: qValidator([
@@ -35,7 +34,7 @@ Future<void> showChangePasswordDialog({
   Widget buildNewPasswordField(BuildContext context) {
     return TextFormField(
       controller: newPasswordController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
       validator: qValidator([
@@ -49,7 +48,7 @@ Future<void> showChangePasswordDialog({
   Widget buildConfirmNewPasswordField(BuildContext context) {
     return TextFormField(
       controller: confirmNewPasswordController,
-      style: const TextStyle(color: AppColors.mediumGray01),
+      style: const TextStyle(color: AppColors.gray02),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
       validator: (value) {

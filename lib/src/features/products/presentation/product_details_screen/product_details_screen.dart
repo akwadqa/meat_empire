@@ -4,19 +4,18 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meat_empire/src/features/cart/presentation/add_to_cart_controller/add_to_cart_controller.dart';
 import 'package:meat_empire/src/features/products/data/products_repository.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/product_details.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/products_block.dart';
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_scroller_view.dart';
-import 'package:meat_empire/src/shared_functions.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/app_close_button.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
 import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../utils/magnetic_scroll_physics.dart';
+import '../../../cart/application/cart_service.dart';
 import '../../../home/presentation/layout_screen/banner/carousel_dots_indicator.dart';
 import '../../domain/product_details_response/currency.dart';
 import '../../domain/product_details_response/variation_feature/variation_feature.dart';
@@ -41,8 +40,8 @@ class ProductDetailsScreen extends ConsumerWidget {
           productsBlock: data.productsBlock,
           currency: data.currency,
         ),
-        error: (_, __) => const AppErrorWidget(),
-        loading: () => const FadeCircleLoadingIndicator(),
+        error: (_, __) => Center(child: const AppErrorWidget()),
+        loading: () => Center(child: const FadeCircleLoadingIndicator()),
       ),
     );
   }
@@ -88,7 +87,7 @@ class ProductDetailsView extends StatelessWidget {
         ),
         Consumer(builder: (context, ref, child) {
           final quantity = ref.watch(quantityControllerProvider(
-              initialQuantity: product.amount,
+              initialQuantity: int.parse(product.minQty),
               minQuantity: int.parse(product.minQty),
               maxQuantity: int.parse(product.maxQty)));
 
@@ -97,7 +96,7 @@ class ProductDetailsView extends StatelessWidget {
           return _AddToCartButton(
             productPrice: (totalPrice * quantity).toStringAsFixed(2),
             productId: product.productId,
-            amount: product.amount,
+            amount: int.parse(product.minQty),
           );
         }),
       ],
@@ -308,7 +307,7 @@ class _PriceAndQuantityRow extends ConsumerWidget {
         ),
         // Quantity selector widget
         QuantitySelector(
-          initialQuantity: product.amount,
+          initialQuantity: int.parse(product.minQty),
           minQuantity: int.parse(product.minQty),
           maxQuantity: int.parse(product.maxQty),
         ),
@@ -378,12 +377,14 @@ class _AddToCartButton extends StatelessWidget {
           ],
         ),
         child: Consumer(builder: (context, ref, child) {
-          final asyncAddToCart = ref.watch(addToCartControllerProvider);
+          final asyncAddToCart = ref.watch(updateCartControllerProvider);
           if (asyncAddToCart is AsyncLoading) {
             return FadeCircleLoadingIndicator();
           }
           return ElevatedButton.icon(
-            onPressed: () => addToCart(context, ref, amount, productId),
+            onPressed: () => ref
+                .read(updateCartControllerProvider.notifier)
+                .addToCart(context, amount, productId),
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
             icon: const Icon(Icons.add_shopping_cart_rounded,
                 color: Colors.white, size: 25),

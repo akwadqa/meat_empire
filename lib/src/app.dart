@@ -7,13 +7,27 @@ import 'package:meat_empire/src/theme/app_theme.dart';
 
 import 'routing/app_router_provider.dart';
 
-class App extends ConsumerWidget {
+class App extends ConsumerStatefulWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<App> createState() => _AppState();
+}
+
+class _AppState extends ConsumerState<App> {
+  
+  @override
+  void initState() {
+    Future(() => ref
+        .read(currentLanguageProvider.notifier)
+        .changeLanguage(context, context.locale.languageCode));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final appRouter = ref.watch(appRouterProvider);
-    final currentLanguage = ref.watch(currentLanguageProvider());
+    final currentLanguage = ref.watch(currentLanguageProvider);
     return MaterialApp.router(
       routerDelegate: appRouter.delegate(
           deepLinkBuilder: (deepLink) => DeepLink.defaultPath),

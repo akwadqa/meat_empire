@@ -71,5 +71,13 @@
     "add_shipping_location": "Add Shipping Location",
     "shipping_location": "Shipping Location",
     "billing_location": "Billing Location",
-    "add_billing_location": "Add Billing Location"
+    "add_billing_location": "Add Billing Location",
+    "addedToCart" : "Added to cart",
+    "discountCoupon" : "Discount Coupon",
+    "activate" : "Activate",
+    "couponCode" : "Coupon Code",
+    "productsCost" : "Products Cost",
+    "shippingCost" : "Shipping Cost",
+    "total" : "Total",
+    "orderCost" : "Order Cost"
 }
