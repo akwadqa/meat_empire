@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
+import 'package:meat_empire/src/features/my_orders/domain/entities/orders_response.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_card.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
@@ -99,90 +100,106 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
         body: TabBarView(
           controller: _tabController,
           children: [
-            asyncData("O").when(
-              data: (data) {
-                return data.orders.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No delivered orders yet.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: data.orders.length,
-                        itemBuilder: (context, index) {
-                          final order = data.orders[index];
-                          return OrderCardWidget(
-                            orderNumber: order.orderId,
-                            orderDate: order.orderDate,
-                            productImages: List<String>.from(order.products
-                                .map((product) => product.imageUrl)),
-                            totalCost: order.orderTotalCost,
-                          );
-                        },
-                      );
-              },
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) =>
-                  Center(child: Text(error.toString())),
-            ),
-            asyncData("C").when(
-              data: (data) {
-                return data.orders.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No delivered orders yet.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: data.orders.length,
-                        itemBuilder: (context, index) {
-                          final order = data.orders[index];
-                          return OrderCardWidget(
-                            orderNumber: order.orderId,
-                            orderDate: order.orderDate,
-                            productImages: List<String>.from(order.products
-                                .map((product) => product.imageUrl)),
-                            totalCost: order.orderTotalCost,
-                          );
-                        },
-                      );
-              },
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) =>
-                  Center(child: Text(error.toString())),
-            ),
-            asyncData("I").when(
-              data: (data) {
-                return data.orders.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No delivered orders yet.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: data.orders.length,
-                        itemBuilder: (context, index) {
-                          final order = data.orders[index];
-                          return OrderCardWidget(
-                            orderNumber: order.orderId,
-                            orderDate: order.orderDate,
-                            productImages: List<String>.from(order.products
-                                .map((product) => product.imageUrl)),
-                            totalCost: order.orderTotalCost,
-                          );
-                        },
-                      );
-              },
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) =>
-                  Center(child: Text(error.toString())),
-            ),
+            _buildCanceledOrdersView(context, asyncData),
+            _buildCompletedOrdersView(context, asyncData),
+            _buildProcessingOrdersView(context, asyncData),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCanceledOrdersView(BuildContext context,
+      AsyncValue<OrdersResponse> Function(String? status) asyncData) {
+    return asyncData("O").when(
+      data: (data) {
+        return data.orders.isEmpty
+            ? Center(
+                child: Text(
+                  "No delivered orders yet.",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              )
+            : ListView.builder(
+                itemCount: data.orders.length,
+                itemBuilder: (context, index) {
+                  final order = data.orders[index];
+                  return OrderCardWidget(
+                    orderNumber: order.orderId,
+                    orderDate: order.orderDate,
+                    productImages: List<String>.from(
+                        order.products.map((product) => product.imageUrl)),
+                    totalCost: order.orderTotalCost,
+                  );
+                },
+              );
+      },
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => Center(child: Text(error.toString())),
+    );
+  }
+
+  Widget _buildCompletedOrdersView(BuildContext context,
+      AsyncValue<OrdersResponse> Function(String? status) asyncData) {
+    return asyncData("C").when(
+      data: (data) {
+        return data.orders.isEmpty
+            ? Center(
+                child: Text(
+                  "No delivered orders yet.",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              )
+            : ListView.builder(
+                itemCount: data.orders.length,
+                itemBuilder: (context, index) {
+                  final order = data.orders[index];
+                  return OrderCardWidget(
+                    orderNumber: order.orderId,
+                    orderDate: order.orderDate,
+                    productImages: List<String>.from(
+                        order.products.map((product) => product.imageUrl)),
+                    totalCost: order.orderTotalCost,
+                  );
+                },
+              );
+      },
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => Center(child: Text(error.toString())),
+    );
+  }
+
+  Widget _buildProcessingOrdersView(BuildContext context,
+      AsyncValue<OrdersResponse> Function(String? status) asyncData) {
+    return asyncData("I").when(
+      data: (data) {
+        return data.orders.isEmpty
+            ? Center(
+                child: Column(
+                  children: [
+                    Text(
+                      "No delivered orders yet.",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+              )
+            : ListView.builder(
+                itemCount: data.orders.length,
+                itemBuilder: (context, index) {
+                  final order = data.orders[index];
+                  return OrderCardWidget(
+                    orderNumber: order.orderId,
+                    orderDate: order.orderDate,
+                    productImages: List<String>.from(
+                        order.products.map((product) => product.imageUrl)),
+                    totalCost: order.orderTotalCost,
+                  );
+                },
+              );
+      },
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => Center(child: Text(error.toString())),
     );
   }
 }
