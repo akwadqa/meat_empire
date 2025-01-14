@@ -16,7 +16,6 @@ class OrdersEntity with _$OrdersEntity {
     @JsonKey(name: "shipping_cost") required String shippingCost,
     required String status,
     required List<OrderProduct> products,
-    required bool success,
   }) = _OrdersEntity;
 
   /// Custom fromJson method

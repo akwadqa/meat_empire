@@ -82,7 +82,7 @@ class OrderCardWidget extends StatelessWidget {
                   ),
                   width: 60,
                   height: 60,
-                  child: Image.asset(
+                  child: Image.network(
                     productImages[index],
                     // fit: BoxFit.cover,
                     width: 40,

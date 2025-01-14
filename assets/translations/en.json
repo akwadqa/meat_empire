@@ -82,7 +82,7 @@
     "orderCost" : "Order Cost",
     "processing": "Processing",
     "delivered": "Delivered",
-    "caceled": "Canceled",
+    "canceled": "Canceled",
     "order_date": "Order Date: {}",
     "order_number": "Order Number: {}",
     "order_cost": "Order Cost: {} QAR"

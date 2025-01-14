@@ -31,7 +31,6 @@ mixin _$OrdersEntity {
   String get shippingCost => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   List<OrderProduct> get products => throw _privateConstructorUsedError;
-  bool get success => throw _privateConstructorUsedError;
 
   /// Create a copy of OrdersEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -52,8 +51,7 @@ abstract class $OrdersEntityCopyWith<$Res> {
       @JsonKey(name: "total") String orderTotalCost,
       @JsonKey(name: "shipping_cost") String shippingCost,
       String status,
-      List<OrderProduct> products,
-      bool success});
+      List<OrderProduct> products});
 }
 
 /// @nodoc
@@ -77,7 +75,6 @@ class _$OrdersEntityCopyWithImpl<$Res, $Val extends OrdersEntity>
     Object? shippingCost = null,
     Object? status = null,
     Object? products = null,
-    Object? success = null,
   }) {
     return _then(_value.copyWith(
       orderId: null == orderId
@@ -104,10 +101,6 @@ class _$OrdersEntityCopyWithImpl<$Res, $Val extends OrdersEntity>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<OrderProduct>,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -126,8 +119,7 @@ abstract class _$$OrdersEntityImplCopyWith<$Res>
       @JsonKey(name: "total") String orderTotalCost,
       @JsonKey(name: "shipping_cost") String shippingCost,
       String status,
-      List<OrderProduct> products,
-      bool success});
+      List<OrderProduct> products});
 }
 
 /// @nodoc
@@ -149,7 +141,6 @@ class __$$OrdersEntityImplCopyWithImpl<$Res>
     Object? shippingCost = null,
     Object? status = null,
     Object? products = null,
-    Object? success = null,
   }) {
     return _then(_$OrdersEntityImpl(
       orderId: null == orderId
@@ -176,10 +167,6 @@ class __$$OrdersEntityImplCopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<OrderProduct>,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -193,8 +180,7 @@ class _$OrdersEntityImpl implements _OrdersEntity {
       @JsonKey(name: "total") required this.orderTotalCost,
       @JsonKey(name: "shipping_cost") required this.shippingCost,
       required this.status,
-      required final List<OrderProduct> products,
-      required this.success})
+      required final List<OrderProduct> products})
       : _products = products;
 
   factory _$OrdersEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -224,11 +210,8 @@ class _$OrdersEntityImpl implements _OrdersEntity {
   }
 
   @override
-  final bool success;
-
-  @override
   String toString() {
-    return 'OrdersEntity(orderId: $orderId, orderDate: $orderDate, orderTotalCost: $orderTotalCost, shippingCost: $shippingCost, status: $status, products: $products, success: $success)';
+    return 'OrdersEntity(orderId: $orderId, orderDate: $orderDate, orderTotalCost: $orderTotalCost, shippingCost: $shippingCost, status: $status, products: $products)';
   }
 
   @override
@@ -244,8 +227,7 @@ class _$OrdersEntityImpl implements _OrdersEntity {
             (identical(other.shippingCost, shippingCost) ||
                 other.shippingCost == shippingCost) &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
-            (identical(other.success, success) || other.success == success));
+            const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -257,8 +239,7 @@ class _$OrdersEntityImpl implements _OrdersEntity {
       orderTotalCost,
       shippingCost,
       status,
-      const DeepCollectionEquality().hash(_products),
-      success);
+      const DeepCollectionEquality().hash(_products));
 
   /// Create a copy of OrdersEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -276,8 +257,7 @@ abstract class _OrdersEntity implements OrdersEntity {
       @JsonKey(name: "total") required final String orderTotalCost,
       @JsonKey(name: "shipping_cost") required final String shippingCost,
       required final String status,
-      required final List<OrderProduct> products,
-      required final bool success}) = _$OrdersEntityImpl;
+      required final List<OrderProduct> products}) = _$OrdersEntityImpl;
 
   factory _OrdersEntity.fromJson(Map<String, dynamic> json) =
       _$OrdersEntityImpl.fromJson;
@@ -299,8 +279,6 @@ abstract class _OrdersEntity implements OrdersEntity {
   String get status;
   @override
   List<OrderProduct> get products;
-  @override
-  bool get success;
 
   /// Create a copy of OrdersEntity
   /// with the given fields replaced by the non-null parameter values.

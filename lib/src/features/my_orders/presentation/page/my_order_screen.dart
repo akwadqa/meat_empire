@@ -76,21 +76,21 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
 
             tabs: [
               Tab(
-                  child: Text("processing",
+                  child: Text(context.tr("processing"),
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ))),
               Tab(
-                  child: Text("delivered",
+                  child: Text(context.tr("delivered"),
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ))),
               Tab(
-                  child: Text("canceled",
+                  child: Text(context.tr("canceled"),
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ))),
             ],
