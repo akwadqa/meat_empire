@@ -120,6 +120,14 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/empty_data.svg
+  SvgGenImage get emptyData =>
+      const SvgGenImage('assets/images/empty_data.svg');
+
+  /// File path: assets/images/im_error_screen.png
+  AssetGenImage get imErrorScreen =>
+      const AssetGenImage('assets/images/im_error_screen.png');
+
   /// File path: assets/images/login_image.svg
   SvgGenImage get loginImage =>
       const SvgGenImage('assets/images/login_image.svg');
@@ -132,7 +140,8 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/qatar_flag.png');
 
   /// List of all assets
-  List<dynamic> get values => [loginImage, logo, qatarFlag];
+  List<dynamic> get values =>
+      [emptyData, imErrorScreen, loginImage, logo, qatarFlag];
 }
 
 class $AssetsTranslationsGen {

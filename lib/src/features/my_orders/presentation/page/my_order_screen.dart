@@ -2,11 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
 import 'package:meat_empire/src/features/my_orders/domain/entities/orders_response.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_card.dart';
+import 'package:meat_empire/src/shared_widgets/app_empty_data_widget.dart';
+import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+
+import '../../../../../gen/assets.gen.dart';
 
 @RoutePage()
 class MyOrdersScreen extends ConsumerStatefulWidget {
@@ -114,12 +119,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
     return asyncData("O").when(
       data: (data) {
         return data.orders.isEmpty
-            ? Center(
-                child: Text(
-                  "No delivered orders yet.",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              )
+            ? AppEmptyDataWidget(text: "no_orders_message")
             : ListView.builder(
                 itemCount: data.orders.length,
                 itemBuilder: (context, index) {
@@ -135,7 +135,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
               );
       },
       loading: () => Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) => Center(child: Text(error.toString())),
+      error: (error, stackTrace) => AppErrorWidget(),
     );
   }
 
@@ -144,12 +144,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
     return asyncData("C").when(
       data: (data) {
         return data.orders.isEmpty
-            ? Center(
-                child: Text(
-                  "No delivered orders yet.",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              )
+            ? AppEmptyDataWidget(text: "no_orders_message")
             : ListView.builder(
                 itemCount: data.orders.length,
                 itemBuilder: (context, index) {
@@ -165,7 +160,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
               );
       },
       loading: () => Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) => Center(child: Text(error.toString())),
+      error: (error, stackTrace) => AppErrorWidget(),
     );
   }
 
@@ -174,16 +169,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
     return asyncData("I").when(
       data: (data) {
         return data.orders.isEmpty
-            ? Center(
-                child: Column(
-                  children: [
-                    Text(
-                      "No delivered orders yet.",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-              )
+            ? AppEmptyDataWidget(text: "no_orders_message")
             : ListView.builder(
                 itemCount: data.orders.length,
                 itemBuilder: (context, index) {
@@ -199,7 +185,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
               );
       },
       loading: () => Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) => Center(child: Text(error.toString())),
+      error: (error, stackTrace) => AppErrorWidget(),
     );
   }
 }
