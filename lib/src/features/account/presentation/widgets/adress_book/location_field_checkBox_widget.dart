@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class LocationFieldCheckboxWidget extends FormField<int> {
@@ -28,13 +29,14 @@ class LocationFieldCheckboxWidget extends FormField<int> {
                     style: Theme.of(context)
                         .textTheme
                         .labelSmall!
-                        .copyWith(fontSize: 12),
+                        .copyWith(fontSize: 14),
                   ),
-                  SizedBox(height: 8),
+                  4.verticalSpace,
                 ],
                 Wrap(
                   spacing: 15, // Space between chips
-                  runSpacing: 10, // Space between rows
+                  runSpacing: 10,
+                  // Space between rows
                   children: List.generate(locations.length, (index) {
                     final isSelected = index == state.value;
 
@@ -46,12 +48,15 @@ class LocationFieldCheckboxWidget extends FormField<int> {
                         onFieldSubmitted?.call(locations[index]['value']);
                       },
                       child: Chip(
-                        side: BorderSide(
-                          color: isSelected
-                              ? AppColors.primary
-                              : AppColors.lightGray,
-                          width: 1,
-                        ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            side: BorderSide(
+                                color: isSelected
+                                    ? AppColors.primary
+                                    : AppColors.lightGray,
+                                width: 1)),
                         backgroundColor: isSelected
                             ? AppColors.primarySwatch[50]
                             : Colors.transparent,

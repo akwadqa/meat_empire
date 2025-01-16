@@ -48,7 +48,7 @@ class AddressBookWidget extends ConsumerWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 40, horizontal: 12),
+                        vertical: 50, horizontal: 12),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -63,7 +63,7 @@ class AddressBookWidget extends ConsumerWidget {
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,
                                   )).centered(),
-                          10.verticalSpace,
+                          50.verticalSpace,
                           _buildShippingLocationWidget(
                               context, accountSyncData.value!.userProfile),
                           15.verticalSpace,
@@ -90,7 +90,11 @@ Widget _buildShippingLocationWidget(
           text: "add_shipping_location",
           backgroundColor: AppColors.green,
           onTap: () {
-            showAddNewAddressBottomSheet(context: context, billMode: false);
+            showAddNewAddressBottomSheet(
+              context: context,
+              billMode: false,
+              userProfile: userProfile,
+            );
           },
           isFiled: true,
           height: 50,
@@ -111,7 +115,6 @@ Widget _buildShippingLocationWidget(
             AddressBookCardWidget(
               title:
                   "${userProfile.shippingCity!} - ${userProfile.shippingCountry!} - ${userProfile.shippingStrete!} - ${userProfile.shippingBuildingNumber!}",
-              isSelected: true,
               onTap: () {
                 showAddNewAddressBottomSheet(
                   context: context,
@@ -138,7 +141,11 @@ Widget _buildBillingLocationWidget(
           text: "add_billing_location",
           backgroundColor: AppColors.green,
           onTap: () {
-            showAddNewAddressBottomSheet(context: context, billMode: true);
+            showAddNewAddressBottomSheet(
+              context: context,
+              billMode: true,
+              userProfile: userProfile,
+            );
           },
           isFiled: true,
           height: 50,
@@ -155,11 +162,10 @@ Widget _buildBillingLocationWidget(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     )),
-            4.verticalSpace,
+            6.verticalSpace,
             AddressBookCardWidget(
               title:
                   "${userProfile.bllingCity!} - ${userProfile.billingCountry!} - ${userProfile.billingStrete!} - ${userProfile.billingBuildingNumber!}",
-              isSelected: true,
               onTap: () {
                 showAddNewAddressBottomSheet(
                     context: context,

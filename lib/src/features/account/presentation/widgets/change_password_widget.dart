@@ -120,7 +120,7 @@ Future<void> showChangePasswordDialog({
               Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: 320,
+                    maxWidth: 330,
                     // maxHeight: 440,
                   ),
                   child: Material(
@@ -129,7 +129,7 @@ Future<void> showChangePasswordDialog({
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 30, horizontal: 10),
+                          vertical: 40, horizontal: 12),
                       child: Form(
                         key: formKey,
                         child: SingleChildScrollView(
@@ -146,14 +146,15 @@ Future<void> showChangePasswordDialog({
                                         fontSize: 16,
                                         fontWeight: FontWeight.w800,
                                       )).centered(),
-                              28.verticalSpace,
+                              80.verticalSpace,
+
                               Text(
                                 "old_password".tr(),
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
-                                    .copyWith(fontSize: 12),
+                                    .copyWith(fontSize: 14),
                               ),
                               buildOldPasswordField(context),
                               20.verticalSpace,
@@ -163,7 +164,7 @@ Future<void> showChangePasswordDialog({
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
-                                    .copyWith(fontSize: 12),
+                                    .copyWith(fontSize: 14),
                               ),
                               buildNewPasswordField(context),
                               20.verticalSpace,
@@ -173,7 +174,7 @@ Future<void> showChangePasswordDialog({
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
-                                    .copyWith(fontSize: 12),
+                                    .copyWith(fontSize: 14),
                               ),
                               buildConfirmNewPasswordField(context),
                               // 30.verticalSpace,
@@ -181,20 +182,6 @@ Future<void> showChangePasswordDialog({
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  CustomButtonWidget(
-                                    text: "cancel",
-                                    color: AppColors.primary,
-                                    topPading: 50,
-                                    onTap: () {
-                                      print("CANCEL");
-
-                                      Navigator.of(context)
-                                          .pop(); // Close dialog
-                                    },
-                                    isFiled: false,
-                                    height: 40,
-                                    width: 125,
-                                  ),
                                   Consumer(
                                     builder: (context, ref, child) {
                                       final data =
@@ -243,7 +230,7 @@ Future<void> showChangePasswordDialog({
                                         return CustomButtonWidget(
                                           text: "save",
                                           backgroundColor: AppColors.primary,
-                                          topPading: 50,
+                                          topPading: 35,
                                           onTap: () {
                                             if (formKey.currentState!
                                                 .validate()) {
@@ -293,10 +280,24 @@ Future<void> showChangePasswordDialog({
                                           },
                                           isFiled: true,
                                           height: 40,
-                                          width: 125,
+                                          width: 140,
                                         );
                                       }
                                     },
+                                  ),
+                                  CustomButtonWidget(
+                                    text: "cancel",
+                                    color: AppColors.primary,
+                                    topPading: 35,
+                                    onTap: () {
+                                      print("CANCEL");
+
+                                      Navigator.of(context)
+                                          .pop(); // Close dialog
+                                    },
+                                    isFiled: false,
+                                    height: 40,
+                                    width: 140,
                                   ),
                                 ],
                               )

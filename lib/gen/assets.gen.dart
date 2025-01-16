@@ -144,6 +144,16 @@ class $AssetsImagesGen {
       [emptyData, imErrorScreen, loginImage, logo, qatarFlag];
 }
 
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/processing.json
+  String get processing => 'assets/lottie/processing.json';
+
+  /// List of all assets
+  List<String> get values => [processing];
+}
+
 class $AssetsTranslationsGen {
   const $AssetsTranslationsGen();
 
@@ -162,6 +172,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 

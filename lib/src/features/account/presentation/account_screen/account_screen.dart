@@ -12,6 +12,7 @@ import 'package:meat_empire/src/features/account/presentation/widgets/logout_but
 import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/payment_information_widget.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
@@ -90,10 +91,15 @@ class AccountScreen extends ConsumerWidget {
             title: "change_Language",
             icon: Assets.icons.translateIcon.svg(),
             onTap: () {
-              final newLanguage = currentLanguage == 'ar' ? 'en' : 'ar';
-              debugPrint(newLanguage);
-              debugPrint(currentLanguage);
-              currentLanguageNotifier.changeLanguage(context, newLanguage);
+              showLanguageDialog(
+                context: context,
+                currentLanguage:
+                    currentLanguage, // Pass the current language here
+                onLanguageChange: (newLanguage) {
+                  debugPrint('Language changed to: $newLanguage');
+                  currentLanguageNotifier.changeLanguage(context, newLanguage);
+                },
+              );
             },
           ),
           LogoutButtonWidget(),

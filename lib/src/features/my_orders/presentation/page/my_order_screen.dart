@@ -125,11 +125,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 itemBuilder: (context, index) {
                   final order = data.orders[index];
                   return OrderCardWidget(
-                    orderNumber: order.orderId,
-                    orderDate: order.orderDate,
-                    productImages: List<String>.from(
-                        order.products.map((product) => product.imageUrl)),
-                    totalCost: order.orderTotalCost,
+                    order: order,
                   );
                 },
               );
@@ -150,11 +146,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 itemBuilder: (context, index) {
                   final order = data.orders[index];
                   return OrderCardWidget(
-                    orderNumber: order.orderId,
-                    orderDate: order.orderDate,
-                    productImages: List<String>.from(
-                        order.products.map((product) => product.imageUrl)),
-                    totalCost: order.orderTotalCost,
+                    order: order,
                   );
                 },
               );
@@ -175,11 +167,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 itemBuilder: (context, index) {
                   final order = data.orders[index];
                   return OrderCardWidget(
-                    orderNumber: order.orderId,
-                    orderDate: order.orderDate,
-                    productImages: List<String>.from(
-                        order.products.map((product) => product.imageUrl)),
-                    totalCost: order.orderTotalCost,
+                    order: order,
                   );
                 },
               );

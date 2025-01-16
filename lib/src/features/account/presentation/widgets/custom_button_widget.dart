@@ -30,65 +30,53 @@ class CustomButtonWidget extends StatefulWidget {
   State<CustomButtonWidget> createState() => _CustomButtonWidgetState();
 }
 
-class _CustomButtonWidgetState extends State<CustomButtonWidget>
-    with TickerProviderStateMixin {
+class _CustomButtonWidgetState extends State<CustomButtonWidget> {
   late AnimationController _controller;
-  final Duration _animationDuration = const Duration(milliseconds: 300);
-  final Tween<double> _tween = Tween<double>(begin: 1.0, end: 0.95);
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: _animationDuration,
-    )..addListener(() {
-        setState(() {});
-      });
-    super.initState();
-  }
+  // final Duration _animationDuration = const Duration(milliseconds: 300);
+  // final Tween<double> _tween = Tween<double>(begin: 1.0, end: 0.95);
+  // @override
+  // void initState() {
+  //   _controller = AnimationController(
+  //     vsync: this,
+  //     duration: _animationDuration,
+  //   )..addListener(() {
+  //       setState(() {});
+  //     });
+  //   super.initState();
+  // }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-        scale: _tween.animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: Curves.easeOut,
-            reverseCurve: Curves.easeIn,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.zero,
+          backgroundColor: widget.backgroundColor ?? Colors.transparent,
+          foregroundColor: AppColors.black900,
+          fixedSize: Size(
+            widget.width,
+            widget.height,
           ),
-        ),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.zero,
-              backgroundColor: widget.backgroundColor ?? Colors.transparent,
-              foregroundColor: AppColors.black900,
-              fixedSize: Size(
-                widget.width,
-                widget.height,
-              ),
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                      color: widget.color ??
-                          widget.backgroundColor ??
-                          Colors.transparent),
-                  borderRadius: BorderRadius.circular(widget.radius ?? 25))),
-          onPressed: () {
-            _controller.forward().then((_) {
-              _controller.reverse();
-              widget.onTap();
-            });
-          },
-          child: Text(context.tr(widget.text),
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      fontSize: 16,
-                      color: widget.isFiled ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.w500))
-              .centered(),
-        )).onlyPadding(top: widget.topPading ?? 0);
+          shape: RoundedRectangleBorder(
+              side: BorderSide(
+                  color: widget.color ??
+                      widget.backgroundColor ??
+                      Colors.transparent),
+              borderRadius: BorderRadius.circular(widget.radius ?? 25))),
+      onPressed: () {
+        widget.onTap();
+      },
+      child: Text(context.tr(widget.text),
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                  fontSize: 16,
+                  color: widget.isFiled ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.w500))
+          .centered(),
+    ).onlyPadding(top: widget.topPading ?? 0);
   }
 }

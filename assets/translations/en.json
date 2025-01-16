@@ -79,6 +79,8 @@
     "office": "Office",
     "apartment": "Apartment",
     "villa": "Villa",
+    "same_shipping_address": "Same shipping address",
+    "not_shipping_address_msg": "You do n`t have a shipping address yet",
     "order_date": "Order Date: {}",
     "order_number": "Order Number: {}",
     "order_cost": "Order Cost: {} QAR",
