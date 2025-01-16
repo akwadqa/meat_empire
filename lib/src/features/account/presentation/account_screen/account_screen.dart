@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
+import 'package:meat_empire/src/extenssions/string_extension.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/adress_book/address_book_widget.dart';
@@ -34,13 +35,20 @@ class AccountScreen extends ConsumerWidget {
         horizontal: 12,
       ),
       child: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           50.verticalSpace,
-          Text(userProfile.firstname,
-              style: Theme.of(context)
-                  .textTheme
-                  .displaySmall!
-                  .copyWith(fontSize: 18, fontWeight: FontWeight.w800)),
+          Directionality(
+            textDirection:
+                userProfile.firstname.textDirection, // Using the extension
+
+            child: Text(userProfile.firstname,
+                textAlign: userProfile.firstname.textAlignment,
+                style: Theme.of(context)
+                    .textTheme
+                    .displaySmall!
+                    .copyWith(fontSize: 18, fontWeight: FontWeight.w800)),
+          ),
           30.verticalSpace,
           AccountCardsWidget(
             title: "edit_account_information",

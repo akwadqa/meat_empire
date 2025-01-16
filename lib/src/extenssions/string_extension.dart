@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 extension CardNumberFormatter on String {
   String toCardNumberFormat() {
     final buffer = StringBuffer();
@@ -11,5 +13,26 @@ extension CardNumberFormatter on String {
     }
 
     return buffer.toString();
+  }
+}
+
+extension TextAlignmentExtension on String {
+  /// Determines `TextAlign` based on the language of the string
+  TextAlign get textAlignment {
+    if (isArabic) return TextAlign.right;
+    return TextAlign.left;
+  }
+
+  /// Determines `TextDirection` based on the language of the string
+  TextDirection get textDirection {
+    if (isArabic) return TextDirection.rtl;
+    return TextDirection.ltr;
+  }
+
+  /// Helper to check if the text is Arabic
+  bool get isArabic {
+    final trimmedText = this.trim();
+    if (trimmedText.isEmpty) return false;
+    return RegExp(r'^[\u0600-\u06FF]').hasMatch(trimmedText);
   }
 }
