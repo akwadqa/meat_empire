@@ -18,9 +18,14 @@ Future<void> showChangePasswordDialog({
   TextEditingController oldPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmNewPasswordController = TextEditingController();
+  final FocusNode oldPasswordFocusNode = FocusNode();
+  final FocusNode newPasswordFocusNode = FocusNode();
+  final FocusNode confirmNewPasswordFocusNode = FocusNode();
+
   Widget buildOldPasswordField(BuildContext context) {
     return TextFormField(
       controller: oldPasswordController,
+      focusNode: oldPasswordFocusNode,
       style: const TextStyle(color: AppColors.mediumGray01),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
@@ -35,6 +40,7 @@ Future<void> showChangePasswordDialog({
   Widget buildNewPasswordField(BuildContext context) {
     return TextFormField(
       controller: newPasswordController,
+      focusNode: newPasswordFocusNode,
       style: const TextStyle(color: AppColors.mediumGray01),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
@@ -49,6 +55,7 @@ Future<void> showChangePasswordDialog({
   Widget buildConfirmNewPasswordField(BuildContext context) {
     return TextFormField(
       controller: confirmNewPasswordController,
+      focusNode: confirmNewPasswordFocusNode,
       style: const TextStyle(color: AppColors.mediumGray01),
       decoration: InputDecoration(),
       textInputAction: TextInputAction.next,
@@ -80,7 +87,8 @@ Future<void> showChangePasswordDialog({
   // Widget _buildPhoneNumberField(BuildContext context) {
   //   return TextFormField(
   //     controller: phoneController,
-  //     style: const TextStyle(color: AppColors.mediumGray01),
+  //focusNode: _focusNode,
+  // style: const TextStyle(color: AppColors.mediumGray01),
   //     decoration: InputDecoration(
   //       prefixIcon: _buildPhoneNumberPrefix(context),
   //     ),
@@ -200,24 +208,34 @@ Future<void> showChangePasswordDialog({
                                         ref.listen(accountControllerProvider,
                                             (prev, next) {
                                           if (next is AsyncData) {
+                                            final success = next.value!.success;
+                                            final message = next.value!.message;
+
                                             context.maybePop().then((_) {
                                               showCustomDialog(
-                                                  context: context,
-                                                  title: next.value!.message,
-                                                  icon: next.value!.success
-                                                      ? Icon(
-                                                          Icons.check_circle,
-                                                          color: Colors.green,
-                                                        )
-                                                      : Icon(
-                                                          Icons.warning,
-                                                          color: Colors.red,
-                                                        ));
-                                              // Future.delayed(Duration(seconds: 2))
-                                              //     .then((onValue) {
-                                              //   Navigator.pop(context);
-                                              // });
+                                                context: context,
+                                                title: message,
+                                                icon: success
+                                                    ? Icon(
+                                                        Icons.check_circle,
+                                                        color: Colors.green,
+                                                      )
+                                                    : Icon(
+                                                        Icons.warning,
+                                                        color: Colors.red,
+                                                      ),
+                                              );
                                             });
+                                          } else if (next is AsyncError) {
+                                            // Handle AsyncError and show a fallback dialog
+                                            showCustomDialog(
+                                              context: context,
+                                              title: "wrong_password_msg".tr(),
+                                              icon: Icon(
+                                                Icons.warning,
+                                                color: Colors.red,
+                                              ),
+                                            );
                                           }
                                         });
                                         if (data is AsyncLoading) {
@@ -225,8 +243,8 @@ Future<void> showChangePasswordDialog({
                                               child:
                                                   CircularProgressIndicator());
                                         }
-                                        final hashedPassword = data
-                                            .asData?.value.userProfile.password;
+                                        final hashedPassword = data.asData
+                                            ?.value.userProfile?.password;
                                         return CustomButtonWidget(
                                           text: "save",
                                           backgroundColor: AppColors.primary,
@@ -247,7 +265,7 @@ Future<void> showChangePasswordDialog({
                                                             .notifier)
                                                     .editAccountInformation(
                                                         context,
-                                                        data.value!.userProfile
+                                                        data.value!.userProfile!
                                                             .copyWith(
                                                                 password:
                                                                     newPasswordController
@@ -290,8 +308,6 @@ Future<void> showChangePasswordDialog({
                                     color: AppColors.primary,
                                     topPading: 35,
                                     onTap: () {
-                                      print("CANCEL");
-
                                       Navigator.of(context)
                                           .pop(); // Close dialog
                                     },

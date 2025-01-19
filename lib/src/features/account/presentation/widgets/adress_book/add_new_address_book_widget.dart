@@ -342,7 +342,7 @@ class _AddNewAddressBookWidgetState
                                                   context,
                                                   (widget.billMode)
                                                       ? (billAddSameShippAdd)
-                                                          ? data.value!.userProfile.copyWith(
+                                                          ? data.value!.userProfile!.copyWith(
                                                               bllingCity: widget
                                                                   .userProfile
                                                                   .shippingCity,
@@ -357,7 +357,7 @@ class _AddNewAddressBookWidgetState
                                                                   .shippingBuildingNumber,
                                                               defaultBillingCountry:
                                                                   "qa")
-                                                          : data.value!.userProfile.copyWith(
+                                                          : data.value!.userProfile!.copyWith(
                                                               bllingCity:
                                                                   selectedCityValue,
                                                               billingCountry:
@@ -370,7 +370,7 @@ class _AddNewAddressBookWidgetState
                                                                       .text,
                                                               defaultBillingCountry:
                                                                   "qa")
-                                                      : data.value!.userProfile.copyWith(
+                                                      : data.value!.userProfile!.copyWith(
                                                           shippingBuildingType: selectedLocationValue,
                                                           shippingCity: selectedCityValue,
                                                           shippingCountry: countryController.text,

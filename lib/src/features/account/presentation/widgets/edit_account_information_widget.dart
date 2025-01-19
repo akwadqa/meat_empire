@@ -223,7 +223,7 @@ Future<void> showEditAccountInformationDialog({
                                                   .notifier)
                                               .editAccountInformation(
                                                   context,
-                                                  asyncData.value!.userProfile
+                                                  asyncData.value!.userProfile!
                                                       .copyWith(
                                                     firstname:
                                                         nameController.text,

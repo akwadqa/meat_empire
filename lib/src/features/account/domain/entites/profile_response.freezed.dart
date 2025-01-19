@@ -17,13 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProfileResponse {
   @JsonKey(ignore: true)
-  UserProfile get userProfile =>
-      throw _privateConstructorUsedError; // Custom parsing logic will handle this
+  UserProfile? get userProfile =>
+      throw _privateConstructorUsedError; // Nullable field
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $ProfileResponseCopyWith<ProfileResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,11 +34,11 @@ abstract class $ProfileResponseCopyWith<$Res> {
       _$ProfileResponseCopyWithImpl<$Res, ProfileResponse>;
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) UserProfile userProfile,
+      {@JsonKey(ignore: true) UserProfile? userProfile,
       String message,
       bool success});
 
-  $UserProfileCopyWith<$Res> get userProfile;
+  $UserProfileCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -48,15 +46,11 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
     implements $ProfileResponseCopyWith<$Res> {
   _$ProfileResponseCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
   final $Val _value;
-  // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? userProfile = null,
     Object? message = null,
@@ -65,25 +59,20 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
     return _then(_value.copyWith(
       userProfile: null == userProfile
           ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
+          : userProfile // Allow nullable userProfile
+              as UserProfile?,
+      message: null == message ? _value.message : message as String,
+      success: null == success ? _value.success : success as bool,
     ) as $Val);
   }
 
-  /// Create a copy of ProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res> get userProfile {
-    return $UserProfileCopyWith<$Res>(_value.userProfile, (value) {
+  $UserProfileCopyWith<$Res>? get userProfile {
+    if (_value.userProfile == null) {
+      return null;
+    }
+    return $UserProfileCopyWith<$Res>(_value.userProfile!, (value) {
       return _then(_value.copyWith(userProfile: value) as $Val);
     });
   }
@@ -98,12 +87,12 @@ abstract class _$$ProfileResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) UserProfile userProfile,
+      {@JsonKey(ignore: true) UserProfile? userProfile,
       String message,
       bool success});
 
   @override
-  $UserProfileCopyWith<$Res> get userProfile;
+  $UserProfileCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -114,10 +103,8 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
       _$ProfileResponseImpl _value, $Res Function(_$ProfileResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? userProfile = null,
     Object? message = null,
@@ -126,16 +113,10 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
     return _then(_$ProfileResponseImpl(
       userProfile: null == userProfile
           ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
+          : userProfile // Allow nullable userProfile
+              as UserProfile?,
+      message: null == message ? _value.message : message as String,
+      success: null == success ? _value.success : success as bool,
     ));
   }
 }
@@ -150,8 +131,7 @@ class _$ProfileResponseImpl implements _ProfileResponse {
 
   @override
   @JsonKey(ignore: true)
-  final UserProfile userProfile;
-// Custom parsing logic will handle this
+  final UserProfile? userProfile; // Nullable field
   @override
   final String message;
   @override
@@ -176,8 +156,6 @@ class _$ProfileResponseImpl implements _ProfileResponse {
   @override
   int get hashCode => Object.hash(runtimeType, userProfile, message, success);
 
-  /// Create a copy of ProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
@@ -188,20 +166,18 @@ class _$ProfileResponseImpl implements _ProfileResponse {
 
 abstract class _ProfileResponse implements ProfileResponse {
   const factory _ProfileResponse(
-      {@JsonKey(ignore: true) required final UserProfile userProfile,
+      {@JsonKey(ignore: true) required final UserProfile? userProfile,
       required final String message,
       required final bool success}) = _$ProfileResponseImpl;
 
   @override
   @JsonKey(ignore: true)
-  UserProfile get userProfile; // Custom parsing logic will handle this
+  UserProfile? get userProfile; // Nullable
   @override
   String get message;
   @override
   bool get success;
 
-  /// Create a copy of ProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfileResponseImplCopyWith<_$ProfileResponseImpl> get copyWith =>

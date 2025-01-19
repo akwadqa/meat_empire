@@ -65,10 +65,10 @@ class AddressBookWidget extends ConsumerWidget {
                                   )).centered(),
                           50.verticalSpace,
                           _buildShippingLocationWidget(
-                              context, accountSyncData.value!.userProfile),
+                              context, accountSyncData.value!.userProfile!),
                           15.verticalSpace,
                           _buildBillingLocationWidget(
-                              context, accountSyncData.value!.userProfile),
+                              context, accountSyncData.value!.userProfile!),
                         ],
                       ),
                     ),

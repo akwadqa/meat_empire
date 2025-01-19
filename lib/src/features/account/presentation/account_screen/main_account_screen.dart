@@ -24,9 +24,9 @@ class MainAccountScreen extends ConsumerWidget {
             ? NotAuthMainAccountScreen()
             : asyncAccountData.when(
                 data: (data) {
-                  debugPrint("DATA IS ${data.userProfile.userId}");
+                  debugPrint("DATA IS ${data.userProfile!.userId}");
                   return AccountScreen(
-                    userProfile: data.userProfile,
+                    userProfile: data.userProfile!,
                   );
                 },
                 error: (_, __) => const AppErrorWidget(),
