@@ -36,8 +36,8 @@ Dio dio(Ref ref) {
   ));
 
   final languageCode = ref.watch(currentLanguageProvider());
-  // final token = "Basic ZWUyY2NiZmNlNTQyMTMyMDYxM2Q1NDFjMDNhZjBmYmU6";
-  final token = ref.watch(userTokenProvider);
+  final token = "Basic ZWUyY2NiZmNlNTQyMTMyMDYxM2Q1NDFjMDNhZjBmYmU6";
+  // final token = ref.watch(userTokenProvider);
   dio.interceptors.addAll({
     DioAppInterceptors(
       languageCode: languageCode,

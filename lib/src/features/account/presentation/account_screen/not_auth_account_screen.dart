@@ -45,7 +45,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
                     fontWeight: FontWeight.w600,
                     height: 1,
                   )),
-          80.verticalSpace,
+          60.verticalSpace,
           CustomButtonWidget(
               text: context.tr("login"),
               backgroundColor: AppColors.primary,
@@ -69,7 +69,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
               topPading: 20,
               height: 50,
               width: 300),
-          100.verticalSpace,
+          70.verticalSpace,
           AccountCardsWidget(
             title: "change_Language",
             icon: Assets.icons.translateIcon.svg(),
@@ -80,6 +80,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
               currentLanguageNotifier.changeLanguage(context, newLanguage);
             },
           ),
+          Spacer()
         ],
       ),
     );

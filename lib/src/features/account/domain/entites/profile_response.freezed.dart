@@ -18,10 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileResponse {
   @JsonKey(ignore: true)
   UserProfile? get userProfile =>
-      throw _privateConstructorUsedError; // Nullable field
+      throw _privateConstructorUsedError; // Nullable userProfile
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
+  /// Create a copy of ProfileResponse
+  /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $ProfileResponseCopyWith<ProfileResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -46,32 +48,45 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
     implements $ProfileResponseCopyWith<$Res> {
   _$ProfileResponseCopyWithImpl(this._value, this._then);
 
+  // ignore: unused_field
   final $Val _value;
+  // ignore: unused_field
   final $Res Function($Val) _then;
 
-  @override
+  /// Create a copy of ProfileResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
-    Object? userProfile = null,
+    Object? userProfile = freezed,
     Object? message = null,
     Object? success = null,
   }) {
     return _then(_value.copyWith(
-      userProfile: null == userProfile
+      userProfile: freezed == userProfile
           ? _value.userProfile
-          : userProfile // Allow nullable userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
               as UserProfile?,
-      message: null == message ? _value.message : message as String,
-      success: null == success ? _value.success : success as bool,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
+  /// Create a copy of ProfileResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserProfileCopyWith<$Res>? get userProfile {
     if (_value.userProfile == null) {
       return null;
     }
+
     return $UserProfileCopyWith<$Res>(_value.userProfile!, (value) {
       return _then(_value.copyWith(userProfile: value) as $Val);
     });
@@ -103,20 +118,28 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
       _$ProfileResponseImpl _value, $Res Function(_$ProfileResponseImpl) _then)
       : super(_value, _then);
 
-  @override
+  /// Create a copy of ProfileResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
-    Object? userProfile = null,
+    Object? userProfile = freezed,
     Object? message = null,
     Object? success = null,
   }) {
     return _then(_$ProfileResponseImpl(
-      userProfile: null == userProfile
+      userProfile: freezed == userProfile
           ? _value.userProfile
-          : userProfile // Allow nullable userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
               as UserProfile?,
-      message: null == message ? _value.message : message as String,
-      success: null == success ? _value.success : success as bool,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -131,7 +154,8 @@ class _$ProfileResponseImpl implements _ProfileResponse {
 
   @override
   @JsonKey(ignore: true)
-  final UserProfile? userProfile; // Nullable field
+  final UserProfile? userProfile;
+// Nullable userProfile
   @override
   final String message;
   @override
@@ -156,6 +180,8 @@ class _$ProfileResponseImpl implements _ProfileResponse {
   @override
   int get hashCode => Object.hash(runtimeType, userProfile, message, success);
 
+  /// Create a copy of ProfileResponse
+  /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
@@ -172,12 +198,14 @@ abstract class _ProfileResponse implements ProfileResponse {
 
   @override
   @JsonKey(ignore: true)
-  UserProfile? get userProfile; // Nullable
+  UserProfile? get userProfile; // Nullable userProfile
   @override
   String get message;
   @override
   bool get success;
 
+  /// Create a copy of ProfileResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfileResponseImplCopyWith<_$ProfileResponseImpl> get copyWith =>
