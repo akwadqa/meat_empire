@@ -23,7 +23,7 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
       companyShippingFailed: json['company_shipping_failed'] as bool?,
       shippingFailed: json['shipping_failed'] as bool?,
       storedTaxes: json['stored_taxes'] as String?,
-      coupons: json['coupons'] as List<dynamic>?,
+      coupons: json['coupons'],
       recalculate: json['recalculate'] as bool?,
       calculateShipping: json['calculate_shipping'] as bool?,
       freeShipping: json['free_shipping'] as List<dynamic>?,

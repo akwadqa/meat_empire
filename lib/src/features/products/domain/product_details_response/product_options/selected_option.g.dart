@@ -11,3 +11,10 @@ _$SelectedOptionImpl _$$SelectedOptionImplFromJson(Map<String, dynamic> json) =>
       optionId: (json['option_id'] as num).toInt(),
       variantId: (json['variant_id'] as num).toInt(),
     );
+
+Map<String, dynamic> _$$SelectedOptionImplToJson(
+        _$SelectedOptionImpl instance) =>
+    <String, dynamic>{
+      'option_id': instance.optionId,
+      'variant_id': instance.variantId,
+    };

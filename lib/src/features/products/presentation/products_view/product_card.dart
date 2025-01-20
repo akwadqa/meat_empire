@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
               ],
               child: _AddToCartButton(
                   productId: int.parse(product.productId),
-                  amount: product.amount),
+                  amount: int.parse(product.minQty)),
             ),
             const SizedBox(height: 6),
           ],
@@ -217,10 +217,9 @@ class _AddToCartButton extends ConsumerWidget {
       onPressed: isInCart
           ? () => ref
               .read(updateCartControllerProvider.notifier)
-              .updateItemInCart(context, 0, productId)
-          : () => ref
-              .read(updateCartControllerProvider.notifier)
-              .addToCart(context, amount, productId),
+              .updateCart(amount: 0, productId: productId)
+          : () => ref.read(updateCartControllerProvider.notifier).addToCart(
+              context: context, amount: amount, productId: productId),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
             fontSize: 12,

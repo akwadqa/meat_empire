@@ -34,7 +34,7 @@ mixin _$Cart {
   bool? get companyShippingFailed => throw _privateConstructorUsedError;
   bool? get shippingFailed => throw _privateConstructorUsedError;
   String? get storedTaxes => throw _privateConstructorUsedError;
-  List<dynamic>? get coupons => throw _privateConstructorUsedError;
+  dynamic get coupons => throw _privateConstructorUsedError;
   bool? get recalculate => throw _privateConstructorUsedError;
   bool? get calculateShipping => throw _privateConstructorUsedError;
   List<dynamic>? get freeShipping => throw _privateConstructorUsedError;
@@ -96,7 +96,7 @@ abstract class $CartCopyWith<$Res> {
       bool? companyShippingFailed,
       bool? shippingFailed,
       String? storedTaxes,
-      List<dynamic>? coupons,
+      dynamic coupons,
       bool? recalculate,
       bool? calculateShipping,
       List<dynamic>? freeShipping,
@@ -260,7 +260,7 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       coupons: freezed == coupons
           ? _value.coupons
           : coupons // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as dynamic,
       recalculate: freezed == recalculate
           ? _value.recalculate
           : recalculate // ignore: cast_nullable_to_non_nullable
@@ -437,7 +437,7 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       bool? companyShippingFailed,
       bool? shippingFailed,
       String? storedTaxes,
-      List<dynamic>? coupons,
+      dynamic coupons,
       bool? recalculate,
       bool? calculateShipping,
       List<dynamic>? freeShipping,
@@ -597,9 +597,9 @@ class __$$CartImplCopyWithImpl<$Res>
           : storedTaxes // ignore: cast_nullable_to_non_nullable
               as String?,
       coupons: freezed == coupons
-          ? _value._coupons
+          ? _value.coupons
           : coupons // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as dynamic,
       recalculate: freezed == recalculate
           ? _value.recalculate
           : recalculate // ignore: cast_nullable_to_non_nullable
@@ -758,7 +758,7 @@ class _$CartImpl implements _Cart {
       this.companyShippingFailed,
       this.shippingFailed,
       this.storedTaxes,
-      final List<dynamic>? coupons,
+      this.coupons,
       this.recalculate,
       this.calculateShipping,
       final List<dynamic>? freeShipping,
@@ -794,7 +794,6 @@ class _$CartImpl implements _Cart {
       final List<dynamic>? couponsDetails,
       final List<DeliverySlot>? deliverySlots})
       : _products = products,
-        _coupons = coupons,
         _freeShipping = freeShipping,
         _productGroups = productGroups,
         _chosenShipping = chosenShipping,
@@ -843,16 +842,8 @@ class _$CartImpl implements _Cart {
   final bool? shippingFailed;
   @override
   final String? storedTaxes;
-  final List<dynamic>? _coupons;
   @override
-  List<dynamic>? get coupons {
-    final value = _coupons;
-    if (value == null) return null;
-    if (_coupons is EqualUnmodifiableListView) return _coupons;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final dynamic coupons;
   @override
   final bool? recalculate;
   @override
@@ -1020,7 +1011,7 @@ class _$CartImpl implements _Cart {
                 other.shippingFailed == shippingFailed) &&
             (identical(other.storedTaxes, storedTaxes) ||
                 other.storedTaxes == storedTaxes) &&
-            const DeepCollectionEquality().equals(other._coupons, _coupons) &&
+            const DeepCollectionEquality().equals(other.coupons, coupons) &&
             (identical(other.recalculate, recalculate) ||
                 other.recalculate == recalculate) &&
             (identical(other.calculateShipping, calculateShipping) ||
@@ -1105,7 +1096,7 @@ class _$CartImpl implements _Cart {
         companyShippingFailed,
         shippingFailed,
         storedTaxes,
-        const DeepCollectionEquality().hash(_coupons),
+        const DeepCollectionEquality().hash(coupons),
         recalculate,
         calculateShipping,
         const DeepCollectionEquality().hash(_freeShipping),
@@ -1167,7 +1158,7 @@ abstract class _Cart implements Cart {
       final bool? companyShippingFailed,
       final bool? shippingFailed,
       final String? storedTaxes,
-      final List<dynamic>? coupons,
+      final dynamic coupons,
       final bool? recalculate,
       final bool? calculateShipping,
       final List<dynamic>? freeShipping,
@@ -1234,7 +1225,7 @@ abstract class _Cart implements Cart {
   @override
   String? get storedTaxes;
   @override
-  List<dynamic>? get coupons;
+  dynamic get coupons;
   @override
   bool? get recalculate;
   @override

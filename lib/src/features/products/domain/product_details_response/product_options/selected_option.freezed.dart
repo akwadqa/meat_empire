@@ -23,6 +23,9 @@ mixin _$SelectedOption {
   int get optionId => throw _privateConstructorUsedError;
   int get variantId => throw _privateConstructorUsedError;
 
+  /// Serializes this SelectedOption to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   /// Create a copy of SelectedOption
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -111,7 +114,7 @@ class __$$SelectedOptionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
+@JsonSerializable()
 class _$SelectedOptionImpl implements _SelectedOption {
   _$SelectedOptionImpl({required this.optionId, required this.variantId});
 
@@ -151,6 +154,13 @@ class _$SelectedOptionImpl implements _SelectedOption {
   _$$SelectedOptionImplCopyWith<_$SelectedOptionImpl> get copyWith =>
       __$$SelectedOptionImplCopyWithImpl<_$SelectedOptionImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SelectedOptionImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SelectedOption implements SelectedOption {

@@ -2,14 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/cart_controller/cart_controller.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
+import 'package:queen_validators/queen_validators.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
 import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
+import '../../domain/cart.dart';
 import '../../domain/cart_product.dart';
 import '../../domain/product.dart';
 import 'empty_cart_screen.dart';
@@ -58,54 +61,10 @@ class CartBody extends ConsumerWidget {
           const SizedBox(height: 24),
           if (cartItems.isNotEmpty) _CartItemsSection(cartItems: cartItems),
           const SizedBox(height: 24),
-          _buildDiscountCouponSection(context),
+          _DiscountCouponSection(data.cart!),
           const SizedBox(height: 24),
           _buildCartSummary(context, data),
           const SizedBox(height: 120),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDiscountCouponSection(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: AppColors.lightPeach),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(context.tr('discountCoupon'),
-              style: Theme.of(context).textTheme.displaySmall),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: context.tr('couponCode'),
-                    hintStyle: const TextStyle(
-                      color: AppColors.gray02,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-                  textStyle: Theme.of(context).textTheme.displaySmall,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                onPressed: () {},
-                child: Text(context.tr('activate')),
-              ),
-            ],
-          ),
         ],
       ),
     );
@@ -230,9 +189,10 @@ class _SuggestedProductItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => ref
-          .read(updateCartControllerProvider.notifier)
-          .addToCart(context, product.amount, product.productId!),
+      onTap: () => ref.read(updateCartControllerProvider.notifier).addToCart(
+          context: context,
+          amount: product.amount,
+          productId: product.productId!),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -240,6 +200,92 @@ class _SuggestedProductItem extends ConsumerWidget {
         ),
         clipBehavior: Clip.antiAlias,
         child: AppCachedNetworkImage(imageUrl: product.imageUrl!),
+      ),
+    );
+  }
+}
+
+class _DiscountCouponSection extends ConsumerStatefulWidget {
+  final Cart cart;
+
+  const _DiscountCouponSection(this.cart);
+
+  @override
+  ConsumerState<_DiscountCouponSection> createState() =>
+      _DiscountCouponSectionState();
+}
+
+class _DiscountCouponSectionState
+    extends ConsumerState<_DiscountCouponSection> {
+  final _formKey = GlobalKey<FormState>();
+
+  String? _couponCode;
+
+  @override
+  Widget build(BuildContext context) {
+    final couponDetails = widget.cart.couponsDetails!;
+    return Container(
+      decoration: BoxDecoration(color: AppColors.lightPeach),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              context.tr('discountCoupon'),
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    initialValue:
+                        couponDetails.isNotEmpty ? couponDetails.first['coupon'] : null,
+                    readOnly: couponDetails.isNotEmpty,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: context.tr('couponCode'),
+                      hintStyle: const TextStyle(
+                        color: AppColors.gray02,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    validator: qValidator([IsRequired(context.tr('required'))]),
+                    onSaved: (value) => _couponCode = value,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 14),
+                    textStyle: Theme.of(context).textTheme.displaySmall,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (couponDetails.isNotEmpty) {
+                      ref
+                          .read(updateCartControllerProvider.notifier)
+                          .updateCart(couponCode: '');
+                    } else if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      ref
+                          .read(updateCartControllerProvider.notifier)
+                          .updateCart(couponCode: _couponCode);
+                    }
+                  },
+                  child: Text(context.tr(
+                      widget.cart.coupons!.isNotEmpty ? 'cancel' : 'activate')),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -320,7 +366,7 @@ class _CartItem extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          cartItem.formatBasePrice ?? '',
+                          cartItem.displaySubtotal ?? '',
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!
@@ -383,11 +429,10 @@ class _CartItem extends ConsumerWidget {
 
         if ((isIncrement && currentAmount < limit) ||
             (!isIncrement && currentAmount > limit)) {
-          ref.read(updateCartControllerProvider.notifier).updateItemInCart(
-                context,
-                int.parse(cartItem.productId!),
-                targetAmount,
-                int.parse(cartItem.itemId!),
+          ref.read(updateCartControllerProvider.notifier).updateCart(
+                productId: int.parse(cartItem.productId!),
+                amount: targetAmount,
+                itemId: int.parse(cartItem.itemId!),
               );
         }
       },
@@ -408,25 +453,38 @@ class _CartItemHeader extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          cartItem.product ?? '',
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 16),
+        // Product name
+        Expanded(
+          child: Text(
+            cartItem.product ?? '',
+            style:
+                Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 16),
+          ),
         ),
-        if (updateCartAsync is AsyncLoading)
-          const FadeCircleLoadingIndicator()
-        else
-          IconButton(
-            onPressed: () => ref
-                .read(updateCartControllerProvider.notifier)
-                .updateItemInCart(
-                  context,
-                  int.parse(cartItem.productId!),
-                  0,
-                  cartItem.itemId != null ? int.parse(cartItem.itemId!) : null,
-                ),
+        // Loading indicator or delete icon
+        updateCartAsync.maybeWhen(
+          loading: () => const FadeCircleLoadingIndicator(),
+          orElse: () => IconButton(
+            onPressed: () => _handleDelete(context, ref),
             icon: Assets.icons.deleteIcon.svg(),
           ),
+        ),
       ],
     );
+  }
+
+  void _handleDelete(BuildContext context, WidgetRef ref) {
+    final cartCount = ref.read(cartCountProvider);
+    final updateCartController =
+        ref.read(updateCartControllerProvider.notifier);
+    if (cartCount == 1) {
+      updateCartController.clearCart();
+    } else {
+      updateCartController.updateCart(
+        productId: int.parse(cartItem.productId!),
+        amount: 0,
+        itemId: cartItem.itemId != null ? int.parse(cartItem.itemId!) : null,
+      );
+    }
   }
 }

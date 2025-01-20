@@ -173,7 +173,7 @@ final cartCountProvider = AutoDisposeProvider<int>.internal(
 // ignore: unused_element
 typedef CartCountRef = AutoDisposeProviderRef<int>;
 String _$updateCartControllerHash() =>
-    r'd5c891fca534fd9516faa6775a7ad8bd17cb30e3';
+    r'39c3bd532b05b591627c82401b245f8b27e488cc';
 
 /// See also [UpdateCartController].
 @ProviderFor(UpdateCartController)

@@ -26,8 +26,6 @@ import 'package:meat_empire/src/features/cart/presentation/cart_screen/cart_scre
     as _i2;
 import 'package:meat_empire/src/features/categories/presentation/categories_screen/categories_screen.dart'
     as _i3;
-import 'package:meat_empire/src/features/home/domain/home/category/category.dart'
-    as _i16;
 import 'package:meat_empire/src/features/home/presentation/home_screen/home_screen.dart'
     as _i4;
 import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart'
@@ -106,17 +104,10 @@ class CartRoute extends _i13.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.CategoriesScreen]
-class CategoriesRoute extends _i13.PageRouteInfo<CategoriesRouteArgs> {
-  CategoriesRoute({
-    _i14.Key? key,
-    _i16.Category? category,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class CategoriesRoute extends _i13.PageRouteInfo<void> {
+  const CategoriesRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           CategoriesRoute.name,
-          args: CategoriesRouteArgs(
-            key: key,
-            category: category,
-          ),
           initialChildren: children,
         );
 
@@ -125,30 +116,9 @@ class CategoriesRoute extends _i13.PageRouteInfo<CategoriesRouteArgs> {
   static _i13.PageInfo page = _i13.PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<CategoriesRouteArgs>(
-          orElse: () => const CategoriesRouteArgs());
-      return _i3.CategoriesScreen(
-        key: args.key,
-        category: args.category,
-      );
+      return const _i3.CategoriesScreen();
     },
   );
-}
-
-class CategoriesRouteArgs {
-  const CategoriesRouteArgs({
-    this.key,
-    this.category,
-  });
-
-  final _i14.Key? key;
-
-  final _i16.Category? category;
-
-  @override
-  String toString() {
-    return 'CategoriesRouteArgs{key: $key, category: $category}';
-  }
 }
 
 /// generated route for

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
+import 'package:meat_empire/src/features/products/domain/product_details_response/product_options/selected_option.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../constants/end_points.dart';
@@ -20,28 +21,44 @@ class CartRepository {
         () => _networkService.get(EndPoints.cartApi),
       );
 
-  Future<CartResponse> addToCart(int amount, int productId) async =>
+  Future<CartResponse> addToCart(
+          {required int amount,
+          required int productId,
+          List<SelectedOption>? selectedOprions}) async =>
       _processRequest(
         () => _networkService.post(EndPoints.cartApi, {
           'product_data': [
-            {'amount': amount, 'product_id': productId, 'product_options': []}
-          ]
-        }),
-      );
-
-  Future<CartResponse> updateItemInCart(int productId, int amount,
-          [int? itemId]) async =>
-      _processRequest(
-        () => _networkService.put('${EndPoints.cartApi}/1', {
-          'cart_product': [
             {
+              'amount': amount,
               'product_id': productId,
-              if (itemId != null) 'item_id': itemId,
-              'amount': amount
+              if (selectedOprions != null && selectedOprions.isNotEmpty)
+                'product_options': selectedOprions.map((e) => e.toJson())
             }
           ]
         }),
       );
+
+  Future<CartResponse> updateCart(
+          {int? productId,
+          int? amount,
+          int? itemId,
+          String? couponCode}) async =>
+      _processRequest(
+        () => _networkService.put('${EndPoints.cartApi}/1', {
+          if (productId != null)
+            'cart_product': [
+              {
+                'product_id': productId,
+                if (itemId != null) 'item_id': itemId,
+                'amount': amount
+              }
+            ],
+          if (couponCode != null) 'coupon_code': couponCode
+        }),
+      );
+
+  Future<CartResponse> clearCart() async =>
+      _processRequest(() => _networkService.delete('${EndPoints.cartApi}/1'));
 
   Future<CartResponse> _processRequest(
       Future<dynamic> Function() request) async {

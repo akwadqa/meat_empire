@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'selected_option.freezed.dart';
 part 'selected_option.g.dart';
 
-@freezed
+@Freezed(toJson: true)
 class SelectedOption with _$SelectedOption {
   factory SelectedOption({
     required int optionId,

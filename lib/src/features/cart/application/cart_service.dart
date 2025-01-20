@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../routing/app_router.gr.dart';
 import '../../auth/application/auth_service.dart';
+import '../../products/domain/product_details_response/product_options/selected_option.dart';
 import '../data/cart_repository.dart';
 import '../presentation/cart_controller/cart_controller.dart';
 
@@ -16,12 +17,18 @@ class UpdateCartController extends _$UpdateCartController {
   FutureOr<void> build() {}
 
   Future<void> addToCart(
-      BuildContext context, int amount, int productId) async {
+      {required BuildContext context,
+      required int amount,
+      required int productId,
+      List<SelectedOption>? selectedOprions}) async {
     if (ref.read(isAuthinticatedProvider)) {
       state = AsyncLoading();
       state = await AsyncValue.guard(() async {
         final cartRepo = ref.watch(cartRepositoryProvider);
-        final cart = await cartRepo.addToCart(amount, productId);
+        final cart = await cartRepo.addToCart(
+            amount: amount,
+            productId: productId,
+            selectedOprions: selectedOprions);
         ref.read(cartControllerProvider.notifier).updateCart(cart);
       });
     } else {
@@ -29,12 +36,25 @@ class UpdateCartController extends _$UpdateCartController {
     }
   }
 
-  Future<void> updateItemInCart(BuildContext context, int productId, int amount,
-      [int? itemId]) async {
+  Future<void> updateCart(
+      {int? productId, int? amount, int? itemId, String? couponCode}) async {
     state = AsyncLoading();
     state = await AsyncValue.guard(() async {
       final cartRepo = ref.watch(cartRepositoryProvider);
-      final cart = await cartRepo.updateItemInCart(productId, amount, itemId);
+      final cart = await cartRepo.updateCart(
+          productId: productId,
+          amount: amount,
+          itemId: itemId,
+          couponCode: couponCode);
+      ref.read(cartControllerProvider.notifier).updateCart(cart);
+    });
+  }
+
+  Future<void> clearCart() async {
+    state = AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      final cartRepo = ref.watch(cartRepositoryProvider);
+      final cart = await cartRepo.clearCart();
       ref.read(cartControllerProvider.notifier).updateCart(cart);
     });
   }

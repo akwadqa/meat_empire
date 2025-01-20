@@ -28,7 +28,7 @@ class Cart with _$Cart {
     bool? companyShippingFailed,
     bool? shippingFailed,
     String? storedTaxes,
-    List<dynamic>? coupons,
+    dynamic coupons,
     bool? recalculate,
     bool? calculateShipping,
     List<dynamic>? freeShipping,

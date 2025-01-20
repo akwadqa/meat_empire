@@ -16,6 +16,7 @@ import '../../../home/data/home_repository.dart';
 
 part 'categories_screen.g.dart';
 
+/// Riverpod providers for managing category state
 @riverpod
 class SelectedCategory extends _$SelectedCategory {
   @override
@@ -24,29 +25,21 @@ class SelectedCategory extends _$SelectedCategory {
   void setCategory(String categoryId) => state = categoryId;
 }
 
-@RoutePage()
-class CategoriesScreen extends ConsumerStatefulWidget {
-  const CategoriesScreen({super.key, this.category});
-
-  final Category? category;
-
+@riverpod
+class IsExpandedCategoriesBar extends _$IsExpandedCategoriesBar {
   @override
-  ConsumerState<CategoriesScreen> createState() => _CategoriesScreenState();
+  bool build() => ref.watch(selectedCategoryProvider).isEmpty;
+
+  void toggleExpansion() => state = !state;
 }
 
-class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
-  @override
-  void initState() {
-    Future(() {
-      ref
-          .read(selectedCategoryProvider.notifier)
-          .setCategory(widget.category?.categoryId ?? '');
-    });
-    super.initState();
-  }
+/// Main screen for displaying categories and search results
+@RoutePage()
+class CategoriesScreen extends ConsumerWidget {
+  const CategoriesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final homeAsync = ref.watch(homeProvider);
 
     return Scaffold(
@@ -55,29 +48,21 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
         loading: () => const FadeCircleLoadingIndicator(),
         error: (_, __) => const AppErrorWidget(),
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniStartDocked,
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.primary,
-          onPressed: () {},
-          mini: true,
-          child: Assets.icons.newCategoriesIcon.svg()),
+      floatingActionButtonLocation: const CustomFABLocation(),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButton: _buildFloatingActionButton(ref),
     );
   }
 
+  /// Builds the main layout with categories and search results
   Widget _buildCategoriesLayout(
       BuildContext context, WidgetRef ref, dynamic home) {
-    final categories = (home.layout
-            .firstWhere((e) => e.type == 'categories')
-            .data as List<Object>)
-        .whereType<Category>()
-        .toList();
+    final categories = _extractCategories(home);
 
     return Row(
       children: [
-        _buildCategoriesList(context, ref, categories),
+        _buildCategoriesList(ref, categories),
         Expanded(
-          flex: 4,
           child: Consumer(
             builder: (context, ref, _) {
               final selectedCategoryId = ref.watch(selectedCategoryProvider);
@@ -89,41 +74,87 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
     );
   }
 
-  Widget _buildCategoriesList(
-      BuildContext context, WidgetRef ref, List<Category> categories) {
-    final selectedCategoryId = ref.watch(selectedCategoryProvider);
+  /// Extracts categories from the home layout
+  List<Category> _extractCategories(dynamic home) {
+    return (home.layout
+            .firstWhere((e) => e.type == 'categories')
+            .data as List<Object>)
+        .whereType<Category>()
+        .toList();
+  }
 
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.offWhite,
-          border: Border.all(color: AppColors.lightGray02),
-        ),
-        child: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-          itemCount: categories.length + 1,
-          itemBuilder: (context, index) {
-            final isAllCategory = index == 0;
-            final category = isAllCategory ? null : categories[index - 1];
+  /// Builds the categories list view
+  Widget _buildCategoriesList(WidgetRef ref, List<Category> categories) {
+    final isExpanded = ref.watch(isExpandedCategoriesBarProvider);
 
-            return CategoryItem(
-              withBorder: isAllCategory
-                  ? selectedCategoryId.isEmpty
-                  : selectedCategoryId == category!.categoryId,
-              height: 45,
-              width: 45,
-              onTap: () => ref
-                  .read(selectedCategoryProvider.notifier)
-                  .setCategory(isAllCategory ? '' : category!.categoryId),
-              label: isAllCategory ? tr('all') : category!.category,
-              image: isAllCategory
-                  ? Assets.icons.categoriesIcon.svg()
-                  : AppCachedNetworkImage(imageUrl: category!.imageUrl),
-            );
-          },
-          separatorBuilder: (_, __) => const SizedBox(height: 10),
-        ),
+    return AnimatedContainer(
+      width: isExpanded ? 80 : 0,
+      duration: const Duration(milliseconds: 300),
+      decoration: BoxDecoration(
+        color: AppColors.offWhite,
+        border: Border.all(color: AppColors.lightGray02),
+      ),
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+        itemCount: categories.length + 1,
+        itemBuilder: (context, index) {
+          return _buildCategoryItem(ref, index, categories);
+        },
+        separatorBuilder: (_, __) => const SizedBox(height: 10),
       ),
     );
+  }
+
+  /// Builds an individual category item
+  Widget _buildCategoryItem(
+      WidgetRef ref, int index, List<Category> categories) {
+    final selectedCategoryId = ref.watch(selectedCategoryProvider);
+    final isAllCategory = index == 0;
+    final category = isAllCategory ? null : categories[index - 1];
+
+    return CategoryItem(
+      withBorder: isAllCategory
+          ? selectedCategoryId.isEmpty
+          : selectedCategoryId == category!.categoryId,
+      height: 45,
+      width: 45,
+      onTap: () => ref
+          .read(selectedCategoryProvider.notifier)
+          .setCategory(isAllCategory ? '' : category!.categoryId),
+      label: isAllCategory ? tr('all') : category!.category,
+      image: isAllCategory
+          ? Assets.icons.categoriesIcon.svg()
+          : AppCachedNetworkImage(imageUrl: category!.imageUrl),
+    );
+  }
+
+  /// Builds the floating action button with toggle functionality
+  Widget _buildFloatingActionButton(WidgetRef ref) {
+    final isExpanded = ref.watch(isExpandedCategoriesBarProvider);
+
+    return FloatingActionButton(
+      shape: const CircleBorder(),
+      backgroundColor: isExpanded ? AppColors.rose : AppColors.primary,
+      onPressed: () => ref.read(isExpandedCategoriesBarProvider.notifier).toggleExpansion(),
+      mini: true,
+      child: isExpanded
+          ? const Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.black900)
+          : Assets.icons.newCategoriesIcon.svg(),
+    );
+  }
+}
+
+/// Custom FAB Location to adjust position
+class CustomFABLocation extends FloatingActionButtonLocation {
+  const CustomFABLocation();
+
+  @override
+  Offset getOffset(ScaffoldPrelayoutGeometry scaffoldGeometry) {
+    const double fabX = 20;
+    const double fabYOffset = 100;
+    final double fabY = scaffoldGeometry.scaffoldSize.height -
+        scaffoldGeometry.floatingActionButtonSize.height -
+        fabYOffset;
+    return Offset(fabX, fabY);
   }
 }

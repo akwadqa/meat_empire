@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -96,7 +95,7 @@ class ProductDetailsView extends StatelessWidget {
           return _AddToCartButton(
             productPrice: (totalPrice * quantity).toStringAsFixed(2),
             productId: product.productId,
-            amount: int.parse(product.minQty),
+            amount: quantity,
           );
         }),
       ],
@@ -384,7 +383,12 @@ class _AddToCartButton extends StatelessWidget {
           return ElevatedButton.icon(
             onPressed: () => ref
                 .read(updateCartControllerProvider.notifier)
-                .addToCart(context, amount, productId),
+                .addToCart(
+                    context: context,
+                    amount: amount,
+                    productId: productId,
+                    selectedOprions: ref.read(productOptionsControllerProvider))
+                .then((_) => context.maybePop),
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
             icon: const Icon(Icons.add_shopping_cart_rounded,
                 color: Colors.white, size: 25),
