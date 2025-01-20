@@ -85,5 +85,9 @@
     "canceled": "Canceled",
     "order_date": "Order Date: {}",
     "order_number": "Order Number: {}",
-    "order_cost": "Order Cost: {} QAR"
+    "order_cost": "Order Cost: {} QAR",
+    "yourCartIsEmpty" : "Your Cart Is Empty!",
+    "cartEmptyDesc" : "Shop and add your favorite products to your cart",
+    "goToShopping" : "Go To Shopping",
+    "cartUnAuthDesc" : "Log in, discover our products and enjoy shopping."
 }

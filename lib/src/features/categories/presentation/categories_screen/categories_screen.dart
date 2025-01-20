@@ -55,6 +55,13 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
         loading: () => const FadeCircleLoadingIndicator(),
         error: (_, __) => const AppErrorWidget(),
       ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniStartDocked,
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.primary,
+          onPressed: () {},
+          mini: true,
+          child: Assets.icons.newCategoriesIcon.svg()),
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
+import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/cart_controller/cart_controller.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import '../../../../../gen/assets.gen.dart';
@@ -11,6 +12,8 @@ import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
 import '../../domain/cart_product.dart';
 import '../../domain/product.dart';
+import 'empty_cart_screen.dart';
+import 'un_auth_cart_screen.dart';
 
 @RoutePage()
 class CartScreen extends StatelessWidget {
@@ -19,7 +22,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SingleChildScrollView(child: CartBody()),
+      body: CartBody(),
     );
   }
 }
@@ -32,107 +35,150 @@ class CartBody extends ConsumerWidget {
     final cartAsync = ref.watch(cartControllerProvider);
 
     return cartAsync.when(
-      data: (data) {
-        final products = data.cart?.products ?? [];
-        final cartItems = data.cart?.cartProducts ?? [];
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (products.isNotEmpty)
-              _SuggestedProductsSection(products: products),
-            const SizedBox(height: 24),
-            if (cartItems.isNotEmpty) _CartItemsSection(cartItems: cartItems),
-            SizedBox(height: 24),
-            Container(
-              decoration: BoxDecoration(color: AppColors.lightPeach),
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(context.tr('discountCoupon'),
-                      style: Theme.of(context).textTheme.displaySmall),
-                  SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: TextFormField(
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: context.tr('couponCode'),
-                          hintStyle: TextStyle(
-                              color: AppColors.gray02,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      )),
-                      SizedBox(width: 10),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 14),
-                            textStyle: Theme.of(context).textTheme.displaySmall,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          onPressed: () {},
-                          child: Text(context.tr('activate')))
-                    ],
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-            Container(
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, -2),
-                    blurRadius: 15,
-                    color: Color(0x41000014))
-              ]),
-              padding: EdgeInsets.symmetric(vertical: 24, horizontal: 40),
-              child: Column(
-                spacing: 20,
-                children: [
-                  _textRow(context.tr('productsCost'),
-                      data.cart!.formatSubtotal!, context),
-                  _textRow(context.tr('shippingCost'),
-                      data.cart!.formatShippingCost!, context),
-                  _textRow(
-                      '${context.tr('discountCoupon')} (${data.cart!.discount!})',
-                      data.cart!.formatSubtotalDiscount!,
-                      context,
-                      AppColors.primary),
-                  Divider(),
-                  _textRow(context.tr('total'), data.cart!.formatTotal!,
-                      context, AppColors.grayishCharcoal, 18, FontWeight.w700),
-                ],
-              ),
-            ),
-            const SizedBox(height: 60),
-          ],
-        );
-      },
+      data: (data) => data.cart != null
+          ? _buildCartContent(context, data)
+          : EmptyCartScreen(),
       loading: () => const Center(child: FadeCircleLoadingIndicator()),
-      error: (_, __) => const Center(child: AppErrorWidget()),
+      error: (error, __) => error.toString() == 'user_id param is mandatory'
+          ? UnAuthCartScreen()
+          : const Center(child: AppErrorWidget()),
     );
   }
 
-  Widget _textRow(String title, String value, BuildContext context,
-      [Color fontColor = AppColors.dimGray,
-      double? fontSize,
-      FontWeight? fontWeight]) {
+  Widget _buildCartContent(BuildContext context, CartResponse data) {
+    final products = data.cart?.products ?? [];
+    final cartItems = data.cart?.cartProducts ?? [];
+
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (products.isNotEmpty)
+            _SuggestedProductsSection(products: products),
+          const SizedBox(height: 24),
+          if (cartItems.isNotEmpty) _CartItemsSection(cartItems: cartItems),
+          const SizedBox(height: 24),
+          _buildDiscountCouponSection(context),
+          const SizedBox(height: 24),
+          _buildCartSummary(context, data),
+          const SizedBox(height: 120),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDiscountCouponSection(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: AppColors.lightPeach),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(context.tr('discountCoupon'),
+              style: Theme.of(context).textTheme.displaySmall),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: context.tr('couponCode'),
+                    hintStyle: const TextStyle(
+                      color: AppColors.gray02,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  textStyle: Theme.of(context).textTheme.displaySmall,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                onPressed: () {},
+                child: Text(context.tr('activate')),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCartSummary(BuildContext context, CartResponse data) {
+    final cart = data.cart!;
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, -2),
+            blurRadius: 15,
+            color: Color(0x41000014),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
+      child: Column(
+        spacing: 20,
+        children: [
+          _buildTextRow(
+              context.tr('productsCost'), cart.formatSubtotal!, context),
+          _buildTextRow(
+              context.tr('shippingCost'), cart.formatShippingCost!, context),
+          _buildTextRow(
+            '${context.tr('discountCoupon')} (${cart.discount!})',
+            cart.formatSubtotalDiscount!,
+            context,
+            fontColor: AppColors.primary,
+          ),
+          const Divider(color: AppColors.gray02),
+          _buildTextRow(
+            context.tr('total'),
+            cart.formatTotal!,
+            context,
+            fontColor: AppColors.grayishCharcoal,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextRow(
+    String title,
+    String value,
+    BuildContext context, {
+    Color fontColor = AppColors.dimGray,
+    double? fontSize,
+    FontWeight? fontWeight,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,
-            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+        Text(
+          title,
+          style: Theme.of(context).textTheme.displaySmall!.copyWith(
                 fontWeight: fontWeight ?? FontWeight.w400,
                 color: fontColor,
-                fontSize: fontSize)),
-        Text(value,
-            style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                color: fontColor, fontSize: fontSize, fontWeight: fontWeight))
+                fontSize: fontSize,
+              ),
+        ),
+        Text(
+          value,
+          style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                color: fontColor,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+              ),
+        ),
       ],
     );
   }
@@ -176,20 +222,25 @@ class _SuggestedProductsSection extends StatelessWidget {
   }
 }
 
-class _SuggestedProductItem extends StatelessWidget {
+class _SuggestedProductItem extends ConsumerWidget {
   final Product product;
 
   const _SuggestedProductItem({required this.product});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return GestureDetector(
+      onTap: () => ref
+          .read(updateCartControllerProvider.notifier)
+          .addToCart(context, product.amount, product.productId!),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: AppCachedNetworkImage(imageUrl: product.imageUrl!),
       ),
-      clipBehavior: Clip.antiAlias,
-      child: AppCachedNetworkImage(imageUrl: product.imageUrl!),
     );
   }
 }

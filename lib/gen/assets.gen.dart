@@ -77,6 +77,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/menu_icon.svg
   SvgGenImage get menuIcon => const SvgGenImage('assets/icons/menu_icon.svg');
 
+  /// File path: assets/icons/new_categories_icon.svg
+  SvgGenImage get newCategoriesIcon =>
+      const SvgGenImage('assets/icons/new_categories_icon.svg');
+
   /// File path: assets/icons/order_icon.svg
   SvgGenImage get orderIcon => const SvgGenImage('assets/icons/order_icon.svg');
 
@@ -118,6 +122,7 @@ class $AssetsIconsGen {
         logoutIcon,
         markIcon,
         menuIcon,
+        newCategoriesIcon,
         orderIcon,
         searchIcon,
         shieldLockIcon,
@@ -129,6 +134,10 @@ class $AssetsIconsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/cart_image.png
+  AssetGenImage get cartImage =>
+      const AssetGenImage('assets/images/cart_image.png');
 
   /// File path: assets/images/login_image.svg
   SvgGenImage get loginImage =>
@@ -142,7 +151,7 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/qatar_flag.png');
 
   /// List of all assets
-  List<dynamic> get values => [loginImage, logo, qatarFlag];
+  List<dynamic> get values => [cartImage, loginImage, logo, qatarFlag];
 }
 
 class $AssetsTranslationsGen {
