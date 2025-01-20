@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/my_orders/domain/entities/orders_entity.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-import 'package:meat_empire/src/utils/general_enums.dart';
 
 class OrderCardWidget extends StatelessWidget {
   final OrdersEntity order;
@@ -19,7 +17,7 @@ class OrderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
     final List<String> productImages =
         List<String>.from(order.products.map((product) => product.imageUrl));
     bool shortProductList = order.products.length > 4;
@@ -101,8 +99,8 @@ class OrderCardWidget extends StatelessWidget {
                       // flex: 1,
                       child: IconButton(
                         onPressed: () {
-                          _scrollController.animateTo(
-                            _scrollController.offset - 70,
+                          scrollController.animateTo(
+                            scrollController.offset - 70,
                             duration: Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           );
@@ -118,7 +116,7 @@ class OrderCardWidget extends StatelessWidget {
                     flex: 10,
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
-                      controller: _scrollController,
+                      controller: scrollController,
                       scrollDirection: Axis.horizontal,
                       itemCount: productImages.length,
                       separatorBuilder: (context, index) => 8.horizontalSpace,
@@ -150,8 +148,8 @@ class OrderCardWidget extends StatelessWidget {
                       // flex: 1,
                       child: IconButton(
                         onPressed: () {
-                          _scrollController.animateTo(
-                            _scrollController.offset + 70,
+                          scrollController.animateTo(
+                            scrollController.offset + 70,
                             duration: Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           );

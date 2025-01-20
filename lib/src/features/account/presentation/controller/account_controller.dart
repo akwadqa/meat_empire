@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/account/data/repository/account_repository.dart';
 import 'package:meat_empire/src/features/account/domain/entites/profile_response.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
-import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'account_controller.g.dart';

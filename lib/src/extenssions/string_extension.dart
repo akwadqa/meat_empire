@@ -31,7 +31,7 @@ extension TextAlignmentExtension on String {
 
   /// Helper to check if the text is Arabic
   bool get isArabic {
-    final trimmedText = this.trim();
+    final trimmedText = trim();
     if (trimmedText.isEmpty) return false;
     return RegExp(r'^[\u0600-\u06FF]').hasMatch(trimmedText);
   }

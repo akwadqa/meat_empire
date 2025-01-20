@@ -2,9 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
 import 'package:meat_empire/src/features/my_orders/domain/entities/orders_response.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/controllers/my_orders_controller.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_card.dart';
@@ -13,7 +11,6 @@ import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/app_pagination_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
-import '../../../../../gen/assets.gen.dart';
 
 @RoutePage()
 class MyOrdersScreen extends ConsumerStatefulWidget {
