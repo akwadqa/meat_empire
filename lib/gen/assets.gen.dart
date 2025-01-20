@@ -135,6 +135,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/cart_image.png
+  AssetGenImage get cartImage =>
+      const AssetGenImage('assets/images/cart_image.png');
+
   /// File path: assets/images/empty_data.svg
   SvgGenImage get emptyData =>
       const SvgGenImage('assets/images/empty_data.svg');
@@ -156,7 +160,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values =>
-      [emptyData, imErrorScreen, loginImage, logo, qatarFlag];
+      [cartImage, emptyData, imErrorScreen, loginImage, logo, qatarFlag];
 }
 
 class $AssetsLottieGen {
