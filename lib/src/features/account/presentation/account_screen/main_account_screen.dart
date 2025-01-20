@@ -24,17 +24,9 @@ class MainAccountScreen extends ConsumerWidget {
             ? NotAuthMainAccountScreen()
             : asyncAccountData.when(
                 data: (data) {
-                  debugPrint("DATA IS ${data.userProfile.userId}");
-                  // Set the fetched profile into the ProfileNotifier
-                  // Use Future.microtask to update the profile after the widget build phase
-                  // Future.microtask(() {
-                  //   ref
-                  //       .read(profileNotifierProvider.notifier)
-                  //       .setProfile(data.userProfile);
-                  // });
-
+                  debugPrint("DATA IS ${data.userProfile!.userId}");
                   return AccountScreen(
-                    userProfile: data.userProfile,
+                    userProfile: data.userProfile!,
                   );
                 },
                 error: (_, __) => const AppErrorWidget(),

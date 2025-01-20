@@ -24,7 +24,7 @@ final myOrdersRepositoryProvider = Provider<MyOrdersRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MyOrdersRepositoryRef = ProviderRef<MyOrdersRepository>;
-String _$myOrdersHash() => r'df9ed67c6360d464ed5e2843350a77df34a7df67';
+String _$myOrdersHash() => r'258f7e3562c0962449f708e909ce3f1ff3fbb708';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -59,9 +59,11 @@ class MyOrdersFamily extends Family<AsyncValue<OrdersResponse>> {
   /// See also [myOrders].
   MyOrdersProvider call(
     String status,
+    int page,
   ) {
     return MyOrdersProvider(
       status,
+      page,
     );
   }
 
@@ -71,6 +73,7 @@ class MyOrdersFamily extends Family<AsyncValue<OrdersResponse>> {
   ) {
     return call(
       provider.status,
+      provider.page,
     );
   }
 
@@ -94,10 +97,12 @@ class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
   /// See also [myOrders].
   MyOrdersProvider(
     String status,
+    int page,
   ) : this._internal(
           (ref) => myOrders(
             ref as MyOrdersRef,
             status,
+            page,
           ),
           from: myOrdersProvider,
           name: r'myOrdersProvider',
@@ -108,6 +113,7 @@ class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
           dependencies: MyOrdersFamily._dependencies,
           allTransitiveDependencies: MyOrdersFamily._allTransitiveDependencies,
           status: status,
+          page: page,
         );
 
   MyOrdersProvider._internal(
@@ -118,9 +124,11 @@ class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.status,
+    required this.page,
   }) : super.internal();
 
   final String status;
+  final int page;
 
   @override
   Override overrideWith(
@@ -136,6 +144,7 @@ class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         status: status,
+        page: page,
       ),
     );
   }
@@ -147,13 +156,16 @@ class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
 
   @override
   bool operator ==(Object other) {
-    return other is MyOrdersProvider && other.status == status;
+    return other is MyOrdersProvider &&
+        other.status == status &&
+        other.page == page;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, status.hashCode);
+    hash = _SystemHash.combine(hash, page.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -164,6 +176,9 @@ class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
 mixin MyOrdersRef on AutoDisposeFutureProviderRef<OrdersResponse> {
   /// The parameter `status` of this provider.
   String get status;
+
+  /// The parameter `page` of this provider.
+  int get page;
 }
 
 class _MyOrdersProviderElement
@@ -172,6 +187,8 @@ class _MyOrdersProviderElement
 
   @override
   String get status => (origin as MyOrdersProvider).status;
+  @override
+  int get page => (origin as MyOrdersProvider).page;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

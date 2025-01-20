@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/account/data/repository/account_repository.dart';
 import 'package:meat_empire/src/features/account/domain/entites/profile_response.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
+import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'account_controller.g.dart';
@@ -16,31 +17,46 @@ class AccountController extends _$AccountController {
 
   Future<void> editAccountInformation(
       BuildContext context, UserProfile userProfile) async {
-    // Check if the state contains valid data (AsyncData)
     if (state is AsyncData<ProfileResponse>) {
-      final currentProfile = state.value;
+      final currentState = state.value; // Preserve the current state
+      state = AsyncLoading(); // Set loading state
 
-      debugPrint("CURRENT PROFILE IS $currentProfile");
-      debugPrint("CURRENT PROFILE IS ${state.asData}");
-      debugPrint("CURRENT PROFILE IS $state");
+      try {
+        // Perform the update request
+        final response = await ref
+            .read(accountRepositoryProvider)
+            .updateProfile(userProfile);
 
-      // // Create the updated profile object by copying the current profile and modifying the fields
-      // final UserProfile? updatedProfile = currentProfile.value!.userProfile
-      //     .copyWith(firstname: name, phone: phone);
-      // state = const AsyncLoading();
+        if (response.success) {
+          // Update state on success
+          state = AsyncData(response);
+          debugPrint("Profile updated successfully.");
+          Navigator.pop(context);
+        } else {
+          // Retain previous state on failure
+          state = AsyncData(currentState!); // Restore previous state
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(response.message),
+          //     backgroundColor: AppColors.darkRed,
+          //   ),
+          // );
+        }
+      } catch (e) {
+        // Handle parsing or request exceptions
+        state = AsyncError(e, StackTrace.current); // Update state to AsyncError
+        debugPrint("Exception while updating profile: $e");
 
-      // Perform the update request using the repository and handle the response
-      state = AsyncLoading();
-      state = await AsyncValue.guard(
-        () => ref.read(accountRepositoryProvider).updateProfile(userProfile),
-      );
-      if (state is AsyncData) {
-        debugPrint("Success update data");
-        Navigator.pop(context); // Close the dialog
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(
+        //     content: Text("An error occurred. Please try again."),
+        //     backgroundColor: AppColors.darkRed,
+        //   ),
+        // );
+        state = AsyncData(currentState!);
       }
     } else {
-      // Handle the case where the state is in an error state
-      state = AsyncError(state.error.toString(), StackTrace.current);
+      debugPrint("State is not ready for editing.");
     }
   }
 }

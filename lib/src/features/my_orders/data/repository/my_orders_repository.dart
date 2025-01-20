@@ -46,9 +46,13 @@ class MyOrdersRepository {
 
   const MyOrdersRepository(this._networkService);
 
-  Future<OrdersResponse> getmyOrders(String status) async {
+  Future<OrdersResponse> getMyOrders(String status, {int page = 1}) async {
     final response = await _networkService.get(
-      EndPoints.orderHistory(status),
+      EndPoints.orderHistory,
+      queryParameters: {
+        "status": status,
+        "page": page,
+      }, // Pass page parameter
     );
     OrdersResponse ordersResponse = OrdersResponse.fromJson(response.data);
     if (ordersResponse.success) {
@@ -59,7 +63,7 @@ class MyOrdersRepository {
 }
 
 @riverpod
-FutureOr<OrdersResponse> myOrders(Ref ref, String status) async {
+FutureOr<OrdersResponse> myOrders(Ref ref, String status, int page) async {
   final myOrdersRepository = ref.watch(myOrdersRepositoryProvider);
-  return myOrdersRepository.getmyOrders(status);
+  return myOrdersRepository.getMyOrders(status, page: page);
 }

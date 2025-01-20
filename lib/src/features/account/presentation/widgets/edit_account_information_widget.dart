@@ -33,36 +33,36 @@ Future<void> showEditAccountInformationDialog({
     );
   }
 
-  Widget buildPhoneNumberPrefix(BuildContext context) {
-    return SizedBox(
-      width: 90,
-      child: IntrinsicHeight(
-        child: Directionality(
-          textDirection: TextDirection.ltr,
-          child: Row(
-            children: [
-              const SizedBox(width: 4),
-              Assets.images.qatarFlag.image(),
-              const SizedBox(width: 4),
-              Text(
-                '+974',
-                style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.black800,
-                    ),
-              ),
-              const VerticalDivider(
-                color: AppColors.stoneGray,
-                thickness: 0.3,
-                indent: 12,
-                endIndent: 12,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget buildPhoneNumberPrefix(BuildContext context) {
+  //   return SizedBox(
+  //     width: 90,
+  //     child: IntrinsicHeight(
+  //       child: Directionality(
+  //         textDirection: TextDirection.ltr,
+  //         child: Row(
+  //           children: [
+  //             const SizedBox(width: 4),
+  //             Assets.images.qatarFlag.image(),
+  //             const SizedBox(width: 4),
+  //             Text(
+  //               '+974',
+  //               style: Theme.of(context).textTheme.displaySmall!.copyWith(
+  //                     fontWeight: FontWeight.w600,
+  //                     color: AppColors.black800,
+  //                   ),
+  //             ),
+  //             const VerticalDivider(
+  //               color: AppColors.stoneGray,
+  //               thickness: 0.3,
+  //               indent: 12,
+  //               endIndent: 12,
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   String? Function(String?) mobileNumberValidation(BuildContext context) {
     return qValidator([
@@ -81,14 +81,14 @@ Future<void> showEditAccountInformationDialog({
     return TextFormField(
       controller: phoneController,
       style: const TextStyle(color: AppColors.gray02),
-      decoration: InputDecoration(
-        prefixIcon: context.locale.languageCode == 'ar'
-            ? null
-            : buildPhoneNumberPrefix(context),
-        suffixIcon: context.locale.languageCode == 'en'
-            ? null
-            : buildPhoneNumberPrefix(context),
-      ),
+      // decoration: InputDecoration(
+      //   prefixIcon: context.locale.languageCode == 'ar'
+      //       ? null
+      //       : buildPhoneNumberPrefix(context),
+      //   suffixIcon: context.locale.languageCode == 'en'
+      //       ? null
+      //       : buildPhoneNumberPrefix(context),
+      // ),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         ArabicNumberInputFormatter(),
@@ -122,16 +122,14 @@ Future<void> showEditAccountInformationDialog({
               Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: 320,
-                    maxHeight: 440,
-                  ),
+                      maxWidth: 330, maxHeight: 600, minHeight: 450),
                   child: Material(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 30, horizontal: 10),
+                          vertical: 40, horizontal: 10),
                       child: SingleChildScrollView(
                         child: Form(
                           key: formKey,
@@ -148,44 +146,32 @@ Future<void> showEditAccountInformationDialog({
                                         fontSize: 16,
                                         fontWeight: FontWeight.w800,
                                       )).centered(),
-                              28.verticalSpace,
+                              80.verticalSpace,
                               Text(
                                 "userName".tr(),
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
-                                    .copyWith(fontSize: 12),
+                                    .copyWith(fontSize: 14),
                               ),
-                              buildUserNameField(context),
-                              20.verticalSpace,
+                              buildUserNameField(context).onlyPadding(top: 5),
+                              30.verticalSpace,
                               Text(
                                 "phoneNumber".tr(),
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
-                                    .copyWith(fontSize: 12),
+                                    .copyWith(fontSize: 14),
                               ),
-                              buildPhoneNumberField(context),
+                              buildPhoneNumberField(context)
+                                  .onlyPadding(top: 5),
                               // 30.verticalSpace,
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  CustomButtonWidget(
-                                    text: "cancel",
-                                    color: AppColors.primary,
-                                    topPading: 50,
-                                    onTap: () {
-                                      debugPrint("cancel");
-                                      Navigator.of(context)
-                                          .pop(); // Close dialog
-                                    },
-                                    isFiled: false,
-                                    height: 40,
-                                    width: 125,
-                                  ),
                                   Consumer(builder: (context, ref, child) {
                                     final asyncData =
                                         ref.watch(accountControllerProvider);
@@ -219,7 +205,10 @@ Future<void> showEditAccountInformationDialog({
                                     return CustomButtonWidget(
                                       text: "save",
                                       backgroundColor: AppColors.primary,
-                                      topPading: 50,
+                                      topPading: 35,
+                                      isFiled: true,
+                                      height: 40,
+                                      width: 140,
                                       onTap: () {
                                         // Save logic here
 
@@ -231,7 +220,7 @@ Future<void> showEditAccountInformationDialog({
                                                   .notifier)
                                               .editAccountInformation(
                                                   context,
-                                                  asyncData.value!.userProfile
+                                                  asyncData.value!.userProfile!
                                                       .copyWith(
                                                     firstname:
                                                         nameController.text,
@@ -239,13 +228,24 @@ Future<void> showEditAccountInformationDialog({
                                                   ));
                                         }
                                       },
-                                      isFiled: true,
-                                      height: 40,
-                                      width: 125,
                                     );
                                   }),
+                                  CustomButtonWidget(
+                                    text: "cancel",
+                                    color: AppColors.primary,
+                                    topPading: 35,
+                                    isFiled: false,
+                                    height: 40,
+                                    width: 140,
+                                    onTap: () {
+                                      debugPrint("cancel");
+                                      Navigator.of(context)
+                                          .pop(); // Close dialog
+                                    },
+                                  ),
                                 ],
-                              )
+                              ),
+                              // 40.verticalSpace,
                             ],
                           ),
                         ),

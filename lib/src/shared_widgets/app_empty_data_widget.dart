@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 
-class AppErrorWidget extends StatelessWidget {
-  const AppErrorWidget({super.key});
+class AppEmptyDataWidget extends StatelessWidget {
+  final String text;
+  const AppEmptyDataWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +13,10 @@ class AppErrorWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Assets.images.imErrorScreen.image(),
+          Assets.images.emptyData.svg(width: 120, height: 120),
           20.verticalSpace,
           Text(
-            context.tr("Unkown error occured"),
+            context.tr(text),
             style: Theme.of(context).textTheme.displaySmall,
           ),
         ],

@@ -6,13 +6,11 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 
 class AddressBookCardWidget extends StatelessWidget {
   final String title;
-  final bool isSelected;
   final VoidCallback onTap;
 
   const AddressBookCardWidget({
     super.key,
     required this.title,
-    required this.isSelected,
     required this.onTap,
   });
 
@@ -28,7 +26,7 @@ class AddressBookCardWidget extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.lightGray,
+            color: AppColors.lightGray,
             width: 1,
           ),
         ),
@@ -38,11 +36,11 @@ class AddressBookCardWidget extends StatelessWidget {
               onTap();
             },
             child: Assets.icons.editIcon.svg(
-              color: AppColors.grey600,
+              color: AppColors.black900,
             ),
           ),
           leading: Assets.icons.locationIcon.svg(
-            color: isSelected ? AppColors.primary : AppColors.black900,
+            color: AppColors.primary,
           ),
           title: Text(context.tr(title),
               style: Theme.of(context).textTheme.labelSmall!.copyWith(

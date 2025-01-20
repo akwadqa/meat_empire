@@ -47,7 +47,7 @@ class PaymentInformationWidget extends ConsumerWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 10),
+                        vertical: 50, horizontal: 15),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -62,11 +62,11 @@ class PaymentInformationWidget extends ConsumerWidget {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w800,
                                   )).centered(),
-                          20.verticalSpace,
+                          40.verticalSpace,
 
                           PaymentInformationCardWidget(
-                            name: "mahmoud tahsin",
-                            cardNumber: "12345155114652",
+                            name: "Lionel messi",
+                            cardNumber: "123456789123",
                             endDate: DateTime.now().add(Duration(days: 365)),
                             isSelected: true,
                             onTap: () {

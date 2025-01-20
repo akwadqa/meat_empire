@@ -47,7 +47,7 @@ class AddressBookWidget extends ConsumerWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 40, horizontal: 12),
+                        vertical: 50, horizontal: 12),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -62,12 +62,12 @@ class AddressBookWidget extends ConsumerWidget {
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,
                                   )).centered(),
-                          10.verticalSpace,
+                          50.verticalSpace,
                           _buildShippingLocationWidget(
-                              context, accountSyncData.value!.userProfile),
+                              context, accountSyncData.value!.userProfile!),
                           15.verticalSpace,
                           _buildBillingLocationWidget(
-                              context, accountSyncData.value!.userProfile),
+                              context, accountSyncData.value!.userProfile!),
                         ],
                       ),
                     ),
@@ -82,26 +82,18 @@ class AddressBookWidget extends ConsumerWidget {
   }
 }
 
-Future<void> showAddressBookDialog({
-  required BuildContext context,
-}) {
-  return showDialog(
-    context: context,
-    barrierDismissible: false, // Prevent dismissing dialog by tapping outside
-    builder: (BuildContext context) {
-      return AddressBookWidget();
-    },
-  );
-}
-
 Widget _buildShippingLocationWidget(
     BuildContext context, UserProfile userProfile) {
-  return (userProfile.shippingAddress!.isEmpty)
+  return (userProfile.shippingStrete!.isEmpty)
       ? CustomButtonWidget(
           text: "add_shipping_location",
           backgroundColor: AppColors.green,
           onTap: () {
-            showAddNewAddressBookDialog(context: context, billMode: false);
+            showAddNewAddressBottomSheet(
+              context: context,
+              billMode: false,
+              userProfile: userProfile,
+            );
           },
           isFiled: true,
           height: 50,
@@ -120,14 +112,21 @@ Widget _buildShippingLocationWidget(
                     )),
             4.verticalSpace,
             AddressBookCardWidget(
-              title: userProfile.shippingAddress!,
-              isSelected: true,
+              title:
+                  "${userProfile.shippingCity!} - ${userProfile.shippingCountry!} - ${userProfile.shippingStrete!} - ${userProfile.shippingBuildingNumber!}",
               onTap: () {
-                showAddNewAddressBookDialog(
-                    context: context,
-                    userProfile: userProfile,
-                    billMode: false,
-                    isEdit: true);
+                showAddNewAddressBottomSheet(
+                  context: context,
+                  userProfile: userProfile,
+                  billMode: false,
+                  isEdit: true,
+                );
+
+                // showAddNewAddressBookDialog(
+                // context: context,
+                // userProfile: userProfile,
+                // billMode: false,
+                // isEdit: true);
               },
             ),
           ],
@@ -136,12 +135,16 @@ Widget _buildShippingLocationWidget(
 
 Widget _buildBillingLocationWidget(
     BuildContext context, UserProfile userProfile) {
-  return (userProfile.billingAddress!.isEmpty)
+  return (userProfile.billingStrete!.isEmpty)
       ? CustomButtonWidget(
           text: "add_billing_location",
           backgroundColor: AppColors.green,
           onTap: () {
-            showAddNewAddressBookDialog(context: context, billMode: true);
+            showAddNewAddressBottomSheet(
+              context: context,
+              billMode: true,
+              userProfile: userProfile,
+            );
           },
           isFiled: true,
           height: 50,
@@ -158,12 +161,12 @@ Widget _buildBillingLocationWidget(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     )),
-            4.verticalSpace,
+            6.verticalSpace,
             AddressBookCardWidget(
-              title: userProfile.billingAddress!,
-              isSelected: true,
+              title:
+                  "${userProfile.bllingCity!} - ${userProfile.billingCountry!} - ${userProfile.billingStrete!} - ${userProfile.billingBuildingNumber!}",
               onTap: () {
-                showAddNewAddressBookDialog(
+                showAddNewAddressBottomSheet(
                     context: context,
                     userProfile: userProfile,
                     billMode: true,
@@ -172,4 +175,16 @@ Widget _buildBillingLocationWidget(
             ),
           ],
         );
+}
+
+Future<void> showAddressBookDialog({
+  required BuildContext context,
+}) {
+  return showDialog(
+    context: context,
+    barrierDismissible: false, // Prevent dismissing dialog by tapping outside
+    builder: (BuildContext context) {
+      return AddressBookWidget();
+    },
+  );
 }

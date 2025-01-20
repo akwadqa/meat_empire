@@ -135,9 +135,13 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/cart_image.png
-  AssetGenImage get cartImage =>
-      const AssetGenImage('assets/images/cart_image.png');
+  /// File path: assets/images/empty_data.svg
+  SvgGenImage get emptyData =>
+      const SvgGenImage('assets/images/empty_data.svg');
+
+  /// File path: assets/images/im_error_screen.png
+  AssetGenImage get imErrorScreen =>
+      const AssetGenImage('assets/images/im_error_screen.png');
 
   /// File path: assets/images/login_image.svg
   SvgGenImage get loginImage =>
@@ -151,7 +155,18 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/qatar_flag.png');
 
   /// List of all assets
-  List<dynamic> get values => [cartImage, loginImage, logo, qatarFlag];
+  List<dynamic> get values =>
+      [emptyData, imErrorScreen, loginImage, logo, qatarFlag];
+}
+
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/processing.json
+  String get processing => 'assets/lottie/processing.json';
+
+  /// List of all assets
+  List<String> get values => [processing];
 }
 
 class $AssetsTranslationsGen {
@@ -172,6 +187,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 

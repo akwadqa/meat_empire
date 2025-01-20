@@ -174,8 +174,8 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Container(
-      height: 95,
-      padding: const EdgeInsets.only(bottom: 20),
+      height: 80,
+      padding: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [

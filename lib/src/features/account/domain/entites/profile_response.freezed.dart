@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProfileResponse {
   @JsonKey(ignore: true)
-  UserProfile get userProfile =>
-      throw _privateConstructorUsedError; // Custom parsing logic will handle this
+  UserProfile? get userProfile =>
+      throw _privateConstructorUsedError; // Nullable userProfile
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
@@ -36,11 +36,11 @@ abstract class $ProfileResponseCopyWith<$Res> {
       _$ProfileResponseCopyWithImpl<$Res, ProfileResponse>;
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) UserProfile userProfile,
+      {@JsonKey(ignore: true) UserProfile? userProfile,
       String message,
       bool success});
 
-  $UserProfileCopyWith<$Res> get userProfile;
+  $UserProfileCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -58,15 +58,15 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userProfile = null,
+    Object? userProfile = freezed,
     Object? message = null,
     Object? success = null,
   }) {
     return _then(_value.copyWith(
-      userProfile: null == userProfile
+      userProfile: freezed == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
+              as UserProfile?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -82,8 +82,12 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res> get userProfile {
-    return $UserProfileCopyWith<$Res>(_value.userProfile, (value) {
+  $UserProfileCopyWith<$Res>? get userProfile {
+    if (_value.userProfile == null) {
+      return null;
+    }
+
+    return $UserProfileCopyWith<$Res>(_value.userProfile!, (value) {
       return _then(_value.copyWith(userProfile: value) as $Val);
     });
   }
@@ -98,12 +102,12 @@ abstract class _$$ProfileResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) UserProfile userProfile,
+      {@JsonKey(ignore: true) UserProfile? userProfile,
       String message,
       bool success});
 
   @override
-  $UserProfileCopyWith<$Res> get userProfile;
+  $UserProfileCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -119,15 +123,15 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userProfile = null,
+    Object? userProfile = freezed,
     Object? message = null,
     Object? success = null,
   }) {
     return _then(_$ProfileResponseImpl(
-      userProfile: null == userProfile
+      userProfile: freezed == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
+              as UserProfile?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -150,8 +154,8 @@ class _$ProfileResponseImpl implements _ProfileResponse {
 
   @override
   @JsonKey(ignore: true)
-  final UserProfile userProfile;
-// Custom parsing logic will handle this
+  final UserProfile? userProfile;
+// Nullable userProfile
   @override
   final String message;
   @override
@@ -188,13 +192,13 @@ class _$ProfileResponseImpl implements _ProfileResponse {
 
 abstract class _ProfileResponse implements ProfileResponse {
   const factory _ProfileResponse(
-      {@JsonKey(ignore: true) required final UserProfile userProfile,
+      {@JsonKey(ignore: true) required final UserProfile? userProfile,
       required final String message,
       required final bool success}) = _$ProfileResponseImpl;
 
   @override
   @JsonKey(ignore: true)
-  UserProfile get userProfile; // Custom parsing logic will handle this
+  UserProfile? get userProfile; // Nullable userProfile
   @override
   String get message;
   @override

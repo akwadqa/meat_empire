@@ -2,10 +2,18 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
+import 'package:meat_empire/src/features/my_orders/domain/entities/orders_response.dart';
+import 'package:meat_empire/src/features/my_orders/presentation/controllers/my_orders_controller.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_card.dart';
+import 'package:meat_empire/src/shared_widgets/app_empty_data_widget.dart';
+import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
+import 'package:meat_empire/src/shared_widgets/app_pagination_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+
+import '../../../../../gen/assets.gen.dart';
 
 @RoutePage()
 class MyOrdersScreen extends ConsumerStatefulWidget {
@@ -35,7 +43,8 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
 
   @override
   Widget build(BuildContext context) {
-    asyncData(String? status) => ref.watch(myOrdersProvider(status ?? "C"));
+    asyncData(String? status) =>
+        ref.watch(myOrdersControllerProvider(status ?? "C"));
     return DefaultTabController(
       length: 3, // Number of tabs
       child: Scaffold(
@@ -99,90 +108,89 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
         body: TabBarView(
           controller: _tabController,
           children: [
-            asyncData("O").when(
-              data: (data) {
-                return data.orders.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No delivered orders yet.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: data.orders.length,
-                        itemBuilder: (context, index) {
-                          final order = data.orders[index];
-                          return OrderCardWidget(
-                            orderNumber: order.orderId,
-                            orderDate: order.orderDate,
-                            productImages: List<String>.from(order.products
-                                .map((product) => product.imageUrl)),
-                            totalCost: order.orderTotalCost,
-                          );
-                        },
-                      );
-              },
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) =>
-                  Center(child: Text(error.toString())),
-            ),
-            asyncData("C").when(
-              data: (data) {
-                return data.orders.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No delivered orders yet.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: data.orders.length,
-                        itemBuilder: (context, index) {
-                          final order = data.orders[index];
-                          return OrderCardWidget(
-                            orderNumber: order.orderId,
-                            orderDate: order.orderDate,
-                            productImages: List<String>.from(order.products
-                                .map((product) => product.imageUrl)),
-                            totalCost: order.orderTotalCost,
-                          );
-                        },
-                      );
-              },
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) =>
-                  Center(child: Text(error.toString())),
-            ),
-            asyncData("I").when(
-              data: (data) {
-                return data.orders.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No delivered orders yet.",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: data.orders.length,
-                        itemBuilder: (context, index) {
-                          final order = data.orders[index];
-                          return OrderCardWidget(
-                            orderNumber: order.orderId,
-                            orderDate: order.orderDate,
-                            productImages: List<String>.from(order.products
-                                .map((product) => product.imageUrl)),
-                            totalCost: order.orderTotalCost,
-                          );
-                        },
-                      );
-              },
-              loading: () => Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) =>
-                  Center(child: Text(error.toString())),
-            ),
+            _buildCanceledOrdersView(context, asyncData),
+            _buildCompletedOrdersView(context, asyncData),
+            _buildProcessingOrdersView(context, asyncData),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCanceledOrdersView(BuildContext context,
+      AsyncValue<OrdersResponse> Function(String? status) asyncData) {
+    return asyncData("O").when(
+      data: (data) {
+        return AppPaginationWidget(
+            onLoading: (page) => ref
+                .read(myOrdersControllerProvider("O").notifier)
+                .loadMore("O", page),
+            child: data.orders.isEmpty
+                ? AppEmptyDataWidget(text: "no_orders_message")
+                : ListView.builder(
+                    itemCount: data.orders.length,
+                    itemBuilder: (context, index) {
+                      final order = data.orders[index];
+                      return OrderCardWidget(
+                        order: order,
+                      );
+                    },
+                  ));
+      },
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => AppErrorWidget(),
+    );
+  }
+
+  Widget _buildCompletedOrdersView(BuildContext context,
+      AsyncValue<OrdersResponse> Function(String? status) asyncData) {
+    return asyncData("C").when(
+      data: (data) {
+        return AppPaginationWidget(
+          onLoading: (page) => ref
+              .read(myOrdersControllerProvider("C").notifier)
+              .loadMore("C", page),
+          child: data.orders.isEmpty
+              ? AppEmptyDataWidget(text: "no_orders_message")
+              : ListView.builder(
+                  itemCount: data.orders.length,
+                  itemBuilder: (context, index) {
+                    final order = data.orders[index];
+                    return OrderCardWidget(
+                      order: order,
+                    );
+                  },
+                ),
+        );
+      },
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => AppErrorWidget(),
+    );
+  }
+
+  Widget _buildProcessingOrdersView(BuildContext context,
+      AsyncValue<OrdersResponse> Function(String? status) asyncData) {
+    return asyncData("I").when(
+      data: (data) {
+        return AppPaginationWidget(
+          onLoading: (page) => ref
+              .read(myOrdersControllerProvider("I").notifier)
+              .loadMore("I", page),
+          child: data.orders.isEmpty
+              ? AppEmptyDataWidget(text: "no_orders_message")
+              : ListView.builder(
+                  itemCount: data.orders.length,
+                  itemBuilder: (context, index) {
+                    final order = data.orders[index];
+                    return OrderCardWidget(
+                      order: order,
+                    );
+                  },
+                ),
+        );
+      },
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => AppErrorWidget(),
     );
   }
 }
