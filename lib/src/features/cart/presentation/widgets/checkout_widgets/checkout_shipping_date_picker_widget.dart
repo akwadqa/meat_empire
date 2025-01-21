@@ -5,7 +5,7 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class CheckoutShippingDatePickerWidget extends StatelessWidget {
-  const CheckoutShippingDatePickerWidget({Key? key}) : super(key: key);
+  const CheckoutShippingDatePickerWidget({super.key});
 
   List<DateTime> _generateDates() {
     final today = DateTime.now();

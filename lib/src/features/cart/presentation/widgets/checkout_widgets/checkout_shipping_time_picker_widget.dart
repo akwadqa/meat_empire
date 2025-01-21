@@ -4,7 +4,7 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class CheckoutShippingTimePickerWidget extends StatelessWidget {
-  CheckoutShippingTimePickerWidget({Key? key}) : super(key: key);
+  CheckoutShippingTimePickerWidget({super.key});
 
   final List<String> timeRanges = [
     "08:00 am - 11:00 am",

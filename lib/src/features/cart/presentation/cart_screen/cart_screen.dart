@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
