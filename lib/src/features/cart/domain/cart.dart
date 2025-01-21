@@ -59,8 +59,8 @@ class Cart with _$Cart {
     String? formatTaxSubtotal,
     List<CartProduct>? cartProducts,
     List<Shipping>? shippings,
-    int? paymentId,
-    int? orderId,
+    dynamic paymentId,
+    dynamic orderId,
     List<dynamic>? couponsDetails,
     List<DeliverySlot>? deliverySlots,
   }) = _Cart;

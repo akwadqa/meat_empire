@@ -6,4 +6,5 @@ abstract class EndPoints {
   static const String cartApi = 'CartApi';
   static String profileApi(int id) => 'ProfilesApi/$id';
   static String orderHistory = 'OrderHistoryApi&items_per_page=10';
+  static String checkOutApi = 'CheckoutApi';
 }

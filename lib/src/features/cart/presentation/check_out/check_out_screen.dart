@@ -9,6 +9,7 @@ import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_date_picker_widget.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_time_picker_widget.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 import '../../../account/presentation/widgets/custom_button_widget.dart';
@@ -23,6 +24,8 @@ class CheckOutScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final deliverySlots = cart.cart?.deliverySlots ?? [];
+
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
@@ -43,16 +46,16 @@ class CheckOutScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            40.verticalSpace,
-            CheckoutCartOrderSummary(cart: cart),
+            30.verticalSpace,
+            CheckoutCartOrderSummary(cart: cart.cart!),
             20.verticalSpace,
             AddressBookWidget(
               checkout: true,
             ),
             20.verticalSpace,
-            CheckoutShippingDatePickerWidget(),
+            CheckoutShippingDatePickerWidget(deliverySlots: deliverySlots),
             20.verticalSpace,
-            CheckoutShippingTimePickerWidget(),
+            CheckoutShippingTimePickerWidget(deliverySlots: deliverySlots),
             30.verticalSpace,
             _buildSubmetButton(context, cart),
             20.verticalSpace,
@@ -68,6 +71,7 @@ class CheckOutScreen extends ConsumerWidget {
       backgroundColor: AppColors.primary,
       onTap: () {
         debugPrint("Tap ");
+        context.navigateTo(PaymentRoute());
       },
       isFiled: true,
       height: 50,

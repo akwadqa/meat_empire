@@ -1,141 +1,107 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+import 'package:easy_localization/easy_localization.dart' as local;
+import 'package:meat_empire/src/features/cart/application/checkout_service.dart';
 
-class CheckoutShippingDatePickerWidget extends StatelessWidget {
-  const CheckoutShippingDatePickerWidget({Key? key}) : super(key: key);
+class CheckoutShippingDatePickerWidget extends ConsumerWidget {
+  final List<DeliverySlot> deliverySlots;
 
-  List<DateTime> _generateDates() {
-    final today = DateTime.now();
-    // Find the most recent Sunday
-    final lastSunday = today.subtract(Duration(days: today.weekday % 7));
-    // Generate dates starting from today, wrapping the week
-    return List.generate(7, (index) {
-      final adjustedDate = lastSunday.add(Duration(days: index));
-      if (adjustedDate.isBefore(today)) {
-        // Skip past dates and wrap to the next week
-        return adjustedDate.add(const Duration(days: 7));
-      }
-      return adjustedDate;
-    });
-  }
+  const CheckoutShippingDatePickerWidget({
+    Key? key,
+    required this.deliverySlots,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final dates = _generateDates();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedSlot = ref.watch(checkoutControllerProvider(deliverySlots));
 
-    return FormField<DateTime>(
-      initialValue: null,
-      builder: (formFieldState) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "shipping_date".tr(),
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-            8.verticalSpace,
-            Wrap(
-              spacing: 5, // Space between chips
-              runSpacing: 5,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "shipping_date".tr(),
+          style: Theme.of(context).textTheme.displaySmall,
+        ).symmetricPadding(horizontal: 12),
+        8.verticalSpace,
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Wrap(
+            spacing: 5,
+            runSpacing: 5,
+            children: deliverySlots.map((slot) {
+              final isSelected = slot == selectedSlot;
 
-              children: dates.map((date) {
-                final isSelected = date == formFieldState.value;
-                return GestureDetector(
-                  onTap: () {
-                    formFieldState.didChange(date);
-                  },
-                  child: Stack(
-                    children: [
-                      Container(
-                        padding: EdgeInsetsDirectional.only(top: 8, start: 8),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(
+              return GestureDetector(
+                onTap: () {
+                  ref
+                      .read(checkoutControllerProvider(deliverySlots).notifier)
+                      .selectDeliverySlot(slot);
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsetsDirectional.only(top: 8, end: 8),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 10),
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            side: BorderSide(
+                              color: isSelected
+                                  ? AppColors.primary
+                                  : AppColors.lightGray,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              slot.heading ?? "",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
                                       color: isSelected
                                           ? AppColors.primary
-                                          : AppColors.lightGray,
-                                      width: 1))),
-                          child: Column(
-                            children: [
-                              Text(
-                                _getDayName(date.weekday),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                        color: isSelected
-                                            ? AppColors.primary
-                                            : AppColors.grey600),
-                              ),
-                              Text(
-                                "${date.day}/${date.month}/${date.year}",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                        color: isSelected
-                                            ? AppColors.primary
-                                            : AppColors.grey600),
-                              ),
-                            ],
-                          ),
+                                          : AppColors.grey600),
+                            ),
+                            Text(
+                              slot.date ?? "",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      color: isSelected
+                                          ? AppColors.primary
+                                          : AppColors.grey600),
+                            ),
+                          ],
                         ),
                       ),
-                      if (isSelected)
-                        PositionedDirectional(
-                          top: 0,
-                          start: 0,
-                          child: Icon(
-                            Icons.check_circle,
-                            color: AppColors.primary,
-                            size: 22,
-                          ),
+                    ),
+                    if (isSelected)
+                      const PositionedDirectional(
+                        top: 0,
+                        end: 0,
+                        child: Icon(
+                          Icons.check_circle,
+                          color: AppColors.primary,
+                          size: 22,
                         ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            ).symmetricPadding(horizontal: 6),
-            if (formFieldState.hasError)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  formFieldState.errorText ?? '',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                    fontSize: 12,
-                  ),
+                      ),
+                  ],
                 ),
-              ),
-          ],
-        ).symmetricPadding(horizontal: 12);
-      },
-      validator: (value) {
-        if (value == null) {
-          return "يرجى اختيار تاريخ.";
-        }
-        return null;
-      },
+              );
+            }).toList(),
+          ).symmetricPadding(horizontal: 12),
+        ),
+      ],
     );
-  }
-
-  String _getDayName(int weekday) {
-    const days = [
-      "الاثنين",
-      "الثلاثاء",
-      "الأربعاء",
-      "الخميس",
-      "الجمعة",
-      "السبت",
-      "الأحد",
-    ];
-    return days[weekday - 1];
   }
 }
