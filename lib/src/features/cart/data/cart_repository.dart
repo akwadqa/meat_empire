@@ -44,9 +44,11 @@ class CartRepository {
           {int? productId,
           int? amount,
           int? itemId,
+          int? userId,
           String? couponCode}) async =>
       _processRequest(
         () => _networkService.put('${EndPoints.cartApi}/1', {
+          if (userId != null) 'user_id': userId,
           if (productId != null)
             'cart_product': [
               {
