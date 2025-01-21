@@ -8,10 +8,13 @@ import 'package:meat_empire/src/features/account/presentation/controller/account
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/add_new_address_book_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_card_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class AddressBookWidget extends ConsumerWidget {
-  AddressBookWidget({super.key});
+  bool checkout;
+  AddressBookWidget({super.key, this.checkout = false});
 
   int selectedIndex = -1;
 
@@ -20,70 +23,90 @@ class AddressBookWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accountSyncData = ref.watch(accountControllerProvider);
-    return GestureDetector(
-      onTap: () {
-        // Dismiss keyboard when tapping outside
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.of(context).pop(), // Dismiss dialog
-              child: Container(
-                color: Colors.black.withOpacity(0.1), // Dim background
-              ),
-            ),
-            Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: 320,
-                  // maxHeight: 440,
-                ),
-                child: Material(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+    return checkout
+        ? accountSyncData.when(
+            data: (data) {
+              return Column(
+                // mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildShippingLocationWidget(
+                          context, accountSyncData.value!.userProfile!, 260)
+                      .symmetricPadding(horizontal: 20),
+                  15.verticalSpace,
+                  _buildBillingLocationWidget(
+                          context, accountSyncData.value!.userProfile!, 260)
+                      .symmetricPadding(horizontal: 20),
+                ],
+              );
+            },
+            error: (_, __) => const AppErrorWidget(),
+            loading: () => const FadeCircleLoadingIndicator().centered(),
+          )
+        : GestureDetector(
+            onTap: () {
+              // Dismiss keyboard when tapping outside
+              FocusScope.of(context).unfocus();
+            },
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).pop(), // Dismiss dialog
+                    child: Container(
+                      color: Colors.black.withOpacity(0.1), // Dim background
+                    ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 50, horizontal: 12),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(context.tr("address_book"),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall!
-                                  .copyWith(
-                                    color: AppColors.black900,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                  )).centered(),
-                          50.verticalSpace,
-                          _buildShippingLocationWidget(
-                              context, accountSyncData.value!.userProfile!),
-                          15.verticalSpace,
-                          _buildBillingLocationWidget(
-                              context, accountSyncData.value!.userProfile!),
-                        ],
+                  Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: 320,
+                        // maxHeight: 440,
+                      ),
+                      child: Material(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 50, horizontal: 12),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(context.tr("address_book"),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
+                                        .copyWith(
+                                          color: AppColors.black900,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w800,
+                                        )).centered(),
+                                50.verticalSpace,
+                                _buildShippingLocationWidget(context,
+                                    accountSyncData.value!.userProfile!, null),
+                                15.verticalSpace,
+                                _buildBillingLocationWidget(context,
+                                    accountSyncData.value!.userProfile!, null),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
 
 Widget _buildShippingLocationWidget(
-    BuildContext context, UserProfile userProfile) {
+    BuildContext context, UserProfile userProfile, double? width) {
   return (userProfile.shippingStrete!.isEmpty)
       ? CustomButtonWidget(
           text: "add_shipping_location",
@@ -97,7 +120,7 @@ Widget _buildShippingLocationWidget(
           },
           isFiled: true,
           height: 50,
-          width: 230,
+          width: width ?? 230,
           radius: 8,
           topPading: 20,
         ).centered()
@@ -110,10 +133,10 @@ Widget _buildShippingLocationWidget(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     )),
-            4.verticalSpace,
+            8.verticalSpace,
             AddressBookCardWidget(
               title:
-                  "${userProfile.shippingCity!} - ${userProfile.shippingCountry!} - ${userProfile.shippingStrete!} - ${userProfile.shippingBuildingNumber!}",
+                  "${userProfile.shippingCity!} - ${userProfile.shippingCountry!} - ${userProfile.shippingStrete!} ${userProfile.shippingBuildingNumber != null ? "- ${userProfile.shippingBuildingNumber}" : ""}",
               onTap: () {
                 showAddNewAddressBottomSheet(
                   context: context,
@@ -134,7 +157,7 @@ Widget _buildShippingLocationWidget(
 }
 
 Widget _buildBillingLocationWidget(
-    BuildContext context, UserProfile userProfile) {
+    BuildContext context, UserProfile userProfile, double? width) {
   return (userProfile.billingStrete!.isEmpty)
       ? CustomButtonWidget(
           text: "add_billing_location",
@@ -148,7 +171,7 @@ Widget _buildBillingLocationWidget(
           },
           isFiled: true,
           height: 50,
-          width: 230,
+          width: width ?? 230,
           radius: 8,
           topPading: 10,
         ).centered()
@@ -161,10 +184,10 @@ Widget _buildBillingLocationWidget(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     )),
-            6.verticalSpace,
+            8.verticalSpace,
             AddressBookCardWidget(
               title:
-                  "${userProfile.bllingCity!} - ${userProfile.billingCountry!} - ${userProfile.billingStrete!} - ${userProfile.billingBuildingNumber!}",
+                  "${userProfile.bllingCity!} - ${userProfile.billingCountry!} - ${userProfile.billingStrete!} ${userProfile.billingBuildingNumber!.isNotEmpty ? "- ${userProfile.billingBuildingNumber}" : ""}",
               onTap: () {
                 showAddNewAddressBottomSheet(
                     context: context,

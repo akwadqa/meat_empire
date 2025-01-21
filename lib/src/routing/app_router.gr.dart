@@ -36,6 +36,10 @@ import 'package:meat_empire/src/features/products/presentation/product_details_s
     as _i10;
 import 'package:meat_empire/src/features/search/presentation/search_screen/search_screen.dart'
     as _i11;
+import 'package:meat_empire/src/features/cart/presentation/check_out/check_out_screen.dart'
+    as _i13;
+import 'package:meat_empire/src/features/cart/domain/cart_response.dart'
+    as _i15;
 
 /// generated route for
 /// [_i1.AccountScreen]
@@ -361,4 +365,48 @@ class SignupRoute extends _i13.PageRouteInfo<void> {
       return const _i12.SignupScreen();
     },
   );
+}
+
+class CheckOutRoute extends _i13.PageRouteInfo<CheckOutRouteArgs> {
+  CheckOutRoute({
+    _i14.Key? key,
+    required _i15.CartResponse cart,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
+          CheckOutRoute.name,
+          args: CheckOutRouteArgs(
+            key: key,
+            cart: cart,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckOutRoute';
+
+  static _i13.PageInfo page = _i13.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CheckOutRouteArgs>();
+      return _i13.CheckOutScreen(
+        key: args.key,
+        cart: args.cart,
+      );
+    },
+  );
+}
+
+class CheckOutRouteArgs {
+  const CheckOutRouteArgs({
+    this.key,
+    required this.cart,
+  });
+
+  final _i14.Key? key;
+
+  final _i15.CartResponse cart;
+
+  @override
+  String toString() {
+    return 'CheckOutRouteArgs{key: $key, cart: $cart}';
+  }
 }

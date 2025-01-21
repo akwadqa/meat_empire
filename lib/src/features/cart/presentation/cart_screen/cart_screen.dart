@@ -3,9 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/cart_controller/cart_controller.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import 'package:queen_validators/queen_validators.dart';
 import '../../../../../gen/assets.gen.dart';
@@ -64,6 +67,8 @@ class CartBody extends ConsumerWidget {
           _DiscountCouponSection(data.cart!),
           const SizedBox(height: 24),
           _buildCartSummary(context, data),
+          const SizedBox(height: 45),
+          _buildSubmetButton(context, data),
           const SizedBox(height: 120),
         ],
       ),
@@ -140,6 +145,21 @@ class CartBody extends ConsumerWidget {
         ),
       ],
     );
+  }
+
+  Widget _buildSubmetButton(BuildContext context, CartResponse cart) {
+    return CustomButtonWidget(
+      text: "submit_order",
+      backgroundColor: AppColors.primary,
+      onTap: () {
+        debugPrint("Tap ");
+        context.navigateTo(CheckOutRoute(cart: cart));
+      },
+      isFiled: true,
+      height: 50,
+      width: 270,
+      radius: 50,
+    ).centered();
   }
 }
 
