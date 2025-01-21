@@ -76,9 +76,8 @@ class CategoriesScreen extends ConsumerWidget {
 
   /// Extracts categories from the home layout
   List<Category> _extractCategories(dynamic home) {
-    return (home.layout
-            .firstWhere((e) => e.type == 'categories')
-            .data as List<Object>)
+    return (home.layout.firstWhere((e) => e.type == 'categories').data
+            as List<Object>)
         .whereType<Category>()
         .toList();
   }
@@ -135,26 +134,39 @@ class CategoriesScreen extends ConsumerWidget {
     return FloatingActionButton(
       shape: const CircleBorder(),
       backgroundColor: isExpanded ? AppColors.rose : AppColors.primary,
-      onPressed: () => ref.read(isExpandedCategoriesBarProvider.notifier).toggleExpansion(),
+      onPressed: () =>
+          ref.read(isExpandedCategoriesBarProvider.notifier).toggleExpansion(),
       mini: true,
       child: isExpanded
-          ? const Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.black900)
+          ? const Icon(Icons.arrow_back_ios_new_rounded,
+              color: AppColors.black900)
           : Assets.icons.newCategoriesIcon.svg(),
     );
   }
 }
 
-/// Custom FAB Location to adjust position
 class CustomFABLocation extends FloatingActionButtonLocation {
   const CustomFABLocation();
 
   @override
   Offset getOffset(ScaffoldPrelayoutGeometry scaffoldGeometry) {
-    const double fabX = 20;
     const double fabYOffset = 100;
+    const double fabMargin = 20; // Margin from the edge
+
     final double fabY = scaffoldGeometry.scaffoldSize.height -
         scaffoldGeometry.floatingActionButtonSize.height -
         fabYOffset;
+
+    final bool isRTL = scaffoldGeometry.textDirection.name.toLowerCase() ==
+        TextDirection.RTL.value.toLowerCase();
+
+    // Calculate the X offset based on text direction
+    final double fabX = isRTL
+        ? scaffoldGeometry.scaffoldSize.width -
+            scaffoldGeometry.floatingActionButtonSize.width -
+            fabMargin
+        : fabMargin;
+
     return Offset(fabX, fabY);
   }
 }

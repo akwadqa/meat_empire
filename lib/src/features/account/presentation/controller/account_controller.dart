@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/account/data/repository/account_repository.dart';
 import 'package:meat_empire/src/features/account/domain/entites/profile_response.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
+import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'account_controller.g.dart';
@@ -10,8 +11,8 @@ part 'account_controller.g.dart';
 class AccountController extends _$AccountController {
   @override
   FutureOr<ProfileResponse> build() {
-    // You can directly fetch the profile here or rely on cached data if needed
-    return ref.watch(accountRepositoryProvider).getProfile(14);
+    final userId = ref.watch(userDataProvider)!.$2;
+    return ref.watch(accountRepositoryProvider).getProfile(userId);
   }
 
   Future<void> editAccountInformation(

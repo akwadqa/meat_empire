@@ -36,11 +36,11 @@ Dio dio(Ref ref) {
   ));
 
   final languageCode = ref.watch(currentLanguageProvider);
-  final token = ref.watch(userTokenProvider);
+  final userData = ref.watch(userDataProvider);
   dio.interceptors.addAll({
     DioAppInterceptors(
       languageCode: languageCode,
-      token: token,
+      token: userData?.$1,
       onUnauthorized: () {},
     ),
   });

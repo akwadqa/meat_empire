@@ -55,7 +55,7 @@ class _LogoutButtonWidgetState extends ConsumerState<LogoutButtonWidget>
         onPressed: () {
           _controller.forward().then((_) {
             _controller.reverse();
-            ref.read(userTokenProvider.notifier).removeToken();
+            ref.read(userDataProvider.notifier).removeData();
           });
         },
         child: Text(context.tr("logout"),

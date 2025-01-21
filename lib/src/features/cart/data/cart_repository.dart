@@ -24,9 +24,11 @@ class CartRepository {
   Future<CartResponse> addToCart(
           {required int amount,
           required int productId,
+          int? userId,
           List<SelectedOption>? selectedOprions}) async =>
       _processRequest(
         () => _networkService.post(EndPoints.cartApi, {
+          if (userId != null) 'user_id': userId,
           'product_data': [
             {
               'amount': amount,

@@ -241,8 +241,9 @@ class _DiscountCouponSectionState
               children: [
                 Expanded(
                   child: TextFormField(
-                    initialValue:
-                        couponDetails.isNotEmpty ? couponDetails.first['coupon'] : null,
+                    initialValue: couponDetails.isNotEmpty
+                        ? couponDetails.first['coupon']
+                        : null,
                     readOnly: couponDetails.isNotEmpty,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
@@ -432,7 +433,9 @@ class _CartItem extends ConsumerWidget {
           ref.read(updateCartControllerProvider.notifier).updateCart(
                 productId: int.parse(cartItem.productId!),
                 amount: targetAmount,
-                itemId: int.parse(cartItem.itemId!),
+                itemId: cartItem.itemId != null
+                    ? int.parse(cartItem.itemId!)
+                    : null,
               );
         }
       },

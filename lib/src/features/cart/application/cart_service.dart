@@ -26,6 +26,7 @@ class UpdateCartController extends _$UpdateCartController {
       state = await AsyncValue.guard(() async {
         final cartRepo = ref.watch(cartRepositoryProvider);
         final cart = await cartRepo.addToCart(
+          userId: ref.read(userDataProvider)?.$2,
             amount: amount,
             productId: productId,
             selectedOprions: selectedOprions);

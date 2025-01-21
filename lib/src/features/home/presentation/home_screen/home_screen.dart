@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
       BuildContext context, WidgetRef ref, DrawerItems value) {
     switch (value) {
       case DrawerItems.logout:
-        ref.read(userTokenProvider.notifier).removeToken();
+        ref.read(userDataProvider.notifier).removeData();
         break;
       case DrawerItems.home:
         context.tabsRouter.setActiveIndex(0);

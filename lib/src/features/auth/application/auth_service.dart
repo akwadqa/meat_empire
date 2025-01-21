@@ -10,31 +10,38 @@ Future<SharedPreferences> sharedPreferences(Ref ref) async =>
     await SharedPreferences.getInstance();
 
 @Riverpod(keepAlive: true)
-class UserToken extends _$UserToken {
+class UserData extends _$UserData {
   @override
-  String? build() {
-    return ref
-        .watch(sharedPreferencesProvider)
-        .requireValue
-        .getString(Keys.token);
+  (String, int)? build() {
+    final sharedPrefs = ref.watch(sharedPreferencesProvider).requireValue;
+    final token = sharedPrefs.getString(Keys.token);
+    final userId = sharedPrefs.getInt(Keys.userId);
+    if (token != null && userId != null) {
+      return (
+        sharedPrefs.getString(Keys.token)!,
+        sharedPrefs.getInt(Keys.userId)!
+      );
+    }
+    return null;
   }
 
-  Future<void> setToken(String token) async {
-    await ref
-        .read(sharedPreferencesProvider)
-        .requireValue
-        .setString(Keys.token, token);
+  Future<void> setData(String token, int userId) async {
+    final sharedPrefs = ref.read(sharedPreferencesProvider).requireValue;
+    await sharedPrefs.setString(Keys.token, token);
+    await sharedPrefs.setInt(Keys.userId, userId);
 
-    state = token;
+    state = (token, userId);
   }
 
-  Future<void> removeToken() async {
-    await ref.read(sharedPreferencesProvider).requireValue.remove(Keys.token);
+  Future<void> removeData() async {
+    final sharedPrefs = ref.read(sharedPreferencesProvider).requireValue;
+    await sharedPrefs.remove(Keys.token);
+    await sharedPrefs.remove(Keys.userId);
     state = null;
   }
 }
 
 @riverpod
 bool isAuthinticated(Ref ref) {
-  return ref.watch(userTokenProvider) != null;
+  return ref.watch(userDataProvider) != null;
 }
