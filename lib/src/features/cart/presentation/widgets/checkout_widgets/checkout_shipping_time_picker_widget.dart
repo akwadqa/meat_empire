@@ -1,32 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
+import 'package:meat_empire/src/features/cart/domain/slot.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart' as local;
-import 'package:meat_empire/src/features/cart/application/checkout_service.dart';
 
-class CheckoutShippingTimePickerWidget extends ConsumerWidget {
-  final List<DeliverySlot> deliverySlots;
+class ShippingTimePicker extends StatelessWidget {
+  final List<Slot> timeSlots;
+  final Slot? selectedTimeSlot;
+  final ValueChanged<Slot> onTimeSelected;
 
-  const CheckoutShippingTimePickerWidget({
-    Key? key,
-    required this.deliverySlots,
-  }) : super(key: key);
+  const ShippingTimePicker({
+    super.key,
+    required this.timeSlots,
+    required this.selectedTimeSlot,
+    required this.onTimeSelected,
+  });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectedSlot = ref.watch(checkoutControllerProvider(deliverySlots));
-    final selectedTimeSlot = ref
-        .watch(checkoutControllerProvider(deliverySlots).notifier)
-        .selectedTimeSlot;
-
-    if (selectedSlot == null) {
-      return const SizedBox(); // Do not display if no delivery slot is selected
-    }
-
-    final timeRanges = selectedSlot.slots ?? [];
-
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,22 +26,19 @@ class CheckoutShippingTimePickerWidget extends ConsumerWidget {
           "shipping_time".tr(),
           style: Theme.of(context).textTheme.displaySmall,
         ).symmetricPadding(horizontal: 12),
-        const SizedBox(height: 8),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: Wrap(
-            spacing: 5,
-            runSpacing: 5,
-            children: timeRanges.map((slot) {
-              final isSelected = selectedTimeSlot == slot.slot;
+        8.verticalSpace,
+        Wrap(
+          spacing: 5,
+          runSpacing: 5,
+          children: timeSlots.map((slot) {
+            final isSelected = slot == selectedTimeSlot;
 
-              return GestureDetector(
-                onTap: () {
-                  // Update the selected time slot in the controller
-                  ref
-                      .read(checkoutControllerProvider(deliverySlots).notifier)
-                      .selectTimeSlot(slot.slot!);
-                },
+            return GestureDetector(
+              onTap: () {
+                onTimeSelected(slot);
+              },
+              child: Directionality(
+                textDirection: TextDirection.ltr,
                 child: Stack(
                   children: [
                     Container(
@@ -57,16 +46,14 @@ class CheckoutShippingTimePickerWidget extends ConsumerWidget {
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
-                        decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            side: BorderSide(
-                              color: isSelected
-                                  ? AppColors.primary
-                                  : AppColors.lightGray,
-                              width: 1,
-                            ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: isSelected
+                                ? AppColors.primary
+                                : AppColors.lightGray,
+                            width: 1,
                           ),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
                           _formatTimeRange(slot.slot!),
@@ -92,22 +79,22 @@ class CheckoutShippingTimePickerWidget extends ConsumerWidget {
                       ),
                   ],
                 ),
-              );
-            }).toList(),
-          ).symmetricPadding(horizontal: 12),
-        ),
+              ),
+            );
+          }).toList(),
+        ).symmetricPadding(horizontal: 12),
       ],
     );
   }
 
-  String _formatTimeRange(String timeRange) {
+  static String _formatTimeRange(String timeRange) {
     final parts = timeRange.split(" to ");
     final from = _formatTime(parts[0]);
     final to = _formatTime(parts[1]);
     return "$from - $to";
   }
 
-  String _formatTime(String time) {
+  static String _formatTime(String time) {
     final parts = time.split(":");
     int hour = int.parse(parts[0]);
     final minute = parts[1];

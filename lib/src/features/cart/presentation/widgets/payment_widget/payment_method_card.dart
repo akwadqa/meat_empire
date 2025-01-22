@@ -94,7 +94,7 @@ class _PaymentMethodField extends StatelessWidget {
                           width: 25,
                           fit: BoxFit.cover,
                         )
-                      : null,
+                      : Icon(Icons.credit_card),
                 ),
               );
             },
