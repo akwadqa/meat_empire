@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/features/cart/data/payment_repository.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/payment_widget/payment_method_card.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 import '../../../account/presentation/widgets/custom_button_widget.dart';
@@ -22,7 +24,9 @@ class PaymentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncPayment = ref.watch(paymentProvider(1));
+    final userId = ref.watch(userDataProvider)!.$2;
+
+    final asyncPayment = ref.watch(paymentProvider(userId));
     return Scaffold(
         appBar: AppBar(
           leading: InkWell(
@@ -71,9 +75,7 @@ class PaymentScreen extends ConsumerWidget {
             );
           },
           error: (_, __) => const AppErrorWidget(),
-          loading: () => const LinearProgressIndicator(
-            color: AppColors.darkRed,
-          ),
+          loading: () => const FadeCircleLoadingIndicator().centered(),
         ));
   }
 

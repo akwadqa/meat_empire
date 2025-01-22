@@ -23,7 +23,7 @@ final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
-String _$isAuthinticatedHash() => r'3d120ed8dea6478a2f71b93c8028886bb548644d';
+String _$isAuthinticatedHash() => r'06718e95e3ceea2ea9b79d792cbdee9e9cc4164c';
 
 /// See also [isAuthinticated].
 @ProviderFor(isAuthinticated)
@@ -40,7 +40,7 @@ final isAuthinticatedProvider = AutoDisposeProvider<bool>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef IsAuthinticatedRef = AutoDisposeProviderRef<bool>;
-String _$userDataHash() => r'e8157fce8cfffee76bbdaaaa6066ac6373189113';
+String _$userDataHash() => r'44a9648f415cf42d34ba276ad6adb55406affdeb';
 
 /// See also [UserData].
 @ProviderFor(UserData)

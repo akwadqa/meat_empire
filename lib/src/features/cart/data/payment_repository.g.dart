@@ -172,5 +172,139 @@ class _PaymentProviderElement
   @override
   int get id => (origin as PaymentProvider).id;
 }
+
+String _$confirmPaymentHash() => r'b332fc13e4c15aca22fa69d27690be087aa6c62f';
+
+/// See also [confirmPayment].
+@ProviderFor(confirmPayment)
+const confirmPaymentProvider = ConfirmPaymentFamily();
+
+/// See also [confirmPayment].
+class ConfirmPaymentFamily extends Family<AsyncValue<ConfirmPaymentResponse>> {
+  /// See also [confirmPayment].
+  const ConfirmPaymentFamily();
+
+  /// See also [confirmPayment].
+  ConfirmPaymentProvider call(
+    ConfirmPaymentBodyData body,
+  ) {
+    return ConfirmPaymentProvider(
+      body,
+    );
+  }
+
+  @override
+  ConfirmPaymentProvider getProviderOverride(
+    covariant ConfirmPaymentProvider provider,
+  ) {
+    return call(
+      provider.body,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'confirmPaymentProvider';
+}
+
+/// See also [confirmPayment].
+class ConfirmPaymentProvider
+    extends AutoDisposeFutureProvider<ConfirmPaymentResponse> {
+  /// See also [confirmPayment].
+  ConfirmPaymentProvider(
+    ConfirmPaymentBodyData body,
+  ) : this._internal(
+          (ref) => confirmPayment(
+            ref as ConfirmPaymentRef,
+            body,
+          ),
+          from: confirmPaymentProvider,
+          name: r'confirmPaymentProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$confirmPaymentHash,
+          dependencies: ConfirmPaymentFamily._dependencies,
+          allTransitiveDependencies:
+              ConfirmPaymentFamily._allTransitiveDependencies,
+          body: body,
+        );
+
+  ConfirmPaymentProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.body,
+  }) : super.internal();
+
+  final ConfirmPaymentBodyData body;
+
+  @override
+  Override overrideWith(
+    FutureOr<ConfirmPaymentResponse> Function(ConfirmPaymentRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ConfirmPaymentProvider._internal(
+        (ref) => create(ref as ConfirmPaymentRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        body: body,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<ConfirmPaymentResponse> createElement() {
+    return _ConfirmPaymentProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ConfirmPaymentProvider && other.body == body;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, body.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin ConfirmPaymentRef
+    on AutoDisposeFutureProviderRef<ConfirmPaymentResponse> {
+  /// The parameter `body` of this provider.
+  ConfirmPaymentBodyData get body;
+}
+
+class _ConfirmPaymentProviderElement
+    extends AutoDisposeFutureProviderElement<ConfirmPaymentResponse>
+    with ConfirmPaymentRef {
+  _ConfirmPaymentProviderElement(super.provider);
+
+  @override
+  ConfirmPaymentBodyData get body => (origin as ConfirmPaymentProvider).body;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

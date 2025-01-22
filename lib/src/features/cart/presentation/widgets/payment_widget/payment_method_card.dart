@@ -1,15 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/payment_info_entity.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class PaymentMethodFormField extends FormField<int> {
   PaymentMethodFormField({
     Key? key,
-    required List<PaymentInfoEntity> payments, // List of payment options
+    required List<PaymentInfoEntity> payments,
     FormFieldSetter<int>? onSaved,
     FormFieldValidator<int>? validator,
-    int initialValue = -1, // Default to no selection
+    int initialValue = -1,
   }) : super(
           key: key,
           initialValue: initialValue,
@@ -42,11 +44,11 @@ class _PaymentMethodField extends StatelessWidget {
         // Title
         Text(
           "payment_method".tr(),
-          style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
-        ),
-        const SizedBox(height: 12),
+          style:
+              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 16),
+        ).onlyPadding(start: 12),
+        12.verticalSpace,
 
-        // List of Payment Options
         Column(
           children: payments.asMap().entries.map((entry) {
             final index = entry.key;
@@ -55,63 +57,66 @@ class _PaymentMethodField extends StatelessWidget {
 
             return GestureDetector(
               onTap: () {
-                state.didChange(index); // Update the selected option
+                state.didChange(index);
               },
-              child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 6),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: isSelected ? AppColors.primary : AppColors.lightGray,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(8),
-                  color:
-                      isSelected ? AppColors.primarySwatch[50] : Colors.white,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Payment Description and Icon
-                    Row(
-                      children: [
-                        if (payment.image != null)
-                          Image.network(
+              child: Stack(
+                children: [
+                  Container(
+                    child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 6, horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 4),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: isSelected
+                                ? AppColors.primary
+                                : AppColors.lightGray,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                          // color:
+                          //     isSelected ? AppColors.primarySwatch[50] : Colors.white,
+                        ),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            payment.payment,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall!
+                                .copyWith(
+                                  color: isSelected
+                                      ? AppColors.primary
+                                      : AppColors.black900,
+                                  fontSize: 14,
+                                ),
+                          ),
+                          leading: Image.network(
                             payment.image!,
                             height: 30,
                             width: 30,
+                            errorBuilder: (ctx, oob, ko) {
+                              return Icon(
+                                Icons.credit_card,
+                                color: AppColors.grey600,
+                              );
+                            },
                             fit: BoxFit.cover,
                           ),
-                        if (payment.image == null)
-                          const Icon(
-                            Icons.credit_card,
-                            size: 30,
-                            color: AppColors.grey600,
-                          ),
-                        const SizedBox(width: 10),
-                        Text(
-                          payment.payment,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: isSelected
-                                        ? AppColors.primary
-                                        : AppColors.black900,
-                                    fontSize: 14,
-                                  ),
-                        ),
-                      ],
-                    ),
-
-                    // Selected Icon
-                    if (isSelected)
-                      const Icon(
+                        )),
+                  ),
+                  if (isSelected)
+                    const PositionedDirectional(
+                      top: 0,
+                      start: 4,
+                      child: Icon(
                         Icons.check_circle,
                         color: AppColors.primary,
-                        size: 24,
+                        size: 20,
                       ),
-                  ],
-                ),
+                    ),
+                ],
               ),
             );
           }).toList(),

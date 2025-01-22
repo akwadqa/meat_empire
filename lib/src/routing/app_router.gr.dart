@@ -23,7 +23,7 @@ import 'package:meat_empire/src/features/auth/presentation/login_screen/login_sc
 import 'package:meat_empire/src/features/auth/presentation/signup_screen/signup_screen.dart'
     as _i14;
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart'
-    as _i19;
+    as _i18;
 import 'package:meat_empire/src/features/cart/presentation/cart_screen/cart_screen.dart'
     as _i2;
 import 'package:meat_empire/src/features/cart/presentation/check_out/check_out_screen.dart'
@@ -32,8 +32,6 @@ import 'package:meat_empire/src/features/cart/presentation/payment_screen/paymen
     as _i11;
 import 'package:meat_empire/src/features/categories/presentation/categories_screen/categories_screen.dart'
     as _i3;
-import 'package:meat_empire/src/features/home/domain/home/category/category.dart'
-    as _i18;
 import 'package:meat_empire/src/features/home/presentation/home_screen/home_screen.dart'
     as _i5;
 import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart'
@@ -112,12 +110,9 @@ class CartRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.CategoriesScreen]
-class CategoriesRoute extends _i15.PageRouteInfo<CategoriesRouteArgs> {
-  CategoriesRoute({
-    _i16.Key? key,
-    _i18.Category? category,
-    List<_i15.PageRouteInfo>? children,
-  }) : super(
+class CategoriesRoute extends _i15.PageRouteInfo<void> {
+  const CategoriesRoute({List<_i15.PageRouteInfo>? children})
+      : super(
           CategoriesRoute.name,
           initialChildren: children,
         );
@@ -132,28 +127,12 @@ class CategoriesRoute extends _i15.PageRouteInfo<CategoriesRouteArgs> {
   );
 }
 
-class CategoriesRouteArgs {
-  const CategoriesRouteArgs({
-    this.key,
-    this.category,
-  });
-
-  final _i16.Key? key;
-
-  final _i18.Category? category;
-
-  @override
-  String toString() {
-    return 'CategoriesRouteArgs{key: $key, category: $category}';
-  }
-}
-
 /// generated route for
 /// [_i4.CheckOutScreen]
 class CheckOutRoute extends _i15.PageRouteInfo<CheckOutRouteArgs> {
   CheckOutRoute({
     _i16.Key? key,
-    required _i19.CartResponse cart,
+    required _i18.CartResponse cart,
     List<_i15.PageRouteInfo>? children,
   }) : super(
           CheckOutRoute.name,
@@ -186,7 +165,7 @@ class CheckOutRouteArgs {
 
   final _i16.Key? key;
 
-  final _i19.CartResponse cart;
+  final _i18.CartResponse cart;
 
   @override
   String toString() {

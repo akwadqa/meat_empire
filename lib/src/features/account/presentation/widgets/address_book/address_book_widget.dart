@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/profile_response.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/add_new_address_book_widget.dart';
@@ -13,8 +14,9 @@ import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dar
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class AddressBookWidget extends ConsumerWidget {
+  AddressBookWidget({super.key, this.userProfile, this.checkout = false});
   bool checkout;
-  AddressBookWidget({super.key, this.checkout = false});
+  final UserProfile? userProfile;
 
   int selectedIndex = -1;
 
@@ -24,24 +26,16 @@ class AddressBookWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final accountSyncData = ref.watch(accountControllerProvider);
     return checkout
-        ? accountSyncData.when(
-            data: (data) {
-              return Column(
-                // mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildShippingLocationWidget(
-                          context, accountSyncData.value!.userProfile!, 260)
-                      .symmetricPadding(horizontal: 20),
-                  15.verticalSpace,
-                  _buildBillingLocationWidget(
-                          context, accountSyncData.value!.userProfile!, 260)
-                      .symmetricPadding(horizontal: 20),
-                ],
-              );
-            },
-            error: (_, __) => const AppErrorWidget(),
-            loading: () => const FadeCircleLoadingIndicator().centered(),
+        ? Column(
+            // mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildShippingLocationWidget(context, userProfile!, 260)
+                  .symmetricPadding(horizontal: 20),
+              15.verticalSpace,
+              _buildBillingLocationWidget(context, userProfile!, 260)
+                  .symmetricPadding(horizontal: 20),
+            ],
           )
         : GestureDetector(
             onTap: () {
@@ -136,7 +130,7 @@ Widget _buildShippingLocationWidget(
             8.verticalSpace,
             AddressBookCardWidget(
               title:
-                  "${userProfile.shippingCity!} - ${userProfile.shippingCountry!} - ${userProfile.shippingStrete!} ${userProfile.shippingBuildingNumber != null ? "- ${userProfile.shippingBuildingNumber}" : ""}",
+                  "${userProfile.shippingCity!} - ${userProfile.shippingCountry!} - ${userProfile.shippingStrete!} ${userProfile.shippingBuildingNumber!.isNotEmpty ? "- ${userProfile.shippingBuildingNumber}" : ""}",
               onTap: () {
                 showAddNewAddressBottomSheet(
                   context: context,
@@ -207,7 +201,7 @@ Future<void> showAddressBookDialog({
     context: context,
     barrierDismissible: false, // Prevent dismissing dialog by tapping outside
     builder: (BuildContext context) {
-      return AddressBookWidget();
+      return AddressBookWidget(userProfile: null);
     },
   );
 }

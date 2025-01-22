@@ -1,0 +1,23 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'confirm_payment_body_data.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$ConfirmPaymentBodyDataImpl _$$ConfirmPaymentBodyDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConfirmPaymentBodyDataImpl(
+      userId: (json['user_id'] as num).toInt(),
+      selectedPaymentMethod: (json['selected_payment_method'] as num).toInt(),
+      ecTimeSlot: json['ec_time_slot'] as String,
+    );
+
+Map<String, dynamic> _$$ConfirmPaymentBodyDataImplToJson(
+        _$ConfirmPaymentBodyDataImpl instance) =>
+    <String, dynamic>{
+      'user_id': instance.userId,
+      'selected_payment_method': instance.selectedPaymentMethod,
+      'ec_time_slot': instance.ecTimeSlot,
+    };

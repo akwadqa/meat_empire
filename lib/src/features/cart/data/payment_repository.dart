@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
+import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_body_data.dart';
+import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/payment_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -26,6 +28,18 @@ class PaymentRepository {
     }
     throw AppException(paymentResponse.message);
   }
+
+  Future<ConfirmPaymentResponse> confirmPayment(
+      ConfirmPaymentBodyData body) async {
+    final response = await _networkService
+        .post(EndPoints.checkOutApi, body.toJson(), {"user_id": body.userId});
+    ConfirmPaymentResponse paymentResponse =
+        ConfirmPaymentResponse.fromJson(response.data);
+    if (paymentResponse.success!) {
+      return paymentResponse;
+    }
+    throw AppException(paymentResponse.message);
+  }
 }
 
 @riverpod
@@ -34,4 +48,9 @@ FutureOr<PaymentResponse> payment(Ref ref, int id) async {
   return paymentRepository.getPayment(id);
 }
 
-final selectedSlotProvider = StateProvider<DeliverySlot?>((ref) => null);
+@riverpod
+FutureOr<ConfirmPaymentResponse> confirmPayment(
+    Ref ref, ConfirmPaymentBodyData body) async {
+  final paymentRepository = ref.watch(paymentRepositoryProvider);
+  return paymentRepository.confirmPayment(body);
+}

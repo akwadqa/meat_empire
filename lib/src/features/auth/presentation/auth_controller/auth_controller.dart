@@ -17,7 +17,9 @@ class AuthController extends _$AuthController {
     state = await AsyncValue.guard(() async {
       final authRepo = ref.watch(authRepositoryProvider);
       final userData = await action(authRepo);
-      await ref.read(userDataProvider.notifier).setData(userData.$1, int.parse(userData.$2));
+      await ref
+          .read(userDataProvider.notifier)
+          .setData(userData.$1, int.parse(userData.$2));
     });
   }
 

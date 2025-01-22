@@ -4,13 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
+import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_widget.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
+import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
+import 'package:meat_empire/src/features/cart/domain/slot.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_picker.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_date_picker_widget.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_time_picker_widget.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/shared_functions.dart';
+import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 import '../../../account/presentation/widgets/custom_button_widget.dart';
@@ -23,11 +30,12 @@ class CheckOutScreen extends ConsumerWidget {
   });
   final CartResponse cart;
   final _formKey = GlobalKey<FormState>();
-
+  DeliverySlot? selectedDay;
+  Slot? selectedSlot;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final deliverySlots = cart.cart?.deliverySlots ?? [];
-
+    final accountSyncData = ref.watch(accountControllerProvider);
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
@@ -44,46 +52,69 @@ class CheckOutScreen extends ConsumerWidget {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              30.verticalSpace,
-              CheckoutCartOrderSummary(cart: cart.cart!),
-              20.verticalSpace,
-              AddressBookWidget(
-                checkout: true,
+      body: accountSyncData.when(
+        data: (data) {
+          return SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  30.verticalSpace,
+                  CheckoutCartOrderSummary(cart: cart.cart!),
+                  20.verticalSpace,
+                  AddressBookWidget(
+                      checkout: true, userProfile: data.userProfile),
+                  20.verticalSpace,
+                  CheckoutShippingDateTimePickerFormField(
+                    deliverySlots: deliverySlots,
+                    validator: (value) {
+                      if (value == null || value['date'] == null) {
+                        return "select_delivery_msg".tr();
+                      }
+                      if (value['time'] == null) {
+                        return "select_time_msg".tr();
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      debugPrint("Selected Date: ${value?['date']?.heading}");
+                      debugPrint("Selected Time: ${value?['time']?.slot}");
+                    },
+                    onChanged: (value) {
+                      debugPrint("Selected Date: ${value['date']}");
+                      selectedDay = value['date'];
+                      debugPrint("Selected Time: ${value['time']?.slot}");
+                      selectedSlot = value['time']?.slot;
+                    },
+                  ),
+                  30.verticalSpace,
+                  _buildSubmetButton(
+                    cart: cart,
+                    user: accountSyncData.value!.userProfile!,
+                    context: context,
+                    selectedDay: selectedDay,
+                    selectedSlot: selectedSlot,
+                  ),
+                  20.verticalSpace,
+                ],
               ),
-              20.verticalSpace,
-              CheckoutShippingDateTimePickerFormField(
-                deliverySlots: deliverySlots,
-                validator: (value) {
-                  if (value == null || value['date'] == null) {
-                    return "select_delivery_msg".tr();
-                  }
-                  if (value['time'] == null) {
-                    return "select_time_msg".tr();
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  debugPrint("Selected Date: ${value?['date']?.heading}");
-                  debugPrint("Selected Time: ${value?['time']?.slot}");
-                },
-              ),
-              30.verticalSpace,
-              _buildSubmetButton(context, cart),
-              20.verticalSpace,
-            ],
-          ),
-        ),
+            ),
+          );
+        },
+        error: (_, __) => const AppErrorWidget(),
+        loading: () => const FadeCircleLoadingIndicator().centered(),
       ),
     );
   }
 
-  Widget _buildSubmetButton(BuildContext context, CartResponse cart) {
+  Widget _buildSubmetButton({
+    required BuildContext context,
+    required CartResponse cart,
+    required UserProfile user,
+    DeliverySlot? selectedDay,
+    Slot? selectedSlot,
+  }) {
     return CustomButtonWidget(
       text: "payment",
       backgroundColor: AppColors.primary,
@@ -91,9 +122,22 @@ class CheckOutScreen extends ConsumerWidget {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState?.save();
           // Navigate or perform submission
+
           debugPrint("Tap ");
-          context.navigateTo(PaymentRoute());
-          debugPrint("Form is valid and saved.");
+          if (user.billingStrete!.isEmpty) {
+            showCustomDialog(
+                context: context,
+                title: "add_billing_location".tr(),
+                icon: Icon(Icons.warning, color: Colors.amber, size: 45));
+          } else if (user.shippingStrete!.isEmpty) {
+            showCustomDialog(
+                context: context,
+                title: "not_shipping_address_msg".tr(),
+                icon: Icon(Icons.warning, color: Colors.amber, size: 45));
+          } else {
+            context.navigateTo(PaymentRoute());
+            debugPrint("Form is valid and saved.");
+          }
         }
       },
       isFiled: true,
