@@ -397,9 +397,9 @@ class _CartItem extends ConsumerWidget {
                             _buildQuantityButton(
                               context: context,
                               ref: ref,
-                              icon: Icons.add_circle_rounded,
-                              color: AppColors.primary,
-                              isIncrement: true,
+                              icon: Icons.remove_circle_rounded,
+                              color: AppColors.gray02,
+                              isIncrement: false,
                             ),
                             Text(
                               cartItem.amount.toString(),
@@ -412,9 +412,9 @@ class _CartItem extends ConsumerWidget {
                             _buildQuantityButton(
                               context: context,
                               ref: ref,
-                              icon: Icons.remove_circle_rounded,
-                              color: AppColors.gray02,
-                              isIncrement: false,
+                              icon: Icons.add_circle_rounded,
+                              color: AppColors.primary,
+                              isIncrement: true,
                             ),
                           ],
                         )
