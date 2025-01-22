@@ -65,8 +65,8 @@ mixin _$Cart {
   String? get formatTaxSubtotal => throw _privateConstructorUsedError;
   List<CartProduct>? get cartProducts => throw _privateConstructorUsedError;
   List<Shipping>? get shippings => throw _privateConstructorUsedError;
-  int? get paymentId => throw _privateConstructorUsedError;
-  int? get orderId => throw _privateConstructorUsedError;
+  dynamic get paymentId => throw _privateConstructorUsedError;
+  dynamic get orderId => throw _privateConstructorUsedError;
   List<dynamic>? get couponsDetails => throw _privateConstructorUsedError;
   List<DeliverySlot>? get deliverySlots => throw _privateConstructorUsedError;
 
@@ -127,8 +127,8 @@ abstract class $CartCopyWith<$Res> {
       String? formatTaxSubtotal,
       List<CartProduct>? cartProducts,
       List<Shipping>? shippings,
-      int? paymentId,
-      int? orderId,
+      dynamic paymentId,
+      dynamic orderId,
       List<dynamic>? couponsDetails,
       List<DeliverySlot>? deliverySlots});
 
@@ -384,11 +384,11 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       paymentId: freezed == paymentId
           ? _value.paymentId
           : paymentId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       couponsDetails: freezed == couponsDetails
           ? _value.couponsDetails
           : couponsDetails // ignore: cast_nullable_to_non_nullable
@@ -468,8 +468,8 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       String? formatTaxSubtotal,
       List<CartProduct>? cartProducts,
       List<Shipping>? shippings,
-      int? paymentId,
-      int? orderId,
+      dynamic paymentId,
+      dynamic orderId,
       List<dynamic>? couponsDetails,
       List<DeliverySlot>? deliverySlots});
 
@@ -723,11 +723,11 @@ class __$$CartImplCopyWithImpl<$Res>
       paymentId: freezed == paymentId
           ? _value.paymentId
           : paymentId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       couponsDetails: freezed == couponsDetails
           ? _value._couponsDetails
           : couponsDetails // ignore: cast_nullable_to_non_nullable
@@ -953,9 +953,9 @@ class _$CartImpl implements _Cart {
   }
 
   @override
-  final int? paymentId;
+  final dynamic paymentId;
   @override
-  final int? orderId;
+  final dynamic orderId;
   final List<dynamic>? _couponsDetails;
   @override
   List<dynamic>? get couponsDetails {
@@ -1057,7 +1057,8 @@ class _$CartImpl implements _Cart {
                 other.formatTotal == formatTotal) &&
             (identical(other.formatShippingCost, formatShippingCost) ||
                 other.formatShippingCost == formatShippingCost) &&
-            (identical(other.formatDiscountedSubtotal, formatDiscountedSubtotal) ||
+            (identical(
+                    other.formatDiscountedSubtotal, formatDiscountedSubtotal) ||
                 other.formatDiscountedSubtotal == formatDiscountedSubtotal) &&
             (identical(other.formatPaymentSurcharge, formatPaymentSurcharge) ||
                 other.formatPaymentSurcharge == formatPaymentSurcharge) &&
@@ -1069,9 +1070,8 @@ class _$CartImpl implements _Cart {
                 .equals(other._cartProducts, _cartProducts) &&
             const DeepCollectionEquality()
                 .equals(other._shippings, _shippings) &&
-            (identical(other.paymentId, paymentId) ||
-                other.paymentId == paymentId) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            const DeepCollectionEquality().equals(other.paymentId, paymentId) &&
+            const DeepCollectionEquality().equals(other.orderId, orderId) &&
             const DeepCollectionEquality()
                 .equals(other._couponsDetails, _couponsDetails) &&
             const DeepCollectionEquality()
@@ -1127,8 +1127,8 @@ class _$CartImpl implements _Cart {
         formatTaxSubtotal,
         const DeepCollectionEquality().hash(_cartProducts),
         const DeepCollectionEquality().hash(_shippings),
-        paymentId,
-        orderId,
+        const DeepCollectionEquality().hash(paymentId),
+        const DeepCollectionEquality().hash(orderId),
         const DeepCollectionEquality().hash(_couponsDetails),
         const DeepCollectionEquality().hash(_deliverySlots)
       ]);
@@ -1189,8 +1189,8 @@ abstract class _Cart implements Cart {
       final String? formatTaxSubtotal,
       final List<CartProduct>? cartProducts,
       final List<Shipping>? shippings,
-      final int? paymentId,
-      final int? orderId,
+      final dynamic paymentId,
+      final dynamic orderId,
       final List<dynamic>? couponsDetails,
       final List<DeliverySlot>? deliverySlots}) = _$CartImpl;
 
@@ -1287,9 +1287,9 @@ abstract class _Cart implements Cart {
   @override
   List<Shipping>? get shippings;
   @override
-  int? get paymentId;
+  dynamic get paymentId;
   @override
-  int? get orderId;
+  dynamic get orderId;
   @override
   List<dynamic>? get couponsDetails;
   @override

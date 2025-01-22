@@ -66,8 +66,8 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
       shippings: (json['shippings'] as List<dynamic>?)
           ?.map((e) => Shipping.fromJson(e as Map<String, dynamic>))
           .toList(),
-      paymentId: (json['payment_id'] as num?)?.toInt(),
-      orderId: (json['order_id'] as num?)?.toInt(),
+      paymentId: json['payment_id'],
+      orderId: json['order_id'],
       couponsDetails: json['coupons_details'] as List<dynamic>?,
       deliverySlots: (json['delivery_slots'] as List<dynamic>?)
           ?.map((e) => DeliverySlot.fromJson(e as Map<String, dynamic>))

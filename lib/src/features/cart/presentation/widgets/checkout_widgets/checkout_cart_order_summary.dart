@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 
 class CheckoutCartOrderSummary extends StatelessWidget {
   const CheckoutCartOrderSummary({super.key, required this.cart});
 
-  final CartResponse cart;
+  final Cart cart;
 
   @override
   Widget build(BuildContext context) {
-    final cartDetails = cart.cart!;
+    // final cartDetails = cart.cart!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -39,24 +40,24 @@ class CheckoutCartOrderSummary extends StatelessWidget {
             children: [
               _buildTextRow(
                 context.tr('productsCost'),
-                cartDetails.formatSubtotal!,
+                cart.formatSubtotal!,
                 context,
               ),
               _buildTextRow(
                 context.tr('shippingCost'),
-                cartDetails.formatShippingCost!,
+                cart.formatShippingCost!,
                 context,
               ),
               _buildTextRow(
-                '${context.tr('discountCoupon')} (${cartDetails.discount!})',
-                cartDetails.formatSubtotalDiscount!,
+                '${context.tr('discountCoupon')} (${cart.discount!})',
+                cart.formatSubtotalDiscount!,
                 context,
                 fontColor: AppColors.primary,
               ),
               const Divider(color: AppColors.gray02),
               _buildTextRow(
                 context.tr('total'),
-                cartDetails.formatTotal!,
+                cart.formatTotal!,
                 context,
                 fontColor: AppColors.grayishCharcoal,
                 fontSize: 18,
