@@ -47,7 +47,7 @@ class CategoriesView extends ConsumerWidget {
   /// Handles tapping on a category item.
   void _onCategoryTap(
       BuildContext context, WidgetRef ref, bool isAllCategory, int index) {
-    context.router.replaceAll([const CategoriesRoute()]);
+    context.router.replaceAll([CategoriesRoute()]);
     final selectedCategoryNotifier =
         ref.read(selectedCategoryProvider.notifier);
     if (isAllCategory) {
