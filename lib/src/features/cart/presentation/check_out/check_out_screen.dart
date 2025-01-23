@@ -7,6 +7,7 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_widget.dart';
+import 'package:meat_empire/src/features/cart/application/checkout_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
 import 'package:meat_empire/src/features/cart/domain/slot.dart';
@@ -80,13 +81,20 @@ class CheckOutScreen extends ConsumerWidget {
                     onSaved: (value) {
                       debugPrint("Selected Date: ${value?['date']?.heading}");
                       debugPrint("Selected Time: ${value?['time']?.slot}");
+                      selectedSlot = value?['time'];
+                      debugPrint("Selected Time: $selectedSlot");
+
+                      // ref
+                      //     .read(checkoutControllerProvider(value?['date'])
+                      //         .notifier)
+                      //     .selectTimeSlot(selectedSlot!);
                     },
-                    onChanged: (value) {
-                      debugPrint("Selected Date: ${value['date']}");
-                      selectedDay = value['date'];
-                      debugPrint("Selected Time: ${value['time']?.slot}");
-                      selectedSlot = value['time']?.slot;
-                    },
+                    // onChanged: (value) {
+                    //   debugPrint("Selected Date: ${value['date']}");
+                    //   selectedDay = value['date'];
+                    //   debugPrint("Selected Time: ${value['time']?.slot}");
+                    //   selectedSlot = value['time'];
+                    // },
                   ),
                   30.verticalSpace,
                   _buildSubmetButton(
@@ -95,6 +103,34 @@ class CheckOutScreen extends ConsumerWidget {
                     context: context,
                     selectedDay: selectedDay,
                     selectedSlot: selectedSlot,
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState?.save();
+                        // Navigate or perform submission
+
+                        debugPrint("Tap ");
+                        if (accountSyncData
+                            .value!.userProfile!.shippingStrete!.isEmpty) {
+                          showCustomDialog(
+                              context: context,
+                              title: "not_shipping_address_msg".tr(),
+                              icon: Icon(Icons.warning,
+                                  color: Colors.amber, size: 45));
+                        } else if (accountSyncData
+                            .value!.userProfile!.billingStrete!.isEmpty) {
+                          showCustomDialog(
+                              context: context,
+                              title: "add_billing_location".tr(),
+                              icon: Icon(Icons.warning,
+                                  color: Colors.amber, size: 45));
+                        } else {
+                          debugPrint("Form ${selectedSlot?.slot}");
+
+                          context.navigateTo(PaymentRoute(slot: selectedSlot!));
+                          debugPrint("Form is valid and saved.");
+                        }
+                      }
+                    },
                   ),
                   20.verticalSpace,
                 ],
@@ -112,6 +148,7 @@ class CheckOutScreen extends ConsumerWidget {
     required BuildContext context,
     required CartResponse cart,
     required UserProfile user,
+    required Function onTap,
     DeliverySlot? selectedDay,
     Slot? selectedSlot,
   }) {
@@ -119,26 +156,7 @@ class CheckOutScreen extends ConsumerWidget {
       text: "payment",
       backgroundColor: AppColors.primary,
       onTap: () {
-        if (_formKey.currentState!.validate()) {
-          _formKey.currentState?.save();
-          // Navigate or perform submission
-
-          debugPrint("Tap ");
-          if (user.billingStrete!.isEmpty) {
-            showCustomDialog(
-                context: context,
-                title: "add_billing_location".tr(),
-                icon: Icon(Icons.warning, color: Colors.amber, size: 45));
-          } else if (user.shippingStrete!.isEmpty) {
-            showCustomDialog(
-                context: context,
-                title: "not_shipping_address_msg".tr(),
-                icon: Icon(Icons.warning, color: Colors.amber, size: 45));
-          } else {
-            context.navigateTo(PaymentRoute());
-            debugPrint("Form is valid and saved.");
-          }
-        }
+        onTap();
       },
       isFiled: true,
       height: 50,

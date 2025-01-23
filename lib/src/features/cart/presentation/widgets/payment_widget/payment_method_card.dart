@@ -10,6 +10,7 @@ class PaymentMethodFormField extends FormField<int> {
     Key? key,
     required List<PaymentInfoEntity> payments,
     FormFieldSetter<int>? onSaved,
+    FormFieldSetter<PaymentInfoEntity>? onchange,
     FormFieldValidator<int>? validator,
     int initialValue = -1,
   }) : super(
@@ -21,6 +22,7 @@ class PaymentMethodFormField extends FormField<int> {
             return _PaymentMethodField(
               state: state,
               payments: payments,
+              onChange: onchange,
             );
           },
         );
@@ -29,13 +31,15 @@ class PaymentMethodFormField extends FormField<int> {
 class _PaymentMethodField extends StatelessWidget {
   final FormFieldState<int> state;
   final List<PaymentInfoEntity> payments;
+  final ValueChanged<PaymentInfoEntity>?
+      onChange; // Callback for selected payment
 
   const _PaymentMethodField({
     Key? key,
     required this.state,
     required this.payments,
+    this.onChange,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -58,6 +62,8 @@ class _PaymentMethodField extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 state.didChange(index);
+                state.save();
+                onChange?.call(payment);
               },
               child: Stack(
                 children: [

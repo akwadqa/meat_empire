@@ -35,10 +35,10 @@ class PaymentRepository {
         .post(EndPoints.checkOutApi, body.toJson(), {"user_id": body.userId});
     ConfirmPaymentResponse paymentResponse =
         ConfirmPaymentResponse.fromJson(response.data);
-    if (paymentResponse.success!) {
-      return paymentResponse;
-    }
-    throw AppException(paymentResponse.message);
+    // if (paymentResponse.success!) {
+    return paymentResponse;
+    // }
+    // throw AppException(paymentResponse.message);
   }
 }
 
