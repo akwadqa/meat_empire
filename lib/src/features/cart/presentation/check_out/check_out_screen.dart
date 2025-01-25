@@ -8,8 +8,6 @@ import 'package:meat_empire/src/features/account/presentation/widgets/address_bo
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_picker.dart';
-import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_date_picker_widget.dart';
-import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_time_picker_widget.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 

@@ -34,11 +34,10 @@ class _PaymentMethodField extends StatelessWidget {
   final BuildContext context;
 
   const _PaymentMethodField({
-    Key? key,
     required this.state,
     required this.payments,
     required this.context,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

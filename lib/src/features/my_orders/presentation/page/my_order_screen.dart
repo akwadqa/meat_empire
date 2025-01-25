@@ -9,8 +9,8 @@ import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_ca
 import 'package:meat_empire/src/shared_widgets/app_empty_data_widget.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/app_pagination_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
-
 
 @RoutePage()
 class MyOrdersScreen extends ConsumerStatefulWidget {
@@ -134,7 +134,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                     },
                   ));
       },
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => Center(child: FadeCircleLoadingIndicator()),
       error: (error, stackTrace) => AppErrorWidget(),
     );
   }
@@ -160,7 +160,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 ),
         );
       },
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => Center(child: FadeCircleLoadingIndicator()),
       error: (error, stackTrace) => AppErrorWidget(),
     );
   }
@@ -186,7 +186,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 ),
         );
       },
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => Center(child: FadeCircleLoadingIndicator()),
       error: (error, stackTrace) => AppErrorWidget(),
     );
   }
