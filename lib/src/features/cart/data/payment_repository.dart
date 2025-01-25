@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_body_data.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/payment_response.dart';

@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/cart/data/payment_repository.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';

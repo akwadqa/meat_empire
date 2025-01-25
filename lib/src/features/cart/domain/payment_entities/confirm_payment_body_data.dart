@@ -3,7 +3,6 @@
 //     final confirmPaymentBodyData = confirmPaymentBodyDataFromJson(jsonString);
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'confirm_payment_body_data.freezed.dart';
 part 'confirm_payment_body_data.g.dart';

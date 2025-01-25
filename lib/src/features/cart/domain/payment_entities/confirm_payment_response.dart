@@ -3,7 +3,6 @@
 //     final confirmPaymentResponse = confirmPaymentResponseFromJson(jsonString);
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'confirm_payment_response.freezed.dart';
 part 'confirm_payment_response.g.dart';
@@ -12,7 +11,7 @@ part 'confirm_payment_response.g.dart';
 class ConfirmPaymentResponse with _$ConfirmPaymentResponse {
   const factory ConfirmPaymentResponse({
     int? orderId,
-    dynamic? childOrderIds,
+    dynamic childOrderIds,
     List<dynamic>? paymentParams,
     bool? redirectPayment,
     String? redirectUrl,

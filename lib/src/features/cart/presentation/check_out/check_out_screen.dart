@@ -7,7 +7,6 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_widget.dart';
-import 'package:meat_empire/src/features/cart/application/checkout_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
 import 'package:meat_empire/src/features/cart/domain/slot.dart';

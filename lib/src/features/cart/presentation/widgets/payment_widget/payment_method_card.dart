@@ -38,7 +38,7 @@ class _PaymentMethodField extends StatelessWidget {
     required this.state,
     required this.payments,
     this.onChange,
-  }) : super(key: key);
+  }) : super();
   @override
   Widget build(BuildContext context) {
     return Column(

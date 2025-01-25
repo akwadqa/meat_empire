@@ -6,8 +6,7 @@ import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class CheckoutCartOrderSummary extends StatelessWidget {
-  const CheckoutCartOrderSummary({Key? key, required this.cart})
-      : super(key: key);
+  const CheckoutCartOrderSummary({super.key, required this.cart});
 
   final Cart cart;
 
