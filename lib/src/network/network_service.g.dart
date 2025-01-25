@@ -6,7 +6,7 @@ part of 'network_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'c04ce35226e7ad13de6ea9966dfdc362bf87a4d7';
+String _$dioHash() => r'2a7ca585989877f37d3870ac0c9969c57a9b73d5';
 
 /// See also [dio].
 @ProviderFor(dio)

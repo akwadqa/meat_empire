@@ -4,25 +4,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/features/cart/data/payment_repository.dart';
+import 'package:meat_empire/src/features/cart/domain/cart.dart';
+import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_body_data.dart';
+import 'package:meat_empire/src/features/cart/domain/slot.dart';
+import 'package:meat_empire/src/features/cart/presentation/payment_controller/payment_controller.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/payment_widget/payment_method_card.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 import '../../../account/presentation/widgets/custom_button_widget.dart';
 
 @RoutePage()
 class PaymentScreen extends ConsumerWidget {
-  const PaymentScreen({
+  PaymentScreen({
     super.key,
-    // required this.cart,
+    required this.slot,
   });
-  // final CartResponse cart;
+  final Slot slot;
+  int selectedPaumnetMethod = -1;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncPayment = ref.watch(paymentProvider(1));
+    final userId = ref.watch(userDataProvider)!.$2;
+
+    final asyncPayment = ref.watch(paymentProvider(userId));
     return Scaffold(
         appBar: AppBar(
           leading: InkWell(
@@ -44,47 +55,62 @@ class PaymentScreen extends ConsumerWidget {
         body: asyncPayment.when(
           data: (data) {
             return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  30.verticalSpace,
-                  CheckoutCartOrderSummary(cart: data.cart!),
-                  20.verticalSpace,
-                  PaymentMethodFormField(
-                    context: context,
-                    payments: data.paymentMethods,
-                    onSaved: (value) {
-                      debugPrint("Selected Payment Index: $value");
-                    },
-                    validator: (value) {
-                      if (value == null || value == -1) {
-                        return "payment_msg".tr();
-                      }
-                      return null;
-                    },
-                  ),
-                  30.verticalSpace,
-                  _buildSubmetButton(context),
-                  20.verticalSpace,
-                ],
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    30.verticalSpace,
+                    CheckoutCartOrderSummary(cart: data.cart!),
+                    20.verticalSpace,
+                    PaymentMethodFormField(
+                      // context: context,
+                      payments: data.paymentMethods,
+                      onchange: (newValue) {
+                        debugPrint("Selected Payment : $newValue");
+                        selectedPaumnetMethod = int.parse(newValue!.paymentId);
+                      },
+                      onSaved: (value) {
+                        debugPrint("Selected Payment Index: $value");
+                      },
+                      validator: (value) {
+                        if (value == null || value == -1) {
+                          return "payment_msg".tr();
+                        }
+                        return null;
+                      },
+                    ),
+                    30.verticalSpace,
+                    _buildSubmetButton(context, ref, data.cart!),
+                    20.verticalSpace,
+                  ],
+                ),
               ),
             );
           },
           error: (_, __) => const AppErrorWidget(),
-          loading: () => const LinearProgressIndicator(
-            color: AppColors.darkRed,
-          ),
+          loading: () => const FadeCircleLoadingIndicator().centered(),
         ));
   }
 
-  Widget _buildSubmetButton(
-    BuildContext context,
-  ) {
+  Widget _buildSubmetButton(BuildContext context, WidgetRef ref, Cart cart) {
     return CustomButtonWidget(
       text: "confirm_order",
       backgroundColor: AppColors.primary,
       onTap: () {
-        debugPrint("Tap ");
+        if (_formKey.currentState!.validate()) {
+          _formKey.currentState?.save();
+          debugPrint("Tap ");
+          final controller = ref.read(paymentControllerProvider.notifier);
+          final bodyData = ConfirmPaymentBodyData(
+            userId: 12,
+            selectedPaymentMethod: selectedPaumnetMethod,
+            ecTimeSlot: slot.slot!,
+            // Include additional required data
+          );
+
+          controller.confirmPayment(bodyData, context, cart);
+        }
       },
       isFiled: true,
       height: 50,

@@ -7,7 +7,7 @@ part of 'checkout_service.dart';
 // **************************************************************************
 
 String _$checkoutControllerHash() =>
-    r'f1dad422d98c491f2484215b5986cee9f6f24bda';
+    r'32ef7330235b245474e2727c555e41c56d23c48d';
 
 /// Copied from Dart SDK
 class _SystemHash {
