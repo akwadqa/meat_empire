@@ -17,7 +17,7 @@ _$ConfirmPaymentResponseImpl _$$ConfirmPaymentResponseImplFromJson(
       successUrl: json['success_url'] as String?,
       failUrl: json['fail_url'] as String?,
       message: json['message'] as String?,
-      totalProducts: json['total_products'] as String?,
+      totalProducts: json['total_products'],
       success: json['success'] as bool?,
       action: json['action'] as String?,
     );

@@ -12,14 +12,14 @@ part 'confirm_payment_response.g.dart';
 class ConfirmPaymentResponse with _$ConfirmPaymentResponse {
   const factory ConfirmPaymentResponse({
     int? orderId,
-    dynamic? childOrderIds,
+    dynamic childOrderIds,
     List<dynamic>? paymentParams,
     bool? redirectPayment,
     String? redirectUrl,
     String? successUrl,
     String? failUrl,
     String? message,
-    String? totalProducts,
+    dynamic totalProducts,
     bool? success,
     String? action,
   }) = _ConfirmPaymentResponse;
