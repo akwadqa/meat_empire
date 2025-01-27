@@ -102,7 +102,7 @@ class PaymentScreen extends ConsumerWidget {
           debugPrint("Tap ");
           final controller = ref.read(paymentControllerProvider.notifier);
           final bodyData = ConfirmPaymentBodyData(
-            userId: 12,
+            userId: ref.watch(userDataProvider)!.$2,
             selectedPaymentMethod: selectedPaumnetMethod,
             ecTimeSlot: slot.slot!,
             // Include additional required data
