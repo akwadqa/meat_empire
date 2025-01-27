@@ -6,8 +6,7 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 class ProductListView extends StatelessWidget {
   final List<String> productImages;
 
-  const ProductListView({Key? key, required this.productImages})
-      : super(key: key);
+  const ProductListView({super.key, required this.productImages});
 
   @override
   Widget build(BuildContext context) {

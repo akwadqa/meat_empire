@@ -7,7 +7,7 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 class OrderStepper extends StatelessWidget {
   final int currentStep;
 
-  const OrderStepper({Key? key, required this.currentStep}) : super(key: key);
+  const OrderStepper({super.key, required this.currentStep});
 
   List<StepperData> stepperData(BuildContext context, int i) => [
         StepperData(

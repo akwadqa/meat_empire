@@ -4,7 +4,6 @@ import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_card_header.dart';
 
-import 'order_card_status.dart';
 import 'order_card_stepper.dart';
 import 'order_card_product_list_view.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
@@ -13,7 +12,7 @@ import 'package:meat_empire/src/features/my_orders/domain/entities/orders_entity
 class OrderCardWidget extends StatelessWidget {
   final OrdersEntity order;
 
-  const OrderCardWidget({Key? key, required this.order}) : super(key: key);
+  const OrderCardWidget({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,8 @@ class OrderCardWidget extends StatelessWidget {
           children: [
             OrderCardHeader(order: order),
             12.verticalSpace,
-            if (order.status == "O") OrderStepper(currentStep: 0),
-            12.verticalSpace,
+            // if (order.status == "O") OrderStepper(currentStep: 0),
+            // 12.verticalSpace,
             ProductListView(
                 productImages: order.products.map((p) => p.imageUrl).toList()),
             12.verticalSpace,

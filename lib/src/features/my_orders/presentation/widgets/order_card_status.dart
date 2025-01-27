@@ -7,7 +7,7 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 class OrderStatus extends StatelessWidget {
   final String orderStatus;
 
-  const OrderStatus({Key? key, required this.orderStatus}) : super(key: key);
+  const OrderStatus({super.key, required this.orderStatus});
 
   @override
   Widget build(BuildContext context) {

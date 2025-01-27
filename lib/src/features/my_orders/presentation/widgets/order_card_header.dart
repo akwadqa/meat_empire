@@ -9,7 +9,7 @@ import 'package:meat_empire/src/features/my_orders/domain/entities/orders_entity
 class OrderCardHeader extends StatelessWidget {
   final OrdersEntity order;
 
-  const OrderCardHeader({Key? key, required this.order}) : super(key: key);
+  const OrderCardHeader({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
