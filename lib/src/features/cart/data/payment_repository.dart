@@ -30,8 +30,8 @@ class PaymentRepository {
 
   Future<ConfirmPaymentResponse> confirmPayment(
       ConfirmPaymentBodyData body) async {
-    final response = await _networkService
-        .post(EndPoints.checkOutApi, body.toJson(), {"user_id": body.userId});
+    final response =
+        await _networkService.post(EndPoints.checkOutApi, body.toJson());
     ConfirmPaymentResponse paymentResponse =
         ConfirmPaymentResponse.fromJson(response.data);
     // if (paymentResponse.success!) {
