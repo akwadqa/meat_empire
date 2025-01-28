@@ -31,6 +31,7 @@ class PaymentController extends _$PaymentController {
         openWebView(paymentResponse.redirectUrl!, context);
       } else if (paymentResponse.success == true) {
         // Show a success message
+
         debugPrint('Payment successful!');
         Navigator.push(
           context,

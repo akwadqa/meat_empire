@@ -73,7 +73,7 @@ class AddressBookWidget extends ConsumerWidget {
                                 Text(context.tr("address_book"),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .labelSmall!
+                                        .displaySmall!
                                         .copyWith(
                                           color: AppColors.black900,
                                           fontSize: 16,

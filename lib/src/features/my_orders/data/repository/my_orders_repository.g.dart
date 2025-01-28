@@ -190,5 +190,136 @@ class _MyOrdersProviderElement
   @override
   int get page => (origin as MyOrdersProvider).page;
 }
+
+String _$orderDetailsHash() => r'7b870659077a1ee9a72c24c8237c807eb2cbdaba';
+
+/// See also [orderDetails].
+@ProviderFor(orderDetails)
+const orderDetailsProvider = OrderDetailsFamily();
+
+/// See also [orderDetails].
+class OrderDetailsFamily extends Family<AsyncValue<OrderDetails>> {
+  /// See also [orderDetails].
+  const OrderDetailsFamily();
+
+  /// See also [orderDetails].
+  OrderDetailsProvider call(
+    int orderId,
+  ) {
+    return OrderDetailsProvider(
+      orderId,
+    );
+  }
+
+  @override
+  OrderDetailsProvider getProviderOverride(
+    covariant OrderDetailsProvider provider,
+  ) {
+    return call(
+      provider.orderId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'orderDetailsProvider';
+}
+
+/// See also [orderDetails].
+class OrderDetailsProvider extends AutoDisposeFutureProvider<OrderDetails> {
+  /// See also [orderDetails].
+  OrderDetailsProvider(
+    int orderId,
+  ) : this._internal(
+          (ref) => orderDetails(
+            ref as OrderDetailsRef,
+            orderId,
+          ),
+          from: orderDetailsProvider,
+          name: r'orderDetailsProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$orderDetailsHash,
+          dependencies: OrderDetailsFamily._dependencies,
+          allTransitiveDependencies:
+              OrderDetailsFamily._allTransitiveDependencies,
+          orderId: orderId,
+        );
+
+  OrderDetailsProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.orderId,
+  }) : super.internal();
+
+  final int orderId;
+
+  @override
+  Override overrideWith(
+    FutureOr<OrderDetails> Function(OrderDetailsRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: OrderDetailsProvider._internal(
+        (ref) => create(ref as OrderDetailsRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        orderId: orderId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<OrderDetails> createElement() {
+    return _OrderDetailsProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is OrderDetailsProvider && other.orderId == orderId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, orderId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin OrderDetailsRef on AutoDisposeFutureProviderRef<OrderDetails> {
+  /// The parameter `orderId` of this provider.
+  int get orderId;
+}
+
+class _OrderDetailsProviderElement
+    extends AutoDisposeFutureProviderElement<OrderDetails>
+    with OrderDetailsRef {
+  _OrderDetailsProviderElement(super.provider);
+
+  @override
+  int get orderId => (origin as OrderDetailsProvider).orderId;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

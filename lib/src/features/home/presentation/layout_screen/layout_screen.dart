@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'package:meat_empire/src/features/home/domain/home/layout.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
@@ -35,8 +36,9 @@ class LayoutScreen extends ConsumerWidget {
   ) {
     return homeAsync.when(
       data: (data) => _buildLayoutList(data.layout),
-      loading: () =>
-          SliverToBoxAdapter(child: Center(child: const FadeCircleLoadingIndicator())),
+      loading: () => SliverToBoxAdapter(
+          child: Center(child: const FadeCircleLoadingIndicator())
+              .onlyPadding(top: MediaQuery.sizeOf(context).width / 1.2)),
       error: (_, __) =>
           SliverToBoxAdapter(child: Center(child: const AppErrorWidget())),
     );

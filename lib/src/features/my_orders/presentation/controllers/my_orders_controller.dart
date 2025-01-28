@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
+import 'package:meat_empire/src/features/my_orders/domain/entities/order_details.dart';
+import 'package:meat_empire/src/features/my_orders/domain/entities/orders_entity.dart';
 import 'package:meat_empire/src/features/my_orders/domain/entities/orders_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -19,22 +22,41 @@ class MyOrdersController extends _$MyOrdersController {
   //   state = await AsyncValue.guard(() => ordersRepository.getMyOrders(status));
   // }
 
-  /// Load more orders for pagination
   Future<bool> loadMore(String status, int page) async {
     final currentData = state.asData?.value;
 
-    if (currentData?.orders.length == 10) {
+    if (currentData != null && (currentData.orders.length < page * 10)) {
+      debugPrint("No Need to Get more data, already loaded all pages.");
       return false;
     }
 
-    final ordersRepository = ref.watch(myOrdersRepositoryProvider);
+    final ordersRepository = ref.read(myOrdersRepositoryProvider);
     final response = await ordersRepository.getMyOrders(status, page: page);
 
-    // Append new orders to the existing state
-    state = AsyncValue.data(response.copyWith(orders: [
-      ...currentData?.orders ?? [],
-      ...response.orders,
-    ]));
+    if (response.orders.isEmpty) {
+      debugPrint("No more orders to load.");
+      return false;
+    }
+
+    final allOrders =
+        {...currentData?.orders ?? [], ...response.orders}.toList();
+
+    state = AsyncValue.data(currentData != null
+        ? currentData.copyWith(orders: allOrders)
+        : response);
+
+    debugPrint(
+        "Loaded ${response.orders.length} new orders. Total: ${state.asData?.value.orders.length}");
     return true;
+  }
+
+// create function for get order details just for orders have status O
+  Future<OrderDetails?> getOrderDetails(int orderId) async {
+    // if (status == "O") {
+    // state = AsyncLoading();
+    final ordersRepository = ref.watch(myOrdersRepositoryProvider);
+    // state = await AsyncValue.guard(() => ordersRepository.getOrderDetails(orderId));
+    return await ordersRepository.getOrderDetails(orderId);
+    // }
   }
 }
