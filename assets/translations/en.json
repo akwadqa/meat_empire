@@ -109,6 +109,14 @@
     "order_summary": "Order summary",
     "shipping_date": "Shipping date",
     "shipping_time": "Shipping time",
+    "success_payment_msg": "The order sended successfuly",
+    "continue_shipping_msg": "Continue shipping",
 
+    "pickup": "Pickup",
+    "pickup_desc": "Your order has been sent",
+    "packed": "Packed",
+    "packed_desc": "Your order is being prepared",
+    "shipped": "Shipped",
+    "shipped_desc": "Your order is on the way",
     "cartUnAuthDesc": "Log in, discover our products and enjoy shopping."
 }

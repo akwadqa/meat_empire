@@ -17,7 +17,7 @@ class OrderStatus extends StatelessWidget {
     if (orderStatus == "C") {
       statusWidget = Icon(Icons.check_circle, color: AppColors.green, size: 16);
       statusText = "delivered";
-    } else if (orderStatus == "O") {
+    } else if (orderStatus == "O" || orderStatus == "A") {
       statusWidget = Lottie.asset(
         Assets.lottie.processing,
         height: 16,

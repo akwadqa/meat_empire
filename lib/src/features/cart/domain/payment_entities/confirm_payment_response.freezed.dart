@@ -22,14 +22,14 @@ ConfirmPaymentResponse _$ConfirmPaymentResponseFromJson(
 /// @nodoc
 mixin _$ConfirmPaymentResponse {
   int? get orderId => throw _privateConstructorUsedError;
-  dynamic? get childOrderIds => throw _privateConstructorUsedError;
+  dynamic get childOrderIds => throw _privateConstructorUsedError;
   List<dynamic>? get paymentParams => throw _privateConstructorUsedError;
   bool? get redirectPayment => throw _privateConstructorUsedError;
   String? get redirectUrl => throw _privateConstructorUsedError;
   String? get successUrl => throw _privateConstructorUsedError;
   String? get failUrl => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  String? get totalProducts => throw _privateConstructorUsedError;
+  dynamic get totalProducts => throw _privateConstructorUsedError;
   bool? get success => throw _privateConstructorUsedError;
   String? get action => throw _privateConstructorUsedError;
 
@@ -48,14 +48,14 @@ abstract class $ConfirmPaymentResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {int? orderId,
-      dynamic? childOrderIds,
+      dynamic childOrderIds,
       List<dynamic>? paymentParams,
       bool? redirectPayment,
       String? redirectUrl,
       String? successUrl,
       String? failUrl,
       String? message,
-      String? totalProducts,
+      dynamic totalProducts,
       bool? success,
       String? action});
 }
@@ -96,7 +96,7 @@ class _$ConfirmPaymentResponseCopyWithImpl<$Res,
       childOrderIds: freezed == childOrderIds
           ? _value.childOrderIds
           : childOrderIds // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       paymentParams: freezed == paymentParams
           ? _value.paymentParams
           : paymentParams // ignore: cast_nullable_to_non_nullable
@@ -124,7 +124,7 @@ class _$ConfirmPaymentResponseCopyWithImpl<$Res,
       totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -148,14 +148,14 @@ abstract class _$$ConfirmPaymentResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? orderId,
-      dynamic? childOrderIds,
+      dynamic childOrderIds,
       List<dynamic>? paymentParams,
       bool? redirectPayment,
       String? redirectUrl,
       String? successUrl,
       String? failUrl,
       String? message,
-      String? totalProducts,
+      dynamic totalProducts,
       bool? success,
       String? action});
 }
@@ -195,7 +195,7 @@ class __$$ConfirmPaymentResponseImplCopyWithImpl<$Res>
       childOrderIds: freezed == childOrderIds
           ? _value.childOrderIds
           : childOrderIds // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
       paymentParams: freezed == paymentParams
           ? _value._paymentParams
           : paymentParams // ignore: cast_nullable_to_non_nullable
@@ -223,7 +223,7 @@ class __$$ConfirmPaymentResponseImplCopyWithImpl<$Res>
       totalProducts: freezed == totalProducts
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -259,7 +259,7 @@ class _$ConfirmPaymentResponseImpl implements _ConfirmPaymentResponse {
   @override
   final int? orderId;
   @override
-  final dynamic? childOrderIds;
+  final dynamic childOrderIds;
   final List<dynamic>? _paymentParams;
   @override
   List<dynamic>? get paymentParams {
@@ -281,7 +281,7 @@ class _$ConfirmPaymentResponseImpl implements _ConfirmPaymentResponse {
   @override
   final String? message;
   @override
-  final String? totalProducts;
+  final dynamic totalProducts;
   @override
   final bool? success;
   @override
@@ -310,8 +310,8 @@ class _$ConfirmPaymentResponseImpl implements _ConfirmPaymentResponse {
                 other.successUrl == successUrl) &&
             (identical(other.failUrl, failUrl) || other.failUrl == failUrl) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.totalProducts, totalProducts) ||
-                other.totalProducts == totalProducts) &&
+            const DeepCollectionEquality()
+                .equals(other.totalProducts, totalProducts) &&
             (identical(other.success, success) || other.success == success) &&
             (identical(other.action, action) || other.action == action));
   }
@@ -328,7 +328,7 @@ class _$ConfirmPaymentResponseImpl implements _ConfirmPaymentResponse {
       successUrl,
       failUrl,
       message,
-      totalProducts,
+      const DeepCollectionEquality().hash(totalProducts),
       success,
       action);
 
@@ -345,14 +345,14 @@ class _$ConfirmPaymentResponseImpl implements _ConfirmPaymentResponse {
 abstract class _ConfirmPaymentResponse implements ConfirmPaymentResponse {
   const factory _ConfirmPaymentResponse(
       {final int? orderId,
-      final dynamic? childOrderIds,
+      final dynamic childOrderIds,
       final List<dynamic>? paymentParams,
       final bool? redirectPayment,
       final String? redirectUrl,
       final String? successUrl,
       final String? failUrl,
       final String? message,
-      final String? totalProducts,
+      final dynamic totalProducts,
       final bool? success,
       final String? action}) = _$ConfirmPaymentResponseImpl;
 
@@ -362,7 +362,7 @@ abstract class _ConfirmPaymentResponse implements ConfirmPaymentResponse {
   @override
   int? get orderId;
   @override
-  dynamic? get childOrderIds;
+  dynamic get childOrderIds;
   @override
   List<dynamic>? get paymentParams;
   @override
@@ -376,7 +376,7 @@ abstract class _ConfirmPaymentResponse implements ConfirmPaymentResponse {
   @override
   String? get message;
   @override
-  String? get totalProducts;
+  dynamic get totalProducts;
   @override
   bool? get success;
   @override

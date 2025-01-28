@@ -113,13 +113,6 @@ class CheckOutScreen extends ConsumerWidget {
                               title: "not_shipping_address_msg".tr(),
                               icon: Icon(Icons.warning,
                                   color: Colors.amber, size: 45));
-                        } else if (accountSyncData
-                            .value!.userProfile!.billingStrete!.isEmpty) {
-                          showCustomDialog(
-                              context: context,
-                              title: "add_billing_location".tr(),
-                              icon: Icon(Icons.warning,
-                                  color: Colors.amber, size: 45));
                         } else {
                           debugPrint("Form ${selectedSlot?.slot}");
 

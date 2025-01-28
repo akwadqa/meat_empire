@@ -18,7 +18,7 @@ class ConfirmPaymentResponse with _$ConfirmPaymentResponse {
     String? successUrl,
     String? failUrl,
     String? message,
-    String? totalProducts,
+    dynamic totalProducts,
     bool? success,
     String? action,
   }) = _ConfirmPaymentResponse;

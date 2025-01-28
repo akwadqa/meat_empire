@@ -7,6 +7,7 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:queen_validators/queen_validators.dart';
 
@@ -16,7 +17,7 @@ import 'same_shipping_address_radio_widget.dart';
 Future<void> showAddNewAddressBottomSheet({
   required BuildContext context,
   required UserProfile userProfile,
-  required bool billMode,
+  // required bool billMode,
   bool isEdit = false,
 }) {
   return showModalBottomSheet(
@@ -26,7 +27,7 @@ Future<void> showAddNewAddressBottomSheet({
       return AddNewAddressBookWidget(
         context: context,
         userProfile: userProfile,
-        billMode: billMode,
+        // billMode: billMode,
         isEdit: isEdit,
       );
     },
@@ -35,13 +36,13 @@ Future<void> showAddNewAddressBottomSheet({
 
 class AddNewAddressBookWidget extends ConsumerStatefulWidget {
   final BuildContext context;
-  final bool billMode;
+  // final bool billMode;
   bool isEdit;
   final UserProfile userProfile;
   AddNewAddressBookWidget(
       {super.key,
       required this.context,
-      required this.billMode,
+      // required this.billMode,
       this.isEdit = false,
       required this.userProfile});
 
@@ -78,35 +79,15 @@ class _AddNewAddressBookWidgetState
 
   @override
   void initState() {
-    selectedCityValue = widget.isEdit
-        ? widget.billMode
-            ? widget.userProfile.bllingCity
-            : widget.userProfile.shippingCity
-        : null;
+    selectedCityValue = widget.isEdit ? widget.userProfile.shippingCity : null;
     cityController = TextEditingController(
-        text: widget.isEdit
-            ? widget.billMode
-                ? widget.userProfile.bllingCity
-                : widget.userProfile.shippingCity
-            : "");
+        text: widget.isEdit ? widget.userProfile.shippingCity : "");
     countryController = TextEditingController(
-        text: widget.isEdit
-            ? widget.billMode
-                ? widget.userProfile.billingCountry
-                : widget.userProfile.shippingCountry
-            : "");
+        text: widget.isEdit ? widget.userProfile.shippingCountry : "");
     streetController = TextEditingController(
-        text: widget.isEdit
-            ? widget.billMode
-                ? widget.userProfile.billingStrete
-                : widget.userProfile.shippingStrete
-            : "");
+        text: widget.isEdit ? widget.userProfile.shippingStrete : "");
     buildNumberController = TextEditingController(
-        text: widget.isEdit
-            ? widget.billMode
-                ? widget.userProfile.billingBuildingNumber
-                : widget.userProfile.shippingBuildingNumber
-            : "");
+        text: widget.isEdit ? widget.userProfile.shippingBuildingNumber : "");
 
     super.initState();
   }
@@ -118,16 +99,8 @@ class _AddNewAddressBookWidgetState
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
       child: DraggableScrollableSheet(
-        initialChildSize: widget.billMode
-            ? billAddSameShippAdd
-                ? 0.2
-                : 0.44
-            : 0.53,
-        minChildSize: widget.billMode
-            ? billAddSameShippAdd
-                ? 0.2
-                : 0.44
-            : 0.53,
+        initialChildSize: 0.53,
+        minChildSize: 0.53,
         maxChildSize: 1.0,
         expand: false,
         builder: (context, scrollController) {
@@ -164,10 +137,7 @@ class _AddNewAddressBookWidgetState
                               children: [
                                 Row(
                                   children: [
-                                    Text(
-                                        context.tr(widget.billMode
-                                            ? "add_billing_location"
-                                            : "add_shipping_location"),
+                                    Text(context.tr("add_shipping_location"),
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelSmall!
@@ -176,20 +146,20 @@ class _AddNewAddressBookWidgetState
                                               fontSize: 16,
                                               fontWeight: FontWeight.w800,
                                             )),
-                                    Spacer(),
-                                    if (widget.billMode)
-                                      CustomRadioFormField(
-                                        initialValue: billAddSameShippAdd,
-                                        context: context,
-                                        possibleToAddSameShippingAddress: widget
-                                            .userProfile
-                                            .shippingStrete!
-                                            .isNotEmpty,
-                                        onSaved: (val) {
-                                          billAddSameShippAdd = val!;
-                                          setState(() {});
-                                        },
-                                      ),
+                                    // Spacer(),
+                                    // if (widget.billMode)
+                                    //   CustomRadioFormField(
+                                    //     initialValue: billAddSameShippAdd,
+                                    //     context: context,
+                                    //     possibleToAddSameShippingAddress: widget
+                                    //         .userProfile
+                                    //         .shippingStrete!
+                                    //         .isNotEmpty,
+                                    //     onSaved: (val) {
+                                    //       billAddSameShippAdd = val!;
+                                    //       setState(() {});
+                                    //     },
+                                    //   ),
                                   ],
                                 ),
                                 if (!billAddSameShippAdd) ...[
@@ -301,35 +271,37 @@ class _AddNewAddressBookWidgetState
                                   ),
                                 ],
                                 25.verticalSpace,
-                                if (!widget.billMode)
-                                  LocationFieldCheckboxWidget(
-                                    context: context,
-                                    labelText: 'building_type'.tr(),
-                                    locations: locations,
-                                    initialValue: widget.isEdit
-                                        ? locations.indexWhere((location) =>
-                                            location['name'] ==
-                                            widget.userProfile
-                                                .shippingBuildingType)
-                                        : 2,
-                                    onSaved: (value) {
-                                      debugPrint(
-                                          'Selected Location Index: $value');
-                                      selectedLocationValue =
-                                          locations[value!]['name'];
-                                    },
-                                    validator: (value) {
-                                      if (value == null || value == -1) {
-                                        return 'Please select a location';
-                                      }
-                                      return null;
-                                    },
-                                  ),
+                                LocationFieldCheckboxWidget(
+                                  context: context,
+                                  labelText: 'building_type'.tr(),
+                                  locations: locations,
+                                  initialValue: widget.isEdit
+                                      ? locations.indexWhere((location) =>
+                                          location['name'] ==
+                                          widget
+                                              .userProfile.shippingBuildingType)
+                                      : 2,
+                                  onSaved: (value) {
+                                    debugPrint(
+                                        'Selected Location Index: $value');
+                                    selectedLocationValue =
+                                        locations[value!]['name'];
+                                  },
+                                  validator: (value) {
+                                    if (value == null || value == -1) {
+                                      return 'Please select a location';
+                                    }
+                                    return null;
+                                  },
+                                ),
                                 Consumer(
                                   builder: (context, ref, child) {
                                     final data =
                                         ref.watch(accountControllerProvider);
-
+                                    if (data is AsyncLoading) {
+                                      return Center(
+                                          child: FadeCircleLoadingIndicator());
+                                    }
                                     return CustomButtonWidget(
                                       text: "save",
                                       backgroundColor: AppColors.primarySwatch,
@@ -341,43 +313,21 @@ class _AddNewAddressBookWidgetState
                                                   .notifier)
                                               .editAccountInformation(
                                                   context,
-                                                  (widget.billMode)
-                                                      ? (billAddSameShippAdd)
-                                                          ? data.value!.userProfile!.copyWith(
-                                                              bllingCity: widget
-                                                                  .userProfile
-                                                                  .shippingCity,
-                                                              billingCountry: widget
-                                                                  .userProfile
-                                                                  .shippingCountry,
-                                                              billingStrete: widget
-                                                                  .userProfile
-                                                                  .shippingStrete,
-                                                              billingBuildingNumber: widget
-                                                                  .userProfile
-                                                                  .shippingBuildingNumber,
-                                                              defaultBillingCountry:
-                                                                  "qa")
-                                                          : data.value!.userProfile!.copyWith(
-                                                              bllingCity:
-                                                                  selectedCityValue,
-                                                              billingCountry:
-                                                                  countryController
-                                                                      .text,
-                                                              billingStrete: streetController
-                                                                  .text,
-                                                              billingBuildingNumber:
-                                                                  buildNumberController
-                                                                      .text,
-                                                              defaultBillingCountry:
-                                                                  "qa")
-                                                      : data.value!.userProfile!.copyWith(
-                                                          shippingBuildingType: selectedLocationValue,
-                                                          shippingCity: selectedCityValue,
-                                                          shippingCountry: countryController.text,
-                                                          shippingStrete: streetController.text,
-                                                          shippingBuildingNumber: buildNumberController.text,
-                                                          defaultShippingCountry: "qa"));
+                                                  data.value!.userProfile!.copyWith(
+                                                      shippingBuildingType:
+                                                          selectedLocationValue,
+                                                      shippingCity:
+                                                          selectedCityValue,
+                                                      shippingCountry:
+                                                          countryController
+                                                              .text,
+                                                      shippingStrete:
+                                                          streetController.text,
+                                                      shippingBuildingNumber:
+                                                          buildNumberController
+                                                              .text,
+                                                      defaultShippingCountry:
+                                                          "qa"));
 
                                           SnackBar(
                                             content: Text(data.value!.message),

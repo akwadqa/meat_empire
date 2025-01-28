@@ -109,6 +109,13 @@
     "order_summary": "ملخص اللطب",
     "shipping_date": "تاريخ الشحن",
     "shipping_time": "وقت الشحن",
-
+    "success_payment_msg": "تم إرسال الطلب بنجاح",
+    "continue_shipping_msg": "متابعة التسوق",
+    "pickup": "استلام الطلب",
+    "pickup_desc": "تم إرسال طلبك",
+    "packed": "تجهيز الطلب",
+    "packed_desc": "يتم تجهيز طلبك",
+    "shipped": "تم الشحن",
+    "shipped_desc": "طلبك في الطريق",
     "cartUnAuthDesc": "قم بتسجيل الدخول واكتشف منتجاتنا وتمتع بالتسوّق"
 }

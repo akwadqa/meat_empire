@@ -93,29 +93,36 @@ class PaymentScreen extends ConsumerWidget {
   }
 
   Widget _buildSubmetButton(BuildContext context, WidgetRef ref, Cart cart) {
-    return CustomButtonWidget(
-      text: "confirm_order",
-      backgroundColor: AppColors.primary,
-      onTap: () {
-        if (_formKey.currentState!.validate()) {
-          _formKey.currentState?.save();
-          debugPrint("Tap ");
-          final controller = ref.read(paymentControllerProvider.notifier);
-          final bodyData = ConfirmPaymentBodyData(
-            userId: ref.watch(userDataProvider)!.$2,
-            selectedPaymentMethod: selectedPaumnetMethod,
-            ecTimeSlot: slot.slot!,
-            // Include additional required data
-          );
+    return Consumer(builder: (context, ref, child) {
+      final asyncData = ref.watch(paymentControllerProvider);
 
-          controller.confirmPayment(bodyData, context, cart);
-        }
-      },
-      isFiled: true,
-      height: 50,
-      width: 270,
-      radius: 50,
-    ).centered();
+      if (asyncData is AsyncLoading) {
+        return Center(child: FadeCircleLoadingIndicator());
+      }
+      return CustomButtonWidget(
+        text: "confirm_order",
+        backgroundColor: AppColors.primary,
+        onTap: () {
+          if (_formKey.currentState!.validate()) {
+            _formKey.currentState?.save();
+            debugPrint("Tap ");
+            final controller = ref.read(paymentControllerProvider.notifier);
+            final bodyData = ConfirmPaymentBodyData(
+              userId: ref.watch(userDataProvider)!.$2,
+              selectedPaymentMethod: selectedPaumnetMethod,
+              ecTimeSlot: slot.slot!,
+              // Include additional required data
+            );
+
+            controller.confirmPayment(bodyData, context, cart);
+          }
+        },
+        isFiled: true,
+        height: 50,
+        width: 270,
+        radius: 50,
+      ).centered();
+    });
   }
 
   Widget _buildTextRow(

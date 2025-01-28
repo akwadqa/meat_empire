@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/material.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
@@ -64,64 +64,67 @@ class _PaymentMethodField extends StatelessWidget {
                 state.save();
                 onChange?.call(payment);
               },
-              child: Stack(
-                children: [
-                  Container(
-                    child: Container(
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 12),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 4),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: isSelected
-                                ? AppColors.primary
-                                : AppColors.lightGray,
-                            width: 1,
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: Stack(
+                  children: [
+                    Container(
+                      child: Container(
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 6, horizontal: 12),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 4),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isSelected
+                                  ? AppColors.primary
+                                  : AppColors.lightGray,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                            // color:
+                            //     isSelected ? AppColors.primarySwatch[50] : Colors.white,
                           ),
-                          borderRadius: BorderRadius.circular(8),
-                          // color:
-                          //     isSelected ? AppColors.primarySwatch[50] : Colors.white,
-                        ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            payment.payment,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                  color: isSelected
-                                      ? AppColors.primary
-                                      : AppColors.black900,
-                                  fontSize: 14,
-                                ),
-                          ),
-                          leading: Image.network(
-                            payment.image!,
-                            height: 30,
-                            width: 30,
-                            errorBuilder: (ctx, oob, ko) {
-                              return Icon(
-                                Icons.credit_card,
-                                color: AppColors.grey600,
-                              );
-                            },
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                  ),
-                  if (isSelected)
-                    const PositionedDirectional(
-                      top: 0,
-                      start: 4,
-                      child: Icon(
-                        Icons.check_circle,
-                        color: AppColors.primary,
-                        size: 20,
-                      ),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text(
+                              payment.payment,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displaySmall!
+                                  .copyWith(
+                                    color: isSelected
+                                        ? AppColors.primary
+                                        : AppColors.black900,
+                                    fontSize: 14,
+                                  ),
+                            ),
+                            leading: Image.network(
+                              payment.image!,
+                              height: 30,
+                              width: 30,
+                              errorBuilder: (ctx, oob, ko) {
+                                return Icon(
+                                  Icons.credit_card,
+                                  color: AppColors.grey600,
+                                );
+                              },
+                              fit: BoxFit.cover,
+                            ),
+                          )),
                     ),
-                ],
+                    if (isSelected)
+                      const PositionedDirectional(
+                        top: 0,
+                        end: 4,
+                        child: Icon(
+                          Icons.check_circle,
+                          color: AppColors.primary,
+                          size: 20,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             );
           }).toList(),

@@ -105,38 +105,58 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
         body: TabBarView(
           controller: _tabController,
           children: [
-            _buildCanceledOrdersView(context, asyncData),
-            _buildCompletedOrdersView(context, asyncData),
             _buildProcessingOrdersView(context, asyncData),
+            _buildCompletedOrdersView(context, asyncData),
+            _buildCanceledOrdersView(context, asyncData),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildCanceledOrdersView(BuildContext context,
+  Widget _buildProcessingOrdersView(BuildContext context,
       AsyncValue<OrdersResponse> Function(String? status) asyncData) {
-    return asyncData("O").when(
-      data: (data) {
-        return AppPaginationWidget(
-            onLoading: (page) => ref
-                .read(myOrdersControllerProvider("O").notifier)
-                .loadMore("O", page),
-            child: data.orders.isEmpty
-                ? AppEmptyDataWidget(text: "no_orders_message")
-                : ListView.builder(
-                    itemCount: data.orders.length,
-                    itemBuilder: (context, index) {
-                      final order = data.orders[index];
-                      return OrderCardWidget(
-                        order: order,
-                      );
-                    },
-                  ));
-      },
-      loading: () => Center(child: FadeCircleLoadingIndicator()),
-      error: (error, stackTrace) => AppErrorWidget(),
-    );
+    return Consumer(builder: (context, ref, child) {
+      final asyncOrdersO = ref.watch(myOrdersControllerProvider("O"));
+      final asyncOrdersA = ref.watch(myOrdersControllerProvider("A"));
+
+      return asyncOrdersO.when(
+        data: (ordersO) {
+          return asyncOrdersA.when(
+            data: (ordersA) {
+              // Combine and sort orders by orderId (biggest first)
+              final allOrders = [...ordersO.orders, ...ordersA.orders]..sort(
+                  (a, b) => int.parse(b.orderId)
+                      .compareTo(int.parse(a.orderId))); // Sort descending
+
+              return AppPaginationWidget(
+                onLoading: (page) async {
+                  await ref
+                      .read(myOrdersControllerProvider("A").notifier)
+                      .loadMore("A", page);
+                  return await ref
+                      .read(myOrdersControllerProvider("O").notifier)
+                      .loadMore("O", page);
+                },
+                child: allOrders.isEmpty
+                    ? AppEmptyDataWidget(text: "no_orders_message")
+                    : ListView.builder(
+                        itemCount: allOrders.length,
+                        itemBuilder: (context, index) {
+                          final order = allOrders[index];
+                          return OrderCardWidget(order: order);
+                        },
+                      ),
+              );
+            },
+            loading: () => FadeCircleLoadingIndicator(),
+            error: (error, stackTrace) => AppErrorWidget(),
+          );
+        },
+        loading: () => FadeCircleLoadingIndicator(),
+        error: (error, stackTrace) => AppErrorWidget(),
+      );
+    });
   }
 
   Widget _buildCompletedOrdersView(BuildContext context,
@@ -160,12 +180,12 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 ),
         );
       },
-      loading: () => Center(child: FadeCircleLoadingIndicator()),
+      loading: () => FadeCircleLoadingIndicator(),
       error: (error, stackTrace) => AppErrorWidget(),
     );
   }
 
-  Widget _buildProcessingOrdersView(BuildContext context,
+  Widget _buildCanceledOrdersView(BuildContext context,
       AsyncValue<OrdersResponse> Function(String? status) asyncData) {
     return asyncData("I").when(
       data: (data) {
@@ -186,7 +206,7 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
                 ),
         );
       },
-      loading: () => Center(child: FadeCircleLoadingIndicator()),
+      loading: () => FadeCircleLoadingIndicator(),
       error: (error, stackTrace) => AppErrorWidget(),
     );
   }
