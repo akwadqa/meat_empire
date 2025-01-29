@@ -27,8 +27,7 @@ class AccountScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLanguage = ref.watch(currentLanguageProvider);
 
-    final currentLanguageNotifier =
-        ref.read(currentLanguageProvider.notifier);
+    final currentLanguageNotifier = ref.read(currentLanguageProvider.notifier);
 
     return SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
@@ -86,13 +85,13 @@ class AccountScreen extends ConsumerWidget {
               title: "address_book",
               icon: Assets.icons.orderIcon.svg(),
             ),
-            AccountCardsWidget(
-              onTap: () {
-                showPaymentInformationDialog(context: context);
-              },
-              title: "payment_information",
-              icon: Assets.icons.cashStackIcon.svg(),
-            ),
+            // AccountCardsWidget(
+            //   onTap: () {
+            //     showPaymentInformationDialog(context: context);
+            //   },
+            //   title: "payment_information",
+            //   icon: Assets.icons.cashStackIcon.svg(),
+            // ),
             AccountCardsWidget(
               title: "my_orders",
               icon: Assets.icons.cardChecklistIcon.svg(),
