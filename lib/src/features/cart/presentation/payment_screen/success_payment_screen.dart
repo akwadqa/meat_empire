@@ -6,7 +6,6 @@ import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
-import 'package:meat_empire/src/features/cart/data/cart_repository.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';

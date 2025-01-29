@@ -8,7 +8,7 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 class OrderStepper extends StatelessWidget {
   final OrderDetails orderDetails;
 
-  const OrderStepper({Key? key, required this.orderDetails}) : super(key: key);
+  const OrderStepper({super.key, required this.orderDetails});
 
   @override
   Widget build(BuildContext context) {

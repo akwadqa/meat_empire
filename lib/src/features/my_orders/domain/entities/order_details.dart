@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 import 'package:meat_empire/src/features/my_orders/domain/entities/order_details_shipment.dart';
 

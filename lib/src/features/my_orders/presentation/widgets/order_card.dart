@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
-import 'package:meat_empire/src/features/my_orders/domain/entities/order_details.dart';
 import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_card_header.dart';
 
 import 'order_card_stepper.dart';

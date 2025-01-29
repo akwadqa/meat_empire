@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/my_orders/data/repository/my_orders_repository.dart';
 import 'package:meat_empire/src/features/my_orders/domain/entities/order_details.dart';
-import 'package:meat_empire/src/features/my_orders/domain/entities/orders_entity.dart';
 import 'package:meat_empire/src/features/my_orders/domain/entities/orders_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
