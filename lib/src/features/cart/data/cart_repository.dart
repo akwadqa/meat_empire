@@ -34,7 +34,7 @@ class CartRepository {
               'amount': amount,
               'product_id': productId,
               if (selectedOprions != null && selectedOprions.isNotEmpty)
-                'product_options': selectedOprions.map((e) => e.toJson())
+                'product_options': selectedOprions.map((e) => e.toJson()).toList()
             }
           ]
         }),
