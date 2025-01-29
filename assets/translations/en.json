@@ -115,11 +115,11 @@
     "notes_msg": "Write yout notes...",
     "notes": "Notes",
 
-    "pickup": "Pickup",
+    "pickup": "Submited",
     "pickup_desc": "Your order has been sent",
-    "packed": "Packed",
-    "packed_desc": "Your order is being prepared",
-    "shipped": "Shipped",
-    "shipped_desc": "Your order is on the way",
+    "packed": "On the way",
+    "packed_desc": "Your order is on the way",
+    "shipped": "Delivered",
+    "shipped_desc": "Your order was delivered successfuly",
     "cartUnAuthDesc": "Log in, discover our products and enjoy shopping."
 }
