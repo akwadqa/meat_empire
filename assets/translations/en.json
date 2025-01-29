@@ -111,6 +111,9 @@
     "shipping_time": "Shipping time",
     "success_payment_msg": "The order sended successfuly",
     "continue_shipping_msg": "Continue shipping",
+    "cart_added_msg": "This item Added successfuly to cart",
+    "notes_msg": "Write yout notes...",
+    "notes": "Notes",
 
     "pickup": "Pickup",
     "pickup_desc": "Your order has been sent",

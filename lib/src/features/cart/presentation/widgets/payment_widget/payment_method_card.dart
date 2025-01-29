@@ -50,7 +50,7 @@ class _PaymentMethodField extends StatelessWidget {
           style:
               Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 16),
         ).onlyPadding(start: 12),
-        12.verticalSpace,
+        2.verticalSpace,
 
         Column(
           children: payments.asMap().entries.map((entry) {
@@ -64,67 +64,64 @@ class _PaymentMethodField extends StatelessWidget {
                 state.save();
                 onChange?.call(payment);
               },
-              child: Directionality(
-                textDirection: TextDirection.ltr,
-                child: Stack(
-                  children: [
-                    Container(
-                      child: Container(
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 6, horizontal: 12),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 4),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: isSelected
-                                  ? AppColors.primary
-                                  : AppColors.lightGray,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                            // color:
-                            //     isSelected ? AppColors.primarySwatch[50] : Colors.white,
+              child: Stack(
+                children: [
+                  Container(
+                    child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 6, horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 4),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: isSelected
+                                ? AppColors.primary
+                                : AppColors.lightGray,
+                            width: 1,
                           ),
-                          child: ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            title: Text(
-                              payment.payment,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall!
-                                  .copyWith(
-                                    color: isSelected
-                                        ? AppColors.primary
-                                        : AppColors.black900,
-                                    fontSize: 14,
-                                  ),
-                            ),
-                            leading: Image.network(
-                              payment.image!,
-                              height: 30,
-                              width: 30,
-                              errorBuilder: (ctx, oob, ko) {
-                                return Icon(
-                                  Icons.credit_card,
-                                  color: AppColors.grey600,
-                                );
-                              },
-                              fit: BoxFit.cover,
-                            ),
-                          )),
-                    ),
-                    if (isSelected)
-                      const PositionedDirectional(
-                        top: 0,
-                        end: 4,
-                        child: Icon(
-                          Icons.check_circle,
-                          color: AppColors.primary,
-                          size: 20,
+                          borderRadius: BorderRadius.circular(8),
+                          // color:
+                          //     isSelected ? AppColors.primarySwatch[50] : Colors.white,
                         ),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            payment.payment,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall!
+                                .copyWith(
+                                  color: isSelected
+                                      ? AppColors.primary
+                                      : AppColors.black900,
+                                  fontSize: 14,
+                                ),
+                          ),
+                          leading: Image.network(
+                            payment.image!,
+                            height: 30,
+                            width: 30,
+                            errorBuilder: (ctx, oob, ko) {
+                              return Icon(
+                                Icons.credit_card,
+                                color: AppColors.grey600,
+                              );
+                            },
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                  ),
+                  if (isSelected)
+                    const PositionedDirectional(
+                      top: 0,
+                      end: 4,
+                      child: Icon(
+                        Icons.check_circle,
+                        color: AppColors.primary,
+                        size: 20,
                       ),
-                  ],
-                ),
+                    ),
+                ],
               ),
             );
           }).toList(),

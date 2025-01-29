@@ -20,17 +20,12 @@ class PaymentController extends _$PaymentController {
       ConfirmPaymentBodyData bodyData, BuildContext context, Cart cart) async {
     state = AsyncLoading();
     state = await AsyncValue.guard(() async {
-      // Fetch the payment response
       final paymentResponse =
           await ref.watch(paymentRepositoryProvider).confirmPayment(bodyData);
 
-      // Process the response based on the conditions
       if (paymentResponse.redirectUrl != null) {
-        // Open a web view with the redirect URL
         openWebView(paymentResponse.redirectUrl!, context);
       } else if (paymentResponse.success == true) {
-        // Show a success message
-
         debugPrint('Payment successful!');
         Navigator.push(
           context,
