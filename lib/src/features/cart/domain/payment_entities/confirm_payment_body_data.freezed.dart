@@ -24,6 +24,7 @@ mixin _$ConfirmPaymentBodyData {
   int get userId => throw _privateConstructorUsedError;
   int get selectedPaymentMethod => throw _privateConstructorUsedError;
   String get ecTimeSlot => throw _privateConstructorUsedError;
+  String? get notes => throw _privateConstructorUsedError;
 
   /// Serializes this ConfirmPaymentBodyData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +42,11 @@ abstract class $ConfirmPaymentBodyDataCopyWith<$Res> {
           $Res Function(ConfirmPaymentBodyData) then) =
       _$ConfirmPaymentBodyDataCopyWithImpl<$Res, ConfirmPaymentBodyData>;
   @useResult
-  $Res call({int userId, int selectedPaymentMethod, String ecTimeSlot});
+  $Res call(
+      {int userId,
+      int selectedPaymentMethod,
+      String ecTimeSlot,
+      String? notes});
 }
 
 /// @nodoc
@@ -63,6 +68,7 @@ class _$ConfirmPaymentBodyDataCopyWithImpl<$Res,
     Object? userId = null,
     Object? selectedPaymentMethod = null,
     Object? ecTimeSlot = null,
+    Object? notes = freezed,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -77,6 +83,10 @@ class _$ConfirmPaymentBodyDataCopyWithImpl<$Res,
           ? _value.ecTimeSlot
           : ecTimeSlot // ignore: cast_nullable_to_non_nullable
               as String,
+      notes: freezed == notes
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -90,7 +100,11 @@ abstract class _$$ConfirmPaymentBodyDataImplCopyWith<$Res>
       __$$ConfirmPaymentBodyDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int userId, int selectedPaymentMethod, String ecTimeSlot});
+  $Res call(
+      {int userId,
+      int selectedPaymentMethod,
+      String ecTimeSlot,
+      String? notes});
 }
 
 /// @nodoc
@@ -111,6 +125,7 @@ class __$$ConfirmPaymentBodyDataImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? selectedPaymentMethod = null,
     Object? ecTimeSlot = null,
+    Object? notes = freezed,
   }) {
     return _then(_$ConfirmPaymentBodyDataImpl(
       userId: null == userId
@@ -125,6 +140,10 @@ class __$$ConfirmPaymentBodyDataImplCopyWithImpl<$Res>
           ? _value.ecTimeSlot
           : ecTimeSlot // ignore: cast_nullable_to_non_nullable
               as String,
+      notes: freezed == notes
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -136,7 +155,8 @@ class _$ConfirmPaymentBodyDataImpl implements _ConfirmPaymentBodyData {
   const _$ConfirmPaymentBodyDataImpl(
       {required this.userId,
       required this.selectedPaymentMethod,
-      required this.ecTimeSlot});
+      required this.ecTimeSlot,
+      this.notes});
 
   factory _$ConfirmPaymentBodyDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConfirmPaymentBodyDataImplFromJson(json);
@@ -147,10 +167,12 @@ class _$ConfirmPaymentBodyDataImpl implements _ConfirmPaymentBodyData {
   final int selectedPaymentMethod;
   @override
   final String ecTimeSlot;
+  @override
+  final String? notes;
 
   @override
   String toString() {
-    return 'ConfirmPaymentBodyData(userId: $userId, selectedPaymentMethod: $selectedPaymentMethod, ecTimeSlot: $ecTimeSlot)';
+    return 'ConfirmPaymentBodyData(userId: $userId, selectedPaymentMethod: $selectedPaymentMethod, ecTimeSlot: $ecTimeSlot, notes: $notes)';
   }
 
   @override
@@ -162,13 +184,14 @@ class _$ConfirmPaymentBodyDataImpl implements _ConfirmPaymentBodyData {
             (identical(other.selectedPaymentMethod, selectedPaymentMethod) ||
                 other.selectedPaymentMethod == selectedPaymentMethod) &&
             (identical(other.ecTimeSlot, ecTimeSlot) ||
-                other.ecTimeSlot == ecTimeSlot));
+                other.ecTimeSlot == ecTimeSlot) &&
+            (identical(other.notes, notes) || other.notes == notes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, selectedPaymentMethod, ecTimeSlot);
+  int get hashCode => Object.hash(
+      runtimeType, userId, selectedPaymentMethod, ecTimeSlot, notes);
 
   /// Create a copy of ConfirmPaymentBodyData
   /// with the given fields replaced by the non-null parameter values.
@@ -191,7 +214,8 @@ abstract class _ConfirmPaymentBodyData implements ConfirmPaymentBodyData {
   const factory _ConfirmPaymentBodyData(
       {required final int userId,
       required final int selectedPaymentMethod,
-      required final String ecTimeSlot}) = _$ConfirmPaymentBodyDataImpl;
+      required final String ecTimeSlot,
+      final String? notes}) = _$ConfirmPaymentBodyDataImpl;
 
   factory _ConfirmPaymentBodyData.fromJson(Map<String, dynamic> json) =
       _$ConfirmPaymentBodyDataImpl.fromJson;
@@ -202,6 +226,8 @@ abstract class _ConfirmPaymentBodyData implements ConfirmPaymentBodyData {
   int get selectedPaymentMethod;
   @override
   String get ecTimeSlot;
+  @override
+  String? get notes;
 
   /// Create a copy of ConfirmPaymentBodyData
   /// with the given fields replaced by the non-null parameter values.

@@ -11,6 +11,7 @@ import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_pa
 import 'package:meat_empire/src/features/cart/domain/slot.dart';
 import 'package:meat_empire/src/features/cart/presentation/payment_controller/payment_controller.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
+import 'package:meat_empire/src/features/cart/presentation/widgets/payment_widget/notes_filed_widget.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/payment_widget/payment_method_card.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
@@ -28,7 +29,7 @@ class PaymentScreen extends ConsumerWidget {
   final Slot slot;
   int selectedPaumnetMethod = -1;
   final _formKey = GlobalKey<FormState>();
-
+  String notes = '';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userId = ref.watch(userDataProvider)!.$2;
@@ -54,36 +55,47 @@ class PaymentScreen extends ConsumerWidget {
         ),
         body: asyncPayment.when(
           data: (data) {
-            return SingleChildScrollView(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    30.verticalSpace,
-                    CheckoutCartOrderSummary(cart: data.cart!),
-                    20.verticalSpace,
-                    PaymentMethodFormField(
-                      // context: context,
-                      payments: data.paymentMethods,
-                      onchange: (newValue) {
-                        debugPrint("Selected Payment : $newValue");
-                        selectedPaumnetMethod = int.parse(newValue!.paymentId);
-                      },
-                      onSaved: (value) {
-                        debugPrint("Selected Payment Index: $value");
-                      },
-                      validator: (value) {
-                        if (value == null || value == -1) {
-                          return "payment_msg".tr();
-                        }
-                        return null;
-                      },
-                    ),
-                    30.verticalSpace,
-                    _buildSubmetButton(context, ref, data.cart!),
-                    20.verticalSpace,
-                  ],
+            return GestureDetector(
+              onTap: () {
+                // Dismiss keyboard when tapping outside
+                FocusScope.of(context).unfocus();
+              },
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      25.verticalSpace,
+                      CheckoutCartOrderSummary(cart: data.cart!),
+                      20.verticalSpace,
+                      PaymentMethodFormField(
+                        // context: context,
+                        payments: data.paymentMethods,
+                        onchange: (newValue) {
+                          debugPrint("Selected Payment : $newValue");
+                          selectedPaumnetMethod =
+                              int.parse(newValue!.paymentId);
+                        },
+                        onSaved: (value) {
+                          debugPrint("Selected Payment Index: $value");
+                        },
+                        validator: (value) {
+                          if (value == null || value == -1) {
+                            return "payment_msg".tr();
+                          }
+                          return null;
+                        },
+                      ),
+                      15.verticalSpace,
+                      NotesFieldWidget(onChange: (value) {
+                        notes = value;
+                      }),
+                      25.verticalSpace,
+                      _buildSubmetButton(context, ref, data.cart!),
+                      20.verticalSpace,
+                    ],
+                  ),
                 ),
               ),
             );
@@ -107,11 +119,15 @@ class PaymentScreen extends ConsumerWidget {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState?.save();
             debugPrint("Tap ");
+            debugPrint("Your Notes is: $notes");
             final controller = ref.read(paymentControllerProvider.notifier);
             final bodyData = ConfirmPaymentBodyData(
               userId: ref.watch(userDataProvider)!.$2,
               selectedPaymentMethod: selectedPaumnetMethod,
               ecTimeSlot: slot.slot!,
+
+              notes: notes,
+              // Add other required data
               // Include additional required data
             );
 
@@ -124,36 +140,5 @@ class PaymentScreen extends ConsumerWidget {
         radius: 50,
       ).centered();
     });
-  }
-
-  Widget _buildTextRow(
-    String title,
-    String value,
-    BuildContext context, {
-    Color fontColor = AppColors.dimGray,
-    double? fontSize,
-    FontWeight? fontWeight,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                fontWeight: fontWeight ?? FontWeight.w400,
-                color: fontColor,
-                fontSize: fontSize,
-              ),
-        ),
-        Text(
-          value,
-          style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                color: fontColor,
-                fontSize: fontSize,
-                fontWeight: fontWeight,
-              ),
-        ),
-      ],
-    );
   }
 }

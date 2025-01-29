@@ -15,6 +15,7 @@ class ConfirmPaymentBodyData with _$ConfirmPaymentBodyData {
     required int userId,
     required int selectedPaymentMethod,
     required String ecTimeSlot,
+    String? notes,
   }) = _ConfirmPaymentBodyData;
 
   factory ConfirmPaymentBodyData.fromJson(Map<String, dynamic> json) =>

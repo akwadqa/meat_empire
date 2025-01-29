@@ -8,6 +8,7 @@ import 'package:meat_empire/src/features/products/domain/product_details_respons
 import 'package:meat_empire/src/features/products/domain/product_details_response/products_block.dart';
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_scroller_view.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/app_close_button.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
@@ -376,10 +377,29 @@ class _AddToCartButton extends StatelessWidget {
           ],
         ),
         child: Consumer(builder: (context, ref, child) {
+          ref.listen(updateCartControllerProvider, (prev, next) {
+            if (next is AsyncData) {
+              context.maybePop().then((_) {
+                showCustomDialog(
+                    context: context,
+                    title: context.tr("cart_added_msg"),
+                    icon: Icon(
+                      Icons.check_circle,
+                      color: AppColors.green,
+                      size: 45,
+                    ));
+              });
+            } else if (next is AsyncError) {
+              showErrorDialog(context, next.error.toString());
+            }
+          });
+
           final asyncAddToCart = ref.watch(updateCartControllerProvider);
+
           if (asyncAddToCart is AsyncLoading) {
             return FadeCircleLoadingIndicator();
           }
+
           return ElevatedButton.icon(
             onPressed: () => ref
                 .read(updateCartControllerProvider.notifier)

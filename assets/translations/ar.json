@@ -111,6 +111,10 @@
     "shipping_time": "وقت الشحن",
     "success_payment_msg": "تم إرسال الطلب بنجاح",
     "continue_shipping_msg": "متابعة التسوق",
+    "cart_added_msg": "تم إضافة هذا العنصر إلى السللة بنجاح",
+    "notes_msg": "اكتب ملاحظاتك هنا...",
+    "notes": "الملاحظات",
+
     "pickup": "استلام الطلب",
     "pickup_desc": "تم إرسال طلبك",
     "packed": "تجهيز الطلب",

@@ -12,6 +12,7 @@ _$ConfirmPaymentBodyDataImpl _$$ConfirmPaymentBodyDataImplFromJson(
       userId: (json['user_id'] as num).toInt(),
       selectedPaymentMethod: (json['selected_payment_method'] as num).toInt(),
       ecTimeSlot: json['ec_time_slot'] as String,
+      notes: json['notes'] as String?,
     );
 
 Map<String, dynamic> _$$ConfirmPaymentBodyDataImplToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$ConfirmPaymentBodyDataImplToJson(
       'user_id': instance.userId,
       'selected_payment_method': instance.selectedPaymentMethod,
       'ec_time_slot': instance.ecTimeSlot,
+      'notes': instance.notes,
     };

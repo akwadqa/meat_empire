@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 
 import '../../../../routing/app_router.gr.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
@@ -208,30 +209,48 @@ class _AddToCartButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncAddToCart = ref.watch(updateCartControllerProvider);
-    final isInCart = ref.watch(isInCartProvider(productId.toString()));
-    if (asyncAddToCart is AsyncLoading) {
-      return FadeCircleLoadingIndicator();
-    }
-    return ElevatedButton.icon(
-      onPressed: isInCart
-          ? () => ref
-              .read(updateCartControllerProvider.notifier)
-              .updateCart(amount: 0, productId: productId)
-          : () => ref.read(updateCartControllerProvider.notifier).addToCart(
-              context: context, amount: amount, productId: productId),
-      style: ElevatedButton.styleFrom(
-        textStyle: const TextStyle(
-            fontSize: 12,
-            fontFamily: FontFamily.tajawal,
-            fontWeight: FontWeight.w700),
-        backgroundColor: isInCart ? AppColors.newRed : AppColors.green,
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-      ),
-      label: Text(context.tr(isInCart ? 'addedToCart' : 'addToCart')),
-      icon: isInCart
-          ? Assets.icons.addedToCartIcon.svg()
-          : const Icon(Icons.add_shopping_cart_rounded, color: Colors.white),
-    );
+    return Consumer(builder: (context, ref, child) {
+      ref.listen(updateCartControllerProvider, (prev, next) {
+        if (next is AsyncData) {
+          context.maybePop().then((_) {
+            showCustomDialog(
+                context: context,
+                title: "cart_added_msg".tr(),
+                icon: Icon(
+                  Icons.check_circle,
+                  color: AppColors.green,
+                  size: 45,
+                ));
+          });
+        } else if (next is AsyncError) {
+          showErrorDialog(context, next.error.toString());
+        }
+      });
+      final asyncAddToCart = ref.watch(updateCartControllerProvider);
+      final isInCart = ref.watch(isInCartProvider(productId.toString()));
+      if (asyncAddToCart is AsyncLoading) {
+        return FadeCircleLoadingIndicator();
+      }
+      return ElevatedButton.icon(
+        onPressed: isInCart
+            ? () => ref
+                .read(updateCartControllerProvider.notifier)
+                .updateCart(amount: 0, productId: productId)
+            : () => ref.read(updateCartControllerProvider.notifier).addToCart(
+                context: context, amount: amount, productId: productId),
+        style: ElevatedButton.styleFrom(
+          textStyle: const TextStyle(
+              fontSize: 12,
+              fontFamily: FontFamily.tajawal,
+              fontWeight: FontWeight.w700),
+          backgroundColor: isInCart ? AppColors.newRed : AppColors.green,
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        ),
+        label: Text(context.tr(isInCart ? 'addedToCart' : 'addToCart')),
+        icon: isInCart
+            ? Assets.icons.addedToCartIcon.svg()
+            : const Icon(Icons.add_shopping_cart_rounded, color: Colors.white),
+      );
+    });
   }
 }
