@@ -10,7 +10,6 @@ import 'package:meat_empire/src/features/account/presentation/widgets/address_bo
 import 'package:meat_empire/src/features/account/presentation/widgets/change_password_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/edit_account_information_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/payment_information/payment_information_widget.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/shared_functions.dart';
