@@ -2,14 +2,21 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/cart/domain/cart.dart';
+import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart';
+import 'package:meat_empire/src/features/cart/presentation/payment_screen/success_payment_screen.dart';
+import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
+import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 @RoutePage()
 class WebViewScreen extends StatefulWidget {
-  final String url;
+  final ConfirmPaymentResponse paymentResponse;
+  final Cart cart;
 
-  const WebViewScreen({Key? key, required this.url}) : super(key: key);
+  const WebViewScreen({Key? key, required this.paymentResponse, required this.cart})
+      : super(key: key);
 
   @override
   State<WebViewScreen> createState() => _WebViewScreenState();
@@ -35,6 +42,26 @@ class _WebViewScreenState extends State<WebViewScreen> {
           },
           onPageFinished: (String url) {
             debugPrint("Page finished loading: $url");
+            if (url == widget.paymentResponse.failUrl) {
+              Navigator.pop(context); // Exit the WebView screen
+              showCustomDialog(
+                  context: context,
+                  title: widget.paymentResponse.message!,
+                  icon: Icon(
+                    Icons.error,
+                    color: AppColors.darkRed,
+                    size: 45,
+                  ));
+            }
+            if (url == widget.paymentResponse.successUrl) {
+              Navigator.pop(context); // Exit the WebView screen
+Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SuccessPaymentScreen(cart: widget.cart),
+          ),
+        );
+            }
           },
           onHttpError: (HttpResponseError error) {
             debugPrint("HTTP error: ${error.response}");
@@ -48,7 +75,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
         ),
       );
 
-    _loadingFuture = _controller.loadRequest(Uri.parse(widget.url));
+    _loadingFuture =
+        _controller.loadRequest(Uri.parse(widget.paymentResponse.redirectUrl!));
   }
 
   NavigationDecision handleNavigationRequest(NavigationRequest request) {

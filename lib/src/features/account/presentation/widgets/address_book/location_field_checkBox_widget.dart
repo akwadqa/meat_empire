@@ -34,7 +34,7 @@ class LocationFieldCheckboxWidget extends FormField<int> {
                   4.verticalSpace,
                 ],
                 Wrap(
-                  spacing: 15, // Space between chips
+                  spacing: 12, // Space between chips
                   runSpacing: 10,
                   // Space between rows
                   children: List.generate(locations.length, (index) {
@@ -49,7 +49,7 @@ class LocationFieldCheckboxWidget extends FormField<int> {
                       },
                       child: Chip(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4),
                             side: BorderSide(

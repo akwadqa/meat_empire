@@ -101,6 +101,8 @@
     "building_type": "نوع البناء",
     "order_date": "تاريخ الطلب: {}",
     "order_number": "رقم الطلب: {}",
+    "cart_order_number": "رقم الطلب",
+
     "order_cost": "تكلفة الطلب: {} ر.ق",
     "yourCartIsEmpty": "سلتك فارغة!",
     "cartEmptyDesc": "تسوّق وأضف منتجاتك المفضلة إلى سلتك",
@@ -116,7 +118,9 @@
     "notes": "الملاحظات",
 
     "pickup": "استلام الطلب",
-    "pickup_desc": "تم إرسال طلبك",
+    "pickup_desc": "تم إستلام طلبك",
+    "preparing": "التحضير",
+    "preparing_desc": "يتم تجهيز الطلب",
     "packed": "في الطريق",
     "packed_desc": "طلبك في الطريق",
     "shipped": "تم الشحن",

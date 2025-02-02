@@ -8,11 +8,13 @@ import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import '../../../../shared_widgets/app_logo.dart';
 import '../../../cart/application/cart_service.dart';
+import '../../../categories/presentation/categories_screen/categories_screen.dart';
 
-enum DrawerItems { home, myAccount, categories, logout }
+enum DrawerItems { home, myAccount, categories, categoryItem, logout }
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -75,28 +77,31 @@ class HomeScreen extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child) {
         final isAuthenticated = ref.watch(isAuthinticatedProvider);
-        final menueData = ref.watch(homeProvider).asData;
+        // final menueData = ref.watch(homeProvider).asData;
 
-        List<Category> categories = (menueData!.value.layout
+        List<Category>? categories = (ref
+                .watch(homeProvider)
+                .asData
+                ?.value
+                .layout
                 .where((d) => d.type == "categories")
                 .first
-                .data as List<Object>)
-            .whereType<Category>()
+                .data)
+            ?.whereType<Category>()
             .toList();
-        debugPrint(categories.first.category);
-        debugPrint("////////////////////////////////");
         return PopupMenuButton<DrawerItems>(
-          onSelected: (value) => _handleMenuSelection(context, ref, value),
+          onSelected: (value) =>
+              _handleMenuSelection(context, ref, value, categories),
           itemBuilder: (context) =>
-              _buildMenuItems(context, isAuthenticated, categories),
+              _buildMenuItems(context, isAuthenticated, categories, ref),
           icon: Assets.icons.menuIcon.svg(),
         );
       },
     );
   }
 
-  List<PopupMenuEntry<DrawerItems>> _buildMenuItems(
-      BuildContext context, bool isAuthenticated, List<Category> categories) {
+  List<PopupMenuEntry<DrawerItems>> _buildMenuItems(BuildContext context,
+      bool isAuthenticated, List<Category>? categories, WidgetRef ref) {
     return [
       _popupMenuItem(
         value: DrawerItems.home,
@@ -109,19 +114,21 @@ class HomeScreen extends StatelessWidget {
         icon: Assets.icons.categoriesSearchIcon.svg(),
         text: context.tr('categories'),
       ),
-      for (int i = 0; i < categories.length; i++)
-        _popupMenuItem(
-            value: DrawerItems.categories,
-            icon: SizedBox(
-              height: 20,
-              width: 20,
-              child: Image.network(
-                categories[i].imageUrl,
-                fit: BoxFit.cover,
+      if (categories != null)
+        for (int i = 0; i < categories.length; i++)
+          _popupMenuItem(
+              value: DrawerItems.categoryItem,
+              icon: SizedBox(
+                height: 20,
+                width: 20,
+                child: AppCachedNetworkImage(
+                  imageUrl: categories[i].imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            text: categories[i].category,
-            isCategoryItem: true),
+              text: categories[i].category,
+              onTap: () => _onCategoryTap(context, ref, i, categories),
+              isCategoryItem: true),
       const PopupMenuDivider(),
       _popupMenuItem(
         value: DrawerItems.myAccount,
@@ -139,8 +146,8 @@ class HomeScreen extends StatelessWidget {
     ];
   }
 
-  void _handleMenuSelection(
-      BuildContext context, WidgetRef ref, DrawerItems value) {
+  void _handleMenuSelection(BuildContext context, WidgetRef ref,
+      DrawerItems value, List<Category>? categories) {
     switch (value) {
       case DrawerItems.logout:
         ref.read(userDataProvider.notifier).removeData();
@@ -151,10 +158,23 @@ class HomeScreen extends StatelessWidget {
       case DrawerItems.categories:
         context.tabsRouter.setActiveIndex(1);
         break;
+      case DrawerItems.categoryItem:
+        null;
+
+        break;
       case DrawerItems.myAccount:
         context.tabsRouter.setActiveIndex(3);
         break;
     }
+  }
+
+  void _onCategoryTap(BuildContext context, WidgetRef ref, int index,
+      List<Category> categories) {
+    ref
+        .read(selectedCategoryProvider.notifier)
+        .setCategory(categories[index].categoryId);
+
+    context.router.replaceAll([CategoriesRoute()]);
   }
 
   Widget _buildAppBarTitle(BuildContext context) {
@@ -253,11 +273,17 @@ class HomeScreen extends StatelessWidget {
     required DrawerItems value,
     required Widget icon,
     required String text,
+    Function? onTap,
     bool isCategoryItem = false,
   }) {
     return PopupMenuItem(
       value: value,
       padding: EdgeInsets.zero,
+      onTap: () {
+        if (isCategoryItem) {
+          onTap!();
+        }
+      },
       height: isCategoryItem ? 20 : kMinInteractiveDimension,
       child: Container(
         color: isCategoryItem ? AppColors.lightGray : Colors.transparent,
@@ -274,6 +300,12 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+// void selectedCategoryType() {
+//               context.router.replaceAll([CategoriesRoute()]);
+//               ref
+//                   .read(selectedCategoryProvider.notifier)
+//                   .setCategory(categories[i - 1].categoryId);
+//             }
 class BottomNavItem extends StatelessWidget {
   final Widget icon;
   final String label;

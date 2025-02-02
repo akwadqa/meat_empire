@@ -261,10 +261,15 @@ class _AddNewAddressBookWidgetState
                     data.value!.userProfile!.copyWith(
                       shippingBuildingType: selectedLocationValue,
                       shippingCity: selectedCityValue,
+                      bllingCity: selectedCityValue,
                       shippingCountry: countryController.text,
+                      billingCountry: countryController.text,
                       shippingStrete: streetController.text,
+                      billingStrete: streetController.text,
                       shippingBuildingNumber: buildNumberController.text,
+                      billingBuildingNumber: buildNumberController.text,
                       defaultShippingCountry: "qa",
+                      defaultBillingCountry: "qa",
                     ),
                   );
 

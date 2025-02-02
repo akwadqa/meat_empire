@@ -92,6 +92,12 @@ class CartBody extends ConsumerWidget {
         spacing: 20,
         children: [
           _buildTextRow(
+            context.tr('cart_order_number'),
+            cart.orderId.toString(),
+            context,
+          ),
+          const Divider(color: AppColors.mediumGray),
+          _buildTextRow(
               context.tr('productsCost'), cart.formatSubtotal!, context),
           _buildTextRow(
               context.tr('shippingCost'), cart.formatShippingCost!, context),
