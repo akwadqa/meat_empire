@@ -35,8 +35,14 @@ class CheckoutCartOrderSummary extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
           child: Column(
-            spacing: 20,
+            spacing: 18,
             children: [
+              _buildTextRow(
+                context.tr('cart_order_number'),
+                cart.orderId.toString(),
+                context,
+              ),
+              const Divider(color: AppColors.mediumGray),
               _buildTextRow(
                 context.tr('productsCost'),
                 cart.formatSubtotal!,

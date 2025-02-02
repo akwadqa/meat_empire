@@ -25,6 +25,8 @@ import 'package:meat_empire/src/features/auth/presentation/signup_screen/signup_
 import 'package:meat_empire/src/features/cart/domain/cart.dart' as _i22;
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart'
     as _i20;
+import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart'
+    as _i23;
 import 'package:meat_empire/src/features/cart/domain/slot.dart' as _i21;
 import 'package:meat_empire/src/features/cart/presentation/cart_screen/cart_screen.dart'
     as _i2;
@@ -518,13 +520,15 @@ class SuccessPaymentRouteArgs {
 class WebViewRoute extends _i17.PageRouteInfo<WebViewRouteArgs> {
   WebViewRoute({
     _i18.Key? key,
-    required String url,
+    required _i23.ConfirmPaymentResponse paymentResponse,
+    required _i22.Cart cart,
     List<_i17.PageRouteInfo>? children,
   }) : super(
           WebViewRoute.name,
           args: WebViewRouteArgs(
             key: key,
-            url: url,
+            paymentResponse: paymentResponse,
+            cart: cart,
           ),
           initialChildren: children,
         );
@@ -537,7 +541,8 @@ class WebViewRoute extends _i17.PageRouteInfo<WebViewRouteArgs> {
       final args = data.argsAs<WebViewRouteArgs>();
       return _i16.WebViewScreen(
         key: args.key,
-        url: args.url,
+        paymentResponse: args.paymentResponse,
+        cart: args.cart,
       );
     },
   );
@@ -546,15 +551,18 @@ class WebViewRoute extends _i17.PageRouteInfo<WebViewRouteArgs> {
 class WebViewRouteArgs {
   const WebViewRouteArgs({
     this.key,
-    required this.url,
+    required this.paymentResponse,
+    required this.cart,
   });
 
   final _i18.Key? key;
 
-  final String url;
+  final _i23.ConfirmPaymentResponse paymentResponse;
+
+  final _i22.Cart cart;
 
   @override
   String toString() {
-    return 'WebViewRouteArgs{key: $key, url: $url}';
+    return 'WebViewRouteArgs{key: $key, paymentResponse: $paymentResponse, cart: $cart}';
   }
 }

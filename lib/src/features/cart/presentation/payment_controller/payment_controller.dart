@@ -24,7 +24,7 @@ class PaymentController extends _$PaymentController {
           await ref.watch(paymentRepositoryProvider).confirmPayment(bodyData);
 
       if (paymentResponse.redirectUrl != null) {
-        openWebView(paymentResponse.redirectUrl!, context);
+        openWebView(paymentResponse, context, cart);
       } else if (paymentResponse.success == true) {
         debugPrint('Payment successful!');
         Navigator.push(
@@ -43,11 +43,13 @@ class PaymentController extends _$PaymentController {
     });
   }
 
-  void openWebView(String url, BuildContext context) {
+  void openWebView(
+      ConfirmPaymentResponse paymentResponse, BuildContext context, Cart cart) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => WebViewScreen(url: url),
+        builder: (context) =>
+            WebViewScreen(paymentResponse: paymentResponse, cart: cart),
       ),
     );
   }

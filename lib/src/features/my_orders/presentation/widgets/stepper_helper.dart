@@ -8,10 +8,12 @@ class StepperHelper {
     switch (status) {
       case 'P':
         return 0;
-      case 'A':
+      case 'E':
         return 1;
-      case 'S':
+      case 'A':
         return 2;
+      case 'S':
+        return 3;
       default:
         return 0;
     }
@@ -39,6 +41,27 @@ class StepperHelper {
           activeStep >= 0 ? Icons.check_circle : Icons.circle,
           color: activeStep >= 0 ? AppColors.primary : AppColors.gray,
           size: activeStep >= 0 ? 20 : 15,
+        ),
+      ),
+      StepperData(
+        title: StepperText(
+          context.tr("preparing"),
+          textStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
+              color: AppColors.black900,
+              fontSize: 14,
+              fontWeight: FontWeight.w500),
+        ),
+        subtitle: StepperText(
+          context.tr("preparing_desc"),
+          textStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
+                color: AppColors.darkGray,
+                fontSize: 12,
+              ),
+        ),
+        iconWidget: Icon(
+          activeStep >= 1 ? Icons.check_circle : Icons.circle,
+          color: activeStep >= 1 ? AppColors.primary : AppColors.gray,
+          size: activeStep >= 1 ? 20 : 15,
         ),
       ),
       StepperData(
