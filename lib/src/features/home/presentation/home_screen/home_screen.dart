@@ -3,13 +3,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
+import 'package:meat_empire/src/features/home/data/home_repository.dart';
+import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import '../../../../shared_widgets/app_logo.dart';
 import '../../../cart/application/cart_service.dart';
 
-enum DrawerItems { home, myAccount, logout }
+enum DrawerItems { home, myAccount, categories, logout }
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -18,7 +21,6 @@ class HomeScreen extends StatelessWidget {
   static const double _iconHeight = 25.0;
   static const ColorFilter _activeColorFilter =
       ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
-
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
@@ -73,9 +75,20 @@ class HomeScreen extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child) {
         final isAuthenticated = ref.watch(isAuthinticatedProvider);
+        final menueData = ref.watch(homeProvider).asData;
+
+        List<Category> categories = (menueData!.value.layout
+                .where((d) => d.type == "categories")
+                .first
+                .data as List<Object>)
+            .whereType<Category>()
+            .toList();
+        debugPrint(categories.first.category);
+        debugPrint("////////////////////////////////");
         return PopupMenuButton<DrawerItems>(
           onSelected: (value) => _handleMenuSelection(context, ref, value),
-          itemBuilder: (context) => _buildMenuItems(context, isAuthenticated),
+          itemBuilder: (context) =>
+              _buildMenuItems(context, isAuthenticated, categories),
           icon: Assets.icons.menuIcon.svg(),
         );
       },
@@ -83,13 +96,32 @@ class HomeScreen extends StatelessWidget {
   }
 
   List<PopupMenuEntry<DrawerItems>> _buildMenuItems(
-      BuildContext context, bool isAuthenticated) {
+      BuildContext context, bool isAuthenticated, List<Category> categories) {
     return [
       _popupMenuItem(
         value: DrawerItems.home,
         icon: Assets.icons.homeIcon.svg(),
         text: context.tr('home'),
       ),
+      const PopupMenuDivider(),
+      _popupMenuItem(
+        value: DrawerItems.categories,
+        icon: Assets.icons.categoriesSearchIcon.svg(),
+        text: context.tr('categories'),
+      ),
+      for (int i = 0; i < categories.length; i++)
+        _popupMenuItem(
+            value: DrawerItems.categories,
+            icon: SizedBox(
+              height: 20,
+              width: 20,
+              child: Image.network(
+                categories[i].imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            text: categories[i].category,
+            isCategoryItem: true),
       const PopupMenuDivider(),
       _popupMenuItem(
         value: DrawerItems.myAccount,
@@ -115,6 +147,9 @@ class HomeScreen extends StatelessWidget {
         break;
       case DrawerItems.home:
         context.tabsRouter.setActiveIndex(0);
+        break;
+      case DrawerItems.categories:
+        context.tabsRouter.setActiveIndex(1);
         break;
       case DrawerItems.myAccount:
         context.tabsRouter.setActiveIndex(3);
@@ -218,15 +253,22 @@ class HomeScreen extends StatelessWidget {
     required DrawerItems value,
     required Widget icon,
     required String text,
+    bool isCategoryItem = false,
   }) {
     return PopupMenuItem(
       value: value,
-      child: Row(
-        children: [
-          icon,
-          const SizedBox(width: 8),
-          Text(text),
-        ],
+      padding: EdgeInsets.zero,
+      height: isCategoryItem ? 20 : kMinInteractiveDimension,
+      child: Container(
+        color: isCategoryItem ? AppColors.lightGray : Colors.transparent,
+        padding: EdgeInsets.symmetric(horizontal: 12),
+        child: Row(
+          children: [
+            icon,
+            const SizedBox(width: 8),
+            Text(text).symmetricPadding(vertical: 10),
+          ],
+        ),
       ),
     );
   }
