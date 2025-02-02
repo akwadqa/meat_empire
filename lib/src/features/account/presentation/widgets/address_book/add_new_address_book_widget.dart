@@ -16,7 +16,6 @@ import 'location_field_checkBox_widget.dart';
 Future<void> showAddNewAddressBottomSheet({
   required BuildContext context,
   required UserProfile userProfile,
-  // required bool billMode,
   bool isEdit = false,
 }) {
   return showModalBottomSheet(
@@ -26,7 +25,6 @@ Future<void> showAddNewAddressBottomSheet({
       return AddNewAddressBookWidget(
         context: context,
         userProfile: userProfile,
-        // billMode: billMode,
         isEdit: isEdit,
       );
     },
@@ -35,15 +33,15 @@ Future<void> showAddNewAddressBottomSheet({
 
 class AddNewAddressBookWidget extends ConsumerStatefulWidget {
   final BuildContext context;
-  // final bool billMode;
-  bool isEdit;
+  final bool isEdit;
   final UserProfile userProfile;
-  AddNewAddressBookWidget(
-      {super.key,
-      required this.context,
-      // required this.billMode,
-      this.isEdit = false,
-      required this.userProfile});
+
+  const AddNewAddressBookWidget({
+    super.key,
+    required this.context,
+    this.isEdit = false,
+    required this.userProfile,
+  });
 
   @override
   ConsumerState<AddNewAddressBookWidget> createState() =>
@@ -54,30 +52,24 @@ class _AddNewAddressBookWidgetState
     extends ConsumerState<AddNewAddressBookWidget> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  TextEditingController buildNumberController = TextEditingController();
-  TextEditingController cityController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
-  TextEditingController streetController = TextEditingController();
+  late TextEditingController buildNumberController;
+  late TextEditingController cityController;
+  late TextEditingController countryController;
+  late TextEditingController streetController;
+
   String? selectedCityValue;
   String? selectedLocationValue;
   bool billAddSameShippAdd = false;
+
   final List<Map<String, dynamic>> locations = [
-    {
-      'name': 'villa',
-      'icon': Icons.house,
-    },
-    {
-      'name': 'office',
-      'icon': Icons.business_center,
-    },
-    {
-      'name': 'apartment',
-      'icon': Icons.business,
-    },
+    {'name': 'villa', 'icon': Icons.house},
+    {'name': 'office', 'icon': Icons.business_center},
+    {'name': 'apartment', 'icon': Icons.business},
   ];
 
   @override
   void initState() {
+    super.initState();
     selectedCityValue = widget.isEdit ? widget.userProfile.shippingCity : null;
     cityController = TextEditingController(
         text: widget.isEdit ? widget.userProfile.shippingCity : "");
@@ -87,8 +79,6 @@ class _AddNewAddressBookWidgetState
         text: widget.isEdit ? widget.userProfile.shippingStrete : "");
     buildNumberController = TextEditingController(
         text: widget.isEdit ? widget.userProfile.shippingBuildingNumber : "");
-
-    super.initState();
   }
 
   @override
@@ -107,17 +97,13 @@ class _AddNewAddressBookWidgetState
             controller: scrollController,
             child: SizedBox(
               child: GestureDetector(
-                onTap: () {
-                  // Dismiss keyboard when tapping outside
-                  FocusScope.of(context).unfocus();
-                },
+                onTap: () => FocusScope.of(context).unfocus(),
                 child: Stack(
                   children: [
                     GestureDetector(
-                      onTap: () =>
-                          Navigator.of(context).pop(), // Dismiss dialog
+                      onTap: () => Navigator.of(context).pop(),
                       child: Container(
-                        color: Colors.black.withOpacity(0.1), // Dim background
+                        color: Colors.black.withOpacity(0.1),
                       ),
                     ),
                     Center(
@@ -134,213 +120,16 @@ class _AddNewAddressBookWidgetState
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  children: [
-                                    Text(context.tr("add_shipping_location"),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelSmall!
-                                            .copyWith(
-                                              color: AppColors.black900,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w800,
-                                            )),
-                                    // Spacer(),
-                                    // if (widget.billMode)
-                                    //   CustomRadioFormField(
-                                    //     initialValue: billAddSameShippAdd,
-                                    //     context: context,
-                                    //     possibleToAddSameShippingAddress: widget
-                                    //         .userProfile
-                                    //         .shippingStrete!
-                                    //         .isNotEmpty,
-                                    //     onSaved: (val) {
-                                    //       billAddSameShippAdd = val!;
-                                    //       setState(() {});
-                                    //     },
-                                    //   ),
-                                  ],
-                                ),
+                                _buildHeader(context),
                                 if (!billAddSameShippAdd) ...[
                                   25.verticalSpace,
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "city".tr(),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall!
-                                                .copyWith(fontSize: 14),
-                                          ),
-                                          8.verticalSpace,
-                                          SizedBox(
-                                              width: 165,
-                                              height: 40,
-                                              child: buildCityField(context)),
-                                        ],
-                                      ),
-                                      10.horizontalSpace,
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "country".tr(),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall!
-                                                .copyWith(fontSize: 14),
-                                          ),
-                                          8.verticalSpace,
-                                          SizedBox(
-                                              width: 165,
-                                              height: 40,
-                                              child:
-                                                  buildCountryField(context)),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                  _buildCityAndCountryFields(context),
                                   25.verticalSpace,
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "street".tr(),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall!
-                                                .copyWith(fontSize: 14),
-                                          ),
-                                          8.verticalSpace,
-                                          SizedBox(
-                                              width: 165,
-                                              height: 40,
-                                              child: buildStreetField(context)),
-                                        ],
-                                      ),
-                                      10.horizontalSpace,
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "building_number".tr(),
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall!
-                                                .copyWith(fontSize: 14),
-                                          ),
-                                          8.verticalSpace,
-                                          SizedBox(
-                                              width: 165,
-                                              height: 40,
-                                              child: buildBuildingNumberField(
-                                                  context)),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                  _buildStreetAndBuildingNumberFields(context),
                                 ],
                                 25.verticalSpace,
-                                LocationFieldCheckboxWidget(
-                                  context: context,
-                                  labelText: 'building_type'.tr(),
-                                  locations: locations,
-                                  initialValue: widget.isEdit
-                                      ? locations.indexWhere((location) =>
-                                          location['name'] ==
-                                          widget
-                                              .userProfile.shippingBuildingType)
-                                      : 2,
-                                  onSaved: (value) {
-                                    debugPrint(
-                                        'Selected Location Index: $value');
-                                    selectedLocationValue =
-                                        locations[value!]['name'];
-                                  },
-                                  validator: (value) {
-                                    if (value == null || value == -1) {
-                                      return 'Please select a location';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                Consumer(
-                                  builder: (context, ref, child) {
-                                    final data =
-                                        ref.watch(accountControllerProvider);
-                                    if (data is AsyncLoading) {
-                                      return Center(
-                                          child: FadeCircleLoadingIndicator());
-                                    }
-                                    return CustomButtonWidget(
-                                      text: "save",
-                                      backgroundColor: AppColors.primarySwatch,
-                                      topPading: 25,
-                                      onTap: () {
-                                        if (formKey.currentState!.validate()) {
-                                          ref
-                                              .read(accountControllerProvider
-                                                  .notifier)
-                                              .editAccountInformation(
-                                                  context,
-                                                  data.value!.userProfile!.copyWith(
-                                                      shippingBuildingType:
-                                                          selectedLocationValue,
-                                                      shippingCity:
-                                                          selectedCityValue,
-                                                      shippingCountry:
-                                                          countryController
-                                                              .text,
-                                                      shippingStrete:
-                                                          streetController.text,
-                                                      shippingBuildingNumber:
-                                                          buildNumberController
-                                                              .text,
-                                                      defaultShippingCountry:
-                                                          "qa"));
-
-                                          SnackBar(
-                                            content: Text(data.value!.message),
-                                            backgroundColor: Colors.green,
-                                          );
-                                        }
-                                      },
-                                      isFiled: true,
-                                      height: 50,
-                                      width: 285,
-                                      radius: 50,
-                                    ).centered();
-                                  },
-                                ),
+                                _buildLocationFieldCheckbox(context),
+                                _buildSaveButton(context),
                               ],
                             ),
                           ),
@@ -357,8 +146,146 @@ class _AddNewAddressBookWidgetState
     );
   }
 
+  Widget _buildHeader(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          context.tr("add_shipping_location"),
+          style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                color: AppColors.black900,
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+              ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCityAndCountryFields(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildFieldColumn(
+          context,
+          label: "city".tr(),
+          child: buildCityField(context),
+        ),
+        10.horizontalSpace,
+        _buildFieldColumn(
+          context,
+          label: "country".tr(),
+          child: buildCountryField(context),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStreetAndBuildingNumberFields(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildFieldColumn(
+          context,
+          label: "street".tr(),
+          child: buildStreetField(context),
+        ),
+        10.horizontalSpace,
+        _buildFieldColumn(
+          context,
+          label: "building_number".tr(),
+          child: buildBuildingNumberField(context),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFieldColumn(BuildContext context,
+      {required String label, required Widget child}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
+        ),
+        8.verticalSpace,
+        SizedBox(width: 165, height: 40, child: child),
+      ],
+    );
+  }
+
+  Widget _buildLocationFieldCheckbox(BuildContext context) {
+    return LocationFieldCheckboxWidget(
+      context: context,
+      labelText: 'building_type'.tr(),
+      locations: locations,
+      initialValue: widget.isEdit
+          ? locations.indexWhere((location) =>
+              location['name'] == widget.userProfile.shippingBuildingType)
+          : 2,
+      onSaved: (value) {
+        selectedLocationValue = locations[value!]['name'];
+      },
+      validator: (value) {
+        if (value == null || value == -1) {
+          return 'Please select a location';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildSaveButton(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final data = ref.watch(accountControllerProvider);
+        if (data is AsyncLoading) {
+          return const Center(child: FadeCircleLoadingIndicator());
+        }
+        return CustomButtonWidget(
+          text: "save",
+          backgroundColor: AppColors.primarySwatch,
+          topPading: 25,
+          onTap: () {
+            if (formKey.currentState!.validate()) {
+              ref
+                  .read(accountControllerProvider.notifier)
+                  .editAccountInformation(
+                    context,
+                    data.value!.userProfile!.copyWith(
+                      shippingBuildingType: selectedLocationValue,
+                      shippingCity: selectedCityValue,
+                      shippingCountry: countryController.text,
+                      shippingStrete: streetController.text,
+                      shippingBuildingNumber: buildNumberController.text,
+                      defaultShippingCountry: "qa",
+                    ),
+                  );
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(data.value!.message),
+                  backgroundColor: Colors.green,
+                ),
+              );
+            }
+          },
+          isFiled: true,
+          height: 50,
+          width: 285,
+          radius: 50,
+        ).centered();
+      },
+    );
+  }
+
   Widget buildCityField(BuildContext context) {
-    // List of cities with display names and corresponding values
     final List<Map<String, String>> cities = [
       {'name': 'Doha', 'value': 'DOH'},
       {'name': 'Al Rayyan', 'value': 'RAY'},
@@ -376,18 +303,10 @@ class _AddNewAddressBookWidgetState
             color: AppColors.gray02,
             fontSize: 14,
           ),
-      onChanged: (value) {
-        selectedCityValue = value!; // Update selected city value
-      },
-      onSaved: (value) {
-        selectedCityValue = value!; // Save selected city value
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return context.tr('required'); // Validate that a city is selected
-        }
-        return null;
-      },
+      onChanged: (value) => selectedCityValue = value!,
+      onSaved: (value) => selectedCityValue = value!,
+      validator: (value) =>
+          value == null || value.isEmpty ? context.tr('required') : null,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 6),
         hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -407,8 +326,7 @@ class _AddNewAddressBookWidgetState
       ),
       items: cities.map((city) {
         return DropdownMenuItem<String>(
-          value: city['value'], // The value to be stored (e.g., DOH, RAY)
-
+          value: city['value'],
           child: Text(
             '${city['name']}',
             style: Theme.of(context).textTheme.labelSmall!.copyWith(
@@ -438,14 +356,10 @@ class _AddNewAddressBookWidgetState
             maxHeight: 20, maxWidth: 30, minHeight: 20, minWidth: 30),
         prefixIcon: Assets.icons.countryIcon
             .svg(color: AppColors.black800)
-            .symmetricPadding(
-              horizontal: 4,
-            ),
+            .symmetricPadding(horizontal: 4),
       ),
       textInputAction: TextInputAction.next,
-      validator: qValidator([
-        IsRequired(context.tr('required')),
-      ]),
+      validator: qValidator([IsRequired(context.tr('required'))]),
       onSaved: (value) => countryController.text = value!,
     );
   }
@@ -467,14 +381,10 @@ class _AddNewAddressBookWidgetState
             maxHeight: 20, maxWidth: 30, minHeight: 20, minWidth: 30),
         prefixIcon: Assets.icons.streetIcon
             .svg(color: AppColors.black800)
-            .symmetricPadding(
-              horizontal: 4,
-            ),
+            .symmetricPadding(horizontal: 4),
       ),
       textInputAction: TextInputAction.next,
-      validator: qValidator([
-        IsRequired(context.tr('required')),
-      ]),
+      validator: qValidator([IsRequired(context.tr('required'))]),
       onSaved: (value) => streetController.text = value!,
     );
   }
@@ -496,14 +406,9 @@ class _AddNewAddressBookWidgetState
             maxHeight: 20, maxWidth: 30, minHeight: 20, minWidth: 30),
         prefixIcon: Assets.icons.buildNumberIcon
             .svg(color: AppColors.black800)
-            .symmetricPadding(
-              horizontal: 4,
-            ),
+            .symmetricPadding(horizontal: 4),
       ),
       textInputAction: TextInputAction.next,
-      // validator: qValidator([
-      //   IsRequired(context.tr('required')),
-      // ]),
       onSaved: (value) => buildNumberController.text = value!,
     );
   }
