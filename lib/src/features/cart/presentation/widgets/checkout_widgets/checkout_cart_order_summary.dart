@@ -6,9 +6,11 @@ import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class CheckoutCartOrderSummary extends StatelessWidget {
-  const CheckoutCartOrderSummary({super.key, required this.cart});
+  const CheckoutCartOrderSummary({Key? key, required this.cart, this.orderId})
+      : super(key: key);
 
   final Cart cart;
+  final int? orderId;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +39,14 @@ class CheckoutCartOrderSummary extends StatelessWidget {
           child: Column(
             spacing: 18,
             children: [
-              _buildTextRow(
-                context.tr('cart_order_number'),
-                cart.orderId.toString(),
-                context,
-              ),
-              const Divider(color: AppColors.mediumGray),
+              if (orderId != null) ...[
+                _buildTextRow(
+                  context.tr('cart_order_number'),
+                  cart.orderId.toString(),
+                  context,
+                ),
+                const Divider(color: AppColors.mediumGray),
+              ],
               _buildTextRow(
                 context.tr('productsCost'),
                 cart.formatSubtotal!,

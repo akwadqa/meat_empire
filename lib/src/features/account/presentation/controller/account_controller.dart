@@ -18,41 +18,25 @@ class AccountController extends _$AccountController {
   Future<void> editAccountInformation(
       BuildContext context, UserProfile userProfile) async {
     if (state is AsyncData<ProfileResponse>) {
-      final currentState = state.value; // Preserve the current state
-      state = AsyncLoading(); // Set loading state
+      final currentState = state.value;
+      state = AsyncLoading();
 
       try {
-        // Perform the update request
         final response = await ref
             .read(accountRepositoryProvider)
             .updateProfile(userProfile);
 
         if (response.success) {
-          // Update state on success
           state = AsyncData(response);
           debugPrint("Profile updated successfully.");
           Navigator.pop(context);
         } else {
-          // Retain previous state on failure
-          state = AsyncData(currentState!); // Restore previous state
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text(response.message),
-          //     backgroundColor: AppColors.darkRed,
-          //   ),
-          // );
+          state = AsyncData(currentState!);
         }
       } catch (e) {
-        // Handle parsing or request exceptions
-        state = AsyncError(e, StackTrace.current); // Update state to AsyncError
+        state = AsyncError(e, StackTrace.current);
         debugPrint("Exception while updating profile: $e");
 
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   SnackBar(
-        //     content: Text("An error occurred. Please try again."),
-        //     backgroundColor: AppColors.darkRed,
-        //   ),
-        // );
         state = AsyncData(currentState!);
       }
     } else {

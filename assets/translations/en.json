@@ -87,7 +87,7 @@
     "payment_msg": "Please select a payment method",
     "select_time_msg": "Please select a time slot",
     "select_delivery_msg": "Please select a delivery date",
-    "no_orders_message": "No delivered orders yet",
+    "no_orders_message": "There are no orders here yet",
     "processing": "Processing",
     "delivered": "Delivered",
     "canceled": "Canceled",

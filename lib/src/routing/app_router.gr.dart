@@ -475,12 +475,14 @@ class SuccessPaymentRoute extends _i17.PageRouteInfo<SuccessPaymentRouteArgs> {
   SuccessPaymentRoute({
     _i18.Key? key,
     required _i22.Cart cart,
+    required int orderId,
     List<_i17.PageRouteInfo>? children,
   }) : super(
           SuccessPaymentRoute.name,
           args: SuccessPaymentRouteArgs(
             key: key,
             cart: cart,
+            orderId: orderId,
           ),
           initialChildren: children,
         );
@@ -494,6 +496,7 @@ class SuccessPaymentRoute extends _i17.PageRouteInfo<SuccessPaymentRouteArgs> {
       return _i15.SuccessPaymentScreen(
         key: args.key,
         cart: args.cart,
+        orderId: args.orderId,
       );
     },
   );
@@ -503,15 +506,18 @@ class SuccessPaymentRouteArgs {
   const SuccessPaymentRouteArgs({
     this.key,
     required this.cart,
+    required this.orderId,
   });
 
   final _i18.Key? key;
 
   final _i22.Cart cart;
 
+  final int orderId;
+
   @override
   String toString() {
-    return 'SuccessPaymentRouteArgs{key: $key, cart: $cart}';
+    return 'SuccessPaymentRouteArgs{key: $key, cart: $cart, orderId: $orderId}';
   }
 }
 
