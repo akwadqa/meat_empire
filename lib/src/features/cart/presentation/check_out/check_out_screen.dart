@@ -65,7 +65,9 @@ class CheckOutScreen extends ConsumerWidget {
                   CheckoutCartOrderSummary(cart: cart.cart!),
                   20.verticalSpace,
                   AddressBookWidget(
-                      checkout: true, userProfile: data.userProfile),
+                    checkout: true,
+                    userProfile: data.userProfile,
+                  ),
                   20.verticalSpace,
                   CheckoutShippingDateTimePickerFormField(
                     deliverySlots: deliverySlots,

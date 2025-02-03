@@ -44,17 +44,17 @@ class _WebViewScreenState extends State<WebViewScreen> {
           onPageFinished: (String url) {
             debugPrint("Page finished loading: $url");
             if (url == widget.paymentResponse.failUrl) {
-              //   Navigator.pop(context); // Exit the WebView screen
-              //   showCustomDialog(
-              //       context: context,
-              //       title: widget.paymentResponse.message!,
-              //       icon: Icon(
-              //         Icons.error,
-              //         color: AppColors.darkRed,
-              //         size: 45,
-              //       ));
-              // }
-              // if (url == widget.paymentResponse.successUrl) {
+              Navigator.pop(context); // Exit the WebView screen
+              showCustomDialog(
+                  context: context,
+                  title: widget.paymentResponse.message!,
+                  icon: Icon(
+                    Icons.error,
+                    color: AppColors.darkRed,
+                    size: 45,
+                  ));
+            }
+            if (url == widget.paymentResponse.successUrl) {
               Navigator.pop(context); // Exit the WebView screen
               Navigator.push(
                 context,
