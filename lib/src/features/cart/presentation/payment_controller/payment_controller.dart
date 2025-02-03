@@ -31,10 +31,12 @@ class PaymentController extends _$PaymentController {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SuccessPaymentScreen(cart: cart),
+            builder: (context) => SuccessPaymentScreen(
+              cart: cart,
+              orderId: paymentResponse.orderId!,
+            ),
           ),
         );
-        // context.pushRoute(SuccessPaymentRoute(cart: cart));
       } else {
         // Handle the failure case
         showErrorMessage(paymentResponse.message ?? 'Payment failed!', context);

@@ -272,13 +272,6 @@ class _AddNewAddressBookWidgetState
                       defaultBillingCountry: "qa",
                     ),
                   );
-
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(data.value!.message),
-                  backgroundColor: Colors.green,
-                ),
-              );
             }
           },
           isFiled: true,

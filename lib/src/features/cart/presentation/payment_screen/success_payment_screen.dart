@@ -15,7 +15,12 @@ import 'package:meat_empire/src/theme/app_colors.dart';
 @RoutePage()
 class SuccessPaymentScreen extends ConsumerStatefulWidget {
   final Cart cart;
-  const SuccessPaymentScreen({super.key, required this.cart});
+  final int orderId;
+  const SuccessPaymentScreen({
+    super.key,
+    required this.cart,
+    required this.orderId,
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -65,7 +70,10 @@ class _SuccessPaymentScreenState extends ConsumerState<SuccessPaymentScreen> {
               textAlign: TextAlign.center,
             ),
             50.verticalSpace,
-            CheckoutCartOrderSummary(cart: widget.cart),
+            CheckoutCartOrderSummary(
+              cart: widget.cart,
+              orderId: widget.orderId,
+            ),
             Spacer(),
             CustomButtonWidget(
               text: context.tr("continue_shipping_msg"),

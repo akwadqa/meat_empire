@@ -15,7 +15,8 @@ class WebViewScreen extends StatefulWidget {
   final ConfirmPaymentResponse paymentResponse;
   final Cart cart;
 
-  const WebViewScreen({Key? key, required this.paymentResponse, required this.cart})
+  const WebViewScreen(
+      {Key? key, required this.paymentResponse, required this.cart})
       : super(key: key);
 
   @override
@@ -43,24 +44,27 @@ class _WebViewScreenState extends State<WebViewScreen> {
           onPageFinished: (String url) {
             debugPrint("Page finished loading: $url");
             if (url == widget.paymentResponse.failUrl) {
+              //   Navigator.pop(context); // Exit the WebView screen
+              //   showCustomDialog(
+              //       context: context,
+              //       title: widget.paymentResponse.message!,
+              //       icon: Icon(
+              //         Icons.error,
+              //         color: AppColors.darkRed,
+              //         size: 45,
+              //       ));
+              // }
+              // if (url == widget.paymentResponse.successUrl) {
               Navigator.pop(context); // Exit the WebView screen
-              showCustomDialog(
-                  context: context,
-                  title: widget.paymentResponse.message!,
-                  icon: Icon(
-                    Icons.error,
-                    color: AppColors.darkRed,
-                    size: 45,
-                  ));
-            }
-            if (url == widget.paymentResponse.successUrl) {
-              Navigator.pop(context); // Exit the WebView screen
-Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SuccessPaymentScreen(cart: widget.cart),
-          ),
-        );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SuccessPaymentScreen(
+                    cart: widget.cart,
+                    orderId: widget.paymentResponse.orderId!,
+                  ),
+                ),
+              );
             }
           },
           onHttpError: (HttpResponseError error) {
