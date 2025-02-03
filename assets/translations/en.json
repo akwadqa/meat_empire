@@ -124,5 +124,6 @@
     "packed_desc": "Your order is on the way",
     "shipped": "Delivered",
     "shipped_desc": "Your order was delivered successfully",
-    "cartUnAuthDesc": "Log in, discover our products and enjoy shopping."
+    "cartUnAuthDesc": "Log in, discover our products and enjoy shopping.",
+    "area" : "Area"
 }

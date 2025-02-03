@@ -175,7 +175,7 @@ class _AddNewAddressBookWidgetState
         10.horizontalSpace,
         _buildFieldColumn(
           context,
-          label: "country".tr(),
+          label: "area".tr(),
           child: buildCountryField(context),
         ),
       ],
@@ -268,8 +268,8 @@ class _AddNewAddressBookWidgetState
                       billingStrete: streetController.text,
                       shippingBuildingNumber: buildNumberController.text,
                       billingBuildingNumber: buildNumberController.text,
-                      defaultShippingCountry: "qa",
-                      defaultBillingCountry: "qa",
+                      defaultShippingCountry: 'QA',
+                      defaultBillingCountry: 'QA',
                     ),
                   );
 
