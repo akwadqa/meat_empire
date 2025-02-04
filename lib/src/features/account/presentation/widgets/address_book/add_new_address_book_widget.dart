@@ -268,8 +268,8 @@ class _AddNewAddressBookWidgetState
                       billingStrete: streetController.text,
                       shippingBuildingNumber: buildNumberController.text,
                       billingBuildingNumber: buildNumberController.text,
-                      defaultShippingCountry: 'QA',
-                      defaultBillingCountry: 'QA',
+                      defaultShippingCountry: "QA",
+                      defaultBillingCountry: "QA",
                     ),
                   );
             }

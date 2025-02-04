@@ -41,7 +41,7 @@ class CheckoutCartOrderSummary extends StatelessWidget {
               if (orderId != null) ...[
                 _buildTextRow(
                   context.tr('cart_order_number'),
-                  cart.orderId.toString(),
+                  orderId.toString(),
                   context,
                 ),
                 const Divider(color: AppColors.mediumGray),
