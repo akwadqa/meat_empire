@@ -8,6 +8,9 @@ import 'package:meat_empire/src/features/cart/presentation/payment_screen/succes
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../../../shared_functions.dart';
+import '../../../../theme/app_colors.dart';
+
 @RoutePage()
 class WebViewScreen extends StatefulWidget {
   final ConfirmPaymentResponse paymentResponse;

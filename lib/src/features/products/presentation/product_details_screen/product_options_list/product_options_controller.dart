@@ -12,18 +12,27 @@ class ProductOptionsController extends _$ProductOptionsController {
     return [];
   }
 
-  void initialize(List<SelectedOption> initialSelectedOptions) {
-    state = initialSelectedOptions;
-  }
-
   void selectVariant(int optionId, Variant variant) {
-    state = [
-      for (final option in state)
-        if (option.optionId == optionId)
-          SelectedOption(
-              optionId: optionId, variantId: int.parse(variant.variantId))
-        else
-          option,
-    ];
+    // Check if the option already exists in the state
+    final optionExists = state.any((option) => option.optionId == optionId);
+
+    if (optionExists) {
+      // Update the existing option
+      state = [
+        for (final option in state)
+          if (option.optionId == optionId)
+            SelectedOption(
+                optionId: optionId, variantId: int.parse(variant.variantId))
+          else
+            option,
+      ];
+    } else {
+      // Add a new SelectedOption to the list
+      state = [
+        ...state,
+        SelectedOption(
+            optionId: optionId, variantId: int.parse(variant.variantId)),
+      ];
+    }
   }
 }

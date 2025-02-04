@@ -18,6 +18,7 @@ import '../../../../utils/magnetic_scroll_physics.dart';
 import '../../../cart/application/cart_service.dart';
 import '../../../home/presentation/layout_screen/banner/carousel_dots_indicator.dart';
 import '../../domain/product_details_response/currency.dart';
+import '../../domain/product_details_response/product_options/product_options.dart';
 import '../../domain/product_details_response/variation_feature/variation_feature.dart';
 import 'product_options_list/product_options_list.dart';
 import 'quantity_selector/quantity_controller.dart';
@@ -97,6 +98,7 @@ class ProductDetailsView extends StatelessWidget {
             productPrice: (totalPrice * quantity).toStringAsFixed(2),
             productId: product.productId,
             amount: quantity,
+            productOptions: product.productOptions,
           );
         }),
       ],
@@ -351,14 +353,17 @@ class _ProductsBlockList extends StatelessWidget {
 }
 
 class _AddToCartButton extends StatelessWidget {
-  const _AddToCartButton(
-      {required this.productPrice,
-      required this.productId,
-      required this.amount});
+  const _AddToCartButton({
+    required this.productPrice,
+    required this.productId,
+    required this.amount,
+    required this.productOptions, // Add productOptions as a parameter
+  });
 
   final String productPrice;
   final int productId;
   final int amount;
+  final ProductOptions? productOptions; // Pass productOptions to the widget
 
   @override
   Widget build(BuildContext context) {
@@ -401,14 +406,38 @@ class _AddToCartButton extends StatelessWidget {
           }
 
           return ElevatedButton.icon(
-            onPressed: () => ref
-                .read(updateCartControllerProvider.notifier)
-                .addToCart(
-                    context: context,
-                    amount: amount,
-                    productId: productId,
-                    selectedOprions: ref.read(productOptionsControllerProvider))
-                .then((_) => context.maybePop),
+            onPressed: () {
+              // Get the selected options
+              final selectedOptions =
+                  ref.read(productOptionsControllerProvider);
+
+              // Check if all options have a selected variant
+              final isSelectionComplete = productOptions?.options.every(
+                      (option) => selectedOptions.any((selected) =>
+                          selected.optionId == option.optionId)) ??
+                  true;
+
+              if (!isSelectionComplete) {
+                // Show an error message if selection is incomplete
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(context.tr('variantError')),
+                    backgroundColor: Theme.of(context).colorScheme.error,
+                  ),
+                );
+              } else {
+                // Proceed with adding to cart
+                ref
+                    .read(updateCartControllerProvider.notifier)
+                    .addToCart(
+                      context: context,
+                      amount: amount,
+                      productId: productId,
+                      selectedOprions: selectedOptions,
+                    )
+                    .then((_) => context.maybePop());
+              }
+            },
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
             icon: const Icon(Icons.add_shopping_cart_rounded,
                 color: Colors.white, size: 25),

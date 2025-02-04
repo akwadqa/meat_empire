@@ -22,7 +22,7 @@ class SearchController extends _$SearchController {
     state = AsyncLoading();
     final searchRepository = ref.watch(searchRepositoryProvider);
     state =
-        await AsyncValue.guard(() => searchRepository.search(sortBy: sortBy));
+        await AsyncValue.guard(() => searchRepository.search(sortBy: sortBy, sortOrder: sortOrder));
   }
 
   Future<bool> loadMore(int page) async {

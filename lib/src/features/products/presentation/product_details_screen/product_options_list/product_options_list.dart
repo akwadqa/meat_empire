@@ -8,39 +8,21 @@ import '../../../domain/product_details_response/product_options/product_options
 import '../../../domain/product_details_response/product_options/selected_option.dart';
 import '../../../domain/product_details_response/product_options/variant.dart';
 
-class ProductOptionsList extends ConsumerStatefulWidget {
+class ProductOptionsList extends ConsumerWidget {
   const ProductOptionsList({super.key, required this.productOptions});
 
   final ProductOptions productOptions;
 
   @override
-  ConsumerState<ProductOptionsList> createState() => _ProductOptionsListState();
-}
-
-class _ProductOptionsListState extends ConsumerState<ProductOptionsList> {
-  @override
-  void initState() {
-    super.initState();
-
-    // Defer provider initialization until after the widget tree has built
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final initialSelectedOptions = widget.productOptions.selectedOptions;
-      ref
-          .read(productOptionsControllerProvider.notifier)
-          .initialize(initialSelectedOptions);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListView.separated(
       padding: EdgeInsets.zero,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (_, index) =>
-          _OptionBlock(option: widget.productOptions.options[index]),
+          _OptionBlock(option: productOptions.options[index]),
       separatorBuilder: (_, __) => const SizedBox(height: 20),
-      itemCount: widget.productOptions.options.length,
+      itemCount: productOptions.options.length,
     );
   }
 }

@@ -125,5 +125,6 @@
     "shipped": "Delivered",
     "shipped_desc": "Your order was delivered successfully",
     "cartUnAuthDesc": "Log in, discover our products and enjoy shopping.",
-    "area" : "Area"
+    "area" : "Area",
+    "variantError": "Please select a variant for all options."
 }
