@@ -10,9 +10,9 @@ class StepperHelper {
         return 0;
       case 'E':
         return 1;
-      case 'A':
+      case 'C':
         return 2;
-      case 'S':
+      case 'D':
         return 3;
       default:
         return 0;
