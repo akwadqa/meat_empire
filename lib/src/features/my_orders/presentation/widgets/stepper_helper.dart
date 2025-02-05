@@ -80,9 +80,9 @@ class StepperHelper {
               ),
         ),
         iconWidget: Icon(
-          activeStep >= 1 ? Icons.check_circle : Icons.circle,
-          color: activeStep >= 1 ? AppColors.primary : AppColors.gray,
-          size: activeStep >= 1 ? 20 : 15,
+          activeStep >= 2 ? Icons.check_circle : Icons.circle,
+          color: activeStep >= 2 ? AppColors.primary : AppColors.gray,
+          size: activeStep >= 2 ? 20 : 15,
         ),
       ),
       StepperData(
@@ -101,9 +101,9 @@ class StepperHelper {
               ),
         ),
         iconWidget: Icon(
-          activeStep >= 2 ? Icons.check_circle : Icons.circle,
-          color: activeStep >= 2 ? AppColors.primary : AppColors.gray,
-          size: activeStep >= 2 ? 20 : 15,
+          activeStep >= 3 ? Icons.check_circle : Icons.circle,
+          color: activeStep >= 3 ? AppColors.primary : AppColors.gray,
+          size: activeStep >= 3 ? 20 : 15,
         ),
       ),
     ];
