@@ -17,9 +17,6 @@ Future<void> showChangePasswordDialog({
   TextEditingController oldPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmNewPasswordController = TextEditingController();
-  final FocusNode oldPasswordFocusNode = FocusNode();
-  final FocusNode newPasswordFocusNode = FocusNode();
-  final FocusNode confirmNewPasswordFocusNode = FocusNode();
 
   Widget buildOldPasswordField(BuildContext context) {
     return TextFormField(
@@ -218,7 +215,8 @@ Future<void> showChangePasswordDialog({
                                                       )
                                                     : Icon(
                                                         Icons.warning,
-                                                        color: Colors.red,
+                                                        color:
+                                                            AppColors.darkRed,
                                                       ),
                                               );
                                             });
@@ -229,7 +227,7 @@ Future<void> showChangePasswordDialog({
                                               title: "wrong_password_msg".tr(),
                                               icon: Icon(
                                                 Icons.warning,
-                                                color: Colors.red,
+                                                color: AppColors.darkRed,
                                               ),
                                             );
                                           }
@@ -285,10 +283,6 @@ Future<void> showChangePasswordDialog({
                                                     color: Colors.red,
                                                   ),
                                                 );
-                                                // AppMessages.showError(
-                                                //     message:
-                                                //         "كلمة السر غير صحيحة");
-                                                // }
                                               }
                                             }
                                           },

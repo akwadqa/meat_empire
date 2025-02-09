@@ -120,94 +120,123 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
       final asyncOrdersO = ref.watch(myOrdersControllerProvider("O"));
       final asyncOrdersA = ref.watch(myOrdersControllerProvider("A"));
 
-      return asyncOrdersO.when(
-        data: (ordersO) {
-          return asyncOrdersA.when(
-            data: (ordersA) {
-              // Combine and sort orders by orderId (biggest first)
-              final allOrders = [...ordersO.orders, ...ordersA.orders]..sort(
-                  (a, b) => int.parse(b.orderId)
-                      .compareTo(int.parse(a.orderId))); // Sort descending
-
-              return AppPaginationWidget(
-                onLoading: (page) async {
-                  await ref
-                      .read(myOrdersControllerProvider("A").notifier)
-                      .loadMore("A", page);
-                  return await ref
-                      .read(myOrdersControllerProvider("O").notifier)
-                      .loadMore("O", page);
-                },
-                child: allOrders.isEmpty
-                    ? AppEmptyDataWidget(text: "no_orders_message")
-                    : ListView.builder(
-                        itemCount: allOrders.length,
-                        itemBuilder: (context, index) {
-                          final order = allOrders[index];
-                          return OrderCardWidget(order: order);
-                        },
-                      ),
-              );
-            },
-            loading: () => FadeCircleLoadingIndicator(),
-            error: (error, stackTrace) => AppErrorWidget(),
-          );
+      return RefreshIndicator(
+        onRefresh: () async {
+          await _refreshOrders(ref, ["O", "A"]);
         },
-        loading: () => FadeCircleLoadingIndicator(),
-        error: (error, stackTrace) => AppErrorWidget(),
+        child: asyncOrdersO.when(
+          data: (ordersO) {
+            return asyncOrdersA.when(
+              data: (ordersA) {
+                // Combine and sort orders by orderId (biggest first)
+                final allOrders = [...ordersO.orders, ...ordersA.orders]..sort(
+                    (a, b) => int.parse(b.orderId)
+                        .compareTo(int.parse(a.orderId))); // Sort descending
+
+                return AppPaginationWidget(
+                  onLoading: (page) async {
+                    await ref
+                        .read(myOrdersControllerProvider("A").notifier)
+                        .loadMore("A", page);
+                    return await ref
+                        .read(myOrdersControllerProvider("O").notifier)
+                        .loadMore("O", page);
+                  },
+                  child: allOrders.isEmpty
+                      ? AppEmptyDataWidget(text: "no_orders_message")
+                      : ListView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemCount: allOrders.length,
+                          itemBuilder: (context, index) {
+                            final order = allOrders[index];
+                            return OrderCardWidget(order: order);
+                          },
+                        ),
+                );
+              },
+              loading: () => FadeCircleLoadingIndicator()
+                  .onlyPadding(top: MediaQuery.sizeOf(context).width / 1.2),
+              error: (error, stackTrace) => AppErrorWidget(),
+            );
+          },
+          loading: () => FadeCircleLoadingIndicator()
+              .onlyPadding(top: MediaQuery.sizeOf(context).width / 1.2),
+          error: (error, stackTrace) => AppErrorWidget(),
+        ),
       );
     });
   }
 
   Widget _buildCompletedOrdersView(BuildContext context,
       AsyncValue<OrdersResponse> Function(String? status) asyncData) {
-    return asyncData("C").when(
-      data: (data) {
-        return AppPaginationWidget(
-          onLoading: (page) => ref
-              .read(myOrdersControllerProvider("C").notifier)
-              .loadMore("C", page),
-          child: data.orders.isEmpty
-              ? AppEmptyDataWidget(text: "no_orders_message")
-              : ListView.builder(
-                  itemCount: data.orders.length,
-                  itemBuilder: (context, index) {
-                    final order = data.orders[index];
-                    return OrderCardWidget(
-                      order: order,
-                    );
-                  },
-                ),
-        );
+    return RefreshIndicator(
+      onRefresh: () async {
+        await _refreshOrders(ref, ["C"]);
       },
-      loading: () => FadeCircleLoadingIndicator(),
-      error: (error, stackTrace) => AppErrorWidget(),
+      child: asyncData("C").when(
+        data: (data) {
+          return AppPaginationWidget(
+            onLoading: (page) => ref
+                .read(myOrdersControllerProvider("C").notifier)
+                .loadMore("C", page),
+            child: data.orders.isEmpty
+                ? AppEmptyDataWidget(text: "no_orders_message")
+                : ListView.builder(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: data.orders.length,
+                    itemBuilder: (context, index) {
+                      final order = data.orders[index];
+                      return OrderCardWidget(
+                        order: order,
+                      );
+                    },
+                  ),
+          );
+        },
+        loading: () => FadeCircleLoadingIndicator()
+            .onlyPadding(top: MediaQuery.sizeOf(context).width / 1.2),
+        error: (error, stackTrace) => AppErrorWidget(),
+      ),
     );
   }
 
   Widget _buildCanceledOrdersView(BuildContext context,
       AsyncValue<OrdersResponse> Function(String? status) asyncData) {
-    return asyncData("I").when(
-      data: (data) {
-        return AppPaginationWidget(
-          onLoading: (page) => ref
-              .read(myOrdersControllerProvider("I").notifier)
-              .loadMore("I", page),
-          child: data.orders.isEmpty
-              ? AppEmptyDataWidget(text: "no_orders_message")
-              : ListView.builder(
-                  itemCount: data.orders.length,
-                  itemBuilder: (context, index) {
-                    final order = data.orders[index];
-                    return OrderCardWidget(
-                      order: order,
-                    );
-                  },
-                ),
-        );
+    return RefreshIndicator(
+      onRefresh: () async {
+        await _refreshOrders(ref, ["I"]);
       },
-      loading: () => FadeCircleLoadingIndicator(),
-      error: (error, stackTrace) => AppErrorWidget(),
+      child: asyncData("I").when(
+        data: (data) {
+          return AppPaginationWidget(
+            onLoading: (page) => ref
+                .read(myOrdersControllerProvider("I").notifier)
+                .loadMore("I", page),
+            child: data.orders.isEmpty
+                ? AppEmptyDataWidget(text: "no_orders_message")
+                : ListView.builder(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: data.orders.length,
+                    itemBuilder: (context, index) {
+                      final order = data.orders[index];
+                      return OrderCardWidget(
+                        order: order,
+                      );
+                    },
+                  ),
+          );
+        },
+        loading: () => FadeCircleLoadingIndicator()
+            .onlyPadding(top: MediaQuery.sizeOf(context).width / 1.2),
+        error: (error, stackTrace) => AppErrorWidget(),
+      ),
     );
+  }
+
+// Function to refresh orders
+  Future<void> _refreshOrders(WidgetRef ref, List<String> statuses) async {
+    for (var status in statuses) {
+      ref.invalidate(myOrdersControllerProvider(status));
+    }
   }
 }

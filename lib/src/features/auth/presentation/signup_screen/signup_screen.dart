@@ -192,7 +192,7 @@ class _SignupScreenState extends State<SignupScreen> {
   void _showDialog() {
     showCustomDialog(
       context: context,
-      title: context.tr('welcomeBack'),
+      title: context.tr('createAccountWelcomeBack'),
       icon: Assets.icons.markIcon.svg(),
     );
   }

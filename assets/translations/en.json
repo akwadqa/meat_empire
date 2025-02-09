@@ -42,7 +42,8 @@
     "haveAccount": "Have an account?",
     "mustBeEightDigits": "Must be 8 digits",
     "qatariPhoneNumberValidator": "Qatari phone number must start with 3, 5, 6, or 7",
-    "welcomeBack": "Welcome Back!",
+    "welcomeBack": "Welcome Back",
+    "createAccountWelcomeBack": "Welcome to meat empire",
     "cartContent": "Cart Contents",
     "home": "Home",
     "logout": "Logout",
@@ -125,6 +126,6 @@
     "shipped": "Delivered",
     "shipped_desc": "Your order was delivered successfully",
     "cartUnAuthDesc": "Log in, discover our products and enjoy shopping.",
-    "area" : "Area",
+    "area": "Area",
     "variantError": "Please select a variant for all options."
 }
