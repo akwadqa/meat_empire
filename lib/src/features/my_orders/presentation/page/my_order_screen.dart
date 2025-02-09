@@ -67,7 +67,6 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
             indicatorColor: AppColors.primary,
             indicatorWeight: 0.4,
             indicatorSize: TabBarIndicatorSize.tab,
-            // indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
             indicator: BoxDecoration(
                 border: Border(
               bottom: BorderSide(
@@ -79,7 +78,6 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
             dividerColor: Colors.grey[600],
             padding: const EdgeInsets.symmetric(horizontal: 10),
             controller: _tabController,
-
             tabs: [
               Tab(
                   child: Text(context.tr("processing"),
@@ -233,7 +231,6 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
     );
   }
 
-// Function to refresh orders
   Future<void> _refreshOrders(WidgetRef ref, List<String> statuses) async {
     for (var status in statuses) {
       ref.invalidate(myOrdersControllerProvider(status));
