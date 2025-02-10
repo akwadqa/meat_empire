@@ -18,26 +18,30 @@ class OrderCardHeader extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(
+            _buildCardText(
+              context,
               context.tr("order_number", args: [order.orderId]),
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: AppColors.black900,
-                    fontSize: 14,
-                  ),
             ),
             const Spacer(),
             OrderStatus(orderStatus: order.status),
           ],
         ),
         6.verticalSpace,
-        Text(
+        _buildCardText(
+          context,
           context.tr("order_date", args: [order.orderDate]),
-          style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: AppColors.black900,
-                fontSize: 14,
-              ),
-        ),
+        )
       ],
     ).symmetricPadding(horizontal: 8);
+  }
+
+  Widget _buildCardText(BuildContext context, String title) {
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.labelMedium!.copyWith(
+            color: AppColors.black900,
+            fontSize: 14,
+          ),
+    );
   }
 }

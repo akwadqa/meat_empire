@@ -11,16 +11,12 @@ part 'orders_response.g.dart';
 class OrdersResponse with _$OrdersResponse {
   const factory OrdersResponse({
     required List<OrdersEntity> orders,
-    @JsonKey(name: "order_statuses") // Custom parsing logic will handle this
-    required List<OrderStatuses>
-        orderStatuses, // Custom parsing logic will handle this
+    @JsonKey(name: "order_statuses") required List<OrderStatuses> orderStatuses,
     required String message,
     required bool success,
   }) = _OrdersResponse;
 
-  /// Custom fromJson method
   factory OrdersResponse.fromJson(Map<String, dynamic> json) {
-    // Determine the key based on your condition (e.g., isUpdate)
     return _$OrdersResponseFromJson(json);
   }
 }

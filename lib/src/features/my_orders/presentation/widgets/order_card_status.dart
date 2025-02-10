@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class OrderStatus extends StatelessWidget {
@@ -25,10 +26,7 @@ class OrderStatus extends StatelessWidget {
         repeat: true,
         reverse: false,
         errorBuilder: (context, error, stackTrace) {
-          return Text(
-            'Animation Load Error',
-            style: TextStyle(color: Colors.red, fontSize: 16),
-          );
+          return Icon(Icons.watch_later_outlined);
         },
       );
       statusText = "processing";
@@ -41,7 +39,7 @@ class OrderStatus extends StatelessWidget {
     return Row(
       children: [
         statusWidget,
-        const SizedBox(width: 4),
+        4.horizontalSpace,
         Text(
           statusText.tr(),
           style: Theme.of(context)

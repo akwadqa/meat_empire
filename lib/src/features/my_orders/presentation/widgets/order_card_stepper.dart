@@ -13,8 +13,7 @@ class OrderStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (orderDetails.shipments.isEmpty) {
-      return const SizedBox
-          .shrink(); // Return an empty widget if no shipments are available
+      return const SizedBox.shrink();
     }
     final lastShipmentStatus = orderDetails.shipments.isNotEmpty
         ? orderDetails.shipments.last.status
@@ -23,11 +22,13 @@ class OrderStepper extends StatelessWidget {
     final activeStep = StepperHelper.getActiveStep(lastShipmentStatus);
     return AnotherStepper(
       stepperList: StepperHelper.getStepperData(
-          context, activeStep), // Generate stepper dynamically
+        context,
+        activeStep,
+      ),
       stepperDirection: Axis.vertical,
       activeBarColor: AppColors.primary,
       inActiveBarColor: AppColors.lightGray02,
-      activeIndex: activeStep, // Set the active step index
+      activeIndex: activeStep,
       verticalGap: 28,
       iconWidth: 25,
       iconHeight: 18,

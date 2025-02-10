@@ -9,6 +9,7 @@ import 'package:meat_empire/src/features/my_orders/presentation/widgets/order_ca
 import 'package:meat_empire/src/shared_widgets/app_empty_data_widget.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/app_pagination_widget.dart';
+import 'package:meat_empire/src/shared_widgets/custom_back_arrow_widget.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
@@ -27,13 +28,11 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
   @override
   void initState() {
     super.initState();
-    // Initialize the TabController with 2 tabs
     _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
   void dispose() {
-    // Dispose the TabController to avoid memory leaks
     _tabController.dispose();
     super.dispose();
   }
@@ -43,16 +42,10 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
     asyncData(String? status) =>
         ref.watch(myOrdersControllerProvider(status ?? "C"));
     return DefaultTabController(
-      length: 3, // Number of tabs
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back_ios, color: Colors.black)
-                .onlyPadding(start: 20),
-          ),
+          leading: CustomBackArrowWidget(),
           title: Text(
             context.tr("my_orders"),
             style: Theme.of(context)
@@ -79,24 +72,9 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
             padding: const EdgeInsets.symmetric(horizontal: 10),
             controller: _tabController,
             tabs: [
-              Tab(
-                  child: Text(context.tr("processing"),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ))),
-              Tab(
-                  child: Text(context.tr("delivered"),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ))),
-              Tab(
-                  child: Text(context.tr("canceled"),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ))),
+              _buildTabHeader(context, "processing"),
+              _buildTabHeader(context, "delivered"),
+              _buildTabHeader(context, "canceled"),
             ],
           ),
         ),
@@ -110,6 +88,15 @@ class _MyOrdersScreenState extends ConsumerState<MyOrdersScreen>
         ),
       ),
     );
+  }
+
+  Widget _buildTabHeader(BuildContext contex, String title) {
+    return Tab(
+        child: Text(context.tr(title),
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                )));
   }
 
   Widget _buildProcessingOrdersView(BuildContext context,

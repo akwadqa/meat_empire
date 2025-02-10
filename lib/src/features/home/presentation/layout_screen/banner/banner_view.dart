@@ -40,10 +40,12 @@ class _BannerImage extends StatelessWidget {
       child: Container(
         height: 156,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            image: DecorationImage(
-                image: CachedNetworkImageProvider(banner.imagePath),
-                fit: BoxFit.fitWidth)),
+          borderRadius: BorderRadius.circular(4),
+          image: DecorationImage(
+            image: CachedNetworkImageProvider(banner.imagePath),
+            fit: BoxFit.fitWidth,
+          ),
+        ),
       ),
     );
   }

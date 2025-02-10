@@ -15,9 +15,7 @@ class OrderProduct with _$OrderProduct {
     required int amount,
   }) = _OrderProduct;
 
-  /// Custom fromJson method
   factory OrderProduct.fromJson(Map<String, dynamic> json) {
-    // Determine the key based on your condition (e.g., isUpdate)
     return _$OrderProductFromJson(json);
   }
 }

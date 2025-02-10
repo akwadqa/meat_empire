@@ -10,16 +10,10 @@ part 'my_orders_controller.g.dart';
 class MyOrdersController extends _$MyOrdersController {
   @override
   FutureOr<OrdersResponse> build([String? status]) {
-    // Fetch initial orders based on status
+    //* Fetch initial orders based on status
+
     return ref.watch(myOrdersRepositoryProvider).getMyOrders(status ?? "C");
   }
-
-  /// Fetch orders based on a new status
-  // Future<void> fetchOrders(String status) async {
-  //   state = AsyncLoading();
-  //   final ordersRepository = ref.watch(myOrdersRepositoryProvider);
-  //   state = await AsyncValue.guard(() => ordersRepository.getMyOrders(status));
-  // }
 
   Future<bool> loadMore(String status, int page) async {
     final currentData = state.asData?.value;
@@ -36,10 +30,11 @@ class MyOrdersController extends _$MyOrdersController {
       debugPrint("No more orders to load.");
       return false;
     }
-
+//* It combines the two lists of orders (currentData?.orders and response.orders), removing any duplicate elements (because it uses a set)
     final allOrders =
         {...currentData?.orders ?? [], ...response.orders}.toList();
 
+//* WHEN GET DATA FOR FRST TIME CURRENT DATA IS BE NULL
     state = AsyncValue.data(currentData != null
         ? currentData.copyWith(orders: allOrders)
         : response);
@@ -49,13 +44,8 @@ class MyOrdersController extends _$MyOrdersController {
     return true;
   }
 
-// create function for get order details just for orders have status O
   Future<OrderDetails?> getOrderDetails(int orderId) async {
-    // if (status == "O") {
-    // state = AsyncLoading();
     final ordersRepository = ref.watch(myOrdersRepositoryProvider);
-    // state = await AsyncValue.guard(() => ordersRepository.getOrderDetails(orderId));
     return await ordersRepository.getOrderDetails(orderId);
-    // }
   }
 }

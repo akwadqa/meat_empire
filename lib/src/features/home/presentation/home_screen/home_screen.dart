@@ -300,12 +300,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// void selectedCategoryType() {
-//               context.router.replaceAll([CategoriesRoute()]);
-//               ref
-//                   .read(selectedCategoryProvider.notifier)
-//                   .setCategory(categories[i - 1].categoryId);
-//             }
 class BottomNavItem extends StatelessWidget {
   final Widget icon;
   final String label;

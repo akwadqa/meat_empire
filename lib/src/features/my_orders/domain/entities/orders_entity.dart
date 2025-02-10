@@ -9,7 +9,6 @@ part 'orders_entity.g.dart';
 )
 class OrdersEntity with _$OrdersEntity {
   const factory OrdersEntity({
-    // Custom parsing logic will handle this
     @JsonKey(name: "order_id") required String orderId,
     @JsonKey(name: "timestamp") required String orderDate,
     @JsonKey(name: "total") required String orderTotalCost,
@@ -18,9 +17,7 @@ class OrdersEntity with _$OrdersEntity {
     required List<OrderProduct> products,
   }) = _OrdersEntity;
 
-  /// Custom fromJson method
   factory OrdersEntity.fromJson(Map<String, dynamic> json) {
-    // Determine the key based on your condition (e.g., isUpdate)
     return _$OrdersEntityFromJson(json);
   }
 }
