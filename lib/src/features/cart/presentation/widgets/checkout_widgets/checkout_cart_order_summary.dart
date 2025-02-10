@@ -13,7 +13,6 @@ class CheckoutCartOrderSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final cartDetails = cart.cart!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:meat_empire/src/features/cart/data/payment_repository.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';
@@ -5,6 +6,7 @@ import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_pa
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/payment_screen/payment_web_view.dart';
 import 'package:meat_empire/src/features/cart/presentation/payment_screen/success_payment_screen.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -26,7 +28,7 @@ class PaymentController extends _$PaymentController {
       if (paymentResponse.redirectUrl != null) {
         openWebView(paymentResponse, context, cart);
       } else if (paymentResponse.success == true) {
-        debugPrint('Payment successful!');
+        debugPrint('//////****** PAYMENT SUCCESSFULY! *********////////');
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -37,7 +39,6 @@ class PaymentController extends _$PaymentController {
           ),
         );
       } else {
-        // Handle the failure case
         showErrorMessage(paymentResponse.message ?? 'Payment failed!', context);
       }
 
@@ -56,9 +57,7 @@ class PaymentController extends _$PaymentController {
     );
   }
 
-// Function to display an error message
   void showErrorMessage(String message, BuildContext context) {
-    // Add your error message implementation here
     showCustomDialog(
         context: context,
         title: message,

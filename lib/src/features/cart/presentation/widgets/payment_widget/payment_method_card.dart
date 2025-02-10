@@ -31,8 +31,7 @@ class PaymentMethodFormField extends FormField<int> {
 class _PaymentMethodField extends StatelessWidget {
   final FormFieldState<int> state;
   final List<PaymentInfoEntity> payments;
-  final ValueChanged<PaymentInfoEntity>?
-      onChange; // Callback for selected payment
+  final ValueChanged<PaymentInfoEntity>? onChange;
 
   const _PaymentMethodField({
     required this.state,
@@ -44,14 +43,12 @@ class _PaymentMethodField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Title
         Text(
           "payment_method".tr(),
           style:
               Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 16),
         ).onlyPadding(start: 12),
         2.verticalSpace,
-
         Column(
           children: payments.asMap().entries.map((entry) {
             final index = entry.key;
@@ -80,8 +77,6 @@ class _PaymentMethodField extends StatelessWidget {
                             width: 1,
                           ),
                           borderRadius: BorderRadius.circular(8),
-                          // color:
-                          //     isSelected ? AppColors.primarySwatch[50] : Colors.white,
                         ),
                         child: ListTile(
                           contentPadding: EdgeInsets.zero,
@@ -126,8 +121,6 @@ class _PaymentMethodField extends StatelessWidget {
             );
           }).toList(),
         ),
-
-        // Error Message
         if (state.hasError)
           Padding(
             padding: const EdgeInsets.only(top: 8.0),

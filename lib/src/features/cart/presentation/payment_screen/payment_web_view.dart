@@ -113,7 +113,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   Widget _buildLoadingIndicator() {
     return Center(
-      child: FadeCircleLoadingIndicator(), // Add your loading indicator here
+      child: FadeCircleLoadingIndicator(),
     );
   }
 
