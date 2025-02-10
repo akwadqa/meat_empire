@@ -17,7 +17,7 @@ import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
-import '../../../account/presentation/widgets/custom_button_widget.dart';
+import '../../../../shared_widgets/custom_button_widget.dart';
 
 @RoutePage()
 class PaymentScreen extends ConsumerWidget {

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/auth/presentation/auth_button/auth_button.dart';
 import 'package:meat_empire/src/features/auth/presentation/email_text_form_field/email_text_form_field.dart';
 import 'package:meat_empire/src/features/auth/presentation/auth_controller/auth_controller.dart';
@@ -43,15 +44,15 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(height: 54),
+                54.verticalSpace,
                 Assets.images.loginImage.svg(),
-                SizedBox(height: 54),
+                54.verticalSpace,
                 EmailTextFormField(onSaved: (value) => _email = value),
-                SizedBox(height: 20),
+                20.verticalSpace,
                 PasswordTextField(
                     label: context.tr('password'),
                     onSaved: (value) => _password = value),
-                SizedBox(height: 54),
+                54.verticalSpace,
                 SizedBox(
                     width: double.infinity,
                     child: Consumer(builder:
@@ -80,16 +81,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(context.tr('login')));
                     })),
-                SizedBox(height: 24),
+                24.verticalSpace,
                 AuthText(text: context.tr('dontHaveAccount')),
-                SizedBox(height: 16),
+                16.verticalSpace,
                 SizedBox(
                   width: double.infinity,
                   child: AuthButton(
                       onPressed: () => context.replaceRoute(SignupRoute()),
                       text: context.tr('createAccount')),
                 ),
-                SizedBox(height: 54),
+                54.verticalSpace,
               ],
             ),
           ),

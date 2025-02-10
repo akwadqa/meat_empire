@@ -8,7 +8,7 @@ import 'package:meat_empire/src/features/account/domain/entites/user_profile.dar
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/add_new_address_book_widget.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/address_book_card_widget.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 class AddressBookWidget extends ConsumerWidget {

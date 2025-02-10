@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/cart_controller/cart_controller.dart';

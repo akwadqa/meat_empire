@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/auth/presentation/auth_text/auth_text.dart';
 import 'package:meat_empire/src/features/auth/presentation/email_text_form_field/email_text_form_field.dart';
 import 'package:meat_empire/src/features/auth/presentation/password_text_field/password_text_field.dart';
@@ -50,29 +51,29 @@ class _SignupScreenState extends State<SignupScreen> {
             key: _formKey,
             child: Column(
               children: [
-                const SizedBox(height: 54),
+                54.verticalSpace,
                 _buildHeader(context),
-                const SizedBox(height: 54),
+                54.verticalSpace,
                 _buildUserNameField(context),
-                const SizedBox(height: 20),
+                20.verticalSpace,
                 EmailTextFormField(onSaved: (value) => _email = value),
-                const SizedBox(height: 20),
+                20.verticalSpace,
                 _buildPhoneNumberField(context),
-                const SizedBox(height: 20),
+                20.verticalSpace,
                 PasswordTextField(
                   label: context.tr('password'),
                   onSaved: (value) => _password = value,
                 ),
-                const SizedBox(height: 20),
+                20.verticalSpace,
                 PasswordTextField(
                   label: context.tr('passwordConfirmation'),
                   onSaved: (value) => _confirmPassword = value,
                 ),
-                const SizedBox(height: 54),
+                54.verticalSpace,
                 _buildSubmitButton(context),
-                const SizedBox(height: 26),
+                26.verticalSpace,
                 AuthText(text: context.tr('haveAccount')),
-                const SizedBox(height: 16),
+                16.verticalSpace,
                 _buildLoginButton(context),
               ],
             ),

@@ -6,7 +6,7 @@ import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart'; // Ensure this is imported
 import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
 import 'package:meat_empire/src/routing/app_router.gr.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';

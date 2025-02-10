@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
-import 'package:meat_empire/src/features/account/presentation/widgets/custom_button_widget.dart';
+import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
