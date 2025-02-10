@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'theme/app_colors.dart';
 
-
-
 Future<void> showCustomDialog({
   required BuildContext context,
   required String title,
@@ -49,14 +47,13 @@ showErrorDialog(BuildContext context, String message) {
   return showCustomDialog(
     context: context,
     title: message,
-    icon: const Icon(
+    icon: Icon(
       Icons.error,
-      color: Colors.red,
+      color: AppColors.darkRed,
       size: 50,
     ),
   );
 }
-
 
 Future<void> showLanguageDialog({
   required BuildContext context,
@@ -108,7 +105,6 @@ Future<void> showLanguageDialog({
                   ),
                 ),
               ),
-              // 15.verticalSpace,
               GestureDetector(
                 onTap: () {
                   if (currentLanguage != 'en') {
@@ -118,7 +114,6 @@ Future<void> showLanguageDialog({
                 },
                 child: Container(
                   height: 65,
-                  // padding: const EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
                     color: currentLanguage == 'en'
                         ? AppColors.lightGray

@@ -40,7 +40,6 @@ Dio dio(Ref ref) {
   dio.interceptors.addAll({
     DioAppInterceptors(
       languageCode: languageCode,
-      // token: "Basic ZWUyY2NiZmNlNTQyMTMyMDYxM2Q1NDFjMDNhZjBmYmU6",
       token: userData?.$1,
       onUnauthorized: () {},
     ),

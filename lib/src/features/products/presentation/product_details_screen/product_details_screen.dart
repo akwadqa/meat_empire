@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/products/data/products_repository.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/product_details.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/products_block.dart';
@@ -74,14 +76,11 @@ class ProductDetailsView extends StatelessWidget {
               children: [
                 ProductBanner(
                     imageUrls: product.imageUrls, bannerHeight: bannerHeight),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ProductDetailsInfo(
-                    product: product,
-                    productsBlock: productsBlock,
-                    currency: currency,
-                  ),
-                ),
+                ProductDetailsInfo(
+                  product: product,
+                  productsBlock: productsBlock,
+                  currency: currency,
+                ).symmetricPadding(horizontal: 16.0),
               ],
             ),
           ),
@@ -144,16 +143,13 @@ class ProductBanner extends ConsumerWidget {
             end: 0,
             child: CarouselDotsIndicator(dotsCount: imageUrls.length),
           ),
-        const PositionedDirectional(
+        PositionedDirectional(
           start: 10,
           top: 20,
           child: AppCloseButton(
             width: 40,
             height: 40,
-            icon: Padding(
-              padding: EdgeInsetsDirectional.only(start: 4),
-              child: Icon(Icons.arrow_back_ios),
-            ),
+            icon: Icon(Icons.arrow_back_ios).onlyPadding(start: 4),
           ),
         ),
       ],
@@ -242,7 +238,7 @@ class ProductDetailsInfo extends StatelessWidget {
           },
         ),
         _ProductsBlockList(productsBlock: productsBlock),
-        SizedBox(height: 80)
+        80.verticalSpace
       ],
     );
   }
@@ -346,7 +342,7 @@ class _ProductsBlockList extends StatelessWidget {
           ],
         );
       },
-      separatorBuilder: (_, __) => const SizedBox(height: 20),
+      separatorBuilder: (_, __) => 20.verticalSpace,
       itemCount: productsBlock.length,
     );
   }

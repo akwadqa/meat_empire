@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 
 import '../../domain/product/product.dart';
 import 'product_card.dart';
@@ -18,7 +19,7 @@ class ProductsScrollerView extends StatelessWidget {
         itemCount: products.length,
         itemBuilder: (context, index) =>
             ProductCard(product: products[index], width: 140),
-        separatorBuilder: (_, __) => const SizedBox(width: 20),
+        separatorBuilder: (_, __) => 20.horizontalSpace,
       ),
     );
   }

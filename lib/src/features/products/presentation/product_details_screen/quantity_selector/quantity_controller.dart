@@ -5,10 +5,11 @@ part 'quantity_controller.g.dart';
 @riverpod
 class QuantityController extends _$QuantityController {
   @override
-  int build(
-      {required int initialQuantity,
-      required int minQuantity,
-      required int maxQuantity}) {
+  int build({
+    required int initialQuantity,
+    required int minQuantity,
+    required int maxQuantity,
+  }) {
     return initialQuantity;
   }
 

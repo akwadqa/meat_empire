@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 
 import '../../../../../theme/app_colors.dart';
@@ -21,7 +22,7 @@ class ProductOptionsList extends ConsumerWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (_, index) =>
           _OptionBlock(option: productOptions.options[index]),
-      separatorBuilder: (_, __) => const SizedBox(height: 20),
+      separatorBuilder: (_, __) => 20.verticalSpace,
       itemCount: productOptions.options.length,
     );
   }
@@ -42,7 +43,7 @@ class _OptionBlock extends StatelessWidget {
           style:
               Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 18),
         ),
-        const SizedBox(height: 16),
+        16.verticalSpace,
         _OptionVariantWrap(option: option),
       ],
     );

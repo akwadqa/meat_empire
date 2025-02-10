@@ -17,13 +17,14 @@ class SearchRepository {
 
   SearchRepository(this._networkService);
 
-  Future<SearchResponse> search(
-      {String? query,
-      String? categoryId,
-      String? sortBy,
-      String? sortOrder,
-      int itemsPerPage = 10,
-      int page = 1}) async {
+  Future<SearchResponse> search({
+    String? query,
+    String? categoryId,
+    String? sortBy,
+    String? sortOrder,
+    int itemsPerPage = 10,
+    int page = 1,
+  }) async {
     final Map<String, String> queryParams = {
       if (query != null) 'q': query,
       if (categoryId != null) 'category_id': categoryId,

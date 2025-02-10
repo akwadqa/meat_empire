@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 
 import '../../../../../theme/app_colors.dart';
 import 'quantity_controller.dart';
 
 class QuantitySelector extends ConsumerWidget {
-  const QuantitySelector(
-      {super.key,
-      required this.initialQuantity,
-      required this.minQuantity,
-      required this.maxQuantity});
+  const QuantitySelector({
+    super.key,
+    required this.initialQuantity,
+    required this.minQuantity,
+    required this.maxQuantity,
+  });
 
   final int initialQuantity;
   final int minQuantity;
@@ -41,17 +43,14 @@ class QuantitySelector extends ConsumerWidget {
               icon: const Icon(Icons.remove),
             ),
             const VerticalDivider(color: AppColors.mediumGray),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text(
-                quantity.toString(),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.primary,
-                ),
+            Text(
+              quantity.toString(),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: AppColors.primary,
               ),
-            ),
+            ).symmetricPadding(horizontal: 12),
             const VerticalDivider(color: AppColors.mediumGray),
             IconButton(
               onPressed: controller.increase,

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_grid_view.dart';
 import 'package:meat_empire/src/features/search/domain/search_response/sorting.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
@@ -33,30 +34,27 @@ class _SearchContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                flex: 6,
-                child: _SortingDropdown(categoryId),
-              ),
-              const Spacer(),
-              Expanded(
-                flex: 8,
-                child: _SearchField(categoryId),
-              ),
-            ],
-          ),
-          SizedBox(height: 26),
-          Expanded(
-            child: _ProductsGridView(categoryId),
-          ),
-        ],
-      ),
-    );
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 6,
+              child: _SortingDropdown(categoryId),
+            ),
+            const Spacer(),
+            Expanded(
+              flex: 8,
+              child: _SearchField(categoryId),
+            ),
+          ],
+        ),
+        SizedBox(height: 26),
+        Expanded(
+          child: _ProductsGridView(categoryId),
+        ),
+      ],
+    ).symmetricPadding(horizontal: 16);
   }
 }
 
@@ -97,6 +95,7 @@ class _SortingDropdown extends ConsumerWidget {
     final sortings = searchControllerAsync.asData?.value.sortings;
     return DropdownButtonFormField<Sorting>(
       isExpanded: true,
+      padding: EdgeInsets.symmetric(horizontal: 4),
       isDense: true,
       iconEnabledColor: Colors.white,
       style: const TextStyle(
@@ -128,7 +127,7 @@ class _SortingDropdown extends ConsumerWidget {
         context.tr('sortBy'),
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 16,
+          fontSize: 14,
           fontFamily: FontFamily.tajawal,
           fontWeight: FontWeight.w700,
         ),

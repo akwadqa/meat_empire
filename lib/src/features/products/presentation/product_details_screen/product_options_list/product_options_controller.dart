@@ -8,16 +8,16 @@ part 'product_options_controller.g.dart';
 class ProductOptionsController extends _$ProductOptionsController {
   @override
   List<SelectedOption> build() {
-    // Start with an empty list
+    //* Start with an empty list
     return [];
   }
 
   void selectVariant(int optionId, Variant variant) {
-    // Check if the option already exists in the state
+    //* Check if the option already exists in the state
     final optionExists = state.any((option) => option.optionId == optionId);
 
     if (optionExists) {
-      // Update the existing option
+      //* Update the existing option
       state = [
         for (final option in state)
           if (option.optionId == optionId)
@@ -27,7 +27,7 @@ class ProductOptionsController extends _$ProductOptionsController {
             option,
       ];
     } else {
-      // Add a new SelectedOption to the list
+      //* Add a new SelectedOption to the list
       state = [
         ...state,
         SelectedOption(

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/products/domain/product/product.dart';
 
 import '../../../home/domain/home/layout.dart';
@@ -31,7 +32,7 @@ class ProductsView extends StatelessWidget {
               ),
             ],
           ),
-        const SizedBox(height: 10),
+        10.verticalSpace,
         if (layout.viewType == 'scroller')
           ProductsScrollerView(products: products)
         else

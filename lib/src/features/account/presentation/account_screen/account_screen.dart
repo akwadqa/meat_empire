@@ -42,9 +42,7 @@ class AccountScreen extends ConsumerWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             50.verticalSpace,
             Directionality(
-              textDirection:
-                  userProfile.firstname.textDirection, // Using the extension
-
+              textDirection: userProfile.firstname.textDirection,
               child: Text(userProfile.firstname,
                   textAlign: userProfile.firstname.textAlignment,
                   style: Theme.of(context)
@@ -84,13 +82,6 @@ class AccountScreen extends ConsumerWidget {
               title: "address_book",
               icon: Assets.icons.orderIcon.svg(),
             ),
-            // AccountCardsWidget(
-            //   onTap: () {
-            //     showPaymentInformationDialog(context: context);
-            //   },
-            //   title: "payment_information",
-            //   icon: Assets.icons.cashStackIcon.svg(),
-            // ),
             AccountCardsWidget(
               title: "my_orders",
               icon: Assets.icons.cardChecklistIcon.svg(),
@@ -114,13 +105,9 @@ class AccountScreen extends ConsumerWidget {
                 );
               },
             ),
-            // Spacer(),
             60.verticalSpace,
             LogoutButtonWidget(),
             Spacer(),
-
-            // 150.verticalSpace,
-            // Spacer(),
           ]),
         ),
       ),
