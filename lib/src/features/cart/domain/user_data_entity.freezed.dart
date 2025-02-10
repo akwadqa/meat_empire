@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_data.dart';
+part of 'user_data_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserData _$UserDataFromJson(Map<String, dynamic> json) {
-  return _UserData.fromJson(json);
+UserDataEntity _$UserDataEntityFromJson(Map<String, dynamic> json) {
+  return _UserDataEntity.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserData {
+mixin _$UserDataEntity {
   String? get userId => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get userType => throw _privateConstructorUsedError;
@@ -80,17 +80,18 @@ mixin _$UserData {
   String? get sStateDescr => throw _privateConstructorUsedError;
   int? get points => throw _privateConstructorUsedError;
 
-  /// Create a copy of UserData
+  /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserDataCopyWith<UserData> get copyWith =>
+  $UserDataEntityCopyWith<UserDataEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserDataCopyWith<$Res> {
-  factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
-      _$UserDataCopyWithImpl<$Res, UserData>;
+abstract class $UserDataEntityCopyWith<$Res> {
+  factory $UserDataEntityCopyWith(
+          UserDataEntity value, $Res Function(UserDataEntity) then) =
+      _$UserDataEntityCopyWithImpl<$Res, UserDataEntity>;
   @useResult
   $Res call(
       {String? userId,
@@ -155,16 +156,16 @@ abstract class $UserDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
-    implements $UserDataCopyWith<$Res> {
-  _$UserDataCopyWithImpl(this._value, this._then);
+class _$UserDataEntityCopyWithImpl<$Res, $Val extends UserDataEntity>
+    implements $UserDataEntityCopyWith<$Res> {
+  _$UserDataEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserData
+  /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -471,11 +472,11 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
 }
 
 /// @nodoc
-abstract class _$$UserDataImplCopyWith<$Res>
-    implements $UserDataCopyWith<$Res> {
-  factory _$$UserDataImplCopyWith(
-          _$UserDataImpl value, $Res Function(_$UserDataImpl) then) =
-      __$$UserDataImplCopyWithImpl<$Res>;
+abstract class _$$UserDataEntityImplCopyWith<$Res>
+    implements $UserDataEntityCopyWith<$Res> {
+  factory _$$UserDataEntityImplCopyWith(_$UserDataEntityImpl value,
+          $Res Function(_$UserDataEntityImpl) then) =
+      __$$UserDataEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -541,14 +542,14 @@ abstract class _$$UserDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UserDataImplCopyWithImpl<$Res>
-    extends _$UserDataCopyWithImpl<$Res, _$UserDataImpl>
-    implements _$$UserDataImplCopyWith<$Res> {
-  __$$UserDataImplCopyWithImpl(
-      _$UserDataImpl _value, $Res Function(_$UserDataImpl) _then)
+class __$$UserDataEntityImplCopyWithImpl<$Res>
+    extends _$UserDataEntityCopyWithImpl<$Res, _$UserDataEntityImpl>
+    implements _$$UserDataEntityImplCopyWith<$Res> {
+  __$$UserDataEntityImplCopyWithImpl(
+      _$UserDataEntityImpl _value, $Res Function(_$UserDataEntityImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserData
+  /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -613,7 +614,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? sStateDescr = freezed,
     Object? points = freezed,
   }) {
-    return _then(_$UserDataImpl(
+    return _then(_$UserDataEntityImpl(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -856,8 +857,8 @@ class __$$UserDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$UserDataImpl implements _UserData {
-  _$UserDataImpl(
+class _$UserDataEntityImpl implements _UserDataEntity {
+  _$UserDataEntityImpl(
       {this.userId,
       this.status,
       this.userType,
@@ -919,8 +920,8 @@ class _$UserDataImpl implements _UserData {
       this.points})
       : _fields = fields;
 
-  factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserDataImplFromJson(json);
+  factory _$UserDataEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserDataEntityImplFromJson(json);
 
   @override
   final String? userId;
@@ -1051,14 +1052,14 @@ class _$UserDataImpl implements _UserData {
 
   @override
   String toString() {
-    return 'UserData(userId: $userId, status: $status, userType: $userType, userLogin: $userLogin, referer: $referer, isRoot: $isRoot, companyId: $companyId, lastActivity: $lastActivity, timestamp: $timestamp, password: $password, salt: $salt, firstname: $firstname, lastname: $lastname, company: $company, email: $email, phone: $phone, fax: $fax, url: $url, taxExempt: $taxExempt, langCode: $langCode, birthday: $birthday, purchaseTimestampFrom: $purchaseTimestampFrom, purchaseTimestampTo: $purchaseTimestampTo, responsibleEmail: $responsibleEmail, passwordChangeTimestamp: $passwordChangeTimestamp, apiKey: $apiKey, helpdeskUserId: $helpdeskUserId, janrainIdentifier: $janrainIdentifier, profileId: $profileId, profileType: $profileType, bFirstname: $bFirstname, bLastname: $bLastname, bAddress: $bAddress, bAddress2: $bAddress2, bCity: $bCity, bCounty: $bCounty, bState: $bState, bCountry: $bCountry, bZipcode: $bZipcode, bPhone: $bPhone, sFirstname: $sFirstname, sLastname: $sLastname, sAddress: $sAddress, sAddress2: $sAddress2, sCity: $sCity, sCounty: $sCounty, sState: $sState, sCountry: $sCountry, sZipcode: $sZipcode, sPhone: $sPhone, sAddressType: $sAddressType, profileName: $profileName, profileUpdateTimestamp: $profileUpdateTimestamp, fields: $fields, bCountryDescr: $bCountryDescr, sCountryDescr: $sCountryDescr, bStateDescr: $bStateDescr, sStateDescr: $sStateDescr, points: $points)';
+    return 'UserDataEntity(userId: $userId, status: $status, userType: $userType, userLogin: $userLogin, referer: $referer, isRoot: $isRoot, companyId: $companyId, lastActivity: $lastActivity, timestamp: $timestamp, password: $password, salt: $salt, firstname: $firstname, lastname: $lastname, company: $company, email: $email, phone: $phone, fax: $fax, url: $url, taxExempt: $taxExempt, langCode: $langCode, birthday: $birthday, purchaseTimestampFrom: $purchaseTimestampFrom, purchaseTimestampTo: $purchaseTimestampTo, responsibleEmail: $responsibleEmail, passwordChangeTimestamp: $passwordChangeTimestamp, apiKey: $apiKey, helpdeskUserId: $helpdeskUserId, janrainIdentifier: $janrainIdentifier, profileId: $profileId, profileType: $profileType, bFirstname: $bFirstname, bLastname: $bLastname, bAddress: $bAddress, bAddress2: $bAddress2, bCity: $bCity, bCounty: $bCounty, bState: $bState, bCountry: $bCountry, bZipcode: $bZipcode, bPhone: $bPhone, sFirstname: $sFirstname, sLastname: $sLastname, sAddress: $sAddress, sAddress2: $sAddress2, sCity: $sCity, sCounty: $sCounty, sState: $sState, sCountry: $sCountry, sZipcode: $sZipcode, sPhone: $sPhone, sAddressType: $sAddressType, profileName: $profileName, profileUpdateTimestamp: $profileUpdateTimestamp, fields: $fields, bCountryDescr: $bCountryDescr, sCountryDescr: $sCountryDescr, bStateDescr: $bStateDescr, sStateDescr: $sStateDescr, points: $points)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserDataImpl &&
+            other is _$UserDataEntityImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userType, userType) ||
@@ -1222,17 +1223,18 @@ class _$UserDataImpl implements _UserData {
         points
       ]);
 
-  /// Create a copy of UserData
+  /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
-      __$$UserDataImplCopyWithImpl<_$UserDataImpl>(this, _$identity);
+  _$$UserDataEntityImplCopyWith<_$UserDataEntityImpl> get copyWith =>
+      __$$UserDataEntityImplCopyWithImpl<_$UserDataEntityImpl>(
+          this, _$identity);
 }
 
-abstract class _UserData implements UserData {
-  factory _UserData(
+abstract class _UserDataEntity implements UserDataEntity {
+  factory _UserDataEntity(
       {final String? userId,
       final String? status,
       final String? userType,
@@ -1291,10 +1293,10 @@ abstract class _UserData implements UserData {
       final String? sCountryDescr,
       final String? bStateDescr,
       final String? sStateDescr,
-      final int? points}) = _$UserDataImpl;
+      final int? points}) = _$UserDataEntityImpl;
 
-  factory _UserData.fromJson(Map<String, dynamic> json) =
-      _$UserDataImpl.fromJson;
+  factory _UserDataEntity.fromJson(Map<String, dynamic> json) =
+      _$UserDataEntityImpl.fromJson;
 
   @override
   String? get userId;
@@ -1415,10 +1417,10 @@ abstract class _UserData implements UserData {
   @override
   int? get points;
 
-  /// Create a copy of UserData
+  /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
+  _$$UserDataEntityImplCopyWith<_$UserDataEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

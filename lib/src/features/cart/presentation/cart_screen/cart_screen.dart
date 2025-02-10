@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
@@ -60,15 +61,15 @@ class CartBody extends ConsumerWidget {
         children: [
           if (products.isNotEmpty)
             _SuggestedProductsSection(products: products),
-          const SizedBox(height: 24),
+          24.verticalSpace,
           if (cartItems.isNotEmpty) _CartItemsSection(cartItems: cartItems),
-          const SizedBox(height: 24),
+          24.verticalSpace,
           _DiscountCouponSection(data.cart!),
-          const SizedBox(height: 24),
+          24.verticalSpace,
           _buildCartSummary(context, data),
-          const SizedBox(height: 45),
+          45.verticalSpace,
           _buildSubmetButton(context, data),
-          const SizedBox(height: 120),
+          120.verticalSpace,
         ],
       ),
     );
@@ -181,7 +182,7 @@ class _SuggestedProductsSection extends StatelessWidget {
                 .displaySmall!
                 .copyWith(fontSize: 18),
           ),
-          const SizedBox(height: 16),
+          16.verticalSpace,
           Container(
             height: 120,
             color: AppColors.lightGray01,
@@ -255,7 +256,7 @@ class _DiscountCouponSectionState
               context.tr('discountCoupon'),
               style: Theme.of(context).textTheme.displaySmall,
             ),
-            const SizedBox(height: 8),
+            8.verticalSpace,
             Row(
               children: [
                 Expanded(
@@ -339,7 +340,7 @@ class _CartItemsSection extends StatelessWidget {
             itemCount: cartItems.length,
             itemBuilder: (context, index) =>
                 _CartItem(cartItem: cartItems[index]),
-            separatorBuilder: (_, __) => const SizedBox(height: 16),
+            separatorBuilder: (_, __) => 16.verticalSpace,
             padding: const EdgeInsets.all(18),
             shrinkWrap: true,
           ),
@@ -381,7 +382,7 @@ class _CartItem extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _CartItemHeader(cartItem: cartItem),
-                    const SizedBox(height: 22),
+                    22.verticalSpace,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

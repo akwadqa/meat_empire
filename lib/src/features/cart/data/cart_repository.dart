@@ -21,11 +21,12 @@ class CartRepository {
         () => _networkService.get(EndPoints.cartApi),
       );
 
-  Future<CartResponse> addToCart(
-          {required int amount,
-          required int productId,
-          int? userId,
-          List<SelectedOption>? selectedOprions}) async =>
+  Future<CartResponse> addToCart({
+    required int amount,
+    required int productId,
+    int? userId,
+    List<SelectedOption>? selectedOprions,
+  }) async =>
       _processRequest(
         () => _networkService.post(EndPoints.cartApi, {
           if (userId != null) 'user_id': userId,
@@ -34,18 +35,20 @@ class CartRepository {
               'amount': amount,
               'product_id': productId,
               if (selectedOprions != null && selectedOprions.isNotEmpty)
-                'product_options': selectedOprions.map((e) => e.toJson()).toList()
+                'product_options':
+                    selectedOprions.map((e) => e.toJson()).toList()
             }
           ]
         }),
       );
 
-  Future<CartResponse> updateCart(
-          {int? productId,
-          int? amount,
-          int? itemId,
-          int? userId,
-          String? couponCode}) async =>
+  Future<CartResponse> updateCart({
+    int? productId,
+    int? amount,
+    int? itemId,
+    int? userId,
+    String? couponCode,
+  }) async =>
       _processRequest(
         () => _networkService.put('${EndPoints.cartApi}/1', {
           if (userId != null) 'user_id': userId,

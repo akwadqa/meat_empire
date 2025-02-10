@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_profile.dart';
+part of 'user_data_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserProfileImpl _$$UserProfileImplFromJson(Map<String, dynamic> json) =>
-    _$UserProfileImpl(
+_$UserDataEntityImpl _$$UserDataEntityImplFromJson(Map<String, dynamic> json) =>
+    _$UserDataEntityImpl(
       userId: json['user_id'] as String?,
       status: json['status'] as String?,
       userType: json['user_type'] as String?,

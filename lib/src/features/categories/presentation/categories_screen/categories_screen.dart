@@ -33,7 +33,7 @@ class IsExpandedCategoriesBar extends _$IsExpandedCategoriesBar {
   void toggleExpansion() => state = !state;
 }
 
-/// Main screen for displaying categories and search results
+//* Main screen for displaying categories and search results
 @RoutePage()
 class CategoriesScreen extends ConsumerWidget {
   const CategoriesScreen({super.key});
@@ -54,7 +54,7 @@ class CategoriesScreen extends ConsumerWidget {
     );
   }
 
-  /// Builds the main layout with categories and search results
+  //* Builds the main layout with categories and search results
   Widget _buildCategoriesLayout(
       BuildContext context, WidgetRef ref, dynamic home) {
     final categories = _extractCategories(home);
@@ -74,7 +74,7 @@ class CategoriesScreen extends ConsumerWidget {
     );
   }
 
-  /// Extracts categories from the home layout
+  //* Extracts categories from the home layout
   List<Category> _extractCategories(dynamic home) {
     return (home.layout.firstWhere((e) => e.type == 'categories').data
             as List<Object>)
@@ -82,7 +82,7 @@ class CategoriesScreen extends ConsumerWidget {
         .toList();
   }
 
-  /// Builds the categories list view
+  //* Builds the categories list view
   Widget _buildCategoriesList(WidgetRef ref, List<Category> categories) {
     final isExpanded = ref.watch(isExpandedCategoriesBarProvider);
 
@@ -104,7 +104,7 @@ class CategoriesScreen extends ConsumerWidget {
     );
   }
 
-  /// Builds an individual category item
+  //* Builds an individual category item
   Widget _buildCategoryItem(
       WidgetRef ref, int index, List<Category> categories) {
     final selectedCategoryId = ref.watch(selectedCategoryProvider);
@@ -127,7 +127,7 @@ class CategoriesScreen extends ConsumerWidget {
     );
   }
 
-  /// Builds the floating action button with toggle functionality
+  //* Builds the floating action button with toggle functionality
   Widget _buildFloatingActionButton(WidgetRef ref) {
     final isExpanded = ref.watch(isExpandedCategoriesBarProvider);
 

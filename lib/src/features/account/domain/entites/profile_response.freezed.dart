@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProfileResponse {
   @JsonKey(ignore: true)
-  UserProfile? get userProfile =>
-      throw _privateConstructorUsedError; // Nullable userProfile
+  UserProfile? get userProfile => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
@@ -155,7 +154,6 @@ class _$ProfileResponseImpl implements _ProfileResponse {
   @override
   @JsonKey(ignore: true)
   final UserProfile? userProfile;
-// Nullable userProfile
   @override
   final String message;
   @override
@@ -198,7 +196,7 @@ abstract class _ProfileResponse implements ProfileResponse {
 
   @override
   @JsonKey(ignore: true)
-  UserProfile? get userProfile; // Nullable userProfile
+  UserProfile? get userProfile;
   @override
   String get message;
   @override

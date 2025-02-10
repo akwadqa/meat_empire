@@ -59,7 +59,7 @@ mixin _$Product {
   String? get lastname => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  UserData? get userData => throw _privateConstructorUsedError;
+  UserDataEntity? get userData => throw _privateConstructorUsedError;
   int? get groupId => throw _privateConstructorUsedError;
   dynamic get chosenShipping => throw _privateConstructorUsedError;
   int? get mainCategory => throw _privateConstructorUsedError;
@@ -122,7 +122,7 @@ abstract class $ProductCopyWith<$Res> {
       String? lastname,
       String? phone,
       String? email,
-      UserData? userData,
+      UserDataEntity? userData,
       int? groupId,
       dynamic chosenShipping,
       int? mainCategory,
@@ -136,7 +136,7 @@ abstract class $ProductCopyWith<$Res> {
 
   $MainPairCopyWith<$Res>? get mainPair;
   $ExtraCopyWith<$Res>? get extra;
-  $UserDataCopyWith<$Res>? get userData;
+  $UserDataEntityCopyWith<$Res>? get userData;
 }
 
 /// @nodoc
@@ -365,7 +365,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       userData: freezed == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
+              as UserDataEntity?,
       groupId: freezed == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
@@ -441,12 +441,12 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserDataCopyWith<$Res>? get userData {
+  $UserDataEntityCopyWith<$Res>? get userData {
     if (_value.userData == null) {
       return null;
     }
 
-    return $UserDataCopyWith<$Res>(_value.userData!, (value) {
+    return $UserDataEntityCopyWith<$Res>(_value.userData!, (value) {
       return _then(_value.copyWith(userData: value) as $Val);
     });
   }
@@ -499,7 +499,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? lastname,
       String? phone,
       String? email,
-      UserData? userData,
+      UserDataEntity? userData,
       int? groupId,
       dynamic chosenShipping,
       int? mainCategory,
@@ -516,7 +516,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   $ExtraCopyWith<$Res>? get extra;
   @override
-  $UserDataCopyWith<$Res>? get userData;
+  $UserDataEntityCopyWith<$Res>? get userData;
 }
 
 /// @nodoc
@@ -743,7 +743,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       userData: freezed == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
+              as UserDataEntity?,
       groupId: freezed == groupId
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
@@ -952,7 +952,7 @@ class _$ProductImpl implements _Product {
   @override
   final String? email;
   @override
-  final UserData? userData;
+  final UserDataEntity? userData;
   @override
   final int? groupId;
   @override
@@ -1180,7 +1180,7 @@ abstract class _Product implements Product {
       final String? lastname,
       final String? phone,
       final String? email,
-      final UserData? userData,
+      final UserDataEntity? userData,
       final int? groupId,
       final dynamic chosenShipping,
       final int? mainCategory,
@@ -1273,7 +1273,7 @@ abstract class _Product implements Product {
   @override
   String? get email;
   @override
-  UserData? get userData;
+  UserDataEntity? get userData;
   @override
   int? get groupId;
   @override

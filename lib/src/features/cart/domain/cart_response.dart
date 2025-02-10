@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 
 import 'cart.dart';
-import 'user_profile.dart';
+// import 'user_profile.dart';
 
 part 'cart_response.freezed.dart';
 part 'cart_response.g.dart';

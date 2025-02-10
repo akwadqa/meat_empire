@@ -21,7 +21,7 @@ Future<void> showEditAccountInformationDialog({
 
   return showDialog(
     context: context,
-    barrierDismissible: false, // Prevent dismissing dialog by tapping outside
+    barrierDismissible: false,
     builder: (BuildContext context) {
       return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(), // Dismiss keyboard
@@ -88,7 +88,6 @@ Widget _buildDialogContent(
   );
 }
 
-/// **Builds the dialog header**
 Widget _buildDialogHeader(BuildContext context) {
   return Text(
     context.tr("edit_account_information"),
@@ -100,7 +99,6 @@ Widget _buildDialogHeader(BuildContext context) {
   ).centered();
 }
 
-/// **Builds labels for text fields**
 Widget _buildTextFieldLabel(BuildContext context, String labelKey) {
   return Text(
     labelKey.tr(),
@@ -109,7 +107,6 @@ Widget _buildTextFieldLabel(BuildContext context, String labelKey) {
   );
 }
 
-/// **Builds the user name input field**
 Widget _buildUserNameField(
     BuildContext context, TextEditingController controller) {
   return TextFormField(

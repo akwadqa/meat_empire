@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'extra.dart';
 import 'main_pair.dart';
 import 'product_option.dart';
-import 'user_data.dart';
+import 'user_data_entity.dart';
 
 part 'product.freezed.dart';
 part 'product.g.dart';
@@ -50,7 +50,7 @@ class Product with _$Product {
     String? lastname,
     String? phone,
     String? email,
-    UserData? userData,
+    UserDataEntity? userData,
     int? groupId,
     dynamic chosenShipping,
     int? mainCategory,
@@ -63,5 +63,6 @@ class Product with _$Product {
     String? wishlistId,
   }) = _Product;
 
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 }

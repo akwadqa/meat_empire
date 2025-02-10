@@ -57,10 +57,9 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
     );
   }
 
-  /// **Builds the semi-transparent background**
   Widget _buildDimBackground(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).pop(), // Close dialog
+      onTap: () => Navigator.of(context).pop(),
     );
   }
 

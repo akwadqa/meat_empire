@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 
 import '../../../../theme/app_colors.dart';
 
@@ -45,7 +46,7 @@ class CategoryItem extends StatelessWidget {
             width: width,
             child: image,
           ),
-          SizedBox(height: 14),
+          14.verticalSpace,
           Text(
             label,
             style: const TextStyle(

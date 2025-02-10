@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user_data.freezed.dart';
-part 'user_data.g.dart';
+part 'user_data_entity.freezed.dart';
+part 'user_data_entity.g.dart';
 
 @freezed
-class UserData with _$UserData {
-  factory UserData({
+class UserDataEntity with _$UserDataEntity {
+  factory UserDataEntity({
     String? userId,
     String? status,
     String? userType,
@@ -65,8 +65,8 @@ class UserData with _$UserData {
     String? bStateDescr,
     String? sStateDescr,
     int? points,
-  }) = _UserData;
+  }) = _UserDataEntity;
 
-  factory UserData.fromJson(Map<String, dynamic> json) =>
-      _$UserDataFromJson(json);
+  factory UserDataEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserDataEntityFromJson(json);
 }

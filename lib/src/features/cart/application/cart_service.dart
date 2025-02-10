@@ -16,11 +16,12 @@ class UpdateCartController extends _$UpdateCartController {
   @override
   FutureOr<void> build() {}
 
-  Future<void> addToCart(
-      {required BuildContext context,
-      required int amount,
-      required int productId,
-      List<SelectedOption>? selectedOprions}) async {
+  Future<void> addToCart({
+    required BuildContext context,
+    required int amount,
+    required int productId,
+    List<SelectedOption>? selectedOprions,
+  }) async {
     if (ref.read(isAuthinticatedProvider)) {
       state = AsyncLoading();
       state = await AsyncValue.guard(() async {

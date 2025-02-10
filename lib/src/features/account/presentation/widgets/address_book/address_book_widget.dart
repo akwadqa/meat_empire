@@ -25,14 +25,10 @@ class AddressBookWidget extends ConsumerWidget {
     final accountSyncData = ref.watch(accountControllerProvider);
     return checkout
         ? Column(
-            // mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildShippingLocationWidget(context, userProfile!, 260)
                   .symmetricPadding(horizontal: 20),
-              // 15.verticalSpace,
-              // _buildBillingLocationWidget(context, userProfile!, 260)
-              //     .symmetricPadding(horizontal: 20),
             ],
           )
         : _buildAddressBody(context, accountSyncData);
@@ -69,8 +65,6 @@ Widget _buildAddressBody(
                       _buildShippingLocationWidget(
                           context, accountSyncData.value!.userProfile!, null),
                       15.verticalSpace,
-                      // _buildBillingLocationWidget(context,
-                      //     accountSyncData.value!.userProfile!, null),
                     ],
                   ).symmetricPadding(vertical: 50, horizontal: 12),
                 ),
@@ -147,50 +141,6 @@ Widget _buildShippingLocationWidget(
           ],
         );
 }
-
-// Widget _buildBillingLocationWidget(
-//     BuildContext context, UserProfile userProfile, double? width) {
-//   return (userProfile.billingStrete!.isEmpty)
-//       ? CustomButtonWidget(
-//           text: "add_billing_location",
-//           backgroundColor: AppColors.green,
-//           onTap: () {
-//             showAddNewAddressBottomSheet(
-//               context: context,
-//               billMode: true,
-//               userProfile: userProfile,
-//             );
-//           },
-//           isFiled: true,
-//           height: 50,
-//           width: width ?? 230,
-//           radius: 8,
-//           topPading: 10,
-//         ).centered()
-//       : Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Text(context.tr("billing_location"),
-//                 style: Theme.of(context).textTheme.labelSmall!.copyWith(
-//                       color: AppColors.black900,
-//                       fontSize: 13,
-//                       fontWeight: FontWeight.w600,
-//                     )),
-//             8.verticalSpace,
-//             AddressBookCardWidget(
-//               title:
-//                   "${userProfile.bllingCity!} - ${userProfile.billingCountry!} - ${userProfile.billingStrete!} ${userProfile.billingBuildingNumber!.isNotEmpty ? "- ${userProfile.billingBuildingNumber}" : ""}",
-//               onTap: () {
-//                 showAddNewAddressBottomSheet(
-//                     context: context,
-//                     userProfile: userProfile,
-//                     billMode: true,
-//                     isEdit: true);
-//               },
-//             ),
-//           ],
-//         );
-// }
 
 Future<void> showAddressBookDialog({
   required BuildContext context,

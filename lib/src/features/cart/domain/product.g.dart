@@ -57,7 +57,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       userData: json['user_data'] == null
           ? null
-          : UserData.fromJson(json['user_data'] as Map<String, dynamic>),
+          : UserDataEntity.fromJson(json['user_data'] as Map<String, dynamic>),
       groupId: (json['group_id'] as num?)?.toInt(),
       chosenShipping: json['chosen_shipping'],
       mainCategory: (json['main_category'] as num?)?.toInt(),

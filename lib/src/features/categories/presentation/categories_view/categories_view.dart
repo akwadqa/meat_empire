@@ -10,7 +10,7 @@ import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import '../categories_screen/categories_screen.dart';
 import '../category_item/category_item.dart';
 
-/// A horizontal list of categories with a "View All" option.
+//* A horizontal list of categories with a "View All" option.
 class CategoriesView extends ConsumerWidget {
   const CategoriesView({super.key, required this.categories});
 
@@ -44,7 +44,7 @@ class CategoriesView extends ConsumerWidget {
     );
   }
 
-  /// Handles tapping on a category item.
+  //* Handles tapping on a category item.
   void _onCategoryTap(
       BuildContext context, WidgetRef ref, bool isAllCategory, int index) {
     context.router.replaceAll([CategoriesRoute()]);
