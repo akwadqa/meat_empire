@@ -26,16 +26,14 @@ class AccountRepository {
     throw AppException(profileResponse.message);
   }
 
-  // Update Profile
+  // UPDATE PROFILE DATA
   Future<ProfileResponse> updateProfile(UserProfile updatedProfile) async {
-    final updatedProfileData = {
-      'profile_data': updatedProfile.toJson() // Wrap in profile_data
-    };
+    final updatedProfileData = {'profile_data': updatedProfile.toJson()};
     debugPrint("TOJSON UPDATE PROFILE DATA${updatedProfileData.toString()}");
     final response = await _networkService.put(
-        EndPoints.profileApi(int.parse(updatedProfile.userId)),
-        updatedProfileData // Convert UserProfile to JSON
-        );
+      EndPoints.profileApi(int.parse(updatedProfile.userId)),
+      updatedProfileData,
+    );
     ProfileResponse profileResponse = ProfileResponse.fromJson(response.data);
     if (profileResponse.success) {
       return profileResponse;
@@ -50,7 +48,6 @@ FutureOr<ProfileResponse> account(Ref ref, int id) async {
   return profilesRepository.getProfile(id);
 }
 
-// Provider to update profile
 @riverpod
 FutureOr<ProfileResponse> updateAccount(
     Ref ref, UserProfile updatedProfile) async {

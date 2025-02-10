@@ -28,19 +28,19 @@ class AccountController extends _$AccountController {
 
         if (response.success) {
           state = AsyncData(response);
-          debugPrint("Profile updated successfully.");
+          debugPrint("//*** PROFILE UPDATED SUCCESSFULLY ***//");
           Navigator.pop(context);
         } else {
           state = AsyncData(currentState!);
         }
       } catch (e) {
         state = AsyncError(e, StackTrace.current);
-        debugPrint("Exception while updating profile: $e");
+        debugPrint("//*** Exception while updating profile: $e ***//");
 
         state = AsyncData(currentState!);
       }
     } else {
-      debugPrint("State is not ready for editing.");
+      debugPrint("//*** State is not ready for editing *//");
     }
   }
 }

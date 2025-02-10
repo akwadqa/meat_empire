@@ -8,15 +8,15 @@ part 'profile_response.freezed.dart';
 @freezed
 class ProfileResponse with _$ProfileResponse {
   const factory ProfileResponse({
-    @JsonKey(ignore: true)
-    required UserProfile? userProfile, // Nullable userProfile
+    @JsonKey(ignore: true) required UserProfile? userProfile,
     required String message,
     required bool success,
   }) = _ProfileResponse;
 
-  /// Custom fromJson method
   factory ProfileResponse.fromJson(Map<String, dynamic> json) {
-    // Determine the key based on your condition (e.g., isUpdate)
+    //****/
+    // WHEN GET DATA RETURN (user_profile) AND WHEN UPDATE DATE RETURN (profile)
+    //****/
     final userProfileKey =
         json.containsKey('user_profile') ? 'user_profile' : 'profile';
 
@@ -30,7 +30,7 @@ class ProfileResponse with _$ProfileResponse {
       }
     } catch (e) {
       debugPrint("Error parsing userProfile: $e");
-      userProfile = null; // Fallback to null on error
+      userProfile = null;
     }
 
     return _ProfileResponse(

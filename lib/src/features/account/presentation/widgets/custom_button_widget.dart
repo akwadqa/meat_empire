@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
-class CustomButtonWidget extends StatefulWidget {
+class CustomButtonWidget extends StatelessWidget {
   final String text;
   final Color? backgroundColor;
   final Color? color;
@@ -27,56 +27,29 @@ class CustomButtonWidget extends StatefulWidget {
   });
 
   @override
-  State<CustomButtonWidget> createState() => _CustomButtonWidgetState();
-}
-
-class _CustomButtonWidgetState extends State<CustomButtonWidget> {
-  late AnimationController _controller;
-  // final Duration _animationDuration = const Duration(milliseconds: 300);
-  // final Tween<double> _tween = Tween<double>(begin: 1.0, end: 0.95);
-  // @override
-  // void initState() {
-  //   _controller = AnimationController(
-  //     vsync: this,
-  //     duration: _animationDuration,
-  //   )..addListener(() {
-  //       setState(() {});
-  //     });
-  //   super.initState();
-  // }
-
-  // @override
-  // void dispose() {
-  //   _controller.dispose();
-  //   super.dispose();
-  // }
-
-  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           padding: EdgeInsets.zero,
-          backgroundColor: widget.backgroundColor ?? Colors.transparent,
+          backgroundColor: backgroundColor ?? Colors.transparent,
           foregroundColor: AppColors.black900,
           fixedSize: Size(
-            widget.width,
-            widget.height,
+            width,
+            height,
           ),
           shape: RoundedRectangleBorder(
               side: BorderSide(
-                  color: widget.color ??
-                      widget.backgroundColor ??
-                      Colors.transparent),
-              borderRadius: BorderRadius.circular(widget.radius ?? 25))),
+                  color: color ?? backgroundColor ?? Colors.transparent),
+              borderRadius: BorderRadius.circular(radius ?? 25))),
       onPressed: () {
-        widget.onTap();
+        onTap();
       },
-      child: Text(context.tr(widget.text),
+      child: Text(context.tr(text),
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
                   fontSize: 16,
-                  color: widget.isFiled ? Colors.white : Colors.black,
+                  color: isFiled ? Colors.white : Colors.black,
                   fontWeight: FontWeight.w500))
           .centered(),
-    ).onlyPadding(top: widget.topPading ?? 0);
+    ).onlyPadding(top: topPading ?? 0);
   }
 }

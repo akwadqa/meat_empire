@@ -82,7 +82,7 @@ class LocationFieldCheckboxWidget extends FormField<int> {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       state.errorText ?? '',
-                      style: TextStyle(color: Colors.red, fontSize: 12),
+                      style: TextStyle(color: AppColors.primary, fontSize: 12),
                     ),
                   ),
               ],

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/account/domain/entites/profile_response.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
 import 'package:meat_empire/src/features/account/presentation/controller/account_controller.dart';
 import 'package:meat_empire/src/features/account/presentation/widgets/address_book/add_new_address_book_widget.dart';
@@ -34,66 +35,68 @@ class AddressBookWidget extends ConsumerWidget {
               //     .symmetricPadding(horizontal: 20),
             ],
           )
-        : GestureDetector(
-            onTap: () {
-              // Dismiss keyboard when tapping outside
-              FocusScope.of(context).unfocus();
-            },
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).pop(), // Dismiss dialog
-                    child: Container(
-                      color: Colors.black.withOpacity(0.1), // Dim background
-                    ),
-                  ),
-                  Center(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: 320,
-                        // maxHeight: 440,
-                      ),
-                      child: Material(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 50, horizontal: 12),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(context.tr("address_book"),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall!
-                                        .copyWith(
-                                          color: AppColors.black900,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w800,
-                                        )).centered(),
-                                50.verticalSpace,
-                                _buildShippingLocationWidget(context,
-                                    accountSyncData.value!.userProfile!, null),
-                                15.verticalSpace,
-                                // _buildBillingLocationWidget(context,
-                                //     accountSyncData.value!.userProfile!, null),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+        : _buildAddressBody(context, accountSyncData);
+  }
+}
+
+Widget _buildAddressBody(
+    BuildContext context, AsyncValue<ProfileResponse> accountSyncData) {
+  return GestureDetector(
+    onTap: () {
+      FocusScope.of(context).unfocus();
+    },
+    child: Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        children: [
+          _buildDimBackground(context),
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: 320,
+              ),
+              child: Material(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildAddressHeader(context),
+                      50.verticalSpace,
+                      _buildShippingLocationWidget(
+                          context, accountSyncData.value!.userProfile!, null),
+                      15.verticalSpace,
+                      // _buildBillingLocationWidget(context,
+                      //     accountSyncData.value!.userProfile!, null),
+                    ],
+                  ).symmetricPadding(vertical: 50, horizontal: 12),
+                ),
               ),
             ),
-          );
-  }
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _buildAddressHeader(BuildContext context) {
+  return Text(context.tr("address_book"),
+      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+            color: AppColors.black900,
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+          )).centered();
+}
+
+/// **Builds the semi-transparent background**
+Widget _buildDimBackground(BuildContext context) {
+  return GestureDetector(
+    onTap: () => Navigator.of(context).pop(),
+  );
 }
 
 Widget _buildShippingLocationWidget(
@@ -194,7 +197,7 @@ Future<void> showAddressBookDialog({
 }) {
   return showDialog(
     context: context,
-    barrierDismissible: false, // Prevent dismissing dialog by tapping outside
+    barrierDismissible: false,
     builder: (BuildContext context) {
       return AddressBookWidget(userProfile: null);
     },

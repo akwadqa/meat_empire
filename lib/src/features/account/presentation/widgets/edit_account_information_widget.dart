@@ -19,244 +19,199 @@ Future<void> showEditAccountInformationDialog({
 }) {
   final formKey = GlobalKey<FormState>();
 
-  Widget buildUserNameField(BuildContext context) {
-    return TextFormField(
-      controller: nameController,
-      style: const TextStyle(color: AppColors.gray02),
-      decoration: InputDecoration(),
-      textInputAction: TextInputAction.next,
-      validator: qValidator([
-        IsRequired(context.tr('required')),
-      ]),
-      onSaved: (value) => nameController.text = value!,
-    );
-  }
-
-  // Widget buildPhoneNumberPrefix(BuildContext context) {
-  //   return SizedBox(
-  //     width: 90,
-  //     child: IntrinsicHeight(
-  //       child: Directionality(
-  //         textDirection: TextDirection.ltr,
-  //         child: Row(
-  //           children: [
-  //             const SizedBox(width: 4),
-  //             Assets.images.qatarFlag.image(),
-  //             const SizedBox(width: 4),
-  //             Text(
-  //               '+974',
-  //               style: Theme.of(context).textTheme.displaySmall!.copyWith(
-  //                     fontWeight: FontWeight.w600,
-  //                     color: AppColors.black800,
-  //                   ),
-  //             ),
-  //             const VerticalDivider(
-  //               color: AppColors.stoneGray,
-  //               thickness: 0.3,
-  //               indent: 12,
-  //               endIndent: 12,
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  String? Function(String?) mobileNumberValidation(BuildContext context) {
-    return qValidator([
-      IsRequired(context.tr('required')),
-      MaxLength(8, context.tr('mustBeEightDigits')),
-      MinLength(8, context.tr('mustBeEightDigits')),
-      RegExpRule(
-        RegExp(r'^([3567])\d+'),
-        context.tr('qatariPhoneNumberValidator'),
-      ),
-    ]);
-  }
-
-  // Phone number text field
-  Widget buildPhoneNumberField(BuildContext context) {
-    return TextFormField(
-      controller: phoneController,
-      style: const TextStyle(color: AppColors.gray02),
-      // decoration: InputDecoration(
-      //   prefixIcon: context.locale.languageCode == 'ar'
-      //       ? null
-      //       : buildPhoneNumberPrefix(context),
-      //   suffixIcon: context.locale.languageCode == 'en'
-      //       ? null
-      //       : buildPhoneNumberPrefix(context),
-      // ),
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-        ArabicNumberInputFormatter(),
-      ],
-      textInputAction: TextInputAction.next,
-      keyboardType: TextInputType.phone,
-      validator: mobileNumberValidation(context),
-      onSaved: (value) => phoneController.text = value!,
-    );
-  }
-
   return showDialog(
     context: context,
     barrierDismissible: false, // Prevent dismissing dialog by tapping outside
     builder: (BuildContext context) {
       return GestureDetector(
-        onTap: () {
-          // Dismiss keyboard when tapping outside
-          FocusScope.of(context).unfocus();
-        },
+        onTap: () => FocusScope.of(context).unfocus(), // Dismiss keyboard
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Stack(
             children: [
-              GestureDetector(
-                onTap: () => Navigator.of(context).pop(), // Dismiss dialog
-                child: Container(
-                  color: Colors.black.withOpacity(0.1), // Dim background
-                ),
-              ),
-              Center(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxWidth: 330, maxHeight: 600, minHeight: 450),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 40, horizontal: 10),
-                      child: SingleChildScrollView(
-                        child: Form(
-                          key: formKey,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(context.tr("edit_account_information"),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelSmall!
-                                      .copyWith(
-                                        color: AppColors.black900,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w800,
-                                      )).centered(),
-                              80.verticalSpace,
-                              Text(
-                                "userName".tr(),
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(fontSize: 14),
-                              ),
-                              buildUserNameField(context).onlyPadding(top: 5),
-                              30.verticalSpace,
-                              Text(
-                                "phoneNumber".tr(),
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(fontSize: 14),
-                              ),
-                              buildPhoneNumberField(context)
-                                  .onlyPadding(top: 5),
-                              // 30.verticalSpace,
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Consumer(builder: (context, ref, child) {
-                                    final asyncData =
-                                        ref.watch(accountControllerProvider);
-                                    ref.listen(accountControllerProvider,
-                                        (prev, next) {
-                                      if (next is AsyncData) {
-                                        context.maybePop().then((_) {
-                                          showCustomDialog(
-                                              context: context,
-                                              title: next.value!.message,
-                                              icon: next.value!.success
-                                                  ? Icon(
-                                                      Icons.check_circle,
-                                                      color: Colors.green,
-                                                    )
-                                                  : Icon(
-                                                      Icons.warning,
-                                                      color: Colors.red,
-                                                    ));
-                                          // Future.delayed(Duration(seconds: 2))
-                                          //     .then((onValue) {
-                                          //   Navigator.pop(context);
-                                          // });
-                                        });
-                                      }
-                                    });
-                                    if (asyncData is AsyncLoading) {
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    }
-                                    return CustomButtonWidget(
-                                      text: "save",
-                                      backgroundColor: AppColors.primary,
-                                      topPading: 35,
-                                      isFiled: true,
-                                      height: 40,
-                                      width: 140,
-                                      onTap: () {
-                                        // Save logic here
-
-                                        if (formKey.currentState!.validate()) {
-                                          formKey.currentState!.save();
-
-                                          ref
-                                              .read(accountControllerProvider
-                                                  .notifier)
-                                              .editAccountInformation(
-                                                  context,
-                                                  asyncData.value!.userProfile!
-                                                      .copyWith(
-                                                    firstname:
-                                                        nameController.text,
-                                                    phone: phoneController.text,
-                                                  ));
-                                        }
-                                      },
-                                    );
-                                  }),
-                                  CustomButtonWidget(
-                                    text: "cancel",
-                                    color: AppColors.primary,
-                                    topPading: 35,
-                                    isFiled: false,
-                                    height: 40,
-                                    width: 140,
-                                    onTap: () {
-                                      debugPrint("cancel");
-                                      Navigator.of(context)
-                                          .pop(); // Close dialog
-                                    },
-                                  ),
-                                ],
-                              ),
-                              // 40.verticalSpace,
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _buildDimBackground(context),
+              _buildDialogContent(
+                  context, formKey, nameController, phoneController),
             ],
           ),
         ),
       );
     },
+  );
+}
+
+/// **Builds the semi-transparent background**
+Widget _buildDimBackground(BuildContext context) {
+  return GestureDetector(
+    onTap: () => Navigator.of(context).pop(), // Close dialog
+  );
+}
+
+/// **Builds the main dialog content**
+Widget _buildDialogContent(
+  BuildContext context,
+  GlobalKey<FormState> formKey,
+  TextEditingController nameController,
+  TextEditingController phoneController,
+) {
+  return Center(
+    child: ConstrainedBox(
+      constraints:
+          const BoxConstraints(maxWidth: 330, maxHeight: 600, minHeight: 450),
+      child: Material(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildDialogHeader(context),
+                  _buildTextFieldLabel(context, "userName")
+                      .onlyPadding(top: 80),
+                  _buildUserNameField(context, nameController),
+                  _buildTextFieldLabel(context, "phoneNumber")
+                      .onlyPadding(top: 30),
+                  _buildPhoneNumberField(context, phoneController),
+                  _buildButtons(
+                      context, formKey, nameController, phoneController),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// **Builds the dialog header**
+Widget _buildDialogHeader(BuildContext context) {
+  return Text(
+    context.tr("edit_account_information"),
+    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+          color: AppColors.black900,
+          fontSize: 16,
+          fontWeight: FontWeight.w800,
+        ),
+  ).centered();
+}
+
+/// **Builds labels for text fields**
+Widget _buildTextFieldLabel(BuildContext context, String labelKey) {
+  return Text(
+    labelKey.tr(),
+    textAlign: TextAlign.center,
+    style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
+  );
+}
+
+/// **Builds the user name input field**
+Widget _buildUserNameField(
+    BuildContext context, TextEditingController controller) {
+  return TextFormField(
+    controller: controller,
+    style: const TextStyle(color: AppColors.gray02),
+    decoration: const InputDecoration(),
+    textInputAction: TextInputAction.next,
+    validator: qValidator([IsRequired(context.tr('required'))]),
+    onSaved: (value) => controller.text = value!,
+  ).onlyPadding(top: 5);
+}
+
+/// **Builds the phone number input field**
+Widget _buildPhoneNumberField(
+    BuildContext context, TextEditingController controller) {
+  return TextFormField(
+    controller: controller,
+    style: const TextStyle(color: AppColors.gray02),
+    inputFormatters: [
+      FilteringTextInputFormatter.digitsOnly,
+      ArabicNumberInputFormatter(),
+    ],
+    textInputAction: TextInputAction.next,
+    keyboardType: TextInputType.phone,
+    validator: _mobileNumberValidation(context),
+    onSaved: (value) => controller.text = value!,
+  ).onlyPadding(top: 5);
+}
+
+/// **Phone number validation rules**
+String? Function(String?) _mobileNumberValidation(BuildContext context) {
+  return qValidator([
+    IsRequired(context.tr('required')),
+    MaxLength(8, context.tr('mustBeEightDigits')),
+    MinLength(8, context.tr('mustBeEightDigits')),
+    RegExpRule(
+        RegExp(r'^([3567])\d+'), context.tr('qatariPhoneNumberValidator')),
+  ]);
+}
+
+/// **Builds the save & cancel buttons**
+Widget _buildButtons(
+  BuildContext context,
+  GlobalKey<FormState> formKey,
+  TextEditingController nameController,
+  TextEditingController phoneController,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      Consumer(builder: (context, ref, child) {
+        final asyncData = ref.watch(accountControllerProvider);
+        ref.listen(accountControllerProvider, (prev, next) {
+          if (next is AsyncData) {
+            context.maybePop().then((_) {
+              showCustomDialog(
+                context: context,
+                title: next.value!.message,
+                icon: next.value!.success
+                    ? const Icon(Icons.check_circle, color: AppColors.green)
+                    : const Icon(Icons.warning, color: AppColors.darkRed),
+              );
+            });
+          }
+        });
+
+        if (asyncData is AsyncLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        return CustomButtonWidget(
+          text: "save",
+          backgroundColor: AppColors.primary,
+          topPading: 35,
+          isFiled: true,
+          height: 40,
+          width: 140,
+          onTap: () {
+            if (formKey.currentState!.validate()) {
+              formKey.currentState!.save();
+              ref
+                  .read(accountControllerProvider.notifier)
+                  .editAccountInformation(
+                    context,
+                    asyncData.value!.userProfile!.copyWith(
+                      firstname: nameController.text,
+                      phone: phoneController.text,
+                    ),
+                  );
+            }
+          },
+        );
+      }),
+      CustomButtonWidget(
+        text: "cancel",
+        color: AppColors.primary,
+        topPading: 35,
+        isFiled: false,
+        height: 40,
+        width: 140,
+        onTap: () => Navigator.of(context).pop(), // Close dialog
+      ),
+    ],
   );
 }

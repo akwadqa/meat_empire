@@ -20,7 +20,6 @@ class AccountCardsWidget extends StatelessWidget {
       child: Container(
               height: 50,
               width: MediaQuery.of(context).size.width,
-              // margin: EdgeInsets.symmetric(vertical: 8),
               padding: EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 color: Colors.white,
