@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
+import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 
@@ -183,22 +184,26 @@ class _PriceRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      // mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Text(
           product.formatBasePrice,
           style: Theme.of(context).textTheme.bodyMedium!,
         ),
-        Text(
-          product.formatListPrice,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontSize: 11,
-                decoration: TextDecoration.lineThrough,
-              ),
-        ),
+        if (double.parse(product.listPrice) > 0) ...[
+          Spacer(),
+          Text(
+            product.formatListPrice,
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontSize: 11,
+                  color: AppColors.primarySwatch,
+                  decoration: TextDecoration.lineThrough,
+                ),
+          ),
+        ]
       ],
-    );
+    ).symmetricPadding(horizontal: 8);
   }
 }
 

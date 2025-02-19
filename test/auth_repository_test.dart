@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/auth/data/auth_repository.dart';
 import 'package:meat_empire/src/network/network_service.dart';
 import 'package:meat_empire/src/constants/end_points.dart';
-import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 
 // Mock Network Service
 class MockNetworkService extends Mock implements NetworkService {}
