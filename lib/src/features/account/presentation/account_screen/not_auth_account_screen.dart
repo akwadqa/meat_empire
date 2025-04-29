@@ -29,7 +29,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
           _buildButtonsSection(context),
           _buildLanguageSection(
               context, currentLanguage, currentLanguageNotifier),
-          const Spacer(),
+          // const Spacer(),
         ],
       ),
     );
@@ -88,7 +88,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
           topPading: 20,
           height: 50,
           width: 300,
-        ).onlyPadding(top: 20),
+        )
       ],
     );
   }
@@ -104,6 +104,6 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
         debugPrint("Switching Language: $newLanguage");
         notifier.changeLanguage(context, newLanguage);
       },
-    ).onlyPadding(top: 70);
+    ).onlyPadding(top: 70, bottom: 70);
   }
 }

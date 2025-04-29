@@ -23,9 +23,11 @@ class MainAccountScreen extends ConsumerWidget {
     return Scaffold(
       extendBody: true,
       backgroundColor: AppColors.lightGray,
-      body: !ref.watch(isAuthinticatedProvider)
-          ? NotAuthMainAccountScreen()
-          : _mainAccountWidget(asyncAccountData, context),
+      body: SingleChildScrollView(
+        child: !ref.watch(isAuthinticatedProvider)
+            ? NotAuthMainAccountScreen()
+            : _mainAccountWidget(asyncAccountData, context),
+      ),
     );
   }
 

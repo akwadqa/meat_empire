@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/features/auth/application/auth_service.dart';
+import 'package:meat_empire/src/features/auth/data/auth_repository.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
 import 'package:meat_empire/src/theme/app_theme.dart';
 
@@ -15,7 +17,6 @@ class App extends ConsumerStatefulWidget {
 }
 
 class _AppState extends ConsumerState<App> {
-  
   @override
   void initState() {
     Future(() => ref
@@ -28,6 +29,7 @@ class _AppState extends ConsumerState<App> {
   Widget build(BuildContext context) {
     final appRouter = ref.watch(appRouterProvider);
     final currentLanguage = ref.watch(currentLanguageProvider);
+
     return MaterialApp.router(
       routerDelegate: appRouter.delegate(
           deepLinkBuilder: (deepLink) => DeepLink.defaultPath),

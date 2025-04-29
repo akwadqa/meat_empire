@@ -35,7 +35,7 @@ class CheckoutCartOrderSummary extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
           child: Column(
-            spacing: 18,
+            //TODO spacing: 18,
             children: [
               if (orderId != null) ...[
                 _buildTextRow(

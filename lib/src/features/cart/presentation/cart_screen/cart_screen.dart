@@ -90,7 +90,8 @@ class CartBody extends ConsumerWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
       child: Column(
-        spacing: 20,
+      //TODO   spacing: 20,
+
         children: [
           _buildTextRow(
               context.tr('productsCost'), cart.formatSubtotal!, context),

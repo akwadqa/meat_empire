@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'src/app.dart';
 import 'src/features/auth/application/auth_service.dart';
@@ -14,14 +17,20 @@ Future<void> main() async {
 
   final container = await initializeProviders();
   await handleSplashScreen(container);
-
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(
-    UncontrolledProviderScope(
-      container: container,
-      child: EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ar')],
-        path: 'assets/translations',
-        child: const App(),
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => UncontrolledProviderScope(
+        container: container,
+        child: EasyLocalization(
+          supportedLocales: const [Locale('en'), Locale('ar')],
+          path: 'assets/translations',
+          child: const App(),
+        ),
       ),
     ),
   );
@@ -36,7 +45,7 @@ Future<ProviderContainer> initializeProviders() async {
 Future<void> handleSplashScreen(ProviderContainer container) async {
   const minSplashDuration = 2000;
   final startTime = DateTime.now();
-  await container.read(homeProvider.future);
+  // await container.read(homeProvider.future);
   final loadDuration = DateTime.now().difference(startTime).inMilliseconds;
 
   if (loadDuration < minSplashDuration) {

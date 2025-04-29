@@ -25,6 +25,7 @@ class HomeScreen extends StatelessWidget {
       ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
   @override
   Widget build(BuildContext context) {
+    
     return AutoTabsScaffold(
       extendBody: true,
       routes: [
@@ -229,8 +230,8 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Container(
-      height: 80,
-      padding: const EdgeInsets.only(bottom: 10),
+      height: 65, //80
+      // padding: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [

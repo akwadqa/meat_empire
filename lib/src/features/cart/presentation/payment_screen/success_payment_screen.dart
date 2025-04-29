@@ -62,7 +62,7 @@ class _SuccessPaymentScreenState extends ConsumerState<SuccessPaymentScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -22,8 +22,7 @@ OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) {
 mixin _$OrdersResponse {
   List<OrdersEntity> get orders => throw _privateConstructorUsedError;
   @JsonKey(name: "order_statuses")
-  List<OrderStatuses> get orderStatuses =>
-      throw _privateConstructorUsedError; // Custom parsing logic will handle this
+  List<OrderStatuses> get orderStatuses => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
@@ -174,7 +173,6 @@ class _$OrdersResponseImpl implements _OrdersResponse {
     return EqualUnmodifiableListView(_orderStatuses);
   }
 
-// Custom parsing logic will handle this
   @override
   final String message;
   @override
@@ -231,8 +229,7 @@ abstract class _OrdersResponse implements OrdersResponse {
   List<OrdersEntity> get orders;
   @override
   @JsonKey(name: "order_statuses")
-  List<OrderStatuses>
-      get orderStatuses; // Custom parsing logic will handle this
+  List<OrderStatuses> get orderStatuses;
   @override
   String get message;
   @override

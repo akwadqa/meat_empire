@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'package:meat_empire/src/features/home/domain/home/layout.dart';
@@ -50,7 +51,9 @@ class LayoutScreen extends ConsumerWidget {
         (context, index) {
           final layoutBlock = layout[index];
           return Padding(
-            padding: EdgeInsets.only(right: 10, left: 10, bottom: 20),
+            padding: EdgeInsets.only(
+                // right: 10, left: 10,
+                bottom: 10),
             child: LayoutBlock(layout: layoutBlock),
           );
         },

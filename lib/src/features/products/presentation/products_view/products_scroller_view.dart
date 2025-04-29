@@ -14,7 +14,7 @@ class ProductsScrollerView extends StatelessWidget {
     return SizedBox(
       height: 230,
       child: ListView.separated(
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
         itemBuilder: (context, index) =>

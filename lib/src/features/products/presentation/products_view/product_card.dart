@@ -29,16 +29,16 @@ class ProductCard extends StatelessWidget {
       child: Container(
         width: width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
           border: Border.all(color: const Color.fromRGBO(229, 229, 229, 1)),
         ),
         child: Column(
-          spacing: 6,
+          //TODO spacing: 6,
           children: [
             Expanded(
                 child: ClipRRect(
                     borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(10)),
+                        BorderRadius.vertical(top: Radius.circular(8)),
                     child: _ProductImage(product: product))),
             _PriceRow(product: product),
             ProviderScope(
@@ -176,6 +176,7 @@ class _CustomClipper extends CustomClipper<Path> {
   }
 }
 
+// Wrap Widget Replaced Row for long Price Issues
 class _PriceRow extends StatelessWidget {
   const _PriceRow({required this.product});
 
@@ -183,27 +184,38 @@ class _PriceRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      // mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(
-          product.formatBasePrice,
-          style: Theme.of(context).textTheme.bodyMedium!,
-        ),
-        if (double.parse(product.listPrice) > 0) ...[
-          Spacer(),
+    return FittedBox(
+      fit: BoxFit.fitWidth,
+      child: Row(
+        // alignment: WrapAlignment.center,
+        // crossAxisAlignment: WrapCrossAlignment.center,
+        // direction: Axis.horizontal,
+        // spacing: 8,
+
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+
+        children: [
           Text(
-            product.formatListPrice,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontSize: 11,
-                  color: AppColors.primarySwatch,
-                  decoration: TextDecoration.lineThrough,
-                ),
+            product.formatBasePrice,
+            style: Theme.of(context).textTheme.bodyMedium!,
           ),
-        ]
-      ],
-    ).symmetricPadding(horizontal: 8);
+          if (double.parse(product.listPrice) > 0) ...[
+            // Spacer(),
+            5.horizontalSpace,
+            Text(
+              product.formatListPrice,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontSize: 11,
+                    color: AppColors.primarySwatch,
+                    decoration: TextDecoration.lineThrough,
+                  ),
+            ),
+          ]
+        ],
+      ).symmetricPadding(horizontal: 8, vertical: 5),
+    );
   }
 }
 
@@ -250,12 +262,16 @@ class _AddToCartButton extends ConsumerWidget {
               fontFamily: FontFamily.tajawal,
               fontWeight: FontWeight.w700),
           backgroundColor: isInCart ? AppColors.newRed : AppColors.green,
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 9),
         ),
         label: Text(context.tr(isInCart ? 'addedToCart' : 'addToCart')),
         icon: isInCart
-            ? Assets.icons.addedToCartIcon.svg()
-            : const Icon(Icons.add_shopping_cart_rounded, color: Colors.white),
+            ? Assets.icons.addedToCartIcon.svg(width: 15, height: 15)
+            : const Icon(
+                Icons.add_shopping_cart_rounded,
+                color: Colors.white,
+                size: 15,
+              ),
       );
     });
   }

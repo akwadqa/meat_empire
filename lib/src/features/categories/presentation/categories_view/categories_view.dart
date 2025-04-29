@@ -19,9 +19,10 @@ class CategoriesView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
-      height: 110,
+      height: 92, //110
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 16),
         shrinkWrap: true,
         itemBuilder: (context, index) =>
             _buildCategoryItem(context, ref, index),

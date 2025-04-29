@@ -16,28 +16,39 @@ class ProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = layout.data.whereType<Product>().toList();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (layout.viewType == 'scroller')
-          _Title(title: layout.title)
-        else
-          Row(
-            children: [
-              _Title(title: layout.title),
-              const Spacer(),
-              TextButton(
-                onPressed: () => context.tabsRouter.setActiveIndex(1),
-                child: Text(context.tr('more')),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (layout.viewType == 'scroller')
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: _Title(title: layout.title),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  _Title(title: layout.title),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () => context.tabsRouter.setActiveIndex(1),
+                    child: Text(context.tr('more')),
+                  ),
+                ],
               ),
-            ],
-          ),
-        10.verticalSpace,
-        if (layout.viewType == 'scroller')
-          ProductsScrollerView(products: products)
-        else
-          ProductsGridView(products: products),
-      ],
+            ),
+          10.verticalSpace,
+          if (layout.viewType == 'scroller')
+            ProductsScrollerView(products: products)
+          else
+            ProductsGridView(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                products: products),
+        ],
+      ),
     );
   }
 }

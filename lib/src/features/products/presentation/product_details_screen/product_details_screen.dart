@@ -71,7 +71,7 @@ class ProductDetailsView extends StatelessWidget {
         Positioned.fill(
           child: SingleChildScrollView(
             child: Column(
-              spacing: 20,
+              //TODO spacing: 20,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProductBanner(
@@ -211,7 +211,7 @@ class ProductDetailsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 20,
+      //TODO  spacing: 20,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _ProductTitle(title: product.product),
@@ -328,7 +328,8 @@ class _ProductsBlockList extends StatelessWidget {
       itemBuilder: (_, index) {
         final block = productsBlock[index];
         return Column(
-          spacing: 16,
+          //TODO   spacing: 16,
+
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -368,7 +369,8 @@ class _AddToCartButton extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 16),
+        height: 75,
+        padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 12.5),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
@@ -434,10 +436,19 @@ class _AddToCartButton extends StatelessWidget {
                     .then((_) => context.maybePop());
               }
             },
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
-            icon: const Icon(Icons.add_shopping_cart_rounded,
-                color: Colors.white, size: 25),
-            label: Text('${context.tr('addToCart')} ($productPrice)'),
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.green)
+                .copyWith(fixedSize: WidgetStatePropertyAll(Size(300, 50))),
+            icon: const Icon(
+              Icons.add_shopping_cart_rounded,
+              color: Colors.white, size: 18, //25
+            ),
+            label: Text(
+              '${context.tr('addToCart')} ($productPrice)',
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700),
+            ),
           );
         }),
       ),

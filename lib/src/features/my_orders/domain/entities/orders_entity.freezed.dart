@@ -20,7 +20,6 @@ OrdersEntity _$OrdersEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrdersEntity {
-// Custom parsing logic will handle this
   @JsonKey(name: "order_id")
   String get orderId => throw _privateConstructorUsedError;
   @JsonKey(name: "timestamp")
@@ -186,7 +185,6 @@ class _$OrdersEntityImpl implements _OrdersEntity {
   factory _$OrdersEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrdersEntityImplFromJson(json);
 
-// Custom parsing logic will handle this
   @override
   @JsonKey(name: "order_id")
   final String orderId;
@@ -262,7 +260,6 @@ abstract class _OrdersEntity implements OrdersEntity {
   factory _OrdersEntity.fromJson(Map<String, dynamic> json) =
       _$OrdersEntityImpl.fromJson;
 
-// Custom parsing logic will handle this
   @override
   @JsonKey(name: "order_id")
   String get orderId;
