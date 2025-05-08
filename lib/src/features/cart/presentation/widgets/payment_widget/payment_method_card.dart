@@ -98,12 +98,12 @@ class _PaymentMethodField extends StatelessWidget {
                             height: 30,
                             width: 30,
                             errorBuilder: (ctx, oob, ko) {
-                              return Assets.images.debitCard.svg();
+                              // return Assets.images.debitCard.svg();
 
-                              // Icon(
-                              //   Icons.credit_card,
-                              //   color: AppColors.grey600,
-                              // );
+                              return Icon(
+                                Icons.credit_card,
+                                color: AppColors.grey600,
+                              );
                             },
                             fit: BoxFit.cover,
                           ),
