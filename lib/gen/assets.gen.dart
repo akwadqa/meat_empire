@@ -159,13 +159,24 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/meat_message.png
+  AssetGenImage get meatMessage =>
+      const AssetGenImage('assets/images/meat_message.png');
+
   /// File path: assets/images/qatar_flag.png
   AssetGenImage get qatarFlag =>
       const AssetGenImage('assets/images/qatar_flag.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [cartImage, emptyData, imErrorScreen, loginImage, logo, qatarFlag];
+  List<dynamic> get values => [
+        cartImage,
+        emptyData,
+        imErrorScreen,
+        loginImage,
+        logo,
+        meatMessage,
+        qatarFlag
+      ];
 }
 
 class $AssetsLottieGen {

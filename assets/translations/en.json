@@ -125,5 +125,6 @@
     "delivered_desc": "Your order was delivered successfully",
     "cartUnAuthDesc": "Log in, discover our products and enjoy shopping.",
     "area": "Area",
+    "outOfStock":"Out of stock",
     "variantError": "Please select a variant for all options."
 }

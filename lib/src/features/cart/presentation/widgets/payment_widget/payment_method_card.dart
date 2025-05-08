@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/material.dart';
+import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/payment_info_entity.dart';
@@ -97,10 +98,12 @@ class _PaymentMethodField extends StatelessWidget {
                             height: 30,
                             width: 30,
                             errorBuilder: (ctx, oob, ko) {
-                              return Icon(
-                                Icons.credit_card,
-                                color: AppColors.grey600,
-                              );
+                              return Assets.images.debitCard.svg();
+
+                              // Icon(
+                              //   Icons.credit_card,
+                              //   color: AppColors.grey600,
+                              // );
                             },
                             fit: BoxFit.cover,
                           ),

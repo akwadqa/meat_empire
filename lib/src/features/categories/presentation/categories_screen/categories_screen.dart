@@ -88,7 +88,9 @@ class CategoriesScreen extends ConsumerWidget {
 
     return AnimatedContainer(
       width: isExpanded ? 80 : 0,
-      duration: const Duration(milliseconds: 300),
+
+      duration: const Duration(), //milliseconds: 300
+      curve: Curves.easeInOut,
       decoration: BoxDecoration(
         color: AppColors.offWhite,
         border: Border.all(color: AppColors.lightGray02),

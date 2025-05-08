@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'src/app.dart';
 import 'src/features/auth/application/auth_service.dart';
 import 'src/riverpod_observer.dart';
@@ -45,7 +44,7 @@ Future<ProviderContainer> initializeProviders() async {
 Future<void> handleSplashScreen(ProviderContainer container) async {
   const minSplashDuration = 2000;
   final startTime = DateTime.now();
-  // await container.read(homeProvider.future);
+  //TODO await container.read(homeProvider.future);
   final loadDuration = DateTime.now().difference(startTime).inMilliseconds;
 
   if (loadDuration < minSplashDuration) {

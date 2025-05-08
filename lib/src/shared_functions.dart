@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meat_empire/gen/assets.gen.dart';
 
 import 'theme/app_colors.dart';
 
@@ -20,7 +23,8 @@ Future<void> showCustomDialog({
             maxHeight: 400,
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
+            padding: const EdgeInsets.symmetric(
+                vertical: 15, horizontal: 25), //30v , 50h
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -32,7 +36,7 @@ Future<void> showCustomDialog({
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
-                      .copyWith(fontSize: 22),
+                      .copyWith(fontSize: 18),
                 ),
               ],
             ),
@@ -42,6 +46,18 @@ Future<void> showCustomDialog({
     },
   );
 }
+
+// showErrorDialog(BuildContext context, String message) {
+//   return showCustomDialog(
+//     context: context,
+//     title: message,
+//     icon: Icon(
+//       Icons.error,
+//       color: AppColors.darkRed,
+//       size: 50,
+//     ),
+//   );
+// }
 
 showErrorDialog(BuildContext context, String message) {
   return showCustomDialog(
@@ -53,6 +69,14 @@ showErrorDialog(BuildContext context, String message) {
       size: 50,
     ),
   );
+}
+
+void showOutOfStockDialog(BuildContext context, String message) {
+  showCustomDialog(
+      context: context,
+      title: message,
+      icon: Assets.images.meatMessage
+          .image(fit: BoxFit.contain, height: 150, width: 150));
 }
 
 Future<void> showLanguageDialog({

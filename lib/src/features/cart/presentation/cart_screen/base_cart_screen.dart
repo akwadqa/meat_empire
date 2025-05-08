@@ -28,6 +28,7 @@ class CartScreenBase extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           // 70.verticalSpace,
+          24.verticalSpace,
           if (title != null) ...[
             Text(
               title!,

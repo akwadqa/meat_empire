@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -47,8 +49,10 @@ class ProductCard extends StatelessWidget {
                     .overrideWith(() => UpdateCartController())
               ],
               child: _AddToCartButton(
-                  productId: int.parse(product.productId),
-                  amount: int.parse(product.minQty)),
+                productId: int.parse(product.productId),
+                amount: int.parse(product.minQty),
+                outOfStock: product.amount <= 0,
+              ),
             ),
             6.verticalSpace,
           ],
@@ -185,7 +189,7 @@ class _PriceRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FittedBox(
-      fit: BoxFit.fitWidth,
+      fit: BoxFit.fill,
       child: Row(
         // alignment: WrapAlignment.center,
         // crossAxisAlignment: WrapCrossAlignment.center,
@@ -199,17 +203,25 @@ class _PriceRow extends StatelessWidget {
         children: [
           Text(
             product.formatBasePrice,
-            style: Theme.of(context).textTheme.bodyMedium!,
+            softWrap: true,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(color: AppColors.black900),
           ),
           if (double.parse(product.listPrice) > 0) ...[
             // Spacer(),
             5.horizontalSpace,
             Text(
               product.formatListPrice,
+              softWrap: true,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 11,
-                    color: AppColors.primarySwatch,
+                    fontSize: 12,
+                    color: AppColors.grey600,
                     decoration: TextDecoration.lineThrough,
+                    decorationColor: AppColors.grey600,
+                    decorationStyle: TextDecorationStyle.solid,
+                    decorationThickness: 20.0,
                   ),
             ),
           ]
@@ -222,57 +234,159 @@ class _PriceRow extends StatelessWidget {
 class _AddToCartButton extends ConsumerWidget {
   final int productId;
   final int amount;
+  final bool outOfStock;
 
-  const _AddToCartButton({required this.productId, required this.amount});
+  const _AddToCartButton({
+    required this.productId,
+    required this.amount,
+    required this.outOfStock,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Consumer(builder: (context, ref, child) {
-      ref.listen(updateCartControllerProvider, (prev, next) {
-        if (next is AsyncData) {
-          context.maybePop().then((_) {
-            showCustomDialog(
+    // Listen to cart updates with proper error handling
+    ref.listen<AsyncValue>(
+      updateCartControllerProvider,
+      (previous, current) {
+        if (current is AsyncData) {
+          // Wait for the current build to complete before showing dialog
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.maybePop().then((_) {
+              showCustomDialog(
                 context: context,
                 title: "cart_added_msg".tr(),
                 icon: Icon(
                   Icons.check_circle,
                   color: AppColors.green,
                   size: 45,
-                ));
+                ),
+              );
+            });
           });
-        } else if (next is AsyncError) {
-          showErrorDialog(context, next.error.toString());
+        } else if (current is AsyncError) {
+          // Wait for the current build to complete before showing error
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showOutOfStockDialog(context, current.error.toString());
+          });
         }
-      });
-      final asyncAddToCart = ref.watch(updateCartControllerProvider);
-      final isInCart = ref.watch(isInCartProvider(productId.toString()));
-      if (asyncAddToCart is AsyncLoading) {
-        return FadeCircleLoadingIndicator();
-      }
-      return ElevatedButton.icon(
-        onPressed: isInCart
-            ? () => ref
-                .read(updateCartControllerProvider.notifier)
-                .updateCart(amount: 0, productId: productId)
-            : () => ref.read(updateCartControllerProvider.notifier).addToCart(
-                context: context, amount: amount, productId: productId),
-        style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(
-              fontSize: 12,
-              fontFamily: FontFamily.tajawal,
-              fontWeight: FontWeight.w700),
-          backgroundColor: isInCart ? AppColors.newRed : AppColors.green,
-          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 9),
-        ),
-        label: Text(context.tr(isInCart ? 'addedToCart' : 'addToCart')),
-        icon: isInCart
-            ? Assets.icons.addedToCartIcon.svg(width: 15, height: 15)
-            : const Icon(
-                Icons.add_shopping_cart_rounded,
-                color: Colors.white,
-                size: 15,
-              ),
-      );
-    });
+      },
+    );
+
+    final asyncAddToCart = ref.watch(updateCartControllerProvider);
+    final isInCart = ref.watch(isInCartProvider(productId.toString()));
+
+    // Show loading indicator when operation is in progress
+    if (asyncAddToCart is AsyncLoading) {
+      return const FadeCircleLoadingIndicator();
+    }
+
+    return _buildButton(context, ref, isInCart);
   }
+
+  Widget _buildButton(BuildContext context, WidgetRef ref, bool isInCart) {
+    // Determine button state
+    final ButtonState buttonState = outOfStock
+        ? ButtonState.outOfStock
+        : isInCart
+            ? ButtonState.inCart
+            : ButtonState.available;
+
+    // Button configuration based on state
+    final ButtonConfig config = _getButtonConfig(context, buttonState);
+
+    return ElevatedButton.icon(
+      onPressed:
+          //  buttonState == ButtonState.outOfStock
+          //     ? null :
+          () => _handleButtonPress(context, ref, isInCart),
+      style: ElevatedButton.styleFrom(
+        textStyle: const TextStyle(
+          fontSize: 12,
+          fontFamily: FontFamily.tajawal,
+          fontWeight: FontWeight.w700,
+        ),
+        backgroundColor: config.backgroundColor,
+        padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 9),
+      ),
+      label: Text(
+        context.tr(config.labelKey),
+        style: Theme.of(context).textTheme.displaySmall!.copyWith(
+              fontSize: 12,
+              color: config.textColor,
+              fontWeight: FontWeight.w400,
+            ),
+      ),
+      icon: config.icon,
+    );
+  }
+
+  void _handleButtonPress(BuildContext context, WidgetRef ref, bool isInCart) {
+    final controller = ref.read(updateCartControllerProvider.notifier);
+
+    if (isInCart) {
+      controller.updateCart(amount: 0, productId: productId);
+    } else {
+      controller.addToCart(
+        context: context,
+        amount: amount,
+        productId: productId,
+      );
+    }
+  }
+
+  ButtonConfig _getButtonConfig(BuildContext context, ButtonState state) {
+    switch (state) {
+      case ButtonState.outOfStock:
+        return ButtonConfig(
+          backgroundColor: Colors.grey.shade200,
+          textColor: AppColors.black800,
+          labelKey: 'outOfStock',
+          icon: Icon(
+            Icons.block,
+            color: AppColors.black800,
+            size: 15,
+          ),
+        );
+      case ButtonState.inCart:
+        return ButtonConfig(
+          backgroundColor: AppColors.newRed,
+          textColor: Colors.white,
+          labelKey: 'addedToCart',
+          icon: Assets.icons.addedToCartIcon.svg(width: 15, height: 15),
+        );
+      case ButtonState.available:
+        return ButtonConfig(
+          backgroundColor: AppColors.green,
+          textColor: Colors.white,
+          labelKey: 'addToCart',
+          icon: const Icon(
+            Icons.add_shopping_cart_rounded,
+            color: Colors.white,
+            size: 15,
+          ),
+        );
+    }
+  }
+}
+
+/// Helper enum to track button state
+enum ButtonState {
+  outOfStock,
+  inCart,
+  available,
+}
+
+/// Helper class to manage button configuration
+class ButtonConfig {
+  final Color backgroundColor;
+  final Color textColor;
+  final String labelKey;
+  final Widget icon;
+
+  ButtonConfig({
+    required this.backgroundColor,
+    required this.textColor,
+    required this.labelKey,
+    required this.icon,
+  });
 }

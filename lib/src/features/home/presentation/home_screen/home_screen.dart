@@ -25,7 +25,6 @@ class HomeScreen extends StatelessWidget {
       ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
   @override
   Widget build(BuildContext context) {
-    
     return AutoTabsScaffold(
       extendBody: true,
       routes: [

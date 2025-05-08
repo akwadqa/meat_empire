@@ -98,6 +98,7 @@ class ProductDetailsView extends StatelessWidget {
             productId: product.productId,
             amount: quantity,
             productOptions: product.productOptions,
+            outOfStock: product.amount <= 0,
           );
         }),
       ],
@@ -219,11 +220,14 @@ class ProductDetailsInfo extends StatelessWidget {
         if (product.productOptions != null)
           ProductOptionsList(productOptions: product.productOptions!),
         if (product.variationFeatures.isNotEmpty)
-          Text(context.tr('specifications'),
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium!
-                  .copyWith(fontSize: 18)),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 10),
+            child: Text(context.tr('specifications'),
+                style: Theme.of(context)
+                    .textTheme
+                    .displayMedium!
+                    .copyWith(fontSize: 18)),
+          ),
         ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
@@ -237,6 +241,7 @@ class ProductDetailsInfo extends StatelessWidget {
             );
           },
         ),
+        25.verticalSpace,
         _ProductsBlockList(productsBlock: productsBlock),
         80.verticalSpace
       ],
@@ -339,6 +344,7 @@ class _ProductsBlockList extends StatelessWidget {
                   .displayMedium!
                   .copyWith(fontSize: 18),
             ),
+            5.verticalSpace,
             ProductsScrollerView(products: block.products),
           ],
         );
@@ -355,12 +361,14 @@ class _AddToCartButton extends StatelessWidget {
     required this.productId,
     required this.amount,
     required this.productOptions, // Add productOptions as a parameter
+    required this.outOfStock,
   });
 
   final String productPrice;
   final int productId;
   final int amount;
   final ProductOptions? productOptions; // Pass productOptions to the widget
+  final bool outOfStock;
 
   @override
   Widget build(BuildContext context) {
@@ -393,7 +401,7 @@ class _AddToCartButton extends StatelessWidget {
                     ));
               });
             } else if (next is AsyncError) {
-              showErrorDialog(context, next.error.toString());
+              showOutOfStockDialog(context, next.error.toString());
             }
           });
 
@@ -404,7 +412,11 @@ class _AddToCartButton extends StatelessWidget {
           }
 
           return ElevatedButton.icon(
-            onPressed: () {
+            onPressed:
+                // outOfStock
+                //     ? null
+                //     :
+                () {
               // Get the selected options
               final selectedOptions =
                   ref.read(productOptionsControllerProvider);
@@ -436,17 +448,25 @@ class _AddToCartButton extends StatelessWidget {
                     .then((_) => context.maybePop());
               }
             },
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.green)
+            style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        outOfStock ? Colors.grey.shade200 : AppColors.green)
                 .copyWith(fixedSize: WidgetStatePropertyAll(Size(300, 50))),
-            icon: const Icon(
-              Icons.add_shopping_cart_rounded,
-              color: Colors.white, size: 18, //25
-            ),
+            icon: outOfStock
+                ? Icon(
+                    Icons.block,
+                    color: AppColors.black800,
+                    size: 18,
+                  )
+                : const Icon(
+                    Icons.add_shopping_cart_rounded,
+                    color: Colors.white, size: 18, //25
+                  ),
             label: Text(
-              '${context.tr('addToCart')} ($productPrice)',
+              '${context.tr(outOfStock ? 'outOfStock' : 'addToCart')} ($productPrice)',
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: outOfStock ? AppColors.black800 : Colors.white,
                   fontWeight: FontWeight.w700),
             ),
           );
