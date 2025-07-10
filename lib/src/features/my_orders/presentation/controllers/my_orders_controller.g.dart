@@ -34,9 +34,7 @@ abstract class _$MyOrdersController
     extends BuildlessAutoDisposeAsyncNotifier<OrdersResponse> {
   late final String? status;
 
-  FutureOr<OrdersResponse> build([
-    String? status,
-  ]);
+  FutureOr<OrdersResponse> build([String? status]);
 }
 
 /// See also [MyOrdersController].
@@ -49,21 +47,15 @@ class MyOrdersControllerFamily extends Family<AsyncValue<OrdersResponse>> {
   const MyOrdersControllerFamily();
 
   /// See also [MyOrdersController].
-  MyOrdersControllerProvider call([
-    String? status,
-  ]) {
-    return MyOrdersControllerProvider(
-      status,
-    );
+  MyOrdersControllerProvider call([String? status]) {
+    return MyOrdersControllerProvider(status);
   }
 
   @override
   MyOrdersControllerProvider getProviderOverride(
     covariant MyOrdersControllerProvider provider,
   ) {
-    return call(
-      provider.status,
-    );
+    return call(provider.status);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -82,24 +74,26 @@ class MyOrdersControllerFamily extends Family<AsyncValue<OrdersResponse>> {
 }
 
 /// See also [MyOrdersController].
-class MyOrdersControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    MyOrdersController, OrdersResponse> {
+class MyOrdersControllerProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          MyOrdersController,
+          OrdersResponse
+        > {
   /// See also [MyOrdersController].
-  MyOrdersControllerProvider([
-    String? status,
-  ]) : this._internal(
-          () => MyOrdersController()..status = status,
-          from: myOrdersControllerProvider,
-          name: r'myOrdersControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$myOrdersControllerHash,
-          dependencies: MyOrdersControllerFamily._dependencies,
-          allTransitiveDependencies:
-              MyOrdersControllerFamily._allTransitiveDependencies,
-          status: status,
-        );
+  MyOrdersControllerProvider([String? status])
+    : this._internal(
+        () => MyOrdersController()..status = status,
+        from: myOrdersControllerProvider,
+        name: r'myOrdersControllerProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$myOrdersControllerHash,
+        dependencies: MyOrdersControllerFamily._dependencies,
+        allTransitiveDependencies:
+            MyOrdersControllerFamily._allTransitiveDependencies,
+        status: status,
+      );
 
   MyOrdersControllerProvider._internal(
     super._createNotifier, {
@@ -117,9 +111,7 @@ class MyOrdersControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<OrdersResponse> runNotifierBuild(
     covariant MyOrdersController notifier,
   ) {
-    return notifier.build(
-      status,
-    );
+    return notifier.build(status);
   }
 
   @override
@@ -140,7 +132,7 @@ class MyOrdersControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<MyOrdersController, OrdersResponse>
-      createElement() {
+  createElement() {
     return _MyOrdersControllerProviderElement(this);
   }
 
@@ -167,12 +159,17 @@ mixin MyOrdersControllerRef
 }
 
 class _MyOrdersControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<MyOrdersController,
-        OrdersResponse> with MyOrdersControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          MyOrdersController,
+          OrdersResponse
+        >
+    with MyOrdersControllerRef {
   _MyOrdersControllerProviderElement(super.provider);
 
   @override
   String? get status => (origin as MyOrdersControllerProvider).status;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

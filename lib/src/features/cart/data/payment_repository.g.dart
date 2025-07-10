@@ -56,21 +56,13 @@ class PaymentFamily extends Family<AsyncValue<PaymentResponse>> {
   const PaymentFamily();
 
   /// See also [payment].
-  PaymentProvider call(
-    int id,
-  ) {
-    return PaymentProvider(
-      id,
-    );
+  PaymentProvider call(int id) {
+    return PaymentProvider(id);
   }
 
   @override
-  PaymentProvider getProviderOverride(
-    covariant PaymentProvider provider,
-  ) {
-    return call(
-      provider.id,
-    );
+  PaymentProvider getProviderOverride(covariant PaymentProvider provider) {
+    return call(provider.id);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -91,23 +83,18 @@ class PaymentFamily extends Family<AsyncValue<PaymentResponse>> {
 /// See also [payment].
 class PaymentProvider extends AutoDisposeFutureProvider<PaymentResponse> {
   /// See also [payment].
-  PaymentProvider(
-    int id,
-  ) : this._internal(
-          (ref) => payment(
-            ref as PaymentRef,
-            id,
-          ),
-          from: paymentProvider,
-          name: r'paymentProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$paymentHash,
-          dependencies: PaymentFamily._dependencies,
-          allTransitiveDependencies: PaymentFamily._allTransitiveDependencies,
-          id: id,
-        );
+  PaymentProvider(int id)
+    : this._internal(
+        (ref) => payment(ref as PaymentRef, id),
+        from: paymentProvider,
+        name: r'paymentProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$paymentHash,
+        dependencies: PaymentFamily._dependencies,
+        allTransitiveDependencies: PaymentFamily._allTransitiveDependencies,
+        id: id,
+      );
 
   PaymentProvider._internal(
     super._createNotifier, {
@@ -166,7 +153,8 @@ mixin PaymentRef on AutoDisposeFutureProviderRef<PaymentResponse> {
 }
 
 class _PaymentProviderElement
-    extends AutoDisposeFutureProviderElement<PaymentResponse> with PaymentRef {
+    extends AutoDisposeFutureProviderElement<PaymentResponse>
+    with PaymentRef {
   _PaymentProviderElement(super.provider);
 
   @override
@@ -185,21 +173,15 @@ class ConfirmPaymentFamily extends Family<AsyncValue<ConfirmPaymentResponse>> {
   const ConfirmPaymentFamily();
 
   /// See also [confirmPayment].
-  ConfirmPaymentProvider call(
-    ConfirmPaymentBodyData body,
-  ) {
-    return ConfirmPaymentProvider(
-      body,
-    );
+  ConfirmPaymentProvider call(ConfirmPaymentBodyData body) {
+    return ConfirmPaymentProvider(body);
   }
 
   @override
   ConfirmPaymentProvider getProviderOverride(
     covariant ConfirmPaymentProvider provider,
   ) {
-    return call(
-      provider.body,
-    );
+    return call(provider.body);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -221,24 +203,19 @@ class ConfirmPaymentFamily extends Family<AsyncValue<ConfirmPaymentResponse>> {
 class ConfirmPaymentProvider
     extends AutoDisposeFutureProvider<ConfirmPaymentResponse> {
   /// See also [confirmPayment].
-  ConfirmPaymentProvider(
-    ConfirmPaymentBodyData body,
-  ) : this._internal(
-          (ref) => confirmPayment(
-            ref as ConfirmPaymentRef,
-            body,
-          ),
-          from: confirmPaymentProvider,
-          name: r'confirmPaymentProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$confirmPaymentHash,
-          dependencies: ConfirmPaymentFamily._dependencies,
-          allTransitiveDependencies:
-              ConfirmPaymentFamily._allTransitiveDependencies,
-          body: body,
-        );
+  ConfirmPaymentProvider(ConfirmPaymentBodyData body)
+    : this._internal(
+        (ref) => confirmPayment(ref as ConfirmPaymentRef, body),
+        from: confirmPaymentProvider,
+        name: r'confirmPaymentProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$confirmPaymentHash,
+        dependencies: ConfirmPaymentFamily._dependencies,
+        allTransitiveDependencies:
+            ConfirmPaymentFamily._allTransitiveDependencies,
+        body: body,
+      );
 
   ConfirmPaymentProvider._internal(
     super._createNotifier, {
@@ -255,7 +232,7 @@ class ConfirmPaymentProvider
   @override
   Override overrideWith(
     FutureOr<ConfirmPaymentResponse> Function(ConfirmPaymentRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -306,5 +283,6 @@ class _ConfirmPaymentProviderElement
   @override
   ConfirmPaymentBodyData get body => (origin as ConfirmPaymentProvider).body;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

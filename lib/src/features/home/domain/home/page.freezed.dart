@@ -12,7 +12,8 @@ part of 'page.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Page _$PageFromJson(Map<String, dynamic> json) {
   return _Page.fromJson(json);
@@ -39,14 +40,15 @@ abstract class $PageCopyWith<$Res> {
   factory $PageCopyWith(Page value, $Res Function(Page) then) =
       _$PageCopyWithImpl<$Res, Page>;
   @useResult
-  $Res call(
-      {String id,
-      String choosePage,
-      String position,
-      String status,
-      String title,
-      String langCode,
-      String pageUrl});
+  $Res call({
+    String id,
+    String choosePage,
+    String position,
+    String status,
+    String title,
+    String langCode,
+    String pageUrl,
+  });
 }
 
 /// @nodoc
@@ -72,54 +74,59 @@ class _$PageCopyWithImpl<$Res, $Val extends Page>
     Object? langCode = null,
     Object? pageUrl = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      choosePage: null == choosePage
-          ? _value.choosePage
-          : choosePage // ignore: cast_nullable_to_non_nullable
-              as String,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      langCode: null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      pageUrl: null == pageUrl
-          ? _value.pageUrl
-          : pageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            choosePage: null == choosePage
+                ? _value.choosePage
+                : choosePage // ignore: cast_nullable_to_non_nullable
+                      as String,
+            position: null == position
+                ? _value.position
+                : position // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            langCode: null == langCode
+                ? _value.langCode
+                : langCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            pageUrl: null == pageUrl
+                ? _value.pageUrl
+                : pageUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PageImplCopyWith<$Res> implements $PageCopyWith<$Res> {
   factory _$$PageImplCopyWith(
-          _$PageImpl value, $Res Function(_$PageImpl) then) =
-      __$$PageImplCopyWithImpl<$Res>;
+    _$PageImpl value,
+    $Res Function(_$PageImpl) then,
+  ) = __$$PageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String choosePage,
-      String position,
-      String status,
-      String title,
-      String langCode,
-      String pageUrl});
+  $Res call({
+    String id,
+    String choosePage,
+    String position,
+    String status,
+    String title,
+    String langCode,
+    String pageUrl,
+  });
 }
 
 /// @nodoc
@@ -127,7 +134,7 @@ class __$$PageImplCopyWithImpl<$Res>
     extends _$PageCopyWithImpl<$Res, _$PageImpl>
     implements _$$PageImplCopyWith<$Res> {
   __$$PageImplCopyWithImpl(_$PageImpl _value, $Res Function(_$PageImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Page
   /// with the given fields replaced by the non-null parameter values.
@@ -142,50 +149,53 @@ class __$$PageImplCopyWithImpl<$Res>
     Object? langCode = null,
     Object? pageUrl = null,
   }) {
-    return _then(_$PageImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      choosePage: null == choosePage
-          ? _value.choosePage
-          : choosePage // ignore: cast_nullable_to_non_nullable
-              as String,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      langCode: null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      pageUrl: null == pageUrl
-          ? _value.pageUrl
-          : pageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$PageImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        choosePage: null == choosePage
+            ? _value.choosePage
+            : choosePage // ignore: cast_nullable_to_non_nullable
+                  as String,
+        position: null == position
+            ? _value.position
+            : position // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        langCode: null == langCode
+            ? _value.langCode
+            : langCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        pageUrl: null == pageUrl
+            ? _value.pageUrl
+            : pageUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$PageImpl implements _Page {
-  _$PageImpl(
-      {required this.id,
-      required this.choosePage,
-      required this.position,
-      required this.status,
-      required this.title,
-      required this.langCode,
-      required this.pageUrl});
+  _$PageImpl({
+    required this.id,
+    required this.choosePage,
+    required this.position,
+    required this.status,
+    required this.title,
+    required this.langCode,
+    required this.pageUrl,
+  });
 
   factory _$PageImpl.fromJson(Map<String, dynamic> json) =>
       _$$PageImplFromJson(json);
@@ -230,7 +240,15 @@ class _$PageImpl implements _Page {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, choosePage, position, status, title, langCode, pageUrl);
+    runtimeType,
+    id,
+    choosePage,
+    position,
+    status,
+    title,
+    langCode,
+    pageUrl,
+  );
 
   /// Create a copy of Page
   /// with the given fields replaced by the non-null parameter values.
@@ -242,14 +260,15 @@ class _$PageImpl implements _Page {
 }
 
 abstract class _Page implements Page {
-  factory _Page(
-      {required final String id,
-      required final String choosePage,
-      required final String position,
-      required final String status,
-      required final String title,
-      required final String langCode,
-      required final String pageUrl}) = _$PageImpl;
+  factory _Page({
+    required final String id,
+    required final String choosePage,
+    required final String position,
+    required final String status,
+    required final String title,
+    required final String langCode,
+    required final String pageUrl,
+  }) = _$PageImpl;
 
   factory _Page.fromJson(Map<String, dynamic> json) = _$PageImpl.fromJson;
 

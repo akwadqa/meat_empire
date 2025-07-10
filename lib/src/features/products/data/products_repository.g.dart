@@ -57,21 +57,15 @@ class ProductDetailsFamily extends Family<AsyncValue<ProductDetailsResponse>> {
   const ProductDetailsFamily();
 
   /// See also [productDetails].
-  ProductDetailsProvider call(
-    int productId,
-  ) {
-    return ProductDetailsProvider(
-      productId,
-    );
+  ProductDetailsProvider call(int productId) {
+    return ProductDetailsProvider(productId);
   }
 
   @override
   ProductDetailsProvider getProviderOverride(
     covariant ProductDetailsProvider provider,
   ) {
-    return call(
-      provider.productId,
-    );
+    return call(provider.productId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -93,24 +87,19 @@ class ProductDetailsFamily extends Family<AsyncValue<ProductDetailsResponse>> {
 class ProductDetailsProvider
     extends AutoDisposeFutureProvider<ProductDetailsResponse> {
   /// See also [productDetails].
-  ProductDetailsProvider(
-    int productId,
-  ) : this._internal(
-          (ref) => productDetails(
-            ref as ProductDetailsRef,
-            productId,
-          ),
-          from: productDetailsProvider,
-          name: r'productDetailsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$productDetailsHash,
-          dependencies: ProductDetailsFamily._dependencies,
-          allTransitiveDependencies:
-              ProductDetailsFamily._allTransitiveDependencies,
-          productId: productId,
-        );
+  ProductDetailsProvider(int productId)
+    : this._internal(
+        (ref) => productDetails(ref as ProductDetailsRef, productId),
+        from: productDetailsProvider,
+        name: r'productDetailsProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$productDetailsHash,
+        dependencies: ProductDetailsFamily._dependencies,
+        allTransitiveDependencies:
+            ProductDetailsFamily._allTransitiveDependencies,
+        productId: productId,
+      );
 
   ProductDetailsProvider._internal(
     super._createNotifier, {
@@ -127,7 +116,7 @@ class ProductDetailsProvider
   @override
   Override overrideWith(
     FutureOr<ProductDetailsResponse> Function(ProductDetailsRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -178,5 +167,6 @@ class _ProductDetailsProviderElement
   @override
   int get productId => (origin as ProductDetailsProvider).productId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

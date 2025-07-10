@@ -12,14 +12,14 @@ String _$paymentControllerHash() => r'7b13334acbcebf4839ef8cd46168067e23b726f8';
 @ProviderFor(PaymentController)
 final paymentControllerProvider =
     AsyncNotifierProvider<PaymentController, ConfirmPaymentResponse?>.internal(
-  PaymentController.new,
-  name: r'paymentControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$paymentControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      PaymentController.new,
+      name: r'paymentControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$paymentControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$PaymentController = AsyncNotifier<ConfirmPaymentResponse?>;
 // ignore_for_file: type=lint

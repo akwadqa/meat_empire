@@ -12,7 +12,8 @@ part of 'products_block.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductsBlock _$ProductsBlockFromJson(Map<String, dynamic> json) {
   return _ProductsBlock.fromJson(json);
@@ -38,17 +39,19 @@ mixin _$ProductsBlock {
 /// @nodoc
 abstract class $ProductsBlockCopyWith<$Res> {
   factory $ProductsBlockCopyWith(
-          ProductsBlock value, $Res Function(ProductsBlock) then) =
-      _$ProductsBlockCopyWithImpl<$Res, ProductsBlock>;
+    ProductsBlock value,
+    $Res Function(ProductsBlock) then,
+  ) = _$ProductsBlockCopyWithImpl<$Res, ProductsBlock>;
   @useResult
-  $Res call(
-      {String title,
-      String viewType,
-      List<Product> products,
-      int? categoryId,
-      String? requestParam,
-      String? sortBy,
-      String? sortOrder});
+  $Res call({
+    String title,
+    String viewType,
+    List<Product> products,
+    int? categoryId,
+    String? requestParam,
+    String? sortBy,
+    String? sortOrder,
+  });
 }
 
 /// @nodoc
@@ -74,36 +77,39 @@ class _$ProductsBlockCopyWithImpl<$Res, $Val extends ProductsBlock>
     Object? sortBy = freezed,
     Object? sortOrder = freezed,
   }) {
-    return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      viewType: null == viewType
-          ? _value.viewType
-          : viewType // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      requestParam: freezed == requestParam
-          ? _value.requestParam
-          : requestParam // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sortBy: freezed == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sortOrder: freezed == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            viewType: null == viewType
+                ? _value.viewType
+                : viewType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            products: null == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<Product>,
+            categoryId: freezed == categoryId
+                ? _value.categoryId
+                : categoryId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            requestParam: freezed == requestParam
+                ? _value.requestParam
+                : requestParam // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sortBy: freezed == sortBy
+                ? _value.sortBy
+                : sortBy // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sortOrder: freezed == sortOrder
+                ? _value.sortOrder
+                : sortOrder // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -111,18 +117,20 @@ class _$ProductsBlockCopyWithImpl<$Res, $Val extends ProductsBlock>
 abstract class _$$ProductsBlockImplCopyWith<$Res>
     implements $ProductsBlockCopyWith<$Res> {
   factory _$$ProductsBlockImplCopyWith(
-          _$ProductsBlockImpl value, $Res Function(_$ProductsBlockImpl) then) =
-      __$$ProductsBlockImplCopyWithImpl<$Res>;
+    _$ProductsBlockImpl value,
+    $Res Function(_$ProductsBlockImpl) then,
+  ) = __$$ProductsBlockImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String title,
-      String viewType,
-      List<Product> products,
-      int? categoryId,
-      String? requestParam,
-      String? sortBy,
-      String? sortOrder});
+  $Res call({
+    String title,
+    String viewType,
+    List<Product> products,
+    int? categoryId,
+    String? requestParam,
+    String? sortBy,
+    String? sortOrder,
+  });
 }
 
 /// @nodoc
@@ -130,8 +138,9 @@ class __$$ProductsBlockImplCopyWithImpl<$Res>
     extends _$ProductsBlockCopyWithImpl<$Res, _$ProductsBlockImpl>
     implements _$$ProductsBlockImplCopyWith<$Res> {
   __$$ProductsBlockImplCopyWithImpl(
-      _$ProductsBlockImpl _value, $Res Function(_$ProductsBlockImpl) _then)
-      : super(_value, _then);
+    _$ProductsBlockImpl _value,
+    $Res Function(_$ProductsBlockImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductsBlock
   /// with the given fields replaced by the non-null parameter values.
@@ -146,51 +155,53 @@ class __$$ProductsBlockImplCopyWithImpl<$Res>
     Object? sortBy = freezed,
     Object? sortOrder = freezed,
   }) {
-    return _then(_$ProductsBlockImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      viewType: null == viewType
-          ? _value.viewType
-          : viewType // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      requestParam: freezed == requestParam
-          ? _value.requestParam
-          : requestParam // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sortBy: freezed == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sortOrder: freezed == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ProductsBlockImpl(
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        viewType: null == viewType
+            ? _value.viewType
+            : viewType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        products: null == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<Product>,
+        categoryId: freezed == categoryId
+            ? _value.categoryId
+            : categoryId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        requestParam: freezed == requestParam
+            ? _value.requestParam
+            : requestParam // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sortBy: freezed == sortBy
+            ? _value.sortBy
+            : sortBy // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sortOrder: freezed == sortOrder
+            ? _value.sortOrder
+            : sortOrder // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductsBlockImpl implements _ProductsBlock {
-  _$ProductsBlockImpl(
-      {required this.title,
-      required this.viewType,
-      required final List<Product> products,
-      required this.categoryId,
-      required this.requestParam,
-      required this.sortBy,
-      required this.sortOrder})
-      : _products = products;
+  _$ProductsBlockImpl({
+    required this.title,
+    required this.viewType,
+    required final List<Product> products,
+    required this.categoryId,
+    required this.requestParam,
+    required this.sortBy,
+    required this.sortOrder,
+  }) : _products = products;
 
   factory _$ProductsBlockImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductsBlockImplFromJson(json);
@@ -242,14 +253,15 @@ class _$ProductsBlockImpl implements _ProductsBlock {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      title,
-      viewType,
-      const DeepCollectionEquality().hash(_products),
-      categoryId,
-      requestParam,
-      sortBy,
-      sortOrder);
+    runtimeType,
+    title,
+    viewType,
+    const DeepCollectionEquality().hash(_products),
+    categoryId,
+    requestParam,
+    sortBy,
+    sortOrder,
+  );
 
   /// Create a copy of ProductsBlock
   /// with the given fields replaced by the non-null parameter values.
@@ -261,14 +273,15 @@ class _$ProductsBlockImpl implements _ProductsBlock {
 }
 
 abstract class _ProductsBlock implements ProductsBlock {
-  factory _ProductsBlock(
-      {required final String title,
-      required final String viewType,
-      required final List<Product> products,
-      required final int? categoryId,
-      required final String? requestParam,
-      required final String? sortBy,
-      required final String? sortOrder}) = _$ProductsBlockImpl;
+  factory _ProductsBlock({
+    required final String title,
+    required final String viewType,
+    required final List<Product> products,
+    required final int? categoryId,
+    required final String? requestParam,
+    required final String? sortBy,
+    required final String? sortOrder,
+  }) = _$ProductsBlockImpl;
 
   factory _ProductsBlock.fromJson(Map<String, dynamic> json) =
       _$ProductsBlockImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'discounts.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Discounts _$DiscountsFromJson(Map<String, dynamic> json) {
   return _Discounts.fromJson(json);
@@ -54,20 +55,20 @@ class _$DiscountsCopyWithImpl<$Res, $Val extends Discounts>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? a = null,
-    Object? p = null,
-  }) {
-    return _then(_value.copyWith(
-      a: null == a
-          ? _value.a
-          : a // ignore: cast_nullable_to_non_nullable
-              as int,
-      p: null == p
-          ? _value.p
-          : p // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? a = null, Object? p = null}) {
+    return _then(
+      _value.copyWith(
+            a: null == a
+                ? _value.a
+                : a // ignore: cast_nullable_to_non_nullable
+                      as int,
+            p: null == p
+                ? _value.p
+                : p // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -75,8 +76,9 @@ class _$DiscountsCopyWithImpl<$Res, $Val extends Discounts>
 abstract class _$$DiscountsImplCopyWith<$Res>
     implements $DiscountsCopyWith<$Res> {
   factory _$$DiscountsImplCopyWith(
-          _$DiscountsImpl value, $Res Function(_$DiscountsImpl) then) =
-      __$$DiscountsImplCopyWithImpl<$Res>;
+    _$DiscountsImpl value,
+    $Res Function(_$DiscountsImpl) then,
+  ) = __$$DiscountsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'A') int a, @JsonKey(name: 'P') int p});
@@ -87,36 +89,37 @@ class __$$DiscountsImplCopyWithImpl<$Res>
     extends _$DiscountsCopyWithImpl<$Res, _$DiscountsImpl>
     implements _$$DiscountsImplCopyWith<$Res> {
   __$$DiscountsImplCopyWithImpl(
-      _$DiscountsImpl _value, $Res Function(_$DiscountsImpl) _then)
-      : super(_value, _then);
+    _$DiscountsImpl _value,
+    $Res Function(_$DiscountsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Discounts
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? a = null,
-    Object? p = null,
-  }) {
-    return _then(_$DiscountsImpl(
-      a: null == a
-          ? _value.a
-          : a // ignore: cast_nullable_to_non_nullable
-              as int,
-      p: null == p
-          ? _value.p
-          : p // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? a = null, Object? p = null}) {
+    return _then(
+      _$DiscountsImpl(
+        a: null == a
+            ? _value.a
+            : a // ignore: cast_nullable_to_non_nullable
+                  as int,
+        p: null == p
+            ? _value.p
+            : p // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$DiscountsImpl implements _Discounts {
-  _$DiscountsImpl(
-      {@JsonKey(name: 'A') required this.a,
-      @JsonKey(name: 'P') required this.p});
+  _$DiscountsImpl({
+    @JsonKey(name: 'A') required this.a,
+    @JsonKey(name: 'P') required this.p,
+  });
 
   factory _$DiscountsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DiscountsImplFromJson(json);
@@ -156,9 +159,10 @@ class _$DiscountsImpl implements _Discounts {
 }
 
 abstract class _Discounts implements Discounts {
-  factory _Discounts(
-      {@JsonKey(name: 'A') required final int a,
-      @JsonKey(name: 'P') required final int p}) = _$DiscountsImpl;
+  factory _Discounts({
+    @JsonKey(name: 'A') required final int a,
+    @JsonKey(name: 'P') required final int p,
+  }) = _$DiscountsImpl;
 
   factory _Discounts.fromJson(Map<String, dynamic> json) =
       _$DiscountsImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'extra.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Extra _$ExtraFromJson(Map<String, dynamic> json) {
   return _Extra.fromJson(json);
@@ -55,24 +56,28 @@ class _$ExtraCopyWithImpl<$Res, $Val extends Extra>
     Object? unlimitedDownload = freezed,
     Object? updatedTimestamp = freezed,
   }) {
-    return _then(_value.copyWith(
-      unlimitedDownload: freezed == unlimitedDownload
-          ? _value.unlimitedDownload
-          : unlimitedDownload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedTimestamp: freezed == updatedTimestamp
-          ? _value.updatedTimestamp
-          : updatedTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            unlimitedDownload: freezed == unlimitedDownload
+                ? _value.unlimitedDownload
+                : unlimitedDownload // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            updatedTimestamp: freezed == updatedTimestamp
+                ? _value.updatedTimestamp
+                : updatedTimestamp // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ExtraImplCopyWith<$Res> implements $ExtraCopyWith<$Res> {
   factory _$$ExtraImplCopyWith(
-          _$ExtraImpl value, $Res Function(_$ExtraImpl) then) =
-      __$$ExtraImplCopyWithImpl<$Res>;
+    _$ExtraImpl value,
+    $Res Function(_$ExtraImpl) then,
+  ) = __$$ExtraImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? unlimitedDownload, String? updatedTimestamp});
@@ -83,8 +88,9 @@ class __$$ExtraImplCopyWithImpl<$Res>
     extends _$ExtraCopyWithImpl<$Res, _$ExtraImpl>
     implements _$$ExtraImplCopyWith<$Res> {
   __$$ExtraImplCopyWithImpl(
-      _$ExtraImpl _value, $Res Function(_$ExtraImpl) _then)
-      : super(_value, _then);
+    _$ExtraImpl _value,
+    $Res Function(_$ExtraImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Extra
   /// with the given fields replaced by the non-null parameter values.
@@ -94,16 +100,18 @@ class __$$ExtraImplCopyWithImpl<$Res>
     Object? unlimitedDownload = freezed,
     Object? updatedTimestamp = freezed,
   }) {
-    return _then(_$ExtraImpl(
-      unlimitedDownload: freezed == unlimitedDownload
-          ? _value.unlimitedDownload
-          : unlimitedDownload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedTimestamp: freezed == updatedTimestamp
-          ? _value.updatedTimestamp
-          : updatedTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ExtraImpl(
+        unlimitedDownload: freezed == unlimitedDownload
+            ? _value.unlimitedDownload
+            : unlimitedDownload // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        updatedTimestamp: freezed == updatedTimestamp
+            ? _value.updatedTimestamp
+            : updatedTimestamp // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -151,9 +159,10 @@ class _$ExtraImpl implements _Extra {
 }
 
 abstract class _Extra implements Extra {
-  factory _Extra(
-      {final String? unlimitedDownload,
-      final String? updatedTimestamp}) = _$ExtraImpl;
+  factory _Extra({
+    final String? unlimitedDownload,
+    final String? updatedTimestamp,
+  }) = _$ExtraImpl;
 
   factory _Extra.fromJson(Map<String, dynamic> json) = _$ExtraImpl.fromJson;
 

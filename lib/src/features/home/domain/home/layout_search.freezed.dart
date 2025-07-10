@@ -12,7 +12,8 @@ part of 'layout_search.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 LayoutSearch _$LayoutSearchFromJson(Map<String, dynamic> json) {
   return _LayoutSearch.fromJson(json);
@@ -38,17 +39,19 @@ mixin _$LayoutSearch {
 /// @nodoc
 abstract class $LayoutSearchCopyWith<$Res> {
   factory $LayoutSearchCopyWith(
-          LayoutSearch value, $Res Function(LayoutSearch) then) =
-      _$LayoutSearchCopyWithImpl<$Res, LayoutSearch>;
+    LayoutSearch value,
+    $Res Function(LayoutSearch) then,
+  ) = _$LayoutSearchCopyWithImpl<$Res, LayoutSearch>;
   @useResult
-  $Res call(
-      {int page,
-      int itemsPerPage,
-      String status,
-      int storefrontId,
-      String sortOrder,
-      String sortBy,
-      String sortOrderRev});
+  $Res call({
+    int page,
+    int itemsPerPage,
+    String status,
+    int storefrontId,
+    String sortOrder,
+    String sortBy,
+    String sortOrderRev,
+  });
 }
 
 /// @nodoc
@@ -74,36 +77,39 @@ class _$LayoutSearchCopyWithImpl<$Res, $Val extends LayoutSearch>
     Object? sortBy = null,
     Object? sortOrderRev = null,
   }) {
-    return _then(_value.copyWith(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemsPerPage: null == itemsPerPage
-          ? _value.itemsPerPage
-          : itemsPerPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      storefrontId: null == storefrontId
-          ? _value.storefrontId
-          : storefrontId // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrderRev: null == sortOrderRev
-          ? _value.sortOrderRev
-          : sortOrderRev // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            page: null == page
+                ? _value.page
+                : page // ignore: cast_nullable_to_non_nullable
+                      as int,
+            itemsPerPage: null == itemsPerPage
+                ? _value.itemsPerPage
+                : itemsPerPage // ignore: cast_nullable_to_non_nullable
+                      as int,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            storefrontId: null == storefrontId
+                ? _value.storefrontId
+                : storefrontId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            sortOrder: null == sortOrder
+                ? _value.sortOrder
+                : sortOrder // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortBy: null == sortBy
+                ? _value.sortBy
+                : sortBy // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortOrderRev: null == sortOrderRev
+                ? _value.sortOrderRev
+                : sortOrderRev // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -111,18 +117,20 @@ class _$LayoutSearchCopyWithImpl<$Res, $Val extends LayoutSearch>
 abstract class _$$LayoutSearchImplCopyWith<$Res>
     implements $LayoutSearchCopyWith<$Res> {
   factory _$$LayoutSearchImplCopyWith(
-          _$LayoutSearchImpl value, $Res Function(_$LayoutSearchImpl) then) =
-      __$$LayoutSearchImplCopyWithImpl<$Res>;
+    _$LayoutSearchImpl value,
+    $Res Function(_$LayoutSearchImpl) then,
+  ) = __$$LayoutSearchImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int page,
-      int itemsPerPage,
-      String status,
-      int storefrontId,
-      String sortOrder,
-      String sortBy,
-      String sortOrderRev});
+  $Res call({
+    int page,
+    int itemsPerPage,
+    String status,
+    int storefrontId,
+    String sortOrder,
+    String sortBy,
+    String sortOrderRev,
+  });
 }
 
 /// @nodoc
@@ -130,8 +138,9 @@ class __$$LayoutSearchImplCopyWithImpl<$Res>
     extends _$LayoutSearchCopyWithImpl<$Res, _$LayoutSearchImpl>
     implements _$$LayoutSearchImplCopyWith<$Res> {
   __$$LayoutSearchImplCopyWithImpl(
-      _$LayoutSearchImpl _value, $Res Function(_$LayoutSearchImpl) _then)
-      : super(_value, _then);
+    _$LayoutSearchImpl _value,
+    $Res Function(_$LayoutSearchImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LayoutSearch
   /// with the given fields replaced by the non-null parameter values.
@@ -146,50 +155,53 @@ class __$$LayoutSearchImplCopyWithImpl<$Res>
     Object? sortBy = null,
     Object? sortOrderRev = null,
   }) {
-    return _then(_$LayoutSearchImpl(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemsPerPage: null == itemsPerPage
-          ? _value.itemsPerPage
-          : itemsPerPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      storefrontId: null == storefrontId
-          ? _value.storefrontId
-          : storefrontId // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrderRev: null == sortOrderRev
-          ? _value.sortOrderRev
-          : sortOrderRev // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$LayoutSearchImpl(
+        page: null == page
+            ? _value.page
+            : page // ignore: cast_nullable_to_non_nullable
+                  as int,
+        itemsPerPage: null == itemsPerPage
+            ? _value.itemsPerPage
+            : itemsPerPage // ignore: cast_nullable_to_non_nullable
+                  as int,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        storefrontId: null == storefrontId
+            ? _value.storefrontId
+            : storefrontId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        sortOrder: null == sortOrder
+            ? _value.sortOrder
+            : sortOrder // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortBy: null == sortBy
+            ? _value.sortBy
+            : sortBy // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortOrderRev: null == sortOrderRev
+            ? _value.sortOrderRev
+            : sortOrderRev // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$LayoutSearchImpl implements _LayoutSearch {
-  _$LayoutSearchImpl(
-      {required this.page,
-      required this.itemsPerPage,
-      required this.status,
-      required this.storefrontId,
-      required this.sortOrder,
-      required this.sortBy,
-      required this.sortOrderRev});
+  _$LayoutSearchImpl({
+    required this.page,
+    required this.itemsPerPage,
+    required this.status,
+    required this.storefrontId,
+    required this.sortOrder,
+    required this.sortBy,
+    required this.sortOrderRev,
+  });
 
   factory _$LayoutSearchImpl.fromJson(Map<String, dynamic> json) =>
       _$$LayoutSearchImplFromJson(json);
@@ -234,8 +246,16 @@ class _$LayoutSearchImpl implements _LayoutSearch {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, page, itemsPerPage, status,
-      storefrontId, sortOrder, sortBy, sortOrderRev);
+  int get hashCode => Object.hash(
+    runtimeType,
+    page,
+    itemsPerPage,
+    status,
+    storefrontId,
+    sortOrder,
+    sortBy,
+    sortOrderRev,
+  );
 
   /// Create a copy of LayoutSearch
   /// with the given fields replaced by the non-null parameter values.
@@ -247,14 +267,15 @@ class _$LayoutSearchImpl implements _LayoutSearch {
 }
 
 abstract class _LayoutSearch implements LayoutSearch {
-  factory _LayoutSearch(
-      {required final int page,
-      required final int itemsPerPage,
-      required final String status,
-      required final int storefrontId,
-      required final String sortOrder,
-      required final String sortBy,
-      required final String sortOrderRev}) = _$LayoutSearchImpl;
+  factory _LayoutSearch({
+    required final int page,
+    required final int itemsPerPage,
+    required final String status,
+    required final int storefrontId,
+    required final String sortOrder,
+    required final String sortBy,
+    required final String sortOrderRev,
+  }) = _$LayoutSearchImpl;
 
   factory _LayoutSearch.fromJson(Map<String, dynamic> json) =
       _$LayoutSearchImpl.fromJson;

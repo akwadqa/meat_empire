@@ -12,10 +12,12 @@ part of 'product_reviews_avail_sorting.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductReviewsAvailSorting _$ProductReviewsAvailSortingFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _ProductReviewsAvailSorting.fromJson(json);
 }
 
@@ -38,30 +40,37 @@ mixin _$ProductReviewsAvailSorting {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductReviewsAvailSortingCopyWith<ProductReviewsAvailSorting>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProductReviewsAvailSortingCopyWith<$Res> {
-  factory $ProductReviewsAvailSortingCopyWith(ProductReviewsAvailSorting value,
-          $Res Function(ProductReviewsAvailSorting) then) =
-      _$ProductReviewsAvailSortingCopyWithImpl<$Res,
-          ProductReviewsAvailSorting>;
+  factory $ProductReviewsAvailSortingCopyWith(
+    ProductReviewsAvailSorting value,
+    $Res Function(ProductReviewsAvailSorting) then,
+  ) =
+      _$ProductReviewsAvailSortingCopyWithImpl<
+        $Res,
+        ProductReviewsAvailSorting
+      >;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'product_review_timestamp-asc')
-      String productReviewTimestampAsc,
-      @JsonKey(name: 'product_review_timestamp-desc')
-      String productReviewTimestampDesc,
-      @JsonKey(name: 'helpfulness-asc') String helpfulnessAsc,
-      @JsonKey(name: 'helpfulness-desc') String helpfulnessDesc,
-      @JsonKey(name: 'rating_value-asc') String ratingValueAsc,
-      @JsonKey(name: 'rating_value-desc') String ratingValueDesc});
+  $Res call({
+    @JsonKey(name: 'product_review_timestamp-asc')
+    String productReviewTimestampAsc,
+    @JsonKey(name: 'product_review_timestamp-desc')
+    String productReviewTimestampDesc,
+    @JsonKey(name: 'helpfulness-asc') String helpfulnessAsc,
+    @JsonKey(name: 'helpfulness-desc') String helpfulnessDesc,
+    @JsonKey(name: 'rating_value-asc') String ratingValueAsc,
+    @JsonKey(name: 'rating_value-desc') String ratingValueDesc,
+  });
 }
 
 /// @nodoc
-class _$ProductReviewsAvailSortingCopyWithImpl<$Res,
-        $Val extends ProductReviewsAvailSorting>
+class _$ProductReviewsAvailSortingCopyWithImpl<
+  $Res,
+  $Val extends ProductReviewsAvailSorting
+>
     implements $ProductReviewsAvailSortingCopyWith<$Res> {
   _$ProductReviewsAvailSortingCopyWithImpl(this._value, this._then);
 
@@ -82,32 +91,35 @@ class _$ProductReviewsAvailSortingCopyWithImpl<$Res,
     Object? ratingValueAsc = null,
     Object? ratingValueDesc = null,
   }) {
-    return _then(_value.copyWith(
-      productReviewTimestampAsc: null == productReviewTimestampAsc
-          ? _value.productReviewTimestampAsc
-          : productReviewTimestampAsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      productReviewTimestampDesc: null == productReviewTimestampDesc
-          ? _value.productReviewTimestampDesc
-          : productReviewTimestampDesc // ignore: cast_nullable_to_non_nullable
-              as String,
-      helpfulnessAsc: null == helpfulnessAsc
-          ? _value.helpfulnessAsc
-          : helpfulnessAsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      helpfulnessDesc: null == helpfulnessDesc
-          ? _value.helpfulnessDesc
-          : helpfulnessDesc // ignore: cast_nullable_to_non_nullable
-              as String,
-      ratingValueAsc: null == ratingValueAsc
-          ? _value.ratingValueAsc
-          : ratingValueAsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      ratingValueDesc: null == ratingValueDesc
-          ? _value.ratingValueDesc
-          : ratingValueDesc // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            productReviewTimestampAsc: null == productReviewTimestampAsc
+                ? _value.productReviewTimestampAsc
+                : productReviewTimestampAsc // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productReviewTimestampDesc: null == productReviewTimestampDesc
+                ? _value.productReviewTimestampDesc
+                : productReviewTimestampDesc // ignore: cast_nullable_to_non_nullable
+                      as String,
+            helpfulnessAsc: null == helpfulnessAsc
+                ? _value.helpfulnessAsc
+                : helpfulnessAsc // ignore: cast_nullable_to_non_nullable
+                      as String,
+            helpfulnessDesc: null == helpfulnessDesc
+                ? _value.helpfulnessDesc
+                : helpfulnessDesc // ignore: cast_nullable_to_non_nullable
+                      as String,
+            ratingValueAsc: null == ratingValueAsc
+                ? _value.ratingValueAsc
+                : ratingValueAsc // ignore: cast_nullable_to_non_nullable
+                      as String,
+            ratingValueDesc: null == ratingValueDesc
+                ? _value.ratingValueDesc
+                : ratingValueDesc // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -115,31 +127,35 @@ class _$ProductReviewsAvailSortingCopyWithImpl<$Res,
 abstract class _$$ProductReviewsAvailSortingImplCopyWith<$Res>
     implements $ProductReviewsAvailSortingCopyWith<$Res> {
   factory _$$ProductReviewsAvailSortingImplCopyWith(
-          _$ProductReviewsAvailSortingImpl value,
-          $Res Function(_$ProductReviewsAvailSortingImpl) then) =
-      __$$ProductReviewsAvailSortingImplCopyWithImpl<$Res>;
+    _$ProductReviewsAvailSortingImpl value,
+    $Res Function(_$ProductReviewsAvailSortingImpl) then,
+  ) = __$$ProductReviewsAvailSortingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'product_review_timestamp-asc')
-      String productReviewTimestampAsc,
-      @JsonKey(name: 'product_review_timestamp-desc')
-      String productReviewTimestampDesc,
-      @JsonKey(name: 'helpfulness-asc') String helpfulnessAsc,
-      @JsonKey(name: 'helpfulness-desc') String helpfulnessDesc,
-      @JsonKey(name: 'rating_value-asc') String ratingValueAsc,
-      @JsonKey(name: 'rating_value-desc') String ratingValueDesc});
+  $Res call({
+    @JsonKey(name: 'product_review_timestamp-asc')
+    String productReviewTimestampAsc,
+    @JsonKey(name: 'product_review_timestamp-desc')
+    String productReviewTimestampDesc,
+    @JsonKey(name: 'helpfulness-asc') String helpfulnessAsc,
+    @JsonKey(name: 'helpfulness-desc') String helpfulnessDesc,
+    @JsonKey(name: 'rating_value-asc') String ratingValueAsc,
+    @JsonKey(name: 'rating_value-desc') String ratingValueDesc,
+  });
 }
 
 /// @nodoc
 class __$$ProductReviewsAvailSortingImplCopyWithImpl<$Res>
-    extends _$ProductReviewsAvailSortingCopyWithImpl<$Res,
-        _$ProductReviewsAvailSortingImpl>
+    extends
+        _$ProductReviewsAvailSortingCopyWithImpl<
+          $Res,
+          _$ProductReviewsAvailSortingImpl
+        >
     implements _$$ProductReviewsAvailSortingImplCopyWith<$Res> {
   __$$ProductReviewsAvailSortingImplCopyWithImpl(
-      _$ProductReviewsAvailSortingImpl _value,
-      $Res Function(_$ProductReviewsAvailSortingImpl) _then)
-      : super(_value, _then);
+    _$ProductReviewsAvailSortingImpl _value,
+    $Res Function(_$ProductReviewsAvailSortingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductReviewsAvailSorting
   /// with the given fields replaced by the non-null parameter values.
@@ -153,51 +169,54 @@ class __$$ProductReviewsAvailSortingImplCopyWithImpl<$Res>
     Object? ratingValueAsc = null,
     Object? ratingValueDesc = null,
   }) {
-    return _then(_$ProductReviewsAvailSortingImpl(
-      productReviewTimestampAsc: null == productReviewTimestampAsc
-          ? _value.productReviewTimestampAsc
-          : productReviewTimestampAsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      productReviewTimestampDesc: null == productReviewTimestampDesc
-          ? _value.productReviewTimestampDesc
-          : productReviewTimestampDesc // ignore: cast_nullable_to_non_nullable
-              as String,
-      helpfulnessAsc: null == helpfulnessAsc
-          ? _value.helpfulnessAsc
-          : helpfulnessAsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      helpfulnessDesc: null == helpfulnessDesc
-          ? _value.helpfulnessDesc
-          : helpfulnessDesc // ignore: cast_nullable_to_non_nullable
-              as String,
-      ratingValueAsc: null == ratingValueAsc
-          ? _value.ratingValueAsc
-          : ratingValueAsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      ratingValueDesc: null == ratingValueDesc
-          ? _value.ratingValueDesc
-          : ratingValueDesc // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ProductReviewsAvailSortingImpl(
+        productReviewTimestampAsc: null == productReviewTimestampAsc
+            ? _value.productReviewTimestampAsc
+            : productReviewTimestampAsc // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productReviewTimestampDesc: null == productReviewTimestampDesc
+            ? _value.productReviewTimestampDesc
+            : productReviewTimestampDesc // ignore: cast_nullable_to_non_nullable
+                  as String,
+        helpfulnessAsc: null == helpfulnessAsc
+            ? _value.helpfulnessAsc
+            : helpfulnessAsc // ignore: cast_nullable_to_non_nullable
+                  as String,
+        helpfulnessDesc: null == helpfulnessDesc
+            ? _value.helpfulnessDesc
+            : helpfulnessDesc // ignore: cast_nullable_to_non_nullable
+                  as String,
+        ratingValueAsc: null == ratingValueAsc
+            ? _value.ratingValueAsc
+            : ratingValueAsc // ignore: cast_nullable_to_non_nullable
+                  as String,
+        ratingValueDesc: null == ratingValueDesc
+            ? _value.ratingValueDesc
+            : ratingValueDesc // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductReviewsAvailSortingImpl implements _ProductReviewsAvailSorting {
-  _$ProductReviewsAvailSortingImpl(
-      {@JsonKey(name: 'product_review_timestamp-asc')
-      required this.productReviewTimestampAsc,
-      @JsonKey(name: 'product_review_timestamp-desc')
-      required this.productReviewTimestampDesc,
-      @JsonKey(name: 'helpfulness-asc') required this.helpfulnessAsc,
-      @JsonKey(name: 'helpfulness-desc') required this.helpfulnessDesc,
-      @JsonKey(name: 'rating_value-asc') required this.ratingValueAsc,
-      @JsonKey(name: 'rating_value-desc') required this.ratingValueDesc});
+  _$ProductReviewsAvailSortingImpl({
+    @JsonKey(name: 'product_review_timestamp-asc')
+    required this.productReviewTimestampAsc,
+    @JsonKey(name: 'product_review_timestamp-desc')
+    required this.productReviewTimestampDesc,
+    @JsonKey(name: 'helpfulness-asc') required this.helpfulnessAsc,
+    @JsonKey(name: 'helpfulness-desc') required this.helpfulnessDesc,
+    @JsonKey(name: 'rating_value-asc') required this.ratingValueAsc,
+    @JsonKey(name: 'rating_value-desc') required this.ratingValueDesc,
+  });
 
   factory _$ProductReviewsAvailSortingImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ProductReviewsAvailSortingImplFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$$ProductReviewsAvailSortingImplFromJson(json);
 
   @override
   @JsonKey(name: 'product_review_timestamp-asc')
@@ -228,11 +247,15 @@ class _$ProductReviewsAvailSortingImpl implements _ProductReviewsAvailSorting {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductReviewsAvailSortingImpl &&
-            (identical(other.productReviewTimestampAsc,
-                    productReviewTimestampAsc) ||
+            (identical(
+                  other.productReviewTimestampAsc,
+                  productReviewTimestampAsc,
+                ) ||
                 other.productReviewTimestampAsc == productReviewTimestampAsc) &&
-            (identical(other.productReviewTimestampDesc,
-                    productReviewTimestampDesc) ||
+            (identical(
+                  other.productReviewTimestampDesc,
+                  productReviewTimestampDesc,
+                ) ||
                 other.productReviewTimestampDesc ==
                     productReviewTimestampDesc) &&
             (identical(other.helpfulnessAsc, helpfulnessAsc) ||
@@ -248,13 +271,14 @@ class _$ProductReviewsAvailSortingImpl implements _ProductReviewsAvailSorting {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      productReviewTimestampAsc,
-      productReviewTimestampDesc,
-      helpfulnessAsc,
-      helpfulnessDesc,
-      ratingValueAsc,
-      ratingValueDesc);
+    runtimeType,
+    productReviewTimestampAsc,
+    productReviewTimestampDesc,
+    helpfulnessAsc,
+    helpfulnessDesc,
+    ratingValueAsc,
+    ratingValueDesc,
+  );
 
   /// Create a copy of ProductReviewsAvailSorting
   /// with the given fields replaced by the non-null parameter values.
@@ -262,23 +286,24 @@ class _$ProductReviewsAvailSortingImpl implements _ProductReviewsAvailSorting {
   @override
   @pragma('vm:prefer-inline')
   _$$ProductReviewsAvailSortingImplCopyWith<_$ProductReviewsAvailSortingImpl>
-      get copyWith => __$$ProductReviewsAvailSortingImplCopyWithImpl<
-          _$ProductReviewsAvailSortingImpl>(this, _$identity);
+  get copyWith =>
+      __$$ProductReviewsAvailSortingImplCopyWithImpl<
+        _$ProductReviewsAvailSortingImpl
+      >(this, _$identity);
 }
 
 abstract class _ProductReviewsAvailSorting
     implements ProductReviewsAvailSorting {
-  factory _ProductReviewsAvailSorting(
-      {@JsonKey(name: 'product_review_timestamp-asc')
-      required final String productReviewTimestampAsc,
-      @JsonKey(name: 'product_review_timestamp-desc')
-      required final String productReviewTimestampDesc,
-      @JsonKey(name: 'helpfulness-asc') required final String helpfulnessAsc,
-      @JsonKey(name: 'helpfulness-desc') required final String helpfulnessDesc,
-      @JsonKey(name: 'rating_value-asc') required final String ratingValueAsc,
-      @JsonKey(name: 'rating_value-desc')
-      required final String
-          ratingValueDesc}) = _$ProductReviewsAvailSortingImpl;
+  factory _ProductReviewsAvailSorting({
+    @JsonKey(name: 'product_review_timestamp-asc')
+    required final String productReviewTimestampAsc,
+    @JsonKey(name: 'product_review_timestamp-desc')
+    required final String productReviewTimestampDesc,
+    @JsonKey(name: 'helpfulness-asc') required final String helpfulnessAsc,
+    @JsonKey(name: 'helpfulness-desc') required final String helpfulnessDesc,
+    @JsonKey(name: 'rating_value-asc') required final String ratingValueAsc,
+    @JsonKey(name: 'rating_value-desc') required final String ratingValueDesc,
+  }) = _$ProductReviewsAvailSortingImpl;
 
   factory _ProductReviewsAvailSorting.fromJson(Map<String, dynamic> json) =
       _$ProductReviewsAvailSortingImpl.fromJson;
@@ -307,5 +332,5 @@ abstract class _ProductReviewsAvailSorting
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductReviewsAvailSortingImplCopyWith<_$ProductReviewsAvailSortingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

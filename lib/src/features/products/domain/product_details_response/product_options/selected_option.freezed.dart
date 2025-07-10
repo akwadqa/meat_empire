@@ -12,7 +12,8 @@ part of 'selected_option.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) {
   return _SelectedOption.fromJson(json);
@@ -36,8 +37,9 @@ mixin _$SelectedOption {
 /// @nodoc
 abstract class $SelectedOptionCopyWith<$Res> {
   factory $SelectedOptionCopyWith(
-          SelectedOption value, $Res Function(SelectedOption) then) =
-      _$SelectedOptionCopyWithImpl<$Res, SelectedOption>;
+    SelectedOption value,
+    $Res Function(SelectedOption) then,
+  ) = _$SelectedOptionCopyWithImpl<$Res, SelectedOption>;
   @useResult
   $Res call({int optionId, int variantId});
 }
@@ -56,29 +58,30 @@ class _$SelectedOptionCopyWithImpl<$Res, $Val extends SelectedOption>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? optionId = null,
-    Object? variantId = null,
-  }) {
-    return _then(_value.copyWith(
-      optionId: null == optionId
-          ? _value.optionId
-          : optionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      variantId: null == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? optionId = null, Object? variantId = null}) {
+    return _then(
+      _value.copyWith(
+            optionId: null == optionId
+                ? _value.optionId
+                : optionId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            variantId: null == variantId
+                ? _value.variantId
+                : variantId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SelectedOptionImplCopyWith<$Res>
     implements $SelectedOptionCopyWith<$Res> {
-  factory _$$SelectedOptionImplCopyWith(_$SelectedOptionImpl value,
-          $Res Function(_$SelectedOptionImpl) then) =
-      __$$SelectedOptionImplCopyWithImpl<$Res>;
+  factory _$$SelectedOptionImplCopyWith(
+    _$SelectedOptionImpl value,
+    $Res Function(_$SelectedOptionImpl) then,
+  ) = __$$SelectedOptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int optionId, int variantId});
@@ -89,27 +92,27 @@ class __$$SelectedOptionImplCopyWithImpl<$Res>
     extends _$SelectedOptionCopyWithImpl<$Res, _$SelectedOptionImpl>
     implements _$$SelectedOptionImplCopyWith<$Res> {
   __$$SelectedOptionImplCopyWithImpl(
-      _$SelectedOptionImpl _value, $Res Function(_$SelectedOptionImpl) _then)
-      : super(_value, _then);
+    _$SelectedOptionImpl _value,
+    $Res Function(_$SelectedOptionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SelectedOption
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? optionId = null,
-    Object? variantId = null,
-  }) {
-    return _then(_$SelectedOptionImpl(
-      optionId: null == optionId
-          ? _value.optionId
-          : optionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      variantId: null == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? optionId = null, Object? variantId = null}) {
+    return _then(
+      _$SelectedOptionImpl(
+        optionId: null == optionId
+            ? _value.optionId
+            : optionId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        variantId: null == variantId
+            ? _value.variantId
+            : variantId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -153,20 +156,21 @@ class _$SelectedOptionImpl implements _SelectedOption {
   @pragma('vm:prefer-inline')
   _$$SelectedOptionImplCopyWith<_$SelectedOptionImpl> get copyWith =>
       __$$SelectedOptionImplCopyWithImpl<_$SelectedOptionImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SelectedOptionImplToJson(
-      this,
-    );
+    return _$$SelectedOptionImplToJson(this);
   }
 }
 
 abstract class _SelectedOption implements SelectedOption {
-  factory _SelectedOption(
-      {required final int optionId,
-      required final int variantId}) = _$SelectedOptionImpl;
+  factory _SelectedOption({
+    required final int optionId,
+    required final int variantId,
+  }) = _$SelectedOptionImpl;
 
   factory _SelectedOption.fromJson(Map<String, dynamic> json) =
       _$SelectedOptionImpl.fromJson;

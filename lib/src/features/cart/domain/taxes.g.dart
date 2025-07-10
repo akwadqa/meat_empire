@@ -7,6 +7,6 @@ part of 'taxes.dart';
 // **************************************************************************
 
 _$TaxesImpl _$$TaxesImplFromJson(Map<String, dynamic> json) => _$TaxesImpl(
-      taxValue: json['tax_value'] as String?,
-      taxName: json['tax_name'] as String?,
-    );
+  taxValue: json['tax_value'] as String?,
+  taxName: json['tax_name'] as String?,
+);

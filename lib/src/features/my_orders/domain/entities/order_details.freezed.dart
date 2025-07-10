@@ -12,7 +12,8 @@ part of 'order_details.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OrderDetails _$OrderDetailsFromJson(Map<String, dynamic> json) {
   return _OrderDetails.fromJson(json);
@@ -36,14 +37,16 @@ mixin _$OrderDetails {
 /// @nodoc
 abstract class $OrderDetailsCopyWith<$Res> {
   factory $OrderDetailsCopyWith(
-          OrderDetails value, $Res Function(OrderDetails) then) =
-      _$OrderDetailsCopyWithImpl<$Res, OrderDetails>;
+    OrderDetails value,
+    $Res Function(OrderDetails) then,
+  ) = _$OrderDetailsCopyWithImpl<$Res, OrderDetails>;
   @useResult
-  $Res call(
-      {bool? showShipments,
-      List<OrderDetailsShipment> shipments,
-      String message,
-      bool success});
+  $Res call({
+    bool? showShipments,
+    List<OrderDetailsShipment> shipments,
+    String message,
+    bool success,
+  });
 }
 
 /// @nodoc
@@ -66,24 +69,27 @@ class _$OrderDetailsCopyWithImpl<$Res, $Val extends OrderDetails>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_value.copyWith(
-      showShipments: freezed == showShipments
-          ? _value.showShipments
-          : showShipments // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      shipments: null == shipments
-          ? _value.shipments
-          : shipments // ignore: cast_nullable_to_non_nullable
-              as List<OrderDetailsShipment>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            showShipments: freezed == showShipments
+                ? _value.showShipments
+                : showShipments // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            shipments: null == shipments
+                ? _value.shipments
+                : shipments // ignore: cast_nullable_to_non_nullable
+                      as List<OrderDetailsShipment>,
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            success: null == success
+                ? _value.success
+                : success // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -91,15 +97,17 @@ class _$OrderDetailsCopyWithImpl<$Res, $Val extends OrderDetails>
 abstract class _$$OrderDetailsImplCopyWith<$Res>
     implements $OrderDetailsCopyWith<$Res> {
   factory _$$OrderDetailsImplCopyWith(
-          _$OrderDetailsImpl value, $Res Function(_$OrderDetailsImpl) then) =
-      __$$OrderDetailsImplCopyWithImpl<$Res>;
+    _$OrderDetailsImpl value,
+    $Res Function(_$OrderDetailsImpl) then,
+  ) = __$$OrderDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool? showShipments,
-      List<OrderDetailsShipment> shipments,
-      String message,
-      bool success});
+  $Res call({
+    bool? showShipments,
+    List<OrderDetailsShipment> shipments,
+    String message,
+    bool success,
+  });
 }
 
 /// @nodoc
@@ -107,8 +115,9 @@ class __$$OrderDetailsImplCopyWithImpl<$Res>
     extends _$OrderDetailsCopyWithImpl<$Res, _$OrderDetailsImpl>
     implements _$$OrderDetailsImplCopyWith<$Res> {
   __$$OrderDetailsImplCopyWithImpl(
-      _$OrderDetailsImpl _value, $Res Function(_$OrderDetailsImpl) _then)
-      : super(_value, _then);
+    _$OrderDetailsImpl _value,
+    $Res Function(_$OrderDetailsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OrderDetails
   /// with the given fields replaced by the non-null parameter values.
@@ -120,36 +129,38 @@ class __$$OrderDetailsImplCopyWithImpl<$Res>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_$OrderDetailsImpl(
-      showShipments: freezed == showShipments
-          ? _value.showShipments
-          : showShipments // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      shipments: null == shipments
-          ? _value._shipments
-          : shipments // ignore: cast_nullable_to_non_nullable
-              as List<OrderDetailsShipment>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$OrderDetailsImpl(
+        showShipments: freezed == showShipments
+            ? _value.showShipments
+            : showShipments // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        shipments: null == shipments
+            ? _value._shipments
+            : shipments // ignore: cast_nullable_to_non_nullable
+                  as List<OrderDetailsShipment>,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        success: null == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$OrderDetailsImpl implements _OrderDetails {
-  const _$OrderDetailsImpl(
-      {this.showShipments,
-      required final List<OrderDetailsShipment> shipments,
-      required this.message,
-      required this.success})
-      : _shipments = shipments;
+  const _$OrderDetailsImpl({
+    this.showShipments,
+    required final List<OrderDetailsShipment> shipments,
+    required this.message,
+    required this.success,
+  }) : _shipments = shipments;
 
   factory _$OrderDetailsImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderDetailsImplFromJson(json);
@@ -181,16 +192,23 @@ class _$OrderDetailsImpl implements _OrderDetails {
             other is _$OrderDetailsImpl &&
             (identical(other.showShipments, showShipments) ||
                 other.showShipments == showShipments) &&
-            const DeepCollectionEquality()
-                .equals(other._shipments, _shipments) &&
+            const DeepCollectionEquality().equals(
+              other._shipments,
+              _shipments,
+            ) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.success, success) || other.success == success));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, showShipments,
-      const DeepCollectionEquality().hash(_shipments), message, success);
+  int get hashCode => Object.hash(
+    runtimeType,
+    showShipments,
+    const DeepCollectionEquality().hash(_shipments),
+    message,
+    success,
+  );
 
   /// Create a copy of OrderDetails
   /// with the given fields replaced by the non-null parameter values.
@@ -202,11 +220,12 @@ class _$OrderDetailsImpl implements _OrderDetails {
 }
 
 abstract class _OrderDetails implements OrderDetails {
-  const factory _OrderDetails(
-      {final bool? showShipments,
-      required final List<OrderDetailsShipment> shipments,
-      required final String message,
-      required final bool success}) = _$OrderDetailsImpl;
+  const factory _OrderDetails({
+    final bool? showShipments,
+    required final List<OrderDetailsShipment> shipments,
+    required final String message,
+    required final bool success,
+  }) = _$OrderDetailsImpl;
 
   factory _OrderDetails.fromJson(Map<String, dynamic> json) =
       _$OrderDetailsImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'cart.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Cart _$CartFromJson(Map<String, dynamic> json) {
   return _Cart.fromJson(json);
@@ -81,56 +82,57 @@ abstract class $CartCopyWith<$Res> {
   factory $CartCopyWith(Cart value, $Res Function(Cart) then) =
       _$CartCopyWithImpl<$Res, Cart>;
   @useResult
-  $Res call(
-      {List<Product>? products,
-      dynamic shippingCost,
-      double? displayShippingCost,
-      int? taxSubtotal,
-      int? discount,
-      String? total,
-      int? amount,
-      int? originalSubtotal,
-      String? displaySubtotal,
-      String? subtotal,
-      bool? useDiscount,
-      bool? companyShippingFailed,
-      bool? shippingFailed,
-      String? storedTaxes,
-      dynamic coupons,
-      bool? recalculate,
-      bool? calculateShipping,
-      List<dynamic>? freeShipping,
-      String? optionsStyle,
-      bool? shippingRequired,
-      bool? noPromotions,
-      dynamic subtotalDiscount,
-      bool? hasCoupons,
-      List<ProductGroup>? productGroups,
-      List<int>? chosenShipping,
-      bool? chosenShippingDisabled,
-      PointsInfo? pointsInfo,
-      dynamic taxSummary,
-      List<Taxes>? taxes,
-      String? discountedSubtotal,
-      dynamic userData,
-      dynamic profileId,
-      bool? guestCheckout,
-      String? locationHash,
-      int? paymentSurcharge,
-      String? formatSubtotal,
-      String? formatDisplaySubtotal,
-      String? formatTotal,
-      String? formatShippingCost,
-      String? formatDiscountedSubtotal,
-      String? formatPaymentSurcharge,
-      String? formatSubtotalDiscount,
-      String? formatTaxSubtotal,
-      List<CartProduct>? cartProducts,
-      List<Shipping>? shippings,
-      dynamic paymentId,
-      dynamic orderId,
-      List<dynamic>? couponsDetails,
-      List<DeliverySlot>? deliverySlots});
+  $Res call({
+    List<Product>? products,
+    dynamic shippingCost,
+    double? displayShippingCost,
+    int? taxSubtotal,
+    int? discount,
+    String? total,
+    int? amount,
+    int? originalSubtotal,
+    String? displaySubtotal,
+    String? subtotal,
+    bool? useDiscount,
+    bool? companyShippingFailed,
+    bool? shippingFailed,
+    String? storedTaxes,
+    dynamic coupons,
+    bool? recalculate,
+    bool? calculateShipping,
+    List<dynamic>? freeShipping,
+    String? optionsStyle,
+    bool? shippingRequired,
+    bool? noPromotions,
+    dynamic subtotalDiscount,
+    bool? hasCoupons,
+    List<ProductGroup>? productGroups,
+    List<int>? chosenShipping,
+    bool? chosenShippingDisabled,
+    PointsInfo? pointsInfo,
+    dynamic taxSummary,
+    List<Taxes>? taxes,
+    String? discountedSubtotal,
+    dynamic userData,
+    dynamic profileId,
+    bool? guestCheckout,
+    String? locationHash,
+    int? paymentSurcharge,
+    String? formatSubtotal,
+    String? formatDisplaySubtotal,
+    String? formatTotal,
+    String? formatShippingCost,
+    String? formatDiscountedSubtotal,
+    String? formatPaymentSurcharge,
+    String? formatSubtotalDiscount,
+    String? formatTaxSubtotal,
+    List<CartProduct>? cartProducts,
+    List<Shipping>? shippings,
+    dynamic paymentId,
+    dynamic orderId,
+    List<dynamic>? couponsDetails,
+    List<DeliverySlot>? deliverySlots,
+  });
 
   $PointsInfoCopyWith<$Res>? get pointsInfo;
 }
@@ -200,204 +202,207 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
     Object? couponsDetails = freezed,
     Object? deliverySlots = freezed,
   }) {
-    return _then(_value.copyWith(
-      products: freezed == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
-      shippingCost: freezed == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      displayShippingCost: freezed == displayShippingCost
-          ? _value.displayShippingCost
-          : displayShippingCost // ignore: cast_nullable_to_non_nullable
-              as double?,
-      taxSubtotal: freezed == taxSubtotal
-          ? _value.taxSubtotal
-          : taxSubtotal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      discount: freezed == discount
-          ? _value.discount
-          : discount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      total: freezed == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as String?,
-      amount: freezed == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      originalSubtotal: freezed == originalSubtotal
-          ? _value.originalSubtotal
-          : originalSubtotal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      displaySubtotal: freezed == displaySubtotal
-          ? _value.displaySubtotal
-          : displaySubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subtotal: freezed == subtotal
-          ? _value.subtotal
-          : subtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      useDiscount: freezed == useDiscount
-          ? _value.useDiscount
-          : useDiscount // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      companyShippingFailed: freezed == companyShippingFailed
-          ? _value.companyShippingFailed
-          : companyShippingFailed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      shippingFailed: freezed == shippingFailed
-          ? _value.shippingFailed
-          : shippingFailed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      storedTaxes: freezed == storedTaxes
-          ? _value.storedTaxes
-          : storedTaxes // ignore: cast_nullable_to_non_nullable
-              as String?,
-      coupons: freezed == coupons
-          ? _value.coupons
-          : coupons // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      recalculate: freezed == recalculate
-          ? _value.recalculate
-          : recalculate // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      calculateShipping: freezed == calculateShipping
-          ? _value.calculateShipping
-          : calculateShipping // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      freeShipping: freezed == freeShipping
-          ? _value.freeShipping
-          : freeShipping // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      optionsStyle: freezed == optionsStyle
-          ? _value.optionsStyle
-          : optionsStyle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingRequired: freezed == shippingRequired
-          ? _value.shippingRequired
-          : shippingRequired // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      noPromotions: freezed == noPromotions
-          ? _value.noPromotions
-          : noPromotions // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      subtotalDiscount: freezed == subtotalDiscount
-          ? _value.subtotalDiscount
-          : subtotalDiscount // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      hasCoupons: freezed == hasCoupons
-          ? _value.hasCoupons
-          : hasCoupons // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      productGroups: freezed == productGroups
-          ? _value.productGroups
-          : productGroups // ignore: cast_nullable_to_non_nullable
-              as List<ProductGroup>?,
-      chosenShipping: freezed == chosenShipping
-          ? _value.chosenShipping
-          : chosenShipping // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
-      chosenShippingDisabled: freezed == chosenShippingDisabled
-          ? _value.chosenShippingDisabled
-          : chosenShippingDisabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      pointsInfo: freezed == pointsInfo
-          ? _value.pointsInfo
-          : pointsInfo // ignore: cast_nullable_to_non_nullable
-              as PointsInfo?,
-      taxSummary: freezed == taxSummary
-          ? _value.taxSummary
-          : taxSummary // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      taxes: freezed == taxes
-          ? _value.taxes
-          : taxes // ignore: cast_nullable_to_non_nullable
-              as List<Taxes>?,
-      discountedSubtotal: freezed == discountedSubtotal
-          ? _value.discountedSubtotal
-          : discountedSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userData: freezed == userData
-          ? _value.userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      profileId: freezed == profileId
-          ? _value.profileId
-          : profileId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      guestCheckout: freezed == guestCheckout
-          ? _value.guestCheckout
-          : guestCheckout // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      locationHash: freezed == locationHash
-          ? _value.locationHash
-          : locationHash // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentSurcharge: freezed == paymentSurcharge
-          ? _value.paymentSurcharge
-          : paymentSurcharge // ignore: cast_nullable_to_non_nullable
-              as int?,
-      formatSubtotal: freezed == formatSubtotal
-          ? _value.formatSubtotal
-          : formatSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatDisplaySubtotal: freezed == formatDisplaySubtotal
-          ? _value.formatDisplaySubtotal
-          : formatDisplaySubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatTotal: freezed == formatTotal
-          ? _value.formatTotal
-          : formatTotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatShippingCost: freezed == formatShippingCost
-          ? _value.formatShippingCost
-          : formatShippingCost // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatDiscountedSubtotal: freezed == formatDiscountedSubtotal
-          ? _value.formatDiscountedSubtotal
-          : formatDiscountedSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatPaymentSurcharge: freezed == formatPaymentSurcharge
-          ? _value.formatPaymentSurcharge
-          : formatPaymentSurcharge // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatSubtotalDiscount: freezed == formatSubtotalDiscount
-          ? _value.formatSubtotalDiscount
-          : formatSubtotalDiscount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatTaxSubtotal: freezed == formatTaxSubtotal
-          ? _value.formatTaxSubtotal
-          : formatTaxSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cartProducts: freezed == cartProducts
-          ? _value.cartProducts
-          : cartProducts // ignore: cast_nullable_to_non_nullable
-              as List<CartProduct>?,
-      shippings: freezed == shippings
-          ? _value.shippings
-          : shippings // ignore: cast_nullable_to_non_nullable
-              as List<Shipping>?,
-      paymentId: freezed == paymentId
-          ? _value.paymentId
-          : paymentId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      couponsDetails: freezed == couponsDetails
-          ? _value.couponsDetails
-          : couponsDetails // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      deliverySlots: freezed == deliverySlots
-          ? _value.deliverySlots
-          : deliverySlots // ignore: cast_nullable_to_non_nullable
-              as List<DeliverySlot>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            products: freezed == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<Product>?,
+            shippingCost: freezed == shippingCost
+                ? _value.shippingCost
+                : shippingCost // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            displayShippingCost: freezed == displayShippingCost
+                ? _value.displayShippingCost
+                : displayShippingCost // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            taxSubtotal: freezed == taxSubtotal
+                ? _value.taxSubtotal
+                : taxSubtotal // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            discount: freezed == discount
+                ? _value.discount
+                : discount // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            total: freezed == total
+                ? _value.total
+                : total // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            amount: freezed == amount
+                ? _value.amount
+                : amount // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            originalSubtotal: freezed == originalSubtotal
+                ? _value.originalSubtotal
+                : originalSubtotal // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            displaySubtotal: freezed == displaySubtotal
+                ? _value.displaySubtotal
+                : displaySubtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            subtotal: freezed == subtotal
+                ? _value.subtotal
+                : subtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            useDiscount: freezed == useDiscount
+                ? _value.useDiscount
+                : useDiscount // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            companyShippingFailed: freezed == companyShippingFailed
+                ? _value.companyShippingFailed
+                : companyShippingFailed // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            shippingFailed: freezed == shippingFailed
+                ? _value.shippingFailed
+                : shippingFailed // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            storedTaxes: freezed == storedTaxes
+                ? _value.storedTaxes
+                : storedTaxes // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            coupons: freezed == coupons
+                ? _value.coupons
+                : coupons // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            recalculate: freezed == recalculate
+                ? _value.recalculate
+                : recalculate // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            calculateShipping: freezed == calculateShipping
+                ? _value.calculateShipping
+                : calculateShipping // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            freeShipping: freezed == freeShipping
+                ? _value.freeShipping
+                : freeShipping // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>?,
+            optionsStyle: freezed == optionsStyle
+                ? _value.optionsStyle
+                : optionsStyle // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippingRequired: freezed == shippingRequired
+                ? _value.shippingRequired
+                : shippingRequired // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            noPromotions: freezed == noPromotions
+                ? _value.noPromotions
+                : noPromotions // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            subtotalDiscount: freezed == subtotalDiscount
+                ? _value.subtotalDiscount
+                : subtotalDiscount // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            hasCoupons: freezed == hasCoupons
+                ? _value.hasCoupons
+                : hasCoupons // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            productGroups: freezed == productGroups
+                ? _value.productGroups
+                : productGroups // ignore: cast_nullable_to_non_nullable
+                      as List<ProductGroup>?,
+            chosenShipping: freezed == chosenShipping
+                ? _value.chosenShipping
+                : chosenShipping // ignore: cast_nullable_to_non_nullable
+                      as List<int>?,
+            chosenShippingDisabled: freezed == chosenShippingDisabled
+                ? _value.chosenShippingDisabled
+                : chosenShippingDisabled // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            pointsInfo: freezed == pointsInfo
+                ? _value.pointsInfo
+                : pointsInfo // ignore: cast_nullable_to_non_nullable
+                      as PointsInfo?,
+            taxSummary: freezed == taxSummary
+                ? _value.taxSummary
+                : taxSummary // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            taxes: freezed == taxes
+                ? _value.taxes
+                : taxes // ignore: cast_nullable_to_non_nullable
+                      as List<Taxes>?,
+            discountedSubtotal: freezed == discountedSubtotal
+                ? _value.discountedSubtotal
+                : discountedSubtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            userData: freezed == userData
+                ? _value.userData
+                : userData // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            profileId: freezed == profileId
+                ? _value.profileId
+                : profileId // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            guestCheckout: freezed == guestCheckout
+                ? _value.guestCheckout
+                : guestCheckout // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            locationHash: freezed == locationHash
+                ? _value.locationHash
+                : locationHash // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            paymentSurcharge: freezed == paymentSurcharge
+                ? _value.paymentSurcharge
+                : paymentSurcharge // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            formatSubtotal: freezed == formatSubtotal
+                ? _value.formatSubtotal
+                : formatSubtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatDisplaySubtotal: freezed == formatDisplaySubtotal
+                ? _value.formatDisplaySubtotal
+                : formatDisplaySubtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatTotal: freezed == formatTotal
+                ? _value.formatTotal
+                : formatTotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatShippingCost: freezed == formatShippingCost
+                ? _value.formatShippingCost
+                : formatShippingCost // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatDiscountedSubtotal: freezed == formatDiscountedSubtotal
+                ? _value.formatDiscountedSubtotal
+                : formatDiscountedSubtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatPaymentSurcharge: freezed == formatPaymentSurcharge
+                ? _value.formatPaymentSurcharge
+                : formatPaymentSurcharge // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatSubtotalDiscount: freezed == formatSubtotalDiscount
+                ? _value.formatSubtotalDiscount
+                : formatSubtotalDiscount // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatTaxSubtotal: freezed == formatTaxSubtotal
+                ? _value.formatTaxSubtotal
+                : formatTaxSubtotal // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cartProducts: freezed == cartProducts
+                ? _value.cartProducts
+                : cartProducts // ignore: cast_nullable_to_non_nullable
+                      as List<CartProduct>?,
+            shippings: freezed == shippings
+                ? _value.shippings
+                : shippings // ignore: cast_nullable_to_non_nullable
+                      as List<Shipping>?,
+            paymentId: freezed == paymentId
+                ? _value.paymentId
+                : paymentId // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            orderId: freezed == orderId
+                ? _value.orderId
+                : orderId // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            couponsDetails: freezed == couponsDetails
+                ? _value.couponsDetails
+                : couponsDetails // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>?,
+            deliverySlots: freezed == deliverySlots
+                ? _value.deliverySlots
+                : deliverySlots // ignore: cast_nullable_to_non_nullable
+                      as List<DeliverySlot>?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Cart
@@ -418,60 +423,62 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
 /// @nodoc
 abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
   factory _$$CartImplCopyWith(
-          _$CartImpl value, $Res Function(_$CartImpl) then) =
-      __$$CartImplCopyWithImpl<$Res>;
+    _$CartImpl value,
+    $Res Function(_$CartImpl) then,
+  ) = __$$CartImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<Product>? products,
-      dynamic shippingCost,
-      double? displayShippingCost,
-      int? taxSubtotal,
-      int? discount,
-      String? total,
-      int? amount,
-      int? originalSubtotal,
-      String? displaySubtotal,
-      String? subtotal,
-      bool? useDiscount,
-      bool? companyShippingFailed,
-      bool? shippingFailed,
-      String? storedTaxes,
-      dynamic coupons,
-      bool? recalculate,
-      bool? calculateShipping,
-      List<dynamic>? freeShipping,
-      String? optionsStyle,
-      bool? shippingRequired,
-      bool? noPromotions,
-      dynamic subtotalDiscount,
-      bool? hasCoupons,
-      List<ProductGroup>? productGroups,
-      List<int>? chosenShipping,
-      bool? chosenShippingDisabled,
-      PointsInfo? pointsInfo,
-      dynamic taxSummary,
-      List<Taxes>? taxes,
-      String? discountedSubtotal,
-      dynamic userData,
-      dynamic profileId,
-      bool? guestCheckout,
-      String? locationHash,
-      int? paymentSurcharge,
-      String? formatSubtotal,
-      String? formatDisplaySubtotal,
-      String? formatTotal,
-      String? formatShippingCost,
-      String? formatDiscountedSubtotal,
-      String? formatPaymentSurcharge,
-      String? formatSubtotalDiscount,
-      String? formatTaxSubtotal,
-      List<CartProduct>? cartProducts,
-      List<Shipping>? shippings,
-      dynamic paymentId,
-      dynamic orderId,
-      List<dynamic>? couponsDetails,
-      List<DeliverySlot>? deliverySlots});
+  $Res call({
+    List<Product>? products,
+    dynamic shippingCost,
+    double? displayShippingCost,
+    int? taxSubtotal,
+    int? discount,
+    String? total,
+    int? amount,
+    int? originalSubtotal,
+    String? displaySubtotal,
+    String? subtotal,
+    bool? useDiscount,
+    bool? companyShippingFailed,
+    bool? shippingFailed,
+    String? storedTaxes,
+    dynamic coupons,
+    bool? recalculate,
+    bool? calculateShipping,
+    List<dynamic>? freeShipping,
+    String? optionsStyle,
+    bool? shippingRequired,
+    bool? noPromotions,
+    dynamic subtotalDiscount,
+    bool? hasCoupons,
+    List<ProductGroup>? productGroups,
+    List<int>? chosenShipping,
+    bool? chosenShippingDisabled,
+    PointsInfo? pointsInfo,
+    dynamic taxSummary,
+    List<Taxes>? taxes,
+    String? discountedSubtotal,
+    dynamic userData,
+    dynamic profileId,
+    bool? guestCheckout,
+    String? locationHash,
+    int? paymentSurcharge,
+    String? formatSubtotal,
+    String? formatDisplaySubtotal,
+    String? formatTotal,
+    String? formatShippingCost,
+    String? formatDiscountedSubtotal,
+    String? formatPaymentSurcharge,
+    String? formatSubtotalDiscount,
+    String? formatTaxSubtotal,
+    List<CartProduct>? cartProducts,
+    List<Shipping>? shippings,
+    dynamic paymentId,
+    dynamic orderId,
+    List<dynamic>? couponsDetails,
+    List<DeliverySlot>? deliverySlots,
+  });
 
   @override
   $PointsInfoCopyWith<$Res>? get pointsInfo;
@@ -482,7 +489,7 @@ class __$$CartImplCopyWithImpl<$Res>
     extends _$CartCopyWithImpl<$Res, _$CartImpl>
     implements _$$CartImplCopyWith<$Res> {
   __$$CartImplCopyWithImpl(_$CartImpl _value, $Res Function(_$CartImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.
@@ -539,269 +546,271 @@ class __$$CartImplCopyWithImpl<$Res>
     Object? couponsDetails = freezed,
     Object? deliverySlots = freezed,
   }) {
-    return _then(_$CartImpl(
-      products: freezed == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
-      shippingCost: freezed == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      displayShippingCost: freezed == displayShippingCost
-          ? _value.displayShippingCost
-          : displayShippingCost // ignore: cast_nullable_to_non_nullable
-              as double?,
-      taxSubtotal: freezed == taxSubtotal
-          ? _value.taxSubtotal
-          : taxSubtotal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      discount: freezed == discount
-          ? _value.discount
-          : discount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      total: freezed == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as String?,
-      amount: freezed == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      originalSubtotal: freezed == originalSubtotal
-          ? _value.originalSubtotal
-          : originalSubtotal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      displaySubtotal: freezed == displaySubtotal
-          ? _value.displaySubtotal
-          : displaySubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subtotal: freezed == subtotal
-          ? _value.subtotal
-          : subtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      useDiscount: freezed == useDiscount
-          ? _value.useDiscount
-          : useDiscount // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      companyShippingFailed: freezed == companyShippingFailed
-          ? _value.companyShippingFailed
-          : companyShippingFailed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      shippingFailed: freezed == shippingFailed
-          ? _value.shippingFailed
-          : shippingFailed // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      storedTaxes: freezed == storedTaxes
-          ? _value.storedTaxes
-          : storedTaxes // ignore: cast_nullable_to_non_nullable
-              as String?,
-      coupons: freezed == coupons
-          ? _value.coupons
-          : coupons // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      recalculate: freezed == recalculate
-          ? _value.recalculate
-          : recalculate // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      calculateShipping: freezed == calculateShipping
-          ? _value.calculateShipping
-          : calculateShipping // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      freeShipping: freezed == freeShipping
-          ? _value._freeShipping
-          : freeShipping // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      optionsStyle: freezed == optionsStyle
-          ? _value.optionsStyle
-          : optionsStyle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingRequired: freezed == shippingRequired
-          ? _value.shippingRequired
-          : shippingRequired // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      noPromotions: freezed == noPromotions
-          ? _value.noPromotions
-          : noPromotions // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      subtotalDiscount: freezed == subtotalDiscount
-          ? _value.subtotalDiscount
-          : subtotalDiscount // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      hasCoupons: freezed == hasCoupons
-          ? _value.hasCoupons
-          : hasCoupons // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      productGroups: freezed == productGroups
-          ? _value._productGroups
-          : productGroups // ignore: cast_nullable_to_non_nullable
-              as List<ProductGroup>?,
-      chosenShipping: freezed == chosenShipping
-          ? _value._chosenShipping
-          : chosenShipping // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
-      chosenShippingDisabled: freezed == chosenShippingDisabled
-          ? _value.chosenShippingDisabled
-          : chosenShippingDisabled // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      pointsInfo: freezed == pointsInfo
-          ? _value.pointsInfo
-          : pointsInfo // ignore: cast_nullable_to_non_nullable
-              as PointsInfo?,
-      taxSummary: freezed == taxSummary
-          ? _value.taxSummary
-          : taxSummary // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      taxes: freezed == taxes
-          ? _value._taxes
-          : taxes // ignore: cast_nullable_to_non_nullable
-              as List<Taxes>?,
-      discountedSubtotal: freezed == discountedSubtotal
-          ? _value.discountedSubtotal
-          : discountedSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userData: freezed == userData
-          ? _value.userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      profileId: freezed == profileId
-          ? _value.profileId
-          : profileId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      guestCheckout: freezed == guestCheckout
-          ? _value.guestCheckout
-          : guestCheckout // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      locationHash: freezed == locationHash
-          ? _value.locationHash
-          : locationHash // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentSurcharge: freezed == paymentSurcharge
-          ? _value.paymentSurcharge
-          : paymentSurcharge // ignore: cast_nullable_to_non_nullable
-              as int?,
-      formatSubtotal: freezed == formatSubtotal
-          ? _value.formatSubtotal
-          : formatSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatDisplaySubtotal: freezed == formatDisplaySubtotal
-          ? _value.formatDisplaySubtotal
-          : formatDisplaySubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatTotal: freezed == formatTotal
-          ? _value.formatTotal
-          : formatTotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatShippingCost: freezed == formatShippingCost
-          ? _value.formatShippingCost
-          : formatShippingCost // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatDiscountedSubtotal: freezed == formatDiscountedSubtotal
-          ? _value.formatDiscountedSubtotal
-          : formatDiscountedSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatPaymentSurcharge: freezed == formatPaymentSurcharge
-          ? _value.formatPaymentSurcharge
-          : formatPaymentSurcharge // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatSubtotalDiscount: freezed == formatSubtotalDiscount
-          ? _value.formatSubtotalDiscount
-          : formatSubtotalDiscount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatTaxSubtotal: freezed == formatTaxSubtotal
-          ? _value.formatTaxSubtotal
-          : formatTaxSubtotal // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cartProducts: freezed == cartProducts
-          ? _value._cartProducts
-          : cartProducts // ignore: cast_nullable_to_non_nullable
-              as List<CartProduct>?,
-      shippings: freezed == shippings
-          ? _value._shippings
-          : shippings // ignore: cast_nullable_to_non_nullable
-              as List<Shipping>?,
-      paymentId: freezed == paymentId
-          ? _value.paymentId
-          : paymentId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      couponsDetails: freezed == couponsDetails
-          ? _value._couponsDetails
-          : couponsDetails // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      deliverySlots: freezed == deliverySlots
-          ? _value._deliverySlots
-          : deliverySlots // ignore: cast_nullable_to_non_nullable
-              as List<DeliverySlot>?,
-    ));
+    return _then(
+      _$CartImpl(
+        products: freezed == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<Product>?,
+        shippingCost: freezed == shippingCost
+            ? _value.shippingCost
+            : shippingCost // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        displayShippingCost: freezed == displayShippingCost
+            ? _value.displayShippingCost
+            : displayShippingCost // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        taxSubtotal: freezed == taxSubtotal
+            ? _value.taxSubtotal
+            : taxSubtotal // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        discount: freezed == discount
+            ? _value.discount
+            : discount // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        total: freezed == total
+            ? _value.total
+            : total // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        amount: freezed == amount
+            ? _value.amount
+            : amount // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        originalSubtotal: freezed == originalSubtotal
+            ? _value.originalSubtotal
+            : originalSubtotal // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        displaySubtotal: freezed == displaySubtotal
+            ? _value.displaySubtotal
+            : displaySubtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        subtotal: freezed == subtotal
+            ? _value.subtotal
+            : subtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        useDiscount: freezed == useDiscount
+            ? _value.useDiscount
+            : useDiscount // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        companyShippingFailed: freezed == companyShippingFailed
+            ? _value.companyShippingFailed
+            : companyShippingFailed // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        shippingFailed: freezed == shippingFailed
+            ? _value.shippingFailed
+            : shippingFailed // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        storedTaxes: freezed == storedTaxes
+            ? _value.storedTaxes
+            : storedTaxes // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        coupons: freezed == coupons
+            ? _value.coupons
+            : coupons // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        recalculate: freezed == recalculate
+            ? _value.recalculate
+            : recalculate // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        calculateShipping: freezed == calculateShipping
+            ? _value.calculateShipping
+            : calculateShipping // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        freeShipping: freezed == freeShipping
+            ? _value._freeShipping
+            : freeShipping // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>?,
+        optionsStyle: freezed == optionsStyle
+            ? _value.optionsStyle
+            : optionsStyle // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippingRequired: freezed == shippingRequired
+            ? _value.shippingRequired
+            : shippingRequired // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        noPromotions: freezed == noPromotions
+            ? _value.noPromotions
+            : noPromotions // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        subtotalDiscount: freezed == subtotalDiscount
+            ? _value.subtotalDiscount
+            : subtotalDiscount // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        hasCoupons: freezed == hasCoupons
+            ? _value.hasCoupons
+            : hasCoupons // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        productGroups: freezed == productGroups
+            ? _value._productGroups
+            : productGroups // ignore: cast_nullable_to_non_nullable
+                  as List<ProductGroup>?,
+        chosenShipping: freezed == chosenShipping
+            ? _value._chosenShipping
+            : chosenShipping // ignore: cast_nullable_to_non_nullable
+                  as List<int>?,
+        chosenShippingDisabled: freezed == chosenShippingDisabled
+            ? _value.chosenShippingDisabled
+            : chosenShippingDisabled // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        pointsInfo: freezed == pointsInfo
+            ? _value.pointsInfo
+            : pointsInfo // ignore: cast_nullable_to_non_nullable
+                  as PointsInfo?,
+        taxSummary: freezed == taxSummary
+            ? _value.taxSummary
+            : taxSummary // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        taxes: freezed == taxes
+            ? _value._taxes
+            : taxes // ignore: cast_nullable_to_non_nullable
+                  as List<Taxes>?,
+        discountedSubtotal: freezed == discountedSubtotal
+            ? _value.discountedSubtotal
+            : discountedSubtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        userData: freezed == userData
+            ? _value.userData
+            : userData // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        profileId: freezed == profileId
+            ? _value.profileId
+            : profileId // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        guestCheckout: freezed == guestCheckout
+            ? _value.guestCheckout
+            : guestCheckout // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        locationHash: freezed == locationHash
+            ? _value.locationHash
+            : locationHash // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        paymentSurcharge: freezed == paymentSurcharge
+            ? _value.paymentSurcharge
+            : paymentSurcharge // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        formatSubtotal: freezed == formatSubtotal
+            ? _value.formatSubtotal
+            : formatSubtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatDisplaySubtotal: freezed == formatDisplaySubtotal
+            ? _value.formatDisplaySubtotal
+            : formatDisplaySubtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatTotal: freezed == formatTotal
+            ? _value.formatTotal
+            : formatTotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatShippingCost: freezed == formatShippingCost
+            ? _value.formatShippingCost
+            : formatShippingCost // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatDiscountedSubtotal: freezed == formatDiscountedSubtotal
+            ? _value.formatDiscountedSubtotal
+            : formatDiscountedSubtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatPaymentSurcharge: freezed == formatPaymentSurcharge
+            ? _value.formatPaymentSurcharge
+            : formatPaymentSurcharge // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatSubtotalDiscount: freezed == formatSubtotalDiscount
+            ? _value.formatSubtotalDiscount
+            : formatSubtotalDiscount // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatTaxSubtotal: freezed == formatTaxSubtotal
+            ? _value.formatTaxSubtotal
+            : formatTaxSubtotal // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cartProducts: freezed == cartProducts
+            ? _value._cartProducts
+            : cartProducts // ignore: cast_nullable_to_non_nullable
+                  as List<CartProduct>?,
+        shippings: freezed == shippings
+            ? _value._shippings
+            : shippings // ignore: cast_nullable_to_non_nullable
+                  as List<Shipping>?,
+        paymentId: freezed == paymentId
+            ? _value.paymentId
+            : paymentId // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        orderId: freezed == orderId
+            ? _value.orderId
+            : orderId // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        couponsDetails: freezed == couponsDetails
+            ? _value._couponsDetails
+            : couponsDetails // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>?,
+        deliverySlots: freezed == deliverySlots
+            ? _value._deliverySlots
+            : deliverySlots // ignore: cast_nullable_to_non_nullable
+                  as List<DeliverySlot>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$CartImpl implements _Cart {
-  _$CartImpl(
-      {final List<Product>? products,
-      this.shippingCost,
-      this.displayShippingCost,
-      this.taxSubtotal,
-      this.discount,
-      this.total,
-      this.amount,
-      this.originalSubtotal,
-      this.displaySubtotal,
-      this.subtotal,
-      this.useDiscount,
-      this.companyShippingFailed,
-      this.shippingFailed,
-      this.storedTaxes,
-      this.coupons,
-      this.recalculate,
-      this.calculateShipping,
-      final List<dynamic>? freeShipping,
-      this.optionsStyle,
-      this.shippingRequired,
-      this.noPromotions,
-      this.subtotalDiscount,
-      this.hasCoupons,
-      final List<ProductGroup>? productGroups,
-      final List<int>? chosenShipping,
-      this.chosenShippingDisabled,
-      this.pointsInfo,
-      this.taxSummary,
-      final List<Taxes>? taxes,
-      this.discountedSubtotal,
-      this.userData,
-      this.profileId,
-      this.guestCheckout,
-      this.locationHash,
-      this.paymentSurcharge,
-      this.formatSubtotal,
-      this.formatDisplaySubtotal,
-      this.formatTotal,
-      this.formatShippingCost,
-      this.formatDiscountedSubtotal,
-      this.formatPaymentSurcharge,
-      this.formatSubtotalDiscount,
-      this.formatTaxSubtotal,
-      final List<CartProduct>? cartProducts,
-      final List<Shipping>? shippings,
-      this.paymentId,
-      this.orderId,
-      final List<dynamic>? couponsDetails,
-      final List<DeliverySlot>? deliverySlots})
-      : _products = products,
-        _freeShipping = freeShipping,
-        _productGroups = productGroups,
-        _chosenShipping = chosenShipping,
-        _taxes = taxes,
-        _cartProducts = cartProducts,
-        _shippings = shippings,
-        _couponsDetails = couponsDetails,
-        _deliverySlots = deliverySlots;
+  _$CartImpl({
+    final List<Product>? products,
+    this.shippingCost,
+    this.displayShippingCost,
+    this.taxSubtotal,
+    this.discount,
+    this.total,
+    this.amount,
+    this.originalSubtotal,
+    this.displaySubtotal,
+    this.subtotal,
+    this.useDiscount,
+    this.companyShippingFailed,
+    this.shippingFailed,
+    this.storedTaxes,
+    this.coupons,
+    this.recalculate,
+    this.calculateShipping,
+    final List<dynamic>? freeShipping,
+    this.optionsStyle,
+    this.shippingRequired,
+    this.noPromotions,
+    this.subtotalDiscount,
+    this.hasCoupons,
+    final List<ProductGroup>? productGroups,
+    final List<int>? chosenShipping,
+    this.chosenShippingDisabled,
+    this.pointsInfo,
+    this.taxSummary,
+    final List<Taxes>? taxes,
+    this.discountedSubtotal,
+    this.userData,
+    this.profileId,
+    this.guestCheckout,
+    this.locationHash,
+    this.paymentSurcharge,
+    this.formatSubtotal,
+    this.formatDisplaySubtotal,
+    this.formatTotal,
+    this.formatShippingCost,
+    this.formatDiscountedSubtotal,
+    this.formatPaymentSurcharge,
+    this.formatSubtotalDiscount,
+    this.formatTaxSubtotal,
+    final List<CartProduct>? cartProducts,
+    final List<Shipping>? shippings,
+    this.paymentId,
+    this.orderId,
+    final List<dynamic>? couponsDetails,
+    final List<DeliverySlot>? deliverySlots,
+  }) : _products = products,
+       _freeShipping = freeShipping,
+       _productGroups = productGroups,
+       _chosenShipping = chosenShipping,
+       _taxes = taxes,
+       _cartProducts = cartProducts,
+       _shippings = shippings,
+       _couponsDetails = couponsDetails,
+       _deliverySlots = deliverySlots;
 
   factory _$CartImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartImplFromJson(json);
@@ -987,8 +996,10 @@ class _$CartImpl implements _Cart {
         (other.runtimeType == runtimeType &&
             other is _$CartImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
-            const DeepCollectionEquality()
-                .equals(other.shippingCost, shippingCost) &&
+            const DeepCollectionEquality().equals(
+              other.shippingCost,
+              shippingCost,
+            ) &&
             (identical(other.displayShippingCost, displayShippingCost) ||
                 other.displayShippingCost == displayShippingCost) &&
             (identical(other.taxSubtotal, taxSubtotal) ||
@@ -1016,28 +1027,38 @@ class _$CartImpl implements _Cart {
                 other.recalculate == recalculate) &&
             (identical(other.calculateShipping, calculateShipping) ||
                 other.calculateShipping == calculateShipping) &&
-            const DeepCollectionEquality()
-                .equals(other._freeShipping, _freeShipping) &&
+            const DeepCollectionEquality().equals(
+              other._freeShipping,
+              _freeShipping,
+            ) &&
             (identical(other.optionsStyle, optionsStyle) ||
                 other.optionsStyle == optionsStyle) &&
             (identical(other.shippingRequired, shippingRequired) ||
                 other.shippingRequired == shippingRequired) &&
             (identical(other.noPromotions, noPromotions) ||
                 other.noPromotions == noPromotions) &&
-            const DeepCollectionEquality()
-                .equals(other.subtotalDiscount, subtotalDiscount) &&
+            const DeepCollectionEquality().equals(
+              other.subtotalDiscount,
+              subtotalDiscount,
+            ) &&
             (identical(other.hasCoupons, hasCoupons) ||
                 other.hasCoupons == hasCoupons) &&
-            const DeepCollectionEquality()
-                .equals(other._productGroups, _productGroups) &&
-            const DeepCollectionEquality()
-                .equals(other._chosenShipping, _chosenShipping) &&
+            const DeepCollectionEquality().equals(
+              other._productGroups,
+              _productGroups,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._chosenShipping,
+              _chosenShipping,
+            ) &&
             (identical(other.chosenShippingDisabled, chosenShippingDisabled) ||
                 other.chosenShippingDisabled == chosenShippingDisabled) &&
             (identical(other.pointsInfo, pointsInfo) ||
                 other.pointsInfo == pointsInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.taxSummary, taxSummary) &&
+            const DeepCollectionEquality().equals(
+              other.taxSummary,
+              taxSummary,
+            ) &&
             const DeepCollectionEquality().equals(other._taxes, _taxes) &&
             (identical(other.discountedSubtotal, discountedSubtotal) ||
                 other.discountedSubtotal == discountedSubtotal) &&
@@ -1058,7 +1079,9 @@ class _$CartImpl implements _Cart {
             (identical(other.formatShippingCost, formatShippingCost) ||
                 other.formatShippingCost == formatShippingCost) &&
             (identical(
-                    other.formatDiscountedSubtotal, formatDiscountedSubtotal) ||
+                  other.formatDiscountedSubtotal,
+                  formatDiscountedSubtotal,
+                ) ||
                 other.formatDiscountedSubtotal == formatDiscountedSubtotal) &&
             (identical(other.formatPaymentSurcharge, formatPaymentSurcharge) ||
                 other.formatPaymentSurcharge == formatPaymentSurcharge) &&
@@ -1066,72 +1089,80 @@ class _$CartImpl implements _Cart {
                 other.formatSubtotalDiscount == formatSubtotalDiscount) &&
             (identical(other.formatTaxSubtotal, formatTaxSubtotal) ||
                 other.formatTaxSubtotal == formatTaxSubtotal) &&
-            const DeepCollectionEquality()
-                .equals(other._cartProducts, _cartProducts) &&
-            const DeepCollectionEquality()
-                .equals(other._shippings, _shippings) &&
+            const DeepCollectionEquality().equals(
+              other._cartProducts,
+              _cartProducts,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._shippings,
+              _shippings,
+            ) &&
             const DeepCollectionEquality().equals(other.paymentId, paymentId) &&
             const DeepCollectionEquality().equals(other.orderId, orderId) &&
-            const DeepCollectionEquality()
-                .equals(other._couponsDetails, _couponsDetails) &&
-            const DeepCollectionEquality()
-                .equals(other._deliverySlots, _deliverySlots));
+            const DeepCollectionEquality().equals(
+              other._couponsDetails,
+              _couponsDetails,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._deliverySlots,
+              _deliverySlots,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        const DeepCollectionEquality().hash(_products),
-        const DeepCollectionEquality().hash(shippingCost),
-        displayShippingCost,
-        taxSubtotal,
-        discount,
-        total,
-        amount,
-        originalSubtotal,
-        displaySubtotal,
-        subtotal,
-        useDiscount,
-        companyShippingFailed,
-        shippingFailed,
-        storedTaxes,
-        const DeepCollectionEquality().hash(coupons),
-        recalculate,
-        calculateShipping,
-        const DeepCollectionEquality().hash(_freeShipping),
-        optionsStyle,
-        shippingRequired,
-        noPromotions,
-        const DeepCollectionEquality().hash(subtotalDiscount),
-        hasCoupons,
-        const DeepCollectionEquality().hash(_productGroups),
-        const DeepCollectionEquality().hash(_chosenShipping),
-        chosenShippingDisabled,
-        pointsInfo,
-        const DeepCollectionEquality().hash(taxSummary),
-        const DeepCollectionEquality().hash(_taxes),
-        discountedSubtotal,
-        const DeepCollectionEquality().hash(userData),
-        const DeepCollectionEquality().hash(profileId),
-        guestCheckout,
-        locationHash,
-        paymentSurcharge,
-        formatSubtotal,
-        formatDisplaySubtotal,
-        formatTotal,
-        formatShippingCost,
-        formatDiscountedSubtotal,
-        formatPaymentSurcharge,
-        formatSubtotalDiscount,
-        formatTaxSubtotal,
-        const DeepCollectionEquality().hash(_cartProducts),
-        const DeepCollectionEquality().hash(_shippings),
-        const DeepCollectionEquality().hash(paymentId),
-        const DeepCollectionEquality().hash(orderId),
-        const DeepCollectionEquality().hash(_couponsDetails),
-        const DeepCollectionEquality().hash(_deliverySlots)
-      ]);
+    runtimeType,
+    const DeepCollectionEquality().hash(_products),
+    const DeepCollectionEquality().hash(shippingCost),
+    displayShippingCost,
+    taxSubtotal,
+    discount,
+    total,
+    amount,
+    originalSubtotal,
+    displaySubtotal,
+    subtotal,
+    useDiscount,
+    companyShippingFailed,
+    shippingFailed,
+    storedTaxes,
+    const DeepCollectionEquality().hash(coupons),
+    recalculate,
+    calculateShipping,
+    const DeepCollectionEquality().hash(_freeShipping),
+    optionsStyle,
+    shippingRequired,
+    noPromotions,
+    const DeepCollectionEquality().hash(subtotalDiscount),
+    hasCoupons,
+    const DeepCollectionEquality().hash(_productGroups),
+    const DeepCollectionEquality().hash(_chosenShipping),
+    chosenShippingDisabled,
+    pointsInfo,
+    const DeepCollectionEquality().hash(taxSummary),
+    const DeepCollectionEquality().hash(_taxes),
+    discountedSubtotal,
+    const DeepCollectionEquality().hash(userData),
+    const DeepCollectionEquality().hash(profileId),
+    guestCheckout,
+    locationHash,
+    paymentSurcharge,
+    formatSubtotal,
+    formatDisplaySubtotal,
+    formatTotal,
+    formatShippingCost,
+    formatDiscountedSubtotal,
+    formatPaymentSurcharge,
+    formatSubtotalDiscount,
+    formatTaxSubtotal,
+    const DeepCollectionEquality().hash(_cartProducts),
+    const DeepCollectionEquality().hash(_shippings),
+    const DeepCollectionEquality().hash(paymentId),
+    const DeepCollectionEquality().hash(orderId),
+    const DeepCollectionEquality().hash(_couponsDetails),
+    const DeepCollectionEquality().hash(_deliverySlots),
+  ]);
 
   /// Create a copy of Cart
   /// with the given fields replaced by the non-null parameter values.
@@ -1143,56 +1174,57 @@ class _$CartImpl implements _Cart {
 }
 
 abstract class _Cart implements Cart {
-  factory _Cart(
-      {final List<Product>? products,
-      final dynamic shippingCost,
-      final double? displayShippingCost,
-      final int? taxSubtotal,
-      final int? discount,
-      final String? total,
-      final int? amount,
-      final int? originalSubtotal,
-      final String? displaySubtotal,
-      final String? subtotal,
-      final bool? useDiscount,
-      final bool? companyShippingFailed,
-      final bool? shippingFailed,
-      final String? storedTaxes,
-      final dynamic coupons,
-      final bool? recalculate,
-      final bool? calculateShipping,
-      final List<dynamic>? freeShipping,
-      final String? optionsStyle,
-      final bool? shippingRequired,
-      final bool? noPromotions,
-      final dynamic subtotalDiscount,
-      final bool? hasCoupons,
-      final List<ProductGroup>? productGroups,
-      final List<int>? chosenShipping,
-      final bool? chosenShippingDisabled,
-      final PointsInfo? pointsInfo,
-      final dynamic taxSummary,
-      final List<Taxes>? taxes,
-      final String? discountedSubtotal,
-      final dynamic userData,
-      final dynamic profileId,
-      final bool? guestCheckout,
-      final String? locationHash,
-      final int? paymentSurcharge,
-      final String? formatSubtotal,
-      final String? formatDisplaySubtotal,
-      final String? formatTotal,
-      final String? formatShippingCost,
-      final String? formatDiscountedSubtotal,
-      final String? formatPaymentSurcharge,
-      final String? formatSubtotalDiscount,
-      final String? formatTaxSubtotal,
-      final List<CartProduct>? cartProducts,
-      final List<Shipping>? shippings,
-      final dynamic paymentId,
-      final dynamic orderId,
-      final List<dynamic>? couponsDetails,
-      final List<DeliverySlot>? deliverySlots}) = _$CartImpl;
+  factory _Cart({
+    final List<Product>? products,
+    final dynamic shippingCost,
+    final double? displayShippingCost,
+    final int? taxSubtotal,
+    final int? discount,
+    final String? total,
+    final int? amount,
+    final int? originalSubtotal,
+    final String? displaySubtotal,
+    final String? subtotal,
+    final bool? useDiscount,
+    final bool? companyShippingFailed,
+    final bool? shippingFailed,
+    final String? storedTaxes,
+    final dynamic coupons,
+    final bool? recalculate,
+    final bool? calculateShipping,
+    final List<dynamic>? freeShipping,
+    final String? optionsStyle,
+    final bool? shippingRequired,
+    final bool? noPromotions,
+    final dynamic subtotalDiscount,
+    final bool? hasCoupons,
+    final List<ProductGroup>? productGroups,
+    final List<int>? chosenShipping,
+    final bool? chosenShippingDisabled,
+    final PointsInfo? pointsInfo,
+    final dynamic taxSummary,
+    final List<Taxes>? taxes,
+    final String? discountedSubtotal,
+    final dynamic userData,
+    final dynamic profileId,
+    final bool? guestCheckout,
+    final String? locationHash,
+    final int? paymentSurcharge,
+    final String? formatSubtotal,
+    final String? formatDisplaySubtotal,
+    final String? formatTotal,
+    final String? formatShippingCost,
+    final String? formatDiscountedSubtotal,
+    final String? formatPaymentSurcharge,
+    final String? formatSubtotalDiscount,
+    final String? formatTaxSubtotal,
+    final List<CartProduct>? cartProducts,
+    final List<Shipping>? shippings,
+    final dynamic paymentId,
+    final dynamic orderId,
+    final List<dynamic>? couponsDetails,
+    final List<DeliverySlot>? deliverySlots,
+  }) = _$CartImpl;
 
   factory _Cart.fromJson(Map<String, dynamic> json) = _$CartImpl.fromJson;
 

@@ -12,7 +12,8 @@ part of 'payment_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) {
   return _PaymentResponse.fromJson(json);
@@ -41,19 +42,21 @@ mixin _$PaymentResponse {
 /// @nodoc
 abstract class $PaymentResponseCopyWith<$Res> {
   factory $PaymentResponseCopyWith(
-          PaymentResponse value, $Res Function(PaymentResponse) then) =
-      _$PaymentResponseCopyWithImpl<$Res, PaymentResponse>;
+    PaymentResponse value,
+    $Res Function(PaymentResponse) then,
+  ) = _$PaymentResponseCopyWithImpl<$Res, PaymentResponse>;
   @useResult
-  $Res call(
-      {bool? allowMultipleProfiles,
-      bool? allowToApplyWallet,
-      PaymentInfoEntity paymentInfo,
-      List<PaymentInfoEntity> paymentMethods,
-      List<UserProfile>? userProfiles,
-      Cart? cart,
-      String? totalProducts,
-      String message,
-      bool success});
+  $Res call({
+    bool? allowMultipleProfiles,
+    bool? allowToApplyWallet,
+    PaymentInfoEntity paymentInfo,
+    List<PaymentInfoEntity> paymentMethods,
+    List<UserProfile>? userProfiles,
+    Cart? cart,
+    String? totalProducts,
+    String message,
+    bool success,
+  });
 
   $PaymentInfoEntityCopyWith<$Res> get paymentInfo;
   $CartCopyWith<$Res>? get cart;
@@ -84,44 +87,47 @@ class _$PaymentResponseCopyWithImpl<$Res, $Val extends PaymentResponse>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_value.copyWith(
-      allowMultipleProfiles: freezed == allowMultipleProfiles
-          ? _value.allowMultipleProfiles
-          : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      allowToApplyWallet: freezed == allowToApplyWallet
-          ? _value.allowToApplyWallet
-          : allowToApplyWallet // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      paymentInfo: null == paymentInfo
-          ? _value.paymentInfo
-          : paymentInfo // ignore: cast_nullable_to_non_nullable
-              as PaymentInfoEntity,
-      paymentMethods: null == paymentMethods
-          ? _value.paymentMethods
-          : paymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<PaymentInfoEntity>,
-      userProfiles: freezed == userProfiles
-          ? _value.userProfiles
-          : userProfiles // ignore: cast_nullable_to_non_nullable
-              as List<UserProfile>?,
-      cart: freezed == cart
-          ? _value.cart
-          : cart // ignore: cast_nullable_to_non_nullable
-              as Cart?,
-      totalProducts: freezed == totalProducts
-          ? _value.totalProducts
-          : totalProducts // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            allowMultipleProfiles: freezed == allowMultipleProfiles
+                ? _value.allowMultipleProfiles
+                : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            allowToApplyWallet: freezed == allowToApplyWallet
+                ? _value.allowToApplyWallet
+                : allowToApplyWallet // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            paymentInfo: null == paymentInfo
+                ? _value.paymentInfo
+                : paymentInfo // ignore: cast_nullable_to_non_nullable
+                      as PaymentInfoEntity,
+            paymentMethods: null == paymentMethods
+                ? _value.paymentMethods
+                : paymentMethods // ignore: cast_nullable_to_non_nullable
+                      as List<PaymentInfoEntity>,
+            userProfiles: freezed == userProfiles
+                ? _value.userProfiles
+                : userProfiles // ignore: cast_nullable_to_non_nullable
+                      as List<UserProfile>?,
+            cart: freezed == cart
+                ? _value.cart
+                : cart // ignore: cast_nullable_to_non_nullable
+                      as Cart?,
+            totalProducts: freezed == totalProducts
+                ? _value.totalProducts
+                : totalProducts // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            success: null == success
+                ? _value.success
+                : success // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of PaymentResponse
@@ -152,21 +158,23 @@ class _$PaymentResponseCopyWithImpl<$Res, $Val extends PaymentResponse>
 /// @nodoc
 abstract class _$$PaymentResponseImplCopyWith<$Res>
     implements $PaymentResponseCopyWith<$Res> {
-  factory _$$PaymentResponseImplCopyWith(_$PaymentResponseImpl value,
-          $Res Function(_$PaymentResponseImpl) then) =
-      __$$PaymentResponseImplCopyWithImpl<$Res>;
+  factory _$$PaymentResponseImplCopyWith(
+    _$PaymentResponseImpl value,
+    $Res Function(_$PaymentResponseImpl) then,
+  ) = __$$PaymentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool? allowMultipleProfiles,
-      bool? allowToApplyWallet,
-      PaymentInfoEntity paymentInfo,
-      List<PaymentInfoEntity> paymentMethods,
-      List<UserProfile>? userProfiles,
-      Cart? cart,
-      String? totalProducts,
-      String message,
-      bool success});
+  $Res call({
+    bool? allowMultipleProfiles,
+    bool? allowToApplyWallet,
+    PaymentInfoEntity paymentInfo,
+    List<PaymentInfoEntity> paymentMethods,
+    List<UserProfile>? userProfiles,
+    Cart? cart,
+    String? totalProducts,
+    String message,
+    bool success,
+  });
 
   @override
   $PaymentInfoEntityCopyWith<$Res> get paymentInfo;
@@ -179,8 +187,9 @@ class __$$PaymentResponseImplCopyWithImpl<$Res>
     extends _$PaymentResponseCopyWithImpl<$Res, _$PaymentResponseImpl>
     implements _$$PaymentResponseImplCopyWith<$Res> {
   __$$PaymentResponseImplCopyWithImpl(
-      _$PaymentResponseImpl _value, $Res Function(_$PaymentResponseImpl) _then)
-      : super(_value, _then);
+    _$PaymentResponseImpl _value,
+    $Res Function(_$PaymentResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PaymentResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -197,62 +206,64 @@ class __$$PaymentResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_$PaymentResponseImpl(
-      allowMultipleProfiles: freezed == allowMultipleProfiles
-          ? _value.allowMultipleProfiles
-          : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      allowToApplyWallet: freezed == allowToApplyWallet
-          ? _value.allowToApplyWallet
-          : allowToApplyWallet // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      paymentInfo: null == paymentInfo
-          ? _value.paymentInfo
-          : paymentInfo // ignore: cast_nullable_to_non_nullable
-              as PaymentInfoEntity,
-      paymentMethods: null == paymentMethods
-          ? _value._paymentMethods
-          : paymentMethods // ignore: cast_nullable_to_non_nullable
-              as List<PaymentInfoEntity>,
-      userProfiles: freezed == userProfiles
-          ? _value._userProfiles
-          : userProfiles // ignore: cast_nullable_to_non_nullable
-              as List<UserProfile>?,
-      cart: freezed == cart
-          ? _value.cart
-          : cart // ignore: cast_nullable_to_non_nullable
-              as Cart?,
-      totalProducts: freezed == totalProducts
-          ? _value.totalProducts
-          : totalProducts // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$PaymentResponseImpl(
+        allowMultipleProfiles: freezed == allowMultipleProfiles
+            ? _value.allowMultipleProfiles
+            : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        allowToApplyWallet: freezed == allowToApplyWallet
+            ? _value.allowToApplyWallet
+            : allowToApplyWallet // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        paymentInfo: null == paymentInfo
+            ? _value.paymentInfo
+            : paymentInfo // ignore: cast_nullable_to_non_nullable
+                  as PaymentInfoEntity,
+        paymentMethods: null == paymentMethods
+            ? _value._paymentMethods
+            : paymentMethods // ignore: cast_nullable_to_non_nullable
+                  as List<PaymentInfoEntity>,
+        userProfiles: freezed == userProfiles
+            ? _value._userProfiles
+            : userProfiles // ignore: cast_nullable_to_non_nullable
+                  as List<UserProfile>?,
+        cart: freezed == cart
+            ? _value.cart
+            : cart // ignore: cast_nullable_to_non_nullable
+                  as Cart?,
+        totalProducts: freezed == totalProducts
+            ? _value.totalProducts
+            : totalProducts // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        success: null == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$PaymentResponseImpl implements _PaymentResponse {
-  _$PaymentResponseImpl(
-      {this.allowMultipleProfiles,
-      this.allowToApplyWallet,
-      required this.paymentInfo,
-      required final List<PaymentInfoEntity> paymentMethods,
-      final List<UserProfile>? userProfiles,
-      this.cart,
-      this.totalProducts,
-      required this.message,
-      required this.success})
-      : _paymentMethods = paymentMethods,
-        _userProfiles = userProfiles;
+  _$PaymentResponseImpl({
+    this.allowMultipleProfiles,
+    this.allowToApplyWallet,
+    required this.paymentInfo,
+    required final List<PaymentInfoEntity> paymentMethods,
+    final List<UserProfile>? userProfiles,
+    this.cart,
+    this.totalProducts,
+    required this.message,
+    required this.success,
+  }) : _paymentMethods = paymentMethods,
+       _userProfiles = userProfiles;
 
   factory _$PaymentResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentResponseImplFromJson(json);
@@ -306,10 +317,14 @@ class _$PaymentResponseImpl implements _PaymentResponse {
                 other.allowToApplyWallet == allowToApplyWallet) &&
             (identical(other.paymentInfo, paymentInfo) ||
                 other.paymentInfo == paymentInfo) &&
-            const DeepCollectionEquality()
-                .equals(other._paymentMethods, _paymentMethods) &&
-            const DeepCollectionEquality()
-                .equals(other._userProfiles, _userProfiles) &&
+            const DeepCollectionEquality().equals(
+              other._paymentMethods,
+              _paymentMethods,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._userProfiles,
+              _userProfiles,
+            ) &&
             (identical(other.cart, cart) || other.cart == cart) &&
             (identical(other.totalProducts, totalProducts) ||
                 other.totalProducts == totalProducts) &&
@@ -320,16 +335,17 @@ class _$PaymentResponseImpl implements _PaymentResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      allowMultipleProfiles,
-      allowToApplyWallet,
-      paymentInfo,
-      const DeepCollectionEquality().hash(_paymentMethods),
-      const DeepCollectionEquality().hash(_userProfiles),
-      cart,
-      totalProducts,
-      message,
-      success);
+    runtimeType,
+    allowMultipleProfiles,
+    allowToApplyWallet,
+    paymentInfo,
+    const DeepCollectionEquality().hash(_paymentMethods),
+    const DeepCollectionEquality().hash(_userProfiles),
+    cart,
+    totalProducts,
+    message,
+    success,
+  );
 
   /// Create a copy of PaymentResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -338,20 +354,23 @@ class _$PaymentResponseImpl implements _PaymentResponse {
   @pragma('vm:prefer-inline')
   _$$PaymentResponseImplCopyWith<_$PaymentResponseImpl> get copyWith =>
       __$$PaymentResponseImplCopyWithImpl<_$PaymentResponseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _PaymentResponse implements PaymentResponse {
-  factory _PaymentResponse(
-      {final bool? allowMultipleProfiles,
-      final bool? allowToApplyWallet,
-      required final PaymentInfoEntity paymentInfo,
-      required final List<PaymentInfoEntity> paymentMethods,
-      final List<UserProfile>? userProfiles,
-      final Cart? cart,
-      final String? totalProducts,
-      required final String message,
-      required final bool success}) = _$PaymentResponseImpl;
+  factory _PaymentResponse({
+    final bool? allowMultipleProfiles,
+    final bool? allowToApplyWallet,
+    required final PaymentInfoEntity paymentInfo,
+    required final List<PaymentInfoEntity> paymentMethods,
+    final List<UserProfile>? userProfiles,
+    final Cart? cart,
+    final String? totalProducts,
+    required final String message,
+    required final bool success,
+  }) = _$PaymentResponseImpl;
 
   factory _PaymentResponse.fromJson(Map<String, dynamic> json) =
       _$PaymentResponseImpl.fromJson;

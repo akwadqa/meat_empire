@@ -12,7 +12,8 @@ part of 'variation_feature.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 VariationFeature _$VariationFeatureFromJson(Map<String, dynamic> json) {
   return _VariationFeature.fromJson(json);
@@ -45,24 +46,26 @@ mixin _$VariationFeature {
 /// @nodoc
 abstract class $VariationFeatureCopyWith<$Res> {
   factory $VariationFeatureCopyWith(
-          VariationFeature value, $Res Function(VariationFeature) then) =
-      _$VariationFeatureCopyWithImpl<$Res, VariationFeature>;
+    VariationFeature value,
+    $Res Function(VariationFeature) then,
+  ) = _$VariationFeatureCopyWithImpl<$Res, VariationFeature>;
   @useResult
-  $Res call(
-      {String featureId,
-      String featureStyle,
-      String position,
-      String purpose,
-      String displayOnCatalog,
-      String description,
-      String internalName,
-      String prefix,
-      String suffix,
-      String purposePosition,
-      String productFeaturePurpose,
-      String variant,
-      String variantId,
-      String variantPosition});
+  $Res call({
+    String featureId,
+    String featureStyle,
+    String position,
+    String purpose,
+    String displayOnCatalog,
+    String description,
+    String internalName,
+    String prefix,
+    String suffix,
+    String purposePosition,
+    String productFeaturePurpose,
+    String variant,
+    String variantId,
+    String variantPosition,
+  });
 }
 
 /// @nodoc
@@ -95,99 +98,105 @@ class _$VariationFeatureCopyWithImpl<$Res, $Val extends VariationFeature>
     Object? variantId = null,
     Object? variantPosition = null,
   }) {
-    return _then(_value.copyWith(
-      featureId: null == featureId
-          ? _value.featureId
-          : featureId // ignore: cast_nullable_to_non_nullable
-              as String,
-      featureStyle: null == featureStyle
-          ? _value.featureStyle
-          : featureStyle // ignore: cast_nullable_to_non_nullable
-              as String,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as String,
-      purpose: null == purpose
-          ? _value.purpose
-          : purpose // ignore: cast_nullable_to_non_nullable
-              as String,
-      displayOnCatalog: null == displayOnCatalog
-          ? _value.displayOnCatalog
-          : displayOnCatalog // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      internalName: null == internalName
-          ? _value.internalName
-          : internalName // ignore: cast_nullable_to_non_nullable
-              as String,
-      prefix: null == prefix
-          ? _value.prefix
-          : prefix // ignore: cast_nullable_to_non_nullable
-              as String,
-      suffix: null == suffix
-          ? _value.suffix
-          : suffix // ignore: cast_nullable_to_non_nullable
-              as String,
-      purposePosition: null == purposePosition
-          ? _value.purposePosition
-          : purposePosition // ignore: cast_nullable_to_non_nullable
-              as String,
-      productFeaturePurpose: null == productFeaturePurpose
-          ? _value.productFeaturePurpose
-          : productFeaturePurpose // ignore: cast_nullable_to_non_nullable
-              as String,
-      variant: null == variant
-          ? _value.variant
-          : variant // ignore: cast_nullable_to_non_nullable
-              as String,
-      variantId: null == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as String,
-      variantPosition: null == variantPosition
-          ? _value.variantPosition
-          : variantPosition // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            featureId: null == featureId
+                ? _value.featureId
+                : featureId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            featureStyle: null == featureStyle
+                ? _value.featureStyle
+                : featureStyle // ignore: cast_nullable_to_non_nullable
+                      as String,
+            position: null == position
+                ? _value.position
+                : position // ignore: cast_nullable_to_non_nullable
+                      as String,
+            purpose: null == purpose
+                ? _value.purpose
+                : purpose // ignore: cast_nullable_to_non_nullable
+                      as String,
+            displayOnCatalog: null == displayOnCatalog
+                ? _value.displayOnCatalog
+                : displayOnCatalog // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            internalName: null == internalName
+                ? _value.internalName
+                : internalName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            prefix: null == prefix
+                ? _value.prefix
+                : prefix // ignore: cast_nullable_to_non_nullable
+                      as String,
+            suffix: null == suffix
+                ? _value.suffix
+                : suffix // ignore: cast_nullable_to_non_nullable
+                      as String,
+            purposePosition: null == purposePosition
+                ? _value.purposePosition
+                : purposePosition // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productFeaturePurpose: null == productFeaturePurpose
+                ? _value.productFeaturePurpose
+                : productFeaturePurpose // ignore: cast_nullable_to_non_nullable
+                      as String,
+            variant: null == variant
+                ? _value.variant
+                : variant // ignore: cast_nullable_to_non_nullable
+                      as String,
+            variantId: null == variantId
+                ? _value.variantId
+                : variantId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            variantPosition: null == variantPosition
+                ? _value.variantPosition
+                : variantPosition // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$VariationFeatureImplCopyWith<$Res>
     implements $VariationFeatureCopyWith<$Res> {
-  factory _$$VariationFeatureImplCopyWith(_$VariationFeatureImpl value,
-          $Res Function(_$VariationFeatureImpl) then) =
-      __$$VariationFeatureImplCopyWithImpl<$Res>;
+  factory _$$VariationFeatureImplCopyWith(
+    _$VariationFeatureImpl value,
+    $Res Function(_$VariationFeatureImpl) then,
+  ) = __$$VariationFeatureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String featureId,
-      String featureStyle,
-      String position,
-      String purpose,
-      String displayOnCatalog,
-      String description,
-      String internalName,
-      String prefix,
-      String suffix,
-      String purposePosition,
-      String productFeaturePurpose,
-      String variant,
-      String variantId,
-      String variantPosition});
+  $Res call({
+    String featureId,
+    String featureStyle,
+    String position,
+    String purpose,
+    String displayOnCatalog,
+    String description,
+    String internalName,
+    String prefix,
+    String suffix,
+    String purposePosition,
+    String productFeaturePurpose,
+    String variant,
+    String variantId,
+    String variantPosition,
+  });
 }
 
 /// @nodoc
 class __$$VariationFeatureImplCopyWithImpl<$Res>
     extends _$VariationFeatureCopyWithImpl<$Res, _$VariationFeatureImpl>
     implements _$$VariationFeatureImplCopyWith<$Res> {
-  __$$VariationFeatureImplCopyWithImpl(_$VariationFeatureImpl _value,
-      $Res Function(_$VariationFeatureImpl) _then)
-      : super(_value, _then);
+  __$$VariationFeatureImplCopyWithImpl(
+    _$VariationFeatureImpl _value,
+    $Res Function(_$VariationFeatureImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of VariationFeature
   /// with the given fields replaced by the non-null parameter values.
@@ -209,85 +218,88 @@ class __$$VariationFeatureImplCopyWithImpl<$Res>
     Object? variantId = null,
     Object? variantPosition = null,
   }) {
-    return _then(_$VariationFeatureImpl(
-      featureId: null == featureId
-          ? _value.featureId
-          : featureId // ignore: cast_nullable_to_non_nullable
-              as String,
-      featureStyle: null == featureStyle
-          ? _value.featureStyle
-          : featureStyle // ignore: cast_nullable_to_non_nullable
-              as String,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as String,
-      purpose: null == purpose
-          ? _value.purpose
-          : purpose // ignore: cast_nullable_to_non_nullable
-              as String,
-      displayOnCatalog: null == displayOnCatalog
-          ? _value.displayOnCatalog
-          : displayOnCatalog // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      internalName: null == internalName
-          ? _value.internalName
-          : internalName // ignore: cast_nullable_to_non_nullable
-              as String,
-      prefix: null == prefix
-          ? _value.prefix
-          : prefix // ignore: cast_nullable_to_non_nullable
-              as String,
-      suffix: null == suffix
-          ? _value.suffix
-          : suffix // ignore: cast_nullable_to_non_nullable
-              as String,
-      purposePosition: null == purposePosition
-          ? _value.purposePosition
-          : purposePosition // ignore: cast_nullable_to_non_nullable
-              as String,
-      productFeaturePurpose: null == productFeaturePurpose
-          ? _value.productFeaturePurpose
-          : productFeaturePurpose // ignore: cast_nullable_to_non_nullable
-              as String,
-      variant: null == variant
-          ? _value.variant
-          : variant // ignore: cast_nullable_to_non_nullable
-              as String,
-      variantId: null == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as String,
-      variantPosition: null == variantPosition
-          ? _value.variantPosition
-          : variantPosition // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$VariationFeatureImpl(
+        featureId: null == featureId
+            ? _value.featureId
+            : featureId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        featureStyle: null == featureStyle
+            ? _value.featureStyle
+            : featureStyle // ignore: cast_nullable_to_non_nullable
+                  as String,
+        position: null == position
+            ? _value.position
+            : position // ignore: cast_nullable_to_non_nullable
+                  as String,
+        purpose: null == purpose
+            ? _value.purpose
+            : purpose // ignore: cast_nullable_to_non_nullable
+                  as String,
+        displayOnCatalog: null == displayOnCatalog
+            ? _value.displayOnCatalog
+            : displayOnCatalog // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        internalName: null == internalName
+            ? _value.internalName
+            : internalName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        prefix: null == prefix
+            ? _value.prefix
+            : prefix // ignore: cast_nullable_to_non_nullable
+                  as String,
+        suffix: null == suffix
+            ? _value.suffix
+            : suffix // ignore: cast_nullable_to_non_nullable
+                  as String,
+        purposePosition: null == purposePosition
+            ? _value.purposePosition
+            : purposePosition // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productFeaturePurpose: null == productFeaturePurpose
+            ? _value.productFeaturePurpose
+            : productFeaturePurpose // ignore: cast_nullable_to_non_nullable
+                  as String,
+        variant: null == variant
+            ? _value.variant
+            : variant // ignore: cast_nullable_to_non_nullable
+                  as String,
+        variantId: null == variantId
+            ? _value.variantId
+            : variantId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        variantPosition: null == variantPosition
+            ? _value.variantPosition
+            : variantPosition // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$VariationFeatureImpl implements _VariationFeature {
-  _$VariationFeatureImpl(
-      {required this.featureId,
-      required this.featureStyle,
-      required this.position,
-      required this.purpose,
-      required this.displayOnCatalog,
-      required this.description,
-      required this.internalName,
-      required this.prefix,
-      required this.suffix,
-      required this.purposePosition,
-      required this.productFeaturePurpose,
-      required this.variant,
-      required this.variantId,
-      required this.variantPosition});
+  _$VariationFeatureImpl({
+    required this.featureId,
+    required this.featureStyle,
+    required this.position,
+    required this.purpose,
+    required this.displayOnCatalog,
+    required this.description,
+    required this.internalName,
+    required this.prefix,
+    required this.suffix,
+    required this.purposePosition,
+    required this.productFeaturePurpose,
+    required this.variant,
+    required this.variantId,
+    required this.variantPosition,
+  });
 
   factory _$VariationFeatureImpl.fromJson(Map<String, dynamic> json) =>
       _$$VariationFeatureImplFromJson(json);
@@ -360,21 +372,22 @@ class _$VariationFeatureImpl implements _VariationFeature {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      featureId,
-      featureStyle,
-      position,
-      purpose,
-      displayOnCatalog,
-      description,
-      internalName,
-      prefix,
-      suffix,
-      purposePosition,
-      productFeaturePurpose,
-      variant,
-      variantId,
-      variantPosition);
+    runtimeType,
+    featureId,
+    featureStyle,
+    position,
+    purpose,
+    displayOnCatalog,
+    description,
+    internalName,
+    prefix,
+    suffix,
+    purposePosition,
+    productFeaturePurpose,
+    variant,
+    variantId,
+    variantPosition,
+  );
 
   /// Create a copy of VariationFeature
   /// with the given fields replaced by the non-null parameter values.
@@ -383,25 +396,28 @@ class _$VariationFeatureImpl implements _VariationFeature {
   @pragma('vm:prefer-inline')
   _$$VariationFeatureImplCopyWith<_$VariationFeatureImpl> get copyWith =>
       __$$VariationFeatureImplCopyWithImpl<_$VariationFeatureImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _VariationFeature implements VariationFeature {
-  factory _VariationFeature(
-      {required final String featureId,
-      required final String featureStyle,
-      required final String position,
-      required final String purpose,
-      required final String displayOnCatalog,
-      required final String description,
-      required final String internalName,
-      required final String prefix,
-      required final String suffix,
-      required final String purposePosition,
-      required final String productFeaturePurpose,
-      required final String variant,
-      required final String variantId,
-      required final String variantPosition}) = _$VariationFeatureImpl;
+  factory _VariationFeature({
+    required final String featureId,
+    required final String featureStyle,
+    required final String position,
+    required final String purpose,
+    required final String displayOnCatalog,
+    required final String description,
+    required final String internalName,
+    required final String prefix,
+    required final String suffix,
+    required final String purposePosition,
+    required final String productFeaturePurpose,
+    required final String variant,
+    required final String variantId,
+    required final String variantPosition,
+  }) = _$VariationFeatureImpl;
 
   factory _VariationFeature.fromJson(Map<String, dynamic> json) =
       _$VariationFeatureImpl.fromJson;

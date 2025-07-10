@@ -12,7 +12,8 @@ part of 'language.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Language _$LanguageFromJson(Map<String, dynamic> json) {
   return _Language.fromJson(json);
@@ -38,12 +39,13 @@ abstract class $LanguageCopyWith<$Res> {
   factory $LanguageCopyWith(Language value, $Res Function(Language) then) =
       _$LanguageCopyWithImpl<$Res, Language>;
   @useResult
-  $Res call(
-      {String langId,
-      String langCode,
-      String name,
-      String countryCode,
-      dynamic direction});
+  $Res call({
+    String langId,
+    String langCode,
+    String name,
+    String countryCode,
+    dynamic direction,
+  });
 }
 
 /// @nodoc
@@ -67,28 +69,31 @@ class _$LanguageCopyWithImpl<$Res, $Val extends Language>
     Object? countryCode = null,
     Object? direction = freezed,
   }) {
-    return _then(_value.copyWith(
-      langId: null == langId
-          ? _value.langId
-          : langId // ignore: cast_nullable_to_non_nullable
-              as String,
-      langCode: null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      countryCode: null == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      direction: freezed == direction
-          ? _value.direction
-          : direction // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            langId: null == langId
+                ? _value.langId
+                : langId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            langCode: null == langCode
+                ? _value.langCode
+                : langCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            countryCode: null == countryCode
+                ? _value.countryCode
+                : countryCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            direction: freezed == direction
+                ? _value.direction
+                : direction // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -96,16 +101,18 @@ class _$LanguageCopyWithImpl<$Res, $Val extends Language>
 abstract class _$$LanguageImplCopyWith<$Res>
     implements $LanguageCopyWith<$Res> {
   factory _$$LanguageImplCopyWith(
-          _$LanguageImpl value, $Res Function(_$LanguageImpl) then) =
-      __$$LanguageImplCopyWithImpl<$Res>;
+    _$LanguageImpl value,
+    $Res Function(_$LanguageImpl) then,
+  ) = __$$LanguageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String langId,
-      String langCode,
-      String name,
-      String countryCode,
-      dynamic direction});
+  $Res call({
+    String langId,
+    String langCode,
+    String name,
+    String countryCode,
+    dynamic direction,
+  });
 }
 
 /// @nodoc
@@ -113,8 +120,9 @@ class __$$LanguageImplCopyWithImpl<$Res>
     extends _$LanguageCopyWithImpl<$Res, _$LanguageImpl>
     implements _$$LanguageImplCopyWith<$Res> {
   __$$LanguageImplCopyWithImpl(
-      _$LanguageImpl _value, $Res Function(_$LanguageImpl) _then)
-      : super(_value, _then);
+    _$LanguageImpl _value,
+    $Res Function(_$LanguageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Language
   /// with the given fields replaced by the non-null parameter values.
@@ -127,40 +135,43 @@ class __$$LanguageImplCopyWithImpl<$Res>
     Object? countryCode = null,
     Object? direction = freezed,
   }) {
-    return _then(_$LanguageImpl(
-      langId: null == langId
-          ? _value.langId
-          : langId // ignore: cast_nullable_to_non_nullable
-              as String,
-      langCode: null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      countryCode: null == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      direction: freezed == direction
-          ? _value.direction
-          : direction // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
+    return _then(
+      _$LanguageImpl(
+        langId: null == langId
+            ? _value.langId
+            : langId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        langCode: null == langCode
+            ? _value.langCode
+            : langCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        countryCode: null == countryCode
+            ? _value.countryCode
+            : countryCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        direction: freezed == direction
+            ? _value.direction
+            : direction // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$LanguageImpl implements _Language {
-  _$LanguageImpl(
-      {required this.langId,
-      required this.langCode,
-      required this.name,
-      required this.countryCode,
-      required this.direction});
+  _$LanguageImpl({
+    required this.langId,
+    required this.langCode,
+    required this.name,
+    required this.countryCode,
+    required this.direction,
+  });
 
   factory _$LanguageImpl.fromJson(Map<String, dynamic> json) =>
       _$$LanguageImplFromJson(json);
@@ -197,8 +208,14 @@ class _$LanguageImpl implements _Language {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, langId, langCode, name,
-      countryCode, const DeepCollectionEquality().hash(direction));
+  int get hashCode => Object.hash(
+    runtimeType,
+    langId,
+    langCode,
+    name,
+    countryCode,
+    const DeepCollectionEquality().hash(direction),
+  );
 
   /// Create a copy of Language
   /// with the given fields replaced by the non-null parameter values.
@@ -210,12 +227,13 @@ class _$LanguageImpl implements _Language {
 }
 
 abstract class _Language implements Language {
-  factory _Language(
-      {required final String langId,
-      required final String langCode,
-      required final String name,
-      required final String countryCode,
-      required final dynamic direction}) = _$LanguageImpl;
+  factory _Language({
+    required final String langId,
+    required final String langCode,
+    required final String name,
+    required final String countryCode,
+    required final dynamic direction,
+  }) = _$LanguageImpl;
 
   factory _Language.fromJson(Map<String, dynamic> json) =
       _$LanguageImpl.fromJson;

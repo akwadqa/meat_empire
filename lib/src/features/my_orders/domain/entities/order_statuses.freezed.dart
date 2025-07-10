@@ -12,7 +12,8 @@ part of 'order_statuses.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OrderStatuses _$OrderStatusesFromJson(Map<String, dynamic> json) {
   return _OrderStatuses.fromJson(json);
@@ -33,8 +34,9 @@ mixin _$OrderStatuses {
 /// @nodoc
 abstract class $OrderStatusesCopyWith<$Res> {
   factory $OrderStatusesCopyWith(
-          OrderStatuses value, $Res Function(OrderStatuses) then) =
-      _$OrderStatusesCopyWithImpl<$Res, OrderStatuses>;
+    OrderStatuses value,
+    $Res Function(OrderStatuses) then,
+  ) = _$OrderStatusesCopyWithImpl<$Res, OrderStatuses>;
   @useResult
   $Res call({String value, String name});
 }
@@ -53,20 +55,20 @@ class _$OrderStatusesCopyWithImpl<$Res, $Val extends OrderStatuses>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-    Object? name = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? value = null, Object? name = null}) {
+    return _then(
+      _value.copyWith(
+            value: null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -74,8 +76,9 @@ class _$OrderStatusesCopyWithImpl<$Res, $Val extends OrderStatuses>
 abstract class _$$OrderStatusesImplCopyWith<$Res>
     implements $OrderStatusesCopyWith<$Res> {
   factory _$$OrderStatusesImplCopyWith(
-          _$OrderStatusesImpl value, $Res Function(_$OrderStatusesImpl) then) =
-      __$$OrderStatusesImplCopyWithImpl<$Res>;
+    _$OrderStatusesImpl value,
+    $Res Function(_$OrderStatusesImpl) then,
+  ) = __$$OrderStatusesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String value, String name});
@@ -86,27 +89,27 @@ class __$$OrderStatusesImplCopyWithImpl<$Res>
     extends _$OrderStatusesCopyWithImpl<$Res, _$OrderStatusesImpl>
     implements _$$OrderStatusesImplCopyWith<$Res> {
   __$$OrderStatusesImplCopyWithImpl(
-      _$OrderStatusesImpl _value, $Res Function(_$OrderStatusesImpl) _then)
-      : super(_value, _then);
+    _$OrderStatusesImpl _value,
+    $Res Function(_$OrderStatusesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OrderStatuses
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-    Object? name = null,
-  }) {
-    return _then(_$OrderStatusesImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? value = null, Object? name = null}) {
+    return _then(
+      _$OrderStatusesImpl(
+        value: null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -151,9 +154,10 @@ class _$OrderStatusesImpl implements _OrderStatuses {
 }
 
 abstract class _OrderStatuses implements OrderStatuses {
-  const factory _OrderStatuses(
-      {required final String value,
-      required final String name}) = _$OrderStatusesImpl;
+  const factory _OrderStatuses({
+    required final String value,
+    required final String name,
+  }) = _$OrderStatusesImpl;
 
   factory _OrderStatuses.fromJson(Map<String, dynamic> json) =
       _$OrderStatusesImpl.fromJson;

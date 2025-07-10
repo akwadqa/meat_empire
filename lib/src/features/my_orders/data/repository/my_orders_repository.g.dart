@@ -57,24 +57,13 @@ class MyOrdersFamily extends Family<AsyncValue<OrdersResponse>> {
   const MyOrdersFamily();
 
   /// See also [myOrders].
-  MyOrdersProvider call(
-    String status,
-    int page,
-  ) {
-    return MyOrdersProvider(
-      status,
-      page,
-    );
+  MyOrdersProvider call(String status, int page) {
+    return MyOrdersProvider(status, page);
   }
 
   @override
-  MyOrdersProvider getProviderOverride(
-    covariant MyOrdersProvider provider,
-  ) {
-    return call(
-      provider.status,
-      provider.page,
-    );
+  MyOrdersProvider getProviderOverride(covariant MyOrdersProvider provider) {
+    return call(provider.status, provider.page);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -95,26 +84,19 @@ class MyOrdersFamily extends Family<AsyncValue<OrdersResponse>> {
 /// See also [myOrders].
 class MyOrdersProvider extends AutoDisposeFutureProvider<OrdersResponse> {
   /// See also [myOrders].
-  MyOrdersProvider(
-    String status,
-    int page,
-  ) : this._internal(
-          (ref) => myOrders(
-            ref as MyOrdersRef,
-            status,
-            page,
-          ),
-          from: myOrdersProvider,
-          name: r'myOrdersProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$myOrdersHash,
-          dependencies: MyOrdersFamily._dependencies,
-          allTransitiveDependencies: MyOrdersFamily._allTransitiveDependencies,
-          status: status,
-          page: page,
-        );
+  MyOrdersProvider(String status, int page)
+    : this._internal(
+        (ref) => myOrders(ref as MyOrdersRef, status, page),
+        from: myOrdersProvider,
+        name: r'myOrdersProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$myOrdersHash,
+        dependencies: MyOrdersFamily._dependencies,
+        allTransitiveDependencies: MyOrdersFamily._allTransitiveDependencies,
+        status: status,
+        page: page,
+      );
 
   MyOrdersProvider._internal(
     super._createNotifier, {
@@ -182,7 +164,8 @@ mixin MyOrdersRef on AutoDisposeFutureProviderRef<OrdersResponse> {
 }
 
 class _MyOrdersProviderElement
-    extends AutoDisposeFutureProviderElement<OrdersResponse> with MyOrdersRef {
+    extends AutoDisposeFutureProviderElement<OrdersResponse>
+    with MyOrdersRef {
   _MyOrdersProviderElement(super.provider);
 
   @override
@@ -203,21 +186,15 @@ class OrderDetailsFamily extends Family<AsyncValue<OrderDetails>> {
   const OrderDetailsFamily();
 
   /// See also [orderDetails].
-  OrderDetailsProvider call(
-    int orderId,
-  ) {
-    return OrderDetailsProvider(
-      orderId,
-    );
+  OrderDetailsProvider call(int orderId) {
+    return OrderDetailsProvider(orderId);
   }
 
   @override
   OrderDetailsProvider getProviderOverride(
     covariant OrderDetailsProvider provider,
   ) {
-    return call(
-      provider.orderId,
-    );
+    return call(provider.orderId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -238,24 +215,19 @@ class OrderDetailsFamily extends Family<AsyncValue<OrderDetails>> {
 /// See also [orderDetails].
 class OrderDetailsProvider extends AutoDisposeFutureProvider<OrderDetails> {
   /// See also [orderDetails].
-  OrderDetailsProvider(
-    int orderId,
-  ) : this._internal(
-          (ref) => orderDetails(
-            ref as OrderDetailsRef,
-            orderId,
-          ),
-          from: orderDetailsProvider,
-          name: r'orderDetailsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$orderDetailsHash,
-          dependencies: OrderDetailsFamily._dependencies,
-          allTransitiveDependencies:
-              OrderDetailsFamily._allTransitiveDependencies,
-          orderId: orderId,
-        );
+  OrderDetailsProvider(int orderId)
+    : this._internal(
+        (ref) => orderDetails(ref as OrderDetailsRef, orderId),
+        from: orderDetailsProvider,
+        name: r'orderDetailsProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$orderDetailsHash,
+        dependencies: OrderDetailsFamily._dependencies,
+        allTransitiveDependencies:
+            OrderDetailsFamily._allTransitiveDependencies,
+        orderId: orderId,
+      );
 
   OrderDetailsProvider._internal(
     super._createNotifier, {
@@ -321,5 +293,6 @@ class _OrderDetailsProviderElement
   @override
   int get orderId => (origin as OrderDetailsProvider).orderId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

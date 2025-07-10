@@ -56,21 +56,13 @@ class AccountFamily extends Family<AsyncValue<ProfileResponse>> {
   const AccountFamily();
 
   /// See also [account].
-  AccountProvider call(
-    int id,
-  ) {
-    return AccountProvider(
-      id,
-    );
+  AccountProvider call(int id) {
+    return AccountProvider(id);
   }
 
   @override
-  AccountProvider getProviderOverride(
-    covariant AccountProvider provider,
-  ) {
-    return call(
-      provider.id,
-    );
+  AccountProvider getProviderOverride(covariant AccountProvider provider) {
+    return call(provider.id);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -91,23 +83,18 @@ class AccountFamily extends Family<AsyncValue<ProfileResponse>> {
 /// See also [account].
 class AccountProvider extends AutoDisposeFutureProvider<ProfileResponse> {
   /// See also [account].
-  AccountProvider(
-    int id,
-  ) : this._internal(
-          (ref) => account(
-            ref as AccountRef,
-            id,
-          ),
-          from: accountProvider,
-          name: r'accountProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$accountHash,
-          dependencies: AccountFamily._dependencies,
-          allTransitiveDependencies: AccountFamily._allTransitiveDependencies,
-          id: id,
-        );
+  AccountProvider(int id)
+    : this._internal(
+        (ref) => account(ref as AccountRef, id),
+        from: accountProvider,
+        name: r'accountProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$accountHash,
+        dependencies: AccountFamily._dependencies,
+        allTransitiveDependencies: AccountFamily._allTransitiveDependencies,
+        id: id,
+      );
 
   AccountProvider._internal(
     super._createNotifier, {
@@ -166,7 +153,8 @@ mixin AccountRef on AutoDisposeFutureProviderRef<ProfileResponse> {
 }
 
 class _AccountProviderElement
-    extends AutoDisposeFutureProviderElement<ProfileResponse> with AccountRef {
+    extends AutoDisposeFutureProviderElement<ProfileResponse>
+    with AccountRef {
   _AccountProviderElement(super.provider);
 
   @override
@@ -185,21 +173,15 @@ class UpdateAccountFamily extends Family<AsyncValue<ProfileResponse>> {
   const UpdateAccountFamily();
 
   /// See also [updateAccount].
-  UpdateAccountProvider call(
-    UserProfile updatedProfile,
-  ) {
-    return UpdateAccountProvider(
-      updatedProfile,
-    );
+  UpdateAccountProvider call(UserProfile updatedProfile) {
+    return UpdateAccountProvider(updatedProfile);
   }
 
   @override
   UpdateAccountProvider getProviderOverride(
     covariant UpdateAccountProvider provider,
   ) {
-    return call(
-      provider.updatedProfile,
-    );
+    return call(provider.updatedProfile);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -220,24 +202,19 @@ class UpdateAccountFamily extends Family<AsyncValue<ProfileResponse>> {
 /// See also [updateAccount].
 class UpdateAccountProvider extends AutoDisposeFutureProvider<ProfileResponse> {
   /// See also [updateAccount].
-  UpdateAccountProvider(
-    UserProfile updatedProfile,
-  ) : this._internal(
-          (ref) => updateAccount(
-            ref as UpdateAccountRef,
-            updatedProfile,
-          ),
-          from: updateAccountProvider,
-          name: r'updateAccountProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$updateAccountHash,
-          dependencies: UpdateAccountFamily._dependencies,
-          allTransitiveDependencies:
-              UpdateAccountFamily._allTransitiveDependencies,
-          updatedProfile: updatedProfile,
-        );
+  UpdateAccountProvider(UserProfile updatedProfile)
+    : this._internal(
+        (ref) => updateAccount(ref as UpdateAccountRef, updatedProfile),
+        from: updateAccountProvider,
+        name: r'updateAccountProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$updateAccountHash,
+        dependencies: UpdateAccountFamily._dependencies,
+        allTransitiveDependencies:
+            UpdateAccountFamily._allTransitiveDependencies,
+        updatedProfile: updatedProfile,
+      );
 
   UpdateAccountProvider._internal(
     super._createNotifier, {
@@ -305,5 +282,6 @@ class _UpdateAccountProviderElement
   UserProfile get updatedProfile =>
       (origin as UpdateAccountProvider).updatedProfile;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

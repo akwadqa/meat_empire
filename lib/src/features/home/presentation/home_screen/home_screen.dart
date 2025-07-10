@@ -21,8 +21,10 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   static const double _iconHeight = 25.0;
-  static const ColorFilter _activeColorFilter =
-      ColorFilter.mode(AppColors.primary, BlendMode.srcIn);
+  static const ColorFilter _activeColorFilter = ColorFilter.mode(
+    AppColors.primary,
+    BlendMode.srcIn,
+  );
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
@@ -76,19 +78,20 @@ class HomeScreen extends StatelessWidget {
   Widget _buildPopupMenu(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        final isAuthenticated = ref.watch(isAuthinticatedProvider);
+        var isAuthenticated = ref.watch(isAuthinticatedProvider);
         // final menueData = ref.watch(homeProvider).asData;
 
-        List<Category>? categories = (ref
-                .watch(homeProvider)
-                .asData
-                ?.value
-                .layout
-                .where((d) => d.type == "categories")
-                .first
-                .data)
-            ?.whereType<Category>()
-            .toList();
+        List<Category>? categories =
+            (ref
+                    .watch(homeProvider)
+                    .asData
+                    ?.value
+                    .layout
+                    .where((d) => d.type == "categories")
+                    .first
+                    .data)
+                ?.whereType<Category>()
+                .toList();
         return PopupMenuButton<DrawerItems>(
           onSelected: (value) =>
               _handleMenuSelection(context, ref, value, categories),
@@ -100,8 +103,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  List<PopupMenuEntry<DrawerItems>> _buildMenuItems(BuildContext context,
-      bool isAuthenticated, List<Category>? categories, WidgetRef ref) {
+  List<PopupMenuEntry<DrawerItems>> _buildMenuItems(
+    BuildContext context,
+    bool isAuthenticated,
+    List<Category>? categories,
+    WidgetRef ref,
+  ) {
     return [
       _popupMenuItem(
         value: DrawerItems.home,
@@ -117,18 +124,19 @@ class HomeScreen extends StatelessWidget {
       if (categories != null)
         for (int i = 0; i < categories.length; i++)
           _popupMenuItem(
-              value: DrawerItems.categoryItem,
-              icon: SizedBox(
-                height: 20,
-                width: 20,
-                child: AppCachedNetworkImage(
-                  imageUrl: categories[i].imageUrl,
-                  fit: BoxFit.cover,
-                ),
+            value: DrawerItems.categoryItem,
+            icon: SizedBox(
+              height: 20,
+              width: 20,
+              child: AppCachedNetworkImage(
+                imageUrl: categories[i].imageUrl,
+                fit: BoxFit.cover,
               ),
-              text: categories[i].category,
-              onTap: () => _onCategoryTap(context, ref, i, categories),
-              isCategoryItem: true),
+            ),
+            text: categories[i].category,
+            onTap: () => _onCategoryTap(context, ref, i, categories),
+            isCategoryItem: true,
+          ),
       const PopupMenuDivider(),
       _popupMenuItem(
         value: DrawerItems.myAccount,
@@ -146,8 +154,12 @@ class HomeScreen extends StatelessWidget {
     ];
   }
 
-  void _handleMenuSelection(BuildContext context, WidgetRef ref,
-      DrawerItems value, List<Category>? categories) {
+  void _handleMenuSelection(
+    BuildContext context,
+    WidgetRef ref,
+    DrawerItems value,
+    List<Category>? categories,
+  ) {
     switch (value) {
       case DrawerItems.logout:
         ref.read(userDataProvider.notifier).removeData();
@@ -168,10 +180,14 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  void _onCategoryTap(BuildContext context, WidgetRef ref, int index,
-      List<Category> categories) {
+  void _onCategoryTap(
+    BuildContext context,
+    WidgetRef ref,
+    int index,
+    List<Category> categories,
+  ) {
     ref
-        .read(selectedCategoryProvider.notifier)
+        .watch(selectedCategoryProvider.notifier)
         .setCategory(categories[index].categoryId);
 
     context.router.replaceAll([CategoriesRoute()]);
@@ -182,16 +198,15 @@ class HomeScreen extends StatelessWidget {
     final titleKey = activeIndex == 1
         ? 'categories'
         : activeIndex == 2
-            ? 'myCart'
-            : null;
+        ? 'myCart'
+        : null;
 
     return titleKey != null
         ? Text(
             context.tr(titleKey),
-            style: Theme.of(context)
-                .textTheme
-                .displayMedium!
-                .copyWith(fontSize: 18),
+            style: Theme.of(
+              context,
+            ).textTheme.displayMedium!.copyWith(fontSize: 18),
           )
         : const AppLogo();
   }

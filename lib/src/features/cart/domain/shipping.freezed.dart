@@ -12,7 +12,8 @@ part of 'shipping.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Shipping _$ShippingFromJson(Map<String, dynamic> json) {
   return _Shipping.fromJson(json);
@@ -39,13 +40,14 @@ abstract class $ShippingCopyWith<$Res> {
   factory $ShippingCopyWith(Shipping value, $Res Function(Shipping) then) =
       _$ShippingCopyWithImpl<$Res, Shipping>;
   @useResult
-  $Res call(
-      {String? shippingId,
-      String? shipping,
-      String? description,
-      String? serviceDeliveryTime,
-      double? rate,
-      String? formatRate});
+  $Res call({
+    String? shippingId,
+    String? shipping,
+    String? description,
+    String? serviceDeliveryTime,
+    double? rate,
+    String? formatRate,
+  });
 }
 
 /// @nodoc
@@ -70,32 +72,35 @@ class _$ShippingCopyWithImpl<$Res, $Val extends Shipping>
     Object? rate = freezed,
     Object? formatRate = freezed,
   }) {
-    return _then(_value.copyWith(
-      shippingId: freezed == shippingId
-          ? _value.shippingId
-          : shippingId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shipping: freezed == shipping
-          ? _value.shipping
-          : shipping // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      serviceDeliveryTime: freezed == serviceDeliveryTime
-          ? _value.serviceDeliveryTime
-          : serviceDeliveryTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      rate: freezed == rate
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
-              as double?,
-      formatRate: freezed == formatRate
-          ? _value.formatRate
-          : formatRate // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            shippingId: freezed == shippingId
+                ? _value.shippingId
+                : shippingId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shipping: freezed == shipping
+                ? _value.shipping
+                : shipping // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            description: freezed == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            serviceDeliveryTime: freezed == serviceDeliveryTime
+                ? _value.serviceDeliveryTime
+                : serviceDeliveryTime // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            rate: freezed == rate
+                ? _value.rate
+                : rate // ignore: cast_nullable_to_non_nullable
+                      as double?,
+            formatRate: freezed == formatRate
+                ? _value.formatRate
+                : formatRate // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -103,17 +108,19 @@ class _$ShippingCopyWithImpl<$Res, $Val extends Shipping>
 abstract class _$$ShippingImplCopyWith<$Res>
     implements $ShippingCopyWith<$Res> {
   factory _$$ShippingImplCopyWith(
-          _$ShippingImpl value, $Res Function(_$ShippingImpl) then) =
-      __$$ShippingImplCopyWithImpl<$Res>;
+    _$ShippingImpl value,
+    $Res Function(_$ShippingImpl) then,
+  ) = __$$ShippingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? shippingId,
-      String? shipping,
-      String? description,
-      String? serviceDeliveryTime,
-      double? rate,
-      String? formatRate});
+  $Res call({
+    String? shippingId,
+    String? shipping,
+    String? description,
+    String? serviceDeliveryTime,
+    double? rate,
+    String? formatRate,
+  });
 }
 
 /// @nodoc
@@ -121,8 +128,9 @@ class __$$ShippingImplCopyWithImpl<$Res>
     extends _$ShippingCopyWithImpl<$Res, _$ShippingImpl>
     implements _$$ShippingImplCopyWith<$Res> {
   __$$ShippingImplCopyWithImpl(
-      _$ShippingImpl _value, $Res Function(_$ShippingImpl) _then)
-      : super(_value, _then);
+    _$ShippingImpl _value,
+    $Res Function(_$ShippingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Shipping
   /// with the given fields replaced by the non-null parameter values.
@@ -136,45 +144,48 @@ class __$$ShippingImplCopyWithImpl<$Res>
     Object? rate = freezed,
     Object? formatRate = freezed,
   }) {
-    return _then(_$ShippingImpl(
-      shippingId: freezed == shippingId
-          ? _value.shippingId
-          : shippingId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shipping: freezed == shipping
-          ? _value.shipping
-          : shipping // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      serviceDeliveryTime: freezed == serviceDeliveryTime
-          ? _value.serviceDeliveryTime
-          : serviceDeliveryTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      rate: freezed == rate
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
-              as double?,
-      formatRate: freezed == formatRate
-          ? _value.formatRate
-          : formatRate // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ShippingImpl(
+        shippingId: freezed == shippingId
+            ? _value.shippingId
+            : shippingId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shipping: freezed == shipping
+            ? _value.shipping
+            : shipping // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        description: freezed == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        serviceDeliveryTime: freezed == serviceDeliveryTime
+            ? _value.serviceDeliveryTime
+            : serviceDeliveryTime // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        rate: freezed == rate
+            ? _value.rate
+            : rate // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        formatRate: freezed == formatRate
+            ? _value.formatRate
+            : formatRate // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ShippingImpl implements _Shipping {
-  _$ShippingImpl(
-      {this.shippingId,
-      this.shipping,
-      this.description,
-      this.serviceDeliveryTime,
-      this.rate,
-      this.formatRate});
+  _$ShippingImpl({
+    this.shippingId,
+    this.shipping,
+    this.description,
+    this.serviceDeliveryTime,
+    this.rate,
+    this.formatRate,
+  });
 
   factory _$ShippingImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShippingImplFromJson(json);
@@ -217,8 +228,15 @@ class _$ShippingImpl implements _Shipping {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, shippingId, shipping,
-      description, serviceDeliveryTime, rate, formatRate);
+  int get hashCode => Object.hash(
+    runtimeType,
+    shippingId,
+    shipping,
+    description,
+    serviceDeliveryTime,
+    rate,
+    formatRate,
+  );
 
   /// Create a copy of Shipping
   /// with the given fields replaced by the non-null parameter values.
@@ -230,13 +248,14 @@ class _$ShippingImpl implements _Shipping {
 }
 
 abstract class _Shipping implements Shipping {
-  factory _Shipping(
-      {final String? shippingId,
-      final String? shipping,
-      final String? description,
-      final String? serviceDeliveryTime,
-      final double? rate,
-      final String? formatRate}) = _$ShippingImpl;
+  factory _Shipping({
+    final String? shippingId,
+    final String? shipping,
+    final String? description,
+    final String? serviceDeliveryTime,
+    final double? rate,
+    final String? formatRate,
+  }) = _$ShippingImpl;
 
   factory _Shipping.fromJson(Map<String, dynamic> json) =
       _$ShippingImpl.fromJson;

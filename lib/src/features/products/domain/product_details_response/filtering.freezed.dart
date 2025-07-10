@@ -12,7 +12,8 @@ part of 'filtering.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Filtering _$FilteringFromJson(Map<String, dynamic> json) {
   return _Filtering.fromJson(json);
@@ -53,15 +54,16 @@ class _$FilteringCopyWithImpl<$Res, $Val extends Filtering>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? items = null,
-  }) {
-    return _then(_value.copyWith(
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as Items,
-    ) as $Val);
+  $Res call({Object? items = null}) {
+    return _then(
+      _value.copyWith(
+            items: null == items
+                ? _value.items
+                : items // ignore: cast_nullable_to_non_nullable
+                      as Items,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Filtering
@@ -79,8 +81,9 @@ class _$FilteringCopyWithImpl<$Res, $Val extends Filtering>
 abstract class _$$FilteringImplCopyWith<$Res>
     implements $FilteringCopyWith<$Res> {
   factory _$$FilteringImplCopyWith(
-          _$FilteringImpl value, $Res Function(_$FilteringImpl) then) =
-      __$$FilteringImplCopyWithImpl<$Res>;
+    _$FilteringImpl value,
+    $Res Function(_$FilteringImpl) then,
+  ) = __$$FilteringImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Items items});
@@ -94,22 +97,23 @@ class __$$FilteringImplCopyWithImpl<$Res>
     extends _$FilteringCopyWithImpl<$Res, _$FilteringImpl>
     implements _$$FilteringImplCopyWith<$Res> {
   __$$FilteringImplCopyWithImpl(
-      _$FilteringImpl _value, $Res Function(_$FilteringImpl) _then)
-      : super(_value, _then);
+    _$FilteringImpl _value,
+    $Res Function(_$FilteringImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Filtering
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? items = null,
-  }) {
-    return _then(_$FilteringImpl(
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as Items,
-    ));
+  $Res call({Object? items = null}) {
+    return _then(
+      _$FilteringImpl(
+        items: null == items
+            ? _value.items
+            : items // ignore: cast_nullable_to_non_nullable
+                  as Items,
+      ),
+    );
   }
 }
 

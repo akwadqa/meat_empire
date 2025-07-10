@@ -12,7 +12,8 @@ part of 'detailed.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Detailed _$DetailedFromJson(Map<String, dynamic> json) {
   return _Detailed.fromJson(json);
@@ -45,19 +46,20 @@ abstract class $DetailedCopyWith<$Res> {
   factory $DetailedCopyWith(Detailed value, $Res Function(Detailed) then) =
       _$DetailedCopyWithImpl<$Res, Detailed>;
   @useResult
-  $Res call(
-      {String? objectId,
-      String? objectType,
-      String? type,
-      String? imagePath,
-      String? alt,
-      String? imageX,
-      String? imageY,
-      String? httpImagePath,
-      String? httpsImagePath,
-      String? absolutePath,
-      String? relativePath,
-      bool? isHighRes});
+  $Res call({
+    String? objectId,
+    String? objectType,
+    String? type,
+    String? imagePath,
+    String? alt,
+    String? imageX,
+    String? imageY,
+    String? httpImagePath,
+    String? httpsImagePath,
+    String? absolutePath,
+    String? relativePath,
+    bool? isHighRes,
+  });
 }
 
 /// @nodoc
@@ -88,56 +90,59 @@ class _$DetailedCopyWithImpl<$Res, $Val extends Detailed>
     Object? relativePath = freezed,
     Object? isHighRes = freezed,
   }) {
-    return _then(_value.copyWith(
-      objectId: freezed == objectId
-          ? _value.objectId
-          : objectId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      objectType: freezed == objectType
-          ? _value.objectType
-          : objectType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imagePath: freezed == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alt: freezed == alt
-          ? _value.alt
-          : alt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageX: freezed == imageX
-          ? _value.imageX
-          : imageX // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageY: freezed == imageY
-          ? _value.imageY
-          : imageY // ignore: cast_nullable_to_non_nullable
-              as String?,
-      httpImagePath: freezed == httpImagePath
-          ? _value.httpImagePath
-          : httpImagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      httpsImagePath: freezed == httpsImagePath
-          ? _value.httpsImagePath
-          : httpsImagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      absolutePath: freezed == absolutePath
-          ? _value.absolutePath
-          : absolutePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      relativePath: freezed == relativePath
-          ? _value.relativePath
-          : relativePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isHighRes: freezed == isHighRes
-          ? _value.isHighRes
-          : isHighRes // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            objectId: freezed == objectId
+                ? _value.objectId
+                : objectId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            objectType: freezed == objectType
+                ? _value.objectType
+                : objectType // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            type: freezed == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            imagePath: freezed == imagePath
+                ? _value.imagePath
+                : imagePath // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            alt: freezed == alt
+                ? _value.alt
+                : alt // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            imageX: freezed == imageX
+                ? _value.imageX
+                : imageX // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            imageY: freezed == imageY
+                ? _value.imageY
+                : imageY // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            httpImagePath: freezed == httpImagePath
+                ? _value.httpImagePath
+                : httpImagePath // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            httpsImagePath: freezed == httpsImagePath
+                ? _value.httpsImagePath
+                : httpsImagePath // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            absolutePath: freezed == absolutePath
+                ? _value.absolutePath
+                : absolutePath // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            relativePath: freezed == relativePath
+                ? _value.relativePath
+                : relativePath // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            isHighRes: freezed == isHighRes
+                ? _value.isHighRes
+                : isHighRes // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -145,23 +150,25 @@ class _$DetailedCopyWithImpl<$Res, $Val extends Detailed>
 abstract class _$$DetailedImplCopyWith<$Res>
     implements $DetailedCopyWith<$Res> {
   factory _$$DetailedImplCopyWith(
-          _$DetailedImpl value, $Res Function(_$DetailedImpl) then) =
-      __$$DetailedImplCopyWithImpl<$Res>;
+    _$DetailedImpl value,
+    $Res Function(_$DetailedImpl) then,
+  ) = __$$DetailedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? objectId,
-      String? objectType,
-      String? type,
-      String? imagePath,
-      String? alt,
-      String? imageX,
-      String? imageY,
-      String? httpImagePath,
-      String? httpsImagePath,
-      String? absolutePath,
-      String? relativePath,
-      bool? isHighRes});
+  $Res call({
+    String? objectId,
+    String? objectType,
+    String? type,
+    String? imagePath,
+    String? alt,
+    String? imageX,
+    String? imageY,
+    String? httpImagePath,
+    String? httpsImagePath,
+    String? absolutePath,
+    String? relativePath,
+    bool? isHighRes,
+  });
 }
 
 /// @nodoc
@@ -169,8 +176,9 @@ class __$$DetailedImplCopyWithImpl<$Res>
     extends _$DetailedCopyWithImpl<$Res, _$DetailedImpl>
     implements _$$DetailedImplCopyWith<$Res> {
   __$$DetailedImplCopyWithImpl(
-      _$DetailedImpl _value, $Res Function(_$DetailedImpl) _then)
-      : super(_value, _then);
+    _$DetailedImpl _value,
+    $Res Function(_$DetailedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Detailed
   /// with the given fields replaced by the non-null parameter values.
@@ -190,75 +198,78 @@ class __$$DetailedImplCopyWithImpl<$Res>
     Object? relativePath = freezed,
     Object? isHighRes = freezed,
   }) {
-    return _then(_$DetailedImpl(
-      objectId: freezed == objectId
-          ? _value.objectId
-          : objectId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      objectType: freezed == objectType
-          ? _value.objectType
-          : objectType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imagePath: freezed == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      alt: freezed == alt
-          ? _value.alt
-          : alt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageX: freezed == imageX
-          ? _value.imageX
-          : imageX // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageY: freezed == imageY
-          ? _value.imageY
-          : imageY // ignore: cast_nullable_to_non_nullable
-              as String?,
-      httpImagePath: freezed == httpImagePath
-          ? _value.httpImagePath
-          : httpImagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      httpsImagePath: freezed == httpsImagePath
-          ? _value.httpsImagePath
-          : httpsImagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      absolutePath: freezed == absolutePath
-          ? _value.absolutePath
-          : absolutePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      relativePath: freezed == relativePath
-          ? _value.relativePath
-          : relativePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isHighRes: freezed == isHighRes
-          ? _value.isHighRes
-          : isHighRes // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$DetailedImpl(
+        objectId: freezed == objectId
+            ? _value.objectId
+            : objectId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        objectType: freezed == objectType
+            ? _value.objectType
+            : objectType // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        type: freezed == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        imagePath: freezed == imagePath
+            ? _value.imagePath
+            : imagePath // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        alt: freezed == alt
+            ? _value.alt
+            : alt // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        imageX: freezed == imageX
+            ? _value.imageX
+            : imageX // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        imageY: freezed == imageY
+            ? _value.imageY
+            : imageY // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        httpImagePath: freezed == httpImagePath
+            ? _value.httpImagePath
+            : httpImagePath // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        httpsImagePath: freezed == httpsImagePath
+            ? _value.httpsImagePath
+            : httpsImagePath // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        absolutePath: freezed == absolutePath
+            ? _value.absolutePath
+            : absolutePath // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        relativePath: freezed == relativePath
+            ? _value.relativePath
+            : relativePath // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isHighRes: freezed == isHighRes
+            ? _value.isHighRes
+            : isHighRes // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$DetailedImpl implements _Detailed {
-  _$DetailedImpl(
-      {this.objectId,
-      this.objectType,
-      this.type,
-      this.imagePath,
-      this.alt,
-      this.imageX,
-      this.imageY,
-      this.httpImagePath,
-      this.httpsImagePath,
-      this.absolutePath,
-      this.relativePath,
-      this.isHighRes});
+  _$DetailedImpl({
+    this.objectId,
+    this.objectType,
+    this.type,
+    this.imagePath,
+    this.alt,
+    this.imageX,
+    this.imageY,
+    this.httpImagePath,
+    this.httpsImagePath,
+    this.absolutePath,
+    this.relativePath,
+    this.isHighRes,
+  });
 
   factory _$DetailedImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailedImplFromJson(json);
@@ -323,19 +334,20 @@ class _$DetailedImpl implements _Detailed {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      objectId,
-      objectType,
-      type,
-      imagePath,
-      alt,
-      imageX,
-      imageY,
-      httpImagePath,
-      httpsImagePath,
-      absolutePath,
-      relativePath,
-      isHighRes);
+    runtimeType,
+    objectId,
+    objectType,
+    type,
+    imagePath,
+    alt,
+    imageX,
+    imageY,
+    httpImagePath,
+    httpsImagePath,
+    absolutePath,
+    relativePath,
+    isHighRes,
+  );
 
   /// Create a copy of Detailed
   /// with the given fields replaced by the non-null parameter values.
@@ -347,19 +359,20 @@ class _$DetailedImpl implements _Detailed {
 }
 
 abstract class _Detailed implements Detailed {
-  factory _Detailed(
-      {final String? objectId,
-      final String? objectType,
-      final String? type,
-      final String? imagePath,
-      final String? alt,
-      final String? imageX,
-      final String? imageY,
-      final String? httpImagePath,
-      final String? httpsImagePath,
-      final String? absolutePath,
-      final String? relativePath,
-      final bool? isHighRes}) = _$DetailedImpl;
+  factory _Detailed({
+    final String? objectId,
+    final String? objectType,
+    final String? type,
+    final String? imagePath,
+    final String? alt,
+    final String? imageX,
+    final String? imageY,
+    final String? httpImagePath,
+    final String? httpsImagePath,
+    final String? absolutePath,
+    final String? relativePath,
+    final bool? isHighRes,
+  }) = _$DetailedImpl;
 
   factory _Detailed.fromJson(Map<String, dynamic> json) =
       _$DetailedImpl.fromJson;

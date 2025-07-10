@@ -12,7 +12,8 @@ part of 'search.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Search _$SearchFromJson(Map<String, dynamic> json) {
   return _Search.fromJson(json);
@@ -85,60 +86,61 @@ abstract class $SearchCopyWith<$Res> {
   factory $SearchCopyWith(Search value, $Res Function(Search) then) =
       _$SearchCopyWithImpl<$Res, Search>;
   @useResult
-  $Res call(
-      {String area,
-      bool useCaching,
-      List<String> extend,
-      List<dynamic> customExtend,
-      String pname,
-      String pshort,
-      String pfull,
-      String pkeywords,
-      List<dynamic> feature,
-      String type,
-      int page,
-      String action,
-      List<dynamic> filterVariants,
-      String featuresHash,
-      int limit,
-      int bid,
-      String match,
-      List<dynamic> tracking,
-      bool getFrontendUrls,
-      int itemsPerPage,
-      String applyDisabledFilters,
-      bool loadProductsExtraData,
-      dynamic storefront,
-      String companyIds,
-      bool additionalData,
-      bool getOptions,
-      bool getDiscounts,
-      bool getFeatures,
-      bool getDetailed,
-      bool getIcon,
-      String langCode,
-      String currencyCode,
-      int bannerWidth,
-      int productListWidth,
-      int imageWidth,
-      int imageSize,
-      int productDetailsWidth,
-      String userType,
-      String applyPagination,
-      dynamic cid,
-      String searchPerformed,
-      String subcats,
-      bool hideOutOfStockProducts,
-      String sortBy,
-      String sortOrder,
-      bool forCurrentStorefront,
-      String companyStatus,
-      List<dynamic> usergroupIds,
-      bool includeChildVariations,
-      bool groupChildVariations,
-      int parentProductId,
-      String sortOrderRev,
-      String totalItems});
+  $Res call({
+    String area,
+    bool useCaching,
+    List<String> extend,
+    List<dynamic> customExtend,
+    String pname,
+    String pshort,
+    String pfull,
+    String pkeywords,
+    List<dynamic> feature,
+    String type,
+    int page,
+    String action,
+    List<dynamic> filterVariants,
+    String featuresHash,
+    int limit,
+    int bid,
+    String match,
+    List<dynamic> tracking,
+    bool getFrontendUrls,
+    int itemsPerPage,
+    String applyDisabledFilters,
+    bool loadProductsExtraData,
+    dynamic storefront,
+    String companyIds,
+    bool additionalData,
+    bool getOptions,
+    bool getDiscounts,
+    bool getFeatures,
+    bool getDetailed,
+    bool getIcon,
+    String langCode,
+    String currencyCode,
+    int bannerWidth,
+    int productListWidth,
+    int imageWidth,
+    int imageSize,
+    int productDetailsWidth,
+    String userType,
+    String applyPagination,
+    dynamic cid,
+    String searchPerformed,
+    String subcats,
+    bool hideOutOfStockProducts,
+    String sortBy,
+    String sortOrder,
+    bool forCurrentStorefront,
+    String companyStatus,
+    List<dynamic> usergroupIds,
+    bool includeChildVariations,
+    bool groupChildVariations,
+    int parentProductId,
+    String sortOrderRev,
+    String totalItems,
+  });
 }
 
 /// @nodoc
@@ -210,284 +212,289 @@ class _$SearchCopyWithImpl<$Res, $Val extends Search>
     Object? sortOrderRev = null,
     Object? totalItems = null,
   }) {
-    return _then(_value.copyWith(
-      area: null == area
-          ? _value.area
-          : area // ignore: cast_nullable_to_non_nullable
-              as String,
-      useCaching: null == useCaching
-          ? _value.useCaching
-          : useCaching // ignore: cast_nullable_to_non_nullable
-              as bool,
-      extend: null == extend
-          ? _value.extend
-          : extend // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      customExtend: null == customExtend
-          ? _value.customExtend
-          : customExtend // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      pname: null == pname
-          ? _value.pname
-          : pname // ignore: cast_nullable_to_non_nullable
-              as String,
-      pshort: null == pshort
-          ? _value.pshort
-          : pshort // ignore: cast_nullable_to_non_nullable
-              as String,
-      pfull: null == pfull
-          ? _value.pfull
-          : pfull // ignore: cast_nullable_to_non_nullable
-              as String,
-      pkeywords: null == pkeywords
-          ? _value.pkeywords
-          : pkeywords // ignore: cast_nullable_to_non_nullable
-              as String,
-      feature: null == feature
-          ? _value.feature
-          : feature // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      action: null == action
-          ? _value.action
-          : action // ignore: cast_nullable_to_non_nullable
-              as String,
-      filterVariants: null == filterVariants
-          ? _value.filterVariants
-          : filterVariants // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      featuresHash: null == featuresHash
-          ? _value.featuresHash
-          : featuresHash // ignore: cast_nullable_to_non_nullable
-              as String,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-      bid: null == bid
-          ? _value.bid
-          : bid // ignore: cast_nullable_to_non_nullable
-              as int,
-      match: null == match
-          ? _value.match
-          : match // ignore: cast_nullable_to_non_nullable
-              as String,
-      tracking: null == tracking
-          ? _value.tracking
-          : tracking // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      getFrontendUrls: null == getFrontendUrls
-          ? _value.getFrontendUrls
-          : getFrontendUrls // ignore: cast_nullable_to_non_nullable
-              as bool,
-      itemsPerPage: null == itemsPerPage
-          ? _value.itemsPerPage
-          : itemsPerPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      applyDisabledFilters: null == applyDisabledFilters
-          ? _value.applyDisabledFilters
-          : applyDisabledFilters // ignore: cast_nullable_to_non_nullable
-              as String,
-      loadProductsExtraData: null == loadProductsExtraData
-          ? _value.loadProductsExtraData
-          : loadProductsExtraData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      storefront: freezed == storefront
-          ? _value.storefront
-          : storefront // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      companyIds: null == companyIds
-          ? _value.companyIds
-          : companyIds // ignore: cast_nullable_to_non_nullable
-              as String,
-      additionalData: null == additionalData
-          ? _value.additionalData
-          : additionalData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getOptions: null == getOptions
-          ? _value.getOptions
-          : getOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDiscounts: null == getDiscounts
-          ? _value.getDiscounts
-          : getDiscounts // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getFeatures: null == getFeatures
-          ? _value.getFeatures
-          : getFeatures // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDetailed: null == getDetailed
-          ? _value.getDetailed
-          : getDetailed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getIcon: null == getIcon
-          ? _value.getIcon
-          : getIcon // ignore: cast_nullable_to_non_nullable
-              as bool,
-      langCode: null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      bannerWidth: null == bannerWidth
-          ? _value.bannerWidth
-          : bannerWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      productListWidth: null == productListWidth
-          ? _value.productListWidth
-          : productListWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageWidth: null == imageWidth
-          ? _value.imageWidth
-          : imageWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageSize: null == imageSize
-          ? _value.imageSize
-          : imageSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      productDetailsWidth: null == productDetailsWidth
-          ? _value.productDetailsWidth
-          : productDetailsWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      userType: null == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as String,
-      applyPagination: null == applyPagination
-          ? _value.applyPagination
-          : applyPagination // ignore: cast_nullable_to_non_nullable
-              as String,
-      cid: freezed == cid
-          ? _value.cid
-          : cid // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      searchPerformed: null == searchPerformed
-          ? _value.searchPerformed
-          : searchPerformed // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcats: null == subcats
-          ? _value.subcats
-          : subcats // ignore: cast_nullable_to_non_nullable
-              as String,
-      hideOutOfStockProducts: null == hideOutOfStockProducts
-          ? _value.hideOutOfStockProducts
-          : hideOutOfStockProducts // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-      forCurrentStorefront: null == forCurrentStorefront
-          ? _value.forCurrentStorefront
-          : forCurrentStorefront // ignore: cast_nullable_to_non_nullable
-              as bool,
-      companyStatus: null == companyStatus
-          ? _value.companyStatus
-          : companyStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      usergroupIds: null == usergroupIds
-          ? _value.usergroupIds
-          : usergroupIds // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      includeChildVariations: null == includeChildVariations
-          ? _value.includeChildVariations
-          : includeChildVariations // ignore: cast_nullable_to_non_nullable
-              as bool,
-      groupChildVariations: null == groupChildVariations
-          ? _value.groupChildVariations
-          : groupChildVariations // ignore: cast_nullable_to_non_nullable
-              as bool,
-      parentProductId: null == parentProductId
-          ? _value.parentProductId
-          : parentProductId // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortOrderRev: null == sortOrderRev
-          ? _value.sortOrderRev
-          : sortOrderRev // ignore: cast_nullable_to_non_nullable
-              as String,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            area: null == area
+                ? _value.area
+                : area // ignore: cast_nullable_to_non_nullable
+                      as String,
+            useCaching: null == useCaching
+                ? _value.useCaching
+                : useCaching // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            extend: null == extend
+                ? _value.extend
+                : extend // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            customExtend: null == customExtend
+                ? _value.customExtend
+                : customExtend // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            pname: null == pname
+                ? _value.pname
+                : pname // ignore: cast_nullable_to_non_nullable
+                      as String,
+            pshort: null == pshort
+                ? _value.pshort
+                : pshort // ignore: cast_nullable_to_non_nullable
+                      as String,
+            pfull: null == pfull
+                ? _value.pfull
+                : pfull // ignore: cast_nullable_to_non_nullable
+                      as String,
+            pkeywords: null == pkeywords
+                ? _value.pkeywords
+                : pkeywords // ignore: cast_nullable_to_non_nullable
+                      as String,
+            feature: null == feature
+                ? _value.feature
+                : feature // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String,
+            page: null == page
+                ? _value.page
+                : page // ignore: cast_nullable_to_non_nullable
+                      as int,
+            action: null == action
+                ? _value.action
+                : action // ignore: cast_nullable_to_non_nullable
+                      as String,
+            filterVariants: null == filterVariants
+                ? _value.filterVariants
+                : filterVariants // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            featuresHash: null == featuresHash
+                ? _value.featuresHash
+                : featuresHash // ignore: cast_nullable_to_non_nullable
+                      as String,
+            limit: null == limit
+                ? _value.limit
+                : limit // ignore: cast_nullable_to_non_nullable
+                      as int,
+            bid: null == bid
+                ? _value.bid
+                : bid // ignore: cast_nullable_to_non_nullable
+                      as int,
+            match: null == match
+                ? _value.match
+                : match // ignore: cast_nullable_to_non_nullable
+                      as String,
+            tracking: null == tracking
+                ? _value.tracking
+                : tracking // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            getFrontendUrls: null == getFrontendUrls
+                ? _value.getFrontendUrls
+                : getFrontendUrls // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            itemsPerPage: null == itemsPerPage
+                ? _value.itemsPerPage
+                : itemsPerPage // ignore: cast_nullable_to_non_nullable
+                      as int,
+            applyDisabledFilters: null == applyDisabledFilters
+                ? _value.applyDisabledFilters
+                : applyDisabledFilters // ignore: cast_nullable_to_non_nullable
+                      as String,
+            loadProductsExtraData: null == loadProductsExtraData
+                ? _value.loadProductsExtraData
+                : loadProductsExtraData // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            storefront: freezed == storefront
+                ? _value.storefront
+                : storefront // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            companyIds: null == companyIds
+                ? _value.companyIds
+                : companyIds // ignore: cast_nullable_to_non_nullable
+                      as String,
+            additionalData: null == additionalData
+                ? _value.additionalData
+                : additionalData // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getOptions: null == getOptions
+                ? _value.getOptions
+                : getOptions // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getDiscounts: null == getDiscounts
+                ? _value.getDiscounts
+                : getDiscounts // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getFeatures: null == getFeatures
+                ? _value.getFeatures
+                : getFeatures // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getDetailed: null == getDetailed
+                ? _value.getDetailed
+                : getDetailed // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getIcon: null == getIcon
+                ? _value.getIcon
+                : getIcon // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            langCode: null == langCode
+                ? _value.langCode
+                : langCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            currencyCode: null == currencyCode
+                ? _value.currencyCode
+                : currencyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            bannerWidth: null == bannerWidth
+                ? _value.bannerWidth
+                : bannerWidth // ignore: cast_nullable_to_non_nullable
+                      as int,
+            productListWidth: null == productListWidth
+                ? _value.productListWidth
+                : productListWidth // ignore: cast_nullable_to_non_nullable
+                      as int,
+            imageWidth: null == imageWidth
+                ? _value.imageWidth
+                : imageWidth // ignore: cast_nullable_to_non_nullable
+                      as int,
+            imageSize: null == imageSize
+                ? _value.imageSize
+                : imageSize // ignore: cast_nullable_to_non_nullable
+                      as int,
+            productDetailsWidth: null == productDetailsWidth
+                ? _value.productDetailsWidth
+                : productDetailsWidth // ignore: cast_nullable_to_non_nullable
+                      as int,
+            userType: null == userType
+                ? _value.userType
+                : userType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            applyPagination: null == applyPagination
+                ? _value.applyPagination
+                : applyPagination // ignore: cast_nullable_to_non_nullable
+                      as String,
+            cid: freezed == cid
+                ? _value.cid
+                : cid // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            searchPerformed: null == searchPerformed
+                ? _value.searchPerformed
+                : searchPerformed // ignore: cast_nullable_to_non_nullable
+                      as String,
+            subcats: null == subcats
+                ? _value.subcats
+                : subcats // ignore: cast_nullable_to_non_nullable
+                      as String,
+            hideOutOfStockProducts: null == hideOutOfStockProducts
+                ? _value.hideOutOfStockProducts
+                : hideOutOfStockProducts // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            sortBy: null == sortBy
+                ? _value.sortBy
+                : sortBy // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortOrder: null == sortOrder
+                ? _value.sortOrder
+                : sortOrder // ignore: cast_nullable_to_non_nullable
+                      as String,
+            forCurrentStorefront: null == forCurrentStorefront
+                ? _value.forCurrentStorefront
+                : forCurrentStorefront // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            companyStatus: null == companyStatus
+                ? _value.companyStatus
+                : companyStatus // ignore: cast_nullable_to_non_nullable
+                      as String,
+            usergroupIds: null == usergroupIds
+                ? _value.usergroupIds
+                : usergroupIds // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            includeChildVariations: null == includeChildVariations
+                ? _value.includeChildVariations
+                : includeChildVariations // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            groupChildVariations: null == groupChildVariations
+                ? _value.groupChildVariations
+                : groupChildVariations // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            parentProductId: null == parentProductId
+                ? _value.parentProductId
+                : parentProductId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            sortOrderRev: null == sortOrderRev
+                ? _value.sortOrderRev
+                : sortOrderRev // ignore: cast_nullable_to_non_nullable
+                      as String,
+            totalItems: null == totalItems
+                ? _value.totalItems
+                : totalItems // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SearchImplCopyWith<$Res> implements $SearchCopyWith<$Res> {
   factory _$$SearchImplCopyWith(
-          _$SearchImpl value, $Res Function(_$SearchImpl) then) =
-      __$$SearchImplCopyWithImpl<$Res>;
+    _$SearchImpl value,
+    $Res Function(_$SearchImpl) then,
+  ) = __$$SearchImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String area,
-      bool useCaching,
-      List<String> extend,
-      List<dynamic> customExtend,
-      String pname,
-      String pshort,
-      String pfull,
-      String pkeywords,
-      List<dynamic> feature,
-      String type,
-      int page,
-      String action,
-      List<dynamic> filterVariants,
-      String featuresHash,
-      int limit,
-      int bid,
-      String match,
-      List<dynamic> tracking,
-      bool getFrontendUrls,
-      int itemsPerPage,
-      String applyDisabledFilters,
-      bool loadProductsExtraData,
-      dynamic storefront,
-      String companyIds,
-      bool additionalData,
-      bool getOptions,
-      bool getDiscounts,
-      bool getFeatures,
-      bool getDetailed,
-      bool getIcon,
-      String langCode,
-      String currencyCode,
-      int bannerWidth,
-      int productListWidth,
-      int imageWidth,
-      int imageSize,
-      int productDetailsWidth,
-      String userType,
-      String applyPagination,
-      dynamic cid,
-      String searchPerformed,
-      String subcats,
-      bool hideOutOfStockProducts,
-      String sortBy,
-      String sortOrder,
-      bool forCurrentStorefront,
-      String companyStatus,
-      List<dynamic> usergroupIds,
-      bool includeChildVariations,
-      bool groupChildVariations,
-      int parentProductId,
-      String sortOrderRev,
-      String totalItems});
+  $Res call({
+    String area,
+    bool useCaching,
+    List<String> extend,
+    List<dynamic> customExtend,
+    String pname,
+    String pshort,
+    String pfull,
+    String pkeywords,
+    List<dynamic> feature,
+    String type,
+    int page,
+    String action,
+    List<dynamic> filterVariants,
+    String featuresHash,
+    int limit,
+    int bid,
+    String match,
+    List<dynamic> tracking,
+    bool getFrontendUrls,
+    int itemsPerPage,
+    String applyDisabledFilters,
+    bool loadProductsExtraData,
+    dynamic storefront,
+    String companyIds,
+    bool additionalData,
+    bool getOptions,
+    bool getDiscounts,
+    bool getFeatures,
+    bool getDetailed,
+    bool getIcon,
+    String langCode,
+    String currencyCode,
+    int bannerWidth,
+    int productListWidth,
+    int imageWidth,
+    int imageSize,
+    int productDetailsWidth,
+    String userType,
+    String applyPagination,
+    dynamic cid,
+    String searchPerformed,
+    String subcats,
+    bool hideOutOfStockProducts,
+    String sortBy,
+    String sortOrder,
+    bool forCurrentStorefront,
+    String companyStatus,
+    List<dynamic> usergroupIds,
+    bool includeChildVariations,
+    bool groupChildVariations,
+    int parentProductId,
+    String sortOrderRev,
+    String totalItems,
+  });
 }
 
 /// @nodoc
@@ -495,8 +502,9 @@ class __$$SearchImplCopyWithImpl<$Res>
     extends _$SearchCopyWithImpl<$Res, _$SearchImpl>
     implements _$$SearchImplCopyWith<$Res> {
   __$$SearchImplCopyWithImpl(
-      _$SearchImpl _value, $Res Function(_$SearchImpl) _then)
-      : super(_value, _then);
+    _$SearchImpl _value,
+    $Res Function(_$SearchImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Search
   /// with the given fields replaced by the non-null parameter values.
@@ -557,286 +565,288 @@ class __$$SearchImplCopyWithImpl<$Res>
     Object? sortOrderRev = null,
     Object? totalItems = null,
   }) {
-    return _then(_$SearchImpl(
-      area: null == area
-          ? _value.area
-          : area // ignore: cast_nullable_to_non_nullable
-              as String,
-      useCaching: null == useCaching
-          ? _value.useCaching
-          : useCaching // ignore: cast_nullable_to_non_nullable
-              as bool,
-      extend: null == extend
-          ? _value._extend
-          : extend // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      customExtend: null == customExtend
-          ? _value._customExtend
-          : customExtend // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      pname: null == pname
-          ? _value.pname
-          : pname // ignore: cast_nullable_to_non_nullable
-              as String,
-      pshort: null == pshort
-          ? _value.pshort
-          : pshort // ignore: cast_nullable_to_non_nullable
-              as String,
-      pfull: null == pfull
-          ? _value.pfull
-          : pfull // ignore: cast_nullable_to_non_nullable
-              as String,
-      pkeywords: null == pkeywords
-          ? _value.pkeywords
-          : pkeywords // ignore: cast_nullable_to_non_nullable
-              as String,
-      feature: null == feature
-          ? _value._feature
-          : feature // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      action: null == action
-          ? _value.action
-          : action // ignore: cast_nullable_to_non_nullable
-              as String,
-      filterVariants: null == filterVariants
-          ? _value._filterVariants
-          : filterVariants // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      featuresHash: null == featuresHash
-          ? _value.featuresHash
-          : featuresHash // ignore: cast_nullable_to_non_nullable
-              as String,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-      bid: null == bid
-          ? _value.bid
-          : bid // ignore: cast_nullable_to_non_nullable
-              as int,
-      match: null == match
-          ? _value.match
-          : match // ignore: cast_nullable_to_non_nullable
-              as String,
-      tracking: null == tracking
-          ? _value._tracking
-          : tracking // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      getFrontendUrls: null == getFrontendUrls
-          ? _value.getFrontendUrls
-          : getFrontendUrls // ignore: cast_nullable_to_non_nullable
-              as bool,
-      itemsPerPage: null == itemsPerPage
-          ? _value.itemsPerPage
-          : itemsPerPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      applyDisabledFilters: null == applyDisabledFilters
-          ? _value.applyDisabledFilters
-          : applyDisabledFilters // ignore: cast_nullable_to_non_nullable
-              as String,
-      loadProductsExtraData: null == loadProductsExtraData
-          ? _value.loadProductsExtraData
-          : loadProductsExtraData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      storefront: freezed == storefront
-          ? _value.storefront
-          : storefront // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      companyIds: null == companyIds
-          ? _value.companyIds
-          : companyIds // ignore: cast_nullable_to_non_nullable
-              as String,
-      additionalData: null == additionalData
-          ? _value.additionalData
-          : additionalData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getOptions: null == getOptions
-          ? _value.getOptions
-          : getOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDiscounts: null == getDiscounts
-          ? _value.getDiscounts
-          : getDiscounts // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getFeatures: null == getFeatures
-          ? _value.getFeatures
-          : getFeatures // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDetailed: null == getDetailed
-          ? _value.getDetailed
-          : getDetailed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getIcon: null == getIcon
-          ? _value.getIcon
-          : getIcon // ignore: cast_nullable_to_non_nullable
-              as bool,
-      langCode: null == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      bannerWidth: null == bannerWidth
-          ? _value.bannerWidth
-          : bannerWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      productListWidth: null == productListWidth
-          ? _value.productListWidth
-          : productListWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageWidth: null == imageWidth
-          ? _value.imageWidth
-          : imageWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageSize: null == imageSize
-          ? _value.imageSize
-          : imageSize // ignore: cast_nullable_to_non_nullable
-              as int,
-      productDetailsWidth: null == productDetailsWidth
-          ? _value.productDetailsWidth
-          : productDetailsWidth // ignore: cast_nullable_to_non_nullable
-              as int,
-      userType: null == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as String,
-      applyPagination: null == applyPagination
-          ? _value.applyPagination
-          : applyPagination // ignore: cast_nullable_to_non_nullable
-              as String,
-      cid: freezed == cid
-          ? _value.cid
-          : cid // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      searchPerformed: null == searchPerformed
-          ? _value.searchPerformed
-          : searchPerformed // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcats: null == subcats
-          ? _value.subcats
-          : subcats // ignore: cast_nullable_to_non_nullable
-              as String,
-      hideOutOfStockProducts: null == hideOutOfStockProducts
-          ? _value.hideOutOfStockProducts
-          : hideOutOfStockProducts // ignore: cast_nullable_to_non_nullable
-              as bool,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-      forCurrentStorefront: null == forCurrentStorefront
-          ? _value.forCurrentStorefront
-          : forCurrentStorefront // ignore: cast_nullable_to_non_nullable
-              as bool,
-      companyStatus: null == companyStatus
-          ? _value.companyStatus
-          : companyStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      usergroupIds: null == usergroupIds
-          ? _value._usergroupIds
-          : usergroupIds // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      includeChildVariations: null == includeChildVariations
-          ? _value.includeChildVariations
-          : includeChildVariations // ignore: cast_nullable_to_non_nullable
-              as bool,
-      groupChildVariations: null == groupChildVariations
-          ? _value.groupChildVariations
-          : groupChildVariations // ignore: cast_nullable_to_non_nullable
-              as bool,
-      parentProductId: null == parentProductId
-          ? _value.parentProductId
-          : parentProductId // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortOrderRev: null == sortOrderRev
-          ? _value.sortOrderRev
-          : sortOrderRev // ignore: cast_nullable_to_non_nullable
-              as String,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$SearchImpl(
+        area: null == area
+            ? _value.area
+            : area // ignore: cast_nullable_to_non_nullable
+                  as String,
+        useCaching: null == useCaching
+            ? _value.useCaching
+            : useCaching // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        extend: null == extend
+            ? _value._extend
+            : extend // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        customExtend: null == customExtend
+            ? _value._customExtend
+            : customExtend // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        pname: null == pname
+            ? _value.pname
+            : pname // ignore: cast_nullable_to_non_nullable
+                  as String,
+        pshort: null == pshort
+            ? _value.pshort
+            : pshort // ignore: cast_nullable_to_non_nullable
+                  as String,
+        pfull: null == pfull
+            ? _value.pfull
+            : pfull // ignore: cast_nullable_to_non_nullable
+                  as String,
+        pkeywords: null == pkeywords
+            ? _value.pkeywords
+            : pkeywords // ignore: cast_nullable_to_non_nullable
+                  as String,
+        feature: null == feature
+            ? _value._feature
+            : feature // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String,
+        page: null == page
+            ? _value.page
+            : page // ignore: cast_nullable_to_non_nullable
+                  as int,
+        action: null == action
+            ? _value.action
+            : action // ignore: cast_nullable_to_non_nullable
+                  as String,
+        filterVariants: null == filterVariants
+            ? _value._filterVariants
+            : filterVariants // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        featuresHash: null == featuresHash
+            ? _value.featuresHash
+            : featuresHash // ignore: cast_nullable_to_non_nullable
+                  as String,
+        limit: null == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int,
+        bid: null == bid
+            ? _value.bid
+            : bid // ignore: cast_nullable_to_non_nullable
+                  as int,
+        match: null == match
+            ? _value.match
+            : match // ignore: cast_nullable_to_non_nullable
+                  as String,
+        tracking: null == tracking
+            ? _value._tracking
+            : tracking // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        getFrontendUrls: null == getFrontendUrls
+            ? _value.getFrontendUrls
+            : getFrontendUrls // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        itemsPerPage: null == itemsPerPage
+            ? _value.itemsPerPage
+            : itemsPerPage // ignore: cast_nullable_to_non_nullable
+                  as int,
+        applyDisabledFilters: null == applyDisabledFilters
+            ? _value.applyDisabledFilters
+            : applyDisabledFilters // ignore: cast_nullable_to_non_nullable
+                  as String,
+        loadProductsExtraData: null == loadProductsExtraData
+            ? _value.loadProductsExtraData
+            : loadProductsExtraData // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        storefront: freezed == storefront
+            ? _value.storefront
+            : storefront // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        companyIds: null == companyIds
+            ? _value.companyIds
+            : companyIds // ignore: cast_nullable_to_non_nullable
+                  as String,
+        additionalData: null == additionalData
+            ? _value.additionalData
+            : additionalData // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getOptions: null == getOptions
+            ? _value.getOptions
+            : getOptions // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getDiscounts: null == getDiscounts
+            ? _value.getDiscounts
+            : getDiscounts // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getFeatures: null == getFeatures
+            ? _value.getFeatures
+            : getFeatures // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getDetailed: null == getDetailed
+            ? _value.getDetailed
+            : getDetailed // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getIcon: null == getIcon
+            ? _value.getIcon
+            : getIcon // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        langCode: null == langCode
+            ? _value.langCode
+            : langCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        currencyCode: null == currencyCode
+            ? _value.currencyCode
+            : currencyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        bannerWidth: null == bannerWidth
+            ? _value.bannerWidth
+            : bannerWidth // ignore: cast_nullable_to_non_nullable
+                  as int,
+        productListWidth: null == productListWidth
+            ? _value.productListWidth
+            : productListWidth // ignore: cast_nullable_to_non_nullable
+                  as int,
+        imageWidth: null == imageWidth
+            ? _value.imageWidth
+            : imageWidth // ignore: cast_nullable_to_non_nullable
+                  as int,
+        imageSize: null == imageSize
+            ? _value.imageSize
+            : imageSize // ignore: cast_nullable_to_non_nullable
+                  as int,
+        productDetailsWidth: null == productDetailsWidth
+            ? _value.productDetailsWidth
+            : productDetailsWidth // ignore: cast_nullable_to_non_nullable
+                  as int,
+        userType: null == userType
+            ? _value.userType
+            : userType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        applyPagination: null == applyPagination
+            ? _value.applyPagination
+            : applyPagination // ignore: cast_nullable_to_non_nullable
+                  as String,
+        cid: freezed == cid
+            ? _value.cid
+            : cid // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        searchPerformed: null == searchPerformed
+            ? _value.searchPerformed
+            : searchPerformed // ignore: cast_nullable_to_non_nullable
+                  as String,
+        subcats: null == subcats
+            ? _value.subcats
+            : subcats // ignore: cast_nullable_to_non_nullable
+                  as String,
+        hideOutOfStockProducts: null == hideOutOfStockProducts
+            ? _value.hideOutOfStockProducts
+            : hideOutOfStockProducts // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        sortBy: null == sortBy
+            ? _value.sortBy
+            : sortBy // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortOrder: null == sortOrder
+            ? _value.sortOrder
+            : sortOrder // ignore: cast_nullable_to_non_nullable
+                  as String,
+        forCurrentStorefront: null == forCurrentStorefront
+            ? _value.forCurrentStorefront
+            : forCurrentStorefront // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        companyStatus: null == companyStatus
+            ? _value.companyStatus
+            : companyStatus // ignore: cast_nullable_to_non_nullable
+                  as String,
+        usergroupIds: null == usergroupIds
+            ? _value._usergroupIds
+            : usergroupIds // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        includeChildVariations: null == includeChildVariations
+            ? _value.includeChildVariations
+            : includeChildVariations // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        groupChildVariations: null == groupChildVariations
+            ? _value.groupChildVariations
+            : groupChildVariations // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        parentProductId: null == parentProductId
+            ? _value.parentProductId
+            : parentProductId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        sortOrderRev: null == sortOrderRev
+            ? _value.sortOrderRev
+            : sortOrderRev // ignore: cast_nullable_to_non_nullable
+                  as String,
+        totalItems: null == totalItems
+            ? _value.totalItems
+            : totalItems // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$SearchImpl implements _Search {
-  _$SearchImpl(
-      {required this.area,
-      required this.useCaching,
-      required final List<String> extend,
-      required final List<dynamic> customExtend,
-      required this.pname,
-      required this.pshort,
-      required this.pfull,
-      required this.pkeywords,
-      required final List<dynamic> feature,
-      required this.type,
-      required this.page,
-      required this.action,
-      required final List<dynamic> filterVariants,
-      required this.featuresHash,
-      required this.limit,
-      required this.bid,
-      required this.match,
-      required final List<dynamic> tracking,
-      required this.getFrontendUrls,
-      required this.itemsPerPage,
-      required this.applyDisabledFilters,
-      required this.loadProductsExtraData,
-      required this.storefront,
-      required this.companyIds,
-      required this.additionalData,
-      required this.getOptions,
-      required this.getDiscounts,
-      required this.getFeatures,
-      required this.getDetailed,
-      required this.getIcon,
-      required this.langCode,
-      required this.currencyCode,
-      required this.bannerWidth,
-      required this.productListWidth,
-      required this.imageWidth,
-      required this.imageSize,
-      required this.productDetailsWidth,
-      required this.userType,
-      required this.applyPagination,
-      required this.cid,
-      required this.searchPerformed,
-      required this.subcats,
-      required this.hideOutOfStockProducts,
-      required this.sortBy,
-      required this.sortOrder,
-      required this.forCurrentStorefront,
-      required this.companyStatus,
-      required final List<dynamic> usergroupIds,
-      required this.includeChildVariations,
-      required this.groupChildVariations,
-      required this.parentProductId,
-      required this.sortOrderRev,
-      required this.totalItems})
-      : _extend = extend,
-        _customExtend = customExtend,
-        _feature = feature,
-        _filterVariants = filterVariants,
-        _tracking = tracking,
-        _usergroupIds = usergroupIds;
+  _$SearchImpl({
+    required this.area,
+    required this.useCaching,
+    required final List<String> extend,
+    required final List<dynamic> customExtend,
+    required this.pname,
+    required this.pshort,
+    required this.pfull,
+    required this.pkeywords,
+    required final List<dynamic> feature,
+    required this.type,
+    required this.page,
+    required this.action,
+    required final List<dynamic> filterVariants,
+    required this.featuresHash,
+    required this.limit,
+    required this.bid,
+    required this.match,
+    required final List<dynamic> tracking,
+    required this.getFrontendUrls,
+    required this.itemsPerPage,
+    required this.applyDisabledFilters,
+    required this.loadProductsExtraData,
+    required this.storefront,
+    required this.companyIds,
+    required this.additionalData,
+    required this.getOptions,
+    required this.getDiscounts,
+    required this.getFeatures,
+    required this.getDetailed,
+    required this.getIcon,
+    required this.langCode,
+    required this.currencyCode,
+    required this.bannerWidth,
+    required this.productListWidth,
+    required this.imageWidth,
+    required this.imageSize,
+    required this.productDetailsWidth,
+    required this.userType,
+    required this.applyPagination,
+    required this.cid,
+    required this.searchPerformed,
+    required this.subcats,
+    required this.hideOutOfStockProducts,
+    required this.sortBy,
+    required this.sortOrder,
+    required this.forCurrentStorefront,
+    required this.companyStatus,
+    required final List<dynamic> usergroupIds,
+    required this.includeChildVariations,
+    required this.groupChildVariations,
+    required this.parentProductId,
+    required this.sortOrderRev,
+    required this.totalItems,
+  }) : _extend = extend,
+       _customExtend = customExtend,
+       _feature = feature,
+       _filterVariants = filterVariants,
+       _tracking = tracking,
+       _usergroupIds = usergroupIds;
 
   factory _$SearchImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchImplFromJson(json);
@@ -998,8 +1008,10 @@ class _$SearchImpl implements _Search {
             (identical(other.useCaching, useCaching) ||
                 other.useCaching == useCaching) &&
             const DeepCollectionEquality().equals(other._extend, _extend) &&
-            const DeepCollectionEquality()
-                .equals(other._customExtend, _customExtend) &&
+            const DeepCollectionEquality().equals(
+              other._customExtend,
+              _customExtend,
+            ) &&
             (identical(other.pname, pname) || other.pname == pname) &&
             (identical(other.pshort, pshort) || other.pshort == pshort) &&
             (identical(other.pfull, pfull) || other.pfull == pfull) &&
@@ -1009,8 +1021,10 @@ class _$SearchImpl implements _Search {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.action, action) || other.action == action) &&
-            const DeepCollectionEquality()
-                .equals(other._filterVariants, _filterVariants) &&
+            const DeepCollectionEquality().equals(
+              other._filterVariants,
+              _filterVariants,
+            ) &&
             (identical(other.featuresHash, featuresHash) ||
                 other.featuresHash == featuresHash) &&
             (identical(other.limit, limit) || other.limit == limit) &&
@@ -1025,8 +1039,10 @@ class _$SearchImpl implements _Search {
                 other.applyDisabledFilters == applyDisabledFilters) &&
             (identical(other.loadProductsExtraData, loadProductsExtraData) ||
                 other.loadProductsExtraData == loadProductsExtraData) &&
-            const DeepCollectionEquality()
-                .equals(other.storefront, storefront) &&
+            const DeepCollectionEquality().equals(
+              other.storefront,
+              storefront,
+            ) &&
             (identical(other.companyIds, companyIds) ||
                 other.companyIds == companyIds) &&
             (identical(other.additionalData, additionalData) ||
@@ -1071,8 +1087,10 @@ class _$SearchImpl implements _Search {
                 other.forCurrentStorefront == forCurrentStorefront) &&
             (identical(other.companyStatus, companyStatus) ||
                 other.companyStatus == companyStatus) &&
-            const DeepCollectionEquality()
-                .equals(other._usergroupIds, _usergroupIds) &&
+            const DeepCollectionEquality().equals(
+              other._usergroupIds,
+              _usergroupIds,
+            ) &&
             (identical(other.includeChildVariations, includeChildVariations) ||
                 other.includeChildVariations == includeChildVariations) &&
             (identical(other.groupChildVariations, groupChildVariations) ||
@@ -1088,61 +1106,61 @@ class _$SearchImpl implements _Search {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        area,
-        useCaching,
-        const DeepCollectionEquality().hash(_extend),
-        const DeepCollectionEquality().hash(_customExtend),
-        pname,
-        pshort,
-        pfull,
-        pkeywords,
-        const DeepCollectionEquality().hash(_feature),
-        type,
-        page,
-        action,
-        const DeepCollectionEquality().hash(_filterVariants),
-        featuresHash,
-        limit,
-        bid,
-        match,
-        const DeepCollectionEquality().hash(_tracking),
-        getFrontendUrls,
-        itemsPerPage,
-        applyDisabledFilters,
-        loadProductsExtraData,
-        const DeepCollectionEquality().hash(storefront),
-        companyIds,
-        additionalData,
-        getOptions,
-        getDiscounts,
-        getFeatures,
-        getDetailed,
-        getIcon,
-        langCode,
-        currencyCode,
-        bannerWidth,
-        productListWidth,
-        imageWidth,
-        imageSize,
-        productDetailsWidth,
-        userType,
-        applyPagination,
-        const DeepCollectionEquality().hash(cid),
-        searchPerformed,
-        subcats,
-        hideOutOfStockProducts,
-        sortBy,
-        sortOrder,
-        forCurrentStorefront,
-        companyStatus,
-        const DeepCollectionEquality().hash(_usergroupIds),
-        includeChildVariations,
-        groupChildVariations,
-        parentProductId,
-        sortOrderRev,
-        totalItems
-      ]);
+    runtimeType,
+    area,
+    useCaching,
+    const DeepCollectionEquality().hash(_extend),
+    const DeepCollectionEquality().hash(_customExtend),
+    pname,
+    pshort,
+    pfull,
+    pkeywords,
+    const DeepCollectionEquality().hash(_feature),
+    type,
+    page,
+    action,
+    const DeepCollectionEquality().hash(_filterVariants),
+    featuresHash,
+    limit,
+    bid,
+    match,
+    const DeepCollectionEquality().hash(_tracking),
+    getFrontendUrls,
+    itemsPerPage,
+    applyDisabledFilters,
+    loadProductsExtraData,
+    const DeepCollectionEquality().hash(storefront),
+    companyIds,
+    additionalData,
+    getOptions,
+    getDiscounts,
+    getFeatures,
+    getDetailed,
+    getIcon,
+    langCode,
+    currencyCode,
+    bannerWidth,
+    productListWidth,
+    imageWidth,
+    imageSize,
+    productDetailsWidth,
+    userType,
+    applyPagination,
+    const DeepCollectionEquality().hash(cid),
+    searchPerformed,
+    subcats,
+    hideOutOfStockProducts,
+    sortBy,
+    sortOrder,
+    forCurrentStorefront,
+    companyStatus,
+    const DeepCollectionEquality().hash(_usergroupIds),
+    includeChildVariations,
+    groupChildVariations,
+    parentProductId,
+    sortOrderRev,
+    totalItems,
+  ]);
 
   /// Create a copy of Search
   /// with the given fields replaced by the non-null parameter values.
@@ -1154,60 +1172,61 @@ class _$SearchImpl implements _Search {
 }
 
 abstract class _Search implements Search {
-  factory _Search(
-      {required final String area,
-      required final bool useCaching,
-      required final List<String> extend,
-      required final List<dynamic> customExtend,
-      required final String pname,
-      required final String pshort,
-      required final String pfull,
-      required final String pkeywords,
-      required final List<dynamic> feature,
-      required final String type,
-      required final int page,
-      required final String action,
-      required final List<dynamic> filterVariants,
-      required final String featuresHash,
-      required final int limit,
-      required final int bid,
-      required final String match,
-      required final List<dynamic> tracking,
-      required final bool getFrontendUrls,
-      required final int itemsPerPage,
-      required final String applyDisabledFilters,
-      required final bool loadProductsExtraData,
-      required final dynamic storefront,
-      required final String companyIds,
-      required final bool additionalData,
-      required final bool getOptions,
-      required final bool getDiscounts,
-      required final bool getFeatures,
-      required final bool getDetailed,
-      required final bool getIcon,
-      required final String langCode,
-      required final String currencyCode,
-      required final int bannerWidth,
-      required final int productListWidth,
-      required final int imageWidth,
-      required final int imageSize,
-      required final int productDetailsWidth,
-      required final String userType,
-      required final String applyPagination,
-      required final dynamic cid,
-      required final String searchPerformed,
-      required final String subcats,
-      required final bool hideOutOfStockProducts,
-      required final String sortBy,
-      required final String sortOrder,
-      required final bool forCurrentStorefront,
-      required final String companyStatus,
-      required final List<dynamic> usergroupIds,
-      required final bool includeChildVariations,
-      required final bool groupChildVariations,
-      required final int parentProductId,
-      required final String sortOrderRev,
-      required final String totalItems}) = _$SearchImpl;
+  factory _Search({
+    required final String area,
+    required final bool useCaching,
+    required final List<String> extend,
+    required final List<dynamic> customExtend,
+    required final String pname,
+    required final String pshort,
+    required final String pfull,
+    required final String pkeywords,
+    required final List<dynamic> feature,
+    required final String type,
+    required final int page,
+    required final String action,
+    required final List<dynamic> filterVariants,
+    required final String featuresHash,
+    required final int limit,
+    required final int bid,
+    required final String match,
+    required final List<dynamic> tracking,
+    required final bool getFrontendUrls,
+    required final int itemsPerPage,
+    required final String applyDisabledFilters,
+    required final bool loadProductsExtraData,
+    required final dynamic storefront,
+    required final String companyIds,
+    required final bool additionalData,
+    required final bool getOptions,
+    required final bool getDiscounts,
+    required final bool getFeatures,
+    required final bool getDetailed,
+    required final bool getIcon,
+    required final String langCode,
+    required final String currencyCode,
+    required final int bannerWidth,
+    required final int productListWidth,
+    required final int imageWidth,
+    required final int imageSize,
+    required final int productDetailsWidth,
+    required final String userType,
+    required final String applyPagination,
+    required final dynamic cid,
+    required final String searchPerformed,
+    required final String subcats,
+    required final bool hideOutOfStockProducts,
+    required final String sortBy,
+    required final String sortOrder,
+    required final bool forCurrentStorefront,
+    required final String companyStatus,
+    required final List<dynamic> usergroupIds,
+    required final bool includeChildVariations,
+    required final bool groupChildVariations,
+    required final int parentProductId,
+    required final String sortOrderRev,
+    required final String totalItems,
+  }) = _$SearchImpl;
 
   factory _Search.fromJson(Map<String, dynamic> json) = _$SearchImpl.fromJson;
 

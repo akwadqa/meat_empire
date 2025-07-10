@@ -12,7 +12,8 @@ part of 'product_reviews_search.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductReviewsSearch _$ProductReviewsSearchFromJson(Map<String, dynamic> json) {
   return _ProductReviewsSearch.fromJson(json);
@@ -46,34 +47,38 @@ mixin _$ProductReviewsSearch {
 
 /// @nodoc
 abstract class $ProductReviewsSearchCopyWith<$Res> {
-  factory $ProductReviewsSearchCopyWith(ProductReviewsSearch value,
-          $Res Function(ProductReviewsSearch) then) =
-      _$ProductReviewsSearchCopyWithImpl<$Res, ProductReviewsSearch>;
+  factory $ProductReviewsSearchCopyWith(
+    ProductReviewsSearch value,
+    $Res Function(ProductReviewsSearch) then,
+  ) = _$ProductReviewsSearchCopyWithImpl<$Res, ProductReviewsSearch>;
   @useResult
-  $Res call(
-      {int page,
-      int itemsPerPage,
-      bool loadProductData,
-      int productId,
-      String status,
-      int storefrontId,
-      List<String> availableFilters,
-      dynamic message,
-      dynamic comment,
-      dynamic advantages,
-      dynamic disadvantages,
-      int totalItems,
-      String sortOrder,
-      String sortBy,
-      String sortOrderRev,
-      Filtering filtering});
+  $Res call({
+    int page,
+    int itemsPerPage,
+    bool loadProductData,
+    int productId,
+    String status,
+    int storefrontId,
+    List<String> availableFilters,
+    dynamic message,
+    dynamic comment,
+    dynamic advantages,
+    dynamic disadvantages,
+    int totalItems,
+    String sortOrder,
+    String sortBy,
+    String sortOrderRev,
+    Filtering filtering,
+  });
 
   $FilteringCopyWith<$Res> get filtering;
 }
 
 /// @nodoc
-class _$ProductReviewsSearchCopyWithImpl<$Res,
-        $Val extends ProductReviewsSearch>
+class _$ProductReviewsSearchCopyWithImpl<
+  $Res,
+  $Val extends ProductReviewsSearch
+>
     implements $ProductReviewsSearchCopyWith<$Res> {
   _$ProductReviewsSearchCopyWithImpl(this._value, this._then);
 
@@ -104,72 +109,75 @@ class _$ProductReviewsSearchCopyWithImpl<$Res,
     Object? sortOrderRev = null,
     Object? filtering = null,
   }) {
-    return _then(_value.copyWith(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemsPerPage: null == itemsPerPage
-          ? _value.itemsPerPage
-          : itemsPerPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      loadProductData: null == loadProductData
-          ? _value.loadProductData
-          : loadProductData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      storefrontId: null == storefrontId
-          ? _value.storefrontId
-          : storefrontId // ignore: cast_nullable_to_non_nullable
-              as int,
-      availableFilters: null == availableFilters
-          ? _value.availableFilters
-          : availableFilters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comment: freezed == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      advantages: freezed == advantages
-          ? _value.advantages
-          : advantages // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      disadvantages: freezed == disadvantages
-          ? _value.disadvantages
-          : disadvantages // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrderRev: null == sortOrderRev
-          ? _value.sortOrderRev
-          : sortOrderRev // ignore: cast_nullable_to_non_nullable
-              as String,
-      filtering: null == filtering
-          ? _value.filtering
-          : filtering // ignore: cast_nullable_to_non_nullable
-              as Filtering,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            page: null == page
+                ? _value.page
+                : page // ignore: cast_nullable_to_non_nullable
+                      as int,
+            itemsPerPage: null == itemsPerPage
+                ? _value.itemsPerPage
+                : itemsPerPage // ignore: cast_nullable_to_non_nullable
+                      as int,
+            loadProductData: null == loadProductData
+                ? _value.loadProductData
+                : loadProductData // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            productId: null == productId
+                ? _value.productId
+                : productId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            storefrontId: null == storefrontId
+                ? _value.storefrontId
+                : storefrontId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            availableFilters: null == availableFilters
+                ? _value.availableFilters
+                : availableFilters // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            message: freezed == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            comment: freezed == comment
+                ? _value.comment
+                : comment // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            advantages: freezed == advantages
+                ? _value.advantages
+                : advantages // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            disadvantages: freezed == disadvantages
+                ? _value.disadvantages
+                : disadvantages // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            totalItems: null == totalItems
+                ? _value.totalItems
+                : totalItems // ignore: cast_nullable_to_non_nullable
+                      as int,
+            sortOrder: null == sortOrder
+                ? _value.sortOrder
+                : sortOrder // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortBy: null == sortBy
+                ? _value.sortBy
+                : sortBy // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortOrderRev: null == sortOrderRev
+                ? _value.sortOrderRev
+                : sortOrderRev // ignore: cast_nullable_to_non_nullable
+                      as String,
+            filtering: null == filtering
+                ? _value.filtering
+                : filtering // ignore: cast_nullable_to_non_nullable
+                      as Filtering,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ProductReviewsSearch
@@ -186,28 +194,30 @@ class _$ProductReviewsSearchCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$ProductReviewsSearchImplCopyWith<$Res>
     implements $ProductReviewsSearchCopyWith<$Res> {
-  factory _$$ProductReviewsSearchImplCopyWith(_$ProductReviewsSearchImpl value,
-          $Res Function(_$ProductReviewsSearchImpl) then) =
-      __$$ProductReviewsSearchImplCopyWithImpl<$Res>;
+  factory _$$ProductReviewsSearchImplCopyWith(
+    _$ProductReviewsSearchImpl value,
+    $Res Function(_$ProductReviewsSearchImpl) then,
+  ) = __$$ProductReviewsSearchImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int page,
-      int itemsPerPage,
-      bool loadProductData,
-      int productId,
-      String status,
-      int storefrontId,
-      List<String> availableFilters,
-      dynamic message,
-      dynamic comment,
-      dynamic advantages,
-      dynamic disadvantages,
-      int totalItems,
-      String sortOrder,
-      String sortBy,
-      String sortOrderRev,
-      Filtering filtering});
+  $Res call({
+    int page,
+    int itemsPerPage,
+    bool loadProductData,
+    int productId,
+    String status,
+    int storefrontId,
+    List<String> availableFilters,
+    dynamic message,
+    dynamic comment,
+    dynamic advantages,
+    dynamic disadvantages,
+    int totalItems,
+    String sortOrder,
+    String sortBy,
+    String sortOrderRev,
+    Filtering filtering,
+  });
 
   @override
   $FilteringCopyWith<$Res> get filtering;
@@ -217,9 +227,10 @@ abstract class _$$ProductReviewsSearchImplCopyWith<$Res>
 class __$$ProductReviewsSearchImplCopyWithImpl<$Res>
     extends _$ProductReviewsSearchCopyWithImpl<$Res, _$ProductReviewsSearchImpl>
     implements _$$ProductReviewsSearchImplCopyWith<$Res> {
-  __$$ProductReviewsSearchImplCopyWithImpl(_$ProductReviewsSearchImpl _value,
-      $Res Function(_$ProductReviewsSearchImpl) _then)
-      : super(_value, _then);
+  __$$ProductReviewsSearchImplCopyWithImpl(
+    _$ProductReviewsSearchImpl _value,
+    $Res Function(_$ProductReviewsSearchImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductReviewsSearch
   /// with the given fields replaced by the non-null parameter values.
@@ -243,96 +254,98 @@ class __$$ProductReviewsSearchImplCopyWithImpl<$Res>
     Object? sortOrderRev = null,
     Object? filtering = null,
   }) {
-    return _then(_$ProductReviewsSearchImpl(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemsPerPage: null == itemsPerPage
-          ? _value.itemsPerPage
-          : itemsPerPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      loadProductData: null == loadProductData
-          ? _value.loadProductData
-          : loadProductData // ignore: cast_nullable_to_non_nullable
-              as bool,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      storefrontId: null == storefrontId
-          ? _value.storefrontId
-          : storefrontId // ignore: cast_nullable_to_non_nullable
-              as int,
-      availableFilters: null == availableFilters
-          ? _value._availableFilters
-          : availableFilters // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comment: freezed == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      advantages: freezed == advantages
-          ? _value.advantages
-          : advantages // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      disadvantages: freezed == disadvantages
-          ? _value.disadvantages
-          : disadvantages // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      totalItems: null == totalItems
-          ? _value.totalItems
-          : totalItems // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrderRev: null == sortOrderRev
-          ? _value.sortOrderRev
-          : sortOrderRev // ignore: cast_nullable_to_non_nullable
-              as String,
-      filtering: null == filtering
-          ? _value.filtering
-          : filtering // ignore: cast_nullable_to_non_nullable
-              as Filtering,
-    ));
+    return _then(
+      _$ProductReviewsSearchImpl(
+        page: null == page
+            ? _value.page
+            : page // ignore: cast_nullable_to_non_nullable
+                  as int,
+        itemsPerPage: null == itemsPerPage
+            ? _value.itemsPerPage
+            : itemsPerPage // ignore: cast_nullable_to_non_nullable
+                  as int,
+        loadProductData: null == loadProductData
+            ? _value.loadProductData
+            : loadProductData // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        productId: null == productId
+            ? _value.productId
+            : productId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        storefrontId: null == storefrontId
+            ? _value.storefrontId
+            : storefrontId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        availableFilters: null == availableFilters
+            ? _value._availableFilters
+            : availableFilters // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        message: freezed == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        comment: freezed == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        advantages: freezed == advantages
+            ? _value.advantages
+            : advantages // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        disadvantages: freezed == disadvantages
+            ? _value.disadvantages
+            : disadvantages // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        totalItems: null == totalItems
+            ? _value.totalItems
+            : totalItems // ignore: cast_nullable_to_non_nullable
+                  as int,
+        sortOrder: null == sortOrder
+            ? _value.sortOrder
+            : sortOrder // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortBy: null == sortBy
+            ? _value.sortBy
+            : sortBy // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortOrderRev: null == sortOrderRev
+            ? _value.sortOrderRev
+            : sortOrderRev // ignore: cast_nullable_to_non_nullable
+                  as String,
+        filtering: null == filtering
+            ? _value.filtering
+            : filtering // ignore: cast_nullable_to_non_nullable
+                  as Filtering,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductReviewsSearchImpl implements _ProductReviewsSearch {
-  _$ProductReviewsSearchImpl(
-      {required this.page,
-      required this.itemsPerPage,
-      required this.loadProductData,
-      required this.productId,
-      required this.status,
-      required this.storefrontId,
-      required final List<String> availableFilters,
-      required this.message,
-      required this.comment,
-      required this.advantages,
-      required this.disadvantages,
-      required this.totalItems,
-      required this.sortOrder,
-      required this.sortBy,
-      required this.sortOrderRev,
-      required this.filtering})
-      : _availableFilters = availableFilters;
+  _$ProductReviewsSearchImpl({
+    required this.page,
+    required this.itemsPerPage,
+    required this.loadProductData,
+    required this.productId,
+    required this.status,
+    required this.storefrontId,
+    required final List<String> availableFilters,
+    required this.message,
+    required this.comment,
+    required this.advantages,
+    required this.disadvantages,
+    required this.totalItems,
+    required this.sortOrder,
+    required this.sortBy,
+    required this.sortOrderRev,
+    required this.filtering,
+  }) : _availableFilters = availableFilters;
 
   factory _$ProductReviewsSearchImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductReviewsSearchImplFromJson(json);
@@ -397,14 +410,20 @@ class _$ProductReviewsSearchImpl implements _ProductReviewsSearch {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.storefrontId, storefrontId) ||
                 other.storefrontId == storefrontId) &&
-            const DeepCollectionEquality()
-                .equals(other._availableFilters, _availableFilters) &&
+            const DeepCollectionEquality().equals(
+              other._availableFilters,
+              _availableFilters,
+            ) &&
             const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality().equals(other.comment, comment) &&
-            const DeepCollectionEquality()
-                .equals(other.advantages, advantages) &&
-            const DeepCollectionEquality()
-                .equals(other.disadvantages, disadvantages) &&
+            const DeepCollectionEquality().equals(
+              other.advantages,
+              advantages,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.disadvantages,
+              disadvantages,
+            ) &&
             (identical(other.totalItems, totalItems) ||
                 other.totalItems == totalItems) &&
             (identical(other.sortOrder, sortOrder) ||
@@ -419,23 +438,24 @@ class _$ProductReviewsSearchImpl implements _ProductReviewsSearch {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      page,
-      itemsPerPage,
-      loadProductData,
-      productId,
-      status,
-      storefrontId,
-      const DeepCollectionEquality().hash(_availableFilters),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(comment),
-      const DeepCollectionEquality().hash(advantages),
-      const DeepCollectionEquality().hash(disadvantages),
-      totalItems,
-      sortOrder,
-      sortBy,
-      sortOrderRev,
-      filtering);
+    runtimeType,
+    page,
+    itemsPerPage,
+    loadProductData,
+    productId,
+    status,
+    storefrontId,
+    const DeepCollectionEquality().hash(_availableFilters),
+    const DeepCollectionEquality().hash(message),
+    const DeepCollectionEquality().hash(comment),
+    const DeepCollectionEquality().hash(advantages),
+    const DeepCollectionEquality().hash(disadvantages),
+    totalItems,
+    sortOrder,
+    sortBy,
+    sortOrderRev,
+    filtering,
+  );
 
   /// Create a copy of ProductReviewsSearch
   /// with the given fields replaced by the non-null parameter values.
@@ -443,29 +463,32 @@ class _$ProductReviewsSearchImpl implements _ProductReviewsSearch {
   @override
   @pragma('vm:prefer-inline')
   _$$ProductReviewsSearchImplCopyWith<_$ProductReviewsSearchImpl>
-      get copyWith =>
-          __$$ProductReviewsSearchImplCopyWithImpl<_$ProductReviewsSearchImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$ProductReviewsSearchImplCopyWithImpl<_$ProductReviewsSearchImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ProductReviewsSearch implements ProductReviewsSearch {
-  factory _ProductReviewsSearch(
-      {required final int page,
-      required final int itemsPerPage,
-      required final bool loadProductData,
-      required final int productId,
-      required final String status,
-      required final int storefrontId,
-      required final List<String> availableFilters,
-      required final dynamic message,
-      required final dynamic comment,
-      required final dynamic advantages,
-      required final dynamic disadvantages,
-      required final int totalItems,
-      required final String sortOrder,
-      required final String sortBy,
-      required final String sortOrderRev,
-      required final Filtering filtering}) = _$ProductReviewsSearchImpl;
+  factory _ProductReviewsSearch({
+    required final int page,
+    required final int itemsPerPage,
+    required final bool loadProductData,
+    required final int productId,
+    required final String status,
+    required final int storefrontId,
+    required final List<String> availableFilters,
+    required final dynamic message,
+    required final dynamic comment,
+    required final dynamic advantages,
+    required final dynamic disadvantages,
+    required final int totalItems,
+    required final String sortOrder,
+    required final String sortBy,
+    required final String sortOrderRev,
+    required final Filtering filtering,
+  }) = _$ProductReviewsSearchImpl;
 
   factory _ProductReviewsSearch.fromJson(Map<String, dynamic> json) =
       _$ProductReviewsSearchImpl.fromJson;
@@ -508,5 +531,5 @@ abstract class _ProductReviewsSearch implements ProductReviewsSearch {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductReviewsSearchImplCopyWith<_$ProductReviewsSearchImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

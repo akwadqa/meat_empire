@@ -12,7 +12,8 @@ part of 'detailed_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DetailedParams _$DetailedParamsFromJson(Map<String, dynamic> json) {
   return _DetailedParams.fromJson(json);
@@ -50,29 +51,31 @@ mixin _$DetailedParams {
 /// @nodoc
 abstract class $DetailedParamsCopyWith<$Res> {
   factory $DetailedParamsCopyWith(
-          DetailedParams value, $Res Function(DetailedParams) then) =
-      _$DetailedParamsCopyWithImpl<$Res, DetailedParams>;
+    DetailedParams value,
+    $Res Function(DetailedParams) then,
+  ) = _$DetailedParamsCopyWithImpl<$Res, DetailedParams>;
   @useResult
-  $Res call(
-      {String infoType,
-      bool isPreview,
-      bool getIcon,
-      bool getDetailed,
-      bool getAdditional,
-      bool getOptions,
-      bool getDiscounts,
-      bool getFeatures,
-      bool getExtra,
-      bool getTaxedPrices,
-      bool getForOneProduct,
-      bool detailedParams,
-      String featuresDisplayOn,
-      bool getActiveOptions,
-      bool getOnlySelectableOptions,
-      bool getVariationFeaturesVariants,
-      bool getVariationInfo,
-      bool getVariationName,
-      bool getProductType});
+  $Res call({
+    String infoType,
+    bool isPreview,
+    bool getIcon,
+    bool getDetailed,
+    bool getAdditional,
+    bool getOptions,
+    bool getDiscounts,
+    bool getFeatures,
+    bool getExtra,
+    bool getTaxedPrices,
+    bool getForOneProduct,
+    bool detailedParams,
+    String featuresDisplayOn,
+    bool getActiveOptions,
+    bool getOnlySelectableOptions,
+    bool getVariationFeaturesVariants,
+    bool getVariationInfo,
+    bool getVariationName,
+    bool getProductType,
+  });
 }
 
 /// @nodoc
@@ -110,115 +113,120 @@ class _$DetailedParamsCopyWithImpl<$Res, $Val extends DetailedParams>
     Object? getVariationName = null,
     Object? getProductType = null,
   }) {
-    return _then(_value.copyWith(
-      infoType: null == infoType
-          ? _value.infoType
-          : infoType // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPreview: null == isPreview
-          ? _value.isPreview
-          : isPreview // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getIcon: null == getIcon
-          ? _value.getIcon
-          : getIcon // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDetailed: null == getDetailed
-          ? _value.getDetailed
-          : getDetailed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getAdditional: null == getAdditional
-          ? _value.getAdditional
-          : getAdditional // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getOptions: null == getOptions
-          ? _value.getOptions
-          : getOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDiscounts: null == getDiscounts
-          ? _value.getDiscounts
-          : getDiscounts // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getFeatures: null == getFeatures
-          ? _value.getFeatures
-          : getFeatures // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getExtra: null == getExtra
-          ? _value.getExtra
-          : getExtra // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getTaxedPrices: null == getTaxedPrices
-          ? _value.getTaxedPrices
-          : getTaxedPrices // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getForOneProduct: null == getForOneProduct
-          ? _value.getForOneProduct
-          : getForOneProduct // ignore: cast_nullable_to_non_nullable
-              as bool,
-      detailedParams: null == detailedParams
-          ? _value.detailedParams
-          : detailedParams // ignore: cast_nullable_to_non_nullable
-              as bool,
-      featuresDisplayOn: null == featuresDisplayOn
-          ? _value.featuresDisplayOn
-          : featuresDisplayOn // ignore: cast_nullable_to_non_nullable
-              as String,
-      getActiveOptions: null == getActiveOptions
-          ? _value.getActiveOptions
-          : getActiveOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getOnlySelectableOptions: null == getOnlySelectableOptions
-          ? _value.getOnlySelectableOptions
-          : getOnlySelectableOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getVariationFeaturesVariants: null == getVariationFeaturesVariants
-          ? _value.getVariationFeaturesVariants
-          : getVariationFeaturesVariants // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getVariationInfo: null == getVariationInfo
-          ? _value.getVariationInfo
-          : getVariationInfo // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getVariationName: null == getVariationName
-          ? _value.getVariationName
-          : getVariationName // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getProductType: null == getProductType
-          ? _value.getProductType
-          : getProductType // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            infoType: null == infoType
+                ? _value.infoType
+                : infoType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isPreview: null == isPreview
+                ? _value.isPreview
+                : isPreview // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getIcon: null == getIcon
+                ? _value.getIcon
+                : getIcon // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getDetailed: null == getDetailed
+                ? _value.getDetailed
+                : getDetailed // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getAdditional: null == getAdditional
+                ? _value.getAdditional
+                : getAdditional // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getOptions: null == getOptions
+                ? _value.getOptions
+                : getOptions // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getDiscounts: null == getDiscounts
+                ? _value.getDiscounts
+                : getDiscounts // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getFeatures: null == getFeatures
+                ? _value.getFeatures
+                : getFeatures // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getExtra: null == getExtra
+                ? _value.getExtra
+                : getExtra // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getTaxedPrices: null == getTaxedPrices
+                ? _value.getTaxedPrices
+                : getTaxedPrices // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getForOneProduct: null == getForOneProduct
+                ? _value.getForOneProduct
+                : getForOneProduct // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            detailedParams: null == detailedParams
+                ? _value.detailedParams
+                : detailedParams // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            featuresDisplayOn: null == featuresDisplayOn
+                ? _value.featuresDisplayOn
+                : featuresDisplayOn // ignore: cast_nullable_to_non_nullable
+                      as String,
+            getActiveOptions: null == getActiveOptions
+                ? _value.getActiveOptions
+                : getActiveOptions // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getOnlySelectableOptions: null == getOnlySelectableOptions
+                ? _value.getOnlySelectableOptions
+                : getOnlySelectableOptions // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getVariationFeaturesVariants: null == getVariationFeaturesVariants
+                ? _value.getVariationFeaturesVariants
+                : getVariationFeaturesVariants // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getVariationInfo: null == getVariationInfo
+                ? _value.getVariationInfo
+                : getVariationInfo // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getVariationName: null == getVariationName
+                ? _value.getVariationName
+                : getVariationName // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            getProductType: null == getProductType
+                ? _value.getProductType
+                : getProductType // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DetailedParamsImplCopyWith<$Res>
     implements $DetailedParamsCopyWith<$Res> {
-  factory _$$DetailedParamsImplCopyWith(_$DetailedParamsImpl value,
-          $Res Function(_$DetailedParamsImpl) then) =
-      __$$DetailedParamsImplCopyWithImpl<$Res>;
+  factory _$$DetailedParamsImplCopyWith(
+    _$DetailedParamsImpl value,
+    $Res Function(_$DetailedParamsImpl) then,
+  ) = __$$DetailedParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String infoType,
-      bool isPreview,
-      bool getIcon,
-      bool getDetailed,
-      bool getAdditional,
-      bool getOptions,
-      bool getDiscounts,
-      bool getFeatures,
-      bool getExtra,
-      bool getTaxedPrices,
-      bool getForOneProduct,
-      bool detailedParams,
-      String featuresDisplayOn,
-      bool getActiveOptions,
-      bool getOnlySelectableOptions,
-      bool getVariationFeaturesVariants,
-      bool getVariationInfo,
-      bool getVariationName,
-      bool getProductType});
+  $Res call({
+    String infoType,
+    bool isPreview,
+    bool getIcon,
+    bool getDetailed,
+    bool getAdditional,
+    bool getOptions,
+    bool getDiscounts,
+    bool getFeatures,
+    bool getExtra,
+    bool getTaxedPrices,
+    bool getForOneProduct,
+    bool detailedParams,
+    String featuresDisplayOn,
+    bool getActiveOptions,
+    bool getOnlySelectableOptions,
+    bool getVariationFeaturesVariants,
+    bool getVariationInfo,
+    bool getVariationName,
+    bool getProductType,
+  });
 }
 
 /// @nodoc
@@ -226,8 +234,9 @@ class __$$DetailedParamsImplCopyWithImpl<$Res>
     extends _$DetailedParamsCopyWithImpl<$Res, _$DetailedParamsImpl>
     implements _$$DetailedParamsImplCopyWith<$Res> {
   __$$DetailedParamsImplCopyWithImpl(
-      _$DetailedParamsImpl _value, $Res Function(_$DetailedParamsImpl) _then)
-      : super(_value, _then);
+    _$DetailedParamsImpl _value,
+    $Res Function(_$DetailedParamsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DetailedParams
   /// with the given fields replaced by the non-null parameter values.
@@ -254,110 +263,113 @@ class __$$DetailedParamsImplCopyWithImpl<$Res>
     Object? getVariationName = null,
     Object? getProductType = null,
   }) {
-    return _then(_$DetailedParamsImpl(
-      infoType: null == infoType
-          ? _value.infoType
-          : infoType // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPreview: null == isPreview
-          ? _value.isPreview
-          : isPreview // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getIcon: null == getIcon
-          ? _value.getIcon
-          : getIcon // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDetailed: null == getDetailed
-          ? _value.getDetailed
-          : getDetailed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getAdditional: null == getAdditional
-          ? _value.getAdditional
-          : getAdditional // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getOptions: null == getOptions
-          ? _value.getOptions
-          : getOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getDiscounts: null == getDiscounts
-          ? _value.getDiscounts
-          : getDiscounts // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getFeatures: null == getFeatures
-          ? _value.getFeatures
-          : getFeatures // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getExtra: null == getExtra
-          ? _value.getExtra
-          : getExtra // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getTaxedPrices: null == getTaxedPrices
-          ? _value.getTaxedPrices
-          : getTaxedPrices // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getForOneProduct: null == getForOneProduct
-          ? _value.getForOneProduct
-          : getForOneProduct // ignore: cast_nullable_to_non_nullable
-              as bool,
-      detailedParams: null == detailedParams
-          ? _value.detailedParams
-          : detailedParams // ignore: cast_nullable_to_non_nullable
-              as bool,
-      featuresDisplayOn: null == featuresDisplayOn
-          ? _value.featuresDisplayOn
-          : featuresDisplayOn // ignore: cast_nullable_to_non_nullable
-              as String,
-      getActiveOptions: null == getActiveOptions
-          ? _value.getActiveOptions
-          : getActiveOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getOnlySelectableOptions: null == getOnlySelectableOptions
-          ? _value.getOnlySelectableOptions
-          : getOnlySelectableOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getVariationFeaturesVariants: null == getVariationFeaturesVariants
-          ? _value.getVariationFeaturesVariants
-          : getVariationFeaturesVariants // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getVariationInfo: null == getVariationInfo
-          ? _value.getVariationInfo
-          : getVariationInfo // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getVariationName: null == getVariationName
-          ? _value.getVariationName
-          : getVariationName // ignore: cast_nullable_to_non_nullable
-              as bool,
-      getProductType: null == getProductType
-          ? _value.getProductType
-          : getProductType // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$DetailedParamsImpl(
+        infoType: null == infoType
+            ? _value.infoType
+            : infoType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isPreview: null == isPreview
+            ? _value.isPreview
+            : isPreview // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getIcon: null == getIcon
+            ? _value.getIcon
+            : getIcon // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getDetailed: null == getDetailed
+            ? _value.getDetailed
+            : getDetailed // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getAdditional: null == getAdditional
+            ? _value.getAdditional
+            : getAdditional // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getOptions: null == getOptions
+            ? _value.getOptions
+            : getOptions // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getDiscounts: null == getDiscounts
+            ? _value.getDiscounts
+            : getDiscounts // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getFeatures: null == getFeatures
+            ? _value.getFeatures
+            : getFeatures // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getExtra: null == getExtra
+            ? _value.getExtra
+            : getExtra // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getTaxedPrices: null == getTaxedPrices
+            ? _value.getTaxedPrices
+            : getTaxedPrices // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getForOneProduct: null == getForOneProduct
+            ? _value.getForOneProduct
+            : getForOneProduct // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        detailedParams: null == detailedParams
+            ? _value.detailedParams
+            : detailedParams // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        featuresDisplayOn: null == featuresDisplayOn
+            ? _value.featuresDisplayOn
+            : featuresDisplayOn // ignore: cast_nullable_to_non_nullable
+                  as String,
+        getActiveOptions: null == getActiveOptions
+            ? _value.getActiveOptions
+            : getActiveOptions // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getOnlySelectableOptions: null == getOnlySelectableOptions
+            ? _value.getOnlySelectableOptions
+            : getOnlySelectableOptions // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getVariationFeaturesVariants: null == getVariationFeaturesVariants
+            ? _value.getVariationFeaturesVariants
+            : getVariationFeaturesVariants // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getVariationInfo: null == getVariationInfo
+            ? _value.getVariationInfo
+            : getVariationInfo // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getVariationName: null == getVariationName
+            ? _value.getVariationName
+            : getVariationName // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        getProductType: null == getProductType
+            ? _value.getProductType
+            : getProductType // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$DetailedParamsImpl implements _DetailedParams {
-  _$DetailedParamsImpl(
-      {required this.infoType,
-      required this.isPreview,
-      required this.getIcon,
-      required this.getDetailed,
-      required this.getAdditional,
-      required this.getOptions,
-      required this.getDiscounts,
-      required this.getFeatures,
-      required this.getExtra,
-      required this.getTaxedPrices,
-      required this.getForOneProduct,
-      required this.detailedParams,
-      required this.featuresDisplayOn,
-      required this.getActiveOptions,
-      required this.getOnlySelectableOptions,
-      required this.getVariationFeaturesVariants,
-      required this.getVariationInfo,
-      required this.getVariationName,
-      required this.getProductType});
+  _$DetailedParamsImpl({
+    required this.infoType,
+    required this.isPreview,
+    required this.getIcon,
+    required this.getDetailed,
+    required this.getAdditional,
+    required this.getOptions,
+    required this.getDiscounts,
+    required this.getFeatures,
+    required this.getExtra,
+    required this.getTaxedPrices,
+    required this.getForOneProduct,
+    required this.detailedParams,
+    required this.featuresDisplayOn,
+    required this.getActiveOptions,
+    required this.getOnlySelectableOptions,
+    required this.getVariationFeaturesVariants,
+    required this.getVariationInfo,
+    required this.getVariationName,
+    required this.getProductType,
+  });
 
   factory _$DetailedParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailedParamsImplFromJson(json);
@@ -439,10 +451,14 @@ class _$DetailedParamsImpl implements _DetailedParams {
             (identical(other.getActiveOptions, getActiveOptions) ||
                 other.getActiveOptions == getActiveOptions) &&
             (identical(
-                    other.getOnlySelectableOptions, getOnlySelectableOptions) ||
+                  other.getOnlySelectableOptions,
+                  getOnlySelectableOptions,
+                ) ||
                 other.getOnlySelectableOptions == getOnlySelectableOptions) &&
-            (identical(other.getVariationFeaturesVariants,
-                    getVariationFeaturesVariants) ||
+            (identical(
+                  other.getVariationFeaturesVariants,
+                  getVariationFeaturesVariants,
+                ) ||
                 other.getVariationFeaturesVariants ==
                     getVariationFeaturesVariants) &&
             (identical(other.getVariationInfo, getVariationInfo) ||
@@ -456,27 +472,27 @@ class _$DetailedParamsImpl implements _DetailedParams {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        infoType,
-        isPreview,
-        getIcon,
-        getDetailed,
-        getAdditional,
-        getOptions,
-        getDiscounts,
-        getFeatures,
-        getExtra,
-        getTaxedPrices,
-        getForOneProduct,
-        detailedParams,
-        featuresDisplayOn,
-        getActiveOptions,
-        getOnlySelectableOptions,
-        getVariationFeaturesVariants,
-        getVariationInfo,
-        getVariationName,
-        getProductType
-      ]);
+    runtimeType,
+    infoType,
+    isPreview,
+    getIcon,
+    getDetailed,
+    getAdditional,
+    getOptions,
+    getDiscounts,
+    getFeatures,
+    getExtra,
+    getTaxedPrices,
+    getForOneProduct,
+    detailedParams,
+    featuresDisplayOn,
+    getActiveOptions,
+    getOnlySelectableOptions,
+    getVariationFeaturesVariants,
+    getVariationInfo,
+    getVariationName,
+    getProductType,
+  ]);
 
   /// Create a copy of DetailedParams
   /// with the given fields replaced by the non-null parameter values.
@@ -485,30 +501,33 @@ class _$DetailedParamsImpl implements _DetailedParams {
   @pragma('vm:prefer-inline')
   _$$DetailedParamsImplCopyWith<_$DetailedParamsImpl> get copyWith =>
       __$$DetailedParamsImplCopyWithImpl<_$DetailedParamsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _DetailedParams implements DetailedParams {
-  factory _DetailedParams(
-      {required final String infoType,
-      required final bool isPreview,
-      required final bool getIcon,
-      required final bool getDetailed,
-      required final bool getAdditional,
-      required final bool getOptions,
-      required final bool getDiscounts,
-      required final bool getFeatures,
-      required final bool getExtra,
-      required final bool getTaxedPrices,
-      required final bool getForOneProduct,
-      required final bool detailedParams,
-      required final String featuresDisplayOn,
-      required final bool getActiveOptions,
-      required final bool getOnlySelectableOptions,
-      required final bool getVariationFeaturesVariants,
-      required final bool getVariationInfo,
-      required final bool getVariationName,
-      required final bool getProductType}) = _$DetailedParamsImpl;
+  factory _DetailedParams({
+    required final String infoType,
+    required final bool isPreview,
+    required final bool getIcon,
+    required final bool getDetailed,
+    required final bool getAdditional,
+    required final bool getOptions,
+    required final bool getDiscounts,
+    required final bool getFeatures,
+    required final bool getExtra,
+    required final bool getTaxedPrices,
+    required final bool getForOneProduct,
+    required final bool detailedParams,
+    required final String featuresDisplayOn,
+    required final bool getActiveOptions,
+    required final bool getOnlySelectableOptions,
+    required final bool getVariationFeaturesVariants,
+    required final bool getVariationInfo,
+    required final bool getVariationName,
+    required final bool getProductType,
+  }) = _$DetailedParamsImpl;
 
   factory _DetailedParams.fromJson(Map<String, dynamic> json) =
       _$DetailedParamsImpl.fromJson;

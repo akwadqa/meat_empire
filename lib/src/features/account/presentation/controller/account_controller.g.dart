@@ -10,16 +10,19 @@ String _$accountControllerHash() => r'e3289f52bd9e97d6b17a17170fbe9449b11dee1e';
 
 /// See also [AccountController].
 @ProviderFor(AccountController)
-final accountControllerProvider = AutoDisposeAsyncNotifierProvider<
-    AccountController, ProfileResponse>.internal(
-  AccountController.new,
-  name: r'accountControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$accountControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final accountControllerProvider =
+    AutoDisposeAsyncNotifierProvider<
+      AccountController,
+      ProfileResponse
+    >.internal(
+      AccountController.new,
+      name: r'accountControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$accountControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$AccountController = AutoDisposeAsyncNotifier<ProfileResponse>;
 // ignore_for_file: type=lint

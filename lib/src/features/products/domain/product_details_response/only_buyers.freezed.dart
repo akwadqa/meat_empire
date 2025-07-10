@@ -12,7 +12,8 @@ part of 'only_buyers.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OnlyBuyers _$OnlyBuyersFromJson(Map<String, dynamic> json) {
   return _OnlyBuyers.fromJson(json);
@@ -34,8 +35,9 @@ mixin _$OnlyBuyers {
 /// @nodoc
 abstract class $OnlyBuyersCopyWith<$Res> {
   factory $OnlyBuyersCopyWith(
-          OnlyBuyers value, $Res Function(OnlyBuyers) then) =
-      _$OnlyBuyersCopyWithImpl<$Res, OnlyBuyers>;
+    OnlyBuyers value,
+    $Res Function(OnlyBuyers) then,
+  ) = _$OnlyBuyersCopyWithImpl<$Res, OnlyBuyers>;
   @useResult
   $Res call({String param, String name, bool selected});
 }
@@ -59,20 +61,23 @@ class _$OnlyBuyersCopyWithImpl<$Res, $Val extends OnlyBuyers>
     Object? name = null,
     Object? selected = null,
   }) {
-    return _then(_value.copyWith(
-      param: null == param
-          ? _value.param
-          : param // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      selected: null == selected
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            param: null == param
+                ? _value.param
+                : param // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            selected: null == selected
+                ? _value.selected
+                : selected // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -80,8 +85,9 @@ class _$OnlyBuyersCopyWithImpl<$Res, $Val extends OnlyBuyers>
 abstract class _$$OnlyBuyersImplCopyWith<$Res>
     implements $OnlyBuyersCopyWith<$Res> {
   factory _$$OnlyBuyersImplCopyWith(
-          _$OnlyBuyersImpl value, $Res Function(_$OnlyBuyersImpl) then) =
-      __$$OnlyBuyersImplCopyWithImpl<$Res>;
+    _$OnlyBuyersImpl value,
+    $Res Function(_$OnlyBuyersImpl) then,
+  ) = __$$OnlyBuyersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String param, String name, bool selected});
@@ -92,8 +98,9 @@ class __$$OnlyBuyersImplCopyWithImpl<$Res>
     extends _$OnlyBuyersCopyWithImpl<$Res, _$OnlyBuyersImpl>
     implements _$$OnlyBuyersImplCopyWith<$Res> {
   __$$OnlyBuyersImplCopyWithImpl(
-      _$OnlyBuyersImpl _value, $Res Function(_$OnlyBuyersImpl) _then)
-      : super(_value, _then);
+    _$OnlyBuyersImpl _value,
+    $Res Function(_$OnlyBuyersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OnlyBuyers
   /// with the given fields replaced by the non-null parameter values.
@@ -104,28 +111,33 @@ class __$$OnlyBuyersImplCopyWithImpl<$Res>
     Object? name = null,
     Object? selected = null,
   }) {
-    return _then(_$OnlyBuyersImpl(
-      param: null == param
-          ? _value.param
-          : param // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      selected: null == selected
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$OnlyBuyersImpl(
+        param: null == param
+            ? _value.param
+            : param // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        selected: null == selected
+            ? _value.selected
+            : selected // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$OnlyBuyersImpl implements _OnlyBuyers {
-  _$OnlyBuyersImpl(
-      {required this.param, required this.name, required this.selected});
+  _$OnlyBuyersImpl({
+    required this.param,
+    required this.name,
+    required this.selected,
+  });
 
   factory _$OnlyBuyersImpl.fromJson(Map<String, dynamic> json) =>
       _$$OnlyBuyersImplFromJson(json);
@@ -167,10 +179,11 @@ class _$OnlyBuyersImpl implements _OnlyBuyers {
 }
 
 abstract class _OnlyBuyers implements OnlyBuyers {
-  factory _OnlyBuyers(
-      {required final String param,
-      required final String name,
-      required final bool selected}) = _$OnlyBuyersImpl;
+  factory _OnlyBuyers({
+    required final String param,
+    required final String name,
+    required final bool selected,
+  }) = _$OnlyBuyersImpl;
 
   factory _OnlyBuyers.fromJson(Map<String, dynamic> json) =
       _$OnlyBuyersImpl.fromJson;

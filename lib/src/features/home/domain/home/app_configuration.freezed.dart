@@ -12,7 +12,8 @@ part of 'app_configuration.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 AppConfiguration _$AppConfigurationFromJson(Map<String, dynamic> json) {
   return _AppConfiguration.fromJson(json);
@@ -46,25 +47,27 @@ mixin _$AppConfiguration {
 /// @nodoc
 abstract class $AppConfigurationCopyWith<$Res> {
   factory $AppConfigurationCopyWith(
-          AppConfiguration value, $Res Function(AppConfiguration) then) =
-      _$AppConfigurationCopyWithImpl<$Res, AppConfiguration>;
+    AppConfiguration value,
+    $Res Function(AppConfiguration) then,
+  ) = _$AppConfigurationCopyWithImpl<$Res, AppConfiguration>;
   @useResult
-  $Res call(
-      {bool enableEcWallet,
-      bool enableEcVnAttachment,
-      bool enableRewardPoints,
-      bool enableEcOtp,
-      bool enableVendorCommunication,
-      bool enableDiscussion,
-      bool enableProductReviews,
-      bool enableRma,
-      bool vendorSeperateCheckout,
-      bool enableGiftCertificate,
-      bool enableEcWhatsappSupport,
-      bool enableEcTelegramSupport,
-      bool enableGdpr,
-      bool ecTicketsSystem,
-      bool enableSdMessagingSystem});
+  $Res call({
+    bool enableEcWallet,
+    bool enableEcVnAttachment,
+    bool enableRewardPoints,
+    bool enableEcOtp,
+    bool enableVendorCommunication,
+    bool enableDiscussion,
+    bool enableProductReviews,
+    bool enableRma,
+    bool vendorSeperateCheckout,
+    bool enableGiftCertificate,
+    bool enableEcWhatsappSupport,
+    bool enableEcTelegramSupport,
+    bool enableGdpr,
+    bool ecTicketsSystem,
+    bool enableSdMessagingSystem,
+  });
 }
 
 /// @nodoc
@@ -98,104 +101,110 @@ class _$AppConfigurationCopyWithImpl<$Res, $Val extends AppConfiguration>
     Object? ecTicketsSystem = null,
     Object? enableSdMessagingSystem = null,
   }) {
-    return _then(_value.copyWith(
-      enableEcWallet: null == enableEcWallet
-          ? _value.enableEcWallet
-          : enableEcWallet // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcVnAttachment: null == enableEcVnAttachment
-          ? _value.enableEcVnAttachment
-          : enableEcVnAttachment // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableRewardPoints: null == enableRewardPoints
-          ? _value.enableRewardPoints
-          : enableRewardPoints // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcOtp: null == enableEcOtp
-          ? _value.enableEcOtp
-          : enableEcOtp // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableVendorCommunication: null == enableVendorCommunication
-          ? _value.enableVendorCommunication
-          : enableVendorCommunication // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableDiscussion: null == enableDiscussion
-          ? _value.enableDiscussion
-          : enableDiscussion // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableProductReviews: null == enableProductReviews
-          ? _value.enableProductReviews
-          : enableProductReviews // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableRma: null == enableRma
-          ? _value.enableRma
-          : enableRma // ignore: cast_nullable_to_non_nullable
-              as bool,
-      vendorSeperateCheckout: null == vendorSeperateCheckout
-          ? _value.vendorSeperateCheckout
-          : vendorSeperateCheckout // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableGiftCertificate: null == enableGiftCertificate
-          ? _value.enableGiftCertificate
-          : enableGiftCertificate // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcWhatsappSupport: null == enableEcWhatsappSupport
-          ? _value.enableEcWhatsappSupport
-          : enableEcWhatsappSupport // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcTelegramSupport: null == enableEcTelegramSupport
-          ? _value.enableEcTelegramSupport
-          : enableEcTelegramSupport // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableGdpr: null == enableGdpr
-          ? _value.enableGdpr
-          : enableGdpr // ignore: cast_nullable_to_non_nullable
-              as bool,
-      ecTicketsSystem: null == ecTicketsSystem
-          ? _value.ecTicketsSystem
-          : ecTicketsSystem // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableSdMessagingSystem: null == enableSdMessagingSystem
-          ? _value.enableSdMessagingSystem
-          : enableSdMessagingSystem // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            enableEcWallet: null == enableEcWallet
+                ? _value.enableEcWallet
+                : enableEcWallet // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableEcVnAttachment: null == enableEcVnAttachment
+                ? _value.enableEcVnAttachment
+                : enableEcVnAttachment // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableRewardPoints: null == enableRewardPoints
+                ? _value.enableRewardPoints
+                : enableRewardPoints // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableEcOtp: null == enableEcOtp
+                ? _value.enableEcOtp
+                : enableEcOtp // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableVendorCommunication: null == enableVendorCommunication
+                ? _value.enableVendorCommunication
+                : enableVendorCommunication // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableDiscussion: null == enableDiscussion
+                ? _value.enableDiscussion
+                : enableDiscussion // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableProductReviews: null == enableProductReviews
+                ? _value.enableProductReviews
+                : enableProductReviews // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableRma: null == enableRma
+                ? _value.enableRma
+                : enableRma // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            vendorSeperateCheckout: null == vendorSeperateCheckout
+                ? _value.vendorSeperateCheckout
+                : vendorSeperateCheckout // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableGiftCertificate: null == enableGiftCertificate
+                ? _value.enableGiftCertificate
+                : enableGiftCertificate // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableEcWhatsappSupport: null == enableEcWhatsappSupport
+                ? _value.enableEcWhatsappSupport
+                : enableEcWhatsappSupport // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableEcTelegramSupport: null == enableEcTelegramSupport
+                ? _value.enableEcTelegramSupport
+                : enableEcTelegramSupport // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableGdpr: null == enableGdpr
+                ? _value.enableGdpr
+                : enableGdpr // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            ecTicketsSystem: null == ecTicketsSystem
+                ? _value.ecTicketsSystem
+                : ecTicketsSystem // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            enableSdMessagingSystem: null == enableSdMessagingSystem
+                ? _value.enableSdMessagingSystem
+                : enableSdMessagingSystem // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$AppConfigurationImplCopyWith<$Res>
     implements $AppConfigurationCopyWith<$Res> {
-  factory _$$AppConfigurationImplCopyWith(_$AppConfigurationImpl value,
-          $Res Function(_$AppConfigurationImpl) then) =
-      __$$AppConfigurationImplCopyWithImpl<$Res>;
+  factory _$$AppConfigurationImplCopyWith(
+    _$AppConfigurationImpl value,
+    $Res Function(_$AppConfigurationImpl) then,
+  ) = __$$AppConfigurationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool enableEcWallet,
-      bool enableEcVnAttachment,
-      bool enableRewardPoints,
-      bool enableEcOtp,
-      bool enableVendorCommunication,
-      bool enableDiscussion,
-      bool enableProductReviews,
-      bool enableRma,
-      bool vendorSeperateCheckout,
-      bool enableGiftCertificate,
-      bool enableEcWhatsappSupport,
-      bool enableEcTelegramSupport,
-      bool enableGdpr,
-      bool ecTicketsSystem,
-      bool enableSdMessagingSystem});
+  $Res call({
+    bool enableEcWallet,
+    bool enableEcVnAttachment,
+    bool enableRewardPoints,
+    bool enableEcOtp,
+    bool enableVendorCommunication,
+    bool enableDiscussion,
+    bool enableProductReviews,
+    bool enableRma,
+    bool vendorSeperateCheckout,
+    bool enableGiftCertificate,
+    bool enableEcWhatsappSupport,
+    bool enableEcTelegramSupport,
+    bool enableGdpr,
+    bool ecTicketsSystem,
+    bool enableSdMessagingSystem,
+  });
 }
 
 /// @nodoc
 class __$$AppConfigurationImplCopyWithImpl<$Res>
     extends _$AppConfigurationCopyWithImpl<$Res, _$AppConfigurationImpl>
     implements _$$AppConfigurationImplCopyWith<$Res> {
-  __$$AppConfigurationImplCopyWithImpl(_$AppConfigurationImpl _value,
-      $Res Function(_$AppConfigurationImpl) _then)
-      : super(_value, _then);
+  __$$AppConfigurationImplCopyWithImpl(
+    _$AppConfigurationImpl _value,
+    $Res Function(_$AppConfigurationImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AppConfiguration
   /// with the given fields replaced by the non-null parameter values.
@@ -218,90 +227,93 @@ class __$$AppConfigurationImplCopyWithImpl<$Res>
     Object? ecTicketsSystem = null,
     Object? enableSdMessagingSystem = null,
   }) {
-    return _then(_$AppConfigurationImpl(
-      enableEcWallet: null == enableEcWallet
-          ? _value.enableEcWallet
-          : enableEcWallet // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcVnAttachment: null == enableEcVnAttachment
-          ? _value.enableEcVnAttachment
-          : enableEcVnAttachment // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableRewardPoints: null == enableRewardPoints
-          ? _value.enableRewardPoints
-          : enableRewardPoints // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcOtp: null == enableEcOtp
-          ? _value.enableEcOtp
-          : enableEcOtp // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableVendorCommunication: null == enableVendorCommunication
-          ? _value.enableVendorCommunication
-          : enableVendorCommunication // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableDiscussion: null == enableDiscussion
-          ? _value.enableDiscussion
-          : enableDiscussion // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableProductReviews: null == enableProductReviews
-          ? _value.enableProductReviews
-          : enableProductReviews // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableRma: null == enableRma
-          ? _value.enableRma
-          : enableRma // ignore: cast_nullable_to_non_nullable
-              as bool,
-      vendorSeperateCheckout: null == vendorSeperateCheckout
-          ? _value.vendorSeperateCheckout
-          : vendorSeperateCheckout // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableGiftCertificate: null == enableGiftCertificate
-          ? _value.enableGiftCertificate
-          : enableGiftCertificate // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcWhatsappSupport: null == enableEcWhatsappSupport
-          ? _value.enableEcWhatsappSupport
-          : enableEcWhatsappSupport // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableEcTelegramSupport: null == enableEcTelegramSupport
-          ? _value.enableEcTelegramSupport
-          : enableEcTelegramSupport // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableGdpr: null == enableGdpr
-          ? _value.enableGdpr
-          : enableGdpr // ignore: cast_nullable_to_non_nullable
-              as bool,
-      ecTicketsSystem: null == ecTicketsSystem
-          ? _value.ecTicketsSystem
-          : ecTicketsSystem // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableSdMessagingSystem: null == enableSdMessagingSystem
-          ? _value.enableSdMessagingSystem
-          : enableSdMessagingSystem // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$AppConfigurationImpl(
+        enableEcWallet: null == enableEcWallet
+            ? _value.enableEcWallet
+            : enableEcWallet // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableEcVnAttachment: null == enableEcVnAttachment
+            ? _value.enableEcVnAttachment
+            : enableEcVnAttachment // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableRewardPoints: null == enableRewardPoints
+            ? _value.enableRewardPoints
+            : enableRewardPoints // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableEcOtp: null == enableEcOtp
+            ? _value.enableEcOtp
+            : enableEcOtp // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableVendorCommunication: null == enableVendorCommunication
+            ? _value.enableVendorCommunication
+            : enableVendorCommunication // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableDiscussion: null == enableDiscussion
+            ? _value.enableDiscussion
+            : enableDiscussion // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableProductReviews: null == enableProductReviews
+            ? _value.enableProductReviews
+            : enableProductReviews // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableRma: null == enableRma
+            ? _value.enableRma
+            : enableRma // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        vendorSeperateCheckout: null == vendorSeperateCheckout
+            ? _value.vendorSeperateCheckout
+            : vendorSeperateCheckout // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableGiftCertificate: null == enableGiftCertificate
+            ? _value.enableGiftCertificate
+            : enableGiftCertificate // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableEcWhatsappSupport: null == enableEcWhatsappSupport
+            ? _value.enableEcWhatsappSupport
+            : enableEcWhatsappSupport // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableEcTelegramSupport: null == enableEcTelegramSupport
+            ? _value.enableEcTelegramSupport
+            : enableEcTelegramSupport // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableGdpr: null == enableGdpr
+            ? _value.enableGdpr
+            : enableGdpr // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        ecTicketsSystem: null == ecTicketsSystem
+            ? _value.ecTicketsSystem
+            : ecTicketsSystem // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        enableSdMessagingSystem: null == enableSdMessagingSystem
+            ? _value.enableSdMessagingSystem
+            : enableSdMessagingSystem // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$AppConfigurationImpl implements _AppConfiguration {
-  _$AppConfigurationImpl(
-      {required this.enableEcWallet,
-      required this.enableEcVnAttachment,
-      required this.enableRewardPoints,
-      required this.enableEcOtp,
-      required this.enableVendorCommunication,
-      required this.enableDiscussion,
-      required this.enableProductReviews,
-      required this.enableRma,
-      required this.vendorSeperateCheckout,
-      required this.enableGiftCertificate,
-      required this.enableEcWhatsappSupport,
-      required this.enableEcTelegramSupport,
-      required this.enableGdpr,
-      required this.ecTicketsSystem,
-      required this.enableSdMessagingSystem});
+  _$AppConfigurationImpl({
+    required this.enableEcWallet,
+    required this.enableEcVnAttachment,
+    required this.enableRewardPoints,
+    required this.enableEcOtp,
+    required this.enableVendorCommunication,
+    required this.enableDiscussion,
+    required this.enableProductReviews,
+    required this.enableRma,
+    required this.vendorSeperateCheckout,
+    required this.enableGiftCertificate,
+    required this.enableEcWhatsappSupport,
+    required this.enableEcTelegramSupport,
+    required this.enableGdpr,
+    required this.ecTicketsSystem,
+    required this.enableSdMessagingSystem,
+  });
 
   factory _$AppConfigurationImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppConfigurationImplFromJson(json);
@@ -355,8 +367,10 @@ class _$AppConfigurationImpl implements _AppConfiguration {
                 other.enableRewardPoints == enableRewardPoints) &&
             (identical(other.enableEcOtp, enableEcOtp) ||
                 other.enableEcOtp == enableEcOtp) &&
-            (identical(other.enableVendorCommunication,
-                    enableVendorCommunication) ||
+            (identical(
+                  other.enableVendorCommunication,
+                  enableVendorCommunication,
+                ) ||
                 other.enableVendorCommunication == enableVendorCommunication) &&
             (identical(other.enableDiscussion, enableDiscussion) ||
                 other.enableDiscussion == enableDiscussion) &&
@@ -369,39 +383,46 @@ class _$AppConfigurationImpl implements _AppConfiguration {
             (identical(other.enableGiftCertificate, enableGiftCertificate) ||
                 other.enableGiftCertificate == enableGiftCertificate) &&
             (identical(
-                    other.enableEcWhatsappSupport, enableEcWhatsappSupport) ||
+                  other.enableEcWhatsappSupport,
+                  enableEcWhatsappSupport,
+                ) ||
                 other.enableEcWhatsappSupport == enableEcWhatsappSupport) &&
             (identical(
-                    other.enableEcTelegramSupport, enableEcTelegramSupport) ||
+                  other.enableEcTelegramSupport,
+                  enableEcTelegramSupport,
+                ) ||
                 other.enableEcTelegramSupport == enableEcTelegramSupport) &&
             (identical(other.enableGdpr, enableGdpr) ||
                 other.enableGdpr == enableGdpr) &&
             (identical(other.ecTicketsSystem, ecTicketsSystem) ||
                 other.ecTicketsSystem == ecTicketsSystem) &&
             (identical(
-                    other.enableSdMessagingSystem, enableSdMessagingSystem) ||
+                  other.enableSdMessagingSystem,
+                  enableSdMessagingSystem,
+                ) ||
                 other.enableSdMessagingSystem == enableSdMessagingSystem));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      enableEcWallet,
-      enableEcVnAttachment,
-      enableRewardPoints,
-      enableEcOtp,
-      enableVendorCommunication,
-      enableDiscussion,
-      enableProductReviews,
-      enableRma,
-      vendorSeperateCheckout,
-      enableGiftCertificate,
-      enableEcWhatsappSupport,
-      enableEcTelegramSupport,
-      enableGdpr,
-      ecTicketsSystem,
-      enableSdMessagingSystem);
+    runtimeType,
+    enableEcWallet,
+    enableEcVnAttachment,
+    enableRewardPoints,
+    enableEcOtp,
+    enableVendorCommunication,
+    enableDiscussion,
+    enableProductReviews,
+    enableRma,
+    vendorSeperateCheckout,
+    enableGiftCertificate,
+    enableEcWhatsappSupport,
+    enableEcTelegramSupport,
+    enableGdpr,
+    ecTicketsSystem,
+    enableSdMessagingSystem,
+  );
 
   /// Create a copy of AppConfiguration
   /// with the given fields replaced by the non-null parameter values.
@@ -410,26 +431,29 @@ class _$AppConfigurationImpl implements _AppConfiguration {
   @pragma('vm:prefer-inline')
   _$$AppConfigurationImplCopyWith<_$AppConfigurationImpl> get copyWith =>
       __$$AppConfigurationImplCopyWithImpl<_$AppConfigurationImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _AppConfiguration implements AppConfiguration {
-  factory _AppConfiguration(
-      {required final bool enableEcWallet,
-      required final bool enableEcVnAttachment,
-      required final bool enableRewardPoints,
-      required final bool enableEcOtp,
-      required final bool enableVendorCommunication,
-      required final bool enableDiscussion,
-      required final bool enableProductReviews,
-      required final bool enableRma,
-      required final bool vendorSeperateCheckout,
-      required final bool enableGiftCertificate,
-      required final bool enableEcWhatsappSupport,
-      required final bool enableEcTelegramSupport,
-      required final bool enableGdpr,
-      required final bool ecTicketsSystem,
-      required final bool enableSdMessagingSystem}) = _$AppConfigurationImpl;
+  factory _AppConfiguration({
+    required final bool enableEcWallet,
+    required final bool enableEcVnAttachment,
+    required final bool enableRewardPoints,
+    required final bool enableEcOtp,
+    required final bool enableVendorCommunication,
+    required final bool enableDiscussion,
+    required final bool enableProductReviews,
+    required final bool enableRma,
+    required final bool vendorSeperateCheckout,
+    required final bool enableGiftCertificate,
+    required final bool enableEcWhatsappSupport,
+    required final bool enableEcTelegramSupport,
+    required final bool enableGdpr,
+    required final bool ecTicketsSystem,
+    required final bool enableSdMessagingSystem,
+  }) = _$AppConfigurationImpl;
 
   factory _AppConfiguration.fromJson(Map<String, dynamic> json) =
       _$AppConfigurationImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'product.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return _Product.fromJson(json);
@@ -120,95 +121,96 @@ abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
-  $Res call(
-      {String productId,
-      String product,
-      String companyName,
-      String productType,
-      String parentProductId,
-      String productCode,
-      String status,
-      String companyId,
-      String listPrice,
-      int amount,
-      String weight,
-      String length,
-      String width,
-      String height,
-      String shippingFreight,
-      String lowAvailLimit,
-      String timestamp,
-      String updatedTimestamp,
-      String usergroupIds,
-      String isEdp,
-      String edpShipping,
-      String unlimitedDownload,
-      String tracking,
-      String freeShipping,
-      String zeroPriceAction,
-      String isPbp,
-      String isOp,
-      String isOper,
-      String isReturnable,
-      String returnPeriod,
-      String availSince,
-      String outOfStockActions,
-      String localization,
-      String minQty,
-      String maxQty,
-      String qtyStep,
-      String listQtyCount,
-      String taxIds,
-      String ageVerification,
-      String ageLimit,
-      String optionsType,
-      String exceptionsType,
-      String detailsLayout,
-      String shippingParams,
-      String facebookObjType,
-      String buyNowUrl,
-      String unitsInProduct,
-      String showPricePerXUnits,
-      String price,
-      String metaKeywords,
-      String metaDescription,
-      dynamic searchWords,
-      dynamic promoText,
-      String unitName,
-      List<int> categoryIds,
-      String seoName,
-      String seoPath,
-      int mainCategory,
-      dynamic optionsTypeRaw,
-      dynamic exceptionsTypeRaw,
-      dynamic trackingRaw,
-      dynamic zeroPriceActionRaw,
-      dynamic minQtyRaw,
-      dynamic maxQtyRaw,
-      dynamic qtyStepRaw,
-      dynamic listQtyCountRaw,
-      String detailsLayoutRaw,
-      List<dynamic> variationFeatures,
-      MainPair mainPair,
-      String basePrice,
-      dynamic selectedOptions,
-      bool hasOptions,
-      dynamic productOptions,
-      Discounts discounts,
-      List<dynamic> qtyContent,
-      DetailedParams detailedParams,
-      String imageUrl,
-      String companyLogo,
-      bool allowAddToCart,
-      bool allowPostReview,
-      String formatPrice,
-      String formatListPrice,
-      String formatBasePrice,
-      int ecRewardPoints,
-      dynamic variationFeatureCollection,
-      dynamic productFeatures,
-      bool allowChat,
-      String chatThreadId});
+  $Res call({
+    String productId,
+    String product,
+    String companyName,
+    String productType,
+    String parentProductId,
+    String productCode,
+    String status,
+    String companyId,
+    String listPrice,
+    int amount,
+    String weight,
+    String length,
+    String width,
+    String height,
+    String shippingFreight,
+    String lowAvailLimit,
+    String timestamp,
+    String updatedTimestamp,
+    String usergroupIds,
+    String isEdp,
+    String edpShipping,
+    String unlimitedDownload,
+    String tracking,
+    String freeShipping,
+    String zeroPriceAction,
+    String isPbp,
+    String isOp,
+    String isOper,
+    String isReturnable,
+    String returnPeriod,
+    String availSince,
+    String outOfStockActions,
+    String localization,
+    String minQty,
+    String maxQty,
+    String qtyStep,
+    String listQtyCount,
+    String taxIds,
+    String ageVerification,
+    String ageLimit,
+    String optionsType,
+    String exceptionsType,
+    String detailsLayout,
+    String shippingParams,
+    String facebookObjType,
+    String buyNowUrl,
+    String unitsInProduct,
+    String showPricePerXUnits,
+    String price,
+    String metaKeywords,
+    String metaDescription,
+    dynamic searchWords,
+    dynamic promoText,
+    String unitName,
+    List<int> categoryIds,
+    String seoName,
+    String seoPath,
+    int mainCategory,
+    dynamic optionsTypeRaw,
+    dynamic exceptionsTypeRaw,
+    dynamic trackingRaw,
+    dynamic zeroPriceActionRaw,
+    dynamic minQtyRaw,
+    dynamic maxQtyRaw,
+    dynamic qtyStepRaw,
+    dynamic listQtyCountRaw,
+    String detailsLayoutRaw,
+    List<dynamic> variationFeatures,
+    MainPair mainPair,
+    String basePrice,
+    dynamic selectedOptions,
+    bool hasOptions,
+    dynamic productOptions,
+    Discounts discounts,
+    List<dynamic> qtyContent,
+    DetailedParams detailedParams,
+    String imageUrl,
+    String companyLogo,
+    bool allowAddToCart,
+    bool allowPostReview,
+    String formatPrice,
+    String formatListPrice,
+    String formatBasePrice,
+    int ecRewardPoints,
+    dynamic variationFeatureCollection,
+    dynamic productFeatures,
+    bool allowChat,
+    String chatThreadId,
+  });
 
   $MainPairCopyWith<$Res> get mainPair;
   $DiscountsCopyWith<$Res> get discounts;
@@ -319,360 +321,363 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? allowChat = null,
     Object? chatThreadId = null,
   }) {
-    return _then(_value.copyWith(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyName: null == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentProductId: null == parentProductId
-          ? _value.parentProductId
-          : parentProductId // ignore: cast_nullable_to_non_nullable
-              as String,
-      productCode: null == productCode
-          ? _value.productCode
-          : productCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as String,
-      listPrice: null == listPrice
-          ? _value.listPrice
-          : listPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as String,
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as String,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as String,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingFreight: null == shippingFreight
-          ? _value.shippingFreight
-          : shippingFreight // ignore: cast_nullable_to_non_nullable
-              as String,
-      lowAvailLimit: null == lowAvailLimit
-          ? _value.lowAvailLimit
-          : lowAvailLimit // ignore: cast_nullable_to_non_nullable
-              as String,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedTimestamp: null == updatedTimestamp
-          ? _value.updatedTimestamp
-          : updatedTimestamp // ignore: cast_nullable_to_non_nullable
-              as String,
-      usergroupIds: null == usergroupIds
-          ? _value.usergroupIds
-          : usergroupIds // ignore: cast_nullable_to_non_nullable
-              as String,
-      isEdp: null == isEdp
-          ? _value.isEdp
-          : isEdp // ignore: cast_nullable_to_non_nullable
-              as String,
-      edpShipping: null == edpShipping
-          ? _value.edpShipping
-          : edpShipping // ignore: cast_nullable_to_non_nullable
-              as String,
-      unlimitedDownload: null == unlimitedDownload
-          ? _value.unlimitedDownload
-          : unlimitedDownload // ignore: cast_nullable_to_non_nullable
-              as String,
-      tracking: null == tracking
-          ? _value.tracking
-          : tracking // ignore: cast_nullable_to_non_nullable
-              as String,
-      freeShipping: null == freeShipping
-          ? _value.freeShipping
-          : freeShipping // ignore: cast_nullable_to_non_nullable
-              as String,
-      zeroPriceAction: null == zeroPriceAction
-          ? _value.zeroPriceAction
-          : zeroPriceAction // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPbp: null == isPbp
-          ? _value.isPbp
-          : isPbp // ignore: cast_nullable_to_non_nullable
-              as String,
-      isOp: null == isOp
-          ? _value.isOp
-          : isOp // ignore: cast_nullable_to_non_nullable
-              as String,
-      isOper: null == isOper
-          ? _value.isOper
-          : isOper // ignore: cast_nullable_to_non_nullable
-              as String,
-      isReturnable: null == isReturnable
-          ? _value.isReturnable
-          : isReturnable // ignore: cast_nullable_to_non_nullable
-              as String,
-      returnPeriod: null == returnPeriod
-          ? _value.returnPeriod
-          : returnPeriod // ignore: cast_nullable_to_non_nullable
-              as String,
-      availSince: null == availSince
-          ? _value.availSince
-          : availSince // ignore: cast_nullable_to_non_nullable
-              as String,
-      outOfStockActions: null == outOfStockActions
-          ? _value.outOfStockActions
-          : outOfStockActions // ignore: cast_nullable_to_non_nullable
-              as String,
-      localization: null == localization
-          ? _value.localization
-          : localization // ignore: cast_nullable_to_non_nullable
-              as String,
-      minQty: null == minQty
-          ? _value.minQty
-          : minQty // ignore: cast_nullable_to_non_nullable
-              as String,
-      maxQty: null == maxQty
-          ? _value.maxQty
-          : maxQty // ignore: cast_nullable_to_non_nullable
-              as String,
-      qtyStep: null == qtyStep
-          ? _value.qtyStep
-          : qtyStep // ignore: cast_nullable_to_non_nullable
-              as String,
-      listQtyCount: null == listQtyCount
-          ? _value.listQtyCount
-          : listQtyCount // ignore: cast_nullable_to_non_nullable
-              as String,
-      taxIds: null == taxIds
-          ? _value.taxIds
-          : taxIds // ignore: cast_nullable_to_non_nullable
-              as String,
-      ageVerification: null == ageVerification
-          ? _value.ageVerification
-          : ageVerification // ignore: cast_nullable_to_non_nullable
-              as String,
-      ageLimit: null == ageLimit
-          ? _value.ageLimit
-          : ageLimit // ignore: cast_nullable_to_non_nullable
-              as String,
-      optionsType: null == optionsType
-          ? _value.optionsType
-          : optionsType // ignore: cast_nullable_to_non_nullable
-              as String,
-      exceptionsType: null == exceptionsType
-          ? _value.exceptionsType
-          : exceptionsType // ignore: cast_nullable_to_non_nullable
-              as String,
-      detailsLayout: null == detailsLayout
-          ? _value.detailsLayout
-          : detailsLayout // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingParams: null == shippingParams
-          ? _value.shippingParams
-          : shippingParams // ignore: cast_nullable_to_non_nullable
-              as String,
-      facebookObjType: null == facebookObjType
-          ? _value.facebookObjType
-          : facebookObjType // ignore: cast_nullable_to_non_nullable
-              as String,
-      buyNowUrl: null == buyNowUrl
-          ? _value.buyNowUrl
-          : buyNowUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      unitsInProduct: null == unitsInProduct
-          ? _value.unitsInProduct
-          : unitsInProduct // ignore: cast_nullable_to_non_nullable
-              as String,
-      showPricePerXUnits: null == showPricePerXUnits
-          ? _value.showPricePerXUnits
-          : showPricePerXUnits // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      metaKeywords: null == metaKeywords
-          ? _value.metaKeywords
-          : metaKeywords // ignore: cast_nullable_to_non_nullable
-              as String,
-      metaDescription: null == metaDescription
-          ? _value.metaDescription
-          : metaDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchWords: freezed == searchWords
-          ? _value.searchWords
-          : searchWords // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      promoText: freezed == promoText
-          ? _value.promoText
-          : promoText // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      unitName: null == unitName
-          ? _value.unitName
-          : unitName // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryIds: null == categoryIds
-          ? _value.categoryIds
-          : categoryIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      seoName: null == seoName
-          ? _value.seoName
-          : seoName // ignore: cast_nullable_to_non_nullable
-              as String,
-      seoPath: null == seoPath
-          ? _value.seoPath
-          : seoPath // ignore: cast_nullable_to_non_nullable
-              as String,
-      mainCategory: null == mainCategory
-          ? _value.mainCategory
-          : mainCategory // ignore: cast_nullable_to_non_nullable
-              as int,
-      optionsTypeRaw: freezed == optionsTypeRaw
-          ? _value.optionsTypeRaw
-          : optionsTypeRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      exceptionsTypeRaw: freezed == exceptionsTypeRaw
-          ? _value.exceptionsTypeRaw
-          : exceptionsTypeRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      trackingRaw: freezed == trackingRaw
-          ? _value.trackingRaw
-          : trackingRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      zeroPriceActionRaw: freezed == zeroPriceActionRaw
-          ? _value.zeroPriceActionRaw
-          : zeroPriceActionRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      minQtyRaw: freezed == minQtyRaw
-          ? _value.minQtyRaw
-          : minQtyRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      maxQtyRaw: freezed == maxQtyRaw
-          ? _value.maxQtyRaw
-          : maxQtyRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      qtyStepRaw: freezed == qtyStepRaw
-          ? _value.qtyStepRaw
-          : qtyStepRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      listQtyCountRaw: freezed == listQtyCountRaw
-          ? _value.listQtyCountRaw
-          : listQtyCountRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      detailsLayoutRaw: null == detailsLayoutRaw
-          ? _value.detailsLayoutRaw
-          : detailsLayoutRaw // ignore: cast_nullable_to_non_nullable
-              as String,
-      variationFeatures: null == variationFeatures
-          ? _value.variationFeatures
-          : variationFeatures // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      mainPair: null == mainPair
-          ? _value.mainPair
-          : mainPair // ignore: cast_nullable_to_non_nullable
-              as MainPair,
-      basePrice: null == basePrice
-          ? _value.basePrice
-          : basePrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectedOptions: freezed == selectedOptions
-          ? _value.selectedOptions
-          : selectedOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      hasOptions: null == hasOptions
-          ? _value.hasOptions
-          : hasOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      productOptions: freezed == productOptions
-          ? _value.productOptions
-          : productOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      discounts: null == discounts
-          ? _value.discounts
-          : discounts // ignore: cast_nullable_to_non_nullable
-              as Discounts,
-      qtyContent: null == qtyContent
-          ? _value.qtyContent
-          : qtyContent // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      detailedParams: null == detailedParams
-          ? _value.detailedParams
-          : detailedParams // ignore: cast_nullable_to_non_nullable
-              as DetailedParams,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyLogo: null == companyLogo
-          ? _value.companyLogo
-          : companyLogo // ignore: cast_nullable_to_non_nullable
-              as String,
-      allowAddToCart: null == allowAddToCart
-          ? _value.allowAddToCart
-          : allowAddToCart // ignore: cast_nullable_to_non_nullable
-              as bool,
-      allowPostReview: null == allowPostReview
-          ? _value.allowPostReview
-          : allowPostReview // ignore: cast_nullable_to_non_nullable
-              as bool,
-      formatPrice: null == formatPrice
-          ? _value.formatPrice
-          : formatPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      formatListPrice: null == formatListPrice
-          ? _value.formatListPrice
-          : formatListPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      formatBasePrice: null == formatBasePrice
-          ? _value.formatBasePrice
-          : formatBasePrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      ecRewardPoints: null == ecRewardPoints
-          ? _value.ecRewardPoints
-          : ecRewardPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      variationFeatureCollection: freezed == variationFeatureCollection
-          ? _value.variationFeatureCollection
-          : variationFeatureCollection // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      productFeatures: freezed == productFeatures
-          ? _value.productFeatures
-          : productFeatures // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      allowChat: null == allowChat
-          ? _value.allowChat
-          : allowChat // ignore: cast_nullable_to_non_nullable
-              as bool,
-      chatThreadId: null == chatThreadId
-          ? _value.chatThreadId
-          : chatThreadId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            productId: null == productId
+                ? _value.productId
+                : productId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            product: null == product
+                ? _value.product
+                : product // ignore: cast_nullable_to_non_nullable
+                      as String,
+            companyName: null == companyName
+                ? _value.companyName
+                : companyName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productType: null == productType
+                ? _value.productType
+                : productType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            parentProductId: null == parentProductId
+                ? _value.parentProductId
+                : parentProductId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            productCode: null == productCode
+                ? _value.productCode
+                : productCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            companyId: null == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            listPrice: null == listPrice
+                ? _value.listPrice
+                : listPrice // ignore: cast_nullable_to_non_nullable
+                      as String,
+            amount: null == amount
+                ? _value.amount
+                : amount // ignore: cast_nullable_to_non_nullable
+                      as int,
+            weight: null == weight
+                ? _value.weight
+                : weight // ignore: cast_nullable_to_non_nullable
+                      as String,
+            length: null == length
+                ? _value.length
+                : length // ignore: cast_nullable_to_non_nullable
+                      as String,
+            width: null == width
+                ? _value.width
+                : width // ignore: cast_nullable_to_non_nullable
+                      as String,
+            height: null == height
+                ? _value.height
+                : height // ignore: cast_nullable_to_non_nullable
+                      as String,
+            shippingFreight: null == shippingFreight
+                ? _value.shippingFreight
+                : shippingFreight // ignore: cast_nullable_to_non_nullable
+                      as String,
+            lowAvailLimit: null == lowAvailLimit
+                ? _value.lowAvailLimit
+                : lowAvailLimit // ignore: cast_nullable_to_non_nullable
+                      as String,
+            timestamp: null == timestamp
+                ? _value.timestamp
+                : timestamp // ignore: cast_nullable_to_non_nullable
+                      as String,
+            updatedTimestamp: null == updatedTimestamp
+                ? _value.updatedTimestamp
+                : updatedTimestamp // ignore: cast_nullable_to_non_nullable
+                      as String,
+            usergroupIds: null == usergroupIds
+                ? _value.usergroupIds
+                : usergroupIds // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isEdp: null == isEdp
+                ? _value.isEdp
+                : isEdp // ignore: cast_nullable_to_non_nullable
+                      as String,
+            edpShipping: null == edpShipping
+                ? _value.edpShipping
+                : edpShipping // ignore: cast_nullable_to_non_nullable
+                      as String,
+            unlimitedDownload: null == unlimitedDownload
+                ? _value.unlimitedDownload
+                : unlimitedDownload // ignore: cast_nullable_to_non_nullable
+                      as String,
+            tracking: null == tracking
+                ? _value.tracking
+                : tracking // ignore: cast_nullable_to_non_nullable
+                      as String,
+            freeShipping: null == freeShipping
+                ? _value.freeShipping
+                : freeShipping // ignore: cast_nullable_to_non_nullable
+                      as String,
+            zeroPriceAction: null == zeroPriceAction
+                ? _value.zeroPriceAction
+                : zeroPriceAction // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isPbp: null == isPbp
+                ? _value.isPbp
+                : isPbp // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isOp: null == isOp
+                ? _value.isOp
+                : isOp // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isOper: null == isOper
+                ? _value.isOper
+                : isOper // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isReturnable: null == isReturnable
+                ? _value.isReturnable
+                : isReturnable // ignore: cast_nullable_to_non_nullable
+                      as String,
+            returnPeriod: null == returnPeriod
+                ? _value.returnPeriod
+                : returnPeriod // ignore: cast_nullable_to_non_nullable
+                      as String,
+            availSince: null == availSince
+                ? _value.availSince
+                : availSince // ignore: cast_nullable_to_non_nullable
+                      as String,
+            outOfStockActions: null == outOfStockActions
+                ? _value.outOfStockActions
+                : outOfStockActions // ignore: cast_nullable_to_non_nullable
+                      as String,
+            localization: null == localization
+                ? _value.localization
+                : localization // ignore: cast_nullable_to_non_nullable
+                      as String,
+            minQty: null == minQty
+                ? _value.minQty
+                : minQty // ignore: cast_nullable_to_non_nullable
+                      as String,
+            maxQty: null == maxQty
+                ? _value.maxQty
+                : maxQty // ignore: cast_nullable_to_non_nullable
+                      as String,
+            qtyStep: null == qtyStep
+                ? _value.qtyStep
+                : qtyStep // ignore: cast_nullable_to_non_nullable
+                      as String,
+            listQtyCount: null == listQtyCount
+                ? _value.listQtyCount
+                : listQtyCount // ignore: cast_nullable_to_non_nullable
+                      as String,
+            taxIds: null == taxIds
+                ? _value.taxIds
+                : taxIds // ignore: cast_nullable_to_non_nullable
+                      as String,
+            ageVerification: null == ageVerification
+                ? _value.ageVerification
+                : ageVerification // ignore: cast_nullable_to_non_nullable
+                      as String,
+            ageLimit: null == ageLimit
+                ? _value.ageLimit
+                : ageLimit // ignore: cast_nullable_to_non_nullable
+                      as String,
+            optionsType: null == optionsType
+                ? _value.optionsType
+                : optionsType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            exceptionsType: null == exceptionsType
+                ? _value.exceptionsType
+                : exceptionsType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            detailsLayout: null == detailsLayout
+                ? _value.detailsLayout
+                : detailsLayout // ignore: cast_nullable_to_non_nullable
+                      as String,
+            shippingParams: null == shippingParams
+                ? _value.shippingParams
+                : shippingParams // ignore: cast_nullable_to_non_nullable
+                      as String,
+            facebookObjType: null == facebookObjType
+                ? _value.facebookObjType
+                : facebookObjType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            buyNowUrl: null == buyNowUrl
+                ? _value.buyNowUrl
+                : buyNowUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+            unitsInProduct: null == unitsInProduct
+                ? _value.unitsInProduct
+                : unitsInProduct // ignore: cast_nullable_to_non_nullable
+                      as String,
+            showPricePerXUnits: null == showPricePerXUnits
+                ? _value.showPricePerXUnits
+                : showPricePerXUnits // ignore: cast_nullable_to_non_nullable
+                      as String,
+            price: null == price
+                ? _value.price
+                : price // ignore: cast_nullable_to_non_nullable
+                      as String,
+            metaKeywords: null == metaKeywords
+                ? _value.metaKeywords
+                : metaKeywords // ignore: cast_nullable_to_non_nullable
+                      as String,
+            metaDescription: null == metaDescription
+                ? _value.metaDescription
+                : metaDescription // ignore: cast_nullable_to_non_nullable
+                      as String,
+            searchWords: freezed == searchWords
+                ? _value.searchWords
+                : searchWords // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            promoText: freezed == promoText
+                ? _value.promoText
+                : promoText // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            unitName: null == unitName
+                ? _value.unitName
+                : unitName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            categoryIds: null == categoryIds
+                ? _value.categoryIds
+                : categoryIds // ignore: cast_nullable_to_non_nullable
+                      as List<int>,
+            seoName: null == seoName
+                ? _value.seoName
+                : seoName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            seoPath: null == seoPath
+                ? _value.seoPath
+                : seoPath // ignore: cast_nullable_to_non_nullable
+                      as String,
+            mainCategory: null == mainCategory
+                ? _value.mainCategory
+                : mainCategory // ignore: cast_nullable_to_non_nullable
+                      as int,
+            optionsTypeRaw: freezed == optionsTypeRaw
+                ? _value.optionsTypeRaw
+                : optionsTypeRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            exceptionsTypeRaw: freezed == exceptionsTypeRaw
+                ? _value.exceptionsTypeRaw
+                : exceptionsTypeRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            trackingRaw: freezed == trackingRaw
+                ? _value.trackingRaw
+                : trackingRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            zeroPriceActionRaw: freezed == zeroPriceActionRaw
+                ? _value.zeroPriceActionRaw
+                : zeroPriceActionRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            minQtyRaw: freezed == minQtyRaw
+                ? _value.minQtyRaw
+                : minQtyRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            maxQtyRaw: freezed == maxQtyRaw
+                ? _value.maxQtyRaw
+                : maxQtyRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            qtyStepRaw: freezed == qtyStepRaw
+                ? _value.qtyStepRaw
+                : qtyStepRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            listQtyCountRaw: freezed == listQtyCountRaw
+                ? _value.listQtyCountRaw
+                : listQtyCountRaw // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            detailsLayoutRaw: null == detailsLayoutRaw
+                ? _value.detailsLayoutRaw
+                : detailsLayoutRaw // ignore: cast_nullable_to_non_nullable
+                      as String,
+            variationFeatures: null == variationFeatures
+                ? _value.variationFeatures
+                : variationFeatures // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            mainPair: null == mainPair
+                ? _value.mainPair
+                : mainPair // ignore: cast_nullable_to_non_nullable
+                      as MainPair,
+            basePrice: null == basePrice
+                ? _value.basePrice
+                : basePrice // ignore: cast_nullable_to_non_nullable
+                      as String,
+            selectedOptions: freezed == selectedOptions
+                ? _value.selectedOptions
+                : selectedOptions // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            hasOptions: null == hasOptions
+                ? _value.hasOptions
+                : hasOptions // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            productOptions: freezed == productOptions
+                ? _value.productOptions
+                : productOptions // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            discounts: null == discounts
+                ? _value.discounts
+                : discounts // ignore: cast_nullable_to_non_nullable
+                      as Discounts,
+            qtyContent: null == qtyContent
+                ? _value.qtyContent
+                : qtyContent // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+            detailedParams: null == detailedParams
+                ? _value.detailedParams
+                : detailedParams // ignore: cast_nullable_to_non_nullable
+                      as DetailedParams,
+            imageUrl: null == imageUrl
+                ? _value.imageUrl
+                : imageUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+            companyLogo: null == companyLogo
+                ? _value.companyLogo
+                : companyLogo // ignore: cast_nullable_to_non_nullable
+                      as String,
+            allowAddToCart: null == allowAddToCart
+                ? _value.allowAddToCart
+                : allowAddToCart // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            allowPostReview: null == allowPostReview
+                ? _value.allowPostReview
+                : allowPostReview // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            formatPrice: null == formatPrice
+                ? _value.formatPrice
+                : formatPrice // ignore: cast_nullable_to_non_nullable
+                      as String,
+            formatListPrice: null == formatListPrice
+                ? _value.formatListPrice
+                : formatListPrice // ignore: cast_nullable_to_non_nullable
+                      as String,
+            formatBasePrice: null == formatBasePrice
+                ? _value.formatBasePrice
+                : formatBasePrice // ignore: cast_nullable_to_non_nullable
+                      as String,
+            ecRewardPoints: null == ecRewardPoints
+                ? _value.ecRewardPoints
+                : ecRewardPoints // ignore: cast_nullable_to_non_nullable
+                      as int,
+            variationFeatureCollection: freezed == variationFeatureCollection
+                ? _value.variationFeatureCollection
+                : variationFeatureCollection // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            productFeatures: freezed == productFeatures
+                ? _value.productFeatures
+                : productFeatures // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            allowChat: null == allowChat
+                ? _value.allowChat
+                : allowChat // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            chatThreadId: null == chatThreadId
+                ? _value.chatThreadId
+                : chatThreadId // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Product
@@ -709,99 +714,101 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 /// @nodoc
 abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$$ProductImplCopyWith(
-          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
-      __$$ProductImplCopyWithImpl<$Res>;
+    _$ProductImpl value,
+    $Res Function(_$ProductImpl) then,
+  ) = __$$ProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String productId,
-      String product,
-      String companyName,
-      String productType,
-      String parentProductId,
-      String productCode,
-      String status,
-      String companyId,
-      String listPrice,
-      int amount,
-      String weight,
-      String length,
-      String width,
-      String height,
-      String shippingFreight,
-      String lowAvailLimit,
-      String timestamp,
-      String updatedTimestamp,
-      String usergroupIds,
-      String isEdp,
-      String edpShipping,
-      String unlimitedDownload,
-      String tracking,
-      String freeShipping,
-      String zeroPriceAction,
-      String isPbp,
-      String isOp,
-      String isOper,
-      String isReturnable,
-      String returnPeriod,
-      String availSince,
-      String outOfStockActions,
-      String localization,
-      String minQty,
-      String maxQty,
-      String qtyStep,
-      String listQtyCount,
-      String taxIds,
-      String ageVerification,
-      String ageLimit,
-      String optionsType,
-      String exceptionsType,
-      String detailsLayout,
-      String shippingParams,
-      String facebookObjType,
-      String buyNowUrl,
-      String unitsInProduct,
-      String showPricePerXUnits,
-      String price,
-      String metaKeywords,
-      String metaDescription,
-      dynamic searchWords,
-      dynamic promoText,
-      String unitName,
-      List<int> categoryIds,
-      String seoName,
-      String seoPath,
-      int mainCategory,
-      dynamic optionsTypeRaw,
-      dynamic exceptionsTypeRaw,
-      dynamic trackingRaw,
-      dynamic zeroPriceActionRaw,
-      dynamic minQtyRaw,
-      dynamic maxQtyRaw,
-      dynamic qtyStepRaw,
-      dynamic listQtyCountRaw,
-      String detailsLayoutRaw,
-      List<dynamic> variationFeatures,
-      MainPair mainPair,
-      String basePrice,
-      dynamic selectedOptions,
-      bool hasOptions,
-      dynamic productOptions,
-      Discounts discounts,
-      List<dynamic> qtyContent,
-      DetailedParams detailedParams,
-      String imageUrl,
-      String companyLogo,
-      bool allowAddToCart,
-      bool allowPostReview,
-      String formatPrice,
-      String formatListPrice,
-      String formatBasePrice,
-      int ecRewardPoints,
-      dynamic variationFeatureCollection,
-      dynamic productFeatures,
-      bool allowChat,
-      String chatThreadId});
+  $Res call({
+    String productId,
+    String product,
+    String companyName,
+    String productType,
+    String parentProductId,
+    String productCode,
+    String status,
+    String companyId,
+    String listPrice,
+    int amount,
+    String weight,
+    String length,
+    String width,
+    String height,
+    String shippingFreight,
+    String lowAvailLimit,
+    String timestamp,
+    String updatedTimestamp,
+    String usergroupIds,
+    String isEdp,
+    String edpShipping,
+    String unlimitedDownload,
+    String tracking,
+    String freeShipping,
+    String zeroPriceAction,
+    String isPbp,
+    String isOp,
+    String isOper,
+    String isReturnable,
+    String returnPeriod,
+    String availSince,
+    String outOfStockActions,
+    String localization,
+    String minQty,
+    String maxQty,
+    String qtyStep,
+    String listQtyCount,
+    String taxIds,
+    String ageVerification,
+    String ageLimit,
+    String optionsType,
+    String exceptionsType,
+    String detailsLayout,
+    String shippingParams,
+    String facebookObjType,
+    String buyNowUrl,
+    String unitsInProduct,
+    String showPricePerXUnits,
+    String price,
+    String metaKeywords,
+    String metaDescription,
+    dynamic searchWords,
+    dynamic promoText,
+    String unitName,
+    List<int> categoryIds,
+    String seoName,
+    String seoPath,
+    int mainCategory,
+    dynamic optionsTypeRaw,
+    dynamic exceptionsTypeRaw,
+    dynamic trackingRaw,
+    dynamic zeroPriceActionRaw,
+    dynamic minQtyRaw,
+    dynamic maxQtyRaw,
+    dynamic qtyStepRaw,
+    dynamic listQtyCountRaw,
+    String detailsLayoutRaw,
+    List<dynamic> variationFeatures,
+    MainPair mainPair,
+    String basePrice,
+    dynamic selectedOptions,
+    bool hasOptions,
+    dynamic productOptions,
+    Discounts discounts,
+    List<dynamic> qtyContent,
+    DetailedParams detailedParams,
+    String imageUrl,
+    String companyLogo,
+    bool allowAddToCart,
+    bool allowPostReview,
+    String formatPrice,
+    String formatListPrice,
+    String formatBasePrice,
+    int ecRewardPoints,
+    dynamic variationFeatureCollection,
+    dynamic productFeatures,
+    bool allowChat,
+    String chatThreadId,
+  });
 
   @override
   $MainPairCopyWith<$Res> get mainPair;
@@ -816,8 +823,9 @@ class __$$ProductImplCopyWithImpl<$Res>
     extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
     implements _$$ProductImplCopyWith<$Res> {
   __$$ProductImplCopyWithImpl(
-      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
-      : super(_value, _then);
+    _$ProductImpl _value,
+    $Res Function(_$ProductImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -913,458 +921,460 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? allowChat = null,
     Object? chatThreadId = null,
   }) {
-    return _then(_$ProductImpl(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyName: null == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentProductId: null == parentProductId
-          ? _value.parentProductId
-          : parentProductId // ignore: cast_nullable_to_non_nullable
-              as String,
-      productCode: null == productCode
-          ? _value.productCode
-          : productCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyId: null == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as String,
-      listPrice: null == listPrice
-          ? _value.listPrice
-          : listPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as String,
-      length: null == length
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
-              as String,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as String,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingFreight: null == shippingFreight
-          ? _value.shippingFreight
-          : shippingFreight // ignore: cast_nullable_to_non_nullable
-              as String,
-      lowAvailLimit: null == lowAvailLimit
-          ? _value.lowAvailLimit
-          : lowAvailLimit // ignore: cast_nullable_to_non_nullable
-              as String,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedTimestamp: null == updatedTimestamp
-          ? _value.updatedTimestamp
-          : updatedTimestamp // ignore: cast_nullable_to_non_nullable
-              as String,
-      usergroupIds: null == usergroupIds
-          ? _value.usergroupIds
-          : usergroupIds // ignore: cast_nullable_to_non_nullable
-              as String,
-      isEdp: null == isEdp
-          ? _value.isEdp
-          : isEdp // ignore: cast_nullable_to_non_nullable
-              as String,
-      edpShipping: null == edpShipping
-          ? _value.edpShipping
-          : edpShipping // ignore: cast_nullable_to_non_nullable
-              as String,
-      unlimitedDownload: null == unlimitedDownload
-          ? _value.unlimitedDownload
-          : unlimitedDownload // ignore: cast_nullable_to_non_nullable
-              as String,
-      tracking: null == tracking
-          ? _value.tracking
-          : tracking // ignore: cast_nullable_to_non_nullable
-              as String,
-      freeShipping: null == freeShipping
-          ? _value.freeShipping
-          : freeShipping // ignore: cast_nullable_to_non_nullable
-              as String,
-      zeroPriceAction: null == zeroPriceAction
-          ? _value.zeroPriceAction
-          : zeroPriceAction // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPbp: null == isPbp
-          ? _value.isPbp
-          : isPbp // ignore: cast_nullable_to_non_nullable
-              as String,
-      isOp: null == isOp
-          ? _value.isOp
-          : isOp // ignore: cast_nullable_to_non_nullable
-              as String,
-      isOper: null == isOper
-          ? _value.isOper
-          : isOper // ignore: cast_nullable_to_non_nullable
-              as String,
-      isReturnable: null == isReturnable
-          ? _value.isReturnable
-          : isReturnable // ignore: cast_nullable_to_non_nullable
-              as String,
-      returnPeriod: null == returnPeriod
-          ? _value.returnPeriod
-          : returnPeriod // ignore: cast_nullable_to_non_nullable
-              as String,
-      availSince: null == availSince
-          ? _value.availSince
-          : availSince // ignore: cast_nullable_to_non_nullable
-              as String,
-      outOfStockActions: null == outOfStockActions
-          ? _value.outOfStockActions
-          : outOfStockActions // ignore: cast_nullable_to_non_nullable
-              as String,
-      localization: null == localization
-          ? _value.localization
-          : localization // ignore: cast_nullable_to_non_nullable
-              as String,
-      minQty: null == minQty
-          ? _value.minQty
-          : minQty // ignore: cast_nullable_to_non_nullable
-              as String,
-      maxQty: null == maxQty
-          ? _value.maxQty
-          : maxQty // ignore: cast_nullable_to_non_nullable
-              as String,
-      qtyStep: null == qtyStep
-          ? _value.qtyStep
-          : qtyStep // ignore: cast_nullable_to_non_nullable
-              as String,
-      listQtyCount: null == listQtyCount
-          ? _value.listQtyCount
-          : listQtyCount // ignore: cast_nullable_to_non_nullable
-              as String,
-      taxIds: null == taxIds
-          ? _value.taxIds
-          : taxIds // ignore: cast_nullable_to_non_nullable
-              as String,
-      ageVerification: null == ageVerification
-          ? _value.ageVerification
-          : ageVerification // ignore: cast_nullable_to_non_nullable
-              as String,
-      ageLimit: null == ageLimit
-          ? _value.ageLimit
-          : ageLimit // ignore: cast_nullable_to_non_nullable
-              as String,
-      optionsType: null == optionsType
-          ? _value.optionsType
-          : optionsType // ignore: cast_nullable_to_non_nullable
-              as String,
-      exceptionsType: null == exceptionsType
-          ? _value.exceptionsType
-          : exceptionsType // ignore: cast_nullable_to_non_nullable
-              as String,
-      detailsLayout: null == detailsLayout
-          ? _value.detailsLayout
-          : detailsLayout // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingParams: null == shippingParams
-          ? _value.shippingParams
-          : shippingParams // ignore: cast_nullable_to_non_nullable
-              as String,
-      facebookObjType: null == facebookObjType
-          ? _value.facebookObjType
-          : facebookObjType // ignore: cast_nullable_to_non_nullable
-              as String,
-      buyNowUrl: null == buyNowUrl
-          ? _value.buyNowUrl
-          : buyNowUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      unitsInProduct: null == unitsInProduct
-          ? _value.unitsInProduct
-          : unitsInProduct // ignore: cast_nullable_to_non_nullable
-              as String,
-      showPricePerXUnits: null == showPricePerXUnits
-          ? _value.showPricePerXUnits
-          : showPricePerXUnits // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      metaKeywords: null == metaKeywords
-          ? _value.metaKeywords
-          : metaKeywords // ignore: cast_nullable_to_non_nullable
-              as String,
-      metaDescription: null == metaDescription
-          ? _value.metaDescription
-          : metaDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchWords: freezed == searchWords
-          ? _value.searchWords
-          : searchWords // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      promoText: freezed == promoText
-          ? _value.promoText
-          : promoText // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      unitName: null == unitName
-          ? _value.unitName
-          : unitName // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryIds: null == categoryIds
-          ? _value._categoryIds
-          : categoryIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      seoName: null == seoName
-          ? _value.seoName
-          : seoName // ignore: cast_nullable_to_non_nullable
-              as String,
-      seoPath: null == seoPath
-          ? _value.seoPath
-          : seoPath // ignore: cast_nullable_to_non_nullable
-              as String,
-      mainCategory: null == mainCategory
-          ? _value.mainCategory
-          : mainCategory // ignore: cast_nullable_to_non_nullable
-              as int,
-      optionsTypeRaw: freezed == optionsTypeRaw
-          ? _value.optionsTypeRaw
-          : optionsTypeRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      exceptionsTypeRaw: freezed == exceptionsTypeRaw
-          ? _value.exceptionsTypeRaw
-          : exceptionsTypeRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      trackingRaw: freezed == trackingRaw
-          ? _value.trackingRaw
-          : trackingRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      zeroPriceActionRaw: freezed == zeroPriceActionRaw
-          ? _value.zeroPriceActionRaw
-          : zeroPriceActionRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      minQtyRaw: freezed == minQtyRaw
-          ? _value.minQtyRaw
-          : minQtyRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      maxQtyRaw: freezed == maxQtyRaw
-          ? _value.maxQtyRaw
-          : maxQtyRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      qtyStepRaw: freezed == qtyStepRaw
-          ? _value.qtyStepRaw
-          : qtyStepRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      listQtyCountRaw: freezed == listQtyCountRaw
-          ? _value.listQtyCountRaw
-          : listQtyCountRaw // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      detailsLayoutRaw: null == detailsLayoutRaw
-          ? _value.detailsLayoutRaw
-          : detailsLayoutRaw // ignore: cast_nullable_to_non_nullable
-              as String,
-      variationFeatures: null == variationFeatures
-          ? _value._variationFeatures
-          : variationFeatures // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      mainPair: null == mainPair
-          ? _value.mainPair
-          : mainPair // ignore: cast_nullable_to_non_nullable
-              as MainPair,
-      basePrice: null == basePrice
-          ? _value.basePrice
-          : basePrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectedOptions: freezed == selectedOptions
-          ? _value.selectedOptions
-          : selectedOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      hasOptions: null == hasOptions
-          ? _value.hasOptions
-          : hasOptions // ignore: cast_nullable_to_non_nullable
-              as bool,
-      productOptions: freezed == productOptions
-          ? _value.productOptions
-          : productOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      discounts: null == discounts
-          ? _value.discounts
-          : discounts // ignore: cast_nullable_to_non_nullable
-              as Discounts,
-      qtyContent: null == qtyContent
-          ? _value._qtyContent
-          : qtyContent // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      detailedParams: null == detailedParams
-          ? _value.detailedParams
-          : detailedParams // ignore: cast_nullable_to_non_nullable
-              as DetailedParams,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      companyLogo: null == companyLogo
-          ? _value.companyLogo
-          : companyLogo // ignore: cast_nullable_to_non_nullable
-              as String,
-      allowAddToCart: null == allowAddToCart
-          ? _value.allowAddToCart
-          : allowAddToCart // ignore: cast_nullable_to_non_nullable
-              as bool,
-      allowPostReview: null == allowPostReview
-          ? _value.allowPostReview
-          : allowPostReview // ignore: cast_nullable_to_non_nullable
-              as bool,
-      formatPrice: null == formatPrice
-          ? _value.formatPrice
-          : formatPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      formatListPrice: null == formatListPrice
-          ? _value.formatListPrice
-          : formatListPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      formatBasePrice: null == formatBasePrice
-          ? _value.formatBasePrice
-          : formatBasePrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      ecRewardPoints: null == ecRewardPoints
-          ? _value.ecRewardPoints
-          : ecRewardPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      variationFeatureCollection: freezed == variationFeatureCollection
-          ? _value.variationFeatureCollection
-          : variationFeatureCollection // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      productFeatures: freezed == productFeatures
-          ? _value.productFeatures
-          : productFeatures // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      allowChat: null == allowChat
-          ? _value.allowChat
-          : allowChat // ignore: cast_nullable_to_non_nullable
-              as bool,
-      chatThreadId: null == chatThreadId
-          ? _value.chatThreadId
-          : chatThreadId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ProductImpl(
+        productId: null == productId
+            ? _value.productId
+            : productId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        product: null == product
+            ? _value.product
+            : product // ignore: cast_nullable_to_non_nullable
+                  as String,
+        companyName: null == companyName
+            ? _value.companyName
+            : companyName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productType: null == productType
+            ? _value.productType
+            : productType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        parentProductId: null == parentProductId
+            ? _value.parentProductId
+            : parentProductId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        productCode: null == productCode
+            ? _value.productCode
+            : productCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        companyId: null == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        listPrice: null == listPrice
+            ? _value.listPrice
+            : listPrice // ignore: cast_nullable_to_non_nullable
+                  as String,
+        amount: null == amount
+            ? _value.amount
+            : amount // ignore: cast_nullable_to_non_nullable
+                  as int,
+        weight: null == weight
+            ? _value.weight
+            : weight // ignore: cast_nullable_to_non_nullable
+                  as String,
+        length: null == length
+            ? _value.length
+            : length // ignore: cast_nullable_to_non_nullable
+                  as String,
+        width: null == width
+            ? _value.width
+            : width // ignore: cast_nullable_to_non_nullable
+                  as String,
+        height: null == height
+            ? _value.height
+            : height // ignore: cast_nullable_to_non_nullable
+                  as String,
+        shippingFreight: null == shippingFreight
+            ? _value.shippingFreight
+            : shippingFreight // ignore: cast_nullable_to_non_nullable
+                  as String,
+        lowAvailLimit: null == lowAvailLimit
+            ? _value.lowAvailLimit
+            : lowAvailLimit // ignore: cast_nullable_to_non_nullable
+                  as String,
+        timestamp: null == timestamp
+            ? _value.timestamp
+            : timestamp // ignore: cast_nullable_to_non_nullable
+                  as String,
+        updatedTimestamp: null == updatedTimestamp
+            ? _value.updatedTimestamp
+            : updatedTimestamp // ignore: cast_nullable_to_non_nullable
+                  as String,
+        usergroupIds: null == usergroupIds
+            ? _value.usergroupIds
+            : usergroupIds // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isEdp: null == isEdp
+            ? _value.isEdp
+            : isEdp // ignore: cast_nullable_to_non_nullable
+                  as String,
+        edpShipping: null == edpShipping
+            ? _value.edpShipping
+            : edpShipping // ignore: cast_nullable_to_non_nullable
+                  as String,
+        unlimitedDownload: null == unlimitedDownload
+            ? _value.unlimitedDownload
+            : unlimitedDownload // ignore: cast_nullable_to_non_nullable
+                  as String,
+        tracking: null == tracking
+            ? _value.tracking
+            : tracking // ignore: cast_nullable_to_non_nullable
+                  as String,
+        freeShipping: null == freeShipping
+            ? _value.freeShipping
+            : freeShipping // ignore: cast_nullable_to_non_nullable
+                  as String,
+        zeroPriceAction: null == zeroPriceAction
+            ? _value.zeroPriceAction
+            : zeroPriceAction // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isPbp: null == isPbp
+            ? _value.isPbp
+            : isPbp // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isOp: null == isOp
+            ? _value.isOp
+            : isOp // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isOper: null == isOper
+            ? _value.isOper
+            : isOper // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isReturnable: null == isReturnable
+            ? _value.isReturnable
+            : isReturnable // ignore: cast_nullable_to_non_nullable
+                  as String,
+        returnPeriod: null == returnPeriod
+            ? _value.returnPeriod
+            : returnPeriod // ignore: cast_nullable_to_non_nullable
+                  as String,
+        availSince: null == availSince
+            ? _value.availSince
+            : availSince // ignore: cast_nullable_to_non_nullable
+                  as String,
+        outOfStockActions: null == outOfStockActions
+            ? _value.outOfStockActions
+            : outOfStockActions // ignore: cast_nullable_to_non_nullable
+                  as String,
+        localization: null == localization
+            ? _value.localization
+            : localization // ignore: cast_nullable_to_non_nullable
+                  as String,
+        minQty: null == minQty
+            ? _value.minQty
+            : minQty // ignore: cast_nullable_to_non_nullable
+                  as String,
+        maxQty: null == maxQty
+            ? _value.maxQty
+            : maxQty // ignore: cast_nullable_to_non_nullable
+                  as String,
+        qtyStep: null == qtyStep
+            ? _value.qtyStep
+            : qtyStep // ignore: cast_nullable_to_non_nullable
+                  as String,
+        listQtyCount: null == listQtyCount
+            ? _value.listQtyCount
+            : listQtyCount // ignore: cast_nullable_to_non_nullable
+                  as String,
+        taxIds: null == taxIds
+            ? _value.taxIds
+            : taxIds // ignore: cast_nullable_to_non_nullable
+                  as String,
+        ageVerification: null == ageVerification
+            ? _value.ageVerification
+            : ageVerification // ignore: cast_nullable_to_non_nullable
+                  as String,
+        ageLimit: null == ageLimit
+            ? _value.ageLimit
+            : ageLimit // ignore: cast_nullable_to_non_nullable
+                  as String,
+        optionsType: null == optionsType
+            ? _value.optionsType
+            : optionsType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        exceptionsType: null == exceptionsType
+            ? _value.exceptionsType
+            : exceptionsType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        detailsLayout: null == detailsLayout
+            ? _value.detailsLayout
+            : detailsLayout // ignore: cast_nullable_to_non_nullable
+                  as String,
+        shippingParams: null == shippingParams
+            ? _value.shippingParams
+            : shippingParams // ignore: cast_nullable_to_non_nullable
+                  as String,
+        facebookObjType: null == facebookObjType
+            ? _value.facebookObjType
+            : facebookObjType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        buyNowUrl: null == buyNowUrl
+            ? _value.buyNowUrl
+            : buyNowUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+        unitsInProduct: null == unitsInProduct
+            ? _value.unitsInProduct
+            : unitsInProduct // ignore: cast_nullable_to_non_nullable
+                  as String,
+        showPricePerXUnits: null == showPricePerXUnits
+            ? _value.showPricePerXUnits
+            : showPricePerXUnits // ignore: cast_nullable_to_non_nullable
+                  as String,
+        price: null == price
+            ? _value.price
+            : price // ignore: cast_nullable_to_non_nullable
+                  as String,
+        metaKeywords: null == metaKeywords
+            ? _value.metaKeywords
+            : metaKeywords // ignore: cast_nullable_to_non_nullable
+                  as String,
+        metaDescription: null == metaDescription
+            ? _value.metaDescription
+            : metaDescription // ignore: cast_nullable_to_non_nullable
+                  as String,
+        searchWords: freezed == searchWords
+            ? _value.searchWords
+            : searchWords // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        promoText: freezed == promoText
+            ? _value.promoText
+            : promoText // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        unitName: null == unitName
+            ? _value.unitName
+            : unitName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        categoryIds: null == categoryIds
+            ? _value._categoryIds
+            : categoryIds // ignore: cast_nullable_to_non_nullable
+                  as List<int>,
+        seoName: null == seoName
+            ? _value.seoName
+            : seoName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        seoPath: null == seoPath
+            ? _value.seoPath
+            : seoPath // ignore: cast_nullable_to_non_nullable
+                  as String,
+        mainCategory: null == mainCategory
+            ? _value.mainCategory
+            : mainCategory // ignore: cast_nullable_to_non_nullable
+                  as int,
+        optionsTypeRaw: freezed == optionsTypeRaw
+            ? _value.optionsTypeRaw
+            : optionsTypeRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        exceptionsTypeRaw: freezed == exceptionsTypeRaw
+            ? _value.exceptionsTypeRaw
+            : exceptionsTypeRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        trackingRaw: freezed == trackingRaw
+            ? _value.trackingRaw
+            : trackingRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        zeroPriceActionRaw: freezed == zeroPriceActionRaw
+            ? _value.zeroPriceActionRaw
+            : zeroPriceActionRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        minQtyRaw: freezed == minQtyRaw
+            ? _value.minQtyRaw
+            : minQtyRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        maxQtyRaw: freezed == maxQtyRaw
+            ? _value.maxQtyRaw
+            : maxQtyRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        qtyStepRaw: freezed == qtyStepRaw
+            ? _value.qtyStepRaw
+            : qtyStepRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        listQtyCountRaw: freezed == listQtyCountRaw
+            ? _value.listQtyCountRaw
+            : listQtyCountRaw // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        detailsLayoutRaw: null == detailsLayoutRaw
+            ? _value.detailsLayoutRaw
+            : detailsLayoutRaw // ignore: cast_nullable_to_non_nullable
+                  as String,
+        variationFeatures: null == variationFeatures
+            ? _value._variationFeatures
+            : variationFeatures // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        mainPair: null == mainPair
+            ? _value.mainPair
+            : mainPair // ignore: cast_nullable_to_non_nullable
+                  as MainPair,
+        basePrice: null == basePrice
+            ? _value.basePrice
+            : basePrice // ignore: cast_nullable_to_non_nullable
+                  as String,
+        selectedOptions: freezed == selectedOptions
+            ? _value.selectedOptions
+            : selectedOptions // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        hasOptions: null == hasOptions
+            ? _value.hasOptions
+            : hasOptions // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        productOptions: freezed == productOptions
+            ? _value.productOptions
+            : productOptions // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        discounts: null == discounts
+            ? _value.discounts
+            : discounts // ignore: cast_nullable_to_non_nullable
+                  as Discounts,
+        qtyContent: null == qtyContent
+            ? _value._qtyContent
+            : qtyContent // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+        detailedParams: null == detailedParams
+            ? _value.detailedParams
+            : detailedParams // ignore: cast_nullable_to_non_nullable
+                  as DetailedParams,
+        imageUrl: null == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+        companyLogo: null == companyLogo
+            ? _value.companyLogo
+            : companyLogo // ignore: cast_nullable_to_non_nullable
+                  as String,
+        allowAddToCart: null == allowAddToCart
+            ? _value.allowAddToCart
+            : allowAddToCart // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        allowPostReview: null == allowPostReview
+            ? _value.allowPostReview
+            : allowPostReview // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        formatPrice: null == formatPrice
+            ? _value.formatPrice
+            : formatPrice // ignore: cast_nullable_to_non_nullable
+                  as String,
+        formatListPrice: null == formatListPrice
+            ? _value.formatListPrice
+            : formatListPrice // ignore: cast_nullable_to_non_nullable
+                  as String,
+        formatBasePrice: null == formatBasePrice
+            ? _value.formatBasePrice
+            : formatBasePrice // ignore: cast_nullable_to_non_nullable
+                  as String,
+        ecRewardPoints: null == ecRewardPoints
+            ? _value.ecRewardPoints
+            : ecRewardPoints // ignore: cast_nullable_to_non_nullable
+                  as int,
+        variationFeatureCollection: freezed == variationFeatureCollection
+            ? _value.variationFeatureCollection
+            : variationFeatureCollection // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        productFeatures: freezed == productFeatures
+            ? _value.productFeatures
+            : productFeatures // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        allowChat: null == allowChat
+            ? _value.allowChat
+            : allowChat // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        chatThreadId: null == chatThreadId
+            ? _value.chatThreadId
+            : chatThreadId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductImpl implements _Product {
-  _$ProductImpl(
-      {required this.productId,
-      required this.product,
-      required this.companyName,
-      required this.productType,
-      required this.parentProductId,
-      required this.productCode,
-      required this.status,
-      required this.companyId,
-      required this.listPrice,
-      required this.amount,
-      required this.weight,
-      required this.length,
-      required this.width,
-      required this.height,
-      required this.shippingFreight,
-      required this.lowAvailLimit,
-      required this.timestamp,
-      required this.updatedTimestamp,
-      required this.usergroupIds,
-      required this.isEdp,
-      required this.edpShipping,
-      required this.unlimitedDownload,
-      required this.tracking,
-      required this.freeShipping,
-      required this.zeroPriceAction,
-      required this.isPbp,
-      required this.isOp,
-      required this.isOper,
-      required this.isReturnable,
-      required this.returnPeriod,
-      required this.availSince,
-      required this.outOfStockActions,
-      required this.localization,
-      required this.minQty,
-      required this.maxQty,
-      required this.qtyStep,
-      required this.listQtyCount,
-      required this.taxIds,
-      required this.ageVerification,
-      required this.ageLimit,
-      required this.optionsType,
-      required this.exceptionsType,
-      required this.detailsLayout,
-      required this.shippingParams,
-      required this.facebookObjType,
-      required this.buyNowUrl,
-      required this.unitsInProduct,
-      required this.showPricePerXUnits,
-      required this.price,
-      required this.metaKeywords,
-      required this.metaDescription,
-      required this.searchWords,
-      required this.promoText,
-      required this.unitName,
-      required final List<int> categoryIds,
-      required this.seoName,
-      required this.seoPath,
-      required this.mainCategory,
-      required this.optionsTypeRaw,
-      required this.exceptionsTypeRaw,
-      required this.trackingRaw,
-      required this.zeroPriceActionRaw,
-      required this.minQtyRaw,
-      required this.maxQtyRaw,
-      required this.qtyStepRaw,
-      required this.listQtyCountRaw,
-      required this.detailsLayoutRaw,
-      required final List<dynamic> variationFeatures,
-      required this.mainPair,
-      required this.basePrice,
-      required this.selectedOptions,
-      required this.hasOptions,
-      required this.productOptions,
-      required this.discounts,
-      required final List<dynamic> qtyContent,
-      required this.detailedParams,
-      required this.imageUrl,
-      required this.companyLogo,
-      required this.allowAddToCart,
-      required this.allowPostReview,
-      required this.formatPrice,
-      required this.formatListPrice,
-      required this.formatBasePrice,
-      required this.ecRewardPoints,
-      required this.variationFeatureCollection,
-      required this.productFeatures,
-      required this.allowChat,
-      required this.chatThreadId})
-      : _categoryIds = categoryIds,
-        _variationFeatures = variationFeatures,
-        _qtyContent = qtyContent;
+  _$ProductImpl({
+    required this.productId,
+    required this.product,
+    required this.companyName,
+    required this.productType,
+    required this.parentProductId,
+    required this.productCode,
+    required this.status,
+    required this.companyId,
+    required this.listPrice,
+    required this.amount,
+    required this.weight,
+    required this.length,
+    required this.width,
+    required this.height,
+    required this.shippingFreight,
+    required this.lowAvailLimit,
+    required this.timestamp,
+    required this.updatedTimestamp,
+    required this.usergroupIds,
+    required this.isEdp,
+    required this.edpShipping,
+    required this.unlimitedDownload,
+    required this.tracking,
+    required this.freeShipping,
+    required this.zeroPriceAction,
+    required this.isPbp,
+    required this.isOp,
+    required this.isOper,
+    required this.isReturnable,
+    required this.returnPeriod,
+    required this.availSince,
+    required this.outOfStockActions,
+    required this.localization,
+    required this.minQty,
+    required this.maxQty,
+    required this.qtyStep,
+    required this.listQtyCount,
+    required this.taxIds,
+    required this.ageVerification,
+    required this.ageLimit,
+    required this.optionsType,
+    required this.exceptionsType,
+    required this.detailsLayout,
+    required this.shippingParams,
+    required this.facebookObjType,
+    required this.buyNowUrl,
+    required this.unitsInProduct,
+    required this.showPricePerXUnits,
+    required this.price,
+    required this.metaKeywords,
+    required this.metaDescription,
+    required this.searchWords,
+    required this.promoText,
+    required this.unitName,
+    required final List<int> categoryIds,
+    required this.seoName,
+    required this.seoPath,
+    required this.mainCategory,
+    required this.optionsTypeRaw,
+    required this.exceptionsTypeRaw,
+    required this.trackingRaw,
+    required this.zeroPriceActionRaw,
+    required this.minQtyRaw,
+    required this.maxQtyRaw,
+    required this.qtyStepRaw,
+    required this.listQtyCountRaw,
+    required this.detailsLayoutRaw,
+    required final List<dynamic> variationFeatures,
+    required this.mainPair,
+    required this.basePrice,
+    required this.selectedOptions,
+    required this.hasOptions,
+    required this.productOptions,
+    required this.discounts,
+    required final List<dynamic> qtyContent,
+    required this.detailedParams,
+    required this.imageUrl,
+    required this.companyLogo,
+    required this.allowAddToCart,
+    required this.allowPostReview,
+    required this.formatPrice,
+    required this.formatListPrice,
+    required this.formatBasePrice,
+    required this.ecRewardPoints,
+    required this.variationFeatureCollection,
+    required this.productFeatures,
+    required this.allowChat,
+    required this.chatThreadId,
+  }) : _categoryIds = categoryIds,
+       _variationFeatures = variationFeatures,
+       _qtyContent = qtyContent;
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -1661,146 +1671,198 @@ class _$ProductImpl implements _Product {
                 other.metaKeywords == metaKeywords) &&
             (identical(other.metaDescription, metaDescription) ||
                 other.metaDescription == metaDescription) &&
-            const DeepCollectionEquality()
-                .equals(other.searchWords, searchWords) &&
+            const DeepCollectionEquality().equals(
+              other.searchWords,
+              searchWords,
+            ) &&
             const DeepCollectionEquality().equals(other.promoText, promoText) &&
             (identical(other.unitName, unitName) ||
                 other.unitName == unitName) &&
-            const DeepCollectionEquality()
-                .equals(other._categoryIds, _categoryIds) &&
+            const DeepCollectionEquality().equals(
+              other._categoryIds,
+              _categoryIds,
+            ) &&
             (identical(other.seoName, seoName) || other.seoName == seoName) &&
             (identical(other.seoPath, seoPath) || other.seoPath == seoPath) &&
             (identical(other.mainCategory, mainCategory) ||
                 other.mainCategory == mainCategory) &&
-            const DeepCollectionEquality()
-                .equals(other.optionsTypeRaw, optionsTypeRaw) &&
-            const DeepCollectionEquality()
-                .equals(other.exceptionsTypeRaw, exceptionsTypeRaw) &&
-            const DeepCollectionEquality()
-                .equals(other.trackingRaw, trackingRaw) &&
-            const DeepCollectionEquality()
-                .equals(other.zeroPriceActionRaw, zeroPriceActionRaw) &&
+            const DeepCollectionEquality().equals(
+              other.optionsTypeRaw,
+              optionsTypeRaw,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.exceptionsTypeRaw,
+              exceptionsTypeRaw,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.trackingRaw,
+              trackingRaw,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.zeroPriceActionRaw,
+              zeroPriceActionRaw,
+            ) &&
             const DeepCollectionEquality().equals(other.minQtyRaw, minQtyRaw) &&
             const DeepCollectionEquality().equals(other.maxQtyRaw, maxQtyRaw) &&
-            const DeepCollectionEquality().equals(other.qtyStepRaw, qtyStepRaw) &&
-            const DeepCollectionEquality().equals(other.listQtyCountRaw, listQtyCountRaw) &&
-            (identical(other.detailsLayoutRaw, detailsLayoutRaw) || other.detailsLayoutRaw == detailsLayoutRaw) &&
-            const DeepCollectionEquality().equals(other._variationFeatures, _variationFeatures) &&
-            (identical(other.mainPair, mainPair) || other.mainPair == mainPair) &&
-            (identical(other.basePrice, basePrice) || other.basePrice == basePrice) &&
-            const DeepCollectionEquality().equals(other.selectedOptions, selectedOptions) &&
-            (identical(other.hasOptions, hasOptions) || other.hasOptions == hasOptions) &&
-            const DeepCollectionEquality().equals(other.productOptions, productOptions) &&
-            (identical(other.discounts, discounts) || other.discounts == discounts) &&
-            const DeepCollectionEquality().equals(other._qtyContent, _qtyContent) &&
-            (identical(other.detailedParams, detailedParams) || other.detailedParams == detailedParams) &&
-            (identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl) &&
-            (identical(other.companyLogo, companyLogo) || other.companyLogo == companyLogo) &&
-            (identical(other.allowAddToCart, allowAddToCart) || other.allowAddToCart == allowAddToCart) &&
-            (identical(other.allowPostReview, allowPostReview) || other.allowPostReview == allowPostReview) &&
-            (identical(other.formatPrice, formatPrice) || other.formatPrice == formatPrice) &&
-            (identical(other.formatListPrice, formatListPrice) || other.formatListPrice == formatListPrice) &&
-            (identical(other.formatBasePrice, formatBasePrice) || other.formatBasePrice == formatBasePrice) &&
-            (identical(other.ecRewardPoints, ecRewardPoints) || other.ecRewardPoints == ecRewardPoints) &&
-            const DeepCollectionEquality().equals(other.variationFeatureCollection, variationFeatureCollection) &&
-            const DeepCollectionEquality().equals(other.productFeatures, productFeatures) &&
-            (identical(other.allowChat, allowChat) || other.allowChat == allowChat) &&
-            (identical(other.chatThreadId, chatThreadId) || other.chatThreadId == chatThreadId));
+            const DeepCollectionEquality().equals(
+              other.qtyStepRaw,
+              qtyStepRaw,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.listQtyCountRaw,
+              listQtyCountRaw,
+            ) &&
+            (identical(other.detailsLayoutRaw, detailsLayoutRaw) ||
+                other.detailsLayoutRaw == detailsLayoutRaw) &&
+            const DeepCollectionEquality().equals(
+              other._variationFeatures,
+              _variationFeatures,
+            ) &&
+            (identical(other.mainPair, mainPair) ||
+                other.mainPair == mainPair) &&
+            (identical(other.basePrice, basePrice) ||
+                other.basePrice == basePrice) &&
+            const DeepCollectionEquality().equals(
+              other.selectedOptions,
+              selectedOptions,
+            ) &&
+            (identical(other.hasOptions, hasOptions) ||
+                other.hasOptions == hasOptions) &&
+            const DeepCollectionEquality().equals(
+              other.productOptions,
+              productOptions,
+            ) &&
+            (identical(other.discounts, discounts) ||
+                other.discounts == discounts) &&
+            const DeepCollectionEquality().equals(
+              other._qtyContent,
+              _qtyContent,
+            ) &&
+            (identical(other.detailedParams, detailedParams) ||
+                other.detailedParams == detailedParams) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.companyLogo, companyLogo) ||
+                other.companyLogo == companyLogo) &&
+            (identical(other.allowAddToCart, allowAddToCart) ||
+                other.allowAddToCart == allowAddToCart) &&
+            (identical(other.allowPostReview, allowPostReview) ||
+                other.allowPostReview == allowPostReview) &&
+            (identical(other.formatPrice, formatPrice) ||
+                other.formatPrice == formatPrice) &&
+            (identical(other.formatListPrice, formatListPrice) ||
+                other.formatListPrice == formatListPrice) &&
+            (identical(other.formatBasePrice, formatBasePrice) ||
+                other.formatBasePrice == formatBasePrice) &&
+            (identical(other.ecRewardPoints, ecRewardPoints) ||
+                other.ecRewardPoints == ecRewardPoints) &&
+            const DeepCollectionEquality().equals(
+              other.variationFeatureCollection,
+              variationFeatureCollection,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.productFeatures,
+              productFeatures,
+            ) &&
+            (identical(other.allowChat, allowChat) ||
+                other.allowChat == allowChat) &&
+            (identical(other.chatThreadId, chatThreadId) ||
+                other.chatThreadId == chatThreadId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        productId,
-        product,
-        companyName,
-        productType,
-        parentProductId,
-        productCode,
-        status,
-        companyId,
-        listPrice,
-        amount,
-        weight,
-        length,
-        width,
-        height,
-        shippingFreight,
-        lowAvailLimit,
-        timestamp,
-        updatedTimestamp,
-        usergroupIds,
-        isEdp,
-        edpShipping,
-        unlimitedDownload,
-        tracking,
-        freeShipping,
-        zeroPriceAction,
-        isPbp,
-        isOp,
-        isOper,
-        isReturnable,
-        returnPeriod,
-        availSince,
-        outOfStockActions,
-        localization,
-        minQty,
-        maxQty,
-        qtyStep,
-        listQtyCount,
-        taxIds,
-        ageVerification,
-        ageLimit,
-        optionsType,
-        exceptionsType,
-        detailsLayout,
-        shippingParams,
-        facebookObjType,
-        buyNowUrl,
-        unitsInProduct,
-        showPricePerXUnits,
-        price,
-        metaKeywords,
-        metaDescription,
-        const DeepCollectionEquality().hash(searchWords),
-        const DeepCollectionEquality().hash(promoText),
-        unitName,
-        const DeepCollectionEquality().hash(_categoryIds),
-        seoName,
-        seoPath,
-        mainCategory,
-        const DeepCollectionEquality().hash(optionsTypeRaw),
-        const DeepCollectionEquality().hash(exceptionsTypeRaw),
-        const DeepCollectionEquality().hash(trackingRaw),
-        const DeepCollectionEquality().hash(zeroPriceActionRaw),
-        const DeepCollectionEquality().hash(minQtyRaw),
-        const DeepCollectionEquality().hash(maxQtyRaw),
-        const DeepCollectionEquality().hash(qtyStepRaw),
-        const DeepCollectionEquality().hash(listQtyCountRaw),
-        detailsLayoutRaw,
-        const DeepCollectionEquality().hash(_variationFeatures),
-        mainPair,
-        basePrice,
-        const DeepCollectionEquality().hash(selectedOptions),
-        hasOptions,
-        const DeepCollectionEquality().hash(productOptions),
-        discounts,
-        const DeepCollectionEquality().hash(_qtyContent),
-        detailedParams,
-        imageUrl,
-        companyLogo,
-        allowAddToCart,
-        allowPostReview,
-        formatPrice,
-        formatListPrice,
-        formatBasePrice,
-        ecRewardPoints,
-        const DeepCollectionEquality().hash(variationFeatureCollection),
-        const DeepCollectionEquality().hash(productFeatures),
-        allowChat,
-        chatThreadId
-      ]);
+    runtimeType,
+    productId,
+    product,
+    companyName,
+    productType,
+    parentProductId,
+    productCode,
+    status,
+    companyId,
+    listPrice,
+    amount,
+    weight,
+    length,
+    width,
+    height,
+    shippingFreight,
+    lowAvailLimit,
+    timestamp,
+    updatedTimestamp,
+    usergroupIds,
+    isEdp,
+    edpShipping,
+    unlimitedDownload,
+    tracking,
+    freeShipping,
+    zeroPriceAction,
+    isPbp,
+    isOp,
+    isOper,
+    isReturnable,
+    returnPeriod,
+    availSince,
+    outOfStockActions,
+    localization,
+    minQty,
+    maxQty,
+    qtyStep,
+    listQtyCount,
+    taxIds,
+    ageVerification,
+    ageLimit,
+    optionsType,
+    exceptionsType,
+    detailsLayout,
+    shippingParams,
+    facebookObjType,
+    buyNowUrl,
+    unitsInProduct,
+    showPricePerXUnits,
+    price,
+    metaKeywords,
+    metaDescription,
+    const DeepCollectionEquality().hash(searchWords),
+    const DeepCollectionEquality().hash(promoText),
+    unitName,
+    const DeepCollectionEquality().hash(_categoryIds),
+    seoName,
+    seoPath,
+    mainCategory,
+    const DeepCollectionEquality().hash(optionsTypeRaw),
+    const DeepCollectionEquality().hash(exceptionsTypeRaw),
+    const DeepCollectionEquality().hash(trackingRaw),
+    const DeepCollectionEquality().hash(zeroPriceActionRaw),
+    const DeepCollectionEquality().hash(minQtyRaw),
+    const DeepCollectionEquality().hash(maxQtyRaw),
+    const DeepCollectionEquality().hash(qtyStepRaw),
+    const DeepCollectionEquality().hash(listQtyCountRaw),
+    detailsLayoutRaw,
+    const DeepCollectionEquality().hash(_variationFeatures),
+    mainPair,
+    basePrice,
+    const DeepCollectionEquality().hash(selectedOptions),
+    hasOptions,
+    const DeepCollectionEquality().hash(productOptions),
+    discounts,
+    const DeepCollectionEquality().hash(_qtyContent),
+    detailedParams,
+    imageUrl,
+    companyLogo,
+    allowAddToCart,
+    allowPostReview,
+    formatPrice,
+    formatListPrice,
+    formatBasePrice,
+    ecRewardPoints,
+    const DeepCollectionEquality().hash(variationFeatureCollection),
+    const DeepCollectionEquality().hash(productFeatures),
+    allowChat,
+    chatThreadId,
+  ]);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -1812,95 +1874,96 @@ class _$ProductImpl implements _Product {
 }
 
 abstract class _Product implements Product {
-  factory _Product(
-      {required final String productId,
-      required final String product,
-      required final String companyName,
-      required final String productType,
-      required final String parentProductId,
-      required final String productCode,
-      required final String status,
-      required final String companyId,
-      required final String listPrice,
-      required final int amount,
-      required final String weight,
-      required final String length,
-      required final String width,
-      required final String height,
-      required final String shippingFreight,
-      required final String lowAvailLimit,
-      required final String timestamp,
-      required final String updatedTimestamp,
-      required final String usergroupIds,
-      required final String isEdp,
-      required final String edpShipping,
-      required final String unlimitedDownload,
-      required final String tracking,
-      required final String freeShipping,
-      required final String zeroPriceAction,
-      required final String isPbp,
-      required final String isOp,
-      required final String isOper,
-      required final String isReturnable,
-      required final String returnPeriod,
-      required final String availSince,
-      required final String outOfStockActions,
-      required final String localization,
-      required final String minQty,
-      required final String maxQty,
-      required final String qtyStep,
-      required final String listQtyCount,
-      required final String taxIds,
-      required final String ageVerification,
-      required final String ageLimit,
-      required final String optionsType,
-      required final String exceptionsType,
-      required final String detailsLayout,
-      required final String shippingParams,
-      required final String facebookObjType,
-      required final String buyNowUrl,
-      required final String unitsInProduct,
-      required final String showPricePerXUnits,
-      required final String price,
-      required final String metaKeywords,
-      required final String metaDescription,
-      required final dynamic searchWords,
-      required final dynamic promoText,
-      required final String unitName,
-      required final List<int> categoryIds,
-      required final String seoName,
-      required final String seoPath,
-      required final int mainCategory,
-      required final dynamic optionsTypeRaw,
-      required final dynamic exceptionsTypeRaw,
-      required final dynamic trackingRaw,
-      required final dynamic zeroPriceActionRaw,
-      required final dynamic minQtyRaw,
-      required final dynamic maxQtyRaw,
-      required final dynamic qtyStepRaw,
-      required final dynamic listQtyCountRaw,
-      required final String detailsLayoutRaw,
-      required final List<dynamic> variationFeatures,
-      required final MainPair mainPair,
-      required final String basePrice,
-      required final dynamic selectedOptions,
-      required final bool hasOptions,
-      required final dynamic productOptions,
-      required final Discounts discounts,
-      required final List<dynamic> qtyContent,
-      required final DetailedParams detailedParams,
-      required final String imageUrl,
-      required final String companyLogo,
-      required final bool allowAddToCart,
-      required final bool allowPostReview,
-      required final String formatPrice,
-      required final String formatListPrice,
-      required final String formatBasePrice,
-      required final int ecRewardPoints,
-      required final dynamic variationFeatureCollection,
-      required final dynamic productFeatures,
-      required final bool allowChat,
-      required final String chatThreadId}) = _$ProductImpl;
+  factory _Product({
+    required final String productId,
+    required final String product,
+    required final String companyName,
+    required final String productType,
+    required final String parentProductId,
+    required final String productCode,
+    required final String status,
+    required final String companyId,
+    required final String listPrice,
+    required final int amount,
+    required final String weight,
+    required final String length,
+    required final String width,
+    required final String height,
+    required final String shippingFreight,
+    required final String lowAvailLimit,
+    required final String timestamp,
+    required final String updatedTimestamp,
+    required final String usergroupIds,
+    required final String isEdp,
+    required final String edpShipping,
+    required final String unlimitedDownload,
+    required final String tracking,
+    required final String freeShipping,
+    required final String zeroPriceAction,
+    required final String isPbp,
+    required final String isOp,
+    required final String isOper,
+    required final String isReturnable,
+    required final String returnPeriod,
+    required final String availSince,
+    required final String outOfStockActions,
+    required final String localization,
+    required final String minQty,
+    required final String maxQty,
+    required final String qtyStep,
+    required final String listQtyCount,
+    required final String taxIds,
+    required final String ageVerification,
+    required final String ageLimit,
+    required final String optionsType,
+    required final String exceptionsType,
+    required final String detailsLayout,
+    required final String shippingParams,
+    required final String facebookObjType,
+    required final String buyNowUrl,
+    required final String unitsInProduct,
+    required final String showPricePerXUnits,
+    required final String price,
+    required final String metaKeywords,
+    required final String metaDescription,
+    required final dynamic searchWords,
+    required final dynamic promoText,
+    required final String unitName,
+    required final List<int> categoryIds,
+    required final String seoName,
+    required final String seoPath,
+    required final int mainCategory,
+    required final dynamic optionsTypeRaw,
+    required final dynamic exceptionsTypeRaw,
+    required final dynamic trackingRaw,
+    required final dynamic zeroPriceActionRaw,
+    required final dynamic minQtyRaw,
+    required final dynamic maxQtyRaw,
+    required final dynamic qtyStepRaw,
+    required final dynamic listQtyCountRaw,
+    required final String detailsLayoutRaw,
+    required final List<dynamic> variationFeatures,
+    required final MainPair mainPair,
+    required final String basePrice,
+    required final dynamic selectedOptions,
+    required final bool hasOptions,
+    required final dynamic productOptions,
+    required final Discounts discounts,
+    required final List<dynamic> qtyContent,
+    required final DetailedParams detailedParams,
+    required final String imageUrl,
+    required final String companyLogo,
+    required final bool allowAddToCart,
+    required final bool allowPostReview,
+    required final String formatPrice,
+    required final String formatListPrice,
+    required final String formatBasePrice,
+    required final int ecRewardPoints,
+    required final dynamic variationFeatureCollection,
+    required final dynamic productFeatures,
+    required final bool allowChat,
+    required final String chatThreadId,
+  }) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 

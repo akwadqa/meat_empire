@@ -13,8 +13,8 @@ _$SelectedOptionImpl _$$SelectedOptionImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$SelectedOptionImplToJson(
-        _$SelectedOptionImpl instance) =>
-    <String, dynamic>{
-      'option_id': instance.optionId,
-      'variant_id': instance.variantId,
-    };
+  _$SelectedOptionImpl instance,
+) => <String, dynamic>{
+  'option_id': instance.optionId,
+  'variant_id': instance.variantId,
+};

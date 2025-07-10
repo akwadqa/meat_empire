@@ -47,8 +47,9 @@ String _$userDataHash() => r'44a9648f415cf42d34ba276ad6adb55406affdeb';
 final userDataProvider = NotifierProvider<UserData, (String, int)?>.internal(
   UserData.new,
   name: r'userDataProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userDataHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$userDataHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

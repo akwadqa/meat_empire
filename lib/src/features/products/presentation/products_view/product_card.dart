@@ -27,7 +27,8 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushRoute(
-          ProductDetailsRoute(productId: int.parse(product.productId))),
+        ProductDetailsRoute(productId: int.parse(product.productId)),
+      ),
       child: Container(
         width: width,
         decoration: BoxDecoration(
@@ -38,20 +39,23 @@ class ProductCard extends StatelessWidget {
           //TODO spacing: 6,
           children: [
             Expanded(
-                child: ClipRRect(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(8)),
-                    child: _ProductImage(product: product))),
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                child: _ProductImage(product: product),
+              ),
+            ),
             _PriceRow(product: product),
             ProviderScope(
               overrides: [
-                updateCartControllerProvider
-                    .overrideWith(() => UpdateCartController())
+                updateCartControllerProvider.overrideWith(
+                  () => UpdateCartController(),
+                ),
               ],
               child: _AddToCartButton(
                 productId: int.parse(product.productId),
                 amount: int.parse(product.minQty),
                 outOfStock: product.amount <= 0,
+                hasOptions: product.hasOptions,
               ),
             ),
             6.verticalSpace,
@@ -115,10 +119,9 @@ class _ProductImage extends StatelessWidget {
           end: 10,
           child: Text(
             product.product,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontSize: 13,
-                  color: Colors.white,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(fontSize: 13, color: Colors.white),
           ),
         ),
       ],
@@ -137,12 +140,13 @@ class _DiscountBanner extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 3),
         color: AppColors.primary,
         child: Center(
-          child: Text(text,
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(color: Colors.white)),
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(color: Colors.white),
+          ),
         ),
       ),
     );
@@ -195,7 +199,6 @@ class _PriceRow extends StatelessWidget {
         // crossAxisAlignment: WrapCrossAlignment.center,
         // direction: Axis.horizontal,
         // spacing: 8,
-
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
@@ -204,10 +207,9 @@ class _PriceRow extends StatelessWidget {
           Text(
             product.formatBasePrice,
             softWrap: true,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(color: AppColors.black900),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(color: AppColors.black900),
           ),
           if (double.parse(product.listPrice) > 0) ...[
             // Spacer(),
@@ -216,15 +218,15 @@ class _PriceRow extends StatelessWidget {
               product.formatListPrice,
               softWrap: true,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 12,
-                    color: AppColors.grey600,
-                    decoration: TextDecoration.lineThrough,
-                    decorationColor: AppColors.grey600,
-                    decorationStyle: TextDecorationStyle.solid,
-                    decorationThickness: 20.0,
-                  ),
+                fontSize: 12,
+                color: AppColors.grey600,
+                decoration: TextDecoration.lineThrough,
+                decorationColor: AppColors.grey600,
+                decorationStyle: TextDecorationStyle.solid,
+                decorationThickness: 20.0,
+              ),
             ),
-          ]
+          ],
         ],
       ).symmetricPadding(horizontal: 8, vertical: 5),
     );
@@ -235,42 +237,36 @@ class _AddToCartButton extends ConsumerWidget {
   final int productId;
   final int amount;
   final bool outOfStock;
-
+  final bool hasOptions;
   const _AddToCartButton({
     required this.productId,
     required this.amount,
     required this.outOfStock,
+    required this.hasOptions,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Listen to cart updates with proper error handling
-    ref.listen<AsyncValue>(
-      updateCartControllerProvider,
-      (previous, current) {
-        if (current is AsyncData) {
-          // Wait for the current build to complete before showing dialog
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.maybePop().then((_) {
-              showCustomDialog(
-                context: context,
-                title: "cart_added_msg".tr(),
-                icon: Icon(
-                  Icons.check_circle,
-                  color: AppColors.green,
-                  size: 45,
-                ),
-              );
-            });
+    ref.listen<AsyncValue>(updateCartControllerProvider, (previous, current) {
+      if (current is AsyncData) {
+        // Wait for the current build to complete before showing dialog
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          context.maybePop().then((_) {
+            showCustomDialog(
+              context: context,
+              title: "cart_added_msg".tr(),
+              icon: Icon(Icons.check_circle, color: AppColors.green, size: 45),
+            );
           });
-        } else if (current is AsyncError) {
-          // Wait for the current build to complete before showing error
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            showOutOfStockDialog(context, current.error.toString());
-          });
-        }
-      },
-    );
+        });
+      } else if (current is AsyncError) {
+        // Wait for the current build to complete before showing error
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          showOutOfStockDialog(context, current.error.toString());
+        });
+      }
+    });
 
     final asyncAddToCart = ref.watch(updateCartControllerProvider);
     final isInCart = ref.watch(isInCartProvider(productId.toString()));
@@ -280,16 +276,21 @@ class _AddToCartButton extends ConsumerWidget {
       return const FadeCircleLoadingIndicator();
     }
 
-    return _buildButton(context, ref, isInCart);
+    return _buildButton(context, ref, isInCart, hasOptions);
   }
 
-  Widget _buildButton(BuildContext context, WidgetRef ref, bool isInCart) {
+  Widget _buildButton(
+    BuildContext context,
+    WidgetRef ref,
+    bool isInCart,
+    bool hasOptions,
+  ) {
     // Determine button state
     final ButtonState buttonState = outOfStock
         ? ButtonState.outOfStock
         : isInCart
-            ? ButtonState.inCart
-            : ButtonState.available;
+        ? ButtonState.inCart
+        : ButtonState.available;
 
     // Button configuration based on state
     final ButtonConfig config = _getButtonConfig(context, buttonState);
@@ -298,7 +299,7 @@ class _AddToCartButton extends ConsumerWidget {
       onPressed:
           //  buttonState == ButtonState.outOfStock
           //     ? null :
-          () => _handleButtonPress(context, ref, isInCart),
+          () => _handleButtonPress(context, ref, isInCart, hasOptions),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
           fontSize: 12,
@@ -311,20 +312,29 @@ class _AddToCartButton extends ConsumerWidget {
       label: Text(
         context.tr(config.labelKey),
         style: Theme.of(context).textTheme.displaySmall!.copyWith(
-              fontSize: 12,
-              color: config.textColor,
-              fontWeight: FontWeight.w400,
-            ),
+          fontSize: 12,
+          color: config.textColor,
+          fontWeight: FontWeight.w400,
+        ),
       ),
       icon: config.icon,
     );
   }
 
-  void _handleButtonPress(BuildContext context, WidgetRef ref, bool isInCart) {
+  void _handleButtonPress(
+    BuildContext context,
+    WidgetRef ref,
+    bool isInCart,
+    bool hasOptions,
+  ) {
     final controller = ref.read(updateCartControllerProvider.notifier);
 
     if (isInCart) {
       controller.updateCart(amount: 0, productId: productId);
+    } else if (hasOptions) {
+      context.pushRoute(
+        ProductDetailsRoute(productId: int.parse(productId.toString())),
+      );
     } else {
       controller.addToCart(
         context: context,
@@ -341,11 +351,7 @@ class _AddToCartButton extends ConsumerWidget {
           backgroundColor: Colors.grey.shade200,
           textColor: AppColors.black800,
           labelKey: 'outOfStock',
-          icon: Icon(
-            Icons.block,
-            color: AppColors.black800,
-            size: 15,
-          ),
+          icon: Icon(Icons.block, color: AppColors.black800, size: 15),
         );
       case ButtonState.inCart:
         return ButtonConfig(
@@ -370,11 +376,7 @@ class _AddToCartButton extends ConsumerWidget {
 }
 
 /// Helper enum to track button state
-enum ButtonState {
-  outOfStock,
-  inCart,
-  available,
-}
+enum ButtonState { outOfStock, inCart, available }
 
 /// Helper class to manage button configuration
 class ButtonConfig {
