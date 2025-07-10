@@ -15,7 +15,7 @@ build_android_apk:
       - build/app/outputs/flutter-apk/app-release.apk
     expire_in: 1 week
   only:
-    - main
+    - refactoring
     - tags
 
 release_apk:
