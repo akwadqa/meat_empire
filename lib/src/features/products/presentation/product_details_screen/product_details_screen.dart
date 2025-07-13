@@ -7,6 +7,7 @@ import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/products/data/products_repository.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/product_details.dart';
+import 'package:meat_empire/src/features/products/domain/product_details_response/product_options/selected_option.dart';
 import 'package:meat_empire/src/features/products/domain/product_details_response/products_block.dart';
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_scroller_view.dart';
@@ -74,8 +75,18 @@ class ProductDetailsView extends StatelessWidget {
               //TODO spacing: 20,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProductBanner(
-                    imageUrls: product.imageUrls, bannerHeight: bannerHeight),
+                Consumer(
+                  builder: (context, ref, child) {
+                    List<SelectedOption> selectedVariant = ref.read(
+                      productOptionsControllerProvider.select((value) => value),
+                    );
+
+                    return ProductBanner(
+                      imageUrls: product.imageUrls,
+                      bannerHeight: bannerHeight,
+                    );
+                  },
+                ),
                 ProductDetailsInfo(
                   product: product,
                   productsBlock: productsBlock,
@@ -85,22 +96,27 @@ class ProductDetailsView extends StatelessWidget {
             ),
           ),
         ),
-        Consumer(builder: (context, ref, child) {
-          final quantity = ref.watch(quantityControllerProvider(
-              initialQuantity: int.parse(product.minQty),
-              minQuantity: int.parse(product.minQty),
-              maxQuantity: int.parse(product.maxQty)));
+        Consumer(
+          builder: (context, ref, child) {
+            final quantity = ref.watch(
+              quantityControllerProvider(
+                initialQuantity: int.parse(product.minQty),
+                minQuantity: int.parse(product.minQty),
+                maxQuantity: int.parse(product.maxQty),
+              ),
+            );
 
-          final totalPrice = calculateTotalPrice(ref, product);
+            final totalPrice = calculateTotalPrice(ref, product);
 
-          return _AddToCartButton(
-            productPrice: (totalPrice * quantity).toStringAsFixed(2),
-            productId: product.productId,
-            amount: quantity,
-            productOptions: product.productOptions,
-            outOfStock: product.amount <= 0,
-          );
-        }),
+            return _AddToCartButton(
+              productPrice: (totalPrice * quantity).toStringAsFixed(2),
+              productId: product.productId,
+              amount: quantity,
+              productOptions: product.productOptions,
+              outOfStock: product.amount <= 0,
+            );
+          },
+        ),
       ],
     );
   }
@@ -111,10 +127,12 @@ double calculateTotalPrice(WidgetRef ref, ProductDetails product) {
 
   final basePrice = double.parse(product.basePrice);
   final modifiersTotal = selectedOptions.fold<double>(0, (total, selected) {
-    final option = product.productOptions!.options
-        .firstWhere((opt) => opt.optionId == selected.optionId);
+    final option = product.productOptions!.options.firstWhere(
+      (opt) => opt.optionId == selected.optionId,
+    );
     final variant = option.variants.firstWhere(
-        (variant) => int.parse(variant.variantId) == selected.variantId);
+      (variant) => int.parse(variant.variantId) == selected.variantId,
+    );
     return total + double.parse(variant.modifier);
   });
 
@@ -136,7 +154,10 @@ class ProductBanner extends ConsumerWidget {
     return Stack(
       children: [
         _ProductBannerContent(
-            imageUrls: imageUrls, bannerHeight: bannerHeight, ref: ref),
+          imageUrls: imageUrls,
+          bannerHeight: bannerHeight,
+          ref: ref,
+        ),
         if (imageUrls.length > 1)
           PositionedDirectional(
             bottom: 5,
@@ -190,9 +211,11 @@ class _ProductBannerContent extends StatelessWidget {
               ),
             )
           : imageUrls.isNotEmpty
-              ? AppCachedNetworkImage(
-                  imageUrl: imageUrls.first, fit: BoxFit.fitHeight)
-              : const SizedBox.shrink(),
+          ? AppCachedNetworkImage(
+              imageUrl: imageUrls.first,
+              fit: BoxFit.fitHeight,
+            )
+          : const SizedBox.shrink(),
     );
   }
 }
@@ -212,21 +235,23 @@ class ProductDetailsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      //TODO  spacing: 20,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        20.verticalSpace,
         _ProductTitle(title: product.product),
+        5.verticalSpace,
         _PriceAndQuantityRow(product: product, currency: currency),
         if (product.productOptions != null)
           ProductOptionsList(productOptions: product.productOptions!),
         if (product.variationFeatures.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
-            child: Text(context.tr('specifications'),
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium!
-                    .copyWith(fontSize: 18)),
+            child: Text(
+              context.tr('specifications'),
+              style: Theme.of(
+                context,
+              ).textTheme.displayMedium!.copyWith(fontSize: 18),
+            ),
           ),
         ListView.builder(
           padding: EdgeInsets.zero,
@@ -243,7 +268,7 @@ class ProductDetailsInfo extends StatelessWidget {
         ),
         25.verticalSpace,
         _ProductsBlockList(productsBlock: productsBlock),
-        80.verticalSpace
+        80.verticalSpace,
       ],
     );
   }
@@ -287,10 +312,7 @@ class _ProductTitle extends StatelessWidget {
 }
 
 class _PriceAndQuantityRow extends ConsumerWidget {
-  const _PriceAndQuantityRow({
-    required this.product,
-    required this.currency,
-  });
+  const _PriceAndQuantityRow({required this.product, required this.currency});
 
   final ProductDetails product;
   final Currency currency;
@@ -305,8 +327,9 @@ class _PriceAndQuantityRow extends ConsumerWidget {
         // Display the formatted price
         Text(
           '${currency.currencyCode} ${totalPrice.toStringAsFixed(2)}',
-          style:
-              Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 18),
+          style: Theme.of(
+            context,
+          ).textTheme.displayMedium!.copyWith(fontSize: 18),
         ),
         // Quantity selector widget
         QuantitySelector(
@@ -334,15 +357,13 @@ class _ProductsBlockList extends StatelessWidget {
         final block = productsBlock[index];
         return Column(
           //TODO   spacing: 16,
-
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               block.title,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium!
-                  .copyWith(fontSize: 18),
+              style: Theme.of(
+                context,
+              ).textTheme.displayMedium!.copyWith(fontSize: 18),
             ),
             5.verticalSpace,
             ProductsScrollerView(products: block.products),
@@ -384,93 +405,102 @@ class _AddToCartButton extends StatelessWidget {
           borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
           boxShadow: [
             BoxShadow(
-                offset: Offset(0, -4), blurRadius: 15, color: Colors.black26),
+              offset: Offset(0, -4),
+              blurRadius: 15,
+              color: Colors.black26,
+            ),
           ],
         ),
-        child: Consumer(builder: (context, ref, child) {
-          ref.listen(updateCartControllerProvider, (prev, next) {
-            if (next is AsyncData) {
-              context.maybePop().then((_) {
-                showCustomDialog(
+        child: Consumer(
+          builder: (context, ref, child) {
+            ref.listen(updateCartControllerProvider, (prev, next) {
+              if (next is AsyncData) {
+                context.maybePop().then((_) {
+                  showCustomDialog(
                     context: context,
                     title: context.tr("cart_added_msg"),
                     icon: Icon(
                       Icons.check_circle,
                       color: AppColors.green,
                       size: 45,
-                    ));
-              });
-            } else if (next is AsyncError) {
-              showOutOfStockDialog(context, next.error.toString());
-            }
-          });
-
-          final asyncAddToCart = ref.watch(updateCartControllerProvider);
-
-          if (asyncAddToCart is AsyncLoading) {
-            return FadeCircleLoadingIndicator();
-          }
-
-          return ElevatedButton.icon(
-            onPressed:
-                // outOfStock
-                //     ? null
-                //     :
-                () {
-              // Get the selected options
-              final selectedOptions =
-                  ref.read(productOptionsControllerProvider);
-
-              // Check if all options have a selected variant
-              final isSelectionComplete = productOptions?.options.every(
-                      (option) => selectedOptions.any((selected) =>
-                          selected.optionId == option.optionId)) ??
-                  true;
-
-              if (!isSelectionComplete) {
-                // Show an error message if selection is incomplete
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(context.tr('variantError')),
-                    backgroundColor: Theme.of(context).colorScheme.error,
-                  ),
-                );
-              } else {
-                // Proceed with adding to cart
-                ref
-                    .read(updateCartControllerProvider.notifier)
-                    .addToCart(
-                      context: context,
-                      amount: amount,
-                      productId: productId,
-                      selectedOprions: selectedOptions,
-                    )
-                    .then((_) => context.maybePop());
+                    ),
+                  );
+                });
+              } else if (next is AsyncError) {
+                showOutOfStockDialog(context, next.error.toString());
               }
-            },
-            style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        outOfStock ? Colors.grey.shade200 : AppColors.green)
-                .copyWith(fixedSize: WidgetStatePropertyAll(Size(300, 50))),
-            icon: outOfStock
-                ? Icon(
-                    Icons.block,
-                    color: AppColors.black800,
-                    size: 18,
-                  )
-                : const Icon(
-                    Icons.add_shopping_cart_rounded,
-                    color: Colors.white, size: 18, //25
-                  ),
-            label: Text(
-              '${context.tr(outOfStock ? 'outOfStock' : 'addToCart')} ($productPrice)',
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
+            });
+
+            final asyncAddToCart = ref.watch(updateCartControllerProvider);
+
+            if (asyncAddToCart is AsyncLoading) {
+              return FadeCircleLoadingIndicator();
+            }
+
+            return ElevatedButton.icon(
+              onPressed:
+                  // outOfStock
+                  //     ? null
+                  //     :
+                  () {
+                    // Get the selected options
+                    final selectedOptions = ref.read(
+                      productOptionsControllerProvider,
+                    );
+
+                    // Check if all options have a selected variant
+                    final isSelectionComplete =
+                        productOptions?.options.every(
+                          (option) => selectedOptions.any(
+                            (selected) => selected.optionId == option.optionId,
+                          ),
+                        ) ??
+                        true;
+
+                    if (!isSelectionComplete) {
+                      // Show an error message if selection is incomplete
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(context.tr('variantError')),
+                          backgroundColor: Theme.of(context).colorScheme.error,
+                        ),
+                      );
+                    } else {
+                      // Proceed with adding to cart
+                      ref
+                          .read(updateCartControllerProvider.notifier)
+                          .addToCart(
+                            context: context,
+                            amount: amount,
+                            productId: productId,
+                            selectedOprions: selectedOptions,
+                          )
+                          .then((_) => context.maybePop());
+                    }
+                  },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: outOfStock
+                    ? Colors.grey.shade200
+                    : AppColors.green,
+              ).copyWith(fixedSize: WidgetStatePropertyAll(Size(300, 50))),
+              icon: outOfStock
+                  ? Icon(Icons.block, color: AppColors.black800, size: 18)
+                  : const Icon(
+                      Icons.add_shopping_cart_rounded,
+                      color: Colors.white,
+                      size: 18, //25
+                    ),
+              label: Text(
+                '${context.tr(outOfStock ? 'outOfStock' : 'addToCart')} ($productPrice)',
+                style: Theme.of(context).textTheme.displaySmall!.copyWith(
                   fontSize: 16,
                   color: outOfStock ? AppColors.black800 : Colors.white,
-                  fontWeight: FontWeight.w700),
-            ),
-          );
-        }),
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
