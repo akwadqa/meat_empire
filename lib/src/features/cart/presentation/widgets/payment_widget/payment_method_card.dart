@@ -98,6 +98,7 @@ class _PaymentMethodField extends StatelessWidget {
                         ),
                         leading: Image.network(
                           payment.image!,
+
                           height: 30,
                           width: 30,
                           errorBuilder: (ctx, oob, ko) {
@@ -108,7 +109,7 @@ class _PaymentMethodField extends StatelessWidget {
                               color: AppColors.grey600,
                             );
                           },
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     ),
