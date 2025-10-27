@@ -1,10 +1,10 @@
 name: meat_empire
 description: "Fresh and tasty meat"
 publish_to: 'none'
-version: 0.1.0
+version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.8.0
 
 dependencies:
   auto_route: ^9.2.2
@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
-  intl: ^0.19.0
+  intl: ^0.20.2
   flutter_svg: ^2.0.10+1
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
@@ -50,6 +50,19 @@ dev_dependencies:
   json_serializable: ^6.8.0
   device_preview: ^1.2.0
   flutter_native_splash: ^2.4.4
+  flutter_launcher_icons: ^0.14.4
+
+# إعدادات أيقونة التطبيق ↓
+flutter_launcher_icons:  # <-- ضع هذا القسم هنا (على نفس مستوى dependencies)
+  android: true
+  ios: true
+  image_path: "assets/images/app_logo.png" 
+  # adaptive_icon_background: "#E5BB3B"
+
+ 
+# ---------------------
+
+
 
 flutter:
   uses-material-design: true
