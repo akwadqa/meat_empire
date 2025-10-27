@@ -12,7 +12,8 @@ part of 'with_images.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 WithImages _$WithImagesFromJson(Map<String, dynamic> json) {
   return _WithImages.fromJson(json);
@@ -34,8 +35,9 @@ mixin _$WithImages {
 /// @nodoc
 abstract class $WithImagesCopyWith<$Res> {
   factory $WithImagesCopyWith(
-          WithImages value, $Res Function(WithImages) then) =
-      _$WithImagesCopyWithImpl<$Res, WithImages>;
+    WithImages value,
+    $Res Function(WithImages) then,
+  ) = _$WithImagesCopyWithImpl<$Res, WithImages>;
   @useResult
   $Res call({String param, String name, bool selected});
 }
@@ -59,20 +61,23 @@ class _$WithImagesCopyWithImpl<$Res, $Val extends WithImages>
     Object? name = null,
     Object? selected = null,
   }) {
-    return _then(_value.copyWith(
-      param: null == param
-          ? _value.param
-          : param // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      selected: null == selected
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            param: null == param
+                ? _value.param
+                : param // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            selected: null == selected
+                ? _value.selected
+                : selected // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -80,8 +85,9 @@ class _$WithImagesCopyWithImpl<$Res, $Val extends WithImages>
 abstract class _$$WithImagesImplCopyWith<$Res>
     implements $WithImagesCopyWith<$Res> {
   factory _$$WithImagesImplCopyWith(
-          _$WithImagesImpl value, $Res Function(_$WithImagesImpl) then) =
-      __$$WithImagesImplCopyWithImpl<$Res>;
+    _$WithImagesImpl value,
+    $Res Function(_$WithImagesImpl) then,
+  ) = __$$WithImagesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String param, String name, bool selected});
@@ -92,8 +98,9 @@ class __$$WithImagesImplCopyWithImpl<$Res>
     extends _$WithImagesCopyWithImpl<$Res, _$WithImagesImpl>
     implements _$$WithImagesImplCopyWith<$Res> {
   __$$WithImagesImplCopyWithImpl(
-      _$WithImagesImpl _value, $Res Function(_$WithImagesImpl) _then)
-      : super(_value, _then);
+    _$WithImagesImpl _value,
+    $Res Function(_$WithImagesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of WithImages
   /// with the given fields replaced by the non-null parameter values.
@@ -104,28 +111,33 @@ class __$$WithImagesImplCopyWithImpl<$Res>
     Object? name = null,
     Object? selected = null,
   }) {
-    return _then(_$WithImagesImpl(
-      param: null == param
-          ? _value.param
-          : param // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      selected: null == selected
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$WithImagesImpl(
+        param: null == param
+            ? _value.param
+            : param // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        selected: null == selected
+            ? _value.selected
+            : selected // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$WithImagesImpl implements _WithImages {
-  _$WithImagesImpl(
-      {required this.param, required this.name, required this.selected});
+  _$WithImagesImpl({
+    required this.param,
+    required this.name,
+    required this.selected,
+  });
 
   factory _$WithImagesImpl.fromJson(Map<String, dynamic> json) =>
       _$$WithImagesImplFromJson(json);
@@ -167,10 +179,11 @@ class _$WithImagesImpl implements _WithImages {
 }
 
 abstract class _WithImages implements WithImages {
-  factory _WithImages(
-      {required final String param,
-      required final String name,
-      required final bool selected}) = _$WithImagesImpl;
+  factory _WithImages({
+    required final String param,
+    required final String name,
+    required final bool selected,
+  }) = _$WithImagesImpl;
 
   factory _WithImages.fromJson(Map<String, dynamic> json) =
       _$WithImagesImpl.fromJson;

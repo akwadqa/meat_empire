@@ -12,7 +12,8 @@ part of 'order_product.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OrderProduct _$OrderProductFromJson(Map<String, dynamic> json) {
   return _OrderProduct.fromJson(json);
@@ -38,15 +39,17 @@ mixin _$OrderProduct {
 /// @nodoc
 abstract class $OrderProductCopyWith<$Res> {
   factory $OrderProductCopyWith(
-          OrderProduct value, $Res Function(OrderProduct) then) =
-      _$OrderProductCopyWithImpl<$Res, OrderProduct>;
+    OrderProduct value,
+    $Res Function(OrderProduct) then,
+  ) = _$OrderProductCopyWithImpl<$Res, OrderProduct>;
   @useResult
-  $Res call(
-      {String productId,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "image_url") String imageUrl,
-      String product,
-      int amount});
+  $Res call({
+    String productId,
+    @JsonKey(name: "order_id") String orderId,
+    @JsonKey(name: "image_url") String imageUrl,
+    String product,
+    int amount,
+  });
 }
 
 /// @nodoc
@@ -70,28 +73,31 @@ class _$OrderProductCopyWithImpl<$Res, $Val extends OrderProduct>
     Object? product = null,
     Object? amount = null,
   }) {
-    return _then(_value.copyWith(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            productId: null == productId
+                ? _value.productId
+                : productId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            orderId: null == orderId
+                ? _value.orderId
+                : orderId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            imageUrl: null == imageUrl
+                ? _value.imageUrl
+                : imageUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+            product: null == product
+                ? _value.product
+                : product // ignore: cast_nullable_to_non_nullable
+                      as String,
+            amount: null == amount
+                ? _value.amount
+                : amount // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -99,16 +105,18 @@ class _$OrderProductCopyWithImpl<$Res, $Val extends OrderProduct>
 abstract class _$$OrderProductImplCopyWith<$Res>
     implements $OrderProductCopyWith<$Res> {
   factory _$$OrderProductImplCopyWith(
-          _$OrderProductImpl value, $Res Function(_$OrderProductImpl) then) =
-      __$$OrderProductImplCopyWithImpl<$Res>;
+    _$OrderProductImpl value,
+    $Res Function(_$OrderProductImpl) then,
+  ) = __$$OrderProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String productId,
-      @JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "image_url") String imageUrl,
-      String product,
-      int amount});
+  $Res call({
+    String productId,
+    @JsonKey(name: "order_id") String orderId,
+    @JsonKey(name: "image_url") String imageUrl,
+    String product,
+    int amount,
+  });
 }
 
 /// @nodoc
@@ -116,8 +124,9 @@ class __$$OrderProductImplCopyWithImpl<$Res>
     extends _$OrderProductCopyWithImpl<$Res, _$OrderProductImpl>
     implements _$$OrderProductImplCopyWith<$Res> {
   __$$OrderProductImplCopyWithImpl(
-      _$OrderProductImpl _value, $Res Function(_$OrderProductImpl) _then)
-      : super(_value, _then);
+    _$OrderProductImpl _value,
+    $Res Function(_$OrderProductImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OrderProduct
   /// with the given fields replaced by the non-null parameter values.
@@ -130,40 +139,43 @@ class __$$OrderProductImplCopyWithImpl<$Res>
     Object? product = null,
     Object? amount = null,
   }) {
-    return _then(_$OrderProductImpl(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$OrderProductImpl(
+        productId: null == productId
+            ? _value.productId
+            : productId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        orderId: null == orderId
+            ? _value.orderId
+            : orderId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        imageUrl: null == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+        product: null == product
+            ? _value.product
+            : product // ignore: cast_nullable_to_non_nullable
+                  as String,
+        amount: null == amount
+            ? _value.amount
+            : amount // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$OrderProductImpl implements _OrderProduct {
-  const _$OrderProductImpl(
-      {required this.productId,
-      @JsonKey(name: "order_id") required this.orderId,
-      @JsonKey(name: "image_url") required this.imageUrl,
-      required this.product,
-      required this.amount});
+  const _$OrderProductImpl({
+    required this.productId,
+    @JsonKey(name: "order_id") required this.orderId,
+    @JsonKey(name: "image_url") required this.imageUrl,
+    required this.product,
+    required this.amount,
+  });
 
   factory _$OrderProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderProductImplFromJson(json);
@@ -215,12 +227,13 @@ class _$OrderProductImpl implements _OrderProduct {
 }
 
 abstract class _OrderProduct implements OrderProduct {
-  const factory _OrderProduct(
-      {required final String productId,
-      @JsonKey(name: "order_id") required final String orderId,
-      @JsonKey(name: "image_url") required final String imageUrl,
-      required final String product,
-      required final int amount}) = _$OrderProductImpl;
+  const factory _OrderProduct({
+    required final String productId,
+    @JsonKey(name: "order_id") required final String orderId,
+    @JsonKey(name: "image_url") required final String imageUrl,
+    required final String product,
+    required final int amount,
+  }) = _$OrderProductImpl;
 
   factory _OrderProduct.fromJson(Map<String, dynamic> json) =
       _$OrderProductImpl.fromJson;

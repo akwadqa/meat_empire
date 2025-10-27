@@ -32,7 +32,8 @@ _$CartProductImpl _$$CartProductImplFromJson(Map<String, dynamic> json) =>
       shippingParams: json['shipping_params'] == null
           ? null
           : ShippingParams.fromJson(
-              json['shipping_params'] as Map<String, dynamic>),
+              json['shipping_params'] as Map<String, dynamic>,
+            ),
       companyStatus: json['company_status'] as String?,
       outOfStockActions: json['out_of_stock_actions'] as String?,
       updatedTimestamp: json['updated_timestamp'] as String?,
@@ -71,7 +72,8 @@ _$CartProductImpl _$$CartProductImplFromJson(Map<String, dynamic> json) =>
       detailedParams: json['detailed_params'] == null
           ? null
           : DetailedParams.fromJson(
-              json['detailed_params'] as Map<String, dynamic>),
+              json['detailed_params'] as Map<String, dynamic>,
+            ),
       itemId: json['item_id'] as String?,
       formatPrice: json['format_price'] as String?,
       formatSubtotal: json['format_subtotal'] as String?,

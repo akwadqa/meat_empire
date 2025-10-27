@@ -12,10 +12,12 @@ part of 'product_reviews_sorting.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductReviewsSorting _$ProductReviewsSortingFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _ProductReviewsSorting.fromJson(json);
 }
 
@@ -34,16 +36,19 @@ mixin _$ProductReviewsSorting {
 
 /// @nodoc
 abstract class $ProductReviewsSortingCopyWith<$Res> {
-  factory $ProductReviewsSortingCopyWith(ProductReviewsSorting value,
-          $Res Function(ProductReviewsSorting) then) =
-      _$ProductReviewsSortingCopyWithImpl<$Res, ProductReviewsSorting>;
+  factory $ProductReviewsSortingCopyWith(
+    ProductReviewsSorting value,
+    $Res Function(ProductReviewsSorting) then,
+  ) = _$ProductReviewsSortingCopyWithImpl<$Res, ProductReviewsSorting>;
   @useResult
   $Res call({String name, String sortBy, String sortOrder});
 }
 
 /// @nodoc
-class _$ProductReviewsSortingCopyWithImpl<$Res,
-        $Val extends ProductReviewsSorting>
+class _$ProductReviewsSortingCopyWithImpl<
+  $Res,
+  $Val extends ProductReviewsSorting
+>
     implements $ProductReviewsSortingCopyWith<$Res> {
   _$ProductReviewsSortingCopyWithImpl(this._value, this._then);
 
@@ -61,20 +66,23 @@ class _$ProductReviewsSortingCopyWithImpl<$Res,
     Object? sortBy = null,
     Object? sortOrder = null,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortBy: null == sortBy
+                ? _value.sortBy
+                : sortBy // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortOrder: null == sortOrder
+                ? _value.sortOrder
+                : sortOrder // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -82,9 +90,9 @@ class _$ProductReviewsSortingCopyWithImpl<$Res,
 abstract class _$$ProductReviewsSortingImplCopyWith<$Res>
     implements $ProductReviewsSortingCopyWith<$Res> {
   factory _$$ProductReviewsSortingImplCopyWith(
-          _$ProductReviewsSortingImpl value,
-          $Res Function(_$ProductReviewsSortingImpl) then) =
-      __$$ProductReviewsSortingImplCopyWithImpl<$Res>;
+    _$ProductReviewsSortingImpl value,
+    $Res Function(_$ProductReviewsSortingImpl) then,
+  ) = __$$ProductReviewsSortingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String sortBy, String sortOrder});
@@ -92,12 +100,13 @@ abstract class _$$ProductReviewsSortingImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ProductReviewsSortingImplCopyWithImpl<$Res>
-    extends _$ProductReviewsSortingCopyWithImpl<$Res,
-        _$ProductReviewsSortingImpl>
+    extends
+        _$ProductReviewsSortingCopyWithImpl<$Res, _$ProductReviewsSortingImpl>
     implements _$$ProductReviewsSortingImplCopyWith<$Res> {
-  __$$ProductReviewsSortingImplCopyWithImpl(_$ProductReviewsSortingImpl _value,
-      $Res Function(_$ProductReviewsSortingImpl) _then)
-      : super(_value, _then);
+  __$$ProductReviewsSortingImplCopyWithImpl(
+    _$ProductReviewsSortingImpl _value,
+    $Res Function(_$ProductReviewsSortingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductReviewsSorting
   /// with the given fields replaced by the non-null parameter values.
@@ -108,28 +117,33 @@ class __$$ProductReviewsSortingImplCopyWithImpl<$Res>
     Object? sortBy = null,
     Object? sortOrder = null,
   }) {
-    return _then(_$ProductReviewsSortingImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ProductReviewsSortingImpl(
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortBy: null == sortBy
+            ? _value.sortBy
+            : sortBy // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortOrder: null == sortOrder
+            ? _value.sortOrder
+            : sortOrder // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductReviewsSortingImpl implements _ProductReviewsSorting {
-  _$ProductReviewsSortingImpl(
-      {required this.name, required this.sortBy, required this.sortOrder});
+  _$ProductReviewsSortingImpl({
+    required this.name,
+    required this.sortBy,
+    required this.sortOrder,
+  });
 
   factory _$ProductReviewsSortingImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductReviewsSortingImplFromJson(json);
@@ -167,15 +181,19 @@ class _$ProductReviewsSortingImpl implements _ProductReviewsSorting {
   @override
   @pragma('vm:prefer-inline')
   _$$ProductReviewsSortingImplCopyWith<_$ProductReviewsSortingImpl>
-      get copyWith => __$$ProductReviewsSortingImplCopyWithImpl<
-          _$ProductReviewsSortingImpl>(this, _$identity);
+  get copyWith =>
+      __$$ProductReviewsSortingImplCopyWithImpl<_$ProductReviewsSortingImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ProductReviewsSorting implements ProductReviewsSorting {
-  factory _ProductReviewsSorting(
-      {required final String name,
-      required final String sortBy,
-      required final String sortOrder}) = _$ProductReviewsSortingImpl;
+  factory _ProductReviewsSorting({
+    required final String name,
+    required final String sortBy,
+    required final String sortOrder,
+  }) = _$ProductReviewsSortingImpl;
 
   factory _ProductReviewsSorting.fromJson(Map<String, dynamic> json) =
       _$ProductReviewsSortingImpl.fromJson;
@@ -192,5 +210,5 @@ abstract class _ProductReviewsSorting implements ProductReviewsSorting {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductReviewsSortingImplCopyWith<_$ProductReviewsSortingImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

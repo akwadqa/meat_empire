@@ -11,16 +11,19 @@ String _$productOptionsControllerHash() =>
 
 /// See also [ProductOptionsController].
 @ProviderFor(ProductOptionsController)
-final productOptionsControllerProvider = AutoDisposeNotifierProvider<
-    ProductOptionsController, List<SelectedOption>>.internal(
-  ProductOptionsController.new,
-  name: r'productOptionsControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$productOptionsControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final productOptionsControllerProvider =
+    AutoDisposeNotifierProvider<
+      ProductOptionsController,
+      List<SelectedOption>
+    >.internal(
+      ProductOptionsController.new,
+      name: r'productOptionsControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$productOptionsControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ProductOptionsController = AutoDisposeNotifier<List<SelectedOption>>;
 // ignore_for_file: type=lint

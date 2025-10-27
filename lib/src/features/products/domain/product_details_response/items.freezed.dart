@@ -12,7 +12,8 @@ part of 'items.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Items _$ItemsFromJson(Map<String, dynamic> json) {
   return _Items.fromJson(json);
@@ -54,20 +55,20 @@ class _$ItemsCopyWithImpl<$Res, $Val extends Items>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? withImages = null,
-    Object? onlyBuyers = null,
-  }) {
-    return _then(_value.copyWith(
-      withImages: null == withImages
-          ? _value.withImages
-          : withImages // ignore: cast_nullable_to_non_nullable
-              as WithImages,
-      onlyBuyers: null == onlyBuyers
-          ? _value.onlyBuyers
-          : onlyBuyers // ignore: cast_nullable_to_non_nullable
-              as OnlyBuyers,
-    ) as $Val);
+  $Res call({Object? withImages = null, Object? onlyBuyers = null}) {
+    return _then(
+      _value.copyWith(
+            withImages: null == withImages
+                ? _value.withImages
+                : withImages // ignore: cast_nullable_to_non_nullable
+                      as WithImages,
+            onlyBuyers: null == onlyBuyers
+                ? _value.onlyBuyers
+                : onlyBuyers // ignore: cast_nullable_to_non_nullable
+                      as OnlyBuyers,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Items
@@ -94,8 +95,9 @@ class _$ItemsCopyWithImpl<$Res, $Val extends Items>
 /// @nodoc
 abstract class _$$ItemsImplCopyWith<$Res> implements $ItemsCopyWith<$Res> {
   factory _$$ItemsImplCopyWith(
-          _$ItemsImpl value, $Res Function(_$ItemsImpl) then) =
-      __$$ItemsImplCopyWithImpl<$Res>;
+    _$ItemsImpl value,
+    $Res Function(_$ItemsImpl) then,
+  ) = __$$ItemsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({WithImages withImages, OnlyBuyers onlyBuyers});
@@ -111,27 +113,27 @@ class __$$ItemsImplCopyWithImpl<$Res>
     extends _$ItemsCopyWithImpl<$Res, _$ItemsImpl>
     implements _$$ItemsImplCopyWith<$Res> {
   __$$ItemsImplCopyWithImpl(
-      _$ItemsImpl _value, $Res Function(_$ItemsImpl) _then)
-      : super(_value, _then);
+    _$ItemsImpl _value,
+    $Res Function(_$ItemsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Items
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? withImages = null,
-    Object? onlyBuyers = null,
-  }) {
-    return _then(_$ItemsImpl(
-      withImages: null == withImages
-          ? _value.withImages
-          : withImages // ignore: cast_nullable_to_non_nullable
-              as WithImages,
-      onlyBuyers: null == onlyBuyers
-          ? _value.onlyBuyers
-          : onlyBuyers // ignore: cast_nullable_to_non_nullable
-              as OnlyBuyers,
-    ));
+  $Res call({Object? withImages = null, Object? onlyBuyers = null}) {
+    return _then(
+      _$ItemsImpl(
+        withImages: null == withImages
+            ? _value.withImages
+            : withImages // ignore: cast_nullable_to_non_nullable
+                  as WithImages,
+        onlyBuyers: null == onlyBuyers
+            ? _value.onlyBuyers
+            : onlyBuyers // ignore: cast_nullable_to_non_nullable
+                  as OnlyBuyers,
+      ),
+    );
   }
 }
 
@@ -178,9 +180,10 @@ class _$ItemsImpl implements _Items {
 }
 
 abstract class _Items implements Items {
-  factory _Items(
-      {required final WithImages withImages,
-      required final OnlyBuyers onlyBuyers}) = _$ItemsImpl;
+  factory _Items({
+    required final WithImages withImages,
+    required final OnlyBuyers onlyBuyers,
+  }) = _$ItemsImpl;
 
   factory _Items.fromJson(Map<String, dynamic> json) = _$ItemsImpl.fromJson;
 

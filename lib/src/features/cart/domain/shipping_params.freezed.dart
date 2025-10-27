@@ -12,7 +12,8 @@ part of 'shipping_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ShippingParams _$ShippingParamsFromJson(Map<String, dynamic> json) {
   return _ShippingParams.fromJson(json);
@@ -36,15 +37,17 @@ mixin _$ShippingParams {
 /// @nodoc
 abstract class $ShippingParamsCopyWith<$Res> {
   factory $ShippingParamsCopyWith(
-          ShippingParams value, $Res Function(ShippingParams) then) =
-      _$ShippingParamsCopyWithImpl<$Res, ShippingParams>;
+    ShippingParams value,
+    $Res Function(ShippingParams) then,
+  ) = _$ShippingParamsCopyWithImpl<$Res, ShippingParams>;
   @useResult
-  $Res call(
-      {int? minItemsInBox,
-      int? maxItemsInBox,
-      int? boxLength,
-      int? boxWidth,
-      int? boxHeight});
+  $Res call({
+    int? minItemsInBox,
+    int? maxItemsInBox,
+    int? boxLength,
+    int? boxWidth,
+    int? boxHeight,
+  });
 }
 
 /// @nodoc
@@ -68,45 +71,50 @@ class _$ShippingParamsCopyWithImpl<$Res, $Val extends ShippingParams>
     Object? boxWidth = freezed,
     Object? boxHeight = freezed,
   }) {
-    return _then(_value.copyWith(
-      minItemsInBox: freezed == minItemsInBox
-          ? _value.minItemsInBox
-          : minItemsInBox // ignore: cast_nullable_to_non_nullable
-              as int?,
-      maxItemsInBox: freezed == maxItemsInBox
-          ? _value.maxItemsInBox
-          : maxItemsInBox // ignore: cast_nullable_to_non_nullable
-              as int?,
-      boxLength: freezed == boxLength
-          ? _value.boxLength
-          : boxLength // ignore: cast_nullable_to_non_nullable
-              as int?,
-      boxWidth: freezed == boxWidth
-          ? _value.boxWidth
-          : boxWidth // ignore: cast_nullable_to_non_nullable
-              as int?,
-      boxHeight: freezed == boxHeight
-          ? _value.boxHeight
-          : boxHeight // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            minItemsInBox: freezed == minItemsInBox
+                ? _value.minItemsInBox
+                : minItemsInBox // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            maxItemsInBox: freezed == maxItemsInBox
+                ? _value.maxItemsInBox
+                : maxItemsInBox // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            boxLength: freezed == boxLength
+                ? _value.boxLength
+                : boxLength // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            boxWidth: freezed == boxWidth
+                ? _value.boxWidth
+                : boxWidth // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            boxHeight: freezed == boxHeight
+                ? _value.boxHeight
+                : boxHeight // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ShippingParamsImplCopyWith<$Res>
     implements $ShippingParamsCopyWith<$Res> {
-  factory _$$ShippingParamsImplCopyWith(_$ShippingParamsImpl value,
-          $Res Function(_$ShippingParamsImpl) then) =
-      __$$ShippingParamsImplCopyWithImpl<$Res>;
+  factory _$$ShippingParamsImplCopyWith(
+    _$ShippingParamsImpl value,
+    $Res Function(_$ShippingParamsImpl) then,
+  ) = __$$ShippingParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? minItemsInBox,
-      int? maxItemsInBox,
-      int? boxLength,
-      int? boxWidth,
-      int? boxHeight});
+  $Res call({
+    int? minItemsInBox,
+    int? maxItemsInBox,
+    int? boxLength,
+    int? boxWidth,
+    int? boxHeight,
+  });
 }
 
 /// @nodoc
@@ -114,8 +122,9 @@ class __$$ShippingParamsImplCopyWithImpl<$Res>
     extends _$ShippingParamsCopyWithImpl<$Res, _$ShippingParamsImpl>
     implements _$$ShippingParamsImplCopyWith<$Res> {
   __$$ShippingParamsImplCopyWithImpl(
-      _$ShippingParamsImpl _value, $Res Function(_$ShippingParamsImpl) _then)
-      : super(_value, _then);
+    _$ShippingParamsImpl _value,
+    $Res Function(_$ShippingParamsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ShippingParams
   /// with the given fields replaced by the non-null parameter values.
@@ -128,40 +137,43 @@ class __$$ShippingParamsImplCopyWithImpl<$Res>
     Object? boxWidth = freezed,
     Object? boxHeight = freezed,
   }) {
-    return _then(_$ShippingParamsImpl(
-      minItemsInBox: freezed == minItemsInBox
-          ? _value.minItemsInBox
-          : minItemsInBox // ignore: cast_nullable_to_non_nullable
-              as int?,
-      maxItemsInBox: freezed == maxItemsInBox
-          ? _value.maxItemsInBox
-          : maxItemsInBox // ignore: cast_nullable_to_non_nullable
-              as int?,
-      boxLength: freezed == boxLength
-          ? _value.boxLength
-          : boxLength // ignore: cast_nullable_to_non_nullable
-              as int?,
-      boxWidth: freezed == boxWidth
-          ? _value.boxWidth
-          : boxWidth // ignore: cast_nullable_to_non_nullable
-              as int?,
-      boxHeight: freezed == boxHeight
-          ? _value.boxHeight
-          : boxHeight // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$ShippingParamsImpl(
+        minItemsInBox: freezed == minItemsInBox
+            ? _value.minItemsInBox
+            : minItemsInBox // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        maxItemsInBox: freezed == maxItemsInBox
+            ? _value.maxItemsInBox
+            : maxItemsInBox // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        boxLength: freezed == boxLength
+            ? _value.boxLength
+            : boxLength // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        boxWidth: freezed == boxWidth
+            ? _value.boxWidth
+            : boxWidth // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        boxHeight: freezed == boxHeight
+            ? _value.boxHeight
+            : boxHeight // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ShippingParamsImpl implements _ShippingParams {
-  _$ShippingParamsImpl(
-      {this.minItemsInBox,
-      this.maxItemsInBox,
-      this.boxLength,
-      this.boxWidth,
-      this.boxHeight});
+  _$ShippingParamsImpl({
+    this.minItemsInBox,
+    this.maxItemsInBox,
+    this.boxLength,
+    this.boxWidth,
+    this.boxHeight,
+  });
 
   factory _$ShippingParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShippingParamsImplFromJson(json);
@@ -201,8 +213,14 @@ class _$ShippingParamsImpl implements _ShippingParams {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, minItemsInBox, maxItemsInBox,
-      boxLength, boxWidth, boxHeight);
+  int get hashCode => Object.hash(
+    runtimeType,
+    minItemsInBox,
+    maxItemsInBox,
+    boxLength,
+    boxWidth,
+    boxHeight,
+  );
 
   /// Create a copy of ShippingParams
   /// with the given fields replaced by the non-null parameter values.
@@ -211,16 +229,19 @@ class _$ShippingParamsImpl implements _ShippingParams {
   @pragma('vm:prefer-inline')
   _$$ShippingParamsImplCopyWith<_$ShippingParamsImpl> get copyWith =>
       __$$ShippingParamsImplCopyWithImpl<_$ShippingParamsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ShippingParams implements ShippingParams {
-  factory _ShippingParams(
-      {final int? minItemsInBox,
-      final int? maxItemsInBox,
-      final int? boxLength,
-      final int? boxWidth,
-      final int? boxHeight}) = _$ShippingParamsImpl;
+  factory _ShippingParams({
+    final int? minItemsInBox,
+    final int? maxItemsInBox,
+    final int? boxLength,
+    final int? boxWidth,
+    final int? boxHeight,
+  }) = _$ShippingParamsImpl;
 
   factory _ShippingParams.fromJson(Map<String, dynamic> json) =
       _$ShippingParamsImpl.fromJson;

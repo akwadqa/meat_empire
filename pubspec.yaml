@@ -1,7 +1,7 @@
 name: meat_empire
 description: "Fresh and tasty meat"
 publish_to: 'none'
-version: 1.0.0+1
+version: 0.1.0
 
 environment:
   sdk: ^3.8.0
@@ -35,6 +35,8 @@ dependencies:
   # mockito: ^5.4.5
   
 
+# ---------------------
+
 
 dev_dependencies:
   flutter_test:
@@ -51,18 +53,14 @@ dev_dependencies:
   device_preview: ^1.2.0
   flutter_native_splash: ^2.4.4
   flutter_launcher_icons: ^0.14.4
-
-# إعدادات أيقونة التطبيق ↓
-flutter_launcher_icons:  # <-- ضع هذا القسم هنا (على نفس مستوى dependencies)
+  
+    # إعدادات أيقونة التطبيق ↓
+flutter_launcher_icons: 
   android: true
   ios: true
-  image_path: "assets/images/app_logo.png" 
-  # adaptive_icon_background: "#E5BB3B"
-
- 
-# ---------------------
-
-
+  image_path: "assets/splash/logo.png" 
+  adaptive_icon_background: "#FFFFFF"
+  remove_alpha_ios: true 
 
 flutter:
   uses-material-design: true

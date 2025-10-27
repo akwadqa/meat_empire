@@ -12,7 +12,8 @@ part of 'orders_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) {
   return _OrdersResponse.fromJson(json);
@@ -36,14 +37,16 @@ mixin _$OrdersResponse {
 /// @nodoc
 abstract class $OrdersResponseCopyWith<$Res> {
   factory $OrdersResponseCopyWith(
-          OrdersResponse value, $Res Function(OrdersResponse) then) =
-      _$OrdersResponseCopyWithImpl<$Res, OrdersResponse>;
+    OrdersResponse value,
+    $Res Function(OrdersResponse) then,
+  ) = _$OrdersResponseCopyWithImpl<$Res, OrdersResponse>;
   @useResult
-  $Res call(
-      {List<OrdersEntity> orders,
-      @JsonKey(name: "order_statuses") List<OrderStatuses> orderStatuses,
-      String message,
-      bool success});
+  $Res call({
+    List<OrdersEntity> orders,
+    @JsonKey(name: "order_statuses") List<OrderStatuses> orderStatuses,
+    String message,
+    bool success,
+  });
 }
 
 /// @nodoc
@@ -66,40 +69,45 @@ class _$OrdersResponseCopyWithImpl<$Res, $Val extends OrdersResponse>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_value.copyWith(
-      orders: null == orders
-          ? _value.orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<OrdersEntity>,
-      orderStatuses: null == orderStatuses
-          ? _value.orderStatuses
-          : orderStatuses // ignore: cast_nullable_to_non_nullable
-              as List<OrderStatuses>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            orders: null == orders
+                ? _value.orders
+                : orders // ignore: cast_nullable_to_non_nullable
+                      as List<OrdersEntity>,
+            orderStatuses: null == orderStatuses
+                ? _value.orderStatuses
+                : orderStatuses // ignore: cast_nullable_to_non_nullable
+                      as List<OrderStatuses>,
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            success: null == success
+                ? _value.success
+                : success // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$OrdersResponseImplCopyWith<$Res>
     implements $OrdersResponseCopyWith<$Res> {
-  factory _$$OrdersResponseImplCopyWith(_$OrdersResponseImpl value,
-          $Res Function(_$OrdersResponseImpl) then) =
-      __$$OrdersResponseImplCopyWithImpl<$Res>;
+  factory _$$OrdersResponseImplCopyWith(
+    _$OrdersResponseImpl value,
+    $Res Function(_$OrdersResponseImpl) then,
+  ) = __$$OrdersResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<OrdersEntity> orders,
-      @JsonKey(name: "order_statuses") List<OrderStatuses> orderStatuses,
-      String message,
-      bool success});
+  $Res call({
+    List<OrdersEntity> orders,
+    @JsonKey(name: "order_statuses") List<OrderStatuses> orderStatuses,
+    String message,
+    bool success,
+  });
 }
 
 /// @nodoc
@@ -107,8 +115,9 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
     extends _$OrdersResponseCopyWithImpl<$Res, _$OrdersResponseImpl>
     implements _$$OrdersResponseImplCopyWith<$Res> {
   __$$OrdersResponseImplCopyWithImpl(
-      _$OrdersResponseImpl _value, $Res Function(_$OrdersResponseImpl) _then)
-      : super(_value, _then);
+    _$OrdersResponseImpl _value,
+    $Res Function(_$OrdersResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OrdersResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -120,38 +129,40 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_$OrdersResponseImpl(
-      orders: null == orders
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<OrdersEntity>,
-      orderStatuses: null == orderStatuses
-          ? _value._orderStatuses
-          : orderStatuses // ignore: cast_nullable_to_non_nullable
-              as List<OrderStatuses>,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$OrdersResponseImpl(
+        orders: null == orders
+            ? _value._orders
+            : orders // ignore: cast_nullable_to_non_nullable
+                  as List<OrdersEntity>,
+        orderStatuses: null == orderStatuses
+            ? _value._orderStatuses
+            : orderStatuses // ignore: cast_nullable_to_non_nullable
+                  as List<OrderStatuses>,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        success: null == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$OrdersResponseImpl implements _OrdersResponse {
-  const _$OrdersResponseImpl(
-      {required final List<OrdersEntity> orders,
-      @JsonKey(name: "order_statuses")
-      required final List<OrderStatuses> orderStatuses,
-      required this.message,
-      required this.success})
-      : _orders = orders,
-        _orderStatuses = orderStatuses;
+  const _$OrdersResponseImpl({
+    required final List<OrdersEntity> orders,
+    @JsonKey(name: "order_statuses")
+    required final List<OrderStatuses> orderStatuses,
+    required this.message,
+    required this.success,
+  }) : _orders = orders,
+       _orderStatuses = orderStatuses;
 
   factory _$OrdersResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrdersResponseImplFromJson(json);
@@ -189,8 +200,10 @@ class _$OrdersResponseImpl implements _OrdersResponse {
         (other.runtimeType == runtimeType &&
             other is _$OrdersResponseImpl &&
             const DeepCollectionEquality().equals(other._orders, _orders) &&
-            const DeepCollectionEquality()
-                .equals(other._orderStatuses, _orderStatuses) &&
+            const DeepCollectionEquality().equals(
+              other._orderStatuses,
+              _orderStatuses,
+            ) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.success, success) || other.success == success));
   }
@@ -198,11 +211,12 @@ class _$OrdersResponseImpl implements _OrdersResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_orders),
-      const DeepCollectionEquality().hash(_orderStatuses),
-      message,
-      success);
+    runtimeType,
+    const DeepCollectionEquality().hash(_orders),
+    const DeepCollectionEquality().hash(_orderStatuses),
+    message,
+    success,
+  );
 
   /// Create a copy of OrdersResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -211,16 +225,19 @@ class _$OrdersResponseImpl implements _OrdersResponse {
   @pragma('vm:prefer-inline')
   _$$OrdersResponseImplCopyWith<_$OrdersResponseImpl> get copyWith =>
       __$$OrdersResponseImplCopyWithImpl<_$OrdersResponseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _OrdersResponse implements OrdersResponse {
-  const factory _OrdersResponse(
-      {required final List<OrdersEntity> orders,
-      @JsonKey(name: "order_statuses")
-      required final List<OrderStatuses> orderStatuses,
-      required final String message,
-      required final bool success}) = _$OrdersResponseImpl;
+  const factory _OrdersResponse({
+    required final List<OrdersEntity> orders,
+    @JsonKey(name: "order_statuses")
+    required final List<OrderStatuses> orderStatuses,
+    required final String message,
+    required final bool success,
+  }) = _$OrdersResponseImpl;
 
   factory _OrdersResponse.fromJson(Map<String, dynamic> json) =
       _$OrdersResponseImpl.fromJson;

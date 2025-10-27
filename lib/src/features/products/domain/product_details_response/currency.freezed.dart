@@ -12,7 +12,8 @@ part of 'currency.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Currency _$CurrencyFromJson(Map<String, dynamic> json) {
   return _Currency.fromJson(json);
@@ -41,15 +42,16 @@ abstract class $CurrencyCopyWith<$Res> {
   factory $CurrencyCopyWith(Currency value, $Res Function(Currency) then) =
       _$CurrencyCopyWithImpl<$Res, Currency>;
   @useResult
-  $Res call(
-      {String currencyCode,
-      String after,
-      String symbol,
-      String coefficient,
-      String decimalsSeparator,
-      String thousandsSeparator,
-      String decimals,
-      String description});
+  $Res call({
+    String currencyCode,
+    String after,
+    String symbol,
+    String coefficient,
+    String decimalsSeparator,
+    String thousandsSeparator,
+    String decimals,
+    String description,
+  });
 }
 
 /// @nodoc
@@ -76,40 +78,43 @@ class _$CurrencyCopyWithImpl<$Res, $Val extends Currency>
     Object? decimals = null,
     Object? description = null,
   }) {
-    return _then(_value.copyWith(
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      after: null == after
-          ? _value.after
-          : after // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      coefficient: null == coefficient
-          ? _value.coefficient
-          : coefficient // ignore: cast_nullable_to_non_nullable
-              as String,
-      decimalsSeparator: null == decimalsSeparator
-          ? _value.decimalsSeparator
-          : decimalsSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
-      thousandsSeparator: null == thousandsSeparator
-          ? _value.thousandsSeparator
-          : thousandsSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
-      decimals: null == decimals
-          ? _value.decimals
-          : decimals // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            currencyCode: null == currencyCode
+                ? _value.currencyCode
+                : currencyCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            after: null == after
+                ? _value.after
+                : after // ignore: cast_nullable_to_non_nullable
+                      as String,
+            symbol: null == symbol
+                ? _value.symbol
+                : symbol // ignore: cast_nullable_to_non_nullable
+                      as String,
+            coefficient: null == coefficient
+                ? _value.coefficient
+                : coefficient // ignore: cast_nullable_to_non_nullable
+                      as String,
+            decimalsSeparator: null == decimalsSeparator
+                ? _value.decimalsSeparator
+                : decimalsSeparator // ignore: cast_nullable_to_non_nullable
+                      as String,
+            thousandsSeparator: null == thousandsSeparator
+                ? _value.thousandsSeparator
+                : thousandsSeparator // ignore: cast_nullable_to_non_nullable
+                      as String,
+            decimals: null == decimals
+                ? _value.decimals
+                : decimals // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -117,19 +122,21 @@ class _$CurrencyCopyWithImpl<$Res, $Val extends Currency>
 abstract class _$$CurrencyImplCopyWith<$Res>
     implements $CurrencyCopyWith<$Res> {
   factory _$$CurrencyImplCopyWith(
-          _$CurrencyImpl value, $Res Function(_$CurrencyImpl) then) =
-      __$$CurrencyImplCopyWithImpl<$Res>;
+    _$CurrencyImpl value,
+    $Res Function(_$CurrencyImpl) then,
+  ) = __$$CurrencyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String currencyCode,
-      String after,
-      String symbol,
-      String coefficient,
-      String decimalsSeparator,
-      String thousandsSeparator,
-      String decimals,
-      String description});
+  $Res call({
+    String currencyCode,
+    String after,
+    String symbol,
+    String coefficient,
+    String decimalsSeparator,
+    String thousandsSeparator,
+    String decimals,
+    String description,
+  });
 }
 
 /// @nodoc
@@ -137,8 +144,9 @@ class __$$CurrencyImplCopyWithImpl<$Res>
     extends _$CurrencyCopyWithImpl<$Res, _$CurrencyImpl>
     implements _$$CurrencyImplCopyWith<$Res> {
   __$$CurrencyImplCopyWithImpl(
-      _$CurrencyImpl _value, $Res Function(_$CurrencyImpl) _then)
-      : super(_value, _then);
+    _$CurrencyImpl _value,
+    $Res Function(_$CurrencyImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Currency
   /// with the given fields replaced by the non-null parameter values.
@@ -154,55 +162,58 @@ class __$$CurrencyImplCopyWithImpl<$Res>
     Object? decimals = null,
     Object? description = null,
   }) {
-    return _then(_$CurrencyImpl(
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      after: null == after
-          ? _value.after
-          : after // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbol: null == symbol
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      coefficient: null == coefficient
-          ? _value.coefficient
-          : coefficient // ignore: cast_nullable_to_non_nullable
-              as String,
-      decimalsSeparator: null == decimalsSeparator
-          ? _value.decimalsSeparator
-          : decimalsSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
-      thousandsSeparator: null == thousandsSeparator
-          ? _value.thousandsSeparator
-          : thousandsSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
-      decimals: null == decimals
-          ? _value.decimals
-          : decimals // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$CurrencyImpl(
+        currencyCode: null == currencyCode
+            ? _value.currencyCode
+            : currencyCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        after: null == after
+            ? _value.after
+            : after // ignore: cast_nullable_to_non_nullable
+                  as String,
+        symbol: null == symbol
+            ? _value.symbol
+            : symbol // ignore: cast_nullable_to_non_nullable
+                  as String,
+        coefficient: null == coefficient
+            ? _value.coefficient
+            : coefficient // ignore: cast_nullable_to_non_nullable
+                  as String,
+        decimalsSeparator: null == decimalsSeparator
+            ? _value.decimalsSeparator
+            : decimalsSeparator // ignore: cast_nullable_to_non_nullable
+                  as String,
+        thousandsSeparator: null == thousandsSeparator
+            ? _value.thousandsSeparator
+            : thousandsSeparator // ignore: cast_nullable_to_non_nullable
+                  as String,
+        decimals: null == decimals
+            ? _value.decimals
+            : decimals // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$CurrencyImpl implements _Currency {
-  _$CurrencyImpl(
-      {required this.currencyCode,
-      required this.after,
-      required this.symbol,
-      required this.coefficient,
-      required this.decimalsSeparator,
-      required this.thousandsSeparator,
-      required this.decimals,
-      required this.description});
+  _$CurrencyImpl({
+    required this.currencyCode,
+    required this.after,
+    required this.symbol,
+    required this.coefficient,
+    required this.decimalsSeparator,
+    required this.thousandsSeparator,
+    required this.decimals,
+    required this.description,
+  });
 
   factory _$CurrencyImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrencyImplFromJson(json);
@@ -253,15 +264,16 @@ class _$CurrencyImpl implements _Currency {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      currencyCode,
-      after,
-      symbol,
-      coefficient,
-      decimalsSeparator,
-      thousandsSeparator,
-      decimals,
-      description);
+    runtimeType,
+    currencyCode,
+    after,
+    symbol,
+    coefficient,
+    decimalsSeparator,
+    thousandsSeparator,
+    decimals,
+    description,
+  );
 
   /// Create a copy of Currency
   /// with the given fields replaced by the non-null parameter values.
@@ -273,15 +285,16 @@ class _$CurrencyImpl implements _Currency {
 }
 
 abstract class _Currency implements Currency {
-  factory _Currency(
-      {required final String currencyCode,
-      required final String after,
-      required final String symbol,
-      required final String coefficient,
-      required final String decimalsSeparator,
-      required final String thousandsSeparator,
-      required final String decimals,
-      required final String description}) = _$CurrencyImpl;
+  factory _Currency({
+    required final String currencyCode,
+    required final String after,
+    required final String symbol,
+    required final String coefficient,
+    required final String decimalsSeparator,
+    required final String thousandsSeparator,
+    required final String decimals,
+    required final String description,
+  }) = _$CurrencyImpl;
 
   factory _Currency.fromJson(Map<String, dynamic> json) =
       _$CurrencyImpl.fromJson;

@@ -7,9 +7,9 @@ part of 'product_reviews_sorting.dart';
 // **************************************************************************
 
 _$ProductReviewsSortingImpl _$$ProductReviewsSortingImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ProductReviewsSortingImpl(
-      name: json['name'] as String,
-      sortBy: json['sort_by'] as String,
-      sortOrder: json['sort_order'] as String,
-    );
+  Map<String, dynamic> json,
+) => _$ProductReviewsSortingImpl(
+  name: json['name'] as String,
+  sortBy: json['sort_by'] as String,
+  sortOrder: json['sort_order'] as String,
+);

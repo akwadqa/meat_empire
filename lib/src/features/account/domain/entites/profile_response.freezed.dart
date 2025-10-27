@@ -12,7 +12,8 @@ part of 'profile_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ProfileResponse {
@@ -31,13 +32,15 @@ mixin _$ProfileResponse {
 /// @nodoc
 abstract class $ProfileResponseCopyWith<$Res> {
   factory $ProfileResponseCopyWith(
-          ProfileResponse value, $Res Function(ProfileResponse) then) =
-      _$ProfileResponseCopyWithImpl<$Res, ProfileResponse>;
+    ProfileResponse value,
+    $Res Function(ProfileResponse) then,
+  ) = _$ProfileResponseCopyWithImpl<$Res, ProfileResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(ignore: true) UserProfile? userProfile,
-      String message,
-      bool success});
+  $Res call({
+    @JsonKey(ignore: true) UserProfile? userProfile,
+    String message,
+    bool success,
+  });
 
   $UserProfileCopyWith<$Res>? get userProfile;
 }
@@ -61,20 +64,23 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_value.copyWith(
-      userProfile: freezed == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile?,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            userProfile: freezed == userProfile
+                ? _value.userProfile
+                : userProfile // ignore: cast_nullable_to_non_nullable
+                      as UserProfile?,
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            success: null == success
+                ? _value.success
+                : success // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ProfileResponse
@@ -95,15 +101,17 @@ class _$ProfileResponseCopyWithImpl<$Res, $Val extends ProfileResponse>
 /// @nodoc
 abstract class _$$ProfileResponseImplCopyWith<$Res>
     implements $ProfileResponseCopyWith<$Res> {
-  factory _$$ProfileResponseImplCopyWith(_$ProfileResponseImpl value,
-          $Res Function(_$ProfileResponseImpl) then) =
-      __$$ProfileResponseImplCopyWithImpl<$Res>;
+  factory _$$ProfileResponseImplCopyWith(
+    _$ProfileResponseImpl value,
+    $Res Function(_$ProfileResponseImpl) then,
+  ) = __$$ProfileResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(ignore: true) UserProfile? userProfile,
-      String message,
-      bool success});
+  $Res call({
+    @JsonKey(ignore: true) UserProfile? userProfile,
+    String message,
+    bool success,
+  });
 
   @override
   $UserProfileCopyWith<$Res>? get userProfile;
@@ -114,8 +122,9 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
     extends _$ProfileResponseCopyWithImpl<$Res, _$ProfileResponseImpl>
     implements _$$ProfileResponseImplCopyWith<$Res> {
   __$$ProfileResponseImplCopyWithImpl(
-      _$ProfileResponseImpl _value, $Res Function(_$ProfileResponseImpl) _then)
-      : super(_value, _then);
+    _$ProfileResponseImpl _value,
+    $Res Function(_$ProfileResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProfileResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -126,30 +135,33 @@ class __$$ProfileResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? success = null,
   }) {
-    return _then(_$ProfileResponseImpl(
-      userProfile: freezed == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile?,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ProfileResponseImpl(
+        userProfile: freezed == userProfile
+            ? _value.userProfile
+            : userProfile // ignore: cast_nullable_to_non_nullable
+                  as UserProfile?,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        success: null == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ProfileResponseImpl implements _ProfileResponse {
-  const _$ProfileResponseImpl(
-      {@JsonKey(ignore: true) required this.userProfile,
-      required this.message,
-      required this.success});
+  const _$ProfileResponseImpl({
+    @JsonKey(ignore: true) required this.userProfile,
+    required this.message,
+    required this.success,
+  });
 
   @override
   @JsonKey(ignore: true)
@@ -185,14 +197,17 @@ class _$ProfileResponseImpl implements _ProfileResponse {
   @pragma('vm:prefer-inline')
   _$$ProfileResponseImplCopyWith<_$ProfileResponseImpl> get copyWith =>
       __$$ProfileResponseImplCopyWithImpl<_$ProfileResponseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ProfileResponse implements ProfileResponse {
-  const factory _ProfileResponse(
-      {@JsonKey(ignore: true) required final UserProfile? userProfile,
-      required final String message,
-      required final bool success}) = _$ProfileResponseImpl;
+  const factory _ProfileResponse({
+    @JsonKey(ignore: true) required final UserProfile? userProfile,
+    required final String message,
+    required final bool success,
+  }) = _$ProfileResponseImpl;
 
   @override
   @JsonKey(ignore: true)

@@ -33,9 +33,7 @@ abstract class _$SearchController
     extends BuildlessAutoDisposeAsyncNotifier<SearchResponse> {
   late final String? categoryId;
 
-  FutureOr<SearchResponse> build([
-    String? categoryId,
-  ]);
+  FutureOr<SearchResponse> build([String? categoryId]);
 }
 
 /// See also [SearchController].
@@ -48,21 +46,15 @@ class SearchControllerFamily extends Family<AsyncValue<SearchResponse>> {
   const SearchControllerFamily();
 
   /// See also [SearchController].
-  SearchControllerProvider call([
-    String? categoryId,
-  ]) {
-    return SearchControllerProvider(
-      categoryId,
-    );
+  SearchControllerProvider call([String? categoryId]) {
+    return SearchControllerProvider(categoryId);
   }
 
   @override
   SearchControllerProvider getProviderOverride(
     covariant SearchControllerProvider provider,
   ) {
-    return call(
-      provider.categoryId,
-    );
+    return call(provider.categoryId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -81,24 +73,23 @@ class SearchControllerFamily extends Family<AsyncValue<SearchResponse>> {
 }
 
 /// See also [SearchController].
-class SearchControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    SearchController, SearchResponse> {
+class SearchControllerProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<SearchController, SearchResponse> {
   /// See also [SearchController].
-  SearchControllerProvider([
-    String? categoryId,
-  ]) : this._internal(
-          () => SearchController()..categoryId = categoryId,
-          from: searchControllerProvider,
-          name: r'searchControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchControllerHash,
-          dependencies: SearchControllerFamily._dependencies,
-          allTransitiveDependencies:
-              SearchControllerFamily._allTransitiveDependencies,
-          categoryId: categoryId,
-        );
+  SearchControllerProvider([String? categoryId])
+    : this._internal(
+        () => SearchController()..categoryId = categoryId,
+        from: searchControllerProvider,
+        name: r'searchControllerProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$searchControllerHash,
+        dependencies: SearchControllerFamily._dependencies,
+        allTransitiveDependencies:
+            SearchControllerFamily._allTransitiveDependencies,
+        categoryId: categoryId,
+      );
 
   SearchControllerProvider._internal(
     super._createNotifier, {
@@ -116,9 +107,7 @@ class SearchControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<SearchResponse> runNotifierBuild(
     covariant SearchController notifier,
   ) {
-    return notifier.build(
-      categoryId,
-    );
+    return notifier.build(categoryId);
   }
 
   @override
@@ -139,7 +128,7 @@ class SearchControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<SearchController, SearchResponse>
-      createElement() {
+  createElement() {
     return _SearchControllerProviderElement(this);
   }
 
@@ -166,12 +155,17 @@ mixin SearchControllerRef
 }
 
 class _SearchControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<SearchController,
-        SearchResponse> with SearchControllerRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          SearchController,
+          SearchResponse
+        >
+    with SearchControllerRef {
   _SearchControllerProviderElement(super.provider);
 
   @override
   String? get categoryId => (origin as SearchControllerProvider).categoryId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

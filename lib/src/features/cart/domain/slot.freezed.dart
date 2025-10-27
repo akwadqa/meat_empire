@@ -12,7 +12,8 @@ part of 'slot.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Slot _$SlotFromJson(Map<String, dynamic> json) {
   return _Slot.fromJson(json);
@@ -37,12 +38,13 @@ abstract class $SlotCopyWith<$Res> {
   factory $SlotCopyWith(Slot value, $Res Function(Slot) then) =
       _$SlotCopyWithImpl<$Res, Slot>;
   @useResult
-  $Res call(
-      {String? slot,
-      String? formatSlot,
-      String? from,
-      String? to,
-      String? note});
+  $Res call({
+    String? slot,
+    String? formatSlot,
+    String? from,
+    String? to,
+    String? note,
+  });
 }
 
 /// @nodoc
@@ -66,44 +68,49 @@ class _$SlotCopyWithImpl<$Res, $Val extends Slot>
     Object? to = freezed,
     Object? note = freezed,
   }) {
-    return _then(_value.copyWith(
-      slot: freezed == slot
-          ? _value.slot
-          : slot // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatSlot: freezed == formatSlot
-          ? _value.formatSlot
-          : formatSlot // ignore: cast_nullable_to_non_nullable
-              as String?,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as String?,
-      to: freezed == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as String?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            slot: freezed == slot
+                ? _value.slot
+                : slot // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            formatSlot: freezed == formatSlot
+                ? _value.formatSlot
+                : formatSlot // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            from: freezed == from
+                ? _value.from
+                : from // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            to: freezed == to
+                ? _value.to
+                : to // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            note: freezed == note
+                ? _value.note
+                : note // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SlotImplCopyWith<$Res> implements $SlotCopyWith<$Res> {
   factory _$$SlotImplCopyWith(
-          _$SlotImpl value, $Res Function(_$SlotImpl) then) =
-      __$$SlotImplCopyWithImpl<$Res>;
+    _$SlotImpl value,
+    $Res Function(_$SlotImpl) then,
+  ) = __$$SlotImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? slot,
-      String? formatSlot,
-      String? from,
-      String? to,
-      String? note});
+  $Res call({
+    String? slot,
+    String? formatSlot,
+    String? from,
+    String? to,
+    String? note,
+  });
 }
 
 /// @nodoc
@@ -111,7 +118,7 @@ class __$$SlotImplCopyWithImpl<$Res>
     extends _$SlotCopyWithImpl<$Res, _$SlotImpl>
     implements _$$SlotImplCopyWith<$Res> {
   __$$SlotImplCopyWithImpl(_$SlotImpl _value, $Res Function(_$SlotImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Slot
   /// with the given fields replaced by the non-null parameter values.
@@ -124,28 +131,30 @@ class __$$SlotImplCopyWithImpl<$Res>
     Object? to = freezed,
     Object? note = freezed,
   }) {
-    return _then(_$SlotImpl(
-      slot: freezed == slot
-          ? _value.slot
-          : slot // ignore: cast_nullable_to_non_nullable
-              as String?,
-      formatSlot: freezed == formatSlot
-          ? _value.formatSlot
-          : formatSlot // ignore: cast_nullable_to_non_nullable
-              as String?,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as String?,
-      to: freezed == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as String?,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SlotImpl(
+        slot: freezed == slot
+            ? _value.slot
+            : slot // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        formatSlot: freezed == formatSlot
+            ? _value.formatSlot
+            : formatSlot // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        from: freezed == from
+            ? _value.from
+            : from // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        to: freezed == to
+            ? _value.to
+            : to // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        note: freezed == note
+            ? _value.note
+            : note // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -201,12 +210,13 @@ class _$SlotImpl implements _Slot {
 }
 
 abstract class _Slot implements Slot {
-  factory _Slot(
-      {final String? slot,
-      final String? formatSlot,
-      final String? from,
-      final String? to,
-      final String? note}) = _$SlotImpl;
+  factory _Slot({
+    final String? slot,
+    final String? formatSlot,
+    final String? from,
+    final String? to,
+    final String? note,
+  }) = _$SlotImpl;
 
   factory _Slot.fromJson(Map<String, dynamic> json) = _$SlotImpl.fromJson;
 

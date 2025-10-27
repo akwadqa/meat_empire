@@ -101,7 +101,8 @@ _$ProductDetailsImpl _$$ProductDetailsImplFromJson(Map<String, dynamic> json) =>
       listQtyCountRaw: json['list_qty_count_raw'],
       detailsLayoutRaw: json['details_layout_raw'] as String,
       detailedParams: DetailedParams.fromJson(
-          json['detailed_params'] as Map<String, dynamic>),
+        json['detailed_params'] as Map<String, dynamic>,
+      ),
       sharedBetweenCompanies:
           (json['shared_between_companies'] as List<dynamic>)
               .map((e) => e as String)
@@ -115,7 +116,8 @@ _$ProductDetailsImpl _$$ProductDetailsImplFromJson(Map<String, dynamic> json) =>
       productOptions: json['product_options'] == null
           ? null
           : ProductOptions.fromJson(
-              json['product_options'] as Map<String, dynamic>),
+              json['product_options'] as Map<String, dynamic>,
+            ),
       discounts: Discounts.fromJson(json['discounts'] as Map<String, dynamic>),
       qtyContent: json['qty_content'] as List<dynamic>,
       imageUrl: json['image_url'] as String,
@@ -136,7 +138,8 @@ _$ProductDetailsImpl _$$ProductDetailsImplFromJson(Map<String, dynamic> json) =>
       productReviewsRatingStats:
           json['product_reviews_rating_stats'] as List<dynamic>,
       productReviewsSearch: ProductReviewsSearch.fromJson(
-          json['product_reviews_search'] as Map<String, dynamic>),
+        json['product_reviews_search'] as Map<String, dynamic>,
+      ),
       productReviewsSorting: (json['product_reviews_sorting'] as List<dynamic>)
           .map((e) => ProductReviewsSorting.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -145,7 +148,8 @@ _$ProductDetailsImpl _$$ProductDetailsImplFromJson(Map<String, dynamic> json) =>
               .map((e) => e as String)
               .toList(),
       productReviewsAvailSorting: ProductReviewsAvailSorting.fromJson(
-          json['product_reviews_avail_sorting'] as Map<String, dynamic>),
+        json['product_reviews_avail_sorting'] as Map<String, dynamic>,
+      ),
       variationFeatureCollection: json['variation_feature_collection'],
       allowChat: json['allow_chat'] as bool,
       chatThreadId: json['chat_thread_id'] as String,

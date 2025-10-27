@@ -14,14 +14,14 @@ String _$selectedCategoryHash() => r'7396ef6285dc0bced1612de610920bfb531fe91d';
 @ProviderFor(SelectedCategory)
 final selectedCategoryProvider =
     AutoDisposeNotifierProvider<SelectedCategory, String>.internal(
-  SelectedCategory.new,
-  name: r'selectedCategoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$selectedCategoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      SelectedCategory.new,
+      name: r'selectedCategoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$selectedCategoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$SelectedCategory = AutoDisposeNotifier<String>;
 String _$isExpandedCategoriesBarHash() =>
@@ -31,14 +31,14 @@ String _$isExpandedCategoriesBarHash() =>
 @ProviderFor(IsExpandedCategoriesBar)
 final isExpandedCategoriesBarProvider =
     AutoDisposeNotifierProvider<IsExpandedCategoriesBar, bool>.internal(
-  IsExpandedCategoriesBar.new,
-  name: r'isExpandedCategoriesBarProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$isExpandedCategoriesBarHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      IsExpandedCategoriesBar.new,
+      name: r'isExpandedCategoriesBarProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$isExpandedCategoriesBarHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$IsExpandedCategoriesBar = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint

@@ -15,18 +15,18 @@ class PaymentMethodFormField extends FormField<int> {
     FormFieldValidator<int>? validator,
     int initialValue = -1,
   }) : super(
-          key: key,
-          initialValue: initialValue,
-          onSaved: onSaved,
-          validator: validator,
-          builder: (FormFieldState<int> state) {
-            return _PaymentMethodField(
-              state: state,
-              payments: payments,
-              onChange: onchange,
-            );
-          },
-        );
+         key: key,
+         initialValue: initialValue,
+         onSaved: onSaved,
+         validator: validator,
+         builder: (FormFieldState<int> state) {
+           return _PaymentMethodField(
+             state: state,
+             payments: payments,
+             onChange: onchange,
+           );
+         },
+       );
 }
 
 class _PaymentMethodField extends StatelessWidget {
@@ -46,8 +46,9 @@ class _PaymentMethodField extends StatelessWidget {
       children: [
         Text(
           "payment_method".tr(),
-          style:
-              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 16),
+          style: Theme.of(
+            context,
+          ).textTheme.displaySmall!.copyWith(fontSize: 16),
         ).onlyPadding(start: 12),
         2.verticalSpace,
         Column(
@@ -66,48 +67,52 @@ class _PaymentMethodField extends StatelessWidget {
                 children: [
                   Container(
                     child: Container(
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 12),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 4),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: isSelected
-                                ? AppColors.primary
-                                : AppColors.lightGray,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 12,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: isSelected
+                              ? AppColors.primary
+                              : AppColors.lightGray,
+                          width: 1,
                         ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            payment.payment,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                  color: isSelected
-                                      ? AppColors.primary
-                                      : AppColors.black900,
-                                  fontSize: 14,
-                                ),
-                          ),
-                          leading: Image.network(
-                            payment.image!,
-                            height: 30,
-                            width: 30,
-                            errorBuilder: (ctx, oob, ko) {
-                              // return Assets.images.debitCard.svg();
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          payment.payment,
+                          style: Theme.of(context).textTheme.displaySmall!
+                              .copyWith(
+                                color: isSelected
+                                    ? AppColors.primary
+                                    : AppColors.black900,
+                                fontSize: 14,
+                              ),
+                        ),
+                        leading: Image.network(
+                          payment.image!,
 
-                              return Icon(
-                                Icons.credit_card,
-                                color: AppColors.grey600,
-                              );
-                            },
-                            fit: BoxFit.cover,
-                          ),
-                        )),
+                          height: 30,
+                          width: 30,
+                          errorBuilder: (ctx, oob, ko) {
+                            // return Assets.images.debitCard.svg();
+
+                            return Icon(
+                              Icons.credit_card,
+                              color: AppColors.grey600,
+                            );
+                          },
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
                   ),
                   if (isSelected)
                     const PositionedDirectional(

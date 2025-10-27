@@ -30,8 +30,9 @@ String _$homeHash() => r'43e4f6c56d941bb6a336168aab0a979016583285';
 final homeProvider = FutureProvider<Home>.internal(
   home,
   name: r'homeProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$homeHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$homeHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

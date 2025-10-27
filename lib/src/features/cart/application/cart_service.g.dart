@@ -39,21 +39,13 @@ class IsInCartFamily extends Family<bool> {
   const IsInCartFamily();
 
   /// See also [isInCart].
-  IsInCartProvider call(
-    String productId,
-  ) {
-    return IsInCartProvider(
-      productId,
-    );
+  IsInCartProvider call(String productId) {
+    return IsInCartProvider(productId);
   }
 
   @override
-  IsInCartProvider getProviderOverride(
-    covariant IsInCartProvider provider,
-  ) {
-    return call(
-      provider.productId,
-    );
+  IsInCartProvider getProviderOverride(covariant IsInCartProvider provider) {
+    return call(provider.productId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,18 @@ class IsInCartFamily extends Family<bool> {
 /// See also [isInCart].
 class IsInCartProvider extends AutoDisposeProvider<bool> {
   /// See also [isInCart].
-  IsInCartProvider(
-    String productId,
-  ) : this._internal(
-          (ref) => isInCart(
-            ref as IsInCartRef,
-            productId,
-          ),
-          from: isInCartProvider,
-          name: r'isInCartProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$isInCartHash,
-          dependencies: IsInCartFamily._dependencies,
-          allTransitiveDependencies: IsInCartFamily._allTransitiveDependencies,
-          productId: productId,
-        );
+  IsInCartProvider(String productId)
+    : this._internal(
+        (ref) => isInCart(ref as IsInCartRef, productId),
+        from: isInCartProvider,
+        name: r'isInCartProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$isInCartHash,
+        dependencies: IsInCartFamily._dependencies,
+        allTransitiveDependencies: IsInCartFamily._allTransitiveDependencies,
+        productId: productId,
+      );
 
   IsInCartProvider._internal(
     super._createNotifier, {
@@ -105,9 +92,7 @@ class IsInCartProvider extends AutoDisposeProvider<bool> {
   final String productId;
 
   @override
-  Override overrideWith(
-    bool Function(IsInCartRef provider) create,
-  ) {
+  Override overrideWith(bool Function(IsInCartRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: IsInCartProvider._internal(
@@ -163,8 +148,9 @@ String _$cartCountHash() => r'abef7423ba97ae90f66f833d81f41bfef56f6b22';
 final cartCountProvider = AutoDisposeProvider<int>.internal(
   cartCount,
   name: r'cartCountProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cartCountHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cartCountHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -179,14 +165,14 @@ String _$updateCartControllerHash() =>
 @ProviderFor(UpdateCartController)
 final updateCartControllerProvider =
     AsyncNotifierProvider<UpdateCartController, void>.internal(
-  UpdateCartController.new,
-  name: r'updateCartControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$updateCartControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      UpdateCartController.new,
+      name: r'updateCartControllerProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$updateCartControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$UpdateCartController = AsyncNotifier<void>;
 // ignore_for_file: type=lint

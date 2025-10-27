@@ -12,14 +12,14 @@ String _$carouselPageIndexHash() => r'3cef0ce5e44c68618455ffa73f6a334c8bffc10c';
 @ProviderFor(CarouselPageIndex)
 final carouselPageIndexProvider =
     AutoDisposeNotifierProvider<CarouselPageIndex, int>.internal(
-  CarouselPageIndex.new,
-  name: r'carouselPageIndexProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$carouselPageIndexHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CarouselPageIndex.new,
+      name: r'carouselPageIndexProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$carouselPageIndexHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CarouselPageIndex = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

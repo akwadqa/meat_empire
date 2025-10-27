@@ -18,43 +18,37 @@ class CategoriesView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: 92, //110
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        shrinkWrap: true,
-        itemBuilder: (context, index) =>
-            _buildCategoryItem(context, ref, index),
-        separatorBuilder: (_, __) => const SizedBox(width: 20),
-        itemCount: categories.length + 1, // Add one for the "All" option
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Wrap(
+        spacing: 20, // horizontal spacing between items
+        runSpacing: 8, // vertical spacing between lines (optional)
+        children: List.generate(
+          categories.length,
+          (index) => _buildCategoryItem(context, ref, index),
+        ),
       ),
     );
   }
 
   /// Builds an individual category item, including the "All" category.
   Widget _buildCategoryItem(BuildContext context, WidgetRef ref, int index) {
-    final isAllCategory = index == 0;
+    // final isAllCategory = index == 0;
 
     return CategoryItem(
-      onTap: () => _onCategoryTap(context, ref, isAllCategory, index),
-      label: isAllCategory ? context.tr('all') : categories[index - 1].category,
-      image: isAllCategory
-          ? Assets.icons.categoriesIcon.svg()
-          : AppCachedNetworkImage(imageUrl: categories[index - 1].imageUrl),
+      onTap: () => _onCategoryTap(context, ref, index),
+      label: categories[index].category,
+      image: AppCachedNetworkImage(imageUrl: categories[index].imageUrl),
     );
   }
 
   //* Handles tapping on a category item.
-  void _onCategoryTap(
-      BuildContext context, WidgetRef ref, bool isAllCategory, int index) {
+  void _onCategoryTap(BuildContext context, WidgetRef ref, int index) {
+    final selectedCategoryNotifier = ref.read(
+      selectedCategoryProvider.notifier,
+    );
+    selectedCategoryNotifier.setCategory(categories[index].categoryId);
+
     context.router.replaceAll([CategoriesRoute()]);
-    final selectedCategoryNotifier =
-        ref.read(selectedCategoryProvider.notifier);
-    if (isAllCategory) {
-      selectedCategoryNotifier.setCategory('');
-    } else {
-      selectedCategoryNotifier.setCategory(categories[index - 1].categoryId);
-    }
   }
 }

@@ -99,23 +99,22 @@ class QuantityControllerProvider
     required int minQuantity,
     required int maxQuantity,
   }) : this._internal(
-          () => QuantityController()
-            ..initialQuantity = initialQuantity
-            ..minQuantity = minQuantity
-            ..maxQuantity = maxQuantity,
-          from: quantityControllerProvider,
-          name: r'quantityControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$quantityControllerHash,
-          dependencies: QuantityControllerFamily._dependencies,
-          allTransitiveDependencies:
-              QuantityControllerFamily._allTransitiveDependencies,
-          initialQuantity: initialQuantity,
-          minQuantity: minQuantity,
-          maxQuantity: maxQuantity,
-        );
+         () => QuantityController()
+           ..initialQuantity = initialQuantity
+           ..minQuantity = minQuantity
+           ..maxQuantity = maxQuantity,
+         from: quantityControllerProvider,
+         name: r'quantityControllerProvider',
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$quantityControllerHash,
+         dependencies: QuantityControllerFamily._dependencies,
+         allTransitiveDependencies:
+             QuantityControllerFamily._allTransitiveDependencies,
+         initialQuantity: initialQuantity,
+         minQuantity: minQuantity,
+         maxQuantity: maxQuantity,
+       );
 
   QuantityControllerProvider._internal(
     super._createNotifier, {
@@ -134,9 +133,7 @@ class QuantityControllerProvider
   final int maxQuantity;
 
   @override
-  int runNotifierBuild(
-    covariant QuantityController notifier,
-  ) {
+  int runNotifierBuild(covariant QuantityController notifier) {
     return notifier.build(
       initialQuantity: initialQuantity,
       minQuantity: minQuantity,
@@ -215,5 +212,6 @@ class _QuantityControllerProviderElement
   @override
   int get maxQuantity => (origin as QuantityControllerProvider).maxQuantity;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

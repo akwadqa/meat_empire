@@ -12,7 +12,8 @@ part of 'user_profile.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
   return _UserProfile.fromJson(json);
@@ -72,32 +73,34 @@ mixin _$UserProfile {
 /// @nodoc
 abstract class $UserProfileCopyWith<$Res> {
   factory $UserProfileCopyWith(
-          UserProfile value, $Res Function(UserProfile) then) =
-      _$UserProfileCopyWithImpl<$Res, UserProfile>;
+    UserProfile value,
+    $Res Function(UserProfile) then,
+  ) = _$UserProfileCopyWithImpl<$Res, UserProfile>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'user_id') String userId,
-      String status,
-      @JsonKey(name: 'user_type') String userType,
-      @JsonKey(name: 'user_login') String userLogin,
-      String firstname,
-      String lastname,
-      String email,
-      String phone,
-      String password,
-      @JsonKey(name: 'b_state') String? bllingCity,
-      @JsonKey(name: 's_state') String? shippingCity,
-      @JsonKey(name: 'b_address') String? billingStrete,
-      @JsonKey(name: 's_address') String? shippingStrete,
-      @JsonKey(name: 'b_zipcode') String? billingCountry,
-      @JsonKey(name: 's_zipcode') String? shippingCountry,
-      @JsonKey(name: 'b_country') String? defaultBillingCountry,
-      @JsonKey(name: 's_country') String? defaultShippingCountry,
-      @JsonKey(name: 'b_address_2') String? billingBuildingNumber,
-      @JsonKey(name: 's_address_2') String? shippingBuildingNumber,
-      @JsonKey(name: 's_address_type') String? shippingBuildingType,
-      @JsonKey(name: 'profile_name') String? profileName,
-      @JsonKey(name: 'points') int points});
+  $Res call({
+    @JsonKey(name: 'user_id') String userId,
+    String status,
+    @JsonKey(name: 'user_type') String userType,
+    @JsonKey(name: 'user_login') String userLogin,
+    String firstname,
+    String lastname,
+    String email,
+    String phone,
+    String password,
+    @JsonKey(name: 'b_state') String? bllingCity,
+    @JsonKey(name: 's_state') String? shippingCity,
+    @JsonKey(name: 'b_address') String? billingStrete,
+    @JsonKey(name: 's_address') String? shippingStrete,
+    @JsonKey(name: 'b_zipcode') String? billingCountry,
+    @JsonKey(name: 's_zipcode') String? shippingCountry,
+    @JsonKey(name: 'b_country') String? defaultBillingCountry,
+    @JsonKey(name: 's_country') String? defaultShippingCountry,
+    @JsonKey(name: 'b_address_2') String? billingBuildingNumber,
+    @JsonKey(name: 's_address_2') String? shippingBuildingNumber,
+    @JsonKey(name: 's_address_type') String? shippingBuildingType,
+    @JsonKey(name: 'profile_name') String? profileName,
+    @JsonKey(name: 'points') int points,
+  });
 }
 
 /// @nodoc
@@ -138,96 +141,99 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
     Object? profileName = freezed,
     Object? points = null,
   }) {
-    return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      userType: null == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as String,
-      userLogin: null == userLogin
-          ? _value.userLogin
-          : userLogin // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstname: null == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastname: null == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      bllingCity: freezed == bllingCity
-          ? _value.bllingCity
-          : bllingCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingCity: freezed == shippingCity
-          ? _value.shippingCity
-          : shippingCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      billingStrete: freezed == billingStrete
-          ? _value.billingStrete
-          : billingStrete // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingStrete: freezed == shippingStrete
-          ? _value.shippingStrete
-          : shippingStrete // ignore: cast_nullable_to_non_nullable
-              as String?,
-      billingCountry: freezed == billingCountry
-          ? _value.billingCountry
-          : billingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingCountry: freezed == shippingCountry
-          ? _value.shippingCountry
-          : shippingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      defaultBillingCountry: freezed == defaultBillingCountry
-          ? _value.defaultBillingCountry
-          : defaultBillingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      defaultShippingCountry: freezed == defaultShippingCountry
-          ? _value.defaultShippingCountry
-          : defaultShippingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      billingBuildingNumber: freezed == billingBuildingNumber
-          ? _value.billingBuildingNumber
-          : billingBuildingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingBuildingNumber: freezed == shippingBuildingNumber
-          ? _value.shippingBuildingNumber
-          : shippingBuildingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingBuildingType: freezed == shippingBuildingType
-          ? _value.shippingBuildingType
-          : shippingBuildingType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileName: freezed == profileName
-          ? _value.profileName
-          : profileName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      points: null == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            userType: null == userType
+                ? _value.userType
+                : userType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            userLogin: null == userLogin
+                ? _value.userLogin
+                : userLogin // ignore: cast_nullable_to_non_nullable
+                      as String,
+            firstname: null == firstname
+                ? _value.firstname
+                : firstname // ignore: cast_nullable_to_non_nullable
+                      as String,
+            lastname: null == lastname
+                ? _value.lastname
+                : lastname // ignore: cast_nullable_to_non_nullable
+                      as String,
+            email: null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String,
+            phone: null == phone
+                ? _value.phone
+                : phone // ignore: cast_nullable_to_non_nullable
+                      as String,
+            password: null == password
+                ? _value.password
+                : password // ignore: cast_nullable_to_non_nullable
+                      as String,
+            bllingCity: freezed == bllingCity
+                ? _value.bllingCity
+                : bllingCity // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippingCity: freezed == shippingCity
+                ? _value.shippingCity
+                : shippingCity // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            billingStrete: freezed == billingStrete
+                ? _value.billingStrete
+                : billingStrete // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippingStrete: freezed == shippingStrete
+                ? _value.shippingStrete
+                : shippingStrete // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            billingCountry: freezed == billingCountry
+                ? _value.billingCountry
+                : billingCountry // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippingCountry: freezed == shippingCountry
+                ? _value.shippingCountry
+                : shippingCountry // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            defaultBillingCountry: freezed == defaultBillingCountry
+                ? _value.defaultBillingCountry
+                : defaultBillingCountry // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            defaultShippingCountry: freezed == defaultShippingCountry
+                ? _value.defaultShippingCountry
+                : defaultShippingCountry // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            billingBuildingNumber: freezed == billingBuildingNumber
+                ? _value.billingBuildingNumber
+                : billingBuildingNumber // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippingBuildingNumber: freezed == shippingBuildingNumber
+                ? _value.shippingBuildingNumber
+                : shippingBuildingNumber // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippingBuildingType: freezed == shippingBuildingType
+                ? _value.shippingBuildingType
+                : shippingBuildingType // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            profileName: freezed == profileName
+                ? _value.profileName
+                : profileName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            points: null == points
+                ? _value.points
+                : points // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -235,33 +241,35 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
 abstract class _$$UserProfileImplCopyWith<$Res>
     implements $UserProfileCopyWith<$Res> {
   factory _$$UserProfileImplCopyWith(
-          _$UserProfileImpl value, $Res Function(_$UserProfileImpl) then) =
-      __$$UserProfileImplCopyWithImpl<$Res>;
+    _$UserProfileImpl value,
+    $Res Function(_$UserProfileImpl) then,
+  ) = __$$UserProfileImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'user_id') String userId,
-      String status,
-      @JsonKey(name: 'user_type') String userType,
-      @JsonKey(name: 'user_login') String userLogin,
-      String firstname,
-      String lastname,
-      String email,
-      String phone,
-      String password,
-      @JsonKey(name: 'b_state') String? bllingCity,
-      @JsonKey(name: 's_state') String? shippingCity,
-      @JsonKey(name: 'b_address') String? billingStrete,
-      @JsonKey(name: 's_address') String? shippingStrete,
-      @JsonKey(name: 'b_zipcode') String? billingCountry,
-      @JsonKey(name: 's_zipcode') String? shippingCountry,
-      @JsonKey(name: 'b_country') String? defaultBillingCountry,
-      @JsonKey(name: 's_country') String? defaultShippingCountry,
-      @JsonKey(name: 'b_address_2') String? billingBuildingNumber,
-      @JsonKey(name: 's_address_2') String? shippingBuildingNumber,
-      @JsonKey(name: 's_address_type') String? shippingBuildingType,
-      @JsonKey(name: 'profile_name') String? profileName,
-      @JsonKey(name: 'points') int points});
+  $Res call({
+    @JsonKey(name: 'user_id') String userId,
+    String status,
+    @JsonKey(name: 'user_type') String userType,
+    @JsonKey(name: 'user_login') String userLogin,
+    String firstname,
+    String lastname,
+    String email,
+    String phone,
+    String password,
+    @JsonKey(name: 'b_state') String? bllingCity,
+    @JsonKey(name: 's_state') String? shippingCity,
+    @JsonKey(name: 'b_address') String? billingStrete,
+    @JsonKey(name: 's_address') String? shippingStrete,
+    @JsonKey(name: 'b_zipcode') String? billingCountry,
+    @JsonKey(name: 's_zipcode') String? shippingCountry,
+    @JsonKey(name: 'b_country') String? defaultBillingCountry,
+    @JsonKey(name: 's_country') String? defaultShippingCountry,
+    @JsonKey(name: 'b_address_2') String? billingBuildingNumber,
+    @JsonKey(name: 's_address_2') String? shippingBuildingNumber,
+    @JsonKey(name: 's_address_type') String? shippingBuildingType,
+    @JsonKey(name: 'profile_name') String? profileName,
+    @JsonKey(name: 'points') int points,
+  });
 }
 
 /// @nodoc
@@ -269,8 +277,9 @@ class __$$UserProfileImplCopyWithImpl<$Res>
     extends _$UserProfileCopyWithImpl<$Res, _$UserProfileImpl>
     implements _$$UserProfileImplCopyWith<$Res> {
   __$$UserProfileImplCopyWithImpl(
-      _$UserProfileImpl _value, $Res Function(_$UserProfileImpl) _then)
-      : super(_value, _then);
+    _$UserProfileImpl _value,
+    $Res Function(_$UserProfileImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserProfile
   /// with the given fields replaced by the non-null parameter values.
@@ -300,96 +309,98 @@ class __$$UserProfileImplCopyWithImpl<$Res>
     Object? profileName = freezed,
     Object? points = null,
   }) {
-    return _then(_$UserProfileImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      userType: null == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as String,
-      userLogin: null == userLogin
-          ? _value.userLogin
-          : userLogin // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstname: null == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastname: null == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      bllingCity: freezed == bllingCity
-          ? _value.bllingCity
-          : bllingCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingCity: freezed == shippingCity
-          ? _value.shippingCity
-          : shippingCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      billingStrete: freezed == billingStrete
-          ? _value.billingStrete
-          : billingStrete // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingStrete: freezed == shippingStrete
-          ? _value.shippingStrete
-          : shippingStrete // ignore: cast_nullable_to_non_nullable
-              as String?,
-      billingCountry: freezed == billingCountry
-          ? _value.billingCountry
-          : billingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingCountry: freezed == shippingCountry
-          ? _value.shippingCountry
-          : shippingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      defaultBillingCountry: freezed == defaultBillingCountry
-          ? _value.defaultBillingCountry
-          : defaultBillingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      defaultShippingCountry: freezed == defaultShippingCountry
-          ? _value.defaultShippingCountry
-          : defaultShippingCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      billingBuildingNumber: freezed == billingBuildingNumber
-          ? _value.billingBuildingNumber
-          : billingBuildingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingBuildingNumber: freezed == shippingBuildingNumber
-          ? _value.shippingBuildingNumber
-          : shippingBuildingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippingBuildingType: freezed == shippingBuildingType
-          ? _value.shippingBuildingType
-          : shippingBuildingType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileName: freezed == profileName
-          ? _value.profileName
-          : profileName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      points: null == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$UserProfileImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userType: null == userType
+            ? _value.userType
+            : userType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userLogin: null == userLogin
+            ? _value.userLogin
+            : userLogin // ignore: cast_nullable_to_non_nullable
+                  as String,
+        firstname: null == firstname
+            ? _value.firstname
+            : firstname // ignore: cast_nullable_to_non_nullable
+                  as String,
+        lastname: null == lastname
+            ? _value.lastname
+            : lastname // ignore: cast_nullable_to_non_nullable
+                  as String,
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        phone: null == phone
+            ? _value.phone
+            : phone // ignore: cast_nullable_to_non_nullable
+                  as String,
+        password: null == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
+                  as String,
+        bllingCity: freezed == bllingCity
+            ? _value.bllingCity
+            : bllingCity // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippingCity: freezed == shippingCity
+            ? _value.shippingCity
+            : shippingCity // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        billingStrete: freezed == billingStrete
+            ? _value.billingStrete
+            : billingStrete // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippingStrete: freezed == shippingStrete
+            ? _value.shippingStrete
+            : shippingStrete // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        billingCountry: freezed == billingCountry
+            ? _value.billingCountry
+            : billingCountry // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippingCountry: freezed == shippingCountry
+            ? _value.shippingCountry
+            : shippingCountry // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        defaultBillingCountry: freezed == defaultBillingCountry
+            ? _value.defaultBillingCountry
+            : defaultBillingCountry // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        defaultShippingCountry: freezed == defaultShippingCountry
+            ? _value.defaultShippingCountry
+            : defaultShippingCountry // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        billingBuildingNumber: freezed == billingBuildingNumber
+            ? _value.billingBuildingNumber
+            : billingBuildingNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippingBuildingNumber: freezed == shippingBuildingNumber
+            ? _value.shippingBuildingNumber
+            : shippingBuildingNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippingBuildingType: freezed == shippingBuildingType
+            ? _value.shippingBuildingType
+            : shippingBuildingType // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        profileName: freezed == profileName
+            ? _value.profileName
+            : profileName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        points: null == points
+            ? _value.points
+            : points // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -397,29 +408,30 @@ class __$$UserProfileImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$UserProfileImpl implements _UserProfile {
-  const _$UserProfileImpl(
-      {@JsonKey(name: 'user_id') required this.userId,
-      required this.status,
-      @JsonKey(name: 'user_type') required this.userType,
-      @JsonKey(name: 'user_login') required this.userLogin,
-      required this.firstname,
-      required this.lastname,
-      required this.email,
-      required this.phone,
-      required this.password,
-      @JsonKey(name: 'b_state') this.bllingCity,
-      @JsonKey(name: 's_state') this.shippingCity,
-      @JsonKey(name: 'b_address') this.billingStrete,
-      @JsonKey(name: 's_address') this.shippingStrete,
-      @JsonKey(name: 'b_zipcode') this.billingCountry,
-      @JsonKey(name: 's_zipcode') this.shippingCountry,
-      @JsonKey(name: 'b_country') this.defaultBillingCountry,
-      @JsonKey(name: 's_country') this.defaultShippingCountry,
-      @JsonKey(name: 'b_address_2') this.billingBuildingNumber,
-      @JsonKey(name: 's_address_2') this.shippingBuildingNumber,
-      @JsonKey(name: 's_address_type') this.shippingBuildingType,
-      @JsonKey(name: 'profile_name') this.profileName,
-      @JsonKey(name: 'points') this.points = 0});
+  const _$UserProfileImpl({
+    @JsonKey(name: 'user_id') required this.userId,
+    required this.status,
+    @JsonKey(name: 'user_type') required this.userType,
+    @JsonKey(name: 'user_login') required this.userLogin,
+    required this.firstname,
+    required this.lastname,
+    required this.email,
+    required this.phone,
+    required this.password,
+    @JsonKey(name: 'b_state') this.bllingCity,
+    @JsonKey(name: 's_state') this.shippingCity,
+    @JsonKey(name: 'b_address') this.billingStrete,
+    @JsonKey(name: 's_address') this.shippingStrete,
+    @JsonKey(name: 'b_zipcode') this.billingCountry,
+    @JsonKey(name: 's_zipcode') this.shippingCountry,
+    @JsonKey(name: 'b_country') this.defaultBillingCountry,
+    @JsonKey(name: 's_country') this.defaultShippingCountry,
+    @JsonKey(name: 'b_address_2') this.billingBuildingNumber,
+    @JsonKey(name: 's_address_2') this.shippingBuildingNumber,
+    @JsonKey(name: 's_address_type') this.shippingBuildingType,
+    @JsonKey(name: 'profile_name') this.profileName,
+    @JsonKey(name: 'points') this.points = 0,
+  });
 
   factory _$UserProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserProfileImplFromJson(json);
@@ -539,30 +551,30 @@ class _$UserProfileImpl implements _UserProfile {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        userId,
-        status,
-        userType,
-        userLogin,
-        firstname,
-        lastname,
-        email,
-        phone,
-        password,
-        bllingCity,
-        shippingCity,
-        billingStrete,
-        shippingStrete,
-        billingCountry,
-        shippingCountry,
-        defaultBillingCountry,
-        defaultShippingCountry,
-        billingBuildingNumber,
-        shippingBuildingNumber,
-        shippingBuildingType,
-        profileName,
-        points
-      ]);
+    runtimeType,
+    userId,
+    status,
+    userType,
+    userLogin,
+    firstname,
+    lastname,
+    email,
+    phone,
+    password,
+    bllingCity,
+    shippingCity,
+    billingStrete,
+    shippingStrete,
+    billingCountry,
+    shippingCountry,
+    defaultBillingCountry,
+    defaultShippingCountry,
+    billingBuildingNumber,
+    shippingBuildingNumber,
+    shippingBuildingType,
+    profileName,
+    points,
+  ]);
 
   /// Create a copy of UserProfile
   /// with the given fields replaced by the non-null parameter values.
@@ -574,36 +586,35 @@ class _$UserProfileImpl implements _UserProfile {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserProfileImplToJson(
-      this,
-    );
+    return _$$UserProfileImplToJson(this);
   }
 }
 
 abstract class _UserProfile implements UserProfile {
-  const factory _UserProfile(
-      {@JsonKey(name: 'user_id') required final String userId,
-      required final String status,
-      @JsonKey(name: 'user_type') required final String userType,
-      @JsonKey(name: 'user_login') required final String userLogin,
-      required final String firstname,
-      required final String lastname,
-      required final String email,
-      required final String phone,
-      required final String password,
-      @JsonKey(name: 'b_state') final String? bllingCity,
-      @JsonKey(name: 's_state') final String? shippingCity,
-      @JsonKey(name: 'b_address') final String? billingStrete,
-      @JsonKey(name: 's_address') final String? shippingStrete,
-      @JsonKey(name: 'b_zipcode') final String? billingCountry,
-      @JsonKey(name: 's_zipcode') final String? shippingCountry,
-      @JsonKey(name: 'b_country') final String? defaultBillingCountry,
-      @JsonKey(name: 's_country') final String? defaultShippingCountry,
-      @JsonKey(name: 'b_address_2') final String? billingBuildingNumber,
-      @JsonKey(name: 's_address_2') final String? shippingBuildingNumber,
-      @JsonKey(name: 's_address_type') final String? shippingBuildingType,
-      @JsonKey(name: 'profile_name') final String? profileName,
-      @JsonKey(name: 'points') final int points}) = _$UserProfileImpl;
+  const factory _UserProfile({
+    @JsonKey(name: 'user_id') required final String userId,
+    required final String status,
+    @JsonKey(name: 'user_type') required final String userType,
+    @JsonKey(name: 'user_login') required final String userLogin,
+    required final String firstname,
+    required final String lastname,
+    required final String email,
+    required final String phone,
+    required final String password,
+    @JsonKey(name: 'b_state') final String? bllingCity,
+    @JsonKey(name: 's_state') final String? shippingCity,
+    @JsonKey(name: 'b_address') final String? billingStrete,
+    @JsonKey(name: 's_address') final String? shippingStrete,
+    @JsonKey(name: 'b_zipcode') final String? billingCountry,
+    @JsonKey(name: 's_zipcode') final String? shippingCountry,
+    @JsonKey(name: 'b_country') final String? defaultBillingCountry,
+    @JsonKey(name: 's_country') final String? defaultShippingCountry,
+    @JsonKey(name: 'b_address_2') final String? billingBuildingNumber,
+    @JsonKey(name: 's_address_2') final String? shippingBuildingNumber,
+    @JsonKey(name: 's_address_type') final String? shippingBuildingType,
+    @JsonKey(name: 'profile_name') final String? profileName,
+    @JsonKey(name: 'points') final int points,
+  }) = _$UserProfileImpl;
 
   factory _UserProfile.fromJson(Map<String, dynamic> json) =
       _$UserProfileImpl.fromJson;

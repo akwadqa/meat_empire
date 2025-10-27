@@ -34,9 +34,7 @@ abstract class _$CheckoutController
     extends BuildlessAutoDisposeNotifier<DeliverySlot?> {
   late final List<DeliverySlot> deliverySlots;
 
-  DeliverySlot? build(
-    List<DeliverySlot> deliverySlots,
-  );
+  DeliverySlot? build(List<DeliverySlot> deliverySlots);
 }
 
 /// See also [CheckoutController].
@@ -49,21 +47,15 @@ class CheckoutControllerFamily extends Family<DeliverySlot?> {
   const CheckoutControllerFamily();
 
   /// See also [CheckoutController].
-  CheckoutControllerProvider call(
-    List<DeliverySlot> deliverySlots,
-  ) {
-    return CheckoutControllerProvider(
-      deliverySlots,
-    );
+  CheckoutControllerProvider call(List<DeliverySlot> deliverySlots) {
+    return CheckoutControllerProvider(deliverySlots);
   }
 
   @override
   CheckoutControllerProvider getProviderOverride(
     covariant CheckoutControllerProvider provider,
   ) {
-    return call(
-      provider.deliverySlots,
-    );
+    return call(provider.deliverySlots);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,19 @@ class CheckoutControllerFamily extends Family<DeliverySlot?> {
 class CheckoutControllerProvider
     extends AutoDisposeNotifierProviderImpl<CheckoutController, DeliverySlot?> {
   /// See also [CheckoutController].
-  CheckoutControllerProvider(
-    List<DeliverySlot> deliverySlots,
-  ) : this._internal(
-          () => CheckoutController()..deliverySlots = deliverySlots,
-          from: checkoutControllerProvider,
-          name: r'checkoutControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$checkoutControllerHash,
-          dependencies: CheckoutControllerFamily._dependencies,
-          allTransitiveDependencies:
-              CheckoutControllerFamily._allTransitiveDependencies,
-          deliverySlots: deliverySlots,
-        );
+  CheckoutControllerProvider(List<DeliverySlot> deliverySlots)
+    : this._internal(
+        () => CheckoutController()..deliverySlots = deliverySlots,
+        from: checkoutControllerProvider,
+        name: r'checkoutControllerProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$checkoutControllerHash,
+        dependencies: CheckoutControllerFamily._dependencies,
+        allTransitiveDependencies:
+            CheckoutControllerFamily._allTransitiveDependencies,
+        deliverySlots: deliverySlots,
+      );
 
   CheckoutControllerProvider._internal(
     super._createNotifier, {
@@ -114,12 +104,8 @@ class CheckoutControllerProvider
   final List<DeliverySlot> deliverySlots;
 
   @override
-  DeliverySlot? runNotifierBuild(
-    covariant CheckoutController notifier,
-  ) {
-    return notifier.build(
-      deliverySlots,
-    );
+  DeliverySlot? runNotifierBuild(covariant CheckoutController notifier) {
+    return notifier.build(deliverySlots);
   }
 
   @override
@@ -140,7 +126,7 @@ class CheckoutControllerProvider
 
   @override
   AutoDisposeNotifierProviderElement<CheckoutController, DeliverySlot?>
-      createElement() {
+  createElement() {
     return _CheckoutControllerProviderElement(this);
   }
 
@@ -167,13 +153,15 @@ mixin CheckoutControllerRef on AutoDisposeNotifierProviderRef<DeliverySlot?> {
 }
 
 class _CheckoutControllerProviderElement
-    extends AutoDisposeNotifierProviderElement<CheckoutController,
-        DeliverySlot?> with CheckoutControllerRef {
+    extends
+        AutoDisposeNotifierProviderElement<CheckoutController, DeliverySlot?>
+    with CheckoutControllerRef {
   _CheckoutControllerProviderElement(super.provider);
 
   @override
   List<DeliverySlot> get deliverySlots =>
       (origin as CheckoutControllerProvider).deliverySlots;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

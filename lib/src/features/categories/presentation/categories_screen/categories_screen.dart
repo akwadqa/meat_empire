@@ -56,7 +56,10 @@ class CategoriesScreen extends ConsumerWidget {
 
   //* Builds the main layout with categories and search results
   Widget _buildCategoriesLayout(
-      BuildContext context, WidgetRef ref, dynamic home) {
+    BuildContext context,
+    WidgetRef ref,
+    dynamic home,
+  ) {
     final categories = _extractCategories(home);
 
     return Row(
@@ -97,7 +100,8 @@ class CategoriesScreen extends ConsumerWidget {
       ),
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-        itemCount: categories.length + 1,
+        // itemCount: categories.length + 1,
+        itemCount: categories.length,
         itemBuilder: (context, index) {
           return _buildCategoryItem(ref, index, categories);
         },
@@ -108,24 +112,37 @@ class CategoriesScreen extends ConsumerWidget {
 
   //* Builds an individual category item
   Widget _buildCategoryItem(
-      WidgetRef ref, int index, List<Category> categories) {
+    WidgetRef ref,
+    int index,
+    List<Category> categories,
+  ) {
     final selectedCategoryId = ref.watch(selectedCategoryProvider);
-    final isAllCategory = index == 0;
-    final category = isAllCategory ? null : categories[index - 1];
+    // final isAllCategory = index == 0;
+    // final category = isAllCategory ? null : categories[index - 1];
+    final category = categories[index];
 
     return CategoryItem(
-      withBorder: isAllCategory
-          ? selectedCategoryId.isEmpty
-          : selectedCategoryId == category!.categoryId,
+      // withBorder: isAllCategory
+      //     ? selectedCategoryId.isEmpty
+      //     : selectedCategoryId == category!.categoryId,
+      // onTap: () => ref
+      //     .read(selectedCategoryProvider.notifier)
+      //     .setCategory(isAllCategory ? '' : category!.categoryId),
+      // label: isAllCategory ? tr('all') : category!.category,
+      // image: isAllCategory
+      //     ? Assets.icons.categoriesIcon.svg()
+      //     : AppCachedNetworkImage(imageUrl: category!.imageUrl),
+      withBorder: selectedCategoryId == category.categoryId,
       height: 45,
       width: 45,
+
       onTap: () => ref
-          .read(selectedCategoryProvider.notifier)
-          .setCategory(isAllCategory ? '' : category!.categoryId),
-      label: isAllCategory ? tr('all') : category!.category,
-      image: isAllCategory
-          ? Assets.icons.categoriesIcon.svg()
-          : AppCachedNetworkImage(imageUrl: category!.imageUrl),
+          .watch(selectedCategoryProvider.notifier)
+          .setCategory(category.categoryId),
+
+      label: category.category,
+
+      image: AppCachedNetworkImage(imageUrl: category.imageUrl),
     );
   }
 
@@ -140,8 +157,10 @@ class CategoriesScreen extends ConsumerWidget {
           ref.read(isExpandedCategoriesBarProvider.notifier).toggleExpansion(),
       mini: true,
       child: isExpanded
-          ? const Icon(Icons.arrow_back_ios_new_rounded,
-              color: AppColors.black900)
+          ? const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: AppColors.black900,
+            )
           : Assets.icons.newCategoriesIcon.svg(),
     );
   }
@@ -155,18 +174,20 @@ class CustomFABLocation extends FloatingActionButtonLocation {
     const double fabYOffset = 100;
     const double fabMargin = 20; // Margin from the edge
 
-    final double fabY = scaffoldGeometry.scaffoldSize.height -
+    final double fabY =
+        scaffoldGeometry.scaffoldSize.height -
         scaffoldGeometry.floatingActionButtonSize.height -
         fabYOffset;
 
-    final bool isRTL = scaffoldGeometry.textDirection.name.toLowerCase() ==
+    final bool isRTL =
+        scaffoldGeometry.textDirection.name.toLowerCase() ==
         TextDirection.RTL.value.toLowerCase();
 
     // Calculate the X offset based on text direction
     final double fabX = isRTL
         ? scaffoldGeometry.scaffoldSize.width -
-            scaffoldGeometry.floatingActionButtonSize.width -
-            fabMargin
+              scaffoldGeometry.floatingActionButtonSize.width -
+              fabMargin
         : fabMargin;
 
     return Offset(fabX, fabY);

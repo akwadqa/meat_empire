@@ -12,7 +12,8 @@ part of 'cart_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 CartResponse _$CartResponseFromJson(Map<String, dynamic> json) {
   return _CartResponse.fromJson(json);
@@ -37,16 +38,18 @@ mixin _$CartResponse {
 /// @nodoc
 abstract class $CartResponseCopyWith<$Res> {
   factory $CartResponseCopyWith(
-          CartResponse value, $Res Function(CartResponse) then) =
-      _$CartResponseCopyWithImpl<$Res, CartResponse>;
+    CartResponse value,
+    $Res Function(CartResponse) then,
+  ) = _$CartResponseCopyWithImpl<$Res, CartResponse>;
   @useResult
-  $Res call(
-      {bool? allowMultipleProfiles,
-      List<UserProfile>? userProfiles,
-      Cart? cart,
-      dynamic totalProducts,
-      String? message,
-      bool? success});
+  $Res call({
+    bool? allowMultipleProfiles,
+    List<UserProfile>? userProfiles,
+    Cart? cart,
+    dynamic totalProducts,
+    String? message,
+    bool? success,
+  });
 
   $CartCopyWith<$Res>? get cart;
 }
@@ -73,32 +76,35 @@ class _$CartResponseCopyWithImpl<$Res, $Val extends CartResponse>
     Object? message = freezed,
     Object? success = freezed,
   }) {
-    return _then(_value.copyWith(
-      allowMultipleProfiles: freezed == allowMultipleProfiles
-          ? _value.allowMultipleProfiles
-          : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      userProfiles: freezed == userProfiles
-          ? _value.userProfiles
-          : userProfiles // ignore: cast_nullable_to_non_nullable
-              as List<UserProfile>?,
-      cart: freezed == cart
-          ? _value.cart
-          : cart // ignore: cast_nullable_to_non_nullable
-              as Cart?,
-      totalProducts: freezed == totalProducts
-          ? _value.totalProducts
-          : totalProducts // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      success: freezed == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            allowMultipleProfiles: freezed == allowMultipleProfiles
+                ? _value.allowMultipleProfiles
+                : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            userProfiles: freezed == userProfiles
+                ? _value.userProfiles
+                : userProfiles // ignore: cast_nullable_to_non_nullable
+                      as List<UserProfile>?,
+            cart: freezed == cart
+                ? _value.cart
+                : cart // ignore: cast_nullable_to_non_nullable
+                      as Cart?,
+            totalProducts: freezed == totalProducts
+                ? _value.totalProducts
+                : totalProducts // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            message: freezed == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            success: freezed == success
+                ? _value.success
+                : success // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of CartResponse
@@ -120,17 +126,19 @@ class _$CartResponseCopyWithImpl<$Res, $Val extends CartResponse>
 abstract class _$$CartResponseImplCopyWith<$Res>
     implements $CartResponseCopyWith<$Res> {
   factory _$$CartResponseImplCopyWith(
-          _$CartResponseImpl value, $Res Function(_$CartResponseImpl) then) =
-      __$$CartResponseImplCopyWithImpl<$Res>;
+    _$CartResponseImpl value,
+    $Res Function(_$CartResponseImpl) then,
+  ) = __$$CartResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool? allowMultipleProfiles,
-      List<UserProfile>? userProfiles,
-      Cart? cart,
-      dynamic totalProducts,
-      String? message,
-      bool? success});
+  $Res call({
+    bool? allowMultipleProfiles,
+    List<UserProfile>? userProfiles,
+    Cart? cart,
+    dynamic totalProducts,
+    String? message,
+    bool? success,
+  });
 
   @override
   $CartCopyWith<$Res>? get cart;
@@ -141,8 +149,9 @@ class __$$CartResponseImplCopyWithImpl<$Res>
     extends _$CartResponseCopyWithImpl<$Res, _$CartResponseImpl>
     implements _$$CartResponseImplCopyWith<$Res> {
   __$$CartResponseImplCopyWithImpl(
-      _$CartResponseImpl _value, $Res Function(_$CartResponseImpl) _then)
-      : super(_value, _then);
+    _$CartResponseImpl _value,
+    $Res Function(_$CartResponseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CartResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -156,46 +165,48 @@ class __$$CartResponseImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? success = freezed,
   }) {
-    return _then(_$CartResponseImpl(
-      allowMultipleProfiles: freezed == allowMultipleProfiles
-          ? _value.allowMultipleProfiles
-          : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      userProfiles: freezed == userProfiles
-          ? _value._userProfiles
-          : userProfiles // ignore: cast_nullable_to_non_nullable
-              as List<UserProfile>?,
-      cart: freezed == cart
-          ? _value.cart
-          : cart // ignore: cast_nullable_to_non_nullable
-              as Cart?,
-      totalProducts: freezed == totalProducts
-          ? _value.totalProducts
-          : totalProducts // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      success: freezed == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$CartResponseImpl(
+        allowMultipleProfiles: freezed == allowMultipleProfiles
+            ? _value.allowMultipleProfiles
+            : allowMultipleProfiles // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        userProfiles: freezed == userProfiles
+            ? _value._userProfiles
+            : userProfiles // ignore: cast_nullable_to_non_nullable
+                  as List<UserProfile>?,
+        cart: freezed == cart
+            ? _value.cart
+            : cart // ignore: cast_nullable_to_non_nullable
+                  as Cart?,
+        totalProducts: freezed == totalProducts
+            ? _value.totalProducts
+            : totalProducts // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        message: freezed == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$CartResponseImpl implements _CartResponse {
-  _$CartResponseImpl(
-      {this.allowMultipleProfiles,
-      final List<UserProfile>? userProfiles,
-      this.cart,
-      this.totalProducts,
-      this.message,
-      this.success})
-      : _userProfiles = userProfiles;
+  _$CartResponseImpl({
+    this.allowMultipleProfiles,
+    final List<UserProfile>? userProfiles,
+    this.cart,
+    this.totalProducts,
+    this.message,
+    this.success,
+  }) : _userProfiles = userProfiles;
 
   factory _$CartResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartResponseImplFromJson(json);
@@ -233,11 +244,15 @@ class _$CartResponseImpl implements _CartResponse {
             other is _$CartResponseImpl &&
             (identical(other.allowMultipleProfiles, allowMultipleProfiles) ||
                 other.allowMultipleProfiles == allowMultipleProfiles) &&
-            const DeepCollectionEquality()
-                .equals(other._userProfiles, _userProfiles) &&
+            const DeepCollectionEquality().equals(
+              other._userProfiles,
+              _userProfiles,
+            ) &&
             (identical(other.cart, cart) || other.cart == cart) &&
-            const DeepCollectionEquality()
-                .equals(other.totalProducts, totalProducts) &&
+            const DeepCollectionEquality().equals(
+              other.totalProducts,
+              totalProducts,
+            ) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.success, success) || other.success == success));
   }
@@ -245,13 +260,14 @@ class _$CartResponseImpl implements _CartResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      allowMultipleProfiles,
-      const DeepCollectionEquality().hash(_userProfiles),
-      cart,
-      const DeepCollectionEquality().hash(totalProducts),
-      message,
-      success);
+    runtimeType,
+    allowMultipleProfiles,
+    const DeepCollectionEquality().hash(_userProfiles),
+    cart,
+    const DeepCollectionEquality().hash(totalProducts),
+    message,
+    success,
+  );
 
   /// Create a copy of CartResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -263,13 +279,14 @@ class _$CartResponseImpl implements _CartResponse {
 }
 
 abstract class _CartResponse implements CartResponse {
-  factory _CartResponse(
-      {final bool? allowMultipleProfiles,
-      final List<UserProfile>? userProfiles,
-      final Cart? cart,
-      final dynamic totalProducts,
-      final String? message,
-      final bool? success}) = _$CartResponseImpl;
+  factory _CartResponse({
+    final bool? allowMultipleProfiles,
+    final List<UserProfile>? userProfiles,
+    final Cart? cart,
+    final dynamic totalProducts,
+    final String? message,
+    final bool? success,
+  }) = _$CartResponseImpl;
 
   factory _CartResponse.fromJson(Map<String, dynamic> json) =
       _$CartResponseImpl.fromJson;

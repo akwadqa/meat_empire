@@ -12,7 +12,8 @@ part of 'payment_info_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PaymentInfoEntity _$PaymentInfoEntityFromJson(Map<String, dynamic> json) {
   return _PaymentInfoEntity.fromJson(json);
@@ -36,15 +37,17 @@ mixin _$PaymentInfoEntity {
 /// @nodoc
 abstract class $PaymentInfoEntityCopyWith<$Res> {
   factory $PaymentInfoEntityCopyWith(
-          PaymentInfoEntity value, $Res Function(PaymentInfoEntity) then) =
-      _$PaymentInfoEntityCopyWithImpl<$Res, PaymentInfoEntity>;
+    PaymentInfoEntity value,
+    $Res Function(PaymentInfoEntity) then,
+  ) = _$PaymentInfoEntityCopyWithImpl<$Res, PaymentInfoEntity>;
   @useResult
-  $Res call(
-      {String paymentId,
-      String payment,
-      String? description,
-      String? instructions,
-      String? image});
+  $Res call({
+    String paymentId,
+    String payment,
+    String? description,
+    String? instructions,
+    String? image,
+  });
 }
 
 /// @nodoc
@@ -68,54 +71,60 @@ class _$PaymentInfoEntityCopyWithImpl<$Res, $Val extends PaymentInfoEntity>
     Object? instructions = freezed,
     Object? image = freezed,
   }) {
-    return _then(_value.copyWith(
-      paymentId: null == paymentId
-          ? _value.paymentId
-          : paymentId // ignore: cast_nullable_to_non_nullable
-              as String,
-      payment: null == payment
-          ? _value.payment
-          : payment // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      instructions: freezed == instructions
-          ? _value.instructions
-          : instructions // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            paymentId: null == paymentId
+                ? _value.paymentId
+                : paymentId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            payment: null == payment
+                ? _value.payment
+                : payment // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: freezed == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            instructions: freezed == instructions
+                ? _value.instructions
+                : instructions // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            image: freezed == image
+                ? _value.image
+                : image // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PaymentInfoEntityImplCopyWith<$Res>
     implements $PaymentInfoEntityCopyWith<$Res> {
-  factory _$$PaymentInfoEntityImplCopyWith(_$PaymentInfoEntityImpl value,
-          $Res Function(_$PaymentInfoEntityImpl) then) =
-      __$$PaymentInfoEntityImplCopyWithImpl<$Res>;
+  factory _$$PaymentInfoEntityImplCopyWith(
+    _$PaymentInfoEntityImpl value,
+    $Res Function(_$PaymentInfoEntityImpl) then,
+  ) = __$$PaymentInfoEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String paymentId,
-      String payment,
-      String? description,
-      String? instructions,
-      String? image});
+  $Res call({
+    String paymentId,
+    String payment,
+    String? description,
+    String? instructions,
+    String? image,
+  });
 }
 
 /// @nodoc
 class __$$PaymentInfoEntityImplCopyWithImpl<$Res>
     extends _$PaymentInfoEntityCopyWithImpl<$Res, _$PaymentInfoEntityImpl>
     implements _$$PaymentInfoEntityImplCopyWith<$Res> {
-  __$$PaymentInfoEntityImplCopyWithImpl(_$PaymentInfoEntityImpl _value,
-      $Res Function(_$PaymentInfoEntityImpl) _then)
-      : super(_value, _then);
+  __$$PaymentInfoEntityImplCopyWithImpl(
+    _$PaymentInfoEntityImpl _value,
+    $Res Function(_$PaymentInfoEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PaymentInfoEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -128,28 +137,30 @@ class __$$PaymentInfoEntityImplCopyWithImpl<$Res>
     Object? instructions = freezed,
     Object? image = freezed,
   }) {
-    return _then(_$PaymentInfoEntityImpl(
-      paymentId: null == paymentId
-          ? _value.paymentId
-          : paymentId // ignore: cast_nullable_to_non_nullable
-              as String,
-      payment: null == payment
-          ? _value.payment
-          : payment // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      instructions: freezed == instructions
-          ? _value.instructions
-          : instructions // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$PaymentInfoEntityImpl(
+        paymentId: null == paymentId
+            ? _value.paymentId
+            : paymentId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        payment: null == payment
+            ? _value.payment
+            : payment // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: freezed == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        instructions: freezed == instructions
+            ? _value.instructions
+            : instructions // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        image: freezed == image
+            ? _value.image
+            : image // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
@@ -159,12 +170,13 @@ class __$$PaymentInfoEntityImplCopyWithImpl<$Res>
 class _$PaymentInfoEntityImpl
     with DiagnosticableTreeMixin
     implements _PaymentInfoEntity {
-  const _$PaymentInfoEntityImpl(
-      {required this.paymentId,
-      required this.payment,
-      this.description,
-      this.instructions,
-      this.image});
+  const _$PaymentInfoEntityImpl({
+    required this.paymentId,
+    required this.payment,
+    this.description,
+    this.instructions,
+    this.image,
+  });
 
   factory _$PaymentInfoEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentInfoEntityImplFromJson(json);
@@ -215,7 +227,13 @@ class _$PaymentInfoEntityImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, paymentId, payment, description, instructions, image);
+    runtimeType,
+    paymentId,
+    payment,
+    description,
+    instructions,
+    image,
+  );
 
   /// Create a copy of PaymentInfoEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -224,16 +242,19 @@ class _$PaymentInfoEntityImpl
   @pragma('vm:prefer-inline')
   _$$PaymentInfoEntityImplCopyWith<_$PaymentInfoEntityImpl> get copyWith =>
       __$$PaymentInfoEntityImplCopyWithImpl<_$PaymentInfoEntityImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _PaymentInfoEntity implements PaymentInfoEntity {
-  const factory _PaymentInfoEntity(
-      {required final String paymentId,
-      required final String payment,
-      final String? description,
-      final String? instructions,
-      final String? image}) = _$PaymentInfoEntityImpl;
+  const factory _PaymentInfoEntity({
+    required final String paymentId,
+    required final String payment,
+    final String? description,
+    final String? instructions,
+    final String? image,
+  }) = _$PaymentInfoEntityImpl;
 
   factory _PaymentInfoEntity.fromJson(Map<String, dynamic> json) =
       _$PaymentInfoEntityImpl.fromJson;

@@ -7,9 +7,9 @@ part of 'slot.dart';
 // **************************************************************************
 
 _$SlotImpl _$$SlotImplFromJson(Map<String, dynamic> json) => _$SlotImpl(
-      slot: json['slot'] as String?,
-      formatSlot: json['format_slot'] as String?,
-      from: json['from'] as String?,
-      to: json['to'] as String?,
-      note: json['note'] as String?,
-    );
+  slot: json['slot'] as String?,
+  formatSlot: json['format_slot'] as String?,
+  from: json['from'] as String?,
+  to: json['to'] as String?,
+  note: json['note'] as String?,
+);

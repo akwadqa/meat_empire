@@ -86,7 +86,8 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       discounts: Discounts.fromJson(json['discounts'] as Map<String, dynamic>),
       qtyContent: json['qty_content'] as List<dynamic>,
       detailedParams: DetailedParams.fromJson(
-          json['detailed_params'] as Map<String, dynamic>),
+        json['detailed_params'] as Map<String, dynamic>,
+      ),
       imageUrl: json['image_url'] as String,
       companyLogo: json['company_logo'] as String,
       allowAddToCart: json['allow_add_to_cart'] as bool,

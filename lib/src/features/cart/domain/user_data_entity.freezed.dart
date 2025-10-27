@@ -12,7 +12,8 @@ part of 'user_data_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UserDataEntity _$UserDataEntityFromJson(Map<String, dynamic> json) {
   return _UserDataEntity.fromJson(json);
@@ -90,69 +91,71 @@ mixin _$UserDataEntity {
 /// @nodoc
 abstract class $UserDataEntityCopyWith<$Res> {
   factory $UserDataEntityCopyWith(
-          UserDataEntity value, $Res Function(UserDataEntity) then) =
-      _$UserDataEntityCopyWithImpl<$Res, UserDataEntity>;
+    UserDataEntity value,
+    $Res Function(UserDataEntity) then,
+  ) = _$UserDataEntityCopyWithImpl<$Res, UserDataEntity>;
   @useResult
-  $Res call(
-      {String? userId,
-      String? status,
-      String? userType,
-      String? userLogin,
-      String? referer,
-      String? isRoot,
-      String? companyId,
-      String? lastActivity,
-      String? timestamp,
-      String? password,
-      String? salt,
-      String? firstname,
-      String? lastname,
-      String? company,
-      String? email,
-      String? phone,
-      String? fax,
-      String? url,
-      String? taxExempt,
-      String? langCode,
-      String? birthday,
-      String? purchaseTimestampFrom,
-      String? purchaseTimestampTo,
-      String? responsibleEmail,
-      String? passwordChangeTimestamp,
-      String? apiKey,
-      String? helpdeskUserId,
-      String? janrainIdentifier,
-      String? profileId,
-      String? profileType,
-      String? bFirstname,
-      String? bLastname,
-      String? bAddress,
-      String? bAddress2,
-      String? bCity,
-      String? bCounty,
-      String? bState,
-      String? bCountry,
-      String? bZipcode,
-      String? bPhone,
-      String? sFirstname,
-      String? sLastname,
-      String? sAddress,
-      String? sAddress2,
-      String? sCity,
-      String? sCounty,
-      String? sState,
-      String? sCountry,
-      String? sZipcode,
-      String? sPhone,
-      String? sAddressType,
-      String? profileName,
-      String? profileUpdateTimestamp,
-      List<dynamic>? fields,
-      String? bCountryDescr,
-      String? sCountryDescr,
-      String? bStateDescr,
-      String? sStateDescr,
-      int? points});
+  $Res call({
+    String? userId,
+    String? status,
+    String? userType,
+    String? userLogin,
+    String? referer,
+    String? isRoot,
+    String? companyId,
+    String? lastActivity,
+    String? timestamp,
+    String? password,
+    String? salt,
+    String? firstname,
+    String? lastname,
+    String? company,
+    String? email,
+    String? phone,
+    String? fax,
+    String? url,
+    String? taxExempt,
+    String? langCode,
+    String? birthday,
+    String? purchaseTimestampFrom,
+    String? purchaseTimestampTo,
+    String? responsibleEmail,
+    String? passwordChangeTimestamp,
+    String? apiKey,
+    String? helpdeskUserId,
+    String? janrainIdentifier,
+    String? profileId,
+    String? profileType,
+    String? bFirstname,
+    String? bLastname,
+    String? bAddress,
+    String? bAddress2,
+    String? bCity,
+    String? bCounty,
+    String? bState,
+    String? bCountry,
+    String? bZipcode,
+    String? bPhone,
+    String? sFirstname,
+    String? sLastname,
+    String? sAddress,
+    String? sAddress2,
+    String? sCity,
+    String? sCounty,
+    String? sState,
+    String? sCountry,
+    String? sZipcode,
+    String? sPhone,
+    String? sAddressType,
+    String? profileName,
+    String? profileUpdateTimestamp,
+    List<dynamic>? fields,
+    String? bCountryDescr,
+    String? sCountryDescr,
+    String? bStateDescr,
+    String? sStateDescr,
+    int? points,
+  });
 }
 
 /// @nodoc
@@ -230,315 +233,320 @@ class _$UserDataEntityCopyWithImpl<$Res, $Val extends UserDataEntity>
     Object? sStateDescr = freezed,
     Object? points = freezed,
   }) {
-    return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userType: freezed == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userLogin: freezed == userLogin
-          ? _value.userLogin
-          : userLogin // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referer: freezed == referer
-          ? _value.referer
-          : referer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRoot: freezed == isRoot
-          ? _value.isRoot
-          : isRoot // ignore: cast_nullable_to_non_nullable
-              as String?,
-      companyId: freezed == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastActivity: freezed == lastActivity
-          ? _value.lastActivity
-          : lastActivity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: freezed == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      salt: freezed == salt
-          ? _value.salt
-          : salt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firstname: freezed == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastname: freezed == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      company: freezed == company
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fax: freezed == fax
-          ? _value.fax
-          : fax // ignore: cast_nullable_to_non_nullable
-              as String?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taxExempt: freezed == taxExempt
-          ? _value.taxExempt
-          : taxExempt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      langCode: freezed == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthday: freezed == birthday
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as String?,
-      purchaseTimestampFrom: freezed == purchaseTimestampFrom
-          ? _value.purchaseTimestampFrom
-          : purchaseTimestampFrom // ignore: cast_nullable_to_non_nullable
-              as String?,
-      purchaseTimestampTo: freezed == purchaseTimestampTo
-          ? _value.purchaseTimestampTo
-          : purchaseTimestampTo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responsibleEmail: freezed == responsibleEmail
-          ? _value.responsibleEmail
-          : responsibleEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      passwordChangeTimestamp: freezed == passwordChangeTimestamp
-          ? _value.passwordChangeTimestamp
-          : passwordChangeTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apiKey: freezed == apiKey
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-      helpdeskUserId: freezed == helpdeskUserId
-          ? _value.helpdeskUserId
-          : helpdeskUserId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      janrainIdentifier: freezed == janrainIdentifier
-          ? _value.janrainIdentifier
-          : janrainIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileId: freezed == profileId
-          ? _value.profileId
-          : profileId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileType: freezed == profileType
-          ? _value.profileType
-          : profileType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bFirstname: freezed == bFirstname
-          ? _value.bFirstname
-          : bFirstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bLastname: freezed == bLastname
-          ? _value.bLastname
-          : bLastname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bAddress: freezed == bAddress
-          ? _value.bAddress
-          : bAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bAddress2: freezed == bAddress2
-          ? _value.bAddress2
-          : bAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bCity: freezed == bCity
-          ? _value.bCity
-          : bCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bCounty: freezed == bCounty
-          ? _value.bCounty
-          : bCounty // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bState: freezed == bState
-          ? _value.bState
-          : bState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bCountry: freezed == bCountry
-          ? _value.bCountry
-          : bCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bZipcode: freezed == bZipcode
-          ? _value.bZipcode
-          : bZipcode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bPhone: freezed == bPhone
-          ? _value.bPhone
-          : bPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sFirstname: freezed == sFirstname
-          ? _value.sFirstname
-          : sFirstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sLastname: freezed == sLastname
-          ? _value.sLastname
-          : sLastname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sAddress: freezed == sAddress
-          ? _value.sAddress
-          : sAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sAddress2: freezed == sAddress2
-          ? _value.sAddress2
-          : sAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCity: freezed == sCity
-          ? _value.sCity
-          : sCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCounty: freezed == sCounty
-          ? _value.sCounty
-          : sCounty // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sState: freezed == sState
-          ? _value.sState
-          : sState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCountry: freezed == sCountry
-          ? _value.sCountry
-          : sCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sZipcode: freezed == sZipcode
-          ? _value.sZipcode
-          : sZipcode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sPhone: freezed == sPhone
-          ? _value.sPhone
-          : sPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sAddressType: freezed == sAddressType
-          ? _value.sAddressType
-          : sAddressType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileName: freezed == profileName
-          ? _value.profileName
-          : profileName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileUpdateTimestamp: freezed == profileUpdateTimestamp
-          ? _value.profileUpdateTimestamp
-          : profileUpdateTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fields: freezed == fields
-          ? _value.fields
-          : fields // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      bCountryDescr: freezed == bCountryDescr
-          ? _value.bCountryDescr
-          : bCountryDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCountryDescr: freezed == sCountryDescr
-          ? _value.sCountryDescr
-          : sCountryDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bStateDescr: freezed == bStateDescr
-          ? _value.bStateDescr
-          : bStateDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sStateDescr: freezed == sStateDescr
-          ? _value.sStateDescr
-          : sStateDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      points: freezed == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            userId: freezed == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            status: freezed == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            userType: freezed == userType
+                ? _value.userType
+                : userType // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            userLogin: freezed == userLogin
+                ? _value.userLogin
+                : userLogin // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            referer: freezed == referer
+                ? _value.referer
+                : referer // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            isRoot: freezed == isRoot
+                ? _value.isRoot
+                : isRoot // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            companyId: freezed == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastActivity: freezed == lastActivity
+                ? _value.lastActivity
+                : lastActivity // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            timestamp: freezed == timestamp
+                ? _value.timestamp
+                : timestamp // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            password: freezed == password
+                ? _value.password
+                : password // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            salt: freezed == salt
+                ? _value.salt
+                : salt // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            firstname: freezed == firstname
+                ? _value.firstname
+                : firstname // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastname: freezed == lastname
+                ? _value.lastname
+                : lastname // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            company: freezed == company
+                ? _value.company
+                : company // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            email: freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            phone: freezed == phone
+                ? _value.phone
+                : phone // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            fax: freezed == fax
+                ? _value.fax
+                : fax // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            url: freezed == url
+                ? _value.url
+                : url // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            taxExempt: freezed == taxExempt
+                ? _value.taxExempt
+                : taxExempt // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            langCode: freezed == langCode
+                ? _value.langCode
+                : langCode // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            birthday: freezed == birthday
+                ? _value.birthday
+                : birthday // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            purchaseTimestampFrom: freezed == purchaseTimestampFrom
+                ? _value.purchaseTimestampFrom
+                : purchaseTimestampFrom // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            purchaseTimestampTo: freezed == purchaseTimestampTo
+                ? _value.purchaseTimestampTo
+                : purchaseTimestampTo // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            responsibleEmail: freezed == responsibleEmail
+                ? _value.responsibleEmail
+                : responsibleEmail // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            passwordChangeTimestamp: freezed == passwordChangeTimestamp
+                ? _value.passwordChangeTimestamp
+                : passwordChangeTimestamp // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            apiKey: freezed == apiKey
+                ? _value.apiKey
+                : apiKey // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            helpdeskUserId: freezed == helpdeskUserId
+                ? _value.helpdeskUserId
+                : helpdeskUserId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            janrainIdentifier: freezed == janrainIdentifier
+                ? _value.janrainIdentifier
+                : janrainIdentifier // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            profileId: freezed == profileId
+                ? _value.profileId
+                : profileId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            profileType: freezed == profileType
+                ? _value.profileType
+                : profileType // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bFirstname: freezed == bFirstname
+                ? _value.bFirstname
+                : bFirstname // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bLastname: freezed == bLastname
+                ? _value.bLastname
+                : bLastname // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bAddress: freezed == bAddress
+                ? _value.bAddress
+                : bAddress // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bAddress2: freezed == bAddress2
+                ? _value.bAddress2
+                : bAddress2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bCity: freezed == bCity
+                ? _value.bCity
+                : bCity // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bCounty: freezed == bCounty
+                ? _value.bCounty
+                : bCounty // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bState: freezed == bState
+                ? _value.bState
+                : bState // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bCountry: freezed == bCountry
+                ? _value.bCountry
+                : bCountry // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bZipcode: freezed == bZipcode
+                ? _value.bZipcode
+                : bZipcode // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bPhone: freezed == bPhone
+                ? _value.bPhone
+                : bPhone // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sFirstname: freezed == sFirstname
+                ? _value.sFirstname
+                : sFirstname // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sLastname: freezed == sLastname
+                ? _value.sLastname
+                : sLastname // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sAddress: freezed == sAddress
+                ? _value.sAddress
+                : sAddress // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sAddress2: freezed == sAddress2
+                ? _value.sAddress2
+                : sAddress2 // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sCity: freezed == sCity
+                ? _value.sCity
+                : sCity // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sCounty: freezed == sCounty
+                ? _value.sCounty
+                : sCounty // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sState: freezed == sState
+                ? _value.sState
+                : sState // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sCountry: freezed == sCountry
+                ? _value.sCountry
+                : sCountry // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sZipcode: freezed == sZipcode
+                ? _value.sZipcode
+                : sZipcode // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sPhone: freezed == sPhone
+                ? _value.sPhone
+                : sPhone // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sAddressType: freezed == sAddressType
+                ? _value.sAddressType
+                : sAddressType // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            profileName: freezed == profileName
+                ? _value.profileName
+                : profileName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            profileUpdateTimestamp: freezed == profileUpdateTimestamp
+                ? _value.profileUpdateTimestamp
+                : profileUpdateTimestamp // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            fields: freezed == fields
+                ? _value.fields
+                : fields // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>?,
+            bCountryDescr: freezed == bCountryDescr
+                ? _value.bCountryDescr
+                : bCountryDescr // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sCountryDescr: freezed == sCountryDescr
+                ? _value.sCountryDescr
+                : sCountryDescr // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            bStateDescr: freezed == bStateDescr
+                ? _value.bStateDescr
+                : bStateDescr // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sStateDescr: freezed == sStateDescr
+                ? _value.sStateDescr
+                : sStateDescr // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            points: freezed == points
+                ? _value.points
+                : points // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UserDataEntityImplCopyWith<$Res>
     implements $UserDataEntityCopyWith<$Res> {
-  factory _$$UserDataEntityImplCopyWith(_$UserDataEntityImpl value,
-          $Res Function(_$UserDataEntityImpl) then) =
-      __$$UserDataEntityImplCopyWithImpl<$Res>;
+  factory _$$UserDataEntityImplCopyWith(
+    _$UserDataEntityImpl value,
+    $Res Function(_$UserDataEntityImpl) then,
+  ) = __$$UserDataEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? userId,
-      String? status,
-      String? userType,
-      String? userLogin,
-      String? referer,
-      String? isRoot,
-      String? companyId,
-      String? lastActivity,
-      String? timestamp,
-      String? password,
-      String? salt,
-      String? firstname,
-      String? lastname,
-      String? company,
-      String? email,
-      String? phone,
-      String? fax,
-      String? url,
-      String? taxExempt,
-      String? langCode,
-      String? birthday,
-      String? purchaseTimestampFrom,
-      String? purchaseTimestampTo,
-      String? responsibleEmail,
-      String? passwordChangeTimestamp,
-      String? apiKey,
-      String? helpdeskUserId,
-      String? janrainIdentifier,
-      String? profileId,
-      String? profileType,
-      String? bFirstname,
-      String? bLastname,
-      String? bAddress,
-      String? bAddress2,
-      String? bCity,
-      String? bCounty,
-      String? bState,
-      String? bCountry,
-      String? bZipcode,
-      String? bPhone,
-      String? sFirstname,
-      String? sLastname,
-      String? sAddress,
-      String? sAddress2,
-      String? sCity,
-      String? sCounty,
-      String? sState,
-      String? sCountry,
-      String? sZipcode,
-      String? sPhone,
-      String? sAddressType,
-      String? profileName,
-      String? profileUpdateTimestamp,
-      List<dynamic>? fields,
-      String? bCountryDescr,
-      String? sCountryDescr,
-      String? bStateDescr,
-      String? sStateDescr,
-      int? points});
+  $Res call({
+    String? userId,
+    String? status,
+    String? userType,
+    String? userLogin,
+    String? referer,
+    String? isRoot,
+    String? companyId,
+    String? lastActivity,
+    String? timestamp,
+    String? password,
+    String? salt,
+    String? firstname,
+    String? lastname,
+    String? company,
+    String? email,
+    String? phone,
+    String? fax,
+    String? url,
+    String? taxExempt,
+    String? langCode,
+    String? birthday,
+    String? purchaseTimestampFrom,
+    String? purchaseTimestampTo,
+    String? responsibleEmail,
+    String? passwordChangeTimestamp,
+    String? apiKey,
+    String? helpdeskUserId,
+    String? janrainIdentifier,
+    String? profileId,
+    String? profileType,
+    String? bFirstname,
+    String? bLastname,
+    String? bAddress,
+    String? bAddress2,
+    String? bCity,
+    String? bCounty,
+    String? bState,
+    String? bCountry,
+    String? bZipcode,
+    String? bPhone,
+    String? sFirstname,
+    String? sLastname,
+    String? sAddress,
+    String? sAddress2,
+    String? sCity,
+    String? sCounty,
+    String? sState,
+    String? sCountry,
+    String? sZipcode,
+    String? sPhone,
+    String? sAddressType,
+    String? profileName,
+    String? profileUpdateTimestamp,
+    List<dynamic>? fields,
+    String? bCountryDescr,
+    String? sCountryDescr,
+    String? bStateDescr,
+    String? sStateDescr,
+    int? points,
+  });
 }
 
 /// @nodoc
@@ -546,8 +554,9 @@ class __$$UserDataEntityImplCopyWithImpl<$Res>
     extends _$UserDataEntityCopyWithImpl<$Res, _$UserDataEntityImpl>
     implements _$$UserDataEntityImplCopyWith<$Res> {
   __$$UserDataEntityImplCopyWithImpl(
-      _$UserDataEntityImpl _value, $Res Function(_$UserDataEntityImpl) _then)
-      : super(_value, _then);
+    _$UserDataEntityImpl _value,
+    $Res Function(_$UserDataEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -614,311 +623,313 @@ class __$$UserDataEntityImplCopyWithImpl<$Res>
     Object? sStateDescr = freezed,
     Object? points = freezed,
   }) {
-    return _then(_$UserDataEntityImpl(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userType: freezed == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userLogin: freezed == userLogin
-          ? _value.userLogin
-          : userLogin // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referer: freezed == referer
-          ? _value.referer
-          : referer // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRoot: freezed == isRoot
-          ? _value.isRoot
-          : isRoot // ignore: cast_nullable_to_non_nullable
-              as String?,
-      companyId: freezed == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastActivity: freezed == lastActivity
-          ? _value.lastActivity
-          : lastActivity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: freezed == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      salt: freezed == salt
-          ? _value.salt
-          : salt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firstname: freezed == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastname: freezed == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      company: freezed == company
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fax: freezed == fax
-          ? _value.fax
-          : fax // ignore: cast_nullable_to_non_nullable
-              as String?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      taxExempt: freezed == taxExempt
-          ? _value.taxExempt
-          : taxExempt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      langCode: freezed == langCode
-          ? _value.langCode
-          : langCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthday: freezed == birthday
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as String?,
-      purchaseTimestampFrom: freezed == purchaseTimestampFrom
-          ? _value.purchaseTimestampFrom
-          : purchaseTimestampFrom // ignore: cast_nullable_to_non_nullable
-              as String?,
-      purchaseTimestampTo: freezed == purchaseTimestampTo
-          ? _value.purchaseTimestampTo
-          : purchaseTimestampTo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responsibleEmail: freezed == responsibleEmail
-          ? _value.responsibleEmail
-          : responsibleEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      passwordChangeTimestamp: freezed == passwordChangeTimestamp
-          ? _value.passwordChangeTimestamp
-          : passwordChangeTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apiKey: freezed == apiKey
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-      helpdeskUserId: freezed == helpdeskUserId
-          ? _value.helpdeskUserId
-          : helpdeskUserId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      janrainIdentifier: freezed == janrainIdentifier
-          ? _value.janrainIdentifier
-          : janrainIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileId: freezed == profileId
-          ? _value.profileId
-          : profileId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileType: freezed == profileType
-          ? _value.profileType
-          : profileType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bFirstname: freezed == bFirstname
-          ? _value.bFirstname
-          : bFirstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bLastname: freezed == bLastname
-          ? _value.bLastname
-          : bLastname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bAddress: freezed == bAddress
-          ? _value.bAddress
-          : bAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bAddress2: freezed == bAddress2
-          ? _value.bAddress2
-          : bAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bCity: freezed == bCity
-          ? _value.bCity
-          : bCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bCounty: freezed == bCounty
-          ? _value.bCounty
-          : bCounty // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bState: freezed == bState
-          ? _value.bState
-          : bState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bCountry: freezed == bCountry
-          ? _value.bCountry
-          : bCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bZipcode: freezed == bZipcode
-          ? _value.bZipcode
-          : bZipcode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bPhone: freezed == bPhone
-          ? _value.bPhone
-          : bPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sFirstname: freezed == sFirstname
-          ? _value.sFirstname
-          : sFirstname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sLastname: freezed == sLastname
-          ? _value.sLastname
-          : sLastname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sAddress: freezed == sAddress
-          ? _value.sAddress
-          : sAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sAddress2: freezed == sAddress2
-          ? _value.sAddress2
-          : sAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCity: freezed == sCity
-          ? _value.sCity
-          : sCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCounty: freezed == sCounty
-          ? _value.sCounty
-          : sCounty // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sState: freezed == sState
-          ? _value.sState
-          : sState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCountry: freezed == sCountry
-          ? _value.sCountry
-          : sCountry // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sZipcode: freezed == sZipcode
-          ? _value.sZipcode
-          : sZipcode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sPhone: freezed == sPhone
-          ? _value.sPhone
-          : sPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sAddressType: freezed == sAddressType
-          ? _value.sAddressType
-          : sAddressType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileName: freezed == profileName
-          ? _value.profileName
-          : profileName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profileUpdateTimestamp: freezed == profileUpdateTimestamp
-          ? _value.profileUpdateTimestamp
-          : profileUpdateTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fields: freezed == fields
-          ? _value._fields
-          : fields // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      bCountryDescr: freezed == bCountryDescr
-          ? _value.bCountryDescr
-          : bCountryDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sCountryDescr: freezed == sCountryDescr
-          ? _value.sCountryDescr
-          : sCountryDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bStateDescr: freezed == bStateDescr
-          ? _value.bStateDescr
-          : bStateDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sStateDescr: freezed == sStateDescr
-          ? _value.sStateDescr
-          : sStateDescr // ignore: cast_nullable_to_non_nullable
-              as String?,
-      points: freezed == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$UserDataEntityImpl(
+        userId: freezed == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        status: freezed == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        userType: freezed == userType
+            ? _value.userType
+            : userType // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        userLogin: freezed == userLogin
+            ? _value.userLogin
+            : userLogin // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        referer: freezed == referer
+            ? _value.referer
+            : referer // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isRoot: freezed == isRoot
+            ? _value.isRoot
+            : isRoot // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        companyId: freezed == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastActivity: freezed == lastActivity
+            ? _value.lastActivity
+            : lastActivity // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        timestamp: freezed == timestamp
+            ? _value.timestamp
+            : timestamp // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        password: freezed == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        salt: freezed == salt
+            ? _value.salt
+            : salt // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        firstname: freezed == firstname
+            ? _value.firstname
+            : firstname // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastname: freezed == lastname
+            ? _value.lastname
+            : lastname // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        company: freezed == company
+            ? _value.company
+            : company // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        email: freezed == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        phone: freezed == phone
+            ? _value.phone
+            : phone // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        fax: freezed == fax
+            ? _value.fax
+            : fax // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        url: freezed == url
+            ? _value.url
+            : url // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        taxExempt: freezed == taxExempt
+            ? _value.taxExempt
+            : taxExempt // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        langCode: freezed == langCode
+            ? _value.langCode
+            : langCode // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        birthday: freezed == birthday
+            ? _value.birthday
+            : birthday // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        purchaseTimestampFrom: freezed == purchaseTimestampFrom
+            ? _value.purchaseTimestampFrom
+            : purchaseTimestampFrom // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        purchaseTimestampTo: freezed == purchaseTimestampTo
+            ? _value.purchaseTimestampTo
+            : purchaseTimestampTo // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        responsibleEmail: freezed == responsibleEmail
+            ? _value.responsibleEmail
+            : responsibleEmail // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        passwordChangeTimestamp: freezed == passwordChangeTimestamp
+            ? _value.passwordChangeTimestamp
+            : passwordChangeTimestamp // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        apiKey: freezed == apiKey
+            ? _value.apiKey
+            : apiKey // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        helpdeskUserId: freezed == helpdeskUserId
+            ? _value.helpdeskUserId
+            : helpdeskUserId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        janrainIdentifier: freezed == janrainIdentifier
+            ? _value.janrainIdentifier
+            : janrainIdentifier // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        profileId: freezed == profileId
+            ? _value.profileId
+            : profileId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        profileType: freezed == profileType
+            ? _value.profileType
+            : profileType // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bFirstname: freezed == bFirstname
+            ? _value.bFirstname
+            : bFirstname // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bLastname: freezed == bLastname
+            ? _value.bLastname
+            : bLastname // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bAddress: freezed == bAddress
+            ? _value.bAddress
+            : bAddress // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bAddress2: freezed == bAddress2
+            ? _value.bAddress2
+            : bAddress2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bCity: freezed == bCity
+            ? _value.bCity
+            : bCity // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bCounty: freezed == bCounty
+            ? _value.bCounty
+            : bCounty // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bState: freezed == bState
+            ? _value.bState
+            : bState // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bCountry: freezed == bCountry
+            ? _value.bCountry
+            : bCountry // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bZipcode: freezed == bZipcode
+            ? _value.bZipcode
+            : bZipcode // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bPhone: freezed == bPhone
+            ? _value.bPhone
+            : bPhone // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sFirstname: freezed == sFirstname
+            ? _value.sFirstname
+            : sFirstname // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sLastname: freezed == sLastname
+            ? _value.sLastname
+            : sLastname // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sAddress: freezed == sAddress
+            ? _value.sAddress
+            : sAddress // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sAddress2: freezed == sAddress2
+            ? _value.sAddress2
+            : sAddress2 // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sCity: freezed == sCity
+            ? _value.sCity
+            : sCity // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sCounty: freezed == sCounty
+            ? _value.sCounty
+            : sCounty // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sState: freezed == sState
+            ? _value.sState
+            : sState // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sCountry: freezed == sCountry
+            ? _value.sCountry
+            : sCountry // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sZipcode: freezed == sZipcode
+            ? _value.sZipcode
+            : sZipcode // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sPhone: freezed == sPhone
+            ? _value.sPhone
+            : sPhone // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sAddressType: freezed == sAddressType
+            ? _value.sAddressType
+            : sAddressType // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        profileName: freezed == profileName
+            ? _value.profileName
+            : profileName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        profileUpdateTimestamp: freezed == profileUpdateTimestamp
+            ? _value.profileUpdateTimestamp
+            : profileUpdateTimestamp // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        fields: freezed == fields
+            ? _value._fields
+            : fields // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>?,
+        bCountryDescr: freezed == bCountryDescr
+            ? _value.bCountryDescr
+            : bCountryDescr // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sCountryDescr: freezed == sCountryDescr
+            ? _value.sCountryDescr
+            : sCountryDescr // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        bStateDescr: freezed == bStateDescr
+            ? _value.bStateDescr
+            : bStateDescr // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sStateDescr: freezed == sStateDescr
+            ? _value.sStateDescr
+            : sStateDescr // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        points: freezed == points
+            ? _value.points
+            : points // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$UserDataEntityImpl implements _UserDataEntity {
-  _$UserDataEntityImpl(
-      {this.userId,
-      this.status,
-      this.userType,
-      this.userLogin,
-      this.referer,
-      this.isRoot,
-      this.companyId,
-      this.lastActivity,
-      this.timestamp,
-      this.password,
-      this.salt,
-      this.firstname,
-      this.lastname,
-      this.company,
-      this.email,
-      this.phone,
-      this.fax,
-      this.url,
-      this.taxExempt,
-      this.langCode,
-      this.birthday,
-      this.purchaseTimestampFrom,
-      this.purchaseTimestampTo,
-      this.responsibleEmail,
-      this.passwordChangeTimestamp,
-      this.apiKey,
-      this.helpdeskUserId,
-      this.janrainIdentifier,
-      this.profileId,
-      this.profileType,
-      this.bFirstname,
-      this.bLastname,
-      this.bAddress,
-      this.bAddress2,
-      this.bCity,
-      this.bCounty,
-      this.bState,
-      this.bCountry,
-      this.bZipcode,
-      this.bPhone,
-      this.sFirstname,
-      this.sLastname,
-      this.sAddress,
-      this.sAddress2,
-      this.sCity,
-      this.sCounty,
-      this.sState,
-      this.sCountry,
-      this.sZipcode,
-      this.sPhone,
-      this.sAddressType,
-      this.profileName,
-      this.profileUpdateTimestamp,
-      final List<dynamic>? fields,
-      this.bCountryDescr,
-      this.sCountryDescr,
-      this.bStateDescr,
-      this.sStateDescr,
-      this.points})
-      : _fields = fields;
+  _$UserDataEntityImpl({
+    this.userId,
+    this.status,
+    this.userType,
+    this.userLogin,
+    this.referer,
+    this.isRoot,
+    this.companyId,
+    this.lastActivity,
+    this.timestamp,
+    this.password,
+    this.salt,
+    this.firstname,
+    this.lastname,
+    this.company,
+    this.email,
+    this.phone,
+    this.fax,
+    this.url,
+    this.taxExempt,
+    this.langCode,
+    this.birthday,
+    this.purchaseTimestampFrom,
+    this.purchaseTimestampTo,
+    this.responsibleEmail,
+    this.passwordChangeTimestamp,
+    this.apiKey,
+    this.helpdeskUserId,
+    this.janrainIdentifier,
+    this.profileId,
+    this.profileType,
+    this.bFirstname,
+    this.bLastname,
+    this.bAddress,
+    this.bAddress2,
+    this.bCity,
+    this.bCounty,
+    this.bState,
+    this.bCountry,
+    this.bZipcode,
+    this.bPhone,
+    this.sFirstname,
+    this.sLastname,
+    this.sAddress,
+    this.sAddress2,
+    this.sCity,
+    this.sCounty,
+    this.sState,
+    this.sCountry,
+    this.sZipcode,
+    this.sPhone,
+    this.sAddressType,
+    this.profileName,
+    this.profileUpdateTimestamp,
+    final List<dynamic>? fields,
+    this.bCountryDescr,
+    this.sCountryDescr,
+    this.bStateDescr,
+    this.sStateDescr,
+    this.points,
+  }) : _fields = fields;
 
   factory _$UserDataEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDataEntityImplFromJson(json);
@@ -1098,7 +1109,10 @@ class _$UserDataEntityImpl implements _UserDataEntity {
                 other.purchaseTimestampTo == purchaseTimestampTo) &&
             (identical(other.responsibleEmail, responsibleEmail) ||
                 other.responsibleEmail == responsibleEmail) &&
-            (identical(other.passwordChangeTimestamp, passwordChangeTimestamp) ||
+            (identical(
+                  other.passwordChangeTimestamp,
+                  passwordChangeTimestamp,
+                ) ||
                 other.passwordChangeTimestamp == passwordChangeTimestamp) &&
             (identical(other.apiKey, apiKey) || other.apiKey == apiKey) &&
             (identical(other.helpdeskUserId, helpdeskUserId) ||
@@ -1154,74 +1168,75 @@ class _$UserDataEntityImpl implements _UserDataEntity {
                 other.sCountryDescr == sCountryDescr) &&
             (identical(other.bStateDescr, bStateDescr) ||
                 other.bStateDescr == bStateDescr) &&
-            (identical(other.sStateDescr, sStateDescr) || other.sStateDescr == sStateDescr) &&
+            (identical(other.sStateDescr, sStateDescr) ||
+                other.sStateDescr == sStateDescr) &&
             (identical(other.points, points) || other.points == points));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        userId,
-        status,
-        userType,
-        userLogin,
-        referer,
-        isRoot,
-        companyId,
-        lastActivity,
-        timestamp,
-        password,
-        salt,
-        firstname,
-        lastname,
-        company,
-        email,
-        phone,
-        fax,
-        url,
-        taxExempt,
-        langCode,
-        birthday,
-        purchaseTimestampFrom,
-        purchaseTimestampTo,
-        responsibleEmail,
-        passwordChangeTimestamp,
-        apiKey,
-        helpdeskUserId,
-        janrainIdentifier,
-        profileId,
-        profileType,
-        bFirstname,
-        bLastname,
-        bAddress,
-        bAddress2,
-        bCity,
-        bCounty,
-        bState,
-        bCountry,
-        bZipcode,
-        bPhone,
-        sFirstname,
-        sLastname,
-        sAddress,
-        sAddress2,
-        sCity,
-        sCounty,
-        sState,
-        sCountry,
-        sZipcode,
-        sPhone,
-        sAddressType,
-        profileName,
-        profileUpdateTimestamp,
-        const DeepCollectionEquality().hash(_fields),
-        bCountryDescr,
-        sCountryDescr,
-        bStateDescr,
-        sStateDescr,
-        points
-      ]);
+    runtimeType,
+    userId,
+    status,
+    userType,
+    userLogin,
+    referer,
+    isRoot,
+    companyId,
+    lastActivity,
+    timestamp,
+    password,
+    salt,
+    firstname,
+    lastname,
+    company,
+    email,
+    phone,
+    fax,
+    url,
+    taxExempt,
+    langCode,
+    birthday,
+    purchaseTimestampFrom,
+    purchaseTimestampTo,
+    responsibleEmail,
+    passwordChangeTimestamp,
+    apiKey,
+    helpdeskUserId,
+    janrainIdentifier,
+    profileId,
+    profileType,
+    bFirstname,
+    bLastname,
+    bAddress,
+    bAddress2,
+    bCity,
+    bCounty,
+    bState,
+    bCountry,
+    bZipcode,
+    bPhone,
+    sFirstname,
+    sLastname,
+    sAddress,
+    sAddress2,
+    sCity,
+    sCounty,
+    sState,
+    sCountry,
+    sZipcode,
+    sPhone,
+    sAddressType,
+    profileName,
+    profileUpdateTimestamp,
+    const DeepCollectionEquality().hash(_fields),
+    bCountryDescr,
+    sCountryDescr,
+    bStateDescr,
+    sStateDescr,
+    points,
+  ]);
 
   /// Create a copy of UserDataEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -1230,70 +1245,73 @@ class _$UserDataEntityImpl implements _UserDataEntity {
   @pragma('vm:prefer-inline')
   _$$UserDataEntityImplCopyWith<_$UserDataEntityImpl> get copyWith =>
       __$$UserDataEntityImplCopyWithImpl<_$UserDataEntityImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _UserDataEntity implements UserDataEntity {
-  factory _UserDataEntity(
-      {final String? userId,
-      final String? status,
-      final String? userType,
-      final String? userLogin,
-      final String? referer,
-      final String? isRoot,
-      final String? companyId,
-      final String? lastActivity,
-      final String? timestamp,
-      final String? password,
-      final String? salt,
-      final String? firstname,
-      final String? lastname,
-      final String? company,
-      final String? email,
-      final String? phone,
-      final String? fax,
-      final String? url,
-      final String? taxExempt,
-      final String? langCode,
-      final String? birthday,
-      final String? purchaseTimestampFrom,
-      final String? purchaseTimestampTo,
-      final String? responsibleEmail,
-      final String? passwordChangeTimestamp,
-      final String? apiKey,
-      final String? helpdeskUserId,
-      final String? janrainIdentifier,
-      final String? profileId,
-      final String? profileType,
-      final String? bFirstname,
-      final String? bLastname,
-      final String? bAddress,
-      final String? bAddress2,
-      final String? bCity,
-      final String? bCounty,
-      final String? bState,
-      final String? bCountry,
-      final String? bZipcode,
-      final String? bPhone,
-      final String? sFirstname,
-      final String? sLastname,
-      final String? sAddress,
-      final String? sAddress2,
-      final String? sCity,
-      final String? sCounty,
-      final String? sState,
-      final String? sCountry,
-      final String? sZipcode,
-      final String? sPhone,
-      final String? sAddressType,
-      final String? profileName,
-      final String? profileUpdateTimestamp,
-      final List<dynamic>? fields,
-      final String? bCountryDescr,
-      final String? sCountryDescr,
-      final String? bStateDescr,
-      final String? sStateDescr,
-      final int? points}) = _$UserDataEntityImpl;
+  factory _UserDataEntity({
+    final String? userId,
+    final String? status,
+    final String? userType,
+    final String? userLogin,
+    final String? referer,
+    final String? isRoot,
+    final String? companyId,
+    final String? lastActivity,
+    final String? timestamp,
+    final String? password,
+    final String? salt,
+    final String? firstname,
+    final String? lastname,
+    final String? company,
+    final String? email,
+    final String? phone,
+    final String? fax,
+    final String? url,
+    final String? taxExempt,
+    final String? langCode,
+    final String? birthday,
+    final String? purchaseTimestampFrom,
+    final String? purchaseTimestampTo,
+    final String? responsibleEmail,
+    final String? passwordChangeTimestamp,
+    final String? apiKey,
+    final String? helpdeskUserId,
+    final String? janrainIdentifier,
+    final String? profileId,
+    final String? profileType,
+    final String? bFirstname,
+    final String? bLastname,
+    final String? bAddress,
+    final String? bAddress2,
+    final String? bCity,
+    final String? bCounty,
+    final String? bState,
+    final String? bCountry,
+    final String? bZipcode,
+    final String? bPhone,
+    final String? sFirstname,
+    final String? sLastname,
+    final String? sAddress,
+    final String? sAddress2,
+    final String? sCity,
+    final String? sCounty,
+    final String? sState,
+    final String? sCountry,
+    final String? sZipcode,
+    final String? sPhone,
+    final String? sAddressType,
+    final String? profileName,
+    final String? profileUpdateTimestamp,
+    final List<dynamic>? fields,
+    final String? bCountryDescr,
+    final String? sCountryDescr,
+    final String? bStateDescr,
+    final String? sStateDescr,
+    final int? points,
+  }) = _$UserDataEntityImpl;
 
   factory _UserDataEntity.fromJson(Map<String, dynamic> json) =
       _$UserDataEntityImpl.fromJson;

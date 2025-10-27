@@ -12,7 +12,8 @@ part of 'sorting.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Sorting _$SortingFromJson(Map<String, dynamic> json) {
   return _Sorting.fromJson(json);
@@ -57,28 +58,32 @@ class _$SortingCopyWithImpl<$Res, $Val extends Sorting>
     Object? sortBy = null,
     Object? sortOrder = null,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortBy: null == sortBy
+                ? _value.sortBy
+                : sortBy // ignore: cast_nullable_to_non_nullable
+                      as String,
+            sortOrder: null == sortOrder
+                ? _value.sortOrder
+                : sortOrder // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SortingImplCopyWith<$Res> implements $SortingCopyWith<$Res> {
   factory _$$SortingImplCopyWith(
-          _$SortingImpl value, $Res Function(_$SortingImpl) then) =
-      __$$SortingImplCopyWithImpl<$Res>;
+    _$SortingImpl value,
+    $Res Function(_$SortingImpl) then,
+  ) = __$$SortingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String sortBy, String sortOrder});
@@ -89,8 +94,9 @@ class __$$SortingImplCopyWithImpl<$Res>
     extends _$SortingCopyWithImpl<$Res, _$SortingImpl>
     implements _$$SortingImplCopyWith<$Res> {
   __$$SortingImplCopyWithImpl(
-      _$SortingImpl _value, $Res Function(_$SortingImpl) _then)
-      : super(_value, _then);
+    _$SortingImpl _value,
+    $Res Function(_$SortingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Sorting
   /// with the given fields replaced by the non-null parameter values.
@@ -101,28 +107,33 @@ class __$$SortingImplCopyWithImpl<$Res>
     Object? sortBy = null,
     Object? sortOrder = null,
   }) {
-    return _then(_$SortingImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortBy: null == sortBy
-          ? _value.sortBy
-          : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortOrder: null == sortOrder
-          ? _value.sortOrder
-          : sortOrder // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$SortingImpl(
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortBy: null == sortBy
+            ? _value.sortBy
+            : sortBy // ignore: cast_nullable_to_non_nullable
+                  as String,
+        sortOrder: null == sortOrder
+            ? _value.sortOrder
+            : sortOrder // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$SortingImpl implements _Sorting {
-  _$SortingImpl(
-      {required this.name, required this.sortBy, required this.sortOrder});
+  _$SortingImpl({
+    required this.name,
+    required this.sortBy,
+    required this.sortOrder,
+  });
 
   factory _$SortingImpl.fromJson(Map<String, dynamic> json) =>
       _$$SortingImplFromJson(json);
@@ -164,10 +175,11 @@ class _$SortingImpl implements _Sorting {
 }
 
 abstract class _Sorting implements Sorting {
-  factory _Sorting(
-      {required final String name,
-      required final String sortBy,
-      required final String sortOrder}) = _$SortingImpl;
+  factory _Sorting({
+    required final String name,
+    required final String sortBy,
+    required final String sortOrder,
+  }) = _$SortingImpl;
 
   factory _Sorting.fromJson(Map<String, dynamic> json) = _$SortingImpl.fromJson;
 

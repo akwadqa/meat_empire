@@ -12,7 +12,8 @@ part of 'option.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Option _$OptionFromJson(Map<String, dynamic> json) {
   return _Option.fromJson(json);
@@ -41,15 +42,16 @@ abstract class $OptionCopyWith<$Res> {
   factory $OptionCopyWith(Option value, $Res Function(Option) then) =
       _$OptionCopyWithImpl<$Res, Option>;
   @useResult
-  $Res call(
-      {List<Variant> variants,
-      int optionId,
-      String optionType,
-      String optionName,
-      @JsonKey(name: 'required') String isRequired,
-      bool inventory,
-      String innerHint,
-      int textModifier});
+  $Res call({
+    List<Variant> variants,
+    int optionId,
+    String optionType,
+    String optionName,
+    @JsonKey(name: 'required') String isRequired,
+    bool inventory,
+    String innerHint,
+    int textModifier,
+  });
 }
 
 /// @nodoc
@@ -76,59 +78,64 @@ class _$OptionCopyWithImpl<$Res, $Val extends Option>
     Object? innerHint = null,
     Object? textModifier = null,
   }) {
-    return _then(_value.copyWith(
-      variants: null == variants
-          ? _value.variants
-          : variants // ignore: cast_nullable_to_non_nullable
-              as List<Variant>,
-      optionId: null == optionId
-          ? _value.optionId
-          : optionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      optionType: null == optionType
-          ? _value.optionType
-          : optionType // ignore: cast_nullable_to_non_nullable
-              as String,
-      optionName: null == optionName
-          ? _value.optionName
-          : optionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      isRequired: null == isRequired
-          ? _value.isRequired
-          : isRequired // ignore: cast_nullable_to_non_nullable
-              as String,
-      inventory: null == inventory
-          ? _value.inventory
-          : inventory // ignore: cast_nullable_to_non_nullable
-              as bool,
-      innerHint: null == innerHint
-          ? _value.innerHint
-          : innerHint // ignore: cast_nullable_to_non_nullable
-              as String,
-      textModifier: null == textModifier
-          ? _value.textModifier
-          : textModifier // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            variants: null == variants
+                ? _value.variants
+                : variants // ignore: cast_nullable_to_non_nullable
+                      as List<Variant>,
+            optionId: null == optionId
+                ? _value.optionId
+                : optionId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            optionType: null == optionType
+                ? _value.optionType
+                : optionType // ignore: cast_nullable_to_non_nullable
+                      as String,
+            optionName: null == optionName
+                ? _value.optionName
+                : optionName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isRequired: null == isRequired
+                ? _value.isRequired
+                : isRequired // ignore: cast_nullable_to_non_nullable
+                      as String,
+            inventory: null == inventory
+                ? _value.inventory
+                : inventory // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            innerHint: null == innerHint
+                ? _value.innerHint
+                : innerHint // ignore: cast_nullable_to_non_nullable
+                      as String,
+            textModifier: null == textModifier
+                ? _value.textModifier
+                : textModifier // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$OptionImplCopyWith<$Res> implements $OptionCopyWith<$Res> {
   factory _$$OptionImplCopyWith(
-          _$OptionImpl value, $Res Function(_$OptionImpl) then) =
-      __$$OptionImplCopyWithImpl<$Res>;
+    _$OptionImpl value,
+    $Res Function(_$OptionImpl) then,
+  ) = __$$OptionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<Variant> variants,
-      int optionId,
-      String optionType,
-      String optionName,
-      @JsonKey(name: 'required') String isRequired,
-      bool inventory,
-      String innerHint,
-      int textModifier});
+  $Res call({
+    List<Variant> variants,
+    int optionId,
+    String optionType,
+    String optionName,
+    @JsonKey(name: 'required') String isRequired,
+    bool inventory,
+    String innerHint,
+    int textModifier,
+  });
 }
 
 /// @nodoc
@@ -136,8 +143,9 @@ class __$$OptionImplCopyWithImpl<$Res>
     extends _$OptionCopyWithImpl<$Res, _$OptionImpl>
     implements _$$OptionImplCopyWith<$Res> {
   __$$OptionImplCopyWithImpl(
-      _$OptionImpl _value, $Res Function(_$OptionImpl) _then)
-      : super(_value, _then);
+    _$OptionImpl _value,
+    $Res Function(_$OptionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Option
   /// with the given fields replaced by the non-null parameter values.
@@ -153,56 +161,58 @@ class __$$OptionImplCopyWithImpl<$Res>
     Object? innerHint = null,
     Object? textModifier = null,
   }) {
-    return _then(_$OptionImpl(
-      variants: null == variants
-          ? _value._variants
-          : variants // ignore: cast_nullable_to_non_nullable
-              as List<Variant>,
-      optionId: null == optionId
-          ? _value.optionId
-          : optionId // ignore: cast_nullable_to_non_nullable
-              as int,
-      optionType: null == optionType
-          ? _value.optionType
-          : optionType // ignore: cast_nullable_to_non_nullable
-              as String,
-      optionName: null == optionName
-          ? _value.optionName
-          : optionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      isRequired: null == isRequired
-          ? _value.isRequired
-          : isRequired // ignore: cast_nullable_to_non_nullable
-              as String,
-      inventory: null == inventory
-          ? _value.inventory
-          : inventory // ignore: cast_nullable_to_non_nullable
-              as bool,
-      innerHint: null == innerHint
-          ? _value.innerHint
-          : innerHint // ignore: cast_nullable_to_non_nullable
-              as String,
-      textModifier: null == textModifier
-          ? _value.textModifier
-          : textModifier // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$OptionImpl(
+        variants: null == variants
+            ? _value._variants
+            : variants // ignore: cast_nullable_to_non_nullable
+                  as List<Variant>,
+        optionId: null == optionId
+            ? _value.optionId
+            : optionId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        optionType: null == optionType
+            ? _value.optionType
+            : optionType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        optionName: null == optionName
+            ? _value.optionName
+            : optionName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isRequired: null == isRequired
+            ? _value.isRequired
+            : isRequired // ignore: cast_nullable_to_non_nullable
+                  as String,
+        inventory: null == inventory
+            ? _value.inventory
+            : inventory // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        innerHint: null == innerHint
+            ? _value.innerHint
+            : innerHint // ignore: cast_nullable_to_non_nullable
+                  as String,
+        textModifier: null == textModifier
+            ? _value.textModifier
+            : textModifier // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$OptionImpl implements _Option {
-  _$OptionImpl(
-      {required final List<Variant> variants,
-      required this.optionId,
-      required this.optionType,
-      required this.optionName,
-      @JsonKey(name: 'required') required this.isRequired,
-      required this.inventory,
-      required this.innerHint,
-      required this.textModifier})
-      : _variants = variants;
+  _$OptionImpl({
+    required final List<Variant> variants,
+    required this.optionId,
+    required this.optionType,
+    required this.optionName,
+    @JsonKey(name: 'required') required this.isRequired,
+    required this.inventory,
+    required this.innerHint,
+    required this.textModifier,
+  }) : _variants = variants;
 
   factory _$OptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$OptionImplFromJson(json);
@@ -261,15 +271,16 @@ class _$OptionImpl implements _Option {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_variants),
-      optionId,
-      optionType,
-      optionName,
-      isRequired,
-      inventory,
-      innerHint,
-      textModifier);
+    runtimeType,
+    const DeepCollectionEquality().hash(_variants),
+    optionId,
+    optionType,
+    optionName,
+    isRequired,
+    inventory,
+    innerHint,
+    textModifier,
+  );
 
   /// Create a copy of Option
   /// with the given fields replaced by the non-null parameter values.
@@ -281,15 +292,16 @@ class _$OptionImpl implements _Option {
 }
 
 abstract class _Option implements Option {
-  factory _Option(
-      {required final List<Variant> variants,
-      required final int optionId,
-      required final String optionType,
-      required final String optionName,
-      @JsonKey(name: 'required') required final String isRequired,
-      required final bool inventory,
-      required final String innerHint,
-      required final int textModifier}) = _$OptionImpl;
+  factory _Option({
+    required final List<Variant> variants,
+    required final int optionId,
+    required final String optionType,
+    required final String optionName,
+    @JsonKey(name: 'required') required final String isRequired,
+    required final bool inventory,
+    required final String innerHint,
+    required final int textModifier,
+  }) = _$OptionImpl;
 
   factory _Option.fromJson(Map<String, dynamic> json) = _$OptionImpl.fromJson;
 

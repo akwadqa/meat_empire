@@ -12,7 +12,8 @@ part of 'product_options.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductOptions _$ProductOptionsFromJson(Map<String, dynamic> json) {
   return _ProductOptions.fromJson(json);
@@ -34,8 +35,9 @@ mixin _$ProductOptions {
 /// @nodoc
 abstract class $ProductOptionsCopyWith<$Res> {
   factory $ProductOptionsCopyWith(
-          ProductOptions value, $Res Function(ProductOptions) then) =
-      _$ProductOptionsCopyWithImpl<$Res, ProductOptions>;
+    ProductOptions value,
+    $Res Function(ProductOptions) then,
+  ) = _$ProductOptionsCopyWithImpl<$Res, ProductOptions>;
   @useResult
   $Res call({List<Option> options, List<SelectedOption> selectedOptions});
 }
@@ -54,29 +56,30 @@ class _$ProductOptionsCopyWithImpl<$Res, $Val extends ProductOptions>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? options = null,
-    Object? selectedOptions = null,
-  }) {
-    return _then(_value.copyWith(
-      options: null == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
-              as List<Option>,
-      selectedOptions: null == selectedOptions
-          ? _value.selectedOptions
-          : selectedOptions // ignore: cast_nullable_to_non_nullable
-              as List<SelectedOption>,
-    ) as $Val);
+  $Res call({Object? options = null, Object? selectedOptions = null}) {
+    return _then(
+      _value.copyWith(
+            options: null == options
+                ? _value.options
+                : options // ignore: cast_nullable_to_non_nullable
+                      as List<Option>,
+            selectedOptions: null == selectedOptions
+                ? _value.selectedOptions
+                : selectedOptions // ignore: cast_nullable_to_non_nullable
+                      as List<SelectedOption>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ProductOptionsImplCopyWith<$Res>
     implements $ProductOptionsCopyWith<$Res> {
-  factory _$$ProductOptionsImplCopyWith(_$ProductOptionsImpl value,
-          $Res Function(_$ProductOptionsImpl) then) =
-      __$$ProductOptionsImplCopyWithImpl<$Res>;
+  factory _$$ProductOptionsImplCopyWith(
+    _$ProductOptionsImpl value,
+    $Res Function(_$ProductOptionsImpl) then,
+  ) = __$$ProductOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Option> options, List<SelectedOption> selectedOptions});
@@ -87,38 +90,38 @@ class __$$ProductOptionsImplCopyWithImpl<$Res>
     extends _$ProductOptionsCopyWithImpl<$Res, _$ProductOptionsImpl>
     implements _$$ProductOptionsImplCopyWith<$Res> {
   __$$ProductOptionsImplCopyWithImpl(
-      _$ProductOptionsImpl _value, $Res Function(_$ProductOptionsImpl) _then)
-      : super(_value, _then);
+    _$ProductOptionsImpl _value,
+    $Res Function(_$ProductOptionsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductOptions
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? options = null,
-    Object? selectedOptions = null,
-  }) {
-    return _then(_$ProductOptionsImpl(
-      options: null == options
-          ? _value._options
-          : options // ignore: cast_nullable_to_non_nullable
-              as List<Option>,
-      selectedOptions: null == selectedOptions
-          ? _value._selectedOptions
-          : selectedOptions // ignore: cast_nullable_to_non_nullable
-              as List<SelectedOption>,
-    ));
+  $Res call({Object? options = null, Object? selectedOptions = null}) {
+    return _then(
+      _$ProductOptionsImpl(
+        options: null == options
+            ? _value._options
+            : options // ignore: cast_nullable_to_non_nullable
+                  as List<Option>,
+        selectedOptions: null == selectedOptions
+            ? _value._selectedOptions
+            : selectedOptions // ignore: cast_nullable_to_non_nullable
+                  as List<SelectedOption>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductOptionsImpl implements _ProductOptions {
-  _$ProductOptionsImpl(
-      {required final List<Option> options,
-      required final List<SelectedOption> selectedOptions})
-      : _options = options,
-        _selectedOptions = selectedOptions;
+  _$ProductOptionsImpl({
+    required final List<Option> options,
+    required final List<SelectedOption> selectedOptions,
+  }) : _options = options,
+       _selectedOptions = selectedOptions;
 
   factory _$ProductOptionsImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductOptionsImplFromJson(json);
@@ -150,16 +153,19 @@ class _$ProductOptionsImpl implements _ProductOptions {
         (other.runtimeType == runtimeType &&
             other is _$ProductOptionsImpl &&
             const DeepCollectionEquality().equals(other._options, _options) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedOptions, _selectedOptions));
+            const DeepCollectionEquality().equals(
+              other._selectedOptions,
+              _selectedOptions,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_options),
-      const DeepCollectionEquality().hash(_selectedOptions));
+    runtimeType,
+    const DeepCollectionEquality().hash(_options),
+    const DeepCollectionEquality().hash(_selectedOptions),
+  );
 
   /// Create a copy of ProductOptions
   /// with the given fields replaced by the non-null parameter values.
@@ -168,14 +174,16 @@ class _$ProductOptionsImpl implements _ProductOptions {
   @pragma('vm:prefer-inline')
   _$$ProductOptionsImplCopyWith<_$ProductOptionsImpl> get copyWith =>
       __$$ProductOptionsImplCopyWithImpl<_$ProductOptionsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ProductOptions implements ProductOptions {
-  factory _ProductOptions(
-          {required final List<Option> options,
-          required final List<SelectedOption> selectedOptions}) =
-      _$ProductOptionsImpl;
+  factory _ProductOptions({
+    required final List<Option> options,
+    required final List<SelectedOption> selectedOptions,
+  }) = _$ProductOptionsImpl;
 
   factory _ProductOptions.fromJson(Map<String, dynamic> json) =
       _$ProductOptionsImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'orders_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 OrdersEntity _$OrdersEntityFromJson(Map<String, dynamic> json) {
   return _OrdersEntity.fromJson(json);
@@ -41,16 +42,18 @@ mixin _$OrdersEntity {
 /// @nodoc
 abstract class $OrdersEntityCopyWith<$Res> {
   factory $OrdersEntityCopyWith(
-          OrdersEntity value, $Res Function(OrdersEntity) then) =
-      _$OrdersEntityCopyWithImpl<$Res, OrdersEntity>;
+    OrdersEntity value,
+    $Res Function(OrdersEntity) then,
+  ) = _$OrdersEntityCopyWithImpl<$Res, OrdersEntity>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "timestamp") String orderDate,
-      @JsonKey(name: "total") String orderTotalCost,
-      @JsonKey(name: "shipping_cost") String shippingCost,
-      String status,
-      List<OrderProduct> products});
+  $Res call({
+    @JsonKey(name: "order_id") String orderId,
+    @JsonKey(name: "timestamp") String orderDate,
+    @JsonKey(name: "total") String orderTotalCost,
+    @JsonKey(name: "shipping_cost") String shippingCost,
+    String status,
+    List<OrderProduct> products,
+  });
 }
 
 /// @nodoc
@@ -75,32 +78,35 @@ class _$OrdersEntityCopyWithImpl<$Res, $Val extends OrdersEntity>
     Object? status = null,
     Object? products = null,
   }) {
-    return _then(_value.copyWith(
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderDate: null == orderDate
-          ? _value.orderDate
-          : orderDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderTotalCost: null == orderTotalCost
-          ? _value.orderTotalCost
-          : orderTotalCost // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingCost: null == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<OrderProduct>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            orderId: null == orderId
+                ? _value.orderId
+                : orderId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            orderDate: null == orderDate
+                ? _value.orderDate
+                : orderDate // ignore: cast_nullable_to_non_nullable
+                      as String,
+            orderTotalCost: null == orderTotalCost
+                ? _value.orderTotalCost
+                : orderTotalCost // ignore: cast_nullable_to_non_nullable
+                      as String,
+            shippingCost: null == shippingCost
+                ? _value.shippingCost
+                : shippingCost // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            products: null == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<OrderProduct>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -108,17 +114,19 @@ class _$OrdersEntityCopyWithImpl<$Res, $Val extends OrdersEntity>
 abstract class _$$OrdersEntityImplCopyWith<$Res>
     implements $OrdersEntityCopyWith<$Res> {
   factory _$$OrdersEntityImplCopyWith(
-          _$OrdersEntityImpl value, $Res Function(_$OrdersEntityImpl) then) =
-      __$$OrdersEntityImplCopyWithImpl<$Res>;
+    _$OrdersEntityImpl value,
+    $Res Function(_$OrdersEntityImpl) then,
+  ) = __$$OrdersEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "order_id") String orderId,
-      @JsonKey(name: "timestamp") String orderDate,
-      @JsonKey(name: "total") String orderTotalCost,
-      @JsonKey(name: "shipping_cost") String shippingCost,
-      String status,
-      List<OrderProduct> products});
+  $Res call({
+    @JsonKey(name: "order_id") String orderId,
+    @JsonKey(name: "timestamp") String orderDate,
+    @JsonKey(name: "total") String orderTotalCost,
+    @JsonKey(name: "shipping_cost") String shippingCost,
+    String status,
+    List<OrderProduct> products,
+  });
 }
 
 /// @nodoc
@@ -126,8 +134,9 @@ class __$$OrdersEntityImplCopyWithImpl<$Res>
     extends _$OrdersEntityCopyWithImpl<$Res, _$OrdersEntityImpl>
     implements _$$OrdersEntityImplCopyWith<$Res> {
   __$$OrdersEntityImplCopyWithImpl(
-      _$OrdersEntityImpl _value, $Res Function(_$OrdersEntityImpl) _then)
-      : super(_value, _then);
+    _$OrdersEntityImpl _value,
+    $Res Function(_$OrdersEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of OrdersEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -141,46 +150,48 @@ class __$$OrdersEntityImplCopyWithImpl<$Res>
     Object? status = null,
     Object? products = null,
   }) {
-    return _then(_$OrdersEntityImpl(
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderDate: null == orderDate
-          ? _value.orderDate
-          : orderDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderTotalCost: null == orderTotalCost
-          ? _value.orderTotalCost
-          : orderTotalCost // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingCost: null == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<OrderProduct>,
-    ));
+    return _then(
+      _$OrdersEntityImpl(
+        orderId: null == orderId
+            ? _value.orderId
+            : orderId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        orderDate: null == orderDate
+            ? _value.orderDate
+            : orderDate // ignore: cast_nullable_to_non_nullable
+                  as String,
+        orderTotalCost: null == orderTotalCost
+            ? _value.orderTotalCost
+            : orderTotalCost // ignore: cast_nullable_to_non_nullable
+                  as String,
+        shippingCost: null == shippingCost
+            ? _value.shippingCost
+            : shippingCost // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        products: null == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<OrderProduct>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$OrdersEntityImpl implements _OrdersEntity {
-  const _$OrdersEntityImpl(
-      {@JsonKey(name: "order_id") required this.orderId,
-      @JsonKey(name: "timestamp") required this.orderDate,
-      @JsonKey(name: "total") required this.orderTotalCost,
-      @JsonKey(name: "shipping_cost") required this.shippingCost,
-      required this.status,
-      required final List<OrderProduct> products})
-      : _products = products;
+  const _$OrdersEntityImpl({
+    @JsonKey(name: "order_id") required this.orderId,
+    @JsonKey(name: "timestamp") required this.orderDate,
+    @JsonKey(name: "total") required this.orderTotalCost,
+    @JsonKey(name: "shipping_cost") required this.shippingCost,
+    required this.status,
+    required final List<OrderProduct> products,
+  }) : _products = products;
 
   factory _$OrdersEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrdersEntityImplFromJson(json);
@@ -231,13 +242,14 @@ class _$OrdersEntityImpl implements _OrdersEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      orderId,
-      orderDate,
-      orderTotalCost,
-      shippingCost,
-      status,
-      const DeepCollectionEquality().hash(_products));
+    runtimeType,
+    orderId,
+    orderDate,
+    orderTotalCost,
+    shippingCost,
+    status,
+    const DeepCollectionEquality().hash(_products),
+  );
 
   /// Create a copy of OrdersEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -249,13 +261,14 @@ class _$OrdersEntityImpl implements _OrdersEntity {
 }
 
 abstract class _OrdersEntity implements OrdersEntity {
-  const factory _OrdersEntity(
-      {@JsonKey(name: "order_id") required final String orderId,
-      @JsonKey(name: "timestamp") required final String orderDate,
-      @JsonKey(name: "total") required final String orderTotalCost,
-      @JsonKey(name: "shipping_cost") required final String shippingCost,
-      required final String status,
-      required final List<OrderProduct> products}) = _$OrdersEntityImpl;
+  const factory _OrdersEntity({
+    @JsonKey(name: "order_id") required final String orderId,
+    @JsonKey(name: "timestamp") required final String orderDate,
+    @JsonKey(name: "total") required final String orderTotalCost,
+    @JsonKey(name: "shipping_cost") required final String shippingCost,
+    required final String status,
+    required final List<OrderProduct> products,
+  }) = _$OrdersEntityImpl;
 
   factory _OrdersEntity.fromJson(Map<String, dynamic> json) =
       _$OrdersEntityImpl.fromJson;

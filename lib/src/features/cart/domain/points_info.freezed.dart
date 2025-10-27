@@ -12,7 +12,8 @@ part of 'points_info.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PointsInfo _$PointsInfoFromJson(Map<String, dynamic> json) {
   return _PointsInfo.fromJson(json);
@@ -33,8 +34,9 @@ mixin _$PointsInfo {
 /// @nodoc
 abstract class $PointsInfoCopyWith<$Res> {
   factory $PointsInfoCopyWith(
-          PointsInfo value, $Res Function(PointsInfo) then) =
-      _$PointsInfoCopyWithImpl<$Res, PointsInfo>;
+    PointsInfo value,
+    $Res Function(PointsInfo) then,
+  ) = _$PointsInfoCopyWithImpl<$Res, PointsInfo>;
   @useResult
   $Res call({int? rawTotalPrice, int? totalPrice});
 }
@@ -53,20 +55,20 @@ class _$PointsInfoCopyWithImpl<$Res, $Val extends PointsInfo>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? rawTotalPrice = freezed,
-    Object? totalPrice = freezed,
-  }) {
-    return _then(_value.copyWith(
-      rawTotalPrice: freezed == rawTotalPrice
-          ? _value.rawTotalPrice
-          : rawTotalPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalPrice: freezed == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+  $Res call({Object? rawTotalPrice = freezed, Object? totalPrice = freezed}) {
+    return _then(
+      _value.copyWith(
+            rawTotalPrice: freezed == rawTotalPrice
+                ? _value.rawTotalPrice
+                : rawTotalPrice // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            totalPrice: freezed == totalPrice
+                ? _value.totalPrice
+                : totalPrice // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -74,8 +76,9 @@ class _$PointsInfoCopyWithImpl<$Res, $Val extends PointsInfo>
 abstract class _$$PointsInfoImplCopyWith<$Res>
     implements $PointsInfoCopyWith<$Res> {
   factory _$$PointsInfoImplCopyWith(
-          _$PointsInfoImpl value, $Res Function(_$PointsInfoImpl) then) =
-      __$$PointsInfoImplCopyWithImpl<$Res>;
+    _$PointsInfoImpl value,
+    $Res Function(_$PointsInfoImpl) then,
+  ) = __$$PointsInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? rawTotalPrice, int? totalPrice});
@@ -86,27 +89,27 @@ class __$$PointsInfoImplCopyWithImpl<$Res>
     extends _$PointsInfoCopyWithImpl<$Res, _$PointsInfoImpl>
     implements _$$PointsInfoImplCopyWith<$Res> {
   __$$PointsInfoImplCopyWithImpl(
-      _$PointsInfoImpl _value, $Res Function(_$PointsInfoImpl) _then)
-      : super(_value, _then);
+    _$PointsInfoImpl _value,
+    $Res Function(_$PointsInfoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PointsInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? rawTotalPrice = freezed,
-    Object? totalPrice = freezed,
-  }) {
-    return _then(_$PointsInfoImpl(
-      rawTotalPrice: freezed == rawTotalPrice
-          ? _value.rawTotalPrice
-          : rawTotalPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalPrice: freezed == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+  $Res call({Object? rawTotalPrice = freezed, Object? totalPrice = freezed}) {
+    return _then(
+      _$PointsInfoImpl(
+        rawTotalPrice: freezed == rawTotalPrice
+            ? _value.rawTotalPrice
+            : rawTotalPrice // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        totalPrice: freezed == totalPrice
+            ? _value.totalPrice
+            : totalPrice // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 

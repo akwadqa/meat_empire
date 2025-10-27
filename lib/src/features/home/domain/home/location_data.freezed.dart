@@ -12,7 +12,8 @@ part of 'location_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 LocationData _$LocationDataFromJson(Map<String, dynamic> json) {
   return _LocationData.fromJson(json);
@@ -33,8 +34,9 @@ mixin _$LocationData {
 /// @nodoc
 abstract class $LocationDataCopyWith<$Res> {
   factory $LocationDataCopyWith(
-          LocationData value, $Res Function(LocationData) then) =
-      _$LocationDataCopyWithImpl<$Res, LocationData>;
+    LocationData value,
+    $Res Function(LocationData) then,
+  ) = _$LocationDataCopyWithImpl<$Res, LocationData>;
   @useResult
   $Res call({String name, String image});
 }
@@ -53,20 +55,20 @@ class _$LocationDataCopyWithImpl<$Res, $Val extends LocationData>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-    Object? image = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? name = null, Object? image = null}) {
+    return _then(
+      _value.copyWith(
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            image: null == image
+                ? _value.image
+                : image // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -74,8 +76,9 @@ class _$LocationDataCopyWithImpl<$Res, $Val extends LocationData>
 abstract class _$$LocationDataImplCopyWith<$Res>
     implements $LocationDataCopyWith<$Res> {
   factory _$$LocationDataImplCopyWith(
-          _$LocationDataImpl value, $Res Function(_$LocationDataImpl) then) =
-      __$$LocationDataImplCopyWithImpl<$Res>;
+    _$LocationDataImpl value,
+    $Res Function(_$LocationDataImpl) then,
+  ) = __$$LocationDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String image});
@@ -86,27 +89,27 @@ class __$$LocationDataImplCopyWithImpl<$Res>
     extends _$LocationDataCopyWithImpl<$Res, _$LocationDataImpl>
     implements _$$LocationDataImplCopyWith<$Res> {
   __$$LocationDataImplCopyWithImpl(
-      _$LocationDataImpl _value, $Res Function(_$LocationDataImpl) _then)
-      : super(_value, _then);
+    _$LocationDataImpl _value,
+    $Res Function(_$LocationDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LocationData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-    Object? image = null,
-  }) {
-    return _then(_$LocationDataImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? name = null, Object? image = null}) {
+    return _then(
+      _$LocationDataImpl(
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        image: null == image
+            ? _value.image
+            : image // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -151,9 +154,10 @@ class _$LocationDataImpl implements _LocationData {
 }
 
 abstract class _LocationData implements LocationData {
-  factory _LocationData(
-      {required final String name,
-      required final String image}) = _$LocationDataImpl;
+  factory _LocationData({
+    required final String name,
+    required final String image,
+  }) = _$LocationDataImpl;
 
   factory _LocationData.fromJson(Map<String, dynamic> json) =
       _$LocationDataImpl.fromJson;

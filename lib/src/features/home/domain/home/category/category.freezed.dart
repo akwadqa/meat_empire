@@ -12,7 +12,8 @@ part of 'category.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
   return _Category.fromJson(json);
@@ -58,20 +59,23 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? category = null,
     Object? imageUrl = null,
   }) {
-    return _then(_value.copyWith(
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            categoryId: null == categoryId
+                ? _value.categoryId
+                : categoryId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            category: null == category
+                ? _value.category
+                : category // ignore: cast_nullable_to_non_nullable
+                      as String,
+            imageUrl: null == imageUrl
+                ? _value.imageUrl
+                : imageUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -79,8 +83,9 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 abstract class _$$CategoryImplCopyWith<$Res>
     implements $CategoryCopyWith<$Res> {
   factory _$$CategoryImplCopyWith(
-          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
-      __$$CategoryImplCopyWithImpl<$Res>;
+    _$CategoryImpl value,
+    $Res Function(_$CategoryImpl) then,
+  ) = __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String categoryId, String category, String imageUrl});
@@ -91,8 +96,9 @@ class __$$CategoryImplCopyWithImpl<$Res>
     extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
     implements _$$CategoryImplCopyWith<$Res> {
   __$$CategoryImplCopyWithImpl(
-      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
-      : super(_value, _then);
+    _$CategoryImpl _value,
+    $Res Function(_$CategoryImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -103,30 +109,33 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? category = null,
     Object? imageUrl = null,
   }) {
-    return _then(_$CategoryImpl(
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$CategoryImpl(
+        categoryId: null == categoryId
+            ? _value.categoryId
+            : categoryId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        category: null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as String,
+        imageUrl: null == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$CategoryImpl implements _Category {
-  _$CategoryImpl(
-      {required this.categoryId,
-      required this.category,
-      required this.imageUrl});
+  _$CategoryImpl({
+    required this.categoryId,
+    required this.category,
+    required this.imageUrl,
+  });
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
@@ -170,10 +179,11 @@ class _$CategoryImpl implements _Category {
 }
 
 abstract class _Category implements Category {
-  factory _Category(
-      {required final String categoryId,
-      required final String category,
-      required final String imageUrl}) = _$CategoryImpl;
+  factory _Category({
+    required final String categoryId,
+    required final String category,
+    required final String imageUrl,
+  }) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;

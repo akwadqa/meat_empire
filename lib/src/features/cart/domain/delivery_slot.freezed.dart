@@ -12,7 +12,8 @@ part of 'delivery_slot.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DeliverySlot _$DeliverySlotFromJson(Map<String, dynamic> json) {
   return _DeliverySlot.fromJson(json);
@@ -38,17 +39,19 @@ mixin _$DeliverySlot {
 /// @nodoc
 abstract class $DeliverySlotCopyWith<$Res> {
   factory $DeliverySlotCopyWith(
-          DeliverySlot value, $Res Function(DeliverySlot) then) =
-      _$DeliverySlotCopyWithImpl<$Res, DeliverySlot>;
+    DeliverySlot value,
+    $Res Function(DeliverySlot) then,
+  ) = _$DeliverySlotCopyWithImpl<$Res, DeliverySlot>;
   @useResult
-  $Res call(
-      {String? date,
-      int? timestamp,
-      String? heading,
-      String? subheading,
-      bool? unavailable,
-      String? reason,
-      List<Slot>? slots});
+  $Res call({
+    String? date,
+    int? timestamp,
+    String? heading,
+    String? subheading,
+    bool? unavailable,
+    String? reason,
+    List<Slot>? slots,
+  });
 }
 
 /// @nodoc
@@ -74,36 +77,39 @@ class _$DeliverySlotCopyWithImpl<$Res, $Val extends DeliverySlot>
     Object? reason = freezed,
     Object? slots = freezed,
   }) {
-    return _then(_value.copyWith(
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: freezed == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int?,
-      heading: freezed == heading
-          ? _value.heading
-          : heading // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subheading: freezed == subheading
-          ? _value.subheading
-          : subheading // ignore: cast_nullable_to_non_nullable
-              as String?,
-      unavailable: freezed == unavailable
-          ? _value.unavailable
-          : unavailable // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      reason: freezed == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as String?,
-      slots: freezed == slots
-          ? _value.slots
-          : slots // ignore: cast_nullable_to_non_nullable
-              as List<Slot>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            date: freezed == date
+                ? _value.date
+                : date // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            timestamp: freezed == timestamp
+                ? _value.timestamp
+                : timestamp // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            heading: freezed == heading
+                ? _value.heading
+                : heading // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            subheading: freezed == subheading
+                ? _value.subheading
+                : subheading // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            unavailable: freezed == unavailable
+                ? _value.unavailable
+                : unavailable // ignore: cast_nullable_to_non_nullable
+                      as bool?,
+            reason: freezed == reason
+                ? _value.reason
+                : reason // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            slots: freezed == slots
+                ? _value.slots
+                : slots // ignore: cast_nullable_to_non_nullable
+                      as List<Slot>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -111,18 +117,20 @@ class _$DeliverySlotCopyWithImpl<$Res, $Val extends DeliverySlot>
 abstract class _$$DeliverySlotImplCopyWith<$Res>
     implements $DeliverySlotCopyWith<$Res> {
   factory _$$DeliverySlotImplCopyWith(
-          _$DeliverySlotImpl value, $Res Function(_$DeliverySlotImpl) then) =
-      __$$DeliverySlotImplCopyWithImpl<$Res>;
+    _$DeliverySlotImpl value,
+    $Res Function(_$DeliverySlotImpl) then,
+  ) = __$$DeliverySlotImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? date,
-      int? timestamp,
-      String? heading,
-      String? subheading,
-      bool? unavailable,
-      String? reason,
-      List<Slot>? slots});
+  $Res call({
+    String? date,
+    int? timestamp,
+    String? heading,
+    String? subheading,
+    bool? unavailable,
+    String? reason,
+    List<Slot>? slots,
+  });
 }
 
 /// @nodoc
@@ -130,8 +138,9 @@ class __$$DeliverySlotImplCopyWithImpl<$Res>
     extends _$DeliverySlotCopyWithImpl<$Res, _$DeliverySlotImpl>
     implements _$$DeliverySlotImplCopyWith<$Res> {
   __$$DeliverySlotImplCopyWithImpl(
-      _$DeliverySlotImpl _value, $Res Function(_$DeliverySlotImpl) _then)
-      : super(_value, _then);
+    _$DeliverySlotImpl _value,
+    $Res Function(_$DeliverySlotImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DeliverySlot
   /// with the given fields replaced by the non-null parameter values.
@@ -146,51 +155,53 @@ class __$$DeliverySlotImplCopyWithImpl<$Res>
     Object? reason = freezed,
     Object? slots = freezed,
   }) {
-    return _then(_$DeliverySlotImpl(
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as String?,
-      timestamp: freezed == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int?,
-      heading: freezed == heading
-          ? _value.heading
-          : heading // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subheading: freezed == subheading
-          ? _value.subheading
-          : subheading // ignore: cast_nullable_to_non_nullable
-              as String?,
-      unavailable: freezed == unavailable
-          ? _value.unavailable
-          : unavailable // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      reason: freezed == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as String?,
-      slots: freezed == slots
-          ? _value._slots
-          : slots // ignore: cast_nullable_to_non_nullable
-              as List<Slot>?,
-    ));
+    return _then(
+      _$DeliverySlotImpl(
+        date: freezed == date
+            ? _value.date
+            : date // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        timestamp: freezed == timestamp
+            ? _value.timestamp
+            : timestamp // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        heading: freezed == heading
+            ? _value.heading
+            : heading // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        subheading: freezed == subheading
+            ? _value.subheading
+            : subheading // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        unavailable: freezed == unavailable
+            ? _value.unavailable
+            : unavailable // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+        reason: freezed == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        slots: freezed == slots
+            ? _value._slots
+            : slots // ignore: cast_nullable_to_non_nullable
+                  as List<Slot>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$DeliverySlotImpl implements _DeliverySlot {
-  _$DeliverySlotImpl(
-      {this.date,
-      this.timestamp,
-      this.heading,
-      this.subheading,
-      this.unavailable,
-      this.reason,
-      final List<Slot>? slots})
-      : _slots = slots;
+  _$DeliverySlotImpl({
+    this.date,
+    this.timestamp,
+    this.heading,
+    this.subheading,
+    this.unavailable,
+    this.reason,
+    final List<Slot>? slots,
+  }) : _slots = slots;
 
   factory _$DeliverySlotImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeliverySlotImplFromJson(json);
@@ -242,14 +253,15 @@ class _$DeliverySlotImpl implements _DeliverySlot {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      date,
-      timestamp,
-      heading,
-      subheading,
-      unavailable,
-      reason,
-      const DeepCollectionEquality().hash(_slots));
+    runtimeType,
+    date,
+    timestamp,
+    heading,
+    subheading,
+    unavailable,
+    reason,
+    const DeepCollectionEquality().hash(_slots),
+  );
 
   /// Create a copy of DeliverySlot
   /// with the given fields replaced by the non-null parameter values.
@@ -261,14 +273,15 @@ class _$DeliverySlotImpl implements _DeliverySlot {
 }
 
 abstract class _DeliverySlot implements DeliverySlot {
-  factory _DeliverySlot(
-      {final String? date,
-      final int? timestamp,
-      final String? heading,
-      final String? subheading,
-      final bool? unavailable,
-      final String? reason,
-      final List<Slot>? slots}) = _$DeliverySlotImpl;
+  factory _DeliverySlot({
+    final String? date,
+    final int? timestamp,
+    final String? heading,
+    final String? subheading,
+    final bool? unavailable,
+    final String? reason,
+    final List<Slot>? slots,
+  }) = _$DeliverySlotImpl;
 
   factory _DeliverySlot.fromJson(Map<String, dynamic> json) =
       _$DeliverySlotImpl.fromJson;

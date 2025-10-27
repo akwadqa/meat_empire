@@ -12,7 +12,8 @@ part of 'product_group.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProductGroup _$ProductGroupFromJson(Map<String, dynamic> json) {
   return _ProductGroup.fromJson(json);
@@ -38,17 +39,19 @@ mixin _$ProductGroup {
 /// @nodoc
 abstract class $ProductGroupCopyWith<$Res> {
   factory $ProductGroupCopyWith(
-          ProductGroup value, $Res Function(ProductGroup) then) =
-      _$ProductGroupCopyWithImpl<$Res, ProductGroup>;
+    ProductGroup value,
+    $Res Function(ProductGroup) then,
+  ) = _$ProductGroupCopyWithImpl<$Res, ProductGroup>;
   @useResult
-  $Res call(
-      {int? groupId,
-      int? companyId,
-      String? companyName,
-      List<Shipping>? shippings,
-      dynamic selectedShippingId,
-      dynamic shippingCost,
-      List<Product>? products});
+  $Res call({
+    int? groupId,
+    int? companyId,
+    String? companyName,
+    List<Shipping>? shippings,
+    dynamic selectedShippingId,
+    dynamic shippingCost,
+    List<Product>? products,
+  });
 }
 
 /// @nodoc
@@ -74,36 +77,39 @@ class _$ProductGroupCopyWithImpl<$Res, $Val extends ProductGroup>
     Object? shippingCost = freezed,
     Object? products = freezed,
   }) {
-    return _then(_value.copyWith(
-      groupId: freezed == groupId
-          ? _value.groupId
-          : groupId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      companyId: freezed == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      companyName: freezed == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippings: freezed == shippings
-          ? _value.shippings
-          : shippings // ignore: cast_nullable_to_non_nullable
-              as List<Shipping>?,
-      selectedShippingId: freezed == selectedShippingId
-          ? _value.selectedShippingId
-          : selectedShippingId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      shippingCost: freezed == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      products: freezed == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            groupId: freezed == groupId
+                ? _value.groupId
+                : groupId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            companyId: freezed == companyId
+                ? _value.companyId
+                : companyId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            companyName: freezed == companyName
+                ? _value.companyName
+                : companyName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            shippings: freezed == shippings
+                ? _value.shippings
+                : shippings // ignore: cast_nullable_to_non_nullable
+                      as List<Shipping>?,
+            selectedShippingId: freezed == selectedShippingId
+                ? _value.selectedShippingId
+                : selectedShippingId // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            shippingCost: freezed == shippingCost
+                ? _value.shippingCost
+                : shippingCost // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
+            products: freezed == products
+                ? _value.products
+                : products // ignore: cast_nullable_to_non_nullable
+                      as List<Product>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -111,18 +117,20 @@ class _$ProductGroupCopyWithImpl<$Res, $Val extends ProductGroup>
 abstract class _$$ProductGroupImplCopyWith<$Res>
     implements $ProductGroupCopyWith<$Res> {
   factory _$$ProductGroupImplCopyWith(
-          _$ProductGroupImpl value, $Res Function(_$ProductGroupImpl) then) =
-      __$$ProductGroupImplCopyWithImpl<$Res>;
+    _$ProductGroupImpl value,
+    $Res Function(_$ProductGroupImpl) then,
+  ) = __$$ProductGroupImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? groupId,
-      int? companyId,
-      String? companyName,
-      List<Shipping>? shippings,
-      dynamic selectedShippingId,
-      dynamic shippingCost,
-      List<Product>? products});
+  $Res call({
+    int? groupId,
+    int? companyId,
+    String? companyName,
+    List<Shipping>? shippings,
+    dynamic selectedShippingId,
+    dynamic shippingCost,
+    List<Product>? products,
+  });
 }
 
 /// @nodoc
@@ -130,8 +138,9 @@ class __$$ProductGroupImplCopyWithImpl<$Res>
     extends _$ProductGroupCopyWithImpl<$Res, _$ProductGroupImpl>
     implements _$$ProductGroupImplCopyWith<$Res> {
   __$$ProductGroupImplCopyWithImpl(
-      _$ProductGroupImpl _value, $Res Function(_$ProductGroupImpl) _then)
-      : super(_value, _then);
+    _$ProductGroupImpl _value,
+    $Res Function(_$ProductGroupImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProductGroup
   /// with the given fields replaced by the non-null parameter values.
@@ -146,52 +155,54 @@ class __$$ProductGroupImplCopyWithImpl<$Res>
     Object? shippingCost = freezed,
     Object? products = freezed,
   }) {
-    return _then(_$ProductGroupImpl(
-      groupId: freezed == groupId
-          ? _value.groupId
-          : groupId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      companyId: freezed == companyId
-          ? _value.companyId
-          : companyId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      companyName: freezed == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      shippings: freezed == shippings
-          ? _value._shippings
-          : shippings // ignore: cast_nullable_to_non_nullable
-              as List<Shipping>?,
-      selectedShippingId: freezed == selectedShippingId
-          ? _value.selectedShippingId
-          : selectedShippingId // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      shippingCost: freezed == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      products: freezed == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
-    ));
+    return _then(
+      _$ProductGroupImpl(
+        groupId: freezed == groupId
+            ? _value.groupId
+            : groupId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        companyId: freezed == companyId
+            ? _value.companyId
+            : companyId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        companyName: freezed == companyName
+            ? _value.companyName
+            : companyName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        shippings: freezed == shippings
+            ? _value._shippings
+            : shippings // ignore: cast_nullable_to_non_nullable
+                  as List<Shipping>?,
+        selectedShippingId: freezed == selectedShippingId
+            ? _value.selectedShippingId
+            : selectedShippingId // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        shippingCost: freezed == shippingCost
+            ? _value.shippingCost
+            : shippingCost // ignore: cast_nullable_to_non_nullable
+                  as dynamic,
+        products: freezed == products
+            ? _value._products
+            : products // ignore: cast_nullable_to_non_nullable
+                  as List<Product>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ProductGroupImpl implements _ProductGroup {
-  _$ProductGroupImpl(
-      {this.groupId,
-      this.companyId,
-      this.companyName,
-      final List<Shipping>? shippings,
-      this.selectedShippingId,
-      this.shippingCost,
-      final List<Product>? products})
-      : _shippings = shippings,
-        _products = products;
+  _$ProductGroupImpl({
+    this.groupId,
+    this.companyId,
+    this.companyName,
+    final List<Shipping>? shippings,
+    this.selectedShippingId,
+    this.shippingCost,
+    final List<Product>? products,
+  }) : _shippings = shippings,
+       _products = products;
 
   factory _$ProductGroupImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductGroupImplFromJson(json);
@@ -241,26 +252,33 @@ class _$ProductGroupImpl implements _ProductGroup {
                 other.companyId == companyId) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
-            const DeepCollectionEquality()
-                .equals(other._shippings, _shippings) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedShippingId, selectedShippingId) &&
-            const DeepCollectionEquality()
-                .equals(other.shippingCost, shippingCost) &&
+            const DeepCollectionEquality().equals(
+              other._shippings,
+              _shippings,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.selectedShippingId,
+              selectedShippingId,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.shippingCost,
+              shippingCost,
+            ) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      groupId,
-      companyId,
-      companyName,
-      const DeepCollectionEquality().hash(_shippings),
-      const DeepCollectionEquality().hash(selectedShippingId),
-      const DeepCollectionEquality().hash(shippingCost),
-      const DeepCollectionEquality().hash(_products));
+    runtimeType,
+    groupId,
+    companyId,
+    companyName,
+    const DeepCollectionEquality().hash(_shippings),
+    const DeepCollectionEquality().hash(selectedShippingId),
+    const DeepCollectionEquality().hash(shippingCost),
+    const DeepCollectionEquality().hash(_products),
+  );
 
   /// Create a copy of ProductGroup
   /// with the given fields replaced by the non-null parameter values.
@@ -272,14 +290,15 @@ class _$ProductGroupImpl implements _ProductGroup {
 }
 
 abstract class _ProductGroup implements ProductGroup {
-  factory _ProductGroup(
-      {final int? groupId,
-      final int? companyId,
-      final String? companyName,
-      final List<Shipping>? shippings,
-      final dynamic selectedShippingId,
-      final dynamic shippingCost,
-      final List<Product>? products}) = _$ProductGroupImpl;
+  factory _ProductGroup({
+    final int? groupId,
+    final int? companyId,
+    final String? companyName,
+    final List<Shipping>? shippings,
+    final dynamic selectedShippingId,
+    final dynamic shippingCost,
+    final List<Product>? products,
+  }) = _$ProductGroupImpl;
 
   factory _ProductGroup.fromJson(Map<String, dynamic> json) =
       _$ProductGroupImpl.fromJson;
