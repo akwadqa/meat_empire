@@ -6,8 +6,8 @@ part of 'detailed_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DetailedParamsImpl _$$DetailedParamsImplFromJson(Map<String, dynamic> json) =>
-    _$DetailedParamsImpl(
+_DetailedParams _$DetailedParamsFromJson(Map<String, dynamic> json) =>
+    _DetailedParams(
       getIcon: json['get_icon'] as bool?,
       getDetailed: json['get_detailed'] as bool?,
       getAdditional: json['get_additional'] as bool?,

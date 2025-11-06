@@ -157,6 +157,7 @@ class _SignupScreenState extends State<SignupScreen> {
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
           ref.listen(authControllerProvider, (prev, next) {
             if (next is AsyncData) {
+              context.router.replaceAll([HomeRoute()]);
               context.maybePop().then((_) {
                 _showDialog();
               });

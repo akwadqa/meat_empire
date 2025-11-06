@@ -6,162 +6,104 @@ part of 'checkout_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkoutControllerHash() =>
-    r'32ef7330235b245474e2727c555e41c56d23c48d';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$CheckoutController
-    extends BuildlessAutoDisposeNotifier<DeliverySlot?> {
-  late final List<DeliverySlot> deliverySlots;
-
-  DeliverySlot? build(List<DeliverySlot> deliverySlots);
-}
-
-/// See also [CheckoutController].
 @ProviderFor(CheckoutController)
-const checkoutControllerProvider = CheckoutControllerFamily();
+const checkoutControllerProvider = CheckoutControllerFamily._();
 
-/// See also [CheckoutController].
-class CheckoutControllerFamily extends Family<DeliverySlot?> {
-  /// See also [CheckoutController].
-  const CheckoutControllerFamily();
+final class CheckoutControllerProvider
+    extends $NotifierProvider<CheckoutController, DeliverySlot?> {
+  const CheckoutControllerProvider._({
+    required CheckoutControllerFamily super.from,
+    required List<DeliverySlot> super.argument,
+  }) : super(
+         retry: null,
+         name: r'checkoutControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [CheckoutController].
-  CheckoutControllerProvider call(List<DeliverySlot> deliverySlots) {
-    return CheckoutControllerProvider(deliverySlots);
+  @override
+  String debugGetCreateSourceHash() => _$checkoutControllerHash();
+
+  @override
+  String toString() {
+    return r'checkoutControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  CheckoutControllerProvider getProviderOverride(
-    covariant CheckoutControllerProvider provider,
-  ) {
-    return call(provider.deliverySlots);
-  }
+  CheckoutController create() => CheckoutController();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'checkoutControllerProvider';
-}
-
-/// See also [CheckoutController].
-class CheckoutControllerProvider
-    extends AutoDisposeNotifierProviderImpl<CheckoutController, DeliverySlot?> {
-  /// See also [CheckoutController].
-  CheckoutControllerProvider(List<DeliverySlot> deliverySlots)
-    : this._internal(
-        () => CheckoutController()..deliverySlots = deliverySlots,
-        from: checkoutControllerProvider,
-        name: r'checkoutControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$checkoutControllerHash,
-        dependencies: CheckoutControllerFamily._dependencies,
-        allTransitiveDependencies:
-            CheckoutControllerFamily._allTransitiveDependencies,
-        deliverySlots: deliverySlots,
-      );
-
-  CheckoutControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.deliverySlots,
-  }) : super.internal();
-
-  final List<DeliverySlot> deliverySlots;
-
-  @override
-  DeliverySlot? runNotifierBuild(covariant CheckoutController notifier) {
-    return notifier.build(deliverySlots);
-  }
-
-  @override
-  Override overrideWith(CheckoutController Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(DeliverySlot? value) {
+    return $ProviderOverride(
       origin: this,
-      override: CheckoutControllerProvider._internal(
-        () => create()..deliverySlots = deliverySlots,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        deliverySlots: deliverySlots,
-      ),
+      providerOverride: $SyncValueProvider<DeliverySlot?>(value),
     );
   }
 
   @override
-  AutoDisposeNotifierProviderElement<CheckoutController, DeliverySlot?>
-  createElement() {
-    return _CheckoutControllerProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is CheckoutControllerProvider &&
-        other.deliverySlots == deliverySlots;
+    return other is CheckoutControllerProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, deliverySlots.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin CheckoutControllerRef on AutoDisposeNotifierProviderRef<DeliverySlot?> {
-  /// The parameter `deliverySlots` of this provider.
-  List<DeliverySlot> get deliverySlots;
-}
+String _$checkoutControllerHash() =>
+    r'32ef7330235b245474e2727c555e41c56d23c48d';
 
-class _CheckoutControllerProviderElement
-    extends
-        AutoDisposeNotifierProviderElement<CheckoutController, DeliverySlot?>
-    with CheckoutControllerRef {
-  _CheckoutControllerProviderElement(super.provider);
+final class CheckoutControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          CheckoutController,
+          DeliverySlot?,
+          DeliverySlot?,
+          DeliverySlot?,
+          List<DeliverySlot>
+        > {
+  const CheckoutControllerFamily._()
+    : super(
+        retry: null,
+        name: r'checkoutControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  CheckoutControllerProvider call(List<DeliverySlot> deliverySlots) =>
+      CheckoutControllerProvider._(argument: deliverySlots, from: this);
 
   @override
-  List<DeliverySlot> get deliverySlots =>
-      (origin as CheckoutControllerProvider).deliverySlots;
+  String toString() => r'checkoutControllerProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$CheckoutController extends $Notifier<DeliverySlot?> {
+  late final _$args = ref.$arg as List<DeliverySlot>;
+  List<DeliverySlot> get deliverySlots => _$args;
+
+  DeliverySlot? build(List<DeliverySlot> deliverySlots);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<DeliverySlot?, DeliverySlot?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<DeliverySlot?, DeliverySlot?>,
+              DeliverySlot?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

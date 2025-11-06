@@ -4,7 +4,7 @@ part 'variant.freezed.dart';
 part 'variant.g.dart';
 
 @freezed
-class Variant with _$Variant {
+abstract class Variant with _$Variant {
   factory Variant({
     required String variantId,
     required String modifier,

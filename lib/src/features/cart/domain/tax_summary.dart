@@ -4,7 +4,7 @@ part 'tax_summary.freezed.dart';
 part 'tax_summary.g.dart';
 
 @freezed
-class TaxSummary with _$TaxSummary {
+abstract class TaxSummary with _$TaxSummary {
   factory TaxSummary({
     double? included,
     int? added,

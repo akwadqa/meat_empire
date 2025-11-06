@@ -6,7 +6,7 @@ part 'products_block.freezed.dart';
 part 'products_block.g.dart';
 
 @freezed
-class ProductsBlock with _$ProductsBlock {
+abstract class ProductsBlock with _$ProductsBlock {
   factory ProductsBlock({
     required String title,
     required String viewType,

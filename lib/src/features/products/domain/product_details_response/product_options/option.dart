@@ -6,7 +6,7 @@ part 'option.freezed.dart';
 part 'option.g.dart';
 
 @freezed
-class Option with _$Option {
+abstract class Option with _$Option {
   factory Option({
     required List<Variant> variants,
     required int optionId,

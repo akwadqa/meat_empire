@@ -6,8 +6,8 @@ part of 'shipping_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShippingParamsImpl _$$ShippingParamsImplFromJson(Map<String, dynamic> json) =>
-    _$ShippingParamsImpl(
+_ShippingParams _$ShippingParamsFromJson(Map<String, dynamic> json) =>
+    _ShippingParams(
       minItemsInBox: (json['min_items_in_box'] as num?)?.toInt(),
       maxItemsInBox: (json['max_items_in_box'] as num?)?.toInt(),
       boxLength: (json['box_length'] as num?)?.toInt(),

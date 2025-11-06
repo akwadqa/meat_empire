@@ -4,7 +4,7 @@ part 'taxes.freezed.dart';
 part 'taxes.g.dart';
 
 @freezed
-class Taxes with _$Taxes {
+abstract class Taxes with _$Taxes {
   factory Taxes({
     String? taxValue,
     String? taxName,

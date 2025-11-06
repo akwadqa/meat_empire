@@ -6,39 +6,79 @@ part of 'home_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(homeRepository)
+const homeRepositoryProvider = HomeRepositoryProvider._();
+
+final class HomeRepositoryProvider
+    extends $FunctionalProvider<HomeRepository, HomeRepository, HomeRepository>
+    with $Provider<HomeRepository> {
+  const HomeRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<HomeRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  HomeRepository create(Ref ref) {
+    return homeRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(HomeRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<HomeRepository>(value),
+    );
+  }
+}
+
 String _$homeRepositoryHash() => r'7fffdfc2410ce41d76f31b04606a121722ab905e';
 
-/// See also [homeRepository].
-@ProviderFor(homeRepository)
-final homeRepositoryProvider = Provider<HomeRepository>.internal(
-  homeRepository,
-  name: r'homeRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$homeRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef HomeRepositoryRef = ProviderRef<HomeRepository>;
-String _$homeHash() => r'43e4f6c56d941bb6a336168aab0a979016583285';
-
-/// See also [home].
 @ProviderFor(home)
-final homeProvider = FutureProvider<Home>.internal(
-  home,
-  name: r'homeProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$homeHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const homeProvider = HomeProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef HomeRef = FutureProviderRef<Home>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class HomeProvider
+    extends $FunctionalProvider<AsyncValue<Home>, Home, FutureOr<Home>>
+    with $FutureModifier<Home>, $FutureProvider<Home> {
+  const HomeProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<Home> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<Home> create(Ref ref) {
+    return home(ref);
+  }
+}
+
+String _$homeHash() => r'307edb4e90eb01ed6e830ef17204a2aea2e2d5ec';

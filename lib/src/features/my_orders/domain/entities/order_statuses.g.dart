@@ -6,8 +6,8 @@ part of 'order_statuses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderStatusesImpl _$$OrderStatusesImplFromJson(Map<String, dynamic> json) =>
-    _$OrderStatusesImpl(
+_OrderStatuses _$OrderStatusesFromJson(Map<String, dynamic> json) =>
+    _OrderStatuses(
       value: json['value'] as String,
       name: json['name'] as String,
     );

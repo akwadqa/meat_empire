@@ -6,7 +6,5 @@ part of 'filtering.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FilteringImpl _$$FilteringImplFromJson(Map<String, dynamic> json) =>
-    _$FilteringImpl(
-      items: Items.fromJson(json['items'] as Map<String, dynamic>),
-    );
+_Filtering _$FilteringFromJson(Map<String, dynamic> json) =>
+    _Filtering(items: Items.fromJson(json['items'] as Map<String, dynamic>));

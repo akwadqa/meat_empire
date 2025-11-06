@@ -8,7 +8,7 @@ part 'search_response.freezed.dart';
 part 'search_response.g.dart';
 
 @freezed
-class SearchResponse with _$SearchResponse {
+abstract class SearchResponse with _$SearchResponse {
   factory SearchResponse({
     required List<Product> products,
     required Search search,

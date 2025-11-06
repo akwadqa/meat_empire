@@ -6,8 +6,8 @@ part of 'layout_search.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LayoutSearchImpl _$$LayoutSearchImplFromJson(Map<String, dynamic> json) =>
-    _$LayoutSearchImpl(
+_LayoutSearch _$LayoutSearchFromJson(Map<String, dynamic> json) =>
+    _LayoutSearch(
       page: (json['page'] as num).toInt(),
       itemsPerPage: (json['items_per_page'] as num).toInt(),
       status: json['status'] as String,

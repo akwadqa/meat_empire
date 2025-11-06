@@ -4,7 +4,7 @@ part 'product_reviews_sorting.freezed.dart';
 part 'product_reviews_sorting.g.dart';
 
 @freezed
-class ProductReviewsSorting with _$ProductReviewsSorting {
+abstract class ProductReviewsSorting with _$ProductReviewsSorting {
   factory ProductReviewsSorting({
     required String name,
     required String sortBy,

@@ -6,9 +6,9 @@ part of 'product_reviews_avail_sorting.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductReviewsAvailSortingImpl _$$ProductReviewsAvailSortingImplFromJson(
+_ProductReviewsAvailSorting _$ProductReviewsAvailSortingFromJson(
   Map<String, dynamic> json,
-) => _$ProductReviewsAvailSortingImpl(
+) => _ProductReviewsAvailSorting(
   productReviewTimestampAsc: json['product_review_timestamp-asc'] as String,
   productReviewTimestampDesc: json['product_review_timestamp-desc'] as String,
   helpfulnessAsc: json['helpfulness-asc'] as String,

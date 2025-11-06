@@ -6,8 +6,8 @@ part of 'product_details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductDetailsImpl _$$ProductDetailsImplFromJson(Map<String, dynamic> json) =>
-    _$ProductDetailsImpl(
+_ProductDetails _$ProductDetailsFromJson(Map<String, dynamic> json) =>
+    _ProductDetails(
       minItemsInBox: (json['min_items_in_box'] as num).toInt(),
       maxItemsInBox: (json['max_items_in_box'] as num).toInt(),
       boxLength: (json['box_length'] as num).toInt(),

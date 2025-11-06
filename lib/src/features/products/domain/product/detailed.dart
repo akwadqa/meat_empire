@@ -4,7 +4,7 @@ part 'detailed.freezed.dart';
 part 'detailed.g.dart';
 
 @freezed
-class Detailed with _$Detailed {
+abstract class Detailed with _$Detailed {
   factory Detailed({
     required String objectId,
     required String objectType,

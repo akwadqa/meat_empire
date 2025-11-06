@@ -6,8 +6,8 @@ part of 'delivery_slot.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DeliverySlotImpl _$$DeliverySlotImplFromJson(Map<String, dynamic> json) =>
-    _$DeliverySlotImpl(
+_DeliverySlot _$DeliverySlotFromJson(Map<String, dynamic> json) =>
+    _DeliverySlot(
       date: json['date'] as String?,
       timestamp: (json['timestamp'] as num?)?.toInt(),
       heading: json['heading'] as String?,

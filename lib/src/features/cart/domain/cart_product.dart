@@ -8,7 +8,7 @@ part 'cart_product.freezed.dart';
 part 'cart_product.g.dart';
 
 @freezed
-class CartProduct with _$CartProduct {
+abstract class CartProduct with _$CartProduct {
   factory CartProduct({
     String? productId,
     String? companyId,

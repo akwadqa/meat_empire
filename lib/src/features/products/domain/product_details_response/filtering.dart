@@ -6,7 +6,7 @@ part 'filtering.freezed.dart';
 part 'filtering.g.dart';
 
 @freezed
-class Filtering with _$Filtering {
+abstract class Filtering with _$Filtering {
   factory Filtering({
     required Items items,
   }) = _Filtering;

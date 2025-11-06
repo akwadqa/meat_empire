@@ -23,7 +23,7 @@ class CarouselDotsIndicator extends ConsumerWidget {
     int pageIndex = ref.watch(carouselPageIndexProvider);
     return DotsIndicator(
       dotsCount: dotsCount,
-      position: pageIndex,
+      position: pageIndex.toDouble(),
       decorator: DotsDecorator(
         size: const Size.square(9.0),
         activeSize: const Size(18.0, 9.0),

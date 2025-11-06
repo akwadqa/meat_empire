@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,193 +9,303 @@ part of 'items.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-Items _$ItemsFromJson(Map<String, dynamic> json) {
-  return _Items.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Items {
-  WithImages get withImages => throw _privateConstructorUsedError;
-  OnlyBuyers get onlyBuyers => throw _privateConstructorUsedError;
 
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ItemsCopyWith<Items> get copyWith => throw _privateConstructorUsedError;
+ WithImages get withImages; OnlyBuyers get onlyBuyers;
+/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ItemsCopyWith<Items> get copyWith => _$ItemsCopyWithImpl<Items>(this as Items, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Items&&(identical(other.withImages, withImages) || other.withImages == withImages)&&(identical(other.onlyBuyers, onlyBuyers) || other.onlyBuyers == onlyBuyers));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,withImages,onlyBuyers);
+
+@override
+String toString() {
+  return 'Items(withImages: $withImages, onlyBuyers: $onlyBuyers)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ItemsCopyWith<$Res> {
-  factory $ItemsCopyWith(Items value, $Res Function(Items) then) =
-      _$ItemsCopyWithImpl<$Res, Items>;
-  @useResult
-  $Res call({WithImages withImages, OnlyBuyers onlyBuyers});
+abstract mixin class $ItemsCopyWith<$Res>  {
+  factory $ItemsCopyWith(Items value, $Res Function(Items) _then) = _$ItemsCopyWithImpl;
+@useResult
+$Res call({
+ WithImages withImages, OnlyBuyers onlyBuyers
+});
 
-  $WithImagesCopyWith<$Res> get withImages;
-  $OnlyBuyersCopyWith<$Res> get onlyBuyers;
+
+$WithImagesCopyWith<$Res> get withImages;$OnlyBuyersCopyWith<$Res> get onlyBuyers;
+
 }
-
 /// @nodoc
-class _$ItemsCopyWithImpl<$Res, $Val extends Items>
+class _$ItemsCopyWithImpl<$Res>
     implements $ItemsCopyWith<$Res> {
-  _$ItemsCopyWithImpl(this._value, this._then);
+  _$ItemsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Items _self;
+  final $Res Function(Items) _then;
 
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? withImages = null, Object? onlyBuyers = null}) {
-    return _then(
-      _value.copyWith(
-            withImages: null == withImages
-                ? _value.withImages
-                : withImages // ignore: cast_nullable_to_non_nullable
-                      as WithImages,
-            onlyBuyers: null == onlyBuyers
-                ? _value.onlyBuyers
-                : onlyBuyers // ignore: cast_nullable_to_non_nullable
-                      as OnlyBuyers,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WithImagesCopyWith<$Res> get withImages {
-    return $WithImagesCopyWith<$Res>(_value.withImages, (value) {
-      return _then(_value.copyWith(withImages: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OnlyBuyersCopyWith<$Res> get onlyBuyers {
-    return $OnlyBuyersCopyWith<$Res>(_value.onlyBuyers, (value) {
-      return _then(_value.copyWith(onlyBuyers: value) as $Val);
-    });
-  }
+/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? withImages = null,Object? onlyBuyers = null,}) {
+  return _then(_self.copyWith(
+withImages: null == withImages ? _self.withImages : withImages // ignore: cast_nullable_to_non_nullable
+as WithImages,onlyBuyers: null == onlyBuyers ? _self.onlyBuyers : onlyBuyers // ignore: cast_nullable_to_non_nullable
+as OnlyBuyers,
+  ));
+}
+/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WithImagesCopyWith<$Res> get withImages {
+  
+  return $WithImagesCopyWith<$Res>(_self.withImages, (value) {
+    return _then(_self.copyWith(withImages: value));
+  });
+}/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OnlyBuyersCopyWith<$Res> get onlyBuyers {
+  
+  return $OnlyBuyersCopyWith<$Res>(_self.onlyBuyers, (value) {
+    return _then(_self.copyWith(onlyBuyers: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ItemsImplCopyWith<$Res> implements $ItemsCopyWith<$Res> {
-  factory _$$ItemsImplCopyWith(
-    _$ItemsImpl value,
-    $Res Function(_$ItemsImpl) then,
-  ) = __$$ItemsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({WithImages withImages, OnlyBuyers onlyBuyers});
 
-  @override
-  $WithImagesCopyWith<$Res> get withImages;
-  @override
-  $OnlyBuyersCopyWith<$Res> get onlyBuyers;
+/// Adds pattern-matching-related methods to [Items].
+extension ItemsPatterns on Items {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Items value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Items() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Items value)  $default,){
+final _that = this;
+switch (_that) {
+case _Items():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Items value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Items() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( WithImages withImages,  OnlyBuyers onlyBuyers)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Items() when $default != null:
+return $default(_that.withImages,_that.onlyBuyers);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( WithImages withImages,  OnlyBuyers onlyBuyers)  $default,) {final _that = this;
+switch (_that) {
+case _Items():
+return $default(_that.withImages,_that.onlyBuyers);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( WithImages withImages,  OnlyBuyers onlyBuyers)?  $default,) {final _that = this;
+switch (_that) {
+case _Items() when $default != null:
+return $default(_that.withImages,_that.onlyBuyers);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ItemsImplCopyWithImpl<$Res>
-    extends _$ItemsCopyWithImpl<$Res, _$ItemsImpl>
-    implements _$$ItemsImplCopyWith<$Res> {
-  __$$ItemsImplCopyWithImpl(
-    _$ItemsImpl _value,
-    $Res Function(_$ItemsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? withImages = null, Object? onlyBuyers = null}) {
-    return _then(
-      _$ItemsImpl(
-        withImages: null == withImages
-            ? _value.withImages
-            : withImages // ignore: cast_nullable_to_non_nullable
-                  as WithImages,
-        onlyBuyers: null == onlyBuyers
-            ? _value.onlyBuyers
-            : onlyBuyers // ignore: cast_nullable_to_non_nullable
-                  as OnlyBuyers,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$ItemsImpl implements _Items {
-  _$ItemsImpl({required this.withImages, required this.onlyBuyers});
 
-  factory _$ItemsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ItemsImplFromJson(json);
+class _Items implements Items {
+   _Items({required this.withImages, required this.onlyBuyers});
+  factory _Items.fromJson(Map<String, dynamic> json) => _$ItemsFromJson(json);
 
-  @override
-  final WithImages withImages;
-  @override
-  final OnlyBuyers onlyBuyers;
+@override final  WithImages withImages;
+@override final  OnlyBuyers onlyBuyers;
 
-  @override
-  String toString() {
-    return 'Items(withImages: $withImages, onlyBuyers: $onlyBuyers)';
-  }
+/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ItemsCopyWith<_Items> get copyWith => __$ItemsCopyWithImpl<_Items>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ItemsImpl &&
-            (identical(other.withImages, withImages) ||
-                other.withImages == withImages) &&
-            (identical(other.onlyBuyers, onlyBuyers) ||
-                other.onlyBuyers == onlyBuyers));
-  }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, withImages, onlyBuyers);
 
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ItemsImplCopyWith<_$ItemsImpl> get copyWith =>
-      __$$ItemsImplCopyWithImpl<_$ItemsImpl>(this, _$identity);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Items&&(identical(other.withImages, withImages) || other.withImages == withImages)&&(identical(other.onlyBuyers, onlyBuyers) || other.onlyBuyers == onlyBuyers));
 }
 
-abstract class _Items implements Items {
-  factory _Items({
-    required final WithImages withImages,
-    required final OnlyBuyers onlyBuyers,
-  }) = _$ItemsImpl;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,withImages,onlyBuyers);
 
-  factory _Items.fromJson(Map<String, dynamic> json) = _$ItemsImpl.fromJson;
-
-  @override
-  WithImages get withImages;
-  @override
-  OnlyBuyers get onlyBuyers;
-
-  /// Create a copy of Items
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ItemsImplCopyWith<_$ItemsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Items(withImages: $withImages, onlyBuyers: $onlyBuyers)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ItemsCopyWith<$Res> implements $ItemsCopyWith<$Res> {
+  factory _$ItemsCopyWith(_Items value, $Res Function(_Items) _then) = __$ItemsCopyWithImpl;
+@override @useResult
+$Res call({
+ WithImages withImages, OnlyBuyers onlyBuyers
+});
+
+
+@override $WithImagesCopyWith<$Res> get withImages;@override $OnlyBuyersCopyWith<$Res> get onlyBuyers;
+
+}
+/// @nodoc
+class __$ItemsCopyWithImpl<$Res>
+    implements _$ItemsCopyWith<$Res> {
+  __$ItemsCopyWithImpl(this._self, this._then);
+
+  final _Items _self;
+  final $Res Function(_Items) _then;
+
+/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? withImages = null,Object? onlyBuyers = null,}) {
+  return _then(_Items(
+withImages: null == withImages ? _self.withImages : withImages // ignore: cast_nullable_to_non_nullable
+as WithImages,onlyBuyers: null == onlyBuyers ? _self.onlyBuyers : onlyBuyers // ignore: cast_nullable_to_non_nullable
+as OnlyBuyers,
+  ));
+}
+
+/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WithImagesCopyWith<$Res> get withImages {
+  
+  return $WithImagesCopyWith<$Res>(_self.withImages, (value) {
+    return _then(_self.copyWith(withImages: value));
+  });
+}/// Create a copy of Items
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OnlyBuyersCopyWith<$Res> get onlyBuyers {
+  
+  return $OnlyBuyersCopyWith<$Res>(_self.onlyBuyers, (value) {
+    return _then(_self.copyWith(onlyBuyers: value));
+  });
+}
+}
+
+// dart format on

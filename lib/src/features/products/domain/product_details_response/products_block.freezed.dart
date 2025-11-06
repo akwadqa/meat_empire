@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,302 +9,288 @@ part of 'products_block.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-ProductsBlock _$ProductsBlockFromJson(Map<String, dynamic> json) {
-  return _ProductsBlock.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ProductsBlock {
-  String get title => throw _privateConstructorUsedError;
-  String get viewType => throw _privateConstructorUsedError;
-  List<Product> get products => throw _privateConstructorUsedError;
-  int? get categoryId => throw _privateConstructorUsedError;
-  String? get requestParam => throw _privateConstructorUsedError;
-  String? get sortBy => throw _privateConstructorUsedError;
-  String? get sortOrder => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductsBlock
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductsBlockCopyWith<ProductsBlock> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get title; String get viewType; List<Product> get products; int? get categoryId; String? get requestParam; String? get sortBy; String? get sortOrder;
+/// Create a copy of ProductsBlock
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ProductsBlockCopyWith<ProductsBlock> get copyWith => _$ProductsBlockCopyWithImpl<ProductsBlock>(this as ProductsBlock, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsBlock&&(identical(other.title, title) || other.title == title)&&(identical(other.viewType, viewType) || other.viewType == viewType)&&const DeepCollectionEquality().equals(other.products, products)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.requestParam, requestParam) || other.requestParam == requestParam)&&(identical(other.sortBy, sortBy) || other.sortBy == sortBy)&&(identical(other.sortOrder, sortOrder) || other.sortOrder == sortOrder));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,viewType,const DeepCollectionEquality().hash(products),categoryId,requestParam,sortBy,sortOrder);
+
+@override
+String toString() {
+  return 'ProductsBlock(title: $title, viewType: $viewType, products: $products, categoryId: $categoryId, requestParam: $requestParam, sortBy: $sortBy, sortOrder: $sortOrder)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ProductsBlockCopyWith<$Res> {
-  factory $ProductsBlockCopyWith(
-    ProductsBlock value,
-    $Res Function(ProductsBlock) then,
-  ) = _$ProductsBlockCopyWithImpl<$Res, ProductsBlock>;
-  @useResult
-  $Res call({
-    String title,
-    String viewType,
-    List<Product> products,
-    int? categoryId,
-    String? requestParam,
-    String? sortBy,
-    String? sortOrder,
-  });
-}
+abstract mixin class $ProductsBlockCopyWith<$Res>  {
+  factory $ProductsBlockCopyWith(ProductsBlock value, $Res Function(ProductsBlock) _then) = _$ProductsBlockCopyWithImpl;
+@useResult
+$Res call({
+ String title, String viewType, List<Product> products, int? categoryId, String? requestParam, String? sortBy, String? sortOrder
+});
 
+
+
+
+}
 /// @nodoc
-class _$ProductsBlockCopyWithImpl<$Res, $Val extends ProductsBlock>
+class _$ProductsBlockCopyWithImpl<$Res>
     implements $ProductsBlockCopyWith<$Res> {
-  _$ProductsBlockCopyWithImpl(this._value, this._then);
+  _$ProductsBlockCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ProductsBlock _self;
+  final $Res Function(ProductsBlock) _then;
 
-  /// Create a copy of ProductsBlock
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? viewType = null,
-    Object? products = null,
-    Object? categoryId = freezed,
-    Object? requestParam = freezed,
-    Object? sortBy = freezed,
-    Object? sortOrder = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            viewType: null == viewType
-                ? _value.viewType
-                : viewType // ignore: cast_nullable_to_non_nullable
-                      as String,
-            products: null == products
-                ? _value.products
-                : products // ignore: cast_nullable_to_non_nullable
-                      as List<Product>,
-            categoryId: freezed == categoryId
-                ? _value.categoryId
-                : categoryId // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            requestParam: freezed == requestParam
-                ? _value.requestParam
-                : requestParam // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sortBy: freezed == sortBy
-                ? _value.sortBy
-                : sortBy // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sortOrder: freezed == sortOrder
-                ? _value.sortOrder
-                : sortOrder // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of ProductsBlock
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? viewType = null,Object? products = null,Object? categoryId = freezed,Object? requestParam = freezed,Object? sortBy = freezed,Object? sortOrder = freezed,}) {
+  return _then(_self.copyWith(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,viewType: null == viewType ? _self.viewType : viewType // ignore: cast_nullable_to_non_nullable
+as String,products: null == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
+as List<Product>,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as int?,requestParam: freezed == requestParam ? _self.requestParam : requestParam // ignore: cast_nullable_to_non_nullable
+as String?,sortBy: freezed == sortBy ? _self.sortBy : sortBy // ignore: cast_nullable_to_non_nullable
+as String?,sortOrder: freezed == sortOrder ? _self.sortOrder : sortOrder // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ProductsBlockImplCopyWith<$Res>
-    implements $ProductsBlockCopyWith<$Res> {
-  factory _$$ProductsBlockImplCopyWith(
-    _$ProductsBlockImpl value,
-    $Res Function(_$ProductsBlockImpl) then,
-  ) = __$$ProductsBlockImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String title,
-    String viewType,
-    List<Product> products,
-    int? categoryId,
-    String? requestParam,
-    String? sortBy,
-    String? sortOrder,
-  });
 }
 
-/// @nodoc
-class __$$ProductsBlockImplCopyWithImpl<$Res>
-    extends _$ProductsBlockCopyWithImpl<$Res, _$ProductsBlockImpl>
-    implements _$$ProductsBlockImplCopyWith<$Res> {
-  __$$ProductsBlockImplCopyWithImpl(
-    _$ProductsBlockImpl _value,
-    $Res Function(_$ProductsBlockImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of ProductsBlock
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? viewType = null,
-    Object? products = null,
-    Object? categoryId = freezed,
-    Object? requestParam = freezed,
-    Object? sortBy = freezed,
-    Object? sortOrder = freezed,
-  }) {
-    return _then(
-      _$ProductsBlockImpl(
-        title: null == title
-            ? _value.title
-            : title // ignore: cast_nullable_to_non_nullable
-                  as String,
-        viewType: null == viewType
-            ? _value.viewType
-            : viewType // ignore: cast_nullable_to_non_nullable
-                  as String,
-        products: null == products
-            ? _value._products
-            : products // ignore: cast_nullable_to_non_nullable
-                  as List<Product>,
-        categoryId: freezed == categoryId
-            ? _value.categoryId
-            : categoryId // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        requestParam: freezed == requestParam
-            ? _value.requestParam
-            : requestParam // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sortBy: freezed == sortBy
-            ? _value.sortBy
-            : sortBy // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sortOrder: freezed == sortOrder
-            ? _value.sortOrder
-            : sortOrder // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [ProductsBlock].
+extension ProductsBlockPatterns on ProductsBlock {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ProductsBlock value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ProductsBlock() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ProductsBlock value)  $default,){
+final _that = this;
+switch (_that) {
+case _ProductsBlock():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ProductsBlock value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ProductsBlock() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String viewType,  List<Product> products,  int? categoryId,  String? requestParam,  String? sortBy,  String? sortOrder)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ProductsBlock() when $default != null:
+return $default(_that.title,_that.viewType,_that.products,_that.categoryId,_that.requestParam,_that.sortBy,_that.sortOrder);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String viewType,  List<Product> products,  int? categoryId,  String? requestParam,  String? sortBy,  String? sortOrder)  $default,) {final _that = this;
+switch (_that) {
+case _ProductsBlock():
+return $default(_that.title,_that.viewType,_that.products,_that.categoryId,_that.requestParam,_that.sortBy,_that.sortOrder);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String viewType,  List<Product> products,  int? categoryId,  String? requestParam,  String? sortBy,  String? sortOrder)?  $default,) {final _that = this;
+switch (_that) {
+case _ProductsBlock() when $default != null:
+return $default(_that.title,_that.viewType,_that.products,_that.categoryId,_that.requestParam,_that.sortBy,_that.sortOrder);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$ProductsBlockImpl implements _ProductsBlock {
-  _$ProductsBlockImpl({
-    required this.title,
-    required this.viewType,
-    required final List<Product> products,
-    required this.categoryId,
-    required this.requestParam,
-    required this.sortBy,
-    required this.sortOrder,
-  }) : _products = products;
 
-  factory _$ProductsBlockImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductsBlockImplFromJson(json);
+class _ProductsBlock implements ProductsBlock {
+   _ProductsBlock({required this.title, required this.viewType, required final  List<Product> products, required this.categoryId, required this.requestParam, required this.sortBy, required this.sortOrder}): _products = products;
+  factory _ProductsBlock.fromJson(Map<String, dynamic> json) => _$ProductsBlockFromJson(json);
 
-  @override
-  final String title;
-  @override
-  final String viewType;
-  final List<Product> _products;
-  @override
-  List<Product> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
-  }
-
-  @override
-  final int? categoryId;
-  @override
-  final String? requestParam;
-  @override
-  final String? sortBy;
-  @override
-  final String? sortOrder;
-
-  @override
-  String toString() {
-    return 'ProductsBlock(title: $title, viewType: $viewType, products: $products, categoryId: $categoryId, requestParam: $requestParam, sortBy: $sortBy, sortOrder: $sortOrder)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProductsBlockImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.viewType, viewType) ||
-                other.viewType == viewType) &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.requestParam, requestParam) ||
-                other.requestParam == requestParam) &&
-            (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
-            (identical(other.sortOrder, sortOrder) ||
-                other.sortOrder == sortOrder));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    title,
-    viewType,
-    const DeepCollectionEquality().hash(_products),
-    categoryId,
-    requestParam,
-    sortBy,
-    sortOrder,
-  );
-
-  /// Create a copy of ProductsBlock
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ProductsBlockImplCopyWith<_$ProductsBlockImpl> get copyWith =>
-      __$$ProductsBlockImplCopyWithImpl<_$ProductsBlockImpl>(this, _$identity);
+@override final  String title;
+@override final  String viewType;
+ final  List<Product> _products;
+@override List<Product> get products {
+  if (_products is EqualUnmodifiableListView) return _products;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_products);
 }
 
-abstract class _ProductsBlock implements ProductsBlock {
-  factory _ProductsBlock({
-    required final String title,
-    required final String viewType,
-    required final List<Product> products,
-    required final int? categoryId,
-    required final String? requestParam,
-    required final String? sortBy,
-    required final String? sortOrder,
-  }) = _$ProductsBlockImpl;
+@override final  int? categoryId;
+@override final  String? requestParam;
+@override final  String? sortBy;
+@override final  String? sortOrder;
 
-  factory _ProductsBlock.fromJson(Map<String, dynamic> json) =
-      _$ProductsBlockImpl.fromJson;
+/// Create a copy of ProductsBlock
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ProductsBlockCopyWith<_ProductsBlock> get copyWith => __$ProductsBlockCopyWithImpl<_ProductsBlock>(this, _$identity);
 
-  @override
-  String get title;
-  @override
-  String get viewType;
-  @override
-  List<Product> get products;
-  @override
-  int? get categoryId;
-  @override
-  String? get requestParam;
-  @override
-  String? get sortBy;
-  @override
-  String? get sortOrder;
 
-  /// Create a copy of ProductsBlock
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductsBlockImplCopyWith<_$ProductsBlockImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductsBlock&&(identical(other.title, title) || other.title == title)&&(identical(other.viewType, viewType) || other.viewType == viewType)&&const DeepCollectionEquality().equals(other._products, _products)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.requestParam, requestParam) || other.requestParam == requestParam)&&(identical(other.sortBy, sortBy) || other.sortBy == sortBy)&&(identical(other.sortOrder, sortOrder) || other.sortOrder == sortOrder));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,viewType,const DeepCollectionEquality().hash(_products),categoryId,requestParam,sortBy,sortOrder);
+
+@override
+String toString() {
+  return 'ProductsBlock(title: $title, viewType: $viewType, products: $products, categoryId: $categoryId, requestParam: $requestParam, sortBy: $sortBy, sortOrder: $sortOrder)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ProductsBlockCopyWith<$Res> implements $ProductsBlockCopyWith<$Res> {
+  factory _$ProductsBlockCopyWith(_ProductsBlock value, $Res Function(_ProductsBlock) _then) = __$ProductsBlockCopyWithImpl;
+@override @useResult
+$Res call({
+ String title, String viewType, List<Product> products, int? categoryId, String? requestParam, String? sortBy, String? sortOrder
+});
+
+
+
+
+}
+/// @nodoc
+class __$ProductsBlockCopyWithImpl<$Res>
+    implements _$ProductsBlockCopyWith<$Res> {
+  __$ProductsBlockCopyWithImpl(this._self, this._then);
+
+  final _ProductsBlock _self;
+  final $Res Function(_ProductsBlock) _then;
+
+/// Create a copy of ProductsBlock
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? viewType = null,Object? products = null,Object? categoryId = freezed,Object? requestParam = freezed,Object? sortBy = freezed,Object? sortOrder = freezed,}) {
+  return _then(_ProductsBlock(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,viewType: null == viewType ? _self.viewType : viewType // ignore: cast_nullable_to_non_nullable
+as String,products: null == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
+as List<Product>,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+as int?,requestParam: freezed == requestParam ? _self.requestParam : requestParam // ignore: cast_nullable_to_non_nullable
+as String?,sortBy: freezed == sortBy ? _self.sortBy : sortBy // ignore: cast_nullable_to_non_nullable
+as String?,sortOrder: freezed == sortOrder ? _self.sortOrder : sortOrder // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

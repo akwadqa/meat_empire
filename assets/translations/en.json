@@ -125,6 +125,17 @@
     "delivered_desc": "Your order was delivered successfully",
     "cartUnAuthDesc": "Log in, discover our products and enjoy shopping.",
     "area": "Area",
-    "outOfStock":"Out of stock",
+    "outOfStock": "Out of stock",
+    "delete_account_title": "Delete Account",
+    "delete_account_dsc": "Are you sure you want to permanently delete your account? This action cannot be undone.",
+    "delete_block_message": "Your account was deleted recently. Please try again later.",
+    "version": "Version",
+    "newVersion": "New Version",
+    "update": "Update",
+    "update_title_optional": "New Version Available",
+    "update_message_optional": "A new version of the app is available with improvements and new features. Update now to enjoy the best experience.",
+    "update_title_required": "New Update Required",
+    "update_message_required": "Your current version is no longer supported. Please update the app to continue using our services."
+,  
     "variantError": "Please select a variant for all options."
 }

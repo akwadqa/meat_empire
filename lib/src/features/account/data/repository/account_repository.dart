@@ -40,6 +40,19 @@ class AccountRepository {
     }
     throw AppException(profileResponse.message);
   }
+  Future<ProfileResponse> deleteAccount(UserProfile updatedProfile) async {
+    final updatedProfileData = {'profile_data': updatedProfile.toJson()};
+    debugPrint("TOJSON UPDATE PROFILE DATA${updatedProfileData.toString()}");
+    final response = await _networkService.put(
+      EndPoints.profileApi(int.parse(updatedProfile.userId)),
+      updatedProfileData,
+    );
+    ProfileResponse profileResponse = ProfileResponse.fromJson(response.data);
+    if (profileResponse.success) {
+      return profileResponse;
+    }
+    throw AppException(profileResponse.message);
+  }
 }
 
 @riverpod

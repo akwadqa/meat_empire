@@ -4,7 +4,7 @@ part 'language.freezed.dart';
 part 'language.g.dart';
 
 @freezed
-class Language with _$Language {
+abstract class Language with _$Language {
   factory Language({
     required String langId,
     required String langCode,

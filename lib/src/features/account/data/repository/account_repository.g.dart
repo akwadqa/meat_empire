@@ -6,282 +6,201 @@ part of 'account_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountRepositoryHash() => r'098d7b34671fc15e625ab712de9079d0589c23a7';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [accountRepository].
 @ProviderFor(accountRepository)
-final accountRepositoryProvider = Provider<AccountRepository>.internal(
-  accountRepository,
-  name: r'accountRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$accountRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const accountRepositoryProvider = AccountRepositoryProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef AccountRepositoryRef = ProviderRef<AccountRepository>;
-String _$accountHash() => r'b19db55dfcc610ca8b51bc9f381385b248eaa781';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [account].
-@ProviderFor(account)
-const accountProvider = AccountFamily();
-
-/// See also [account].
-class AccountFamily extends Family<AsyncValue<ProfileResponse>> {
-  /// See also [account].
-  const AccountFamily();
-
-  /// See also [account].
-  AccountProvider call(int id) {
-    return AccountProvider(id);
-  }
-
-  @override
-  AccountProvider getProviderOverride(covariant AccountProvider provider) {
-    return call(provider.id);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'accountProvider';
-}
-
-/// See also [account].
-class AccountProvider extends AutoDisposeFutureProvider<ProfileResponse> {
-  /// See also [account].
-  AccountProvider(int id)
-    : this._internal(
-        (ref) => account(ref as AccountRef, id),
-        from: accountProvider,
-        name: r'accountProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$accountHash,
-        dependencies: AccountFamily._dependencies,
-        allTransitiveDependencies: AccountFamily._allTransitiveDependencies,
-        id: id,
+final class AccountRepositoryProvider
+    extends
+        $FunctionalProvider<
+          AccountRepository,
+          AccountRepository,
+          AccountRepository
+        >
+    with $Provider<AccountRepository> {
+  const AccountRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'accountRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
       );
 
-  AccountProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.id,
-  }) : super.internal();
+  @override
+  String debugGetCreateSourceHash() => _$accountRepositoryHash();
 
-  final int id;
+  @$internal
+  @override
+  $ProviderElement<AccountRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
-  Override overrideWith(
-    FutureOr<ProfileResponse> Function(AccountRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: AccountProvider._internal(
-        (ref) => create(ref as AccountRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        id: id,
-      ),
-    );
+  AccountRepository create(Ref ref) {
+    return accountRepository(ref);
   }
 
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AccountRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AccountRepository>(value),
+    );
+  }
+}
+
+String _$accountRepositoryHash() => r'098d7b34671fc15e625ab712de9079d0589c23a7';
+
+@ProviderFor(account)
+const accountProvider = AccountFamily._();
+
+final class AccountProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<ProfileResponse>,
+          ProfileResponse,
+          FutureOr<ProfileResponse>
+        >
+    with $FutureModifier<ProfileResponse>, $FutureProvider<ProfileResponse> {
+  const AccountProvider._({
+    required AccountFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'accountProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
   @override
-  AutoDisposeFutureProviderElement<ProfileResponse> createElement() {
-    return _AccountProviderElement(this);
+  String debugGetCreateSourceHash() => _$accountHash();
+
+  @override
+  String toString() {
+    return r'accountProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<ProfileResponse> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<ProfileResponse> create(Ref ref) {
+    final argument = this.argument as int;
+    return account(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AccountProvider && other.id == id;
+    return other is AccountProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, id.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin AccountRef on AutoDisposeFutureProviderRef<ProfileResponse> {
-  /// The parameter `id` of this provider.
-  int get id;
-}
+String _$accountHash() => r'b19db55dfcc610ca8b51bc9f381385b248eaa781';
 
-class _AccountProviderElement
-    extends AutoDisposeFutureProviderElement<ProfileResponse>
-    with AccountRef {
-  _AccountProviderElement(super.provider);
+final class AccountFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<ProfileResponse>, int> {
+  const AccountFamily._()
+    : super(
+        retry: null,
+        name: r'accountProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  AccountProvider call(int id) => AccountProvider._(argument: id, from: this);
 
   @override
-  int get id => (origin as AccountProvider).id;
+  String toString() => r'accountProvider';
+}
+
+@ProviderFor(updateAccount)
+const updateAccountProvider = UpdateAccountFamily._();
+
+final class UpdateAccountProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<ProfileResponse>,
+          ProfileResponse,
+          FutureOr<ProfileResponse>
+        >
+    with $FutureModifier<ProfileResponse>, $FutureProvider<ProfileResponse> {
+  const UpdateAccountProvider._({
+    required UpdateAccountFamily super.from,
+    required UserProfile super.argument,
+  }) : super(
+         retry: null,
+         name: r'updateAccountProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateAccountHash();
+
+  @override
+  String toString() {
+    return r'updateAccountProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<ProfileResponse> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<ProfileResponse> create(Ref ref) {
+    final argument = this.argument as UserProfile;
+    return updateAccount(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is UpdateAccountProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
 }
 
 String _$updateAccountHash() => r'0f349439959b170ab34e7e032e2fa6f4c184dad9';
 
-/// See also [updateAccount].
-@ProviderFor(updateAccount)
-const updateAccountProvider = UpdateAccountFamily();
-
-/// See also [updateAccount].
-class UpdateAccountFamily extends Family<AsyncValue<ProfileResponse>> {
-  /// See also [updateAccount].
-  const UpdateAccountFamily();
-
-  /// See also [updateAccount].
-  UpdateAccountProvider call(UserProfile updatedProfile) {
-    return UpdateAccountProvider(updatedProfile);
-  }
-
-  @override
-  UpdateAccountProvider getProviderOverride(
-    covariant UpdateAccountProvider provider,
-  ) {
-    return call(provider.updatedProfile);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'updateAccountProvider';
-}
-
-/// See also [updateAccount].
-class UpdateAccountProvider extends AutoDisposeFutureProvider<ProfileResponse> {
-  /// See also [updateAccount].
-  UpdateAccountProvider(UserProfile updatedProfile)
-    : this._internal(
-        (ref) => updateAccount(ref as UpdateAccountRef, updatedProfile),
-        from: updateAccountProvider,
+final class UpdateAccountFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<ProfileResponse>, UserProfile> {
+  const UpdateAccountFamily._()
+    : super(
+        retry: null,
         name: r'updateAccountProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$updateAccountHash,
-        dependencies: UpdateAccountFamily._dependencies,
-        allTransitiveDependencies:
-            UpdateAccountFamily._allTransitiveDependencies,
-        updatedProfile: updatedProfile,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
       );
 
-  UpdateAccountProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.updatedProfile,
-  }) : super.internal();
-
-  final UserProfile updatedProfile;
+  UpdateAccountProvider call(UserProfile updatedProfile) =>
+      UpdateAccountProvider._(argument: updatedProfile, from: this);
 
   @override
-  Override overrideWith(
-    FutureOr<ProfileResponse> Function(UpdateAccountRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: UpdateAccountProvider._internal(
-        (ref) => create(ref as UpdateAccountRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        updatedProfile: updatedProfile,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<ProfileResponse> createElement() {
-    return _UpdateAccountProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is UpdateAccountProvider &&
-        other.updatedProfile == updatedProfile;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, updatedProfile.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
+  String toString() => r'updateAccountProvider';
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin UpdateAccountRef on AutoDisposeFutureProviderRef<ProfileResponse> {
-  /// The parameter `updatedProfile` of this provider.
-  UserProfile get updatedProfile;
-}
-
-class _UpdateAccountProviderElement
-    extends AutoDisposeFutureProviderElement<ProfileResponse>
-    with UpdateAccountRef {
-  _UpdateAccountProviderElement(super.provider);
-
-  @override
-  UserProfile get updatedProfile =>
-      (origin as UpdateAccountProvider).updatedProfile;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -6,7 +6,7 @@ part 'order_details.freezed.dart';
 part 'order_details.g.dart';
 
 @freezed
-class OrderDetails with _$OrderDetails {
+abstract class OrderDetails with _$OrderDetails {
   const factory OrderDetails({
     bool? showShipments,
     required List<OrderDetailsShipment> shipments,

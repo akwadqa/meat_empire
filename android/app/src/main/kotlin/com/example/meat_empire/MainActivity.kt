@@ -1,4 +1,4 @@
-package com.example.meat_empire
+package qa.app.meatEmpire
 
 import io.flutter.embedding.android.FlutterActivity
 

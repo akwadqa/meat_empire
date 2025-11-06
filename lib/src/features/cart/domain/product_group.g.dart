@@ -6,8 +6,8 @@ part of 'product_group.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductGroupImpl _$$ProductGroupImplFromJson(Map<String, dynamic> json) =>
-    _$ProductGroupImpl(
+_ProductGroup _$ProductGroupFromJson(Map<String, dynamic> json) =>
+    _ProductGroup(
       groupId: (json['group_id'] as num?)?.toInt(),
       companyId: (json['company_id'] as num?)?.toInt(),
       companyName: json['company_name'] as String?,

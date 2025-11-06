@@ -3,7 +3,7 @@ part 'user_profile.freezed.dart';
 part 'user_profile.g.dart';
 
 @Freezed(toJson: true, fromJson: true, map: FreezedMapOptions())
-class UserProfile with _$UserProfile {
+abstract class UserProfile with _$UserProfile {
   @JsonSerializable(explicitToJson: true)
   const factory UserProfile({
     @JsonKey(name: 'user_id') required String userId,

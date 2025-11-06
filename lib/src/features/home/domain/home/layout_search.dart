@@ -4,7 +4,7 @@ part 'layout_search.freezed.dart';
 part 'layout_search.g.dart';
 
 @freezed
-class LayoutSearch with _$LayoutSearch {
+abstract class LayoutSearch with _$LayoutSearch {
   factory LayoutSearch({
     required int page,
     required int itemsPerPage,

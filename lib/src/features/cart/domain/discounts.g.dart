@@ -6,8 +6,7 @@ part of 'discounts.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DiscountsImpl _$$DiscountsImplFromJson(Map<String, dynamic> json) =>
-    _$DiscountsImpl(
-      a: (json['A'] as num?)?.toInt(),
-      p: (json['P'] as num?)?.toInt(),
-    );
+_Discounts _$DiscountsFromJson(Map<String, dynamic> json) => _Discounts(
+  a: (json['A'] as num?)?.toInt(),
+  p: (json['P'] as num?)?.toInt(),
+);

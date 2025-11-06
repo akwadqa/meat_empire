@@ -13,7 +13,7 @@ part 'product_details.freezed.dart';
 part 'product_details.g.dart';
 
 @freezed
-class ProductDetails with _$ProductDetails {
+abstract class ProductDetails with _$ProductDetails {
   factory ProductDetails({
     required int minItemsInBox,
     required int maxItemsInBox,

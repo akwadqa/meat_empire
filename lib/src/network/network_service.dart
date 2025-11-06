@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -106,6 +108,14 @@ class DioAppInterceptors extends Interceptor {
     options.queryParameters['sl'] = languageCode;
     super.onRequest(options, handler);
   }
+ @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    debugPrint("🟢 [DIO RESPONSE]");
+    debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
+    debugPrint("📦 Response data: ${_prettyJson(response.data)}");
+
+    handler.next(response);
+  }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
@@ -148,6 +158,16 @@ class DioAppInterceptors extends Interceptor {
         throw ConnectionErrorException(err.requestOptions, message);
     }
     return handler.next(err);
+  }
+    String _prettyJson(dynamic data) {
+    try {
+      if (data is Map || data is List) {
+        return const JsonEncoder.withIndent('  ').convert(data);
+      }
+      return data.toString();
+    } catch (_) {
+      return 'Invalid JSON';
+    }
   }
 }
 

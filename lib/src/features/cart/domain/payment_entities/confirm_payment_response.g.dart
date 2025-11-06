@@ -6,9 +6,9 @@ part of 'confirm_payment_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmPaymentResponseImpl _$$ConfirmPaymentResponseImplFromJson(
+_ConfirmPaymentResponse _$ConfirmPaymentResponseFromJson(
   Map<String, dynamic> json,
-) => _$ConfirmPaymentResponseImpl(
+) => _ConfirmPaymentResponse(
   orderId: (json['order_id'] as num?)?.toInt(),
   childOrderIds: json['child_order_ids'],
   paymentParams: json['payment_params'] as List<dynamic>?,

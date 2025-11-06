@@ -6,22 +6,51 @@ part of 'search_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$searchRepositoryHash() => r'3a2ff7965a559544b10e0b91f8aabb83a006fcd7';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [searchRepository].
 @ProviderFor(searchRepository)
-final searchRepositoryProvider = Provider<SearchRepository>.internal(
-  searchRepository,
-  name: r'searchRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$searchRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const searchRepositoryProvider = SearchRepositoryProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SearchRepositoryRef = ProviderRef<SearchRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class SearchRepositoryProvider
+    extends
+        $FunctionalProvider<
+          SearchRepository,
+          SearchRepository,
+          SearchRepository
+        >
+    with $Provider<SearchRepository> {
+  const SearchRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'searchRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$searchRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<SearchRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  SearchRepository create(Ref ref) {
+    return searchRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(SearchRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SearchRepository>(value),
+    );
+  }
+}
+
+String _$searchRepositoryHash() => r'3a2ff7965a559544b10e0b91f8aabb83a006fcd7';

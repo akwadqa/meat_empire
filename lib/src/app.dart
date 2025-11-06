@@ -31,6 +31,7 @@ class _AppState extends ConsumerState<App> {
     final currentLanguage = ref.watch(currentLanguageProvider);
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerDelegate: appRouter.delegate(
           deepLinkBuilder: (deepLink) => DeepLink.defaultPath),
       routeInformationParser: appRouter.defaultRouteParser(),

@@ -7,7 +7,7 @@ part 'items.freezed.dart';
 part 'items.g.dart';
 
 @freezed
-class Items with _$Items {
+abstract class Items with _$Items {
   factory Items({
     required WithImages withImages,
     required OnlyBuyers onlyBuyers,

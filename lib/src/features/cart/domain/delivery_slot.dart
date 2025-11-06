@@ -6,7 +6,7 @@ part 'delivery_slot.freezed.dart';
 part 'delivery_slot.g.dart';
 
 @freezed
-class DeliverySlot with _$DeliverySlot {
+abstract class DeliverySlot with _$DeliverySlot {
   factory DeliverySlot({
     String? date,
     int? timestamp,

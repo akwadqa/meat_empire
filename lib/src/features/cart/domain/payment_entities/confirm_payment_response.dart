@@ -8,7 +8,7 @@ part 'confirm_payment_response.freezed.dart';
 part 'confirm_payment_response.g.dart';
 
 @freezed
-class ConfirmPaymentResponse with _$ConfirmPaymentResponse {
+abstract class ConfirmPaymentResponse with _$ConfirmPaymentResponse {
   const factory ConfirmPaymentResponse({
     int? orderId,
     dynamic childOrderIds,

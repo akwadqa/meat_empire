@@ -4,7 +4,7 @@ part 'sorting.freezed.dart';
 part 'sorting.g.dart';
 
 @freezed
-class Sorting with _$Sorting {
+abstract class Sorting with _$Sorting {
   factory Sorting({
     required String name,
     required String sortBy,

@@ -4,7 +4,7 @@ part 'points_info.freezed.dart';
 part 'points_info.g.dart';
 
 @freezed
-class PointsInfo with _$PointsInfo {
+abstract class PointsInfo with _$PointsInfo {
   factory PointsInfo({
     int? rawTotalPrice,
     int? totalPrice,

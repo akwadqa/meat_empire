@@ -6,9 +6,9 @@ part of 'order_details_shipment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderDetailsShipmentImpl _$$OrderDetailsShipmentImplFromJson(
+_OrderDetailsShipment _$OrderDetailsShipmentFromJson(
   Map<String, dynamic> json,
-) => _$OrderDetailsShipmentImpl(
+) => _OrderDetailsShipment(
   shipmentId: json['shipment_id'] as String?,
   comments: json['comments'] as String?,
   status: json['status'] as String,

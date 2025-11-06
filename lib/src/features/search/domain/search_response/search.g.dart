@@ -6,7 +6,7 @@ part of 'search.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SearchImpl _$$SearchImplFromJson(Map<String, dynamic> json) => _$SearchImpl(
+_Search _$SearchFromJson(Map<String, dynamic> json) => _Search(
   area: json['area'] as String,
   useCaching: json['use_caching'] as bool,
   extend: (json['extend'] as List<dynamic>).map((e) => e as String).toList(),

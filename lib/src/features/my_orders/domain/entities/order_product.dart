@@ -6,7 +6,7 @@ part 'order_product.g.dart';
 @Freezed(
   fromJson: true,
 )
-class OrderProduct with _$OrderProduct {
+abstract class OrderProduct with _$OrderProduct {
   const factory OrderProduct({
     required String productId,
     @JsonKey(name: "order_id") required String orderId,

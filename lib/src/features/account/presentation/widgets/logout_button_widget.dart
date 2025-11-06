@@ -20,6 +20,7 @@ class LogoutButtonWidget extends ConsumerWidget {
               borderRadius: BorderRadius.circular(50))),
       onPressed: () {
         ref.read(userDataProvider.notifier).removeData();
+        
       },
       child: Text(context.tr("logout"),
           style: Theme.of(context).textTheme.displaySmall!.copyWith(

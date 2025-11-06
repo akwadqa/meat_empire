@@ -6,17 +6,17 @@ part of 'confirm_payment_body_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmPaymentBodyDataImpl _$$ConfirmPaymentBodyDataImplFromJson(
+_ConfirmPaymentBodyData _$ConfirmPaymentBodyDataFromJson(
   Map<String, dynamic> json,
-) => _$ConfirmPaymentBodyDataImpl(
+) => _ConfirmPaymentBodyData(
   userId: (json['user_id'] as num).toInt(),
   selectedPaymentMethod: (json['selected_payment_method'] as num).toInt(),
   ecTimeSlot: json['ec_time_slot'] as String,
   notes: json['notes'] as String?,
 );
 
-Map<String, dynamic> _$$ConfirmPaymentBodyDataImplToJson(
-  _$ConfirmPaymentBodyDataImpl instance,
+Map<String, dynamic> _$ConfirmPaymentBodyDataToJson(
+  _ConfirmPaymentBodyData instance,
 ) => <String, dynamic>{
   'user_id': instance.userId,
   'selected_payment_method': instance.selectedPaymentMethod,

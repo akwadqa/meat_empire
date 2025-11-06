@@ -4,7 +4,7 @@ part 'discounts.freezed.dart';
 part 'discounts.g.dart';
 
 @freezed
-class Discounts with _$Discounts {
+abstract class Discounts with _$Discounts {
   factory Discounts({
     @JsonKey(name:'A') int? a,
     @JsonKey(name:'P') int? p,

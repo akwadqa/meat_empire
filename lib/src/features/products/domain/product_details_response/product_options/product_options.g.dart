@@ -6,8 +6,8 @@ part of 'product_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductOptionsImpl _$$ProductOptionsImplFromJson(Map<String, dynamic> json) =>
-    _$ProductOptionsImpl(
+_ProductOptions _$ProductOptionsFromJson(Map<String, dynamic> json) =>
+    _ProductOptions(
       options: (json['options'] as List<dynamic>)
           .map((e) => Option.fromJson(e as Map<String, dynamic>))
           .toList(),

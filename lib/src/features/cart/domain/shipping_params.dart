@@ -4,7 +4,7 @@ part 'shipping_params.freezed.dart';
 part 'shipping_params.g.dart';
 
 @freezed
-class ShippingParams with _$ShippingParams {
+abstract class ShippingParams with _$ShippingParams {
   factory ShippingParams({
     int? minItemsInBox,
     int? maxItemsInBox,

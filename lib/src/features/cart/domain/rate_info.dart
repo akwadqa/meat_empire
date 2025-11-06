@@ -4,7 +4,7 @@ part 'rate_info.freezed.dart';
 part 'rate_info.g.dart';
 
 @freezed
-class RateInfo with _$RateInfo {
+abstract class RateInfo with _$RateInfo {
   factory RateInfo({
     String? rateId,
     String? shippingId,

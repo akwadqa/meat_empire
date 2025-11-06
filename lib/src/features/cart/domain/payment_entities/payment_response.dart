@@ -7,7 +7,7 @@ part 'payment_response.freezed.dart';
 part 'payment_response.g.dart';
 
 @freezed
-class PaymentResponse with _$PaymentResponse {
+abstract class PaymentResponse with _$PaymentResponse {
   factory PaymentResponse({
     bool? allowMultipleProfiles,
     bool? allowToApplyWallet,

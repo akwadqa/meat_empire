@@ -7,7 +7,7 @@ part 'orders_entity.g.dart';
 @Freezed(
   fromJson: true,
 )
-class OrdersEntity with _$OrdersEntity {
+abstract class OrdersEntity with _$OrdersEntity {
   const factory OrdersEntity({
     @JsonKey(name: "order_id") required String orderId,
     @JsonKey(name: "timestamp") required String orderDate,

@@ -6,7 +6,7 @@ part of 'slot.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SlotImpl _$$SlotImplFromJson(Map<String, dynamic> json) => _$SlotImpl(
+_Slot _$SlotFromJson(Map<String, dynamic> json) => _Slot(
   slot: json['slot'] as String?,
   formatSlot: json['format_slot'] as String?,
   from: json['from'] as String?,
