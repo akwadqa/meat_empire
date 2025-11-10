@@ -18,10 +18,13 @@ import '../../../../theme/app_colors.dart';
 import '../../domain/product/product.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.product, required this.width});
+  const ProductCard({super.key, required this.product, required this.width
+  ,required this.height
+  });
 
   final Product product;
   final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +41,17 @@ class ProductCard extends StatelessWidget {
         child: Column(
           //TODO spacing: 6,
           children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-                child: _ProductImage(product: product),
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+              child: SizedBox(
+                height: height,
+                child: _ProductImage(product: product)),
             ),
+                          Divider(height: 1, color: AppColors.lightGray),
+
+            _ProductTitle(product: product),
             _PriceRow(product: product),
+            // Spacer(),
             ProviderScope(
               overrides: [
                 updateCartControllerProvider.overrideWith(
@@ -84,46 +91,47 @@ class _ProductImage extends StatelessWidget {
       children: [
         AppCachedNetworkImage(
           imageUrl: product.imageUrl,
-          fit: BoxFit.fitHeight,
+          fit: BoxFit.cover,
         ),
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(10),
-              ),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: const [0.5, 1.0],
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withAlpha(153), // Equivalent to 60% opacity
-                ],
-              ),
-            ),
-          ),
-        ),
+        // Positioned.fill(
+        //   child: Container(
+        //     decoration: BoxDecoration(
+        //       borderRadius: const BorderRadius.vertical(
+        //         top: Radius.circular(10),
+        //       ),
+        //       gradient: LinearGradient(
+        //         begin: Alignment.topCenter,
+        //         end: Alignment.bottomCenter,
+        //         stops: const [0.5, 1.0],
+        //         colors: [
+        //           Colors.transparent,
+        //           // AppColors.offWhite, // Equivalent to 60% opacity
+        //           Colors.transparent, // Equivalent to 60% opacity
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
         if (listPrice > 0)
           PositionedDirectional(
             start: 0,
-            top: 20,
+            top: 10,
             child: _DiscountBanner(
               text:
                   '${context.tr('discount')} ${discountPercentage.toStringAsFixed(0)}%', // Display percentage rounded to integer
             ),
           ),
-        PositionedDirectional(
-          start: 10,
-          bottom: 5,
-          end: 10,
-          child: Text(
-            product.product,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(fontSize: 13, color: Colors.white),
-          ),
-        ),
+        // PositionedDirectional(
+        //   start: 10,
+        //   bottom: 5,
+        //   end: 10,
+        //   child: Text(
+        //     product.product,
+        //     style: Theme.of(
+        //       context,
+        //     ).textTheme.bodyMedium!.copyWith(fontSize: 13, color: Colors.white),
+        //   ),
+        // ),
       ],
     );
   }
@@ -183,6 +191,29 @@ class _CustomClipper extends CustomClipper<Path> {
     return true;
   }
 }
+class _ProductTitle extends StatelessWidget {
+  const _ProductTitle({required this.product});
+
+  final Product product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8),
+      child: SizedBox(
+        height: 40,
+        child: Text(
+          product.product,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium!.copyWith(fontSize: 13, color: Colors.black),
+        ),
+      ),
+    );
+  }
+}
 
 // Wrap Widget Replaced Row for long Price Issues
 class _PriceRow extends StatelessWidget {
@@ -209,7 +240,7 @@ class _PriceRow extends StatelessWidget {
             softWrap: true,
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium!.copyWith(color: AppColors.black900),
+            ).textTheme.bodyMedium!.copyWith(color: AppColors.black900,fontWeight: FontWeight.bold),
           ),
           if (double.parse(product.listPrice) > 0) ...[
             // Spacer(),
@@ -218,8 +249,8 @@ class _PriceRow extends StatelessWidget {
               product.formatListPrice,
               softWrap: true,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontSize: 12,
-                color: AppColors.grey600,
+                fontSize: 11,
+                color: AppColors.gray,
                 decoration: TextDecoration.lineThrough,
                 decorationColor: AppColors.grey600,
                 decorationStyle: TextDecorationStyle.solid,
@@ -247,6 +278,9 @@ class _AddToCartButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    final asyncAddToCart = ref.watch(updateCartControllerProvider);
+    final isInCart = ref.watch(isInCartProvider(productId.toString()));
     // Listen to cart updates with proper error handling
     ref.listen<AsyncValue>(updateCartControllerProvider, (previous, current) {
       if (current is AsyncData) {
@@ -268,8 +302,6 @@ class _AddToCartButton extends ConsumerWidget {
       }
     });
 
-    final asyncAddToCart = ref.watch(updateCartControllerProvider);
-    final isInCart = ref.watch(isInCartProvider(productId.toString()));
 
     // Show loading indicator when operation is in progress
     if (asyncAddToCart is AsyncLoading) {
@@ -297,8 +329,11 @@ class _AddToCartButton extends ConsumerWidget {
 
     return ElevatedButton.icon(
       onPressed:
-          //  buttonState == ButtonState.outOfStock
-          //     ? null :
+           buttonState == ButtonState.inCart
+              ? ()=> 
+               showOutOfStockDialog(context, 'the_item_already_added_in_cart'.tr()):
+              //  showCustomDialog(context: context, title: 'the_item_already_added_in_cart'.tr(), icon: Icon(Icons.info_outlined,color: Colors.amber,))
+              //   :
           () => _handleButtonPress(context, ref, isInCart, hasOptions),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(

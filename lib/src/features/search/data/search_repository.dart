@@ -27,7 +27,7 @@ class SearchRepository {
   }) async {
     final Map<String, String> queryParams = {
       if (query != null) 'q': query,
-      if (categoryId != null) 'category_id': categoryId,
+      if (categoryId != null && query==null) 'category_id': categoryId,
       if (sortBy != null) 'sort_by': sortBy,
       if (sortOrder != null) 'sort_order': sortOrder,
       'items_per_page': itemsPerPage.toString(),

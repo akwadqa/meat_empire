@@ -22,7 +22,7 @@ Future<void> main() async {
   ]);
   runApp(
     DevicePreview(
-      enabled: false, // !kReleaseMode,
+      enabled: !kReleaseMode,
       builder: (context) => UncontrolledProviderScope(
         container: container,
         child: EasyLocalization(
@@ -49,8 +49,7 @@ Future<void> handleSplashScreen(ProviderContainer container) async {
 
   if (loadDuration < minSplashDuration) {
     await Future.delayed(
-      Duration(milliseconds: minSplashDuration - loadDuration),
-    );
+        Duration(milliseconds: minSplashDuration - loadDuration));
   }
 
   FlutterNativeSplash.remove();

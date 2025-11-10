@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
+import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/routing/app_router_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/services_urls.dart';
@@ -12,28 +16,41 @@ import '../localization/current_language.dart';
 part 'network_service.g.dart';
 
 abstract class NetworkService<T> {
-  Future<T> get(String url,
-      {dynamic data,
-      Map<String, dynamic>? queryParameters,
-      CancelToken? cancelToken});
-  Future<T> post(String url,
-      [dynamic data, Map<String, dynamic>? queryParameters]);
-  Future<T> put(String url, dynamic data,
-      [Map<String, dynamic>? queryParameters]);
+  Future<T> get(
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+  });
+  Future<T> post(
+    String url, [
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  ]);
+  Future<T> put(
+    String url,
+    dynamic data, [
+    Map<String, dynamic>? queryParameters,
+  ]);
 
-  Future<T> delete(String url,
-      {dynamic data, Map<String, dynamic>? queryParameters});
+  Future<T> delete(
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  });
 }
 
 @Riverpod(keepAlive: true)
 Dio dio(Ref ref) {
   const duration = Duration(milliseconds: 120000);
-  final Dio dio = Dio(BaseOptions(
-    baseUrl: ServicesUrls.baseUrl,
-    receiveTimeout: duration,
-    connectTimeout: duration,
-    sendTimeout: duration,
-  ));
+  final Dio dio = Dio(
+    BaseOptions(
+      baseUrl: ServicesUrls.baseUrl,
+      receiveTimeout: duration,
+      connectTimeout: duration,
+      sendTimeout: duration,
+    ),
+  );
 
   final languageCode = ref.watch(currentLanguageProvider);
   final userData = ref.watch(userDataProvider);
@@ -41,14 +58,21 @@ Dio dio(Ref ref) {
     DioAppInterceptors(
       languageCode: languageCode,
       token: userData?.$1,
-      onUnauthorized: () {},
+      onUnauthorized: () {
+        ref.read(userDataProvider.notifier).removeData();
+
+        // 2. توجيه المستخدم لصفحة تسجيل الدخول
+        ref.read(appRouterProvider).replaceAll([const LoginRoute()]);
+      },
     ),
   });
-  dio.interceptors.add(LogInterceptor(
-    requestBody: true,
-    responseBody: true,
-    // logPrint: (object) => log(object.toString())
-  ));
+  dio.interceptors.add(
+    LogInterceptor(
+      requestBody: true,
+      responseBody: true,
+      // logPrint: (object) => log(object.toString())
+    ),
+  );
 
   return dio;
 }
@@ -63,29 +87,38 @@ class DioNetworkService implements NetworkService<Response> {
   DioNetworkService(this._dio);
 
   @override
-  Future<Response> get(String endpoint,
-          {dynamic data,
-          Map<String, dynamic>? queryParameters,
-          CancelToken? cancelToken}) =>
-      _dio.get(endpoint,
-          data: data,
-          queryParameters: queryParameters,
-          cancelToken: cancelToken);
+  Future<Response> get(
+    String endpoint, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+  }) => _dio.get(
+    endpoint,
+    data: data,
+    queryParameters: queryParameters,
+    cancelToken: cancelToken,
+  );
 
   @override
-  Future<Response> post(String endpoint,
-          [dynamic data, Map<String, dynamic>? queryParameters]) =>
-      _dio.post(endpoint, data: data, queryParameters: queryParameters);
+  Future<Response> post(
+    String endpoint, [
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  ]) => _dio.post(endpoint, data: data, queryParameters: queryParameters);
 
   @override
-  Future<Response> put(String endpoint, dynamic data,
-          [Map<String, dynamic>? queryParameters]) =>
-      _dio.put(endpoint, data: data, queryParameters: queryParameters);
+  Future<Response> put(
+    String endpoint,
+    dynamic data, [
+    Map<String, dynamic>? queryParameters,
+  ]) => _dio.put(endpoint, data: data, queryParameters: queryParameters);
 
   @override
-  Future<Response> delete(String endpoint,
-          {dynamic data, Map<String, dynamic>? queryParameters}) =>
-      _dio.delete(endpoint, data: data, queryParameters: queryParameters);
+  Future<Response> delete(
+    String endpoint, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  }) => _dio.delete(endpoint, data: data, queryParameters: queryParameters);
 }
 
 class DioAppInterceptors extends Interceptor {
@@ -93,10 +126,11 @@ class DioAppInterceptors extends Interceptor {
   final String? token;
   final void Function() onUnauthorized;
 
-  DioAppInterceptors(
-      {required this.languageCode,
-      required this.token,
-      required this.onUnauthorized});
+  DioAppInterceptors({
+    required this.languageCode,
+    required this.token,
+    required this.onUnauthorized,
+  });
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -107,11 +141,43 @@ class DioAppInterceptors extends Interceptor {
     super.onRequest(options, handler);
   }
 
+  // @override
+  // void onResponse(Response response, ResponseInterceptorHandler handler) {
+  //   debugPrint("🟢 [DIO RESPONSE]");
+  //   debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
+  //   debugPrint("📦 Response data: ${_prettyJson(response.data)}");
+
+  //   handler.next(response);
+  // }
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response != null) {
       debugPrint(err.response!.data.toString());
     }
+    debugPrint("🔴 [DIO ERROR]");
+    // debugPrint("⛔️ ${err.type} for ${request.method} ${request.uri}");
+    // debugPrint("📥 Response data: ${_prettyJson(err.response?.data)}");
+
+    // final statusCode = err.response?.statusCode;
+    // final responseData = err.response?.data;
+
+    // // ✅ تحقق من إذا كان Unauthorized
+    // final isUnauthorized = statusCode == 401 ||
+    //     (responseData is Map &&
+    //         responseData['message']?.toString().toLowerCase().contains("unauthorized") == true);
+
+    // if (isUnauthorized) {
+    //   debugPrint("🚪 Session expired → redirect to Login");
+
+    //   // 1. مسح بيانات المستخدم (التوكن)
+    //   ref.read(userDataProvider.notifier).removeData();
+
+    //   // 2. توجيه المستخدم لصفحة تسجيل الدخول
+    //   ref.read(appRouterProvider).replaceAll([const LoginRoute()]);
+    //   // لو تستخدم GoRouter:
+    //   // ref.read(goRouterProvider).go('/login');
+    // }
+
     final String? message = err.response?.data['message'];
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
@@ -123,6 +189,8 @@ class DioAppInterceptors extends Interceptor {
           case 400:
             throw BadRequestException(err.requestOptions, message);
           case 401:
+            onUnauthorized();
+
             throw UnauthorizedException(err.requestOptions, message);
           case 403:
             onUnauthorized();
@@ -149,11 +217,21 @@ class DioAppInterceptors extends Interceptor {
     }
     return handler.next(err);
   }
+    String _prettyJson(dynamic data) {
+    try {
+      if (data is Map || data is List) {
+        return const JsonEncoder.withIndent('  ').convert(data);
+      }
+      return data.toString();
+    } catch (_) {
+      return 'Invalid JSON';
+    }
+  }
 }
 
 class ApiException extends DioException {
   ApiException(RequestOptions requestOptions, [this.customMessage])
-      : super(requestOptions: requestOptions, error: customMessage);
+    : super(requestOptions: requestOptions, error: customMessage);
 
   final String? customMessage;
 

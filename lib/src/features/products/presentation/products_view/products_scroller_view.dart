@@ -12,13 +12,13 @@ class ProductsScrollerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 230,
+      height: 265,
       child: ListView.separated(
         padding: EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
         itemBuilder: (context, index) =>
-            ProductCard(product: products[index], width: 140),
+            ProductCard(product: products[index], width: 140,height:120),
         separatorBuilder: (_, __) => 20.horizontalSpace,
       ),
     );

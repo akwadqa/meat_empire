@@ -44,6 +44,8 @@
     "qatariPhoneNumberValidator": "يجب أن يبدأ بـ 3، 5، 6 أو 7",
     "welcomeBack": "أهلاً بعودتك!",
     "createAccountWelcomeBack": "أهلا بك في امبراطورية اللحوم",
+    "the_item_already_added_in_cart": "هذا العنصر موجود بالسلة مسبقا",
+
     "cartContent": "محتويات السلة",
     "home": "الرئيسية",
     "logout": "تسجيل الخروج",

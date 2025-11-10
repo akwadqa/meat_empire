@@ -69,11 +69,13 @@ class _ProductsGridView extends ConsumerWidget {
         ref.watch(searchControllerProvider(categoryId));
     return searchControllerAsync.when(
       data: (data) => AppPaginationWidget(
+        // enableLoadingOnScrollStart: true,
         onLoading:
             ref.read(searchControllerProvider(categoryId).notifier).loadMore,
         child: ProductsGridView(
           products: data.products,
           shrinkWrap: true,
+          fromCategory: true,
           padding: EdgeInsets.only(bottom: 90),
         ),
       ),
