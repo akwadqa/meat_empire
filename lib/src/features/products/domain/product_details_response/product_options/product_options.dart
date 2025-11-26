@@ -7,7 +7,7 @@ part 'product_options.freezed.dart';
 part 'product_options.g.dart';
 
 @freezed
-class ProductOptions with _$ProductOptions {
+abstract class ProductOptions with _$ProductOptions {
   factory ProductOptions({
     required List<Option> options,
     required List<SelectedOption> selectedOptions,

@@ -6,8 +6,8 @@ part of 'cart_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CartResponseImpl _$$CartResponseImplFromJson(Map<String, dynamic> json) =>
-    _$CartResponseImpl(
+_CartResponse _$CartResponseFromJson(Map<String, dynamic> json) =>
+    _CartResponse(
       allowMultipleProfiles: json['allow_multiple_profiles'] as bool?,
       userProfiles: (json['user_profiles'] as List<dynamic>?)
           ?.map((e) => UserProfile.fromJson(e as Map<String, dynamic>))

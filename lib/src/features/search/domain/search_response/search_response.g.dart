@@ -6,8 +6,8 @@ part of 'search_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SearchResponseImpl _$$SearchResponseImplFromJson(Map<String, dynamic> json) =>
-    _$SearchResponseImpl(
+_SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
+    _SearchResponse(
       products: (json['products'] as List<dynamic>)
           .map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),

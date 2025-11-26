@@ -6,7 +6,7 @@ part 'order_statuses.g.dart';
 @Freezed(
   fromJson: true,
 )
-class OrderStatuses with _$OrderStatuses {
+abstract class OrderStatuses with _$OrderStatuses {
   const factory OrderStatuses({
     required String value,
     required String name,

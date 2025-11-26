@@ -4,7 +4,7 @@ part 'slot.freezed.dart';
 part 'slot.g.dart';
 
 @freezed
-class Slot with _$Slot {
+abstract class Slot with _$Slot {
   factory Slot({
     String? slot,
     String? formatSlot,

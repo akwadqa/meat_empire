@@ -4,7 +4,7 @@ part 'variation_feature.freezed.dart';
 part 'variation_feature.g.dart';
 
 @freezed
-class VariationFeature with _$VariationFeature {
+abstract class VariationFeature with _$VariationFeature {
   factory VariationFeature({
     required String featureId,
     required String featureStyle,

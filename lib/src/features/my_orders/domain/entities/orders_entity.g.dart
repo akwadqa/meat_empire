@@ -6,8 +6,8 @@ part of 'orders_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrdersEntityImpl _$$OrdersEntityImplFromJson(Map<String, dynamic> json) =>
-    _$OrdersEntityImpl(
+_OrdersEntity _$OrdersEntityFromJson(Map<String, dynamic> json) =>
+    _OrdersEntity(
       orderId: json['order_id'] as String,
       orderDate: json['timestamp'] as String,
       orderTotalCost: json['total'] as String,

@@ -6,7 +6,7 @@ part 'main_pair.freezed.dart';
 part 'main_pair.g.dart';
 
 @freezed
-class MainPair with _$MainPair {
+abstract class MainPair with _$MainPair {
   factory MainPair({
     String? pairId,
     String? imageId,

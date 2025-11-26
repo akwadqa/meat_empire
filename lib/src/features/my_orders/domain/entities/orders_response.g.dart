@@ -6,8 +6,8 @@ part of 'orders_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrdersResponseImpl _$$OrdersResponseImplFromJson(Map<String, dynamic> json) =>
-    _$OrdersResponseImpl(
+_OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
+    _OrdersResponse(
       orders: (json['orders'] as List<dynamic>)
           .map((e) => OrdersEntity.fromJson(e as Map<String, dynamic>))
           .toList(),

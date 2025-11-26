@@ -4,7 +4,7 @@ part 'selected_option.freezed.dart';
 part 'selected_option.g.dart';
 
 @Freezed(toJson: true)
-class SelectedOption with _$SelectedOption {
+abstract class SelectedOption with _$SelectedOption {
   factory SelectedOption({
     required int optionId,
     required int variantId,

@@ -8,7 +8,7 @@ part 'cart_response.freezed.dart';
 part 'cart_response.g.dart';
 
 @freezed
-class CartResponse with _$CartResponse {
+abstract class CartResponse with _$CartResponse {
   factory CartResponse({
     bool? allowMultipleProfiles,
     List<UserProfile>? userProfiles,

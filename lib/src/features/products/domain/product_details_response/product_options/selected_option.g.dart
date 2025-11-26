@@ -6,15 +6,14 @@ part of 'selected_option.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SelectedOptionImpl _$$SelectedOptionImplFromJson(Map<String, dynamic> json) =>
-    _$SelectedOptionImpl(
+_SelectedOption _$SelectedOptionFromJson(Map<String, dynamic> json) =>
+    _SelectedOption(
       optionId: (json['option_id'] as num).toInt(),
       variantId: (json['variant_id'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$SelectedOptionImplToJson(
-  _$SelectedOptionImpl instance,
-) => <String, dynamic>{
-  'option_id': instance.optionId,
-  'variant_id': instance.variantId,
-};
+Map<String, dynamic> _$SelectedOptionToJson(_SelectedOption instance) =>
+    <String, dynamic>{
+      'option_id': instance.optionId,
+      'variant_id': instance.variantId,
+    };

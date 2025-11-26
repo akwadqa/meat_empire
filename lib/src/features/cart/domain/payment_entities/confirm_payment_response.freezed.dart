@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,406 +9,302 @@ part of 'confirm_payment_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-ConfirmPaymentResponse _$ConfirmPaymentResponseFromJson(
-  Map<String, dynamic> json,
-) {
-  return _ConfirmPaymentResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ConfirmPaymentResponse {
-  int? get orderId => throw _privateConstructorUsedError;
-  dynamic get childOrderIds => throw _privateConstructorUsedError;
-  List<dynamic>? get paymentParams => throw _privateConstructorUsedError;
-  bool? get redirectPayment => throw _privateConstructorUsedError;
-  String? get redirectUrl => throw _privateConstructorUsedError;
-  String? get successUrl => throw _privateConstructorUsedError;
-  String? get failUrl => throw _privateConstructorUsedError;
-  String? get message => throw _privateConstructorUsedError;
-  dynamic get totalProducts => throw _privateConstructorUsedError;
-  bool? get success => throw _privateConstructorUsedError;
-  String? get action => throw _privateConstructorUsedError;
 
-  /// Create a copy of ConfirmPaymentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConfirmPaymentResponseCopyWith<ConfirmPaymentResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+ int? get orderId; dynamic get childOrderIds; List<dynamic>? get paymentParams; bool? get redirectPayment; String? get redirectUrl; String? get successUrl; String? get failUrl; String? get message; dynamic get totalProducts; bool? get success; String? get action;
+/// Create a copy of ConfirmPaymentResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ConfirmPaymentResponseCopyWith<ConfirmPaymentResponse> get copyWith => _$ConfirmPaymentResponseCopyWithImpl<ConfirmPaymentResponse>(this as ConfirmPaymentResponse, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentResponse&&(identical(other.orderId, orderId) || other.orderId == orderId)&&const DeepCollectionEquality().equals(other.childOrderIds, childOrderIds)&&const DeepCollectionEquality().equals(other.paymentParams, paymentParams)&&(identical(other.redirectPayment, redirectPayment) || other.redirectPayment == redirectPayment)&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl)&&(identical(other.successUrl, successUrl) || other.successUrl == successUrl)&&(identical(other.failUrl, failUrl) || other.failUrl == failUrl)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.totalProducts, totalProducts)&&(identical(other.success, success) || other.success == success)&&(identical(other.action, action) || other.action == action));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,orderId,const DeepCollectionEquality().hash(childOrderIds),const DeepCollectionEquality().hash(paymentParams),redirectPayment,redirectUrl,successUrl,failUrl,message,const DeepCollectionEquality().hash(totalProducts),success,action);
+
+@override
+String toString() {
+  return 'ConfirmPaymentResponse(orderId: $orderId, childOrderIds: $childOrderIds, paymentParams: $paymentParams, redirectPayment: $redirectPayment, redirectUrl: $redirectUrl, successUrl: $successUrl, failUrl: $failUrl, message: $message, totalProducts: $totalProducts, success: $success, action: $action)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ConfirmPaymentResponseCopyWith<$Res> {
-  factory $ConfirmPaymentResponseCopyWith(
-    ConfirmPaymentResponse value,
-    $Res Function(ConfirmPaymentResponse) then,
-  ) = _$ConfirmPaymentResponseCopyWithImpl<$Res, ConfirmPaymentResponse>;
-  @useResult
-  $Res call({
-    int? orderId,
-    dynamic childOrderIds,
-    List<dynamic>? paymentParams,
-    bool? redirectPayment,
-    String? redirectUrl,
-    String? successUrl,
-    String? failUrl,
-    String? message,
-    dynamic totalProducts,
-    bool? success,
-    String? action,
-  });
-}
+abstract mixin class $ConfirmPaymentResponseCopyWith<$Res>  {
+  factory $ConfirmPaymentResponseCopyWith(ConfirmPaymentResponse value, $Res Function(ConfirmPaymentResponse) _then) = _$ConfirmPaymentResponseCopyWithImpl;
+@useResult
+$Res call({
+ int? orderId, dynamic childOrderIds, List<dynamic>? paymentParams, bool? redirectPayment, String? redirectUrl, String? successUrl, String? failUrl, String? message, dynamic totalProducts, bool? success, String? action
+});
 
+
+
+
+}
 /// @nodoc
-class _$ConfirmPaymentResponseCopyWithImpl<
-  $Res,
-  $Val extends ConfirmPaymentResponse
->
+class _$ConfirmPaymentResponseCopyWithImpl<$Res>
     implements $ConfirmPaymentResponseCopyWith<$Res> {
-  _$ConfirmPaymentResponseCopyWithImpl(this._value, this._then);
+  _$ConfirmPaymentResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ConfirmPaymentResponse _self;
+  final $Res Function(ConfirmPaymentResponse) _then;
 
-  /// Create a copy of ConfirmPaymentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderId = freezed,
-    Object? childOrderIds = freezed,
-    Object? paymentParams = freezed,
-    Object? redirectPayment = freezed,
-    Object? redirectUrl = freezed,
-    Object? successUrl = freezed,
-    Object? failUrl = freezed,
-    Object? message = freezed,
-    Object? totalProducts = freezed,
-    Object? success = freezed,
-    Object? action = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            orderId: freezed == orderId
-                ? _value.orderId
-                : orderId // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            childOrderIds: freezed == childOrderIds
-                ? _value.childOrderIds
-                : childOrderIds // ignore: cast_nullable_to_non_nullable
-                      as dynamic,
-            paymentParams: freezed == paymentParams
-                ? _value.paymentParams
-                : paymentParams // ignore: cast_nullable_to_non_nullable
-                      as List<dynamic>?,
-            redirectPayment: freezed == redirectPayment
-                ? _value.redirectPayment
-                : redirectPayment // ignore: cast_nullable_to_non_nullable
-                      as bool?,
-            redirectUrl: freezed == redirectUrl
-                ? _value.redirectUrl
-                : redirectUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            successUrl: freezed == successUrl
-                ? _value.successUrl
-                : successUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            failUrl: freezed == failUrl
-                ? _value.failUrl
-                : failUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            message: freezed == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            totalProducts: freezed == totalProducts
-                ? _value.totalProducts
-                : totalProducts // ignore: cast_nullable_to_non_nullable
-                      as dynamic,
-            success: freezed == success
-                ? _value.success
-                : success // ignore: cast_nullable_to_non_nullable
-                      as bool?,
-            action: freezed == action
-                ? _value.action
-                : action // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of ConfirmPaymentResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? orderId = freezed,Object? childOrderIds = freezed,Object? paymentParams = freezed,Object? redirectPayment = freezed,Object? redirectUrl = freezed,Object? successUrl = freezed,Object? failUrl = freezed,Object? message = freezed,Object? totalProducts = freezed,Object? success = freezed,Object? action = freezed,}) {
+  return _then(_self.copyWith(
+orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as int?,childOrderIds: freezed == childOrderIds ? _self.childOrderIds : childOrderIds // ignore: cast_nullable_to_non_nullable
+as dynamic,paymentParams: freezed == paymentParams ? _self.paymentParams : paymentParams // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,redirectPayment: freezed == redirectPayment ? _self.redirectPayment : redirectPayment // ignore: cast_nullable_to_non_nullable
+as bool?,redirectUrl: freezed == redirectUrl ? _self.redirectUrl : redirectUrl // ignore: cast_nullable_to_non_nullable
+as String?,successUrl: freezed == successUrl ? _self.successUrl : successUrl // ignore: cast_nullable_to_non_nullable
+as String?,failUrl: freezed == failUrl ? _self.failUrl : failUrl // ignore: cast_nullable_to_non_nullable
+as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,totalProducts: freezed == totalProducts ? _self.totalProducts : totalProducts // ignore: cast_nullable_to_non_nullable
+as dynamic,success: freezed == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool?,action: freezed == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ConfirmPaymentResponseImplCopyWith<$Res>
-    implements $ConfirmPaymentResponseCopyWith<$Res> {
-  factory _$$ConfirmPaymentResponseImplCopyWith(
-    _$ConfirmPaymentResponseImpl value,
-    $Res Function(_$ConfirmPaymentResponseImpl) then,
-  ) = __$$ConfirmPaymentResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    int? orderId,
-    dynamic childOrderIds,
-    List<dynamic>? paymentParams,
-    bool? redirectPayment,
-    String? redirectUrl,
-    String? successUrl,
-    String? failUrl,
-    String? message,
-    dynamic totalProducts,
-    bool? success,
-    String? action,
-  });
 }
 
-/// @nodoc
-class __$$ConfirmPaymentResponseImplCopyWithImpl<$Res>
-    extends
-        _$ConfirmPaymentResponseCopyWithImpl<$Res, _$ConfirmPaymentResponseImpl>
-    implements _$$ConfirmPaymentResponseImplCopyWith<$Res> {
-  __$$ConfirmPaymentResponseImplCopyWithImpl(
-    _$ConfirmPaymentResponseImpl _value,
-    $Res Function(_$ConfirmPaymentResponseImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of ConfirmPaymentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderId = freezed,
-    Object? childOrderIds = freezed,
-    Object? paymentParams = freezed,
-    Object? redirectPayment = freezed,
-    Object? redirectUrl = freezed,
-    Object? successUrl = freezed,
-    Object? failUrl = freezed,
-    Object? message = freezed,
-    Object? totalProducts = freezed,
-    Object? success = freezed,
-    Object? action = freezed,
-  }) {
-    return _then(
-      _$ConfirmPaymentResponseImpl(
-        orderId: freezed == orderId
-            ? _value.orderId
-            : orderId // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        childOrderIds: freezed == childOrderIds
-            ? _value.childOrderIds
-            : childOrderIds // ignore: cast_nullable_to_non_nullable
-                  as dynamic,
-        paymentParams: freezed == paymentParams
-            ? _value._paymentParams
-            : paymentParams // ignore: cast_nullable_to_non_nullable
-                  as List<dynamic>?,
-        redirectPayment: freezed == redirectPayment
-            ? _value.redirectPayment
-            : redirectPayment // ignore: cast_nullable_to_non_nullable
-                  as bool?,
-        redirectUrl: freezed == redirectUrl
-            ? _value.redirectUrl
-            : redirectUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        successUrl: freezed == successUrl
-            ? _value.successUrl
-            : successUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        failUrl: freezed == failUrl
-            ? _value.failUrl
-            : failUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        message: freezed == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        totalProducts: freezed == totalProducts
-            ? _value.totalProducts
-            : totalProducts // ignore: cast_nullable_to_non_nullable
-                  as dynamic,
-        success: freezed == success
-            ? _value.success
-            : success // ignore: cast_nullable_to_non_nullable
-                  as bool?,
-        action: freezed == action
-            ? _value.action
-            : action // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [ConfirmPaymentResponse].
+extension ConfirmPaymentResponsePatterns on ConfirmPaymentResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ConfirmPaymentResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ConfirmPaymentResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ConfirmPaymentResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _ConfirmPaymentResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ConfirmPaymentResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ConfirmPaymentResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? orderId,  dynamic childOrderIds,  List<dynamic>? paymentParams,  bool? redirectPayment,  String? redirectUrl,  String? successUrl,  String? failUrl,  String? message,  dynamic totalProducts,  bool? success,  String? action)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ConfirmPaymentResponse() when $default != null:
+return $default(_that.orderId,_that.childOrderIds,_that.paymentParams,_that.redirectPayment,_that.redirectUrl,_that.successUrl,_that.failUrl,_that.message,_that.totalProducts,_that.success,_that.action);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? orderId,  dynamic childOrderIds,  List<dynamic>? paymentParams,  bool? redirectPayment,  String? redirectUrl,  String? successUrl,  String? failUrl,  String? message,  dynamic totalProducts,  bool? success,  String? action)  $default,) {final _that = this;
+switch (_that) {
+case _ConfirmPaymentResponse():
+return $default(_that.orderId,_that.childOrderIds,_that.paymentParams,_that.redirectPayment,_that.redirectUrl,_that.successUrl,_that.failUrl,_that.message,_that.totalProducts,_that.success,_that.action);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? orderId,  dynamic childOrderIds,  List<dynamic>? paymentParams,  bool? redirectPayment,  String? redirectUrl,  String? successUrl,  String? failUrl,  String? message,  dynamic totalProducts,  bool? success,  String? action)?  $default,) {final _that = this;
+switch (_that) {
+case _ConfirmPaymentResponse() when $default != null:
+return $default(_that.orderId,_that.childOrderIds,_that.paymentParams,_that.redirectPayment,_that.redirectUrl,_that.successUrl,_that.failUrl,_that.message,_that.totalProducts,_that.success,_that.action);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$ConfirmPaymentResponseImpl implements _ConfirmPaymentResponse {
-  const _$ConfirmPaymentResponseImpl({
-    this.orderId,
-    this.childOrderIds,
-    final List<dynamic>? paymentParams,
-    this.redirectPayment,
-    this.redirectUrl,
-    this.successUrl,
-    this.failUrl,
-    this.message,
-    this.totalProducts,
-    this.success,
-    this.action,
-  }) : _paymentParams = paymentParams;
 
-  factory _$ConfirmPaymentResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfirmPaymentResponseImplFromJson(json);
+class _ConfirmPaymentResponse implements ConfirmPaymentResponse {
+  const _ConfirmPaymentResponse({this.orderId, this.childOrderIds, final  List<dynamic>? paymentParams, this.redirectPayment, this.redirectUrl, this.successUrl, this.failUrl, this.message, this.totalProducts, this.success, this.action}): _paymentParams = paymentParams;
+  factory _ConfirmPaymentResponse.fromJson(Map<String, dynamic> json) => _$ConfirmPaymentResponseFromJson(json);
 
-  @override
-  final int? orderId;
-  @override
-  final dynamic childOrderIds;
-  final List<dynamic>? _paymentParams;
-  @override
-  List<dynamic>? get paymentParams {
-    final value = _paymentParams;
-    if (value == null) return null;
-    if (_paymentParams is EqualUnmodifiableListView) return _paymentParams;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final bool? redirectPayment;
-  @override
-  final String? redirectUrl;
-  @override
-  final String? successUrl;
-  @override
-  final String? failUrl;
-  @override
-  final String? message;
-  @override
-  final dynamic totalProducts;
-  @override
-  final bool? success;
-  @override
-  final String? action;
-
-  @override
-  String toString() {
-    return 'ConfirmPaymentResponse(orderId: $orderId, childOrderIds: $childOrderIds, paymentParams: $paymentParams, redirectPayment: $redirectPayment, redirectUrl: $redirectUrl, successUrl: $successUrl, failUrl: $failUrl, message: $message, totalProducts: $totalProducts, success: $success, action: $action)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ConfirmPaymentResponseImpl &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            const DeepCollectionEquality().equals(
-              other.childOrderIds,
-              childOrderIds,
-            ) &&
-            const DeepCollectionEquality().equals(
-              other._paymentParams,
-              _paymentParams,
-            ) &&
-            (identical(other.redirectPayment, redirectPayment) ||
-                other.redirectPayment == redirectPayment) &&
-            (identical(other.redirectUrl, redirectUrl) ||
-                other.redirectUrl == redirectUrl) &&
-            (identical(other.successUrl, successUrl) ||
-                other.successUrl == successUrl) &&
-            (identical(other.failUrl, failUrl) || other.failUrl == failUrl) &&
-            (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(
-              other.totalProducts,
-              totalProducts,
-            ) &&
-            (identical(other.success, success) || other.success == success) &&
-            (identical(other.action, action) || other.action == action));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    orderId,
-    const DeepCollectionEquality().hash(childOrderIds),
-    const DeepCollectionEquality().hash(_paymentParams),
-    redirectPayment,
-    redirectUrl,
-    successUrl,
-    failUrl,
-    message,
-    const DeepCollectionEquality().hash(totalProducts),
-    success,
-    action,
-  );
-
-  /// Create a copy of ConfirmPaymentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ConfirmPaymentResponseImplCopyWith<_$ConfirmPaymentResponseImpl>
-  get copyWith =>
-      __$$ConfirmPaymentResponseImplCopyWithImpl<_$ConfirmPaymentResponseImpl>(
-        this,
-        _$identity,
-      );
+@override final  int? orderId;
+@override final  dynamic childOrderIds;
+ final  List<dynamic>? _paymentParams;
+@override List<dynamic>? get paymentParams {
+  final value = _paymentParams;
+  if (value == null) return null;
+  if (_paymentParams is EqualUnmodifiableListView) return _paymentParams;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _ConfirmPaymentResponse implements ConfirmPaymentResponse {
-  const factory _ConfirmPaymentResponse({
-    final int? orderId,
-    final dynamic childOrderIds,
-    final List<dynamic>? paymentParams,
-    final bool? redirectPayment,
-    final String? redirectUrl,
-    final String? successUrl,
-    final String? failUrl,
-    final String? message,
-    final dynamic totalProducts,
-    final bool? success,
-    final String? action,
-  }) = _$ConfirmPaymentResponseImpl;
+@override final  bool? redirectPayment;
+@override final  String? redirectUrl;
+@override final  String? successUrl;
+@override final  String? failUrl;
+@override final  String? message;
+@override final  dynamic totalProducts;
+@override final  bool? success;
+@override final  String? action;
 
-  factory _ConfirmPaymentResponse.fromJson(Map<String, dynamic> json) =
-      _$ConfirmPaymentResponseImpl.fromJson;
+/// Create a copy of ConfirmPaymentResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ConfirmPaymentResponseCopyWith<_ConfirmPaymentResponse> get copyWith => __$ConfirmPaymentResponseCopyWithImpl<_ConfirmPaymentResponse>(this, _$identity);
 
-  @override
-  int? get orderId;
-  @override
-  dynamic get childOrderIds;
-  @override
-  List<dynamic>? get paymentParams;
-  @override
-  bool? get redirectPayment;
-  @override
-  String? get redirectUrl;
-  @override
-  String? get successUrl;
-  @override
-  String? get failUrl;
-  @override
-  String? get message;
-  @override
-  dynamic get totalProducts;
-  @override
-  bool? get success;
-  @override
-  String? get action;
 
-  /// Create a copy of ConfirmPaymentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConfirmPaymentResponseImplCopyWith<_$ConfirmPaymentResponseImpl>
-  get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentResponse&&(identical(other.orderId, orderId) || other.orderId == orderId)&&const DeepCollectionEquality().equals(other.childOrderIds, childOrderIds)&&const DeepCollectionEquality().equals(other._paymentParams, _paymentParams)&&(identical(other.redirectPayment, redirectPayment) || other.redirectPayment == redirectPayment)&&(identical(other.redirectUrl, redirectUrl) || other.redirectUrl == redirectUrl)&&(identical(other.successUrl, successUrl) || other.successUrl == successUrl)&&(identical(other.failUrl, failUrl) || other.failUrl == failUrl)&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.totalProducts, totalProducts)&&(identical(other.success, success) || other.success == success)&&(identical(other.action, action) || other.action == action));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,orderId,const DeepCollectionEquality().hash(childOrderIds),const DeepCollectionEquality().hash(_paymentParams),redirectPayment,redirectUrl,successUrl,failUrl,message,const DeepCollectionEquality().hash(totalProducts),success,action);
+
+@override
+String toString() {
+  return 'ConfirmPaymentResponse(orderId: $orderId, childOrderIds: $childOrderIds, paymentParams: $paymentParams, redirectPayment: $redirectPayment, redirectUrl: $redirectUrl, successUrl: $successUrl, failUrl: $failUrl, message: $message, totalProducts: $totalProducts, success: $success, action: $action)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ConfirmPaymentResponseCopyWith<$Res> implements $ConfirmPaymentResponseCopyWith<$Res> {
+  factory _$ConfirmPaymentResponseCopyWith(_ConfirmPaymentResponse value, $Res Function(_ConfirmPaymentResponse) _then) = __$ConfirmPaymentResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ int? orderId, dynamic childOrderIds, List<dynamic>? paymentParams, bool? redirectPayment, String? redirectUrl, String? successUrl, String? failUrl, String? message, dynamic totalProducts, bool? success, String? action
+});
+
+
+
+
+}
+/// @nodoc
+class __$ConfirmPaymentResponseCopyWithImpl<$Res>
+    implements _$ConfirmPaymentResponseCopyWith<$Res> {
+  __$ConfirmPaymentResponseCopyWithImpl(this._self, this._then);
+
+  final _ConfirmPaymentResponse _self;
+  final $Res Function(_ConfirmPaymentResponse) _then;
+
+/// Create a copy of ConfirmPaymentResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? orderId = freezed,Object? childOrderIds = freezed,Object? paymentParams = freezed,Object? redirectPayment = freezed,Object? redirectUrl = freezed,Object? successUrl = freezed,Object? failUrl = freezed,Object? message = freezed,Object? totalProducts = freezed,Object? success = freezed,Object? action = freezed,}) {
+  return _then(_ConfirmPaymentResponse(
+orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
+as int?,childOrderIds: freezed == childOrderIds ? _self.childOrderIds : childOrderIds // ignore: cast_nullable_to_non_nullable
+as dynamic,paymentParams: freezed == paymentParams ? _self._paymentParams : paymentParams // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,redirectPayment: freezed == redirectPayment ? _self.redirectPayment : redirectPayment // ignore: cast_nullable_to_non_nullable
+as bool?,redirectUrl: freezed == redirectUrl ? _self.redirectUrl : redirectUrl // ignore: cast_nullable_to_non_nullable
+as String?,successUrl: freezed == successUrl ? _self.successUrl : successUrl // ignore: cast_nullable_to_non_nullable
+as String?,failUrl: freezed == failUrl ? _self.failUrl : failUrl // ignore: cast_nullable_to_non_nullable
+as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,totalProducts: freezed == totalProducts ? _self.totalProducts : totalProducts // ignore: cast_nullable_to_non_nullable
+as dynamic,success: freezed == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool?,action: freezed == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

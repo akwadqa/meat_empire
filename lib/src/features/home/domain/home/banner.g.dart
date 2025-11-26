@@ -6,7 +6,7 @@ part of 'banner.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BannerImpl _$$BannerImplFromJson(Map<String, dynamic> json) => _$BannerImpl(
+_Banner _$BannerFromJson(Map<String, dynamic> json) => _Banner(
   id: json['id'] as String,
   name: json['name'] as String,
   type: json['type'] as String,

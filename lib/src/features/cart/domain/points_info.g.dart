@@ -6,8 +6,7 @@ part of 'points_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PointsInfoImpl _$$PointsInfoImplFromJson(Map<String, dynamic> json) =>
-    _$PointsInfoImpl(
-      rawTotalPrice: (json['raw_total_price'] as num?)?.toInt(),
-      totalPrice: (json['total_price'] as num?)?.toInt(),
-    );
+_PointsInfo _$PointsInfoFromJson(Map<String, dynamic> json) => _PointsInfo(
+  rawTotalPrice: (json['raw_total_price'] as num?)?.toInt(),
+  totalPrice: (json['total_price'] as num?)?.toInt(),
+);

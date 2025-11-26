@@ -6,7 +6,7 @@ part of 'extra.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ExtraImpl _$$ExtraImplFromJson(Map<String, dynamic> json) => _$ExtraImpl(
+_Extra _$ExtraFromJson(Map<String, dynamic> json) => _Extra(
   unlimitedDownload: json['unlimited_download'] as String?,
   updatedTimestamp: json['updated_timestamp'] as String?,
 );

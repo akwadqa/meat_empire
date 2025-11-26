@@ -4,7 +4,7 @@ part 'page.freezed.dart';
 part 'page.g.dart';
 
 @freezed
-class Page with _$Page {
+abstract class Page with _$Page {
   factory Page({
     required String id,
     required String choosePage,

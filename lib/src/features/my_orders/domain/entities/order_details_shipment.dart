@@ -4,7 +4,7 @@ part 'order_details_shipment.freezed.dart';
 part 'order_details_shipment.g.dart';
 
 @freezed
-class OrderDetailsShipment with _$OrderDetailsShipment {
+abstract class OrderDetailsShipment with _$OrderDetailsShipment {
   const factory OrderDetailsShipment({
     String? shipmentId,
     String? comments,

@@ -5,7 +5,7 @@ part 'payment_info_entity.freezed.dart';
 part 'payment_info_entity.g.dart';
 
 @freezed
-class PaymentInfoEntity with _$PaymentInfoEntity {
+abstract class PaymentInfoEntity with _$PaymentInfoEntity {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory PaymentInfoEntity({
     required String paymentId,

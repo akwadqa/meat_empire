@@ -7,7 +7,7 @@ part 'product_group.freezed.dart';
 part 'product_group.g.dart';
 
 @freezed
-class ProductGroup with _$ProductGroup {
+abstract class ProductGroup with _$ProductGroup {
   factory ProductGroup({
     int? groupId,
     int? companyId,

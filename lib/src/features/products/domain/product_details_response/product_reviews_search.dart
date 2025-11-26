@@ -6,7 +6,7 @@ part 'product_reviews_search.freezed.dart';
 part 'product_reviews_search.g.dart';
 
 @freezed
-class ProductReviewsSearch with _$ProductReviewsSearch {
+abstract class ProductReviewsSearch with _$ProductReviewsSearch {
   factory ProductReviewsSearch({
     required int page,
     required int itemsPerPage,

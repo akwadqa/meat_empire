@@ -4,7 +4,7 @@ part 'app_configuration.freezed.dart';
 part 'app_configuration.g.dart';
 
 @freezed
-class AppConfiguration with _$AppConfiguration {
+abstract class AppConfiguration with _$AppConfiguration {
   factory AppConfiguration({
     required bool enableEcWallet,
     required bool enableEcVnAttachment,

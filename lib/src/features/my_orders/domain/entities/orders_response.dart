@@ -8,7 +8,7 @@ part 'orders_response.g.dart';
 @Freezed(
   fromJson: true,
 )
-class OrdersResponse with _$OrdersResponse {
+abstract class OrdersResponse with _$OrdersResponse {
   const factory OrdersResponse({
     required List<OrdersEntity> orders,
     @JsonKey(name: "order_statuses") required List<OrderStatuses> orderStatuses,

@@ -6,174 +6,167 @@ part of 'cart_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$isInCartHash() => r'fb2319979b77ccd54f34656fb426cc7440a751fe';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(UpdateCartController)
+const updateCartControllerProvider = UpdateCartControllerProvider._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [isInCart].
-@ProviderFor(isInCart)
-const isInCartProvider = IsInCartFamily();
-
-/// See also [isInCart].
-class IsInCartFamily extends Family<bool> {
-  /// See also [isInCart].
-  const IsInCartFamily();
-
-  /// See also [isInCart].
-  IsInCartProvider call(String productId) {
-    return IsInCartProvider(productId);
-  }
-
-  @override
-  IsInCartProvider getProviderOverride(covariant IsInCartProvider provider) {
-    return call(provider.productId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'isInCartProvider';
-}
-
-/// See also [isInCart].
-class IsInCartProvider extends AutoDisposeProvider<bool> {
-  /// See also [isInCart].
-  IsInCartProvider(String productId)
-    : this._internal(
-        (ref) => isInCart(ref as IsInCartRef, productId),
-        from: isInCartProvider,
-        name: r'isInCartProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$isInCartHash,
-        dependencies: IsInCartFamily._dependencies,
-        allTransitiveDependencies: IsInCartFamily._allTransitiveDependencies,
-        productId: productId,
+final class UpdateCartControllerProvider
+    extends $AsyncNotifierProvider<UpdateCartController, void> {
+  const UpdateCartControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateCartControllerProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
       );
 
-  IsInCartProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.productId,
-  }) : super.internal();
+  @override
+  String debugGetCreateSourceHash() => _$updateCartControllerHash();
 
-  final String productId;
+  @$internal
+  @override
+  UpdateCartController create() => UpdateCartController();
+}
+
+String _$updateCartControllerHash() =>
+    r'996c630b0671f3802088228de63ece1dd4cd3a8d';
+
+abstract class _$UpdateCartController extends $AsyncNotifier<void> {
+  FutureOr<void> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    build();
+    final ref = this.ref as $Ref<AsyncValue<void>, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<void>, void>,
+              AsyncValue<void>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, null);
+  }
+}
+
+@ProviderFor(isInCart)
+const isInCartProvider = IsInCartFamily._();
+
+final class IsInCartProvider extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  const IsInCartProvider._({
+    required IsInCartFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'isInCartProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Override overrideWith(bool Function(IsInCartRef provider) create) {
-    return ProviderOverride(
-      origin: this,
-      override: IsInCartProvider._internal(
-        (ref) => create(ref as IsInCartRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        productId: productId,
-      ),
-    );
+  String debugGetCreateSourceHash() => _$isInCartHash();
+
+  @override
+  String toString() {
+    return r'isInCartProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeProviderElement<bool> createElement() {
-    return _IsInCartProviderElement(this);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    final argument = this.argument as String;
+    return isInCart(ref, argument);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is IsInCartProvider && other.productId == productId;
+    return other is IsInCartProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, productId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin IsInCartRef on AutoDisposeProviderRef<bool> {
-  /// The parameter `productId` of this provider.
-  String get productId;
-}
+String _$isInCartHash() => r'fb2319979b77ccd54f34656fb426cc7440a751fe';
 
-class _IsInCartProviderElement extends AutoDisposeProviderElement<bool>
-    with IsInCartRef {
-  _IsInCartProviderElement(super.provider);
+final class IsInCartFamily extends $Family
+    with $FunctionalFamilyOverride<bool, String> {
+  const IsInCartFamily._()
+    : super(
+        retry: null,
+        name: r'isInCartProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  IsInCartProvider call(String productId) =>
+      IsInCartProvider._(argument: productId, from: this);
 
   @override
-  String get productId => (origin as IsInCartProvider).productId;
+  String toString() => r'isInCartProvider';
+}
+
+@ProviderFor(cartCount)
+const cartCountProvider = CartCountProvider._();
+
+final class CartCountProvider extends $FunctionalProvider<int, int, int>
+    with $Provider<int> {
+  const CartCountProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cartCountProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cartCountHash();
+
+  @$internal
+  @override
+  $ProviderElement<int> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  int create(Ref ref) {
+    return cartCount(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(int value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<int>(value),
+    );
+  }
 }
 
 String _$cartCountHash() => r'abef7423ba97ae90f66f833d81f41bfef56f6b22';
-
-/// See also [cartCount].
-@ProviderFor(cartCount)
-final cartCountProvider = AutoDisposeProvider<int>.internal(
-  cartCount,
-  name: r'cartCountProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$cartCountHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CartCountRef = AutoDisposeProviderRef<int>;
-String _$updateCartControllerHash() =>
-    r'996c630b0671f3802088228de63ece1dd4cd3a8d';
-
-/// See also [UpdateCartController].
-@ProviderFor(UpdateCartController)
-final updateCartControllerProvider =
-    AsyncNotifierProvider<UpdateCartController, void>.internal(
-      UpdateCartController.new,
-      name: r'updateCartControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$updateCartControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$UpdateCartController = AsyncNotifier<void>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

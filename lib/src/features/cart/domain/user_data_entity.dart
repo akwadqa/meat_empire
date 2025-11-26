@@ -4,7 +4,7 @@ part 'user_data_entity.freezed.dart';
 part 'user_data_entity.g.dart';
 
 @freezed
-class UserDataEntity with _$UserDataEntity {
+abstract class UserDataEntity with _$UserDataEntity {
   factory UserDataEntity({
     String? userId,
     String? status,

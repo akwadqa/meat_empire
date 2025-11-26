@@ -38,8 +38,17 @@ class UserData extends _$UserData {
     final sharedPrefs = ref.read(sharedPreferencesProvider).requireValue;
     await sharedPrefs.remove(Keys.token);
     await sharedPrefs.remove(Keys.userId);
+    await sharedPrefs.remove(Keys.deletedAt);
     state = null;
   }
+  Future<void> markAsDeleted() async {
+  final sharedPrefs = ref.read(sharedPreferencesProvider).requireValue;
+  await sharedPrefs.setInt(Keys.deletedAt, DateTime.now().millisecondsSinceEpoch);
+  await sharedPrefs.remove(Keys.token);
+  await sharedPrefs.remove(Keys.userId);
+  state = null;
+}
+
 }
 
 @riverpod

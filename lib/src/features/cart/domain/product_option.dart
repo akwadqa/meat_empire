@@ -4,7 +4,7 @@ part 'product_option.freezed.dart';
 part 'product_option.g.dart';
 
 @freezed
-class ProductOption with _$ProductOption {
+abstract class ProductOption with _$ProductOption {
   factory ProductOption({
     dynamic optionId,
     dynamic optionType,

@@ -6,8 +6,8 @@ part of 'order_product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderProductImpl _$$OrderProductImplFromJson(Map<String, dynamic> json) =>
-    _$OrderProductImpl(
+_OrderProduct _$OrderProductFromJson(Map<String, dynamic> json) =>
+    _OrderProduct(
       productId: json['product_id'] as String,
       orderId: json['order_id'] as String,
       imageUrl: json['image_url'] as String,

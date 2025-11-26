@@ -4,7 +4,7 @@ part 'search.freezed.dart';
 part 'search.g.dart';
 
 @freezed
-class Search with _$Search {
+abstract class Search with _$Search {
   factory Search({
     required String area,
     required bool useCaching,

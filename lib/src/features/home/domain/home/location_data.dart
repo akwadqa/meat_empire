@@ -4,7 +4,7 @@ part 'location_data.freezed.dart';
 part 'location_data.g.dart';
 
 @freezed
-class LocationData with _$LocationData {
+abstract class LocationData with _$LocationData {
   factory LocationData({
     required String name,
     required String image,

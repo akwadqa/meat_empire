@@ -6,7 +6,7 @@ part 'profile_response.freezed.dart';
 // part 'profile_response.g.dart';
 
 @freezed
-class ProfileResponse with _$ProfileResponse {
+abstract class ProfileResponse with _$ProfileResponse {
   const factory ProfileResponse({
     @JsonKey(ignore: true) required UserProfile? userProfile,
     required String message,

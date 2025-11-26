@@ -6,9 +6,9 @@ part of 'product_details_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductDetailsResponseImpl _$$ProductDetailsResponseImplFromJson(
+_ProductDetailsResponse _$ProductDetailsResponseFromJson(
   Map<String, dynamic> json,
-) => _$ProductDetailsResponseImpl(
+) => _ProductDetailsResponse(
   appAction: json['app_action'] as String,
   timezone: json['timezone'] as String,
   product: ProductDetails.fromJson(json['product'] as Map<String, dynamic>),

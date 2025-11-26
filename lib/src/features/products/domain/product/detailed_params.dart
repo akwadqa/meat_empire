@@ -4,7 +4,7 @@ part 'detailed_params.freezed.dart';
 part 'detailed_params.g.dart';
 
 @freezed
-class DetailedParams with _$DetailedParams {
+abstract class DetailedParams with _$DetailedParams {
   factory DetailedParams({
     required bool getIcon,
     required bool getDetailed,

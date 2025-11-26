@@ -140,6 +140,14 @@ class DioAppInterceptors extends Interceptor {
     options.queryParameters['sl'] = languageCode;
     super.onRequest(options, handler);
   }
+ @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    debugPrint("🟢 [DIO RESPONSE]");
+    debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
+    debugPrint("📦 Response data: ${_prettyJson(response.data)}");
+
+    handler.next(response);
+  }
 
   // @override
   // void onResponse(Response response, ResponseInterceptorHandler handler) {

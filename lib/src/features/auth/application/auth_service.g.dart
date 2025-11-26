@@ -6,54 +6,140 @@ part of 'auth_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(sharedPreferences)
+const sharedPreferencesProvider = SharedPreferencesProvider._();
+
+final class SharedPreferencesProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<SharedPreferences>,
+          SharedPreferences,
+          FutureOr<SharedPreferences>
+        >
+    with
+        $FutureModifier<SharedPreferences>,
+        $FutureProvider<SharedPreferences> {
+  const SharedPreferencesProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'sharedPreferencesProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$sharedPreferencesHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<SharedPreferences> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<SharedPreferences> create(Ref ref) {
+    return sharedPreferences(ref);
+  }
+}
+
 String _$sharedPreferencesHash() => r'ca329d21cb9532acf76436fc839fde21c0b7f1e6';
 
-/// See also [sharedPreferences].
-@ProviderFor(sharedPreferences)
-final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
-  sharedPreferences,
-  name: r'sharedPreferencesProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$sharedPreferencesHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
-String _$isAuthinticatedHash() => r'06718e95e3ceea2ea9b79d792cbdee9e9cc4164c';
-
-/// See also [isAuthinticated].
-@ProviderFor(isAuthinticated)
-final isAuthinticatedProvider = AutoDisposeProvider<bool>.internal(
-  isAuthinticated,
-  name: r'isAuthinticatedProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$isAuthinticatedHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef IsAuthinticatedRef = AutoDisposeProviderRef<bool>;
-String _$userDataHash() => r'44a9648f415cf42d34ba276ad6adb55406affdeb';
-
-/// See also [UserData].
 @ProviderFor(UserData)
-final userDataProvider = NotifierProvider<UserData, (String, int)?>.internal(
-  UserData.new,
-  name: r'userDataProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$userDataHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const userDataProvider = UserDataProvider._();
 
-typedef _$UserData = Notifier<(String, int)?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class UserDataProvider
+    extends $NotifierProvider<UserData, (String, int)?> {
+  const UserDataProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'userDataProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$userDataHash();
+
+  @$internal
+  @override
+  UserData create() => UserData();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue((String, int)? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<(String, int)?>(value),
+    );
+  }
+}
+
+String _$userDataHash() => r'e57553f72fcaf0e7c4e6ccc3936a07bae8c7bb8e';
+
+abstract class _$UserData extends $Notifier<(String, int)?> {
+  (String, int)? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<(String, int)?, (String, int)?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<(String, int)?, (String, int)?>,
+              (String, int)?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(isAuthinticated)
+const isAuthinticatedProvider = IsAuthinticatedProvider._();
+
+final class IsAuthinticatedProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  const IsAuthinticatedProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'isAuthinticatedProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$isAuthinticatedHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return isAuthinticated(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$isAuthinticatedHash() => r'06718e95e3ceea2ea9b79d792cbdee9e9cc4164c';

@@ -6,7 +6,7 @@ part 'banner.freezed.dart';
 part 'banner.g.dart';
 
 @freezed
-class Banner with _$Banner {
+abstract class Banner with _$Banner {
   factory Banner({
     required String id,
     required String name,

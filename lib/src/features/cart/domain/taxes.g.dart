@@ -6,7 +6,7 @@ part of 'taxes.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TaxesImpl _$$TaxesImplFromJson(Map<String, dynamic> json) => _$TaxesImpl(
+_Taxes _$TaxesFromJson(Map<String, dynamic> json) => _Taxes(
   taxValue: json['tax_value'] as String?,
   taxName: json['tax_name'] as String?,
 );

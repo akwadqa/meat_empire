@@ -6,283 +6,207 @@ part of 'payment_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$paymentRepositoryHash() => r'08120c10e06a351766e5d58c29cdca21d3b110d6';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [paymentRepository].
 @ProviderFor(paymentRepository)
-final paymentRepositoryProvider = Provider<PaymentRepository>.internal(
-  paymentRepository,
-  name: r'paymentRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$paymentRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const paymentRepositoryProvider = PaymentRepositoryProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef PaymentRepositoryRef = ProviderRef<PaymentRepository>;
-String _$paymentHash() => r'ec4d2cd223d717f456b2e44d2a7b1b2e4bbe6713';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [payment].
-@ProviderFor(payment)
-const paymentProvider = PaymentFamily();
-
-/// See also [payment].
-class PaymentFamily extends Family<AsyncValue<PaymentResponse>> {
-  /// See also [payment].
-  const PaymentFamily();
-
-  /// See also [payment].
-  PaymentProvider call(int id) {
-    return PaymentProvider(id);
-  }
-
-  @override
-  PaymentProvider getProviderOverride(covariant PaymentProvider provider) {
-    return call(provider.id);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'paymentProvider';
-}
-
-/// See also [payment].
-class PaymentProvider extends AutoDisposeFutureProvider<PaymentResponse> {
-  /// See also [payment].
-  PaymentProvider(int id)
-    : this._internal(
-        (ref) => payment(ref as PaymentRef, id),
-        from: paymentProvider,
-        name: r'paymentProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$paymentHash,
-        dependencies: PaymentFamily._dependencies,
-        allTransitiveDependencies: PaymentFamily._allTransitiveDependencies,
-        id: id,
+final class PaymentRepositoryProvider
+    extends
+        $FunctionalProvider<
+          PaymentRepository,
+          PaymentRepository,
+          PaymentRepository
+        >
+    with $Provider<PaymentRepository> {
+  const PaymentRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'paymentRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
       );
 
-  PaymentProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.id,
-  }) : super.internal();
+  @override
+  String debugGetCreateSourceHash() => _$paymentRepositoryHash();
 
-  final int id;
+  @$internal
+  @override
+  $ProviderElement<PaymentRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
-  Override overrideWith(
-    FutureOr<PaymentResponse> Function(PaymentRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: PaymentProvider._internal(
-        (ref) => create(ref as PaymentRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        id: id,
-      ),
-    );
+  PaymentRepository create(Ref ref) {
+    return paymentRepository(ref);
   }
 
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(PaymentRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<PaymentRepository>(value),
+    );
+  }
+}
+
+String _$paymentRepositoryHash() => r'08120c10e06a351766e5d58c29cdca21d3b110d6';
+
+@ProviderFor(payment)
+const paymentProvider = PaymentFamily._();
+
+final class PaymentProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<PaymentResponse>,
+          PaymentResponse,
+          FutureOr<PaymentResponse>
+        >
+    with $FutureModifier<PaymentResponse>, $FutureProvider<PaymentResponse> {
+  const PaymentProvider._({
+    required PaymentFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'paymentProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
   @override
-  AutoDisposeFutureProviderElement<PaymentResponse> createElement() {
-    return _PaymentProviderElement(this);
+  String debugGetCreateSourceHash() => _$paymentHash();
+
+  @override
+  String toString() {
+    return r'paymentProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<PaymentResponse> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<PaymentResponse> create(Ref ref) {
+    final argument = this.argument as int;
+    return payment(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is PaymentProvider && other.id == id;
+    return other is PaymentProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, id.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin PaymentRef on AutoDisposeFutureProviderRef<PaymentResponse> {
-  /// The parameter `id` of this provider.
-  int get id;
-}
+String _$paymentHash() => r'ec4d2cd223d717f456b2e44d2a7b1b2e4bbe6713';
 
-class _PaymentProviderElement
-    extends AutoDisposeFutureProviderElement<PaymentResponse>
-    with PaymentRef {
-  _PaymentProviderElement(super.provider);
+final class PaymentFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<PaymentResponse>, int> {
+  const PaymentFamily._()
+    : super(
+        retry: null,
+        name: r'paymentProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PaymentProvider call(int id) => PaymentProvider._(argument: id, from: this);
 
   @override
-  int get id => (origin as PaymentProvider).id;
+  String toString() => r'paymentProvider';
+}
+
+@ProviderFor(confirmPayment)
+const confirmPaymentProvider = ConfirmPaymentFamily._();
+
+final class ConfirmPaymentProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<ConfirmPaymentResponse>,
+          ConfirmPaymentResponse,
+          FutureOr<ConfirmPaymentResponse>
+        >
+    with
+        $FutureModifier<ConfirmPaymentResponse>,
+        $FutureProvider<ConfirmPaymentResponse> {
+  const ConfirmPaymentProvider._({
+    required ConfirmPaymentFamily super.from,
+    required ConfirmPaymentBodyData super.argument,
+  }) : super(
+         retry: null,
+         name: r'confirmPaymentProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$confirmPaymentHash();
+
+  @override
+  String toString() {
+    return r'confirmPaymentProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<ConfirmPaymentResponse> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<ConfirmPaymentResponse> create(Ref ref) {
+    final argument = this.argument as ConfirmPaymentBodyData;
+    return confirmPayment(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ConfirmPaymentProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
 }
 
 String _$confirmPaymentHash() => r'b332fc13e4c15aca22fa69d27690be087aa6c62f';
 
-/// See also [confirmPayment].
-@ProviderFor(confirmPayment)
-const confirmPaymentProvider = ConfirmPaymentFamily();
-
-/// See also [confirmPayment].
-class ConfirmPaymentFamily extends Family<AsyncValue<ConfirmPaymentResponse>> {
-  /// See also [confirmPayment].
-  const ConfirmPaymentFamily();
-
-  /// See also [confirmPayment].
-  ConfirmPaymentProvider call(ConfirmPaymentBodyData body) {
-    return ConfirmPaymentProvider(body);
-  }
-
-  @override
-  ConfirmPaymentProvider getProviderOverride(
-    covariant ConfirmPaymentProvider provider,
-  ) {
-    return call(provider.body);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'confirmPaymentProvider';
-}
-
-/// See also [confirmPayment].
-class ConfirmPaymentProvider
-    extends AutoDisposeFutureProvider<ConfirmPaymentResponse> {
-  /// See also [confirmPayment].
-  ConfirmPaymentProvider(ConfirmPaymentBodyData body)
-    : this._internal(
-        (ref) => confirmPayment(ref as ConfirmPaymentRef, body),
-        from: confirmPaymentProvider,
+final class ConfirmPaymentFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<ConfirmPaymentResponse>,
+          ConfirmPaymentBodyData
+        > {
+  const ConfirmPaymentFamily._()
+    : super(
+        retry: null,
         name: r'confirmPaymentProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$confirmPaymentHash,
-        dependencies: ConfirmPaymentFamily._dependencies,
-        allTransitiveDependencies:
-            ConfirmPaymentFamily._allTransitiveDependencies,
-        body: body,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
       );
 
-  ConfirmPaymentProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.body,
-  }) : super.internal();
-
-  final ConfirmPaymentBodyData body;
+  ConfirmPaymentProvider call(ConfirmPaymentBodyData body) =>
+      ConfirmPaymentProvider._(argument: body, from: this);
 
   @override
-  Override overrideWith(
-    FutureOr<ConfirmPaymentResponse> Function(ConfirmPaymentRef provider)
-    create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: ConfirmPaymentProvider._internal(
-        (ref) => create(ref as ConfirmPaymentRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        body: body,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<ConfirmPaymentResponse> createElement() {
-    return _ConfirmPaymentProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is ConfirmPaymentProvider && other.body == body;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, body.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
+  String toString() => r'confirmPaymentProvider';
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ConfirmPaymentRef
-    on AutoDisposeFutureProviderRef<ConfirmPaymentResponse> {
-  /// The parameter `body` of this provider.
-  ConfirmPaymentBodyData get body;
-}
-
-class _ConfirmPaymentProviderElement
-    extends AutoDisposeFutureProviderElement<ConfirmPaymentResponse>
-    with ConfirmPaymentRef {
-  _ConfirmPaymentProviderElement(super.provider);
-
-  @override
-  ConfirmPaymentBodyData get body => (origin as ConfirmPaymentProvider).body;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

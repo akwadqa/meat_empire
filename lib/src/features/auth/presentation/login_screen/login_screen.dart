@@ -50,45 +50,60 @@ class _LoginScreenState extends State<LoginScreen> {
                 EmailTextFormField(onSaved: (value) => _email = value),
                 20.verticalSpace,
                 PasswordTextField(
-                    label: context.tr('password'),
-                    onSaved: (value) => _password = value),
+                  label: context.tr('password'),
+                  onSaved: (value) => _password = value,
+                ),
                 54.verticalSpace,
                 SizedBox(
-                    width: double.infinity,
-                    child: Consumer(builder:
+                  width: double.infinity,
+                  child: Consumer(
+                    builder:
                         (BuildContext context, WidgetRef ref, Widget? child) {
-                      ref.listen(authControllerProvider, (prev, next) {
-                        if (next is AsyncData) {
-                          context.maybePop().then((_) {
-                            _showDialog();
-                          });
-                        } else if (next is AsyncError) {
-                          showErrorDialog(context, next.error.toString());
-                        }
-                      });
-                      final asyncLogin = ref.watch(authControllerProvider);
-                      if (asyncLogin is AsyncLoading) {
-                        return FadeCircleLoadingIndicator();
-                      }
-                      return ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
-                              ref
-                                  .read(authControllerProvider.notifier)
-                                  .login(_email!, _password!);
+                          ref.listen(authControllerProvider, (prev, next) {
+                            if (next is AsyncData) {
+                              if (context.mounted) {
+              context.router.replaceAll([HomeRoute()]);
+
+                                if (Navigator.of(context).canPop()) {
+                                  context.maybePop().then((_) => _showDialog());
+                                } else {
+                                  _showDialog();
+                                }
+                              }
+                            } else if (next is AsyncError) {
+                              if (context.mounted) {
+                                showErrorDialog(context, next.error.toString());
+                              }
                             }
-                          },
-                          child: Text(context.tr('login')));
-                    })),
+                          });
+
+                          final asyncLogin = ref.watch(authControllerProvider);
+                          if (asyncLogin is AsyncLoading) {
+                            return FadeCircleLoadingIndicator();
+                          }
+                          return ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                ref
+                                    .read(authControllerProvider.notifier)
+                                    .login(_email!, _password!);
+                              }
+                            },
+                            child: Text(context.tr('login')),
+                          );
+                        },
+                  ),
+                ),
                 24.verticalSpace,
                 AuthText(text: context.tr('dontHaveAccount')),
                 16.verticalSpace,
                 SizedBox(
                   width: double.infinity,
                   child: AuthButton(
-                      onPressed: () => context.replaceRoute(SignupRoute()),
-                      text: context.tr('createAccount')),
+                    onPressed: () => context.replaceRoute(SignupRoute()),
+                    text: context.tr('createAccount'),
+                  ),
                 ),
                 54.verticalSpace,
               ],

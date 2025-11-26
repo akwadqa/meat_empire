@@ -8,7 +8,7 @@ part 'product_details_response.freezed.dart';
 part 'product_details_response.g.dart';
 
 @freezed
-class ProductDetailsResponse with _$ProductDetailsResponse {
+abstract class ProductDetailsResponse with _$ProductDetailsResponse {
   factory ProductDetailsResponse({
     required String appAction,
     required String timezone,

@@ -6,7 +6,7 @@ part of 'page.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PageImpl _$$PageImplFromJson(Map<String, dynamic> json) => _$PageImpl(
+_Page _$PageFromJson(Map<String, dynamic> json) => _Page(
   id: json['id'] as String,
   choosePage: json['choose_page'] as String,
   position: json['position'] as String,

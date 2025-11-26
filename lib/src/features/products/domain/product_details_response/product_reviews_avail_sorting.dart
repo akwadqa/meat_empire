@@ -4,7 +4,7 @@ part 'product_reviews_avail_sorting.freezed.dart';
 part 'product_reviews_avail_sorting.g.dart';
 
 @freezed
-class ProductReviewsAvailSorting with _$ProductReviewsAvailSorting {
+abstract class ProductReviewsAvailSorting with _$ProductReviewsAvailSorting {
   factory ProductReviewsAvailSorting({
     @JsonKey(name: 'product_review_timestamp-asc')
     required String productReviewTimestampAsc,

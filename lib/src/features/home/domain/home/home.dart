@@ -1,3 +1,4 @@
+import 'package:meat_empire/src/features/home/domain/home/version_update.dart';
 import 'package:meat_empire/src/features/products/domain/product/product.dart';
 
 import 'app_configuration.dart';
@@ -20,6 +21,7 @@ class Home {
   final List<Currency> currencies;
   final List<Language> languages;
   final AppConfiguration appConfiguration;
+  final VersionUpdate versionUpdate;
   final String termsConditionPageId;
   final List<Page> pages;
   final dynamic totalProducts;
@@ -41,6 +43,7 @@ class Home {
     required this.pages,
     required this.totalProducts,
     required this.message,
+    required this.versionUpdate,
     required this.success,
   });
 
@@ -76,7 +79,7 @@ class Home {
           .toList(),
       totalProducts: json['total_products'] as dynamic,
       message: json['message'] as String,
-      success: json['success'] as bool,
+      success: json['success'] as bool, versionUpdate: VersionUpdate.fromJson(json["version_update"]),
     );
   }
 }

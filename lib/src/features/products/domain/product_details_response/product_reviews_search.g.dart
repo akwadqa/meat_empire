@@ -6,9 +6,9 @@ part of 'product_reviews_search.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductReviewsSearchImpl _$$ProductReviewsSearchImplFromJson(
+_ProductReviewsSearch _$ProductReviewsSearchFromJson(
   Map<String, dynamic> json,
-) => _$ProductReviewsSearchImpl(
+) => _ProductReviewsSearch(
   page: (json['page'] as num).toInt(),
   itemsPerPage: (json['items_per_page'] as num).toInt(),
   loadProductData: json['load_product_data'] as bool,

@@ -6,8 +6,8 @@ part of 'products_block.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductsBlockImpl _$$ProductsBlockImplFromJson(Map<String, dynamic> json) =>
-    _$ProductsBlockImpl(
+_ProductsBlock _$ProductsBlockFromJson(Map<String, dynamic> json) =>
+    _ProductsBlock(
       title: json['title'] as String,
       viewType: json['view_type'] as String,
       products: (json['products'] as List<dynamic>)

@@ -4,7 +4,7 @@ part 'only_buyers.freezed.dart';
 part 'only_buyers.g.dart';
 
 @freezed
-class OnlyBuyers with _$OnlyBuyers {
+abstract class OnlyBuyers with _$OnlyBuyers {
   factory OnlyBuyers({
     required String param,
     required String name,

@@ -6,8 +6,8 @@ part of 'order_details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderDetailsImpl _$$OrderDetailsImplFromJson(Map<String, dynamic> json) =>
-    _$OrderDetailsImpl(
+_OrderDetails _$OrderDetailsFromJson(Map<String, dynamic> json) =>
+    _OrderDetails(
       showShipments: json['show_shipments'] as bool?,
       shipments: (json['shipments'] as List<dynamic>)
           .map((e) => OrderDetailsShipment.fromJson(e as Map<String, dynamic>))

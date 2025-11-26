@@ -87,6 +87,16 @@ class AccountRouteArgs {
   String toString() {
     return 'AccountRouteArgs{key: $key, userProfile: $userProfile}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AccountRouteArgs) return false;
+    return key == other.key && userProfile == other.userProfile;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ userProfile.hashCode;
 }
 
 /// generated route for
@@ -156,6 +166,16 @@ class CheckOutRouteArgs {
   String toString() {
     return 'CheckOutRouteArgs{key: $key, cart: $cart}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CheckOutRouteArgs) return false;
+    return key == other.key && cart == other.cart;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ cart.hashCode;
 }
 
 /// generated route for
@@ -238,6 +258,16 @@ class MainAccountRouteArgs {
   String toString() {
     return 'MainAccountRouteArgs{key: $key}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! MainAccountRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for
@@ -307,6 +337,16 @@ class PaymentRouteArgs {
   String toString() {
     return 'PaymentRouteArgs{key: $key, slot: $slot}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PaymentRouteArgs) return false;
+    return key == other.key && slot == other.slot;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ slot.hashCode;
 }
 
 /// generated route for
@@ -347,6 +387,16 @@ class ProductDetailsRouteArgs {
   String toString() {
     return 'ProductDetailsRouteArgs{key: $key, productId: $productId}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ProductDetailsRouteArgs) return false;
+    return key == other.key && productId == other.productId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ productId.hashCode;
 }
 
 /// generated route for
@@ -386,6 +436,16 @@ class SearchRouteArgs {
   String toString() {
     return 'SearchRouteArgs{key: $key, categoryId: $categoryId}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SearchRouteArgs) return false;
+    return key == other.key && categoryId == other.categoryId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ categoryId.hashCode;
 }
 
 /// generated route for
@@ -450,6 +510,16 @@ class SuccessPaymentRouteArgs {
   String toString() {
     return 'SuccessPaymentRouteArgs{key: $key, cart: $cart, orderId: $orderId}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SuccessPaymentRouteArgs) return false;
+    return key == other.key && cart == other.cart && orderId == other.orderId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ cart.hashCode ^ orderId.hashCode;
 }
 
 /// generated route for
@@ -502,4 +572,16 @@ class WebViewRouteArgs {
   String toString() {
     return 'WebViewRouteArgs{key: $key, paymentResponse: $paymentResponse, cart: $cart}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! WebViewRouteArgs) return false;
+    return key == other.key &&
+        paymentResponse == other.paymentResponse &&
+        cart == other.cart;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ paymentResponse.hashCode ^ cart.hashCode;
 }

@@ -4,7 +4,7 @@ part 'extra.freezed.dart';
 part 'extra.g.dart';
 
 @freezed
-class Extra with _$Extra {
+abstract class Extra with _$Extra {
   factory Extra({
     String? unlimitedDownload,
     String? updatedTimestamp,
