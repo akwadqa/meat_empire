@@ -13,6 +13,8 @@ _ConfirmPaymentBodyData _$ConfirmPaymentBodyDataFromJson(
   selectedPaymentMethod: (json['selected_payment_method'] as num).toInt(),
   ecTimeSlot: json['ec_time_slot'] as String,
   notes: json['notes'] as String?,
+  deliveryDtae: json['ec_delivery_date'] as String?,
+  deliveryComment: json['ec_delivery_comment'] as String?,
 );
 
 Map<String, dynamic> _$ConfirmPaymentBodyDataToJson(
@@ -22,4 +24,6 @@ Map<String, dynamic> _$ConfirmPaymentBodyDataToJson(
   'selected_payment_method': instance.selectedPaymentMethod,
   'ec_time_slot': instance.ecTimeSlot,
   'notes': instance.notes,
+  'ec_delivery_date': instance.deliveryDtae,
+  'ec_delivery_comment': instance.deliveryComment,
 };

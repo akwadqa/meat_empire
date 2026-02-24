@@ -26,7 +26,7 @@ final class ProductsRepositoryProvider
         argument: null,
         retry: null,
         name: r'productsRepositoryProvider',
-        isAutoDispose: false,
+        isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -55,7 +55,7 @@ final class ProductsRepositoryProvider
 }
 
 String _$productsRepositoryHash() =>
-    r'4e46752fd8e3b807c4f934b2e1a35baeb8e1fab3';
+    r'351a9fdcf5674eea7e72485cb9def45fb7e5d02f';
 
 @ProviderFor(productDetails)
 const productDetailsProvider = ProductDetailsFamily._();

@@ -1,9 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meat_empire/src/features/auth/application/auth_service.dart';
-import 'package:meat_empire/src/features/auth/data/auth_repository.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
 import 'package:meat_empire/src/theme/app_theme.dart';
 
@@ -32,9 +29,11 @@ class _AppState extends ConsumerState<App> {
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerDelegate: appRouter.delegate(
-          deepLinkBuilder: (deepLink) => DeepLink.defaultPath),
-      routeInformationParser: appRouter.defaultRouteParser(),
+        routerConfig: appRouter.goRouter,
+
+      // routerDelegate: appRouter.delegate(
+      //     deepLinkBuilder: (deepLink) => DeepLink.defaultPath),
+      // routeInformationParser: appRouter.defaultRouteParser(),
       theme: ref.watch(appThemeProvider),
       onGenerateTitle: (context) => context.tr('appTitle'),
       localizationsDelegates: context.localizationDelegates,

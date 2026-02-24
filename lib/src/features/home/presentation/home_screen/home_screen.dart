@@ -2,12 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
+import 'package:meat_empire/src/features/categories/presentation/categories_screen/set_category_id_controller.dart';
 import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
+
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import '../../../../shared_widgets/app_logo.dart';
@@ -17,8 +21,10 @@ import '../../../categories/presentation/categories_screen/categories_screen.dar
 enum DrawerItems { home, myAccount, categories, categoryItem, logout }
 
 @RoutePage()
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends ConsumerWidget {
+  final Widget child;
+  const HomeScreen({super.key, required this.child});
+
 
   static const double _iconHeight = 25.0;
   static const ColorFilter _activeColorFilter = ColorFilter.mode(
@@ -26,19 +32,26 @@ class HomeScreen extends StatelessWidget {
     BlendMode.srcIn,
   );
   @override
-  Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      extendBody: true,
-      routes: [
-        LayoutRoute(),
-        CategoriesRoute(),
-        CartRoute(),
-        MainAccountRoute(),
-      ],
-      appBarBuilder: (context, _) => _buildAppBar(context),
-      bottomNavigationBuilder: (context, tabsRouter) =>
-          _buildBottomNavigation(context, tabsRouter),
-    );
+  Widget build(BuildContext context,WidgetRef ref) {
+    return 
+    Scaffold(
+  appBar: _buildAppBar(context),
+  body: child,
+  bottomNavigationBar: _buildBottomNavigation(context,ref),
+
+);
+    // AutoTabsScaffold(
+    //   extendBody: true,
+    //   routes: [
+    //     LayoutRoute(),
+    //     CategoriesRoute(),
+    //     CartRoute(),
+    //     MainAccountRoute(),
+    //   ],
+    //   appBarBuilder: (context, _) => _buildAppBar(context),
+    //   bottomNavigationBuilder: (context, tabsRouter) =>
+    //       _buildBottomNavigation(context, tabsRouter,ref),
+    // );
   }
 
   AppBar _buildAppBar(BuildContext context) {
@@ -62,7 +75,7 @@ class HomeScreen extends StatelessWidget {
         );
 
         return IconButton(
-          onPressed: () => context.tabsRouter.setActiveIndex(2),
+          onPressed: () => context.go(GoRoutes.cart),
           icon: cartCount > 0
               ? Badge(
                   backgroundColor: AppColors.primary,
@@ -165,17 +178,20 @@ class HomeScreen extends StatelessWidget {
         ref.read(userDataProvider.notifier).removeData();
         break;
       case DrawerItems.home:
-        context.tabsRouter.setActiveIndex(0);
+        context.go(GoRoutes.home);
+
         break;
       case DrawerItems.categories:
-        context.tabsRouter.setActiveIndex(1);
+        context.go(GoRoutes.categories);
+
         break;
       case DrawerItems.categoryItem:
         null;
 
         break;
       case DrawerItems.myAccount:
-        context.tabsRouter.setActiveIndex(3);
+        context.go(GoRoutes.account);
+
         break;
     }
   }
@@ -189,54 +205,80 @@ class HomeScreen extends StatelessWidget {
     ref
         .watch(selectedCategoryProvider.notifier)
         .setCategory(categories[index].categoryId);
-
-    context.router.replaceAll([CategoriesRoute()]);
+    ref.read(searchCategoryIndexControllerProvider.notifier).switchState();
+    context.pushReplacement(GoRoutes.categories,extra: {
+      "categoryId":categories[index].categoryId,
+      "fromHome":true,
+    });
+    // context.router.replaceAll([
+    //   CategoriesRoute(categoryId: categories[index].categoryId, fromHome: true),
+    // ]);
   }
 
-  Widget _buildAppBarTitle(BuildContext context) {
-    final activeIndex = context.tabsRouter.activeIndex;
-    final titleKey = activeIndex == 1
-        ? 'categories'
-        : activeIndex == 2
-        ? 'myCart'
-        : null;
+Widget _buildAppBarTitle(BuildContext context) {
+  final location = GoRouterState.of(context).uri.toString();
 
-    return titleKey != null
-        ? Text(
-            context.tr(titleKey),
-            style: Theme.of(
-              context,
-            ).textTheme.displayMedium!.copyWith(fontSize: 18),
-          )
-        : const AppLogo();
+  String? titleKey;
+
+  if (location.startsWith('/categories')) {
+    titleKey = 'categories';
+  } else if (location.startsWith('/cart')) {
+    titleKey = 'myCart';
   }
 
-  Widget _buildBottomNavigation(BuildContext context, TabsRouter tabsRouter) {
+  return titleKey != null
+      ? Text(
+          context.tr(titleKey),
+          style: Theme.of(context)
+              .textTheme
+              .displayMedium!
+              .copyWith(fontSize: 18),
+        )
+      : const AppLogo();
+}
+
+int _getCurrentIndex(BuildContext context) {
+  final location = GoRouterState.of(context).uri.toString();
+
+  if (location.startsWith('/categories')) return 1;
+  if (location.startsWith('/cart')) return 2;
+  if (location.startsWith('/account')) return 3;
+
+  return 0; // default home
+}
+
+Widget _buildBottomNavigation(BuildContext context, WidgetRef ref)
+ {
+    final currentIndex = _getCurrentIndex(context);
+
     final items = [
       _buildBottomNavItem(
         context,
-        tabsRouter,
+              currentIndex: currentIndex,
+
         index: 0,
         icon: Assets.icons.homeIcon,
         labelKey: 'products',
+        
       ),
       _buildBottomNavItem(
         context,
-        tabsRouter,
+      currentIndex: currentIndex,
         index: 1,
         icon: Assets.icons.categoriesSearchIcon,
         labelKey: 'categories',
+        ref: ref
       ),
       _buildBottomNavItem(
         context,
-        tabsRouter,
+      currentIndex: currentIndex,
         index: 2,
         icon: Assets.icons.cartIcon,
         labelKey: 'cart',
       ),
       _buildBottomNavItem(
         context,
-        tabsRouter,
+      currentIndex: currentIndex,
         index: 3,
         icon: Assets.icons.circulePersonIcon,
         labelKey: 'myAccount',
@@ -267,12 +309,14 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildBottomNavItem(
     BuildContext context,
-    TabsRouter tabsRouter, {
+     {
+       required int currentIndex,
     required int index,
     required SvgGenImage icon,
     required String labelKey,
+     WidgetRef? ref,
   }) {
-    final isActive = tabsRouter.activeIndex == index;
+  final isActive = currentIndex == index;
     return BottomNavItem(
       icon: icon.svg(
         height: _iconHeight,
@@ -280,7 +324,26 @@ class HomeScreen extends StatelessWidget {
       ),
       label: context.tr(labelKey),
       isActive: isActive,
-      onTap: () => tabsRouter.setActiveIndex(index),
+      onTap: () {
+        if(index==1){
+          ref!.read(searchCategoryIndexControllerProvider.notifier).checkState();
+        }
+switch (index) {
+        case 0:
+          context.go('/home');
+          break;
+        case 1:
+          context.go('/categories');
+          break;
+        case 2:
+          context.go('/cart');
+          break;
+        case 3:
+          context.go('/account');
+          break;
+      }         
+         
+         }
     );
   }
 

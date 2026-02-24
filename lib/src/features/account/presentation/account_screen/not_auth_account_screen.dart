@@ -2,13 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart'; // Ensure this is imported
 import 'package:meat_empire/src/features/account/presentation/widgets/account_cards.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+ 
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
@@ -73,7 +75,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
         CustomButtonWidget(
           text: context.tr("login"),
           backgroundColor: AppColors.primary,
-          onTap: () => context.pushRoute(LoginRoute()),
+          onTap: () => context.push(GoRoutes.login),
           isFiled: true,
           topPading: 50,
           height: 50,
@@ -83,7 +85,7 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
           text: context.tr("createAccount"),
           color: AppColors.grey600,
           backgroundColor: Colors.white,
-          onTap: () => context.pushRoute(SignupRoute()),
+          onTap: () => context.go(GoRoutes.signup),
           isFiled: false,
           topPading: 20,
           height: 50,

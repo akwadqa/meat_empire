@@ -4,14 +4,17 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+
 import 'package:meat_empire/src/routing/app_router_provider.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/services_urls.dart';
 
 import '../localization/current_language.dart';
+import '../routing/new_router/go_route.dart';
 
 part 'network_service.g.dart';
 
@@ -62,7 +65,8 @@ Dio dio(Ref ref) {
         ref.read(userDataProvider.notifier).removeData();
 
         // 2. توجيه المستخدم لصفحة تسجيل الدخول
-        ref.read(appRouterProvider).replaceAll([const LoginRoute()]);
+             rootKey.currentContext!.go(GoRoutes.login);
+
       },
     ),
   });

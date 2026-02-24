@@ -3,11 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -161,7 +162,7 @@ Future<void> showDeleteSccountNotice(BuildContext context, WidgetRef ref) {
         dsc: "delete_account_dsc",
         yesButton: () async {
           await ref.read(userDataProvider.notifier).markAsDeleted();
-          context.router.replaceAll([LoginRoute()]);
+          context.pushReplacement(GoRoutes.login);
         },
       );
     },

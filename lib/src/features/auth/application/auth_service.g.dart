@@ -82,7 +82,7 @@ final class UserDataProvider
   }
 }
 
-String _$userDataHash() => r'e57553f72fcaf0e7c4e6ccc3936a07bae8c7bb8e';
+String _$userDataHash() => r'752ae8013685c7c3543de1398784f0a11ce33a90';
 
 abstract class _$UserData extends $Notifier<(String, int)?> {
   (String, int)? build();

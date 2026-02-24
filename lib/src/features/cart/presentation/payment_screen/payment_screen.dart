@@ -7,6 +7,7 @@ import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/features/cart/data/payment_repository.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';
+import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_body_data.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/payment_response.dart';
 import 'package:meat_empire/src/features/cart/domain/slot.dart';
@@ -21,9 +22,10 @@ import '../../../../shared_widgets/custom_button_widget.dart';
 
 @RoutePage()
 class PaymentScreen extends ConsumerWidget {
-  PaymentScreen({super.key, required this.slot});
+  PaymentScreen({super.key, required this.slot, required this.deliverySlot});
 
   final Slot slot;
+  final DeliverySlot deliverySlot;
   int selectedPaymentMethod = -1;
   final _formKey = GlobalKey<FormState>();
   String notes = '';
@@ -145,6 +147,8 @@ class PaymentScreen extends ConsumerWidget {
       selectedPaymentMethod: selectedPaymentMethod,
       ecTimeSlot: slot.slot!,
       notes: notes,
+      deliveryComment: notes,
+      deliveryDtae: deliverySlot.date,
     );
 
     controller.confirmPayment(bodyData, context, cart);

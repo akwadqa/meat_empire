@@ -7,7 +7,7 @@ import '../../../network/network_service.dart';
 
 part 'products_repository.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 ProductsRepository productsRepository(Ref ref) =>
     ProductsRepository(ref.watch(networkServiceProvider()));
 

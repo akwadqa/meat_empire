@@ -45,7 +45,9 @@
     "welcomeBack": "أهلاً بعودتك!",
     "createAccountWelcomeBack": "أهلا بك في امبراطورية اللحوم",
     "the_item_already_added_in_cart": "هذا العنصر موجود بالسلة مسبقا",
-
+  "select_area": "اختر المنطقة",
+  "select_city_first": "يرجى اختيار المدينة أولاً",
+    "empty_data": "لا يوجد عناصر لعرضها ",
     "cartContent": "محتويات السلة",
     "home": "الرئيسية",
     "logout": "تسجيل الخروج",

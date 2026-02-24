@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../routing/app_router.gr.dart';
 import '../../auth/application/auth_service.dart';
 import '../../products/domain/product_details_response/product_options/selected_option.dart';
 import '../data/cart_repository.dart';
@@ -34,7 +35,8 @@ class UpdateCartController extends _$UpdateCartController {
         ref.read(cartControllerProvider.notifier).updateCart(cart);
       });
     } else {
-      context.pushRoute(LoginRoute());
+      // context.pushRoute(LoginRoute());
+      context.push(GoRoutes.login);
     }
   }
 

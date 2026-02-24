@@ -1,8 +1,10 @@
-import 'package:auto_route/auto_route.dart';
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/products/data/products_repository.dart';
@@ -12,6 +14,7 @@ import 'package:meat_empire/src/features/products/domain/product_details_respons
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_scroller_view.dart';
 import 'package:meat_empire/src/shared_functions.dart';
+import '../../../../shared_widgets/adaptive_back_button.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/app_close_button.dart';
 import '../../../../shared_widgets/app_error_widget.dart';
@@ -27,7 +30,7 @@ import 'product_options_list/product_options_list.dart';
 import 'quantity_selector/quantity_controller.dart';
 import 'quantity_selector/quantity_selector.dart';
 
-@RoutePage()
+// @RoutePage()
 class ProductDetailsScreen extends ConsumerWidget {
   const ProductDetailsScreen({super.key, required this.productId});
 
@@ -37,15 +40,25 @@ class ProductDetailsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncProductDetails = ref.watch(productDetailsProvider(productId));
 
-    return Scaffold(
-      body: asyncProductDetails.when(
-        data: (data) => ProductDetailsView(
-          product: data.product,
-          productsBlock: data.productsBlock,
-          currency: data.currency,
+    return PopScope(
+  // canPop: false, // we control it manually
+  // onPopInvokedWithResult: (didPop,result) async {
+  //   if (didPop) return;
+
+  //   debugPrint("Native back pressed");
+
+  //   context.maybePop();
+  // },
+      child: Scaffold(
+        body: asyncProductDetails.when(
+          data: (data) => ProductDetailsView(
+            product: data.product,
+            productsBlock: data.productsBlock,
+            currency: data.currency,
+          ),
+          error: (_, __) => Center(child: const AppErrorWidget()),
+          loading: () => Center(child: const FadeCircleLoadingIndicator()),
         ),
-        error: (_, __) => Center(child: const AppErrorWidget()),
-        loading: () => Center(child: const FadeCircleLoadingIndicator()),
       ),
     );
   }
@@ -166,13 +179,15 @@ class ProductBanner extends ConsumerWidget {
             child: CarouselDotsIndicator(dotsCount: imageUrls.length),
           ),
         PositionedDirectional(
-          start: 10,
-          top: 20,
-          child: AppCloseButton(
-            width: 40,
-            height: 40,
-            icon: Icon(Icons.arrow_back_ios).onlyPadding(start: 4),
-          ),
+          start:   Platform.isIOS ?25:10,
+          top:  Platform.isIOS ? 35:20,
+          child: AdaptiveBackButton(),
+          
+          // AppCloseButton(
+          //   // width: 40,
+          //   // height: 40,
+          //   icon: Icon(Icons.arrow_back_ios,color: AppColors.primary,).onlyPadding(start: 5),
+          // ),
         ),
       ],
     );
@@ -200,7 +215,7 @@ class _ProductBannerContent extends StatelessWidget {
               itemCount: imageUrls.length,
               itemBuilder: (_, index, __) => AppCachedNetworkImage(
                 imageUrl: imageUrls[index],
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.cover,
               ),
               options: CarouselOptions(
                 viewportFraction: 1,
@@ -213,7 +228,7 @@ class _ProductBannerContent extends StatelessWidget {
           : imageUrls.isNotEmpty
           ? AppCachedNetworkImage(
               imageUrl: imageUrls.first,
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
             )
           : const SizedBox.shrink(),
     );
@@ -413,19 +428,27 @@ class _AddToCartButton extends StatelessWidget {
         ),
         child: Consumer(
           builder: (context, ref, child) {
+            final rootContext = GoRouter.of(context).routerDelegate.navigatorKey.currentContext!;
+
             ref.listen(updateCartControllerProvider, (prev, next) {
               if (next is AsyncData) {
-                context.maybePop().then((_) {
-                  showCustomDialog(
-                    context: context,
-                    title: context.tr("cart_added_msg"),
-                    icon: Icon(
-                      Icons.check_circle,
-                      color: AppColors.green,
-                      size: 45,
-                    ),
-                  );
-                });
+
+    if (context.canPop()) {
+      context.pop();
+    }
+ 
+              Future.microtask(() {
+      showCustomDialog(
+        context: rootContext,
+        title: context.tr("cart_added_msg"),
+        icon: const Icon(
+          Icons.check_circle,
+          color: AppColors.green,
+          size: 45,
+        ),
+      );
+    });
+                // });
               } else if (next is AsyncError) {
                 showOutOfStockDialog(context, next.error.toString());
               }
@@ -475,7 +498,7 @@ class _AddToCartButton extends StatelessWidget {
                             productId: productId,
                             selectedOprions: selectedOptions,
                           )
-                          .then((_) => context.maybePop());
+                          .then((_) => context.pop());
                     }
                   },
               style: ElevatedButton.styleFrom(

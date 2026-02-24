@@ -1,7 +1,33 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../theme/app_colors.dart';
+
+// class AppCloseButton extends StatelessWidget {
+//   const AppCloseButton(
+//       {super.key,
+//       this.icon,
+//       this.width,
+//       this.height,
+//       this.backgroundColor = Colors.white,
+//       this.iconColor = AppColors.primary});
+//   final Widget? icon;
+//   final double? width;
+//   final double? height;
+//   final Color backgroundColor;
+//   final Color iconColor;
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//   behavior: HitTestBehavior.opaque,
+//   onTap: () => context.maybePop(),
+//   child: CircleAvatar(
+//     backgroundColor: backgroundColor,
+//     child: icon ?? Icon(Icons.close, color: iconColor),
+//   ),
+// );
+// }
+// }
 
 class AppCloseButton extends StatelessWidget {
   const AppCloseButton(
@@ -10,12 +36,13 @@ class AppCloseButton extends StatelessWidget {
       this.width,
       this.height,
       this.backgroundColor = Colors.white,
-      this.iconColor = AppColors.primary});
+      this.iconColor = AppColors.primary, this.onBack});
   final Widget? icon;
   final double? width;
   final double? height;
   final Color backgroundColor;
   final Color iconColor;
+  final VoidCallback? onBack;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,15 +53,14 @@ class AppCloseButton extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha((0.16 * 255).round()),
+            color: Colors.black.withValues(alpha: 0.16),
             blurRadius: 4.0,
             offset: const Offset(0.0, 1.0),
           ),
         ],
       ),
       child: IconButton(
-        onPressed: context.maybePop,
-        style: IconButton.styleFrom(foregroundColor: iconColor),
+        onPressed:onBack??(){ context.pop();},
         icon: icon ?? Icon(Icons.close, color: iconColor),
       ),
     );

@@ -2,13 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/auth/presentation/auth_button/auth_button.dart';
 import 'package:meat_empire/src/features/auth/presentation/email_text_form_field/email_text_form_field.dart';
 import 'package:meat_empire/src/features/auth/presentation/auth_controller/auth_controller.dart';
 import 'package:meat_empire/src/features/auth/presentation/password_text_field/password_text_field.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart';
+ 
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/shared_widgets/app_logo.dart';
 import '../../../../shared_functions.dart';
@@ -62,7 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ref.listen(authControllerProvider, (prev, next) {
                             if (next is AsyncData) {
                               if (context.mounted) {
-              context.router.replaceAll([HomeRoute()]);
+                                context.pushReplacement(GoRoutes.home);
+              // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
 
                                 if (Navigator.of(context).canPop()) {
                                   context.maybePop().then((_) => _showDialog());
@@ -101,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: AuthButton(
-                    onPressed: () => context.replaceRoute(SignupRoute()),
+                    onPressed: () => context.pushReplacement(GoRoutes.signup),
                     text: context.tr('createAccount'),
                   ),
                 ),

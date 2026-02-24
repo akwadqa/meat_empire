@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ConfirmPaymentBodyData {
 
- int get userId; int get selectedPaymentMethod; String get ecTimeSlot; String? get notes;
+ int get userId; int get selectedPaymentMethod; String get ecTimeSlot; String? get notes;@JsonKey(name: "ec_delivery_date") String? get deliveryDtae;@JsonKey(name: "ec_delivery_comment") String? get deliveryComment;
 /// Create a copy of ConfirmPaymentBodyData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ConfirmPaymentBodyDataCopyWith<ConfirmPaymentBodyData> get copyWith => _$Confir
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentBodyData&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.selectedPaymentMethod, selectedPaymentMethod) || other.selectedPaymentMethod == selectedPaymentMethod)&&(identical(other.ecTimeSlot, ecTimeSlot) || other.ecTimeSlot == ecTimeSlot)&&(identical(other.notes, notes) || other.notes == notes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfirmPaymentBodyData&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.selectedPaymentMethod, selectedPaymentMethod) || other.selectedPaymentMethod == selectedPaymentMethod)&&(identical(other.ecTimeSlot, ecTimeSlot) || other.ecTimeSlot == ecTimeSlot)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.deliveryDtae, deliveryDtae) || other.deliveryDtae == deliveryDtae)&&(identical(other.deliveryComment, deliveryComment) || other.deliveryComment == deliveryComment));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userId,selectedPaymentMethod,ecTimeSlot,notes);
+int get hashCode => Object.hash(runtimeType,userId,selectedPaymentMethod,ecTimeSlot,notes,deliveryDtae,deliveryComment);
 
 @override
 String toString() {
-  return 'ConfirmPaymentBodyData(userId: $userId, selectedPaymentMethod: $selectedPaymentMethod, ecTimeSlot: $ecTimeSlot, notes: $notes)';
+  return 'ConfirmPaymentBodyData(userId: $userId, selectedPaymentMethod: $selectedPaymentMethod, ecTimeSlot: $ecTimeSlot, notes: $notes, deliveryDtae: $deliveryDtae, deliveryComment: $deliveryComment)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ConfirmPaymentBodyDataCopyWith<$Res>  {
   factory $ConfirmPaymentBodyDataCopyWith(ConfirmPaymentBodyData value, $Res Function(ConfirmPaymentBodyData) _then) = _$ConfirmPaymentBodyDataCopyWithImpl;
 @useResult
 $Res call({
- int userId, int selectedPaymentMethod, String ecTimeSlot, String? notes
+ int userId, int selectedPaymentMethod, String ecTimeSlot, String? notes,@JsonKey(name: "ec_delivery_date") String? deliveryDtae,@JsonKey(name: "ec_delivery_comment") String? deliveryComment
 });
 
 
@@ -65,12 +65,14 @@ class _$ConfirmPaymentBodyDataCopyWithImpl<$Res>
 
 /// Create a copy of ConfirmPaymentBodyData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,Object? selectedPaymentMethod = null,Object? ecTimeSlot = null,Object? notes = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,Object? selectedPaymentMethod = null,Object? ecTimeSlot = null,Object? notes = freezed,Object? deliveryDtae = freezed,Object? deliveryComment = freezed,}) {
   return _then(_self.copyWith(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as int,selectedPaymentMethod: null == selectedPaymentMethod ? _self.selectedPaymentMethod : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
 as int,ecTimeSlot: null == ecTimeSlot ? _self.ecTimeSlot : ecTimeSlot // ignore: cast_nullable_to_non_nullable
 as String,notes: freezed == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
+as String?,deliveryDtae: freezed == deliveryDtae ? _self.deliveryDtae : deliveryDtae // ignore: cast_nullable_to_non_nullable
+as String?,deliveryComment: freezed == deliveryComment ? _self.deliveryComment : deliveryComment // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -156,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int userId,  int selectedPaymentMethod,  String ecTimeSlot,  String? notes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int userId,  int selectedPaymentMethod,  String ecTimeSlot,  String? notes, @JsonKey(name: "ec_delivery_date")  String? deliveryDtae, @JsonKey(name: "ec_delivery_comment")  String? deliveryComment)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ConfirmPaymentBodyData() when $default != null:
-return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.notes);case _:
+return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.notes,_that.deliveryDtae,_that.deliveryComment);case _:
   return orElse();
 
 }
@@ -177,10 +179,10 @@ return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int userId,  int selectedPaymentMethod,  String ecTimeSlot,  String? notes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int userId,  int selectedPaymentMethod,  String ecTimeSlot,  String? notes, @JsonKey(name: "ec_delivery_date")  String? deliveryDtae, @JsonKey(name: "ec_delivery_comment")  String? deliveryComment)  $default,) {final _that = this;
 switch (_that) {
 case _ConfirmPaymentBodyData():
-return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.notes);case _:
+return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.notes,_that.deliveryDtae,_that.deliveryComment);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +199,10 @@ return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int userId,  int selectedPaymentMethod,  String ecTimeSlot,  String? notes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int userId,  int selectedPaymentMethod,  String ecTimeSlot,  String? notes, @JsonKey(name: "ec_delivery_date")  String? deliveryDtae, @JsonKey(name: "ec_delivery_comment")  String? deliveryComment)?  $default,) {final _that = this;
 switch (_that) {
 case _ConfirmPaymentBodyData() when $default != null:
-return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.notes);case _:
+return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.notes,_that.deliveryDtae,_that.deliveryComment);case _:
   return null;
 
 }
@@ -212,13 +214,15 @@ return $default(_that.userId,_that.selectedPaymentMethod,_that.ecTimeSlot,_that.
 
 @JsonSerializable(explicitToJson: true)
 class _ConfirmPaymentBodyData implements ConfirmPaymentBodyData {
-  const _ConfirmPaymentBodyData({required this.userId, required this.selectedPaymentMethod, required this.ecTimeSlot, this.notes});
+  const _ConfirmPaymentBodyData({required this.userId, required this.selectedPaymentMethod, required this.ecTimeSlot, this.notes, @JsonKey(name: "ec_delivery_date") this.deliveryDtae, @JsonKey(name: "ec_delivery_comment") this.deliveryComment});
   factory _ConfirmPaymentBodyData.fromJson(Map<String, dynamic> json) => _$ConfirmPaymentBodyDataFromJson(json);
 
 @override final  int userId;
 @override final  int selectedPaymentMethod;
 @override final  String ecTimeSlot;
 @override final  String? notes;
+@override@JsonKey(name: "ec_delivery_date") final  String? deliveryDtae;
+@override@JsonKey(name: "ec_delivery_comment") final  String? deliveryComment;
 
 /// Create a copy of ConfirmPaymentBodyData
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +237,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentBodyData&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.selectedPaymentMethod, selectedPaymentMethod) || other.selectedPaymentMethod == selectedPaymentMethod)&&(identical(other.ecTimeSlot, ecTimeSlot) || other.ecTimeSlot == ecTimeSlot)&&(identical(other.notes, notes) || other.notes == notes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfirmPaymentBodyData&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.selectedPaymentMethod, selectedPaymentMethod) || other.selectedPaymentMethod == selectedPaymentMethod)&&(identical(other.ecTimeSlot, ecTimeSlot) || other.ecTimeSlot == ecTimeSlot)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.deliveryDtae, deliveryDtae) || other.deliveryDtae == deliveryDtae)&&(identical(other.deliveryComment, deliveryComment) || other.deliveryComment == deliveryComment));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userId,selectedPaymentMethod,ecTimeSlot,notes);
+int get hashCode => Object.hash(runtimeType,userId,selectedPaymentMethod,ecTimeSlot,notes,deliveryDtae,deliveryComment);
 
 @override
 String toString() {
-  return 'ConfirmPaymentBodyData(userId: $userId, selectedPaymentMethod: $selectedPaymentMethod, ecTimeSlot: $ecTimeSlot, notes: $notes)';
+  return 'ConfirmPaymentBodyData(userId: $userId, selectedPaymentMethod: $selectedPaymentMethod, ecTimeSlot: $ecTimeSlot, notes: $notes, deliveryDtae: $deliveryDtae, deliveryComment: $deliveryComment)';
 }
 
 
@@ -253,7 +257,7 @@ abstract mixin class _$ConfirmPaymentBodyDataCopyWith<$Res> implements $ConfirmP
   factory _$ConfirmPaymentBodyDataCopyWith(_ConfirmPaymentBodyData value, $Res Function(_ConfirmPaymentBodyData) _then) = __$ConfirmPaymentBodyDataCopyWithImpl;
 @override @useResult
 $Res call({
- int userId, int selectedPaymentMethod, String ecTimeSlot, String? notes
+ int userId, int selectedPaymentMethod, String ecTimeSlot, String? notes,@JsonKey(name: "ec_delivery_date") String? deliveryDtae,@JsonKey(name: "ec_delivery_comment") String? deliveryComment
 });
 
 
@@ -270,12 +274,14 @@ class __$ConfirmPaymentBodyDataCopyWithImpl<$Res>
 
 /// Create a copy of ConfirmPaymentBodyData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? selectedPaymentMethod = null,Object? ecTimeSlot = null,Object? notes = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? selectedPaymentMethod = null,Object? ecTimeSlot = null,Object? notes = freezed,Object? deliveryDtae = freezed,Object? deliveryComment = freezed,}) {
   return _then(_ConfirmPaymentBodyData(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as int,selectedPaymentMethod: null == selectedPaymentMethod ? _self.selectedPaymentMethod : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
 as int,ecTimeSlot: null == ecTimeSlot ? _self.ecTimeSlot : ecTimeSlot // ignore: cast_nullable_to_non_nullable
 as String,notes: freezed == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
+as String?,deliveryDtae: freezed == deliveryDtae ? _self.deliveryDtae : deliveryDtae // ignore: cast_nullable_to_non_nullable
+as String?,deliveryComment: freezed == deliveryComment ? _self.deliveryComment : deliveryComment // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

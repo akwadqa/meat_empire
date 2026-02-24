@@ -9,6 +9,7 @@ import 'package:meat_empire/src/features/account/presentation/controller/account
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
+import 'package:meat_empire/src/utils/qatar_zones.dart';
 import 'package:queen_validators/queen_validators.dart';
 
 import 'location_field_checkBox_widget.dart';
@@ -54,13 +55,14 @@ class _AddNewAddressBookWidgetState
 
   late TextEditingController buildNumberController;
   late TextEditingController cityController;
-  late TextEditingController countryController;
+  late TextEditingController areaController;
   late TextEditingController streetController;
 
   String? selectedCityValue;
   String? selectedLocationValue;
   bool billAddSameShippAdd = false;
-
+  List<String> availableZones = [];
+  String? selectedZone;
   final List<Map<String, dynamic>> locations = [
     {'name': 'villa', 'icon': Icons.house},
     {'name': 'office', 'icon': Icons.business_center},
@@ -69,16 +71,26 @@ class _AddNewAddressBookWidgetState
 
   @override
   void initState() {
+   
     super.initState();
     selectedCityValue = widget.isEdit ? widget.userProfile.shippingCity : null;
+    selectedZone = widget.isEdit ? widget.userProfile.shippingCountry : null;
+    if (selectedCityValue != null) {
+      availableZones = cityZones[selectedCityValue!] ?? [];
+    }
     cityController = TextEditingController(
-        text: widget.isEdit ? widget.userProfile.shippingCity : "");
-    countryController = TextEditingController(
-        text: widget.isEdit ? widget.userProfile.shippingCountry : "");
+      text: widget.isEdit ? widget.userProfile.shippingCity : "",
+    );
+    areaController = TextEditingController(
+      text: widget.isEdit ? widget.userProfile.shippingCountry : "",
+    );
     streetController = TextEditingController(
-        text: widget.isEdit ? widget.userProfile.shippingStrete : "");
+      text: widget.isEdit ? widget.userProfile.shippingStrete : "",
+    );
     buildNumberController = TextEditingController(
-        text: widget.isEdit ? widget.userProfile.shippingBuildingNumber : "");
+      text: widget.isEdit ? widget.userProfile.shippingBuildingNumber : "",
+    );
+    debugPrint(" selectedZone=> $selectedZone ");
   }
 
   @override
@@ -102,9 +114,7 @@ class _AddNewAddressBookWidgetState
                   children: [
                     GestureDetector(
                       onTap: () => Navigator.of(context).pop(),
-                      child: Container(
-                        color: Colors.black.withOpacity(0.1),
-                      ),
+                      child: Container(color: Colors.black.withOpacity(0.1)),
                     ),
                     Center(
                       child: Material(
@@ -113,7 +123,9 @@ class _AddNewAddressBookWidgetState
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 40, horizontal: 10),
+                            vertical: 40,
+                            horizontal: 10,
+                          ),
                           child: Form(
                             key: formKey,
                             child: Column(
@@ -152,10 +164,10 @@ class _AddNewAddressBookWidgetState
         Text(
           context.tr("add_shipping_location"),
           style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                color: AppColors.black900,
-                fontSize: 16,
-                fontWeight: FontWeight.w800,
-              ),
+            color: AppColors.black900,
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+          ),
         ),
       ],
     );
@@ -176,7 +188,7 @@ class _AddNewAddressBookWidgetState
         _buildFieldColumn(
           context,
           label: "area".tr(),
-          child: buildCountryField(context),
+          child: buildAreaField(context),
         ),
       ],
     );
@@ -203,8 +215,66 @@ class _AddNewAddressBookWidgetState
     );
   }
 
-  Widget _buildFieldColumn(BuildContext context,
-      {required String label, required Widget child}) {
+  Widget buildAreaField(BuildContext context) {
+    return DropdownButtonFormField<String>(
+      value: selectedZone,
+      style: Theme.of(
+        context,
+      ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 14),
+      isExpanded: true,
+      onChanged: selectedCityValue == null
+          ? null
+          : (value) {
+              setState(() {
+                selectedZone = value!;
+              });
+            },
+      validator: (value) {
+        if (selectedCityValue != null && (value == null || value.isEmpty)) {
+          return context.tr('required');
+        }
+        return null;
+      },
+      onSaved: (value) => selectedZone = value!,
+
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 6),
+        hintStyle: Theme.of(
+          context,
+        ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 9),
+        hintText: selectedCityValue == null
+            ? context.tr("select_city_first")
+            : context.tr("select_area"),
+        prefixIcon: Assets.icons.countryIcon
+            .svg(color: AppColors.black800)
+            .onlyPadding(start: 4, end: 6),
+        prefixIconConstraints: const BoxConstraints(
+          maxHeight: 30,
+          maxWidth: 30,
+          minHeight: 30,
+          minWidth: 30,
+        ),
+      ),
+      items: availableZones.map((zone) {
+        return DropdownMenuItem<String>(
+          value: zone,
+          child: Text(
+            "Zone $zone",
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+              fontSize: 12,
+              color: AppColors.black900,
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildFieldColumn(
+    BuildContext context, {
+    required String label,
+    required Widget child,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -226,8 +296,10 @@ class _AddNewAddressBookWidgetState
       labelText: 'building_type'.tr(),
       locations: locations,
       initialValue: widget.isEdit
-          ? locations.indexWhere((location) =>
-              location['name'] == widget.userProfile.shippingBuildingType)
+          ? locations.indexWhere(
+              (location) =>
+                  location['name'] == widget.userProfile.shippingBuildingType,
+            )
           : 2,
       onSaved: (value) {
         selectedLocationValue = locations[value!]['name'];
@@ -262,8 +334,8 @@ class _AddNewAddressBookWidgetState
                       shippingBuildingType: selectedLocationValue,
                       shippingCity: selectedCityValue,
                       bllingCity: selectedCityValue,
-                      shippingCountry: countryController.text,
-                      billingCountry: countryController.text,
+                      shippingCountry: selectedZone,
+                      billingCountry: selectedZone,
                       shippingStrete: streetController.text,
                       billingStrete: streetController.text,
                       shippingBuildingNumber: buildNumberController.text,
@@ -297,20 +369,24 @@ class _AddNewAddressBookWidgetState
 
     return DropdownButtonFormField<String>(
       value: selectedCityValue,
-      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-            color: AppColors.gray02,
-            fontSize: 14,
-          ),
-      onChanged: (value) => selectedCityValue = value!,
+      style: Theme.of(
+        context,
+      ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 14),
+      onChanged: (value) {
+        setState(() {
+          selectedCityValue = value!;
+          availableZones = cityZones[value] ?? [];
+          selectedZone = null;
+        });
+      },
       onSaved: (value) => selectedCityValue = value!,
       validator: (value) =>
           value == null || value.isEmpty ? context.tr('required') : null,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 6),
-        hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
-              color: AppColors.gray02,
-              fontSize: 9,
-            ),
+        hintStyle: Theme.of(
+          context,
+        ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 9),
         hintText: context.tr('select_city'),
         prefixIconConstraints: const BoxConstraints(
           maxHeight: 30,
@@ -328,55 +404,59 @@ class _AddNewAddressBookWidgetState
           child: Text(
             '${city['name']}',
             style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  fontSize: 12,
-                  color: AppColors.black900,
-                ),
+              fontSize: 12,
+              color: AppColors.black900,
+            ),
           ),
         );
       }).toList(),
     );
   }
 
-  Widget buildCountryField(BuildContext context) {
-    return TextFormField(
-      controller: countryController,
-      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-            color: AppColors.black900,
-            fontSize: 12,
-          ),
-      decoration: InputDecoration(
-        hintText: "الفيصل",
-        hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
-              color: AppColors.gray02,
-              fontSize: 11,
-            ),
-        prefixIconConstraints: BoxConstraints(
-            maxHeight: 20, maxWidth: 30, minHeight: 20, minWidth: 30),
-        prefixIcon: Assets.icons.countryIcon
-            .svg(color: AppColors.black800)
-            .symmetricPadding(horizontal: 4),
-      ),
-      textInputAction: TextInputAction.next,
-      validator: qValidator([IsRequired(context.tr('required'))]),
-      onSaved: (value) => countryController.text = value!,
-    );
-  }
+  // Widget buildCountryField(BuildContext context) {
+  //   return TextFormField(
+  //     controller: countryController,
+  //     style: Theme.of(
+  //       context,
+  //     ).textTheme.labelSmall!.copyWith(color: AppColors.black900, fontSize: 12),
+  //     decoration: InputDecoration(
+  //       hintText: "الفيصل",
+  //       hintStyle: Theme.of(
+  //         context,
+  //       ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 11),
+  //       prefixIconConstraints: BoxConstraints(
+  //         maxHeight: 20,
+  //         maxWidth: 30,
+  //         minHeight: 20,
+  //         minWidth: 30,
+  //       ),
+  //       prefixIcon: Assets.icons.countryIcon
+  //           .svg(color: AppColors.black800)
+  //           .symmetricPadding(horizontal: 4),
+  //     ),
+  //     textInputAction: TextInputAction.next,
+  //     validator: qValidator([IsRequired(context.tr('required'))]),
+  //     onSaved: (value) => countryController.text = value!,
+  //   );
+  // }
 
   Widget buildStreetField(BuildContext context) {
     return TextFormField(
       controller: streetController,
-      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-            color: AppColors.black900,
-            fontSize: 12,
-          ),
+      style: Theme.of(
+        context,
+      ).textTheme.labelSmall!.copyWith(color: AppColors.black900, fontSize: 12),
       decoration: InputDecoration(
         hintText: "شارع حمد الكبير",
-        hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
-              color: AppColors.gray02,
-              fontSize: 11,
-            ),
+        hintStyle: Theme.of(
+          context,
+        ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 11),
         prefixIconConstraints: BoxConstraints(
-            maxHeight: 20, maxWidth: 30, minHeight: 20, minWidth: 30),
+          maxHeight: 20,
+          maxWidth: 30,
+          minHeight: 20,
+          minWidth: 30,
+        ),
         prefixIcon: Assets.icons.streetIcon
             .svg(color: AppColors.black800)
             .symmetricPadding(horizontal: 4),
@@ -390,18 +470,20 @@ class _AddNewAddressBookWidgetState
   Widget buildBuildingNumberField(BuildContext context) {
     return TextFormField(
       controller: buildNumberController,
-      style: Theme.of(context).textTheme.labelSmall!.copyWith(
-            color: AppColors.black900,
-            fontSize: 12,
-          ),
+      style: Theme.of(
+        context,
+      ).textTheme.labelSmall!.copyWith(color: AppColors.black900, fontSize: 12),
       decoration: InputDecoration(
         hintText: "a24",
-        hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
-              color: AppColors.gray02,
-              fontSize: 11,
-            ),
+        hintStyle: Theme.of(
+          context,
+        ).textTheme.labelSmall!.copyWith(color: AppColors.gray02, fontSize: 11),
         prefixIconConstraints: BoxConstraints(
-            maxHeight: 20, maxWidth: 30, minHeight: 20, minWidth: 30),
+          maxHeight: 20,
+          maxWidth: 30,
+          minHeight: 20,
+          minWidth: 30,
+        ),
         prefixIcon: Assets.icons.buildNumberIcon
             .svg(color: AppColors.black800)
             .symmetricPadding(horizontal: 4),

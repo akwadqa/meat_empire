@@ -2,9 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/features/categories/presentation/categories_screen/set_category_id_controller.dart';
 import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
+ 
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 
 import '../categories_screen/categories_screen.dart';
@@ -16,17 +20,34 @@ class CategoriesView extends ConsumerWidget {
 
   final List<Category> categories;
 
+ 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Wrap(
-        spacing: 20, // horizontal spacing between items
-        runSpacing: 8, // vertical spacing between lines (optional)
-        children: List.generate(
-          categories.length,
-          (index) => _buildCategoryItem(context, ref, index),
-        ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final maxWidth = constraints.maxWidth;
+
+          // 🧮 Decide number of items per row based on available width
+          int itemsPerRow = (maxWidth / 80).floor(); // each item ~100px wide
+          itemsPerRow = itemsPerRow.clamp(3, 6); // limit between 3–6 per row
+
+          // 🔢 Calculate exact width so they fit perfectly
+          final itemWidth = (maxWidth - (itemsPerRow - 1) * 12) / itemsPerRow;
+
+          return Wrap(
+            spacing: 12,
+            runSpacing: 16,
+            children: List.generate(
+              categories.length,
+              (index) => SizedBox(
+                width: itemWidth,
+                child: _buildCategoryItem(context, ref, index),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -38,7 +59,7 @@ class CategoriesView extends ConsumerWidget {
     return CategoryItem(
       onTap: () => _onCategoryTap(context, ref, index),
       label: categories[index].category,
-      image: AppCachedNetworkImage(imageUrl: categories[index].imageUrl),
+      image: AppCachedNetworkImage(imageUrl: categories[index].imageUrl,fit: BoxFit.contain,),
     );
   }
 
@@ -48,7 +69,19 @@ class CategoriesView extends ConsumerWidget {
       selectedCategoryProvider.notifier,
     );
     selectedCategoryNotifier.setCategory(categories[index].categoryId);
+// Future.delayed(Duration(seconds: 2));
+// WidgetsBinding.instance.addPostFrameCallback((_) {
+//   context.tabsRouter.setActiveIndex(1);
+// });
+    ref.read(searchCategoryIndexControllerProvider.notifier).switchState();
 
-    context.router.replaceAll([CategoriesRoute()]);
-  }
-}
+ Future.microtask(() {
+    context.pushReplacement(GoRoutes.categories,extra: {
+      "categoryId":categories[index].categoryId,
+      "fromHome":true,
+    });
+    // context.router.replaceAll([
+    //   CategoriesRoute(categoryId: categories[index].categoryId,fromHome: true),
+    // ]);
+  });
+}}

@@ -146,6 +146,10 @@ class $AssetsImagesGen {
   AssetGenImage get appLogo =>
       const AssetGenImage('assets/images/app_logo.png');
 
+  /// File path: assets/images/app_logo_old.png
+  AssetGenImage get appLogoOld =>
+      const AssetGenImage('assets/images/app_logo_old.png');
+
   /// File path: assets/images/cart_image.png
   AssetGenImage get cartImage =>
       const AssetGenImage('assets/images/cart_image.png');
@@ -165,6 +169,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/logo_old.png
+  AssetGenImage get logoOld =>
+      const AssetGenImage('assets/images/logo_old.png');
+
   /// File path: assets/images/meat_message.png
   AssetGenImage get meatMessage =>
       const AssetGenImage('assets/images/meat_message.png');
@@ -176,11 +184,13 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
     appLogo,
+    appLogoOld,
     cartImage,
     emptyData,
     imErrorScreen,
     loginImage,
     logo,
+    logoOld,
     meatMessage,
     qatarFlag,
   ];

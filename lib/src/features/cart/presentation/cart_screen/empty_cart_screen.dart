@@ -1,6 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 
 import 'base_cart_screen.dart';
 
@@ -13,7 +14,7 @@ class EmptyCartScreen extends StatelessWidget {
       title: context.tr('yourCartIsEmpty'),
       description: context.tr('cartEmptyDesc'),
       buttonText: context.tr('goToShopping'),
-      onButtonPressed: () => context.tabsRouter.setActiveIndex(0),
+      onButtonPressed: () => context.go(GoRoutes.home),
     );
   }
 }

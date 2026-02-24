@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/string_extension.dart';
@@ -13,7 +14,7 @@ import 'package:meat_empire/src/features/account/presentation/widgets/edit_accou
 import 'package:meat_empire/src/features/account/presentation/widgets/logout_button_widget.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 
@@ -89,7 +90,7 @@ class AccountScreen extends ConsumerWidget {
                 title: "my_orders",
                 icon: Assets.icons.cardChecklistIcon.svg(),
                 onTap: () {
-                  context.navigateTo(MyOrdersRoute());
+                  context.push(GoRoutes.myOrders);
                 },
               ),
               AccountCardsWidget(

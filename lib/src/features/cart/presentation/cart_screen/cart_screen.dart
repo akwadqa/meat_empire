@@ -2,13 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/cart_controller/cart_controller.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 import 'package:queen_validators/queen_validators.dart';
 import '../../../../../gen/assets.gen.dart';
@@ -154,7 +156,9 @@ class CartBody extends ConsumerWidget {
       backgroundColor: AppColors.primary,
       onTap: () {
         debugPrint("Tap ");
-        context.navigateTo(CheckOutRoute(cart: cart));
+        // context.navigateTo(CheckOutRoute(cart: cart));
+       context.push(GoRoutes.checkout,extra: cart);
+        
       },
       isFiled: true,
       height: 50,

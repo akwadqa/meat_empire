@@ -2,14 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
@@ -106,7 +109,8 @@ class _SuccessPaymentScreenState extends ConsumerState<SuccessPaymentScreen> {
     return CustomButtonWidget(
       text: context.tr("continue_shipping_msg"),
       onTap: () {
-        context.router.replace(HomeRoute());
+        context.pushReplacement(GoRoutes.home);
+        // context.router.replace(HomeRoute(child:LayoutScreen() ));
       },
       isFiled: true,
       backgroundColor: AppColors.primary,

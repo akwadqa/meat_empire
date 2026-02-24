@@ -6,7 +6,7 @@ import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_pa
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart';
 import 'package:meat_empire/src/features/cart/presentation/payment_screen/payment_web_view.dart';
 import 'package:meat_empire/src/features/cart/presentation/payment_screen/success_payment_screen.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+
 import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

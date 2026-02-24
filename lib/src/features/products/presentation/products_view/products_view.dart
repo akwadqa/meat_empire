@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/products/domain/product/product.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 
 import '../../../home/domain/home/layout.dart';
 import 'products_grid_view.dart';
@@ -34,7 +36,7 @@ class ProductsView extends StatelessWidget {
                   _Title(title: layout.title),
                   const Spacer(),
                   TextButton(
-                    onPressed: () => context.tabsRouter.setActiveIndex(1),
+                    onPressed: () => context.go(GoRoutes.categories),
                     child: Text(context.tr('more')),
                   ),
                 ],

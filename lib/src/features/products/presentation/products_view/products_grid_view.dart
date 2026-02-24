@@ -43,9 +43,6 @@ class ProductsGridView extends ConsumerWidget {
         } else if (screenWidth > 430) {
           crossAxisCount = 3;
         }
-        debugPrint("hasSidebar  $screenWidth");
-        debugPrint("hasSidebarMIN $screenWidthd");
-        debugPrint("activeIndex ${context.tabsRouter.activeIndex}");
 
         // Compute card width automatically
         // final double cardWidth =

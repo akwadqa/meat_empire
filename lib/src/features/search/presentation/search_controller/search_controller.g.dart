@@ -50,7 +50,7 @@ final class SearchControllerProvider
   }
 }
 
-String _$searchControllerHash() => r'1effdc6f00f35051a5906d706fff34f6b2f3cd5d';
+String _$searchControllerHash() => r'97a6264bb2ebb5d387e25fb83bb24294ae07310e';
 
 final class SearchControllerFamily extends $Family
     with

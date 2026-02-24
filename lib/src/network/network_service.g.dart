@@ -47,7 +47,7 @@ final class DioProvider extends $FunctionalProvider<Dio, Dio, Dio>
   }
 }
 
-String _$dioHash() => r'2a7ca585989877f37d3870ac0c9969c57a9b73d5';
+String _$dioHash() => r'2f37849b2f9462f963fb047a5bae8567811a1f3c';
 
 @ProviderFor(networkService)
 const networkServiceProvider = NetworkServiceFamily._();

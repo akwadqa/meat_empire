@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/account/domain/entites/profile_response.dart';
@@ -13,7 +14,8 @@ import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
 import 'package:meat_empire/src/features/cart/domain/slot.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_cart_order_summary.dart';
 import 'package:meat_empire/src/features/cart/presentation/widgets/checkout_widgets/checkout_shipping_picker.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/custom_back_arrow_widget.dart';
@@ -28,10 +30,7 @@ class CheckOutScreen extends ConsumerWidget {
   DeliverySlot? selectedDay;
   Slot? selectedSlot;
 
-  CheckOutScreen({
-    super.key,
-    required this.cart,
-  });
+  CheckOutScreen({super.key, required this.cart});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -53,15 +52,19 @@ class CheckOutScreen extends ConsumerWidget {
       leading: CustomBackArrowWidget(),
       title: Text(
         context.tr("products_shipping"),
-        style:
-            Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 18),
+        style: Theme.of(
+          context,
+        ).textTheme.displayMedium!.copyWith(fontSize: 18),
       ),
       centerTitle: true,
     );
   }
 
-  Widget _buildForm(BuildContext context, ProfileResponse data,
-      List<DeliverySlot> deliverySlots) {
+  Widget _buildForm(
+    BuildContext context,
+    ProfileResponse data,
+    List<DeliverySlot> deliverySlots,
+  ) {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
@@ -96,12 +99,17 @@ class CheckOutScreen extends ConsumerWidget {
         debugPrint("Selected Date: ${value?['date']?.heading}");
         debugPrint("Selected Time: ${value?['time']?.slot}");
         selectedSlot = value?['time'];
+        selectedDay = (value?['date'] as DeliverySlot).copyWith(
+          date: (value?["date"] as DeliverySlot).date!.replaceAll("/", "-"),
+        );
       },
     );
   }
 
   Widget _buildSubmitButton(
-      BuildContext context, ProfileResponse accountSyncData) {
+    BuildContext context,
+    ProfileResponse accountSyncData,
+  ) {
     return CustomButtonWidget(
       text: "payment",
       backgroundColor: AppColors.primary,
@@ -124,7 +132,11 @@ class CheckOutScreen extends ConsumerWidget {
         );
       } else {
         debugPrint("Form is valid and saved.");
-        context.navigateTo(PaymentRoute(slot: selectedSlot!));
+        // context.navigateTo(PaymentRoute(slot: selectedSlot!));
+        context.push(
+          GoRoutes.payment,
+          extra: {'slot': selectedSlot!, 'deliverySlot': selectedDay!},
+        );
       }
     }
   }

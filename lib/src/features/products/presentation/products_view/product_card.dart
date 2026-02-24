@@ -4,14 +4,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/cart/application/cart_service.dart';
+import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_details_screen.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 
-import '../../../../routing/app_router.gr.dart';
+
 import '../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../shared_widgets/fade_circle_loading_indicator.dart';
 import '../../../../theme/app_colors.dart';
@@ -28,10 +31,17 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.pushRoute(
-        ProductDetailsRoute(productId: int.parse(product.productId)),
-      ),
+    return InkWell(
+      onTap: () {
+        debugPrint("Navigating to product ${product.productId}");
+//  Navigator.push(
+//     context,
+//     MaterialPageRoute<void>(builder: (context) => ProductDetailsScreen(productId: int.parse(product.productId))),
+//   );   
+      context.push(
+        GoRoutes.productDetails,extra: int.parse(product.productId),
+      );
+      },
       child: Container(
         width: width,
         decoration: BoxDecoration(
@@ -39,7 +49,6 @@ class ProductCard extends StatelessWidget {
           border: Border.all(color: const Color.fromRGBO(229, 229, 229, 1)),
         ),
         child: Column(
-          //TODO spacing: 6,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
@@ -367,9 +376,13 @@ class _AddToCartButton extends ConsumerWidget {
     if (isInCart) {
       controller.updateCart(amount: 0, productId: productId);
     } else if (hasOptions) {
-      context.pushRoute(
-        ProductDetailsRoute(productId: int.parse(productId.toString())),
+        debugPrint("Navigating to product 2 ${productId}");
+  context.push(
+        GoRoutes.productDetails,extra: int.parse(productId.toString()),
       );
+      // context.pushRoute(
+      //   ProductDetailsRoute(productId: int.parse(productId.toString())),
+      // );
     } else {
       controller.addToCart(
         context: context,

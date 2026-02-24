@@ -3,12 +3,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/features/auth/presentation/auth_text/auth_text.dart';
 import 'package:meat_empire/src/features/auth/presentation/email_text_form_field/email_text_form_field.dart';
 import 'package:meat_empire/src/features/auth/presentation/password_text_field/password_text_field.dart';
-import 'package:meat_empire/src/routing/app_router.gr.dart';
+
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:queen_validators/queen_validators.dart';
 
 import '../../../../shared_functions.dart';
@@ -157,7 +159,8 @@ class _SignupScreenState extends State<SignupScreen> {
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
           ref.listen(authControllerProvider, (prev, next) {
             if (next is AsyncData) {
-              context.router.replaceAll([HomeRoute()]);
+              // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+              context.pushReplacement(GoRoutes.home);
               context.maybePop().then((_) {
                 _showDialog();
               });
@@ -203,7 +206,8 @@ class _SignupScreenState extends State<SignupScreen> {
     return SizedBox(
       width: double.infinity,
       child: AuthButton(
-        onPressed: () => context.replaceRoute(const LoginRoute()),
+        onPressed: () => context.pushReplacement(GoRoutes.login),
+        // context.replaceRoute(const LoginRoute()),
         text: context.tr('login'),
       ),
     );

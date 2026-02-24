@@ -11,6 +11,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../constants/end_points.dart';
 import '../../../network/network_service.dart';
+import '../../../routing/new_router/go_route.dart';
 import '../domain/home/home.dart';
 
 part 'home_repository.g.dart';
@@ -90,8 +91,8 @@ class HomeRepository {
 @Riverpod(keepAlive: true)
 Future<Home> home(Ref ref) async {
   final repository = ref.watch(homeRepositoryProvider);
-  final router = ref.watch(appRouterProvider);
+  // final router = ref.watch(appRouterProvider);
 
-  final currentContext = router.navigatorKey.currentContext;
+  final currentContext = rootKey.currentContext;
   return repository.getHome(currentContext);
 }

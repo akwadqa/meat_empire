@@ -1,11 +1,18 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
+import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_grid_view.dart';
 import 'package:meat_empire/src/features/search/domain/search_response/sorting.dart';
+import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
+import 'package:meat_empire/src/shared_widgets/adaptive_back_button.dart';
+import 'package:meat_empire/src/shared_widgets/app_empty_data_widget.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/shared_widgets/app_pagination_widget.dart';
@@ -15,44 +22,60 @@ import '../search_controller/search_controller.dart';
 
 @RoutePage()
 class SearchScreen extends ConsumerWidget {
-  const SearchScreen({super.key, this.categoryId});
+  const SearchScreen({super.key, this.categoryId, this.fromHome});
 
   final String? categoryId;
+  final bool? fromHome;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: _SearchContent(categoryId),
-    );
+    return Scaffold(body: _SearchContent(categoryId, fromHome));
   }
 }
 
 class _SearchContent extends ConsumerWidget {
-  const _SearchContent(this.categoryId);
+  const _SearchContent(this.categoryId, this.fromHomee);
 
   final String? categoryId;
+  final bool? fromHomee;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final fromHome = ref.watch(searchCategoryIndexControllerProvider);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Expanded(
-              flex: 6,
-              child: _SortingDropdown(categoryId),
+              flex: fromHome ? 2 : 6,
+              child: fromHome
+                  ? AdaptiveBackButton(
+                      onBack: () {
+                        ref
+                            .read(
+                              searchCategoryIndexControllerProvider.notifier,
+                            )
+                            .checkState();
+                        // context.tabsRouter.setActiveIndex(0);
+                        context.go(GoRoutes.home);
+                      },
+                    )
+                  : _SortingDropdown(categoryId),
             ),
             const Spacer(),
-            Expanded(
-              flex: 8,
-              child: _SearchField(categoryId),
-            ),
+            Expanded(flex: 8, child: _SearchField(categoryId)),
           ],
         ),
+        8.verticalSpace,
+        if (fromHome)
+          SizedBox(
+            width: MediaQuery.sizeOf(context).width / 3,
+            height: 50,
+            child: _SortingDropdown(categoryId),
+          ),
         SizedBox(height: 26),
-        Expanded(
-          child: _ProductsGridView(categoryId),
-        ),
+        Expanded(child: _ProductsGridView(categoryId)),
       ],
     ).symmetricPadding(horizontal: 16);
   }
@@ -65,20 +88,24 @@ class _ProductsGridView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final searchControllerAsync =
-        ref.watch(searchControllerProvider(categoryId));
+    final searchControllerAsync = ref.watch(
+      searchControllerProvider(categoryId),
+    );
     return searchControllerAsync.when(
-      data: (data) => AppPaginationWidget(
-        // enableLoadingOnScrollStart: true,
-        onLoading:
-            ref.read(searchControllerProvider(categoryId).notifier).loadMore,
-        child: ProductsGridView(
-          products: data.products,
-          shrinkWrap: true,
-          fromCategory: true,
-          padding: EdgeInsets.only(bottom: 90),
-        ),
-      ),
+      data: (data) => data.products.isEmpty
+          ? AppEmptyDataWidget(text: "empty_data")
+          : AppPaginationWidget(
+              // enableLoadingOnScrollStart: true,
+              onLoading: ref
+                  .read(searchControllerProvider(categoryId).notifier)
+                  .loadMore,
+              child: ProductsGridView(
+                products: data.products,
+                shrinkWrap: true,
+                fromCategory: true,
+                padding: EdgeInsets.only(bottom: 90),
+              ),
+            ),
       error: (_, __) => const AppErrorWidget(),
       loading: () => const FadeCircleLoadingIndicator(),
     );
@@ -92,8 +119,9 @@ class _SortingDropdown extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final searchControllerAsync =
-        ref.watch(searchControllerProvider(categoryId));
+    final searchControllerAsync = ref.watch(
+      searchControllerProvider(categoryId),
+    );
     final sortings = searchControllerAsync.asData?.value.sortings;
     return DropdownButtonFormField<Sorting>(
       isExpanded: true,
@@ -109,20 +137,20 @@ class _SortingDropdown extends ConsumerWidget {
       selectedItemBuilder: sortings == null
           ? null
           : (context) => sortings
-              .map(
-                (e) => Text(
-                  e.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: FontFamily.tajawal,
-                    color: Colors.white,
+                .map(
+                  (e) => Text(
+                    e.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: FontFamily.tajawal,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              )
-              .toList(),
+                )
+                .toList(),
       elevation: 1,
       icon: const Icon(Icons.keyboard_arrow_down_rounded),
       hint: Text(
@@ -140,12 +168,7 @@ class _SortingDropdown extends ConsumerWidget {
         fillColor: AppColors.primary,
       ),
       items: sortings
-          ?.map(
-            (e) => DropdownMenuItem<Sorting>(
-              value: e,
-              child: Text(e.name),
-            ),
-          )
+          ?.map((e) => DropdownMenuItem<Sorting>(value: e, child: Text(e.name)))
           .toList(),
       onChanged: (Sorting? value) {
         if (value != null) {
@@ -177,8 +200,10 @@ class _SearchFieldState extends ConsumerState<_SearchField> {
       decoration: InputDecoration(
         hintText: context.tr('searchProducts'),
         hintStyle: const TextStyle(color: AppColors.gray02),
-        prefixIcon:
-            IconButton(onPressed: () => _search(), icon: Icon(Icons.search)),
+        prefixIcon: IconButton(
+          onPressed: () => _search(),
+          icon: Icon(Icons.search),
+        ),
         prefixIconColor: AppColors.gray,
       ),
       onFieldSubmitted: (value) => _search(),

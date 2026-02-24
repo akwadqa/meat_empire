@@ -15,6 +15,8 @@ abstract class ConfirmPaymentBodyData with _$ConfirmPaymentBodyData {
     required int selectedPaymentMethod,
     required String ecTimeSlot,
     String? notes,
+   @JsonKey(name: "ec_delivery_date") String? deliveryDtae,
+   @JsonKey(name: "ec_delivery_comment") String? deliveryComment,
   }) = _ConfirmPaymentBodyData;
 
   factory ConfirmPaymentBodyData.fromJson(Map<String, dynamic> json) =>

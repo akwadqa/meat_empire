@@ -9,8 +9,8 @@ class CategoryItem extends StatelessWidget {
       required this.onTap,
       required this.label,
       required this.image,
-      this.height = 64, //74,
-      this.width = 64, //74,
+      this.height = 70,
+      this.width = 70,
       this.withBorder = false});
 
   final VoidCallback? onTap;
@@ -25,6 +25,7 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Column(
+        // mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -34,14 +35,14 @@ class CategoryItem extends StatelessWidget {
                 BoxShadow(
                   color: AppColors.darkRed.withAlpha((0.26 * 255).round()),
                   offset: const Offset(0, 2),
-                  blurRadius: 6,
+                  blurRadius: 8,
                 ),
               ],
               border: withBorder
                   ? Border.all(color: AppColors.newRed, width: 1)
                   : null,
             ),
-            padding: EdgeInsets.all(height >= 64 ? 16 : 8),
+            padding: EdgeInsets.all(height >= 64 ? 10 : 8),
             height: height,
             width: width,
             child: image,

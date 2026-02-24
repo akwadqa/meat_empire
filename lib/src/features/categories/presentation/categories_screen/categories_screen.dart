@@ -2,9 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meat_empire/src/features/categories/presentation/categories_screen/set_category_id_controller.dart';
 import 'package:meat_empire/src/features/categories/presentation/category_item/category_item.dart';
 import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
+import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
 import 'package:meat_empire/src/features/search/presentation/search_screen/search_screen.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/app_error_widget.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/theme/app_colors.dart';
@@ -17,13 +21,7 @@ import '../../../home/data/home_repository.dart';
 part 'categories_screen.g.dart';
 
 /// Riverpod providers for managing category state
-@riverpod
-class SelectedCategory extends _$SelectedCategory {
-  @override
-  String build() => '';
 
-  void setCategory(String categoryId) => state = categoryId;
-}
 
 @riverpod
 class IsExpandedCategoriesBar extends _$IsExpandedCategoriesBar {
@@ -36,21 +34,53 @@ class IsExpandedCategoriesBar extends _$IsExpandedCategoriesBar {
 //* Main screen for displaying categories and search results
 @RoutePage()
 class CategoriesScreen extends ConsumerWidget {
-  const CategoriesScreen({super.key});
+  final String? categoryId;
+  final bool? fromHome;
+  const CategoriesScreen({super.key, this.categoryId, this.fromHome});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeAsync = ref.watch(homeProvider);
+  // ✅ Safe place to update provider after first frame
+    final fromHome =
+        ref.read(searchCategoryIndexControllerProvider);
+          if (categoryId != null && ref.read(selectedCategoryProvider).isEmpty) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(selectedCategoryProvider.notifier).setCategory(categoryId!);
+    });
+  }
 
-    return Scaffold(
-      body: homeAsync.when(
-        data: (home) => _buildCategoriesLayout(context, ref, home),
-        loading: () => const FadeCircleLoadingIndicator(),
-        error: (_, __) => const AppErrorWidget(),
+    final homeAsync = ref.watch(homeProvider);
+  // final selectedCategoryNotifier = ref.read(selectedCategoryProvider.notifier);
+  // if (categoryId != null && ref.read(selectedCategoryProvider).isEmpty) {
+  //   selectedCategoryNotifier.setCategory(categoryId??"");
+  // }
+    return  PopScope(
+  canPop: !fromHome, // 🚨 prevent automatic pop
+  onPopInvokedWithResult: (didPop,result) {
+
+
+    if (fromHome) {
+      // 👇 Same logic as your custom back button
+      ref
+          .read(searchCategoryIndexControllerProvider.notifier)
+          .checkState();
+
+      // context.tabsRouter.setActiveIndex(0);
+      context.go(GoRoutes.home);
+      debugPrint(":fromHome and setActiveIndex =>0");
+    } 
+  },
+
+      child: Scaffold(
+        body: homeAsync.when(
+          data: (home) => _buildCategoriesLayout(context, ref, home,fromHome),
+          loading: () => const FadeCircleLoadingIndicator(),
+          error: (_, __) => const AppErrorWidget(),
+        ),
+        floatingActionButtonLocation: const CustomFABLocation(),
+        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+        floatingActionButton: _buildFloatingActionButton(ref),
       ),
-      floatingActionButtonLocation: const CustomFABLocation(),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButton: _buildFloatingActionButton(ref),
     );
   }
 
@@ -59,6 +89,7 @@ class CategoriesScreen extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     dynamic home,
+    bool? fromHome
   ) {
     final categories = _extractCategories(home);
 
@@ -69,7 +100,7 @@ class CategoriesScreen extends ConsumerWidget {
           child: Consumer(
             builder: (context, ref, _) {
               final selectedCategoryId = ref.watch(selectedCategoryProvider);
-              return SearchScreen(categoryId: selectedCategoryId);
+              return SearchScreen(categoryId: selectedCategoryId,fromHome:fromHome);
             },
           ),
         ),
