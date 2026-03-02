@@ -17,10 +17,12 @@ class AuthRepository {
 
   Future<(String authToken, String userId)> _handleAuthResponse(
       Map<String, dynamic> responseData) async {
+        
     if (responseData.containsKey('complete_auth_token') &&
         responseData.containsKey('user_id')) {
       final String authToken = responseData['complete_auth_token'];
       final String userId = responseData['user_id'];
+      
       return (authToken, userId);
     } else {
       throw AppException(responseData['message']);

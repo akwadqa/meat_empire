@@ -46,7 +46,7 @@ class HomeRepository {
     debugPrint("NEED UPDATE VERSION NUMBER${versionUpdate.appUpdateRequired}");
     final info = await PackageInfo.fromPlatform();
     final currentVersion = info.version; // e.g. "1.0.0"
-    debugPrint("CURRENT VERSION NUMBER${versionUpdate.appAndroidVersion}");
+    debugPrint("CURRENT VERSION NUMBER => $currentVersion");
 
     final latestVersion = Platform.isAndroid
         ? versionUpdate.appAndroidVersion
@@ -56,23 +56,25 @@ class HomeRepository {
 
     // 🔍 Compare versions (simple semantic version comparison)
     if (_isVersionLower(currentVersion, latestVersion)) {
-      final title =
-      updateRequired?
-      "update_title_required"
-      :"update_title_optional";
+      final title = updateRequired
+          ? "update_title_required"
+          : "update_title_optional";
       //  versionUpdate.appNewUpdateTitle ?? "Update Available";
       final message = updateRequired
-      ?"update_message_required":"update_message_optional";
-          // ? (versionUpdate.appUpdateRequiredMessage ??
-          //       "A new version is required to continue using the app.")
-          // : (versionUpdate.appUpdateMessage ??
-          //       "A new version of the app is available.");
+          ? "update_message_required"
+          : "update_message_optional";
+      // ? (versionUpdate.appUpdateRequiredMessage ??
+      //       "A new version is required to continue using the app.")
+      // : (versionUpdate.appUpdateMessage ??
+      //       "A new version of the app is available.");
 
       final url = Platform.isAndroid
           ? versionUpdate.appAndroidUrl
           : versionUpdate.appIosUrl;
 
-      showUpdateDialog(context, title, message, url, updateRequired);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showUpdateDialog(context, title, message, url, updateRequired);
+      });
     }
   }
 

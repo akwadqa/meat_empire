@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865147539927",
+    "project_id": "meat-empire-c4631",
+    "storage_bucket": "meat-empire-c4631.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865147539927:android:0aefb89b102e7d3f35bb92",
+        "android_client_info": {
+          "package_name": "qa.app.meatEmpire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlX4z0zJdoa9mt6OFrKUHw6118BzmoBHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

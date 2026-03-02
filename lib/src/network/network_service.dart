@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
-
-import 'package:meat_empire/src/routing/app_router_provider.dart';
 import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -144,7 +142,16 @@ class DioAppInterceptors extends Interceptor {
     options.queryParameters['sl'] = languageCode;
     super.onRequest(options, handler);
   }
- @override
+//  @override
+//   void onResponse(Response response, ResponseInterceptorHandler handler) {
+//     debugPrint("🟢 [DIO RESPONSE]");
+//     debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
+//     debugPrint("📦 Response data: ${_prettyJson(response.data)}");
+
+//     handler.next(response);
+//   }
+
+  @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     debugPrint("🟢 [DIO RESPONSE]");
     debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
@@ -152,15 +159,6 @@ class DioAppInterceptors extends Interceptor {
 
     handler.next(response);
   }
-
-  // @override
-  // void onResponse(Response response, ResponseInterceptorHandler handler) {
-  //   debugPrint("🟢 [DIO RESPONSE]");
-  //   debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
-  //   debugPrint("📦 Response data: ${_prettyJson(response.data)}");
-
-  //   handler.next(response);
-  // }
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response != null) {

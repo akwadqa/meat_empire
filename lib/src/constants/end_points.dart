@@ -9,4 +9,5 @@ abstract class EndPoints {
   static String deelteAccount = 'OrderHistoryApi';
   static String orderHistoryDetails(int id) => 'OrderHistoryApi/$id';
   static String checkOutApi = 'CheckoutApi';
+  static String sendFcmToken = 'sendFcmToken';
 }

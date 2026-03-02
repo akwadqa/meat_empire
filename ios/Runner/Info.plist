@@ -19,6 +19,12 @@
 			<string>en</string>
 			<string>ar</string>
 		</array>
+		<key>UIBackgroundModes</key>
+		<array>
+			<string>remote-notification</string>
+		</array>
+		<key>FirebaseAppDelegateProxyEnabled</key>
+		<false/>
 		<key>CFBundleName</key>
 		<string>Meat Empire</string>
 		<key>CFBundlePackageType</key>

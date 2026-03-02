@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:meat_empire/src/constants/keys.dart';
+import 'package:meat_empire/src/core/notifications/services/notification_service.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/features/auth/data/auth_repository.dart';
 import 'package:meat_empire/src/network/network_service.dart';
@@ -46,6 +47,9 @@ class AuthController extends _$AuthController {
 
       // ✅ Proceed with login or signup
       final userData = await action(authRepo);
+         await ref
+          .read(notificationsServiceProvider)
+          .sendDeviceToken(int.parse(userData.$2) );
       await ref
           .read(userDataProvider.notifier)
           .setData(userData.$1, int.parse(userData.$2));
