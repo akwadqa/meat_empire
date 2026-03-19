@@ -47,9 +47,12 @@ class AuthController extends _$AuthController {
 
       // ✅ Proceed with login or signup
       final userData = await action(authRepo);
+        //  await ref
+        //   .read(notificationsServiceProvider)
+        //   .sendDeviceToken(int.parse(userData.$2) );
          await ref
           .read(notificationsServiceProvider)
-          .sendDeviceToken(int.parse(userData.$2) );
+          .subscribeFCMTopics();
       await ref
           .read(userDataProvider.notifier)
           .setData(userData.$1, int.parse(userData.$2));
@@ -57,8 +60,11 @@ class AuthController extends _$AuthController {
   }
 
   Future<void> login(String email, String password) async {
+  final token=  await ref
+          .read(notificationsServiceProvider)
+          .myFcmToken( );
     await _authenticate(
-      (authRepo) => authRepo.login(email, password),
+      (authRepo) => authRepo.login(email, password,token),
       true,
     );
   }
@@ -70,9 +76,12 @@ class AuthController extends _$AuthController {
     String confirmPassword,
     String phone,
   ) async {
+      final token=  await ref
+          .read(notificationsServiceProvider)
+          .myFcmToken( );
     await _authenticate(
       (authRepo) =>
-          authRepo.signup(email, username, password, confirmPassword, phone),
+          authRepo.signup(email, username, password, confirmPassword, phone,token),
       false,
     );
   }

@@ -82,7 +82,7 @@ final class DeviceTokenControllerProvider
 }
 
 String _$deviceTokenControllerHash() =>
-    r'248339f0b48dae2382cd1e27e3ebbbbe1c95e6db';
+    r'e73df900bd7f4a48db0a9aa5aad12f01b2815139';
 
 abstract class _$DeviceTokenController extends $AsyncNotifier<void> {
   FutureOr<void> build();

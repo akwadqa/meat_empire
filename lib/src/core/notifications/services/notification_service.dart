@@ -33,6 +33,7 @@ class NotificationsService {
 
     await FCMConfig.instance.init(
       options: DefaultFirebaseOptions.currentPlatform,
+      
       defaultAndroidChannel: const AndroidNotificationChannel(
         'high_importance_channel',
         'Fcm config',
@@ -42,18 +43,34 @@ class NotificationsService {
 
     await _messaging.requestPermission(alert: true, badge: true, sound: true);
     debugPrint("FCMConfig.instance.init2");
+    if (Platform.isIOS) {
+      String? apnsToken;
+
+      apnsToken = await _messaging.getAPNSToken();
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      debugPrint('APNS Token ready: $apnsToken');
+    }
+    // final token = await _messaging.getToken();
+    // debugPrint("FCM Token: $token");
+
+    // if (token != null) {
+      await subscribeFCMTopics();
+    // } else {
+    //   debugPrint("⚠️ Token not ready yet, skip subscribing");
+    // }
     await _initializeLocalNotifications();
     debugPrint("FCMConfig.instance.init3");
 
-    final userId =   _ref.read(userDataProvider)?.$2;
-        debugPrint(' sending device userId:$userId');
+    final userId = _ref.read(userDataProvider)?.$2;
+    debugPrint(' sending device userId:$userId');
 
     _messaging.onTokenRefresh.listen((token) {
-        debugPrint(' sending device token:$token');
+      debugPrint(' sending device token:$token');
 
-      _ref
-          .read(deviceTokenControllerProvider.notifier)
-          .sendFCMToken(token, userId??0);
+      // _ref
+      //     .read(deviceTokenControllerProvider.notifier)
+      //     .sendFCMToken(token, userId ?? 0);
     });
 
     // sendDeviceToken(userId);
@@ -77,7 +94,7 @@ class NotificationsService {
   Future<void> sendDeviceToken(int userId) async {
     try {
       final token = await _messaging.getToken();
-      
+
       if (token != null) {
         debugPrint(' sending device token:$token');
 
@@ -90,14 +107,52 @@ class NotificationsService {
     }
   }
 
+  Future<String> myFcmToken() async {
+    try {
+      final token = await _messaging.getToken();
+      debugPrint(' sending device token:$token');
+      if (token != null) {
+        return token;
+      }
+      return '';
+    } catch (e, st) {
+      debugPrint('Error sending device token: $e\n$st');
+      return '';
+    }
+  }
+
   Future<void> subscribeFCMTopics() async {
     try {
-      await _messaging.subscribeToTopic(
-        Platform.isIOS ? Keys.ios : Keys.android,
-      );
-      await _messaging.subscribeToTopic(_ref.watch(currentLanguageProvider));
+      final platformTopic = Platform.isIOS ? Keys.ios : Keys.android;
+      final languageTopic = _ref.read(currentLanguageProvider);
+
+     await FCMConfig.instance.messaging.subscribeToTopic(Keys.all);
+     await FCMConfig.instance.messaging.subscribeToTopic(platformTopic);
+     await FCMConfig.instance.messaging.subscribeToTopic(languageTopic);
+
+      debugPrint('Subscribed to topics: all, $platformTopic, $languageTopic');
     } catch (e) {
       debugPrint('Error subscribing to topics: $e');
+    }
+  }
+  Future<void> unsubscribeOrdersTopic() async {
+      final platformTopic = Platform.isIOS ? Keys.ios : Keys.android;
+
+    await FCMConfig.instance.messaging.unsubscribeFromTopic(platformTopic);
+  }
+  Future<void> updateLanguageTopic({
+    required String oldLang,
+    required String newLang,
+  }) async {
+    try {
+      if (oldLang == newLang) return;
+
+      await FCMConfig.instance.messaging.unsubscribeFromTopic(oldLang);
+      await FCMConfig.instance.messaging.subscribeToTopic(newLang);
+
+      debugPrint('Language topic updated: $oldLang → $newLang');
+    } catch (e) {
+      debugPrint('Error updating language topic: $e');
     }
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
+import 'package:meat_empire/src/core/notifications/services/notification_service.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/string_extension.dart';
 import 'package:meat_empire/src/features/account/domain/entites/user_profile.dart';
@@ -30,7 +31,7 @@ class AccountScreen extends ConsumerWidget {
     final currentLanguage = ref.watch(currentLanguageProvider);
 
     final currentLanguageNotifier = ref.read(currentLanguageProvider.notifier);
-
+    // final nono = ref.read(notificationsServiceProvider);
     return SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(horizontal: 12),
@@ -54,6 +55,24 @@ class AccountScreen extends ConsumerWidget {
                   ),
                 ),
               ),
+
+              // FutureBuilder<String>(
+              //   future: nono.myFcmToken(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.connectionState == ConnectionState.waiting) {
+              //       return const CircularProgressIndicator();
+              //     }
+
+              //     if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              //       return const Text("Token: NULL ❌");
+              //     }
+
+              //     return SelectableText(
+              //       "Token:\n${snapshot.data}",
+              //       textAlign: TextAlign.center,
+              //     );
+              //   },
+              // ),
               30.verticalSpace,
               AccountCardsWidget(
                 title: "edit_account_information",
@@ -115,7 +134,7 @@ class AccountScreen extends ConsumerWidget {
                 title: "delete_account_title".tr(),
                 icon: Icon(Icons.delete_sharp),
                 onTap: () {
-                showDeleteSccountNotice(context, ref);
+                  showDeleteSccountNotice(context, ref);
                 },
               ),
               60.verticalSpace,

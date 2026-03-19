@@ -161,9 +161,10 @@ class _SignupScreenState extends State<SignupScreen> {
             if (next is AsyncData) {
               // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
               context.pushReplacement(GoRoutes.home);
-              context.maybePop().then((_) {
+              Navigator.of(context).pop();
+              // context.maybePop().then((_) {
                 _showDialog();
-              });
+              // });
             } else if (next is AsyncError) {
               showErrorDialog(context, next.error.toString());
             }

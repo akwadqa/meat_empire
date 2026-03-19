@@ -30,10 +30,14 @@ class AuthRepository {
   }
 
   Future<(String authToken, String userId)> login(
-      String email, String password) async {
+      String email, String password,
+      String fcmToken,
+      ) async {
     final response = await _networkService.post(EndPoints.loginApi, {
       'user_login': email,
       'password': password,
+      "fcm_token": fcmToken
+
     });
 
     return _handleAuthResponse(response.data);
@@ -44,7 +48,10 @@ class AuthRepository {
       String username,
       String password,
       String confirmPassword,
-      String phone) async {
+      String phone,
+      String fcmToken,
+      
+      ) async {
     final response = await _networkService.post(EndPoints.signUpApi, {
       'email': email,
       'firstname': username.split(' ').first,
@@ -52,6 +59,7 @@ class AuthRepository {
       'password1': password,
       'password2': confirmPassword,
       'phone': phone,
+      "fcm_token": fcmToken
     });
 
     return _handleAuthResponse(response.data);

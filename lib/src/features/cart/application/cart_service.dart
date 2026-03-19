@@ -41,8 +41,8 @@ class UpdateCartController extends _$UpdateCartController {
   }
 
   Future<void> updateCart(
-      {int? productId, int? amount, int? itemId, String? couponCode}) async {
-    state = AsyncLoading();
+      {int? productId, int? amount, int? itemId, String? couponCode,bool? showLoading}) async {
+  if(showLoading??false) { state = AsyncLoading();Future.delayed(Duration(seconds: 3));}
     state = await AsyncValue.guard(() async {
       final cartRepo = ref.watch(cartRepositoryProvider);
       final cart = await cartRepo.updateCart(

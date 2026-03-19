@@ -4,4 +4,5 @@ abstract class Keys {
   static const deletedAt = 'deleted_at';
   static const String ios = 'ios';
   static const String android = 'android';
+  static const String all = 'all';
 }

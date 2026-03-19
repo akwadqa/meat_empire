@@ -77,7 +77,9 @@ _Product _$ProductFromJson(Map<String, dynamic> json) => _Product(
   listQtyCountRaw: json['list_qty_count_raw'],
   detailsLayoutRaw: json['details_layout_raw'] as String,
   variationFeatures: json['variation_features'] as List<dynamic>,
-  mainPair: MainPair.fromJson(json['main_pair'] as Map<String, dynamic>),
+  mainPair: json['main_pair'] == null
+      ? null
+      : MainPair.fromJson(json['main_pair'] as Map<String, dynamic>),
   basePrice: json['base_price'] as String,
   selectedOptions: json['selected_options'],
   hasOptions: json['has_options'] as bool,

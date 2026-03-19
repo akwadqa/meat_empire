@@ -161,7 +161,8 @@ Widget _buildButtons(
         final asyncData = ref.watch(accountControllerProvider);
         ref.listen(accountControllerProvider, (prev, next) {
           if (next is AsyncData) {
-            context.maybePop().then((_) {
+            Navigator.of(context).pop();
+            // context.maybePop().then((_) {
               showCustomDialog(
                 context: context,
                 title: next.value!.message,
@@ -169,7 +170,7 @@ Widget _buildButtons(
                     ? const Icon(Icons.check_circle, color: AppColors.green)
                     : const Icon(Icons.warning, color: AppColors.darkRed),
               );
-            });
+            // });
           }
         });
 

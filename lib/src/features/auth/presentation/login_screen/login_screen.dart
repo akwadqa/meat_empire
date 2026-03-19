@@ -69,7 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
               // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
 
                                 if (Navigator.of(context).canPop()) {
-                                  context.maybePop().then((_) => _showDialog());
+                                  Navigator.of(context).pop();
+                                  _showDialog();
                                 } else {
                                   _showDialog();
                                 }

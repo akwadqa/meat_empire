@@ -295,13 +295,14 @@ class _AddToCartButton extends ConsumerWidget {
       if (current is AsyncData) {
         // Wait for the current build to complete before showing dialog
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.maybePop().then((_) {
+          Navigator.of(context).pop();
+          // context.maybePop().then((_) {
             showCustomDialog(
               context: context,
               title: "cart_added_msg".tr(),
               icon: Icon(Icons.check_circle, color: AppColors.green, size: 45),
             );
-          });
+          // });
         });
       } else if (current is AsyncError) {
         // Wait for the current build to complete before showing error

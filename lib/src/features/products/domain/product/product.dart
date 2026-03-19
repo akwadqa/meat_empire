@@ -78,7 +78,7 @@ abstract class Product with _$Product {
     required dynamic listQtyCountRaw,
     required String detailsLayoutRaw,
     required List<dynamic> variationFeatures,
-    required MainPair mainPair,
+    required MainPair? mainPair,
     required String basePrice,
     required dynamic selectedOptions,
     required bool hasOptions,

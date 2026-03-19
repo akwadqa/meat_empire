@@ -31,7 +31,7 @@ class MainAccountScreen extends ConsumerWidget {
     );
   }
 
-  _mainAccountWidget(
+  Widget _mainAccountWidget(
           AsyncValue<ProfileResponse> asyncAccountData, BuildContext context) =>
       asyncAccountData.when(
         data: (data) {

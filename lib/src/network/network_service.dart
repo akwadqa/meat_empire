@@ -151,14 +151,14 @@ class DioAppInterceptors extends Interceptor {
 //     handler.next(response);
 //   }
 
-  @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    debugPrint("🟢 [DIO RESPONSE]");
-    debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
-    debugPrint("📦 Response data: ${_prettyJson(response.data)}");
+  // @override
+  // void onResponse(Response response, ResponseInterceptorHandler handler) {
+  //   debugPrint("🟢 [DIO RESPONSE]");
+  //   debugPrint("✅ ${response.statusCode} ${response.requestOptions.uri}");
+  //   debugPrint("📦 Response data: ${_prettyJson(response.data)}");
 
-    handler.next(response);
-  }
+  //   handler.next(response);
+  // }
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response != null) {
