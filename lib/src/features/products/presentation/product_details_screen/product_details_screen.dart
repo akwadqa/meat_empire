@@ -41,14 +41,14 @@ class ProductDetailsScreen extends ConsumerWidget {
     final asyncProductDetails = ref.watch(productDetailsProvider(productId));
 
     return PopScope(
-  // canPop: false, // we control it manually
-  // onPopInvokedWithResult: (didPop,result) async {
-  //   if (didPop) return;
+      // canPop: false, // we control it manually
+      // onPopInvokedWithResult: (didPop,result) async {
+      //   if (didPop) return;
 
-  //   debugPrint("Native back pressed");
+      //   debugPrint("Native back pressed");
 
-  //   context.maybePop();
-  // },
+      //   context.maybePop();
+      // },
       child: Scaffold(
         body: asyncProductDetails.when(
           data: (data) => ProductDetailsView(
@@ -179,10 +179,10 @@ class ProductBanner extends ConsumerWidget {
             child: CarouselDotsIndicator(dotsCount: imageUrls.length),
           ),
         PositionedDirectional(
-          start:   Platform.isIOS ?25:10,
-          top:  Platform.isIOS ? 35:20,
+          start: Platform.isIOS ? 25 : 10,
+          top: Platform.isIOS ? 35 : 20,
           child: AdaptiveBackButton(),
-          
+
           // AppCloseButton(
           //   // width: 40,
           //   // height: 40,
@@ -226,10 +226,7 @@ class _ProductBannerContent extends StatelessWidget {
               ),
             )
           : imageUrls.isNotEmpty
-          ? AppCachedNetworkImage(
-              imageUrl: imageUrls.first,
-              fit: BoxFit.cover,
-            )
+          ? AppCachedNetworkImage(imageUrl: imageUrls.first, fit: BoxFit.cover)
           : const SizedBox.shrink(),
     );
   }
@@ -254,7 +251,9 @@ class ProductDetailsInfo extends StatelessWidget {
       children: [
         20.verticalSpace,
         _ProductTitle(title: product.product),
-        5.verticalSpace,
+        10.verticalSpace,
+        _ProductDescription(dsc: product.fullDescription),
+        // 20.verticalSpace,
         _PriceAndQuantityRow(product: product, currency: currency),
         if (product.productOptions != null)
           ProductOptionsList(productOptions: product.productOptions!),
@@ -324,6 +323,27 @@ class _ProductTitle extends StatelessWidget {
       style: Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 22),
     );
   }
+}
+
+class _ProductDescription extends StatelessWidget {
+  const _ProductDescription({required this.dsc});
+
+  final String dsc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      parseHtml(dsc),
+      style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 18),
+    ).onlyPadding(bottom: dsc.isNotEmpty?20:0);
+  }
+}
+
+String parseHtml(String html) {
+  return html
+      .replaceAll(RegExp(r'<[^>]*>'), '') // remove tags
+      .replaceAll('&nbsp;', ' ')
+      .trim();
 }
 
 class _PriceAndQuantityRow extends ConsumerWidget {
@@ -428,26 +448,27 @@ class _AddToCartButton extends StatelessWidget {
         ),
         child: Consumer(
           builder: (context, ref, child) {
-            final rootContext = GoRouter.of(context).routerDelegate.navigatorKey.currentContext!;
+            final rootContext = GoRouter.of(
+              context,
+            ).routerDelegate.navigatorKey.currentContext!;
 
             ref.listen(updateCartControllerProvider, (prev, next) {
               if (next is AsyncData) {
+                if (context.canPop()) {
+                  context.pop();
+                }
 
-    if (context.canPop()) {
-      context.pop();
-    }
- 
-              Future.microtask(() {
-      showCustomDialog(
-        context: rootContext,
-        title: context.tr("cart_added_msg"),
-        icon: const Icon(
-          Icons.check_circle,
-          color: AppColors.green,
-          size: 45,
-        ),
-      );
-    });
+                Future.microtask(() {
+                  showCustomDialog(
+                    context: rootContext,
+                    title: context.tr("cart_added_msg"),
+                    icon: const Icon(
+                      Icons.check_circle,
+                      color: AppColors.green,
+                      size: 45,
+                    ),
+                  );
+                });
                 // });
               } else if (next is AsyncError) {
                 showOutOfStockDialog(context, next.error.toString());
