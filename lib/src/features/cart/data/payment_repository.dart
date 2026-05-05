@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_body_data.dart';
 import 'package:meat_empire/src/features/cart/domain/payment_entities/confirm_payment_response.dart';
@@ -30,6 +31,9 @@ class PaymentRepository {
 
   Future<ConfirmPaymentResponse> confirmPayment(
       ConfirmPaymentBodyData body) async {
+        debugPrint("Selected Date: ${body.deliveryDtae}");
+        debugPrint("Selected Time: ${body.ecTimeSlot}");
+        debugPrint("confirmPayment checkOutApi *//");
     final response =
         await _networkService.post(EndPoints.checkOutApi, body.toJson());
     ConfirmPaymentResponse paymentResponse =

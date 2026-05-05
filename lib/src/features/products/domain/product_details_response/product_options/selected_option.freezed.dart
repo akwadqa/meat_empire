@@ -22,8 +22,6 @@ mixin _$SelectedOption {
 @pragma('vm:prefer-inline')
 $SelectedOptionCopyWith<SelectedOption> get copyWith => _$SelectedOptionCopyWithImpl<SelectedOption>(this as SelectedOption, _$identity);
 
-  /// Serializes this SelectedOption to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -207,10 +205,10 @@ return $default(_that.optionId,_that.variantId);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 
-class _SelectedOption implements SelectedOption {
-   _SelectedOption({required this.optionId, required this.variantId});
+class _SelectedOption extends SelectedOption {
+   _SelectedOption({required this.optionId, required this.variantId}): super._();
   factory _SelectedOption.fromJson(Map<String, dynamic> json) => _$SelectedOptionFromJson(json);
 
 @override final  int optionId;
@@ -222,10 +220,7 @@ class _SelectedOption implements SelectedOption {
 @pragma('vm:prefer-inline')
 _$SelectedOptionCopyWith<_SelectedOption> get copyWith => __$SelectedOptionCopyWithImpl<_SelectedOption>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$SelectedOptionToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {

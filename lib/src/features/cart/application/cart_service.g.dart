@@ -34,7 +34,7 @@ final class UpdateCartControllerProvider
 }
 
 String _$updateCartControllerHash() =>
-    r'fdfa4fa4a1850123c6be639c980f8e385a866ed8';
+    r'03a30c5c5410a60487c6852f37807452a19f52de';
 
 abstract class _$UpdateCartController extends $AsyncNotifier<void> {
   FutureOr<void> build();

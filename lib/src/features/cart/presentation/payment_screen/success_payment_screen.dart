@@ -109,7 +109,8 @@ class _SuccessPaymentScreenState extends ConsumerState<SuccessPaymentScreen> {
     return CustomButtonWidget(
       text: context.tr("continue_shipping_msg"),
       onTap: () {
-        context.pushReplacement(GoRoutes.home);
+        // context.pushReplacement(GoRoutes.home);
+        Navigator.of(context).popUntil((route) => route.isFirst);
         // context.router.replace(HomeRoute(child:LayoutScreen() ));
       },
       isFiled: true,
