@@ -10,7 +10,7 @@ import 'package:meat_empire/src/features/auth/presentation/email_text_form_field
 import 'package:meat_empire/src/features/auth/presentation/auth_controller/auth_controller.dart';
 import 'package:meat_empire/src/features/auth/presentation/password_text_field/password_text_field.dart';
 import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart';
- 
+
 import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/fade_circle_loading_indicator.dart';
 import 'package:meat_empire/src/shared_widgets/app_logo.dart';
@@ -60,56 +60,55 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: Consumer(
-                    builder:
-                        (BuildContext context, WidgetRef ref, Widget? child) {
-                          ref.listen(authControllerProvider, (prev, next) {
-                            if (next is AsyncData) {
-                              if (context.mounted) {
-                                context.pushReplacement(GoRoutes.home);
-              // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+                    builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                      ref.listen(authControllerProvider, (prev, next) {
+                        if (next is AsyncData) {
+                          if (context.mounted) {
+                            context.pushReplacement(GoRoutes.home);
+                            // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
 
-                                if (Navigator.of(context).canPop()) {
-                                  Navigator.of(context).pop();
-                                  _showDialog();
-                                } else {
-                                  _showDialog();
-                                }
-                              }
-                            } else if (next is AsyncError) {
-                              if (context.mounted) {
-                                showErrorDialog(context, next.error.toString());
-                              }
+                            if (Navigator.of(context).canPop()) {
+                              Navigator.of(context).pop();
+                              _showDialog();
+                            } else {
+                              _showDialog();
                             }
-                          });
-
-                          final asyncLogin = ref.watch(authControllerProvider);
-                          if (asyncLogin is AsyncLoading) {
-                            return FadeCircleLoadingIndicator();
                           }
-                          return ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
-                                ref
-                                    .read(authControllerProvider.notifier)
-                                    .login(_email!, _password!);
-                              }
-                            },
-                            child: Text(context.tr('login')),
-                          );
+                        } else if (next is AsyncError) {
+                          if (context.mounted) {
+                            showErrorDialog(context, next.error.toString());
+                          }
+                        }
+                      });
+
+                      final asyncLogin = ref.watch(authControllerProvider);
+                      if (asyncLogin is AsyncLoading) {
+                        return FadeCircleLoadingIndicator();
+                      }
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            ref
+                                .read(authControllerProvider.notifier)
+                                .login(_email!, _password!);
+                          }
                         },
+                        child: Text(context.tr('login')),
+                      );
+                    },
                   ),
                 ),
                 24.verticalSpace,
-                AuthText(text: context.tr('dontHaveAccount')),
+                // AuthText(text: context.tr('dontHaveAccount')),
                 16.verticalSpace,
-                SizedBox(
-                  width: double.infinity,
-                  child: AuthButton(
-                    onPressed: () => context.pushReplacement(GoRoutes.signup),
-                    text: context.tr('createAccount'),
-                  ),
-                ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   child: AuthButton(
+                //     onPressed: () => context.pushReplacement(GoRoutes.signup),
+                //     text: context.tr('createAccount'),
+                //   ),
+                // ),
                 54.verticalSpace,
               ],
             ),

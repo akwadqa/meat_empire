@@ -10,7 +10,7 @@ import 'package:meat_empire/src/features/account/presentation/widgets/account_ca
 import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/custom_button_widget.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
- 
+
 import 'package:meat_empire/src/theme/app_colors.dart';
 
 @RoutePage()
@@ -30,7 +30,10 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
           _buildHeader(context),
           _buildButtonsSection(context),
           _buildLanguageSection(
-              context, currentLanguage, currentLanguageNotifier),
+            context,
+            currentLanguage,
+            currentLanguageNotifier,
+          ),
           // const Spacer(),
         ],
       ),
@@ -44,25 +47,25 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
         Text(
           context.tr("welcome_message"),
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
-              ),
+            fontSize: 22,
+            fontWeight: FontWeight.w800,
+          ),
         ).onlyPadding(top: 40),
         Text(
           "Meat Empire",
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
-                color: AppColors.primary,
-              ),
+            fontSize: 22,
+            fontWeight: FontWeight.w800,
+            color: AppColors.primary,
+          ),
         ).onlyPadding(top: 2),
         Text(
           context.tr("access_auth_message"),
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                height: 1,
-              ),
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            height: 1,
+          ),
         ).onlyPadding(top: 40),
       ],
     );
@@ -81,23 +84,27 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
           height: 50,
           width: 300,
         ).onlyPadding(top: 50),
-        CustomButtonWidget(
-          text: context.tr("createAccount"),
-          color: AppColors.grey600,
-          backgroundColor: Colors.white,
-          onTap: () => context.go(GoRoutes.signup),
-          isFiled: false,
-          topPading: 20,
-          height: 50,
-          width: 300,
-        )
+        50.verticalSpace,
+        // CustomButtonWidget(
+        //   text: context.tr("createAccount"),
+        //   color: AppColors.grey600,
+        //   backgroundColor: Colors.white,
+        //   onTap: () => context.go(GoRoutes.signup),
+        //   isFiled: false,
+        //   topPading: 20,
+        //   height: 50,
+        //   width: 300,
+        // )
       ],
     );
   }
 
   /// **Language Section - Contains Change Language Card**
   Widget _buildLanguageSection(
-      BuildContext context, String currentLanguage, CurrentLanguage notifier) {
+    BuildContext context,
+    String currentLanguage,
+    CurrentLanguage notifier,
+  ) {
     return AccountCardsWidget(
       title: "change_Language",
       icon: Assets.icons.translateIcon.svg(),
