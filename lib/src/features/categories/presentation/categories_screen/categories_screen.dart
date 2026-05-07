@@ -22,7 +22,6 @@ part 'categories_screen.g.dart';
 
 /// Riverpod providers for managing category state
 
-
 @riverpod
 class IsExpandedCategoriesBar extends _$IsExpandedCategoriesBar {
   @override
@@ -40,40 +39,35 @@ class CategoriesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-  // ✅ Safe place to update provider after first frame
-    final fromHome =
-        ref.read(searchCategoryIndexControllerProvider);
-          if (categoryId != null && ref.read(selectedCategoryProvider).isEmpty) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(selectedCategoryProvider.notifier).setCategory(categoryId!);
-    });
-  }
+    // ✅ Safe place to update provider after first frame
+    final fromHome = ref.read(searchCategoryIndexControllerProvider);
+    if (categoryId != null && ref.read(selectedCategoryProvider).isEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(selectedCategoryProvider.notifier).setCategory(categoryId!);
+      });
+    }
 
     final homeAsync = ref.watch(homeProvider);
-  // final selectedCategoryNotifier = ref.read(selectedCategoryProvider.notifier);
-  // if (categoryId != null && ref.read(selectedCategoryProvider).isEmpty) {
-  //   selectedCategoryNotifier.setCategory(categoryId??"");
-  // }
-    return  PopScope(
-  canPop: !fromHome, // 🚨 prevent automatic pop
-  onPopInvokedWithResult: (didPop,result) {
+    // final selectedCategoryNotifier = ref.read(selectedCategoryProvider.notifier);
+    // if (categoryId != null && ref.read(selectedCategoryProvider).isEmpty) {
+    //   selectedCategoryNotifier.setCategory(categoryId??"");
+    // }
+    return PopScope(
+      canPop: !fromHome, // 🚨 prevent automatic pop
+      onPopInvokedWithResult: (didPop, result) {
+        if (fromHome) {
+          // 👇 Same logic as your custom back button
+          ref.read(searchCategoryIndexControllerProvider.notifier).checkState();
 
-
-    if (fromHome) {
-      // 👇 Same logic as your custom back button
-      ref
-          .read(searchCategoryIndexControllerProvider.notifier)
-          .checkState();
-
-      // context.tabsRouter.setActiveIndex(0);
-      context.go(GoRoutes.home);
-      debugPrint(":fromHome and setActiveIndex =>0");
-    } 
-  },
+          // context.tabsRouter.setActiveIndex(0);
+          context.go(GoRoutes.home);
+          debugPrint(":fromHome and setActiveIndex =>0");
+        }
+      },
 
       child: Scaffold(
         body: homeAsync.when(
-          data: (home) => _buildCategoriesLayout(context, ref, home,fromHome),
+          data: (home) => _buildCategoriesLayout(context, ref, home, fromHome),
           loading: () => const FadeCircleLoadingIndicator(),
           error: (_, __) => const AppErrorWidget(),
         ),
@@ -89,7 +83,7 @@ class CategoriesScreen extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     dynamic home,
-    bool? fromHome
+    bool? fromHome,
   ) {
     final categories = _extractCategories(home);
 
@@ -100,7 +94,10 @@ class CategoriesScreen extends ConsumerWidget {
           child: Consumer(
             builder: (context, ref, _) {
               final selectedCategoryId = ref.watch(selectedCategoryProvider);
-              return SearchScreen(categoryId: selectedCategoryId,fromHome:fromHome);
+              return SearchScreen(
+                categoryId: selectedCategoryId,
+                fromHome: fromHome,
+              );
             },
           ),
         ),

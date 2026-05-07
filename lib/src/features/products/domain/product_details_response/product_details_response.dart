@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meat_empire/src/features/search/domain/search_response/subcategory_model.dart';
 
 import 'currency.dart';
 import 'product_details.dart';

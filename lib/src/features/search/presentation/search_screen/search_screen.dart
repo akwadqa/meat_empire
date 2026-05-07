@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/fonts.gen.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
+import 'package:meat_empire/src/features/categories/presentation/category_item/subcategory_bar_widget.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_grid_view.dart';
 import 'package:meat_empire/src/features/search/domain/search_response/sorting.dart';
 import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
@@ -42,6 +43,9 @@ class _SearchContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fromHome = ref.watch(searchCategoryIndexControllerProvider);
+    final searchAsync = ref.watch(searchControllerProvider(categoryId));
+    final data = searchAsync.asData?.value;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -73,6 +77,20 @@ class _SearchContent extends ConsumerWidget {
             width: MediaQuery.sizeOf(context).width / 3,
             height: 50,
             child: _SortingDropdown(categoryId),
+          ),
+
+        if (data != null &&
+            data.subcategories != null &&
+            data.subcategories!.isNotEmpty)
+          Column(
+            children: [
+              const SizedBox(height: 16),
+
+              SubcategoriesBar(
+                subcategories: data.subcategories!,
+                categoryId: categoryId,
+              ),
+            ],
           ),
         SizedBox(height: 26),
         Expanded(child: _ProductsGridView(categoryId)),

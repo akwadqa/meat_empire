@@ -16,6 +16,9 @@ _SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
           .map((e) => Sorting.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalProducts: json['total_products'],
+      subcategories: (json['subcategories'] as List<dynamic>?)
+          ?.map((e) => SubcategoryModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       message: json['message'] as String,
       success: json['success'] as bool,
     );

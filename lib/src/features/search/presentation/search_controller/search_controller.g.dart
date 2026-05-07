@@ -98,3 +98,57 @@ abstract class _$SearchController extends $AsyncNotifier<SearchResponse> {
     element.handleValue(ref, created);
   }
 }
+
+@ProviderFor(SelectedSubcategory)
+const selectedSubcategoryProvider = SelectedSubcategoryProvider._();
+
+final class SelectedSubcategoryProvider
+    extends $NotifierProvider<SelectedSubcategory, String?> {
+  const SelectedSubcategoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'selectedSubcategoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$selectedSubcategoryHash();
+
+  @$internal
+  @override
+  SelectedSubcategory create() => SelectedSubcategory();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
+  }
+}
+
+String _$selectedSubcategoryHash() =>
+    r'0410d6fdc94b3ccce44d11b46adc69dd0ab01c6d';
+
+abstract class _$SelectedSubcategory extends $Notifier<String?> {
+  String? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<String?, String?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String?, String?>,
+              String?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
