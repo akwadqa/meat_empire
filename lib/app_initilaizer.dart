@@ -46,7 +46,7 @@ Future<ProviderContainer> initializeProviders() async {
   await container.read(notificationsServiceProvider).init();
 
   // -- Deep Links Init -- //
-  await container.read(deepLinkServiceProvider).initDeepLinks();
+  // await container.read(deepLinkServiceProvider).initDeepLinks();
   
   //   FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   // analytics.setAnalyticsCollectionEnabled(true);

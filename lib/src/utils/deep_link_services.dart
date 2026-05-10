@@ -2,7 +2,10 @@ import 'dart:async';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meat_empire/src/routing/app_router_provider.dart';
+import 'package:meat_empire/src/routing/new_router/go_route.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'deep_link_services.g.dart';
@@ -62,41 +65,72 @@ class DeepLinkService {
   // }
 
   void _handleNavigation(Uri uri) {
-    String normalizedPath = normalizeIncomingUri(uri);
+    debugPrint('استقبال رابط كامل: $uri');
 
-    debugPrint('المسار الموحد الموجه للتطبيق: $normalizedPath');
+    final path = uri
+        .path; 
 
-    if (normalizedPath.startsWith('/product')) {
-      final uriObj = Uri.parse(normalizedPath);
-      final productId = uriObj.queryParameters['id'];
-      debugPrint('push to product: $productId');
+    if (_tryHandleProductRoute(path)) return;
+
+   
+    debugPrint('لم يتم العثور على قاعدة مطابقة لهذا المسار');
+  }
+
+  // --- القواعد (Routes) ---
+
+  bool _tryHandleProductRoute(String path) {
+    final regExp = RegExp(r'id-(\d+)');
+    final match = regExp.firstMatch(path);
+
+    if (match != null) {
+      final productId = match.group(1); // استخراج الرقم (مثل 21)
+      if (productId != null) {
+        debugPrint('التوجيه لمنتج بمعرف: $productId');
+
+        // _ref.read(appRouterProvider).goRouter.pushReplacement(
+        //   GoRoutes.productDetails,
+        //   extra: productId
+        // );
+        rootKey.currentContext?.go(GoRoutes.productDetails, extra: productId);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool _tryHandleCategoryRoute(String path) {
+    if (path.contains('/category/')) {
+      final segments = path.split('/');
+      final categoryName = segments.lastWhere((s) => s.isNotEmpty);
+
       _ref
           .read(appRouterProvider)
           .goRouter
-          .pushReplacement('/product', extra: productId);
+          .pushReplacement('/category-view', extra: categoryName);
+      return true;
     }
+    return false;
   }
+  // String normalizeIncomingUri(Uri u) {
+  //   if (u.scheme == 'http' || u.scheme == 'https') {
+  //     return Uri(
+  //       path: u.path.isEmpty ? '/' : u.path,
+  //       // نمرر معاملات البحث (Query Parameters) إن وجدت (مثلاً ?id=5)
+  //       queryParameters: u.queryParameters.isEmpty ? null : u.queryParameters,
+  //     ).toString();
+  //   }
 
-  String normalizeIncomingUri(Uri u) {
-    if (u.scheme == 'http' || u.scheme == 'https') {
-      return Uri(
-        path: u.path.isEmpty ? '/' : u.path,
-        // نمرر معاملات البحث (Query Parameters) إن وجدت (مثلاً ?id=5)
-        queryParameters: u.queryParameters.isEmpty ? null : u.queryParameters,
-      ).toString();
-    }
+  //   if (u.scheme == 'meat-empire') {
+  //     final path = u.host.isEmpty ? u.path : '/${u.host}${u.path}';
 
-    if (u.scheme == 'meat-empire') {
-      final path = u.host.isEmpty ? u.path : '/${u.host}${u.path}';
+  //     return Uri(
+  //       path: path.startsWith('/') ? path : '/$path',
+  //       queryParameters: u.queryParameters.isEmpty ? null : u.queryParameters,
+  //     ).toString();
+  //   }
 
-      return Uri(
-        path: path.startsWith('/') ? path : '/$path',
-        queryParameters: u.queryParameters.isEmpty ? null : u.queryParameters,
-      ).toString();
-    }
-
-    return u.toString();
-  }
+  //   return u.toString();
+  // }
 
   void dispose() {
     _linkSubscription?.cancel();

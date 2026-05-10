@@ -26,6 +26,30 @@ import 'go_routes.dart';
 final GlobalKey<NavigatorState> rootKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> shellKey = GlobalKey<NavigatorState>();
 
+String normalizeIncomingUri(Uri u) {
+  if (u.scheme == 'http' || u.scheme == 'https') {
+    final path = u.path; 
+
+    final regExp = RegExp(r'id-(\d+)');
+    final match = regExp.firstMatch(path);
+
+    if (match != null) {
+      final productId = match.group(1);
+     
+      return '/product-details?id=$productId';
+    }
+
+    return path.isEmpty ? '/' : path;
+  }
+
+  if (u.scheme == 'meat-empire') {
+    final path = u.host.isEmpty ? u.path : '/${u.host}${u.path}';
+    return path;
+  }
+
+  return u.toString();
+}
+
 class AppRouter {
   final GoRouter goRouter;
 
@@ -38,6 +62,21 @@ class AppRouter {
       initialLocation: GoRoutes.home,
       observers: [CustomNavigationObserver()],
       errorBuilder: (context, state) => const FallbackScreen(),
+      redirect: (context, state) {
+        final uri = state.uri;
+
+        if (uri.host.contains('meat-empire.com')) {
+          final path = uri.path;
+          final match = RegExp(r'id-(\d+)').firstMatch(path);
+
+          if (match != null) {
+            final idString = match.group(1);
+            return '${GoRoutes.productDetails}?id=$idString';
+          }
+        }
+
+        return null;
+      },
       routes: [
         /// SHELL (BOTTOM NAV)
         ShellRoute(
@@ -78,14 +117,37 @@ class AppRouter {
           ],
         ),
 
+        // GoRoute(
+        //   path: GoRoutes.productDetails,
+        //   name: GoRoutes.productDetails,
+        //   // parentNavigatorKey: rootKey,
+        //   pageBuilder: (BuildContext context, GoRouterState state) {
+        //     return CustomTransitionPage(
+        //       key: state.pageKey,
+        //       child: ProductDetailsScreen(productId: state.extra as int),
+        //       transitionsBuilder:
+        //           (context, animation, secondaryAnimation, child) {
+        //             return FadeTransition(opacity: animation, child: child);
+        //           },
+        //     );
+        //   },
+        // ),
         GoRoute(
-          path: GoRoutes.productDetails,
+          path:
+              GoRoutes.productDetails, 
           name: GoRoutes.productDetails,
-          // parentNavigatorKey: rootKey,
           pageBuilder: (BuildContext context, GoRouterState state) {
+            int? productId = state.extra as int?;
+
+            if (productId == null && state.uri.queryParameters['id'] != null) {
+              productId = int.tryParse(state.uri.queryParameters['id']!);
+            }
+
             return CustomTransitionPage(
               key: state.pageKey,
-              child: ProductDetailsScreen(productId: state.extra as int),
+              child: ProductDetailsScreen(
+                productId: productId ?? 0,
+              ), 
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                     return FadeTransition(opacity: animation, child: child);
@@ -128,7 +190,6 @@ class AppRouter {
         //     return PaymentScreen(slot: slot, deliverySlot: deliverySlot);
         //   },
         // ),
-
         GoRoute(
           path: GoRoutes.payment,
           name: GoRoutes.payment,

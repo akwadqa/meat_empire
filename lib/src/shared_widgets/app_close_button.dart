@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 
 import '../theme/app_colors.dart';
 
@@ -30,13 +31,15 @@ import '../theme/app_colors.dart';
 // }
 
 class AppCloseButton extends StatelessWidget {
-  const AppCloseButton(
-      {super.key,
-      this.icon,
-      this.width,
-      this.height,
-      this.backgroundColor = Colors.white,
-      this.iconColor = AppColors.primary, this.onBack});
+  const AppCloseButton({
+    super.key,
+    this.icon,
+    this.width,
+    this.height,
+    this.backgroundColor = Colors.white,
+    this.iconColor = AppColors.primary,
+    this.onBack,
+  });
   final Widget? icon;
   final double? width;
   final double? height;
@@ -60,7 +63,15 @@ class AppCloseButton extends StatelessWidget {
         ],
       ),
       child: IconButton(
-        onPressed:onBack??(){ context.pop();},
+        onPressed:
+            onBack ??
+            () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go(GoRoutes.home);
+              }
+            },
         icon: icon ?? Icon(Icons.close, color: iconColor),
       ),
     );

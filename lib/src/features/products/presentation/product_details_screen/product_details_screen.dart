@@ -13,6 +13,7 @@ import 'package:meat_empire/src/features/products/domain/product_details_respons
 import 'package:meat_empire/src/features/products/domain/product_details_response/products_block.dart';
 import 'package:meat_empire/src/features/products/presentation/product_details_screen/product_options_list/product_options_controller.dart';
 import 'package:meat_empire/src/features/products/presentation/products_view/products_scroller_view.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_functions.dart';
 import '../../../../shared_widgets/adaptive_back_button.dart';
 import '../../../../shared_widgets/app_cached_network_image.dart';
@@ -49,6 +50,19 @@ class ProductDetailsScreen extends ConsumerWidget {
 
       //   context.maybePop();
       // },
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        // if (didPop) {
+        //   context.goNamed(AppRoutes.mainScreen);
+        // }
+        if (didPop) return;
+
+        if (context.canPop()) {
+          context.pop();
+        } else {
+          context.goNamed(GoRoutes.home);
+        }
+      },
       child: Scaffold(
         body: asyncProductDetails.when(
           data: (data) => ProductDetailsView(
@@ -335,7 +349,7 @@ class _ProductDescription extends StatelessWidget {
     return Text(
       parseHtml(dsc),
       style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 18),
-    ).onlyPadding(bottom: dsc.isNotEmpty?20:0);
+    ).onlyPadding(bottom: dsc.isNotEmpty ? 20 : 0);
   }
 }
 
