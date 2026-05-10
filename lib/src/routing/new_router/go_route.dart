@@ -26,27 +26,47 @@ import 'go_routes.dart';
 final GlobalKey<NavigatorState> rootKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> shellKey = GlobalKey<NavigatorState>();
 
+// String normalizeIncomingUri(Uri u) {
+//   if (u.scheme == 'http' || u.scheme == 'https') {
+//     final path = u.path;
+
+//     final regExp = RegExp(r'id-(\d+)');
+//     final match = regExp.firstMatch(path);
+
+//     if (match != null) {
+//       final productId = match.group(1);
+
+//       return '/product-details?id=$productId';
+//     }
+
+//     return path.isEmpty ? '/' : path;
+//   }
+
+//   if (u.scheme == 'meat-empire') {
+//     final path = u.host.isEmpty ? u.path : '/${u.host}${u.path}';
+//     return path;
+//   }
+
+//   return u.toString();
+// }
+
 String normalizeIncomingUri(Uri u) {
   if (u.scheme == 'http' || u.scheme == 'https') {
-    final path = u.path; 
+    final path = u.path.replaceAll('/', ''); 
 
-    final regExp = RegExp(r'id-(\d+)');
-    final match = regExp.firstMatch(path);
-
-    if (match != null) {
-      final productId = match.group(1);
-     
-      return '/product-details?id=$productId';
+    if (u.path.contains('id-')) {
+      final productMatch = RegExp(r'id-(\d+)').firstMatch(u.path);
+      if (productMatch != null) {
+        return '${GoRoutes.productDetails}?id=${productMatch.group(1)}';
+      }
     }
 
-    return path.isEmpty ? '/' : path;
-  }
+    if (path.isNotEmpty && !u.path.contains('id-')) {
+      return '${GoRoutes.home}?category=$path';
+    }
 
-  if (u.scheme == 'meat-empire') {
-    final path = u.host.isEmpty ? u.path : '/${u.host}${u.path}';
-    return path;
+    return u.path.isEmpty ? '/' : u.path;
   }
-
   return u.toString();
 }
 
@@ -64,14 +84,27 @@ class AppRouter {
       errorBuilder: (context, state) => const FallbackScreen(),
       redirect: (context, state) {
         final uri = state.uri;
+        final path = uri.path;
 
-        if (uri.host.contains('meat-empire.com')) {
-          final path = uri.path;
-          final match = RegExp(r'id-(\d+)').firstMatch(path);
+        final cleanPath = path.replaceAll('/', '');
 
-          if (match != null) {
-            final idString = match.group(1);
+        if (cleanPath.isEmpty) return null;
+
+        if (uri.host.contains('meat-empire.com') || !path.startsWith('/home')) {
+          final productMatch = RegExp(r'id-(\d+)').firstMatch(path);
+          if (productMatch != null) {
+            final idString = productMatch.group(1);
             return '${GoRoutes.productDetails}?id=$idString';
+          }
+          final reservedRoutes = [
+            GoRoutes.home,
+            GoRoutes.cart,
+            GoRoutes.account,
+            GoRoutes.categories,
+          ];
+
+          if (!reservedRoutes.contains(path) && !path.contains('id-')) {
+            return '${GoRoutes.home}?category=$cleanPath';
           }
         }
 
@@ -86,7 +119,10 @@ class AppRouter {
           routes: [
             GoRoute(
               path: GoRoutes.home,
-              builder: (context, state) => const LayoutScreen(),
+              builder: (context, state) {
+                final categoryName = state.uri.queryParameters['category'];
+                return LayoutScreen(initalCategory: categoryName);
+              },
             ),
 
             GoRoute(
@@ -133,8 +169,7 @@ class AppRouter {
         //   },
         // ),
         GoRoute(
-          path:
-              GoRoutes.productDetails, 
+          path: GoRoutes.productDetails,
           name: GoRoutes.productDetails,
           pageBuilder: (BuildContext context, GoRouterState state) {
             int? productId = state.extra as int?;
@@ -145,9 +180,7 @@ class AppRouter {
 
             return CustomTransitionPage(
               key: state.pageKey,
-              child: ProductDetailsScreen(
-                productId: productId ?? 0,
-              ), 
+              child: ProductDetailsScreen(productId: productId ?? 0),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                     return FadeTransition(opacity: animation, child: child);
