@@ -63,15 +63,18 @@ class ProductDetailsScreen extends ConsumerWidget {
           context.goNamed(GoRoutes.home);
         }
       },
-      child: Scaffold(
-        body: asyncProductDetails.when(
-          data: (data) => ProductDetailsView(
-            product: data.product,
-            productsBlock: data.productsBlock,
-            currency: data.currency,
+      child: SafeArea(
+        top: false,
+        child: Scaffold(
+          body: asyncProductDetails.when(
+            data: (data) => ProductDetailsView(
+              product: data.product,
+              productsBlock: data.productsBlock,
+              currency: data.currency,
+            ),
+            error: (_, __) => Center(child: const AppErrorWidget()),
+            loading: () => Center(child: const FadeCircleLoadingIndicator()),
           ),
-          error: (_, __) => Center(child: const AppErrorWidget()),
-          loading: () => Center(child: const FadeCircleLoadingIndicator()),
         ),
       ),
     );

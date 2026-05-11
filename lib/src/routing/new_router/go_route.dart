@@ -52,7 +52,7 @@ final GlobalKey<NavigatorState> shellKey = GlobalKey<NavigatorState>();
 
 String normalizeIncomingUri(Uri u) {
   if (u.scheme == 'http' || u.scheme == 'https') {
-    final path = u.path.replaceAll('/', ''); 
+    final path = u.path.replaceAll('/', '');
 
     if (u.path.contains('id-')) {
       final productMatch = RegExp(r'id-(\d+)').firstMatch(u.path);
@@ -85,6 +85,11 @@ class AppRouter {
       redirect: (context, state) {
         final uri = state.uri;
         final path = uri.path;
+        if (state.fullPath == GoRoutes.productDetails ||
+            state.fullPath == GoRoutes.cart ||
+            state.fullPath == GoRoutes.account) {
+          return null;
+        }
 
         final cleanPath = path.replaceAll('/', '');
 

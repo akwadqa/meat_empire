@@ -25,21 +25,22 @@ class HomeScreen extends ConsumerWidget {
   final Widget child;
   const HomeScreen({super.key, required this.child});
 
-
   static const double _iconHeight = 25.0;
   static const ColorFilter _activeColorFilter = ColorFilter.mode(
     AppColors.primary,
     BlendMode.srcIn,
   );
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-    return 
-    Scaffold(
-  appBar: _buildAppBar(context),
-  body: child,
-  bottomNavigationBar: _buildBottomNavigation(context,ref),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SafeArea(
+      top: false,
 
-);
+      child: Scaffold(
+        appBar: _buildAppBar(context),
+        body: child,
+        bottomNavigationBar: _buildBottomNavigation(context, ref),
+      ),
+    );
     // AutoTabsScaffold(
     //   extendBody: true,
     //   routes: [
@@ -206,79 +207,76 @@ class HomeScreen extends ConsumerWidget {
         .watch(selectedCategoryProvider.notifier)
         .setCategory(categories[index].categoryId);
     ref.read(searchCategoryIndexControllerProvider.notifier).switchState();
-    context.pushReplacement(GoRoutes.categories,extra: {
-      "categoryId":categories[index].categoryId,
-      "fromHome":true,
-    });
+    context.pushReplacement(
+      GoRoutes.categories,
+      extra: {"categoryId": categories[index].categoryId, "fromHome": true},
+    );
     // context.router.replaceAll([
     //   CategoriesRoute(categoryId: categories[index].categoryId, fromHome: true),
     // ]);
   }
 
-Widget _buildAppBarTitle(BuildContext context) {
-  final location = GoRouterState.of(context).uri.toString();
+  Widget _buildAppBarTitle(BuildContext context) {
+    final location = GoRouterState.of(context).uri.toString();
 
-  String? titleKey;
+    String? titleKey;
 
-  if (location.startsWith('/categories')) {
-    titleKey = 'categories';
-  } else if (location.startsWith('/cart')) {
-    titleKey = 'myCart';
+    if (location.startsWith('/categories')) {
+      titleKey = 'categories';
+    } else if (location.startsWith('/cart')) {
+      titleKey = 'myCart';
+    }
+
+    return titleKey != null
+        ? Text(
+            context.tr(titleKey),
+            style: Theme.of(
+              context,
+            ).textTheme.displayMedium!.copyWith(fontSize: 18),
+          )
+        : const AppLogo();
   }
 
-  return titleKey != null
-      ? Text(
-          context.tr(titleKey),
-          style: Theme.of(context)
-              .textTheme
-              .displayMedium!
-              .copyWith(fontSize: 18),
-        )
-      : const AppLogo();
-}
+  int _getCurrentIndex(BuildContext context) {
+    final location = GoRouterState.of(context).uri.toString();
 
-int _getCurrentIndex(BuildContext context) {
-  final location = GoRouterState.of(context).uri.toString();
+    if (location.startsWith('/categories')) return 1;
+    if (location.startsWith('/cart')) return 2;
+    if (location.startsWith('/account')) return 3;
 
-  if (location.startsWith('/categories')) return 1;
-  if (location.startsWith('/cart')) return 2;
-  if (location.startsWith('/account')) return 3;
+    return 0; // default home
+  }
 
-  return 0; // default home
-}
-
-Widget _buildBottomNavigation(BuildContext context, WidgetRef ref)
- {
+  Widget _buildBottomNavigation(BuildContext context, WidgetRef ref) {
     final currentIndex = _getCurrentIndex(context);
 
     final items = [
       _buildBottomNavItem(
         context,
-              currentIndex: currentIndex,
+        currentIndex: currentIndex,
 
         index: 0,
         icon: Assets.icons.homeIcon,
         labelKey: 'products',
-        
       ),
       _buildBottomNavItem(
         context,
-      currentIndex: currentIndex,
+        currentIndex: currentIndex,
         index: 1,
         icon: Assets.icons.categoriesSearchIcon,
         labelKey: 'categories',
-        ref: ref
+        ref: ref,
       ),
       _buildBottomNavItem(
         context,
-      currentIndex: currentIndex,
+        currentIndex: currentIndex,
         index: 2,
         icon: Assets.icons.cartIcon,
         labelKey: 'cart',
       ),
       _buildBottomNavItem(
         context,
-      currentIndex: currentIndex,
+        currentIndex: currentIndex,
         index: 3,
         icon: Assets.icons.circulePersonIcon,
         labelKey: 'myAccount',
@@ -288,6 +286,7 @@ Widget _buildBottomNavigation(BuildContext context, WidgetRef ref)
     return Container(
       height: 65, //80
       // padding: const EdgeInsets.only(bottom: 10),
+      // padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -308,15 +307,14 @@ Widget _buildBottomNavigation(BuildContext context, WidgetRef ref)
   }
 
   Widget _buildBottomNavItem(
-    BuildContext context,
-     {
-       required int currentIndex,
+    BuildContext context, {
+    required int currentIndex,
     required int index,
     required SvgGenImage icon,
     required String labelKey,
-     WidgetRef? ref,
+    WidgetRef? ref,
   }) {
-  final isActive = currentIndex == index;
+    final isActive = currentIndex == index;
     return BottomNavItem(
       icon: icon.svg(
         height: _iconHeight,
@@ -325,25 +323,26 @@ Widget _buildBottomNavigation(BuildContext context, WidgetRef ref)
       label: context.tr(labelKey),
       isActive: isActive,
       onTap: () {
-        if(index==1){
-          ref!.read(searchCategoryIndexControllerProvider.notifier).checkState();
+        if (index == 1) {
+          ref!
+              .read(searchCategoryIndexControllerProvider.notifier)
+              .checkState();
         }
-switch (index) {
-        case 0:
-          context.go('/home');
-          break;
-        case 1:
-          context.go('/categories');
-          break;
-        case 2:
-          context.go('/cart');
-          break;
-        case 3:
-          context.go('/account');
-          break;
-      }         
-         
-         }
+        switch (index) {
+          case 0:
+            context.go('/home');
+            break;
+          case 1:
+            context.go('/categories');
+            break;
+          case 2:
+            context.go('/cart');
+            break;
+          case 3:
+            context.go('/account');
+            break;
+        }
+      },
     );
   }
 
