@@ -85,16 +85,16 @@ class NotAuthMainAccountScreen extends ConsumerWidget {
           width: 300,
         ).onlyPadding(top: 50),
         50.verticalSpace,
-        // CustomButtonWidget(
-        //   text: context.tr("createAccount"),
-        //   color: AppColors.grey600,
-        //   backgroundColor: Colors.white,
-        //   onTap: () => context.go(GoRoutes.signup),
-        //   isFiled: false,
-        //   topPading: 20,
-        //   height: 50,
-        //   width: 300,
-        // )
+        CustomButtonWidget(
+          text: context.tr("createAccount"),
+          color: AppColors.grey600,
+          backgroundColor: Colors.white,
+          onTap: () => context.go(GoRoutes.signup),
+          isFiled: false,
+          topPading: 20,
+          height: 50,
+          width: 300,
+        )
       ],
     );
   }
