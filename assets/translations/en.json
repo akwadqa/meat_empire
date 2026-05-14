@@ -47,8 +47,8 @@
     "the_item_already_added_in_cart": "This item already added to cart",
     "cartContent": "Cart Contents",
     "empty_data": "Empty items",
-  "select_area": "Select area",
-  "select_city_first": "Please select a city first",
+    "select_area": "Select area",
+    "select_city_first": "Please select a city first",
     "home": "Home",
     "logout": "Logout",
     "edit_account_information": "Edit account information",
@@ -139,7 +139,7 @@
     "update_title_optional": "New Version Available",
     "update_message_optional": "A new version of the app is available with improvements and new features. Update now to enjoy the best experience.",
     "update_title_required": "New Update Required",
-    "update_message_required": "Your current version is no longer supported. Please update the app to continue using our services."
-,  
-    "variantError": "Please select a variant for all options."
+    "update_message_required": "Your current version is no longer supported. Please update the app to continue using our services.",
+    "variantError": "Please select a variant for all options.",
+    "meat_empire" : "MEAT EMPIRE"
 }

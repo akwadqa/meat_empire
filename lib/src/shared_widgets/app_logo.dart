@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../gen/assets.gen.dart';
@@ -15,7 +16,8 @@ class AppLogo extends StatelessWidget {
       children: [
         Assets.images.logo.image(),
         SizedBox(width: 8),
-        Text('MEAT EMPIRE',
+        // Text('MEAT EMPIRE',
+        Text('meat_empire'.tr(),
             style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 20,

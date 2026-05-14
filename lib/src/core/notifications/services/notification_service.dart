@@ -9,6 +9,8 @@ import 'package:meat_empire/src/core/notifications/repositories/notifications_re
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
 import 'package:meat_empire/src/features/auth/data/auth_repository.dart';
 import 'package:meat_empire/src/localization/current_language.dart';
+import 'package:meat_empire/src/routing/app_router_provider.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -30,10 +32,28 @@ class NotificationsService {
 
   Future<void> init() async {
     debugPrint("FCMConfig.instance.init");
+    // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //   print("🎯🎯🎯 [URGENT DATA]: ${message.data}");
+    //   print("🎯🎯🎯 [URGENT NOTIF]: ${message.notification?.title}");
+    // });
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("========= إشعار في المقدمة (Foreground) =========");
+      _printData(message);
+    });
+
+    // 2. النقر على الإشعار والتطبيق في "الخلفية" (Background)
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("========= تم النقر على الإشعار من الخلفية =========");
+      _navigateToProduct(message);
+      _printData(message);
+    });
+
+    // 3. التطبيق كان "مغلقاً تماماً" (Terminated) وتم فتحه بالنقر على الإشعار
+    _checkInitialMessage();
 
     await FCMConfig.instance.init(
       options: DefaultFirebaseOptions.currentPlatform,
-      
+
       defaultAndroidChannel: const AndroidNotificationChannel(
         'high_importance_channel',
         'Fcm config',
@@ -51,11 +71,11 @@ class NotificationsService {
 
       debugPrint('APNS Token ready: $apnsToken');
     }
-    // final token = await _messaging.getToken();
-    // debugPrint("FCM Token: $token");
+    final token = await _messaging.getToken();
+    debugPrint("FCM Token: $token");
 
     // if (token != null) {
-      await subscribeFCMTopics();
+    await subscribeFCMTopics();
     // } else {
     //   debugPrint("⚠️ Token not ready yet, skip subscribing");
     // }
@@ -74,6 +94,54 @@ class NotificationsService {
     });
 
     // sendDeviceToken(userId);
+  }
+
+  Future<void> _checkInitialMessage() async {
+    RemoteMessage? initialMessage = await FirebaseMessaging.instance
+        .getInitialMessage();
+    if (initialMessage != null) {
+      print("========= تم فتح التطبيق من حالة الإغلاق التام =========");
+      _printData(initialMessage);
+      _navigateToProduct(initialMessage);
+    }
+  }
+
+  void _printData(RemoteMessage message) {
+    // طباعة العنوان والمحتوى من قسم الـ notification
+    print("العنوان (Title): ${message.notification?.title}");
+    print("النص (Body): ${message.notification?.body}");
+
+    // طباعة البيانات القادمة من قسم الـ data (التي أرسلها CS-Cart)
+    if (message.data.isNotEmpty) {
+      print("البيانات القادمة (Data Payload):");
+      print("الوقت (time): ${message.data['time']}");
+      print("المحتوى المرسل (content): ${message.data['content']}");
+      print("المحتوى): ${message.data}");
+      // _ref
+      //     .read(appRouterProvider)
+      //     .goRouter
+      //     .go(GoRoutes.productDetails, extra: int.parse(id));
+    } else {
+      print("تحذير: قسم الـ Data فارغ!");
+    }
+    print("==================================================");
+  }
+
+  void _navigateToProduct(RemoteMessage message) {
+    final id = message.data['type_data'];
+    if (id != null) {
+      try {
+        _ref
+            .read(appRouterProvider)
+            .goRouter
+            .pushNamed(
+              GoRoutes.productDetails,
+              extra: int.parse(id.toString()),
+            );
+      } catch (e) {
+        debugPrint("Error parsing product ID: $e");
+      }
+    }
   }
 
   Future<void> setupInteractedMessage(GoRoute appRouter) async {
@@ -126,20 +194,22 @@ class NotificationsService {
       final platformTopic = Platform.isIOS ? Keys.ios : Keys.android;
       final languageTopic = _ref.read(currentLanguageProvider);
 
-     await FCMConfig.instance.messaging.subscribeToTopic(Keys.all);
-     await FCMConfig.instance.messaging.subscribeToTopic(platformTopic);
-     await FCMConfig.instance.messaging.subscribeToTopic(languageTopic);
+      await FCMConfig.instance.messaging.subscribeToTopic(Keys.all);
+      await FCMConfig.instance.messaging.subscribeToTopic(platformTopic);
+      await FCMConfig.instance.messaging.subscribeToTopic(languageTopic);
 
       debugPrint('Subscribed to topics: all, $platformTopic, $languageTopic');
     } catch (e) {
       debugPrint('Error subscribing to topics: $e');
     }
   }
+
   Future<void> unsubscribeOrdersTopic() async {
-      final platformTopic = Platform.isIOS ? Keys.ios : Keys.android;
+    final platformTopic = Platform.isIOS ? Keys.ios : Keys.android;
 
     await FCMConfig.instance.messaging.unsubscribeFromTopic(platformTopic);
   }
+
   Future<void> updateLanguageTopic({
     required String oldLang,
     required String newLang,
@@ -172,8 +242,32 @@ class NotificationsService {
       requestSoundPermission: true,
     );
 
+    // await _localNotifications.initialize(
+    //   const InitializationSettings(android: androidSettings, iOS: iosSettings),
+    // );
     await _localNotifications.initialize(
       const InitializationSettings(android: androidSettings, iOS: iosSettings),
+      onDidReceiveNotificationResponse: (NotificationResponse response) {
+        // تحويل الـ payload النصي إلى Map
+        if (response.payload != null) {
+          final Map<String, dynamic> data = json.decode(response.payload!);
+          final String? productId = data['type_data'];
+          if (productId != null) {
+            // 3. التوجيه لصفحة المنتج
+            _ref
+                .read(appRouterProvider)
+                .goRouter
+                .pushNamed(
+                  GoRoutes.productDetails,
+                  extra: int.parse(productId),
+                );
+          }
+
+          // هنا يمكنك استدعاء منطق التوجيه الخاص بك
+          // مثال:
+          // _handleNotification(message: RemoteMessage(data: data), appRouter: yourRouter);
+        }
+      },
     );
 
     await _localNotifications
@@ -190,31 +284,31 @@ class NotificationsService {
         );
   }
 
-  Future<void> _handleForegroundMessage(RemoteMessage message) async {
-    final notification = message.notification;
-    if (notification != null) {
-      _localNotifications.show(
-        notification.hashCode,
-        notification.title,
-        notification.body,
-        NotificationDetails(
-          android: AndroidNotificationDetails(
-            'high_importance_channel',
-            'High Importance Notifications',
-            channelDescription: 'Important notifications',
-            importance: Importance.high,
-            priority: Priority.high,
-          ),
-          iOS: const DarwinNotificationDetails(
-            presentAlert: true,
-            presentBadge: true,
-            presentSound: true,
-          ),
-        ),
-        payload: json.encode(message.data),
-      );
-    }
-  }
+  // Future<void> _handleForegroundMessage(RemoteMessage message) async {
+  //   final notification = message.notification;
+  //   if (notification != null) {
+  //     _localNotifications.show(
+  //       notification.hashCode,
+  //       notification.title,
+  //       notification.body,
+  //       NotificationDetails(
+  //         android: AndroidNotificationDetails(
+  //           'high_importance_channel',
+  //           'High Importance Notifications',
+  //           channelDescription: 'Important notifications',
+  //           importance: Importance.high,
+  //           priority: Priority.high,
+  //         ),
+  //         iOS: const DarwinNotificationDetails(
+  //           presentAlert: true,
+  //           presentBadge: true,
+  //           presentSound: true,
+  //         ),
+  //       ),
+  //       payload: json.encode(message.data),
+  //     );
+  //   }
+  // }
 
   void _handleNotification({
     required RemoteMessage message,
@@ -241,6 +335,56 @@ class NotificationsService {
         return NotificationType.driver;
       default:
         return NotificationType.general;
+    }
+  }
+
+  Future<void> _handleForegroundMessage(RemoteMessage message) async {
+    debugPrint("🚨 [FULL DATA RECEIVED]: ${message.data}");
+
+    // نتحقق من الحقول المتوقع وجودها بناءً على صورة الداشبورد
+    final id = message.data['id'];
+    final productId = message.data['product_id'];
+    final type = message.data['type'];
+
+    debugPrint("🔍 Extracted ID: $id");
+    debugPrint("🔍 Extracted Product ID: $productId");
+    debugPrint("🔍 Extracted Type: $type");
+    // 1. طباعة البيانات (Data Payload) - وهي الأهم للتوجيه
+    debugPrint("--- New Foreground Message ---");
+    debugPrint(
+      "Data: ${message.data}",
+    ); // هنا ستعرف إذا كان الـ product_id وصل أم لا
+
+    // 2. طباعة نص الإشعار (Title & Body)
+    if (message.notification != null) {
+      debugPrint("Notification Title: ${message.notification!.title}");
+      debugPrint("Notification Body: ${message.notification!.body}");
+    }
+    debugPrint("------------------------------");
+
+    // الكود القديم الخاص بك لإظهار الإشعار المحلي
+    final notification = message.notification;
+    if (notification != null) {
+      _localNotifications.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            'high_importance_channel',
+            'High Importance Notifications',
+            channelDescription: 'Important notifications',
+            importance: Importance.high,
+            priority: Priority.high,
+          ),
+          iOS: const DarwinNotificationDetails(
+            presentAlert: true, // للتأكد من ظهوره في iOS والتطبيق مفتوح
+            presentBadge: true,
+            presentSound: true,
+          ),
+        ),
+        payload: json.encode(message.data),
+      );
     }
   }
 

@@ -83,32 +83,77 @@ class AppRouter {
       observers: [CustomNavigationObserver()],
       errorBuilder: (context, state) => const FallbackScreen(),
       redirect: (context, state) {
+        // final uri = state.uri;
+        // final path = uri.path;
+        // if (state.fullPath == GoRoutes.productDetails ||
+        //     state.fullPath == GoRoutes.cart ||
+        //     state.fullPath == GoRoutes.account) {
+        //   return null;
+        // }
+
+        // final cleanPath = path.replaceAll('/', '');
+
+        // if (cleanPath.isEmpty) return null;
+
+        // if (uri.host.contains('meat-empire.com') || !path.startsWith('/home')) {
+        //   final productMatch = RegExp(r'id-(\d+)').firstMatch(path);
+        //   if (productMatch != null) {
+        //     final idString = productMatch.group(1);
+        //     return '${GoRoutes.productDetails}?id=$idString';
+        //   }
+        //   final reservedRoutes = [
+        //     GoRoutes.home,
+        //     GoRoutes.cart,
+        //     GoRoutes.account,
+        //     GoRoutes.categories
+        //   ];
+
+        //   if (!reservedRoutes.contains(path) && !path.contains('id-')) {
+        //     return '${GoRoutes.home}?category=$cleanPath';
+        //   }
+        // }
+
+        // return null;
         final uri = state.uri;
         final path = uri.path;
-        if (state.fullPath == GoRoutes.productDetails ||
-            state.fullPath == GoRoutes.cart ||
-            state.fullPath == GoRoutes.account) {
+
+        // 1. القائمة البيضاء: أي صفحة معرفة في التطبيق يجب أن تمر دون تدخل
+        // أضف هنا أي صفحة جديدة تنشئها مثل login أو register
+        final whiteList = [
+          GoRoutes.productDetails,
+          GoRoutes.cart,
+          GoRoutes.account,
+          GoRoutes.login, // أضف صفحة تسجيل الدخول هنا
+          GoRoutes.layout, // وأي صفحات أخرى مشابهة
+          GoRoutes.categories,
+          GoRoutes.myOrders,
+          GoRoutes.payment,
+          GoRoutes.checkout,
+          GoRoutes.signup,
+        ];
+
+        // إذا كان المسار المطلوب موجوداً في القائمة البيضاء، لا تفعل شيئاً
+        if (whiteList.contains(state.fullPath) || whiteList.contains(path)) {
           return null;
         }
 
         final cleanPath = path.replaceAll('/', '');
-
         if (cleanPath.isEmpty) return null;
 
-        if (uri.host.contains('meat-empire.com') || !path.startsWith('/home')) {
+        // 2. معالجة الروابط الخارجية (Deep Links) أو الروابط غير المعروفة
+        // قمنا بتغيير الشرط ليكون أكثر دقة
+        if (uri.host.contains('meat-empire.com') ||
+            (path != '/' && !path.startsWith(GoRoutes.home))) {
+          // فحص إذا كان الرابط لمنتج
           final productMatch = RegExp(r'id-(\d+)').firstMatch(path);
           if (productMatch != null) {
             final idString = productMatch.group(1);
             return '${GoRoutes.productDetails}?id=$idString';
           }
-          final reservedRoutes = [
-            GoRoutes.home,
-            GoRoutes.cart,
-            GoRoutes.account,
-            GoRoutes.categories,
-          ];
 
-          if (!reservedRoutes.contains(path) && !path.contains('id-')) {
+          // فحص إذا كان الرابط لقسم (مثل /lamb)
+          // نتحقق مرة أخرى أن المسار ليس من المسارات المحجوزة قبل تحويله لبارامتر
+          if (!whiteList.contains(path) && path != GoRoutes.home) {
             return '${GoRoutes.home}?category=$cleanPath';
           }
         }

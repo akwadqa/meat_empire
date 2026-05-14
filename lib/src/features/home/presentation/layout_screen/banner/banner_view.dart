@@ -2,6 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart' hide Banner;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meat_empire/src/features/categories/presentation/categories_screen/set_category_id_controller.dart';
+import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
+import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 
 import '../../../../../shared_widgets/app_cached_network_image.dart';
 import '../../../../../utils/magnetic_scroll_physics.dart';
@@ -17,15 +21,40 @@ class BannerView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     if (banners.length == 1) {
       return _BannerImage(
-          banner: banners.first,
-          onTap: () => _onBannerTap(context, banners.first, ref));
+        banner: banners.first,
+        onTap: () => _onBannerTap(context, banners.first, ref),
+      );
     }
     return _BannerCarousel(
-        banners: banners,
-        onTap: (index) => _onBannerTap(context, banners[index], ref));
+      banners: banners,
+      onTap: (index) => _onBannerTap(context, banners[index], ref),
+    );
   }
 
-  void _onBannerTap(BuildContext context, Banner banner, WidgetRef ref) {}
+  void _onBannerTap(BuildContext context, Banner banner, WidgetRef ref) {
+    final id = int.parse(banner.locationId);
+    final type = banner.type.toLowerCase();
+    if (id > 0) {
+      if (type == 'p') {
+        context.push(GoRoutes.productDetails, extra: id);
+      }
+      if (type == 'c') {
+        final selectedCategoryNotifier = ref.read(
+          selectedCategoryProvider.notifier,
+        );
+        selectedCategoryNotifier.setCategory(id.toString());
+
+        ref.read(searchCategoryIndexControllerProvider.notifier).switchState();
+
+        Future.microtask(() {
+          context.pushReplacement(
+            GoRoutes.categories,
+            extra: {"categoryId": id.toString(), "fromHome": true},
+          );
+        });
+      }
+    }
+  }
 }
 
 class _BannerImage extends StatelessWidget {
@@ -64,36 +93,38 @@ class _BannerCarousel extends ConsumerWidget {
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) =>
                   InkWell(
-            onTap: () => onTap(itemIndex),
-            borderRadius: BorderRadius.circular(5.0),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: 5.0),
-              clipBehavior: Clip.antiAlias,
-              child: AppCachedNetworkImage(
-                imageUrl: banners[itemIndex].imagePath,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-          ),
+                    onTap: () => onTap(itemIndex),
+                    borderRadius: BorderRadius.circular(5.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                      clipBehavior: Clip.antiAlias,
+                      child: AppCachedNetworkImage(
+                        imageUrl: banners[itemIndex].imagePath,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
           options: CarouselOptions(
-              height: 160,
-              autoPlay: true,
-              scrollPhysics: const MagneticScrollPhysics(itemSize: 160),
-              viewportFraction: 0.9,
-              onPageChanged: (index, reason) => ref
-                  .read(carouselPageIndexProvider.notifier)
-                  .setPageIndex(index)),
+            height: 160,
+            autoPlay: true,
+            scrollPhysics: const MagneticScrollPhysics(itemSize: 160),
+            viewportFraction: 0.9,
+            onPageChanged: (index, reason) => ref
+                .read(carouselPageIndexProvider.notifier)
+                .setPageIndex(index),
+          ),
         ),
         Positioned(
-            right: 0,
-            left: 0,
-            bottom: 8,
-            child: CarouselDotsIndicator(dotsCount: banners.length))
+          right: 0,
+          left: 0,
+          bottom: 8,
+          child: CarouselDotsIndicator(dotsCount: banners.length),
+        ),
       ],
     );
   }
