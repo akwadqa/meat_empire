@@ -23,24 +23,32 @@ class LayoutScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(homeProvider, (previous, next) {
-      if (next is AsyncData) {
-        if (initalCategory != null) {
-          final categoriesList = next.value!.layout
-              .where((layout) => layout.type == 'categories')
-              .expand((layout) => layout.data)
-              .whereType<Category>()
-              .toList();
+    final String? _initialCategory = GoRouterState.of(
+      context,
+    ).uri.queryParameters['category'];
+    if (_initialCategory != null) {
+      final homeState = ref.watch(homeProvider);
 
-          final currentId = categoriesList
-              .firstWhereOrNull(
-                (category) => category.category.toLowerCase().contains(
-                  initalCategory!.toLowerCase(),
-                ),
-              )
-              ?.categoryId;
+      if (homeState is AsyncData) {
+        // نفذ منطق البحث والتحويل هنا فوراً
+        // لأن البيانات موجودة والبارامتر وصل للتو
+        // _handleCategoryNavigation(ref, homeState.value!, initialCategory);
 
-          if (currentId != null) {
+        final categoriesList = homeState.value!.layout
+            .where((layout) => layout.type == 'categories')
+            .expand((layout) => layout.data)
+            .whereType<Category>()
+            .toList();
+
+        final currentId = categoriesList
+            .firstWhereOrNull(
+              (category) => category.category.toLowerCase().contains(
+                initalCategory!.toLowerCase(),
+              ),
+            )
+            ?.categoryId;
+        if (currentId != null) {
+          Future.microtask(() {
             final selectedCategoryNotifier = ref.read(
               selectedCategoryProvider.notifier,
             );
@@ -49,27 +57,62 @@ class LayoutScreen extends ConsumerWidget {
             ref
                 .read(searchCategoryIndexControllerProvider.notifier)
                 .switchState();
-
-            Future.microtask(() {
-              context.pushReplacement(
-                GoRoutes.categories,
-                extra: {"categoryId": currentId, "fromHome": true},
-              );
-            });
-          }
-
-          // final categoryLayout = data.layout.firstWhere(
-          //   (layout) =>
-          //       layout.type == 'categories' &&
-          //       (layout.data as List<Category>).any(
-          //         (category) =>
-          //             category is String &&
-          //             category.toLowerCase() == initalCategory!.toLowerCase(),
-          //       ),
-          // );
+            context.pushReplacement(
+              GoRoutes.categories,
+              extra: {"categoryId": currentId, "fromHome": true},
+            );
+          });
         }
       }
-    });
+    }
+
+    // ref.listen(homeProvider, (previous, next) {
+    //   if (next is AsyncData) {
+    //     if (initalCategory != null) {
+    //       final categoriesList = next.value!.layout
+    //           .where((layout) => layout.type == 'categories')
+    //           .expand((layout) => layout.data)
+    //           .whereType<Category>()
+    //           .toList();
+
+    //       final currentId = categoriesList
+    //           .firstWhereOrNull(
+    //             (category) => category.category.toLowerCase().contains(
+    //               initalCategory!.toLowerCase(),
+    //             ),
+    //           )
+    //           ?.categoryId;
+
+    //       if (currentId != null) {
+    //         final selectedCategoryNotifier = ref.read(
+    //           selectedCategoryProvider.notifier,
+    //         );
+    //         selectedCategoryNotifier.setCategory(currentId);
+
+    //         ref
+    //             .read(searchCategoryIndexControllerProvider.notifier)
+    //             .switchState();
+
+    //         Future.microtask(() {
+    //           context.pushReplacement(
+    //             GoRoutes.categories,
+    //             extra: {"categoryId": currentId, "fromHome": true},
+    //           );
+    //         });
+    //       }
+
+    // final categoryLayout = data.layout.firstWhere(
+    //   (layout) =>
+    //       layout.type == 'categories' &&
+    //       (layout.data as List<Category>).any(
+    //         (category) =>
+    //             category is String &&
+    //             category.toLowerCase() == initalCategory!.toLowerCase(),
+    //       ),
+    // );
+    // }
+    // }
+    // });
 
     final homeAsync = ref.watch(homeProvider);
 

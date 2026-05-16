@@ -13,6 +13,7 @@ import 'package:meat_empire/src/features/cart/presentation/cart_screen/cart_scre
 import 'package:meat_empire/src/features/cart/presentation/check_out/check_out_screen.dart';
 import 'package:meat_empire/src/features/cart/presentation/payment_screen/payment_screen.dart';
 import 'package:meat_empire/src/features/categories/presentation/categories_screen/categories_screen.dart';
+import 'package:meat_empire/src/features/home/data/home_repository.dart';
 import 'package:meat_empire/src/features/home/presentation/home_screen/home_screen.dart';
 
 import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart';
@@ -83,36 +84,6 @@ class AppRouter {
       observers: [CustomNavigationObserver()],
       errorBuilder: (context, state) => const FallbackScreen(),
       redirect: (context, state) {
-        // final uri = state.uri;
-        // final path = uri.path;
-        // if (state.fullPath == GoRoutes.productDetails ||
-        //     state.fullPath == GoRoutes.cart ||
-        //     state.fullPath == GoRoutes.account) {
-        //   return null;
-        // }
-
-        // final cleanPath = path.replaceAll('/', '');
-
-        // if (cleanPath.isEmpty) return null;
-
-        // if (uri.host.contains('meat-empire.com') || !path.startsWith('/home')) {
-        //   final productMatch = RegExp(r'id-(\d+)').firstMatch(path);
-        //   if (productMatch != null) {
-        //     final idString = productMatch.group(1);
-        //     return '${GoRoutes.productDetails}?id=$idString';
-        //   }
-        //   final reservedRoutes = [
-        //     GoRoutes.home,
-        //     GoRoutes.cart,
-        //     GoRoutes.account,
-        //     GoRoutes.categories
-        //   ];
-
-        //   if (!reservedRoutes.contains(path) && !path.contains('id-')) {
-        //     return '${GoRoutes.home}?category=$cleanPath';
-        //   }
-        // }
-
         // return null;
         final uri = state.uri;
         final path = uri.path;
@@ -132,28 +103,22 @@ class AppRouter {
           GoRoutes.signup,
         ];
 
-        // إذا كان المسار المطلوب موجوداً في القائمة البيضاء، لا تفعل شيئاً
         if (whiteList.contains(state.fullPath) || whiteList.contains(path)) {
           return null;
         }
 
         final cleanPath = path.replaceAll('/', '');
         if (cleanPath.isEmpty) return null;
-
-        // 2. معالجة الروابط الخارجية (Deep Links) أو الروابط غير المعروفة
-        // قمنا بتغيير الشرط ليكون أكثر دقة
-        if (uri.host.contains('meat-empire.com') ||
+     if (uri.host.contains('meat-empire.com') ||
             (path != '/' && !path.startsWith(GoRoutes.home))) {
-          // فحص إذا كان الرابط لمنتج
           final productMatch = RegExp(r'id-(\d+)').firstMatch(path);
           if (productMatch != null) {
             final idString = productMatch.group(1);
             return '${GoRoutes.productDetails}?id=$idString';
           }
 
-          // فحص إذا كان الرابط لقسم (مثل /lamb)
-          // نتحقق مرة أخرى أن المسار ليس من المسارات المحجوزة قبل تحويله لبارامتر
           if (!whiteList.contains(path) && path != GoRoutes.home) {
+            ref.read(homeRepositoryProvider).getHome(rootKey.currentContext);
             return '${GoRoutes.home}?category=$cleanPath';
           }
         }
