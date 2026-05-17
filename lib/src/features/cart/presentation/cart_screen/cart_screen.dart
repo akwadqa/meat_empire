@@ -48,9 +48,16 @@ class CartBody extends ConsumerWidget {
     final cartAsync = ref.watch(cartControllerProvider);
 
     return cartAsync.when(
-      data: (data) => data.cart != null
-          ? _buildCartContent(context, data)
-          : EmptyCartScreen(),
+      data: (data) {
+        if (data.success == false &&
+            data.message == "user_id param is mandatory") {
+          return UnAuthCartScreen();
+        }
+
+        return data.cart != null
+            ? _buildCartContent(context, data)
+            : EmptyCartScreen();
+      },
       loading: () => const Center(child: FadeCircleLoadingIndicator()),
       error: (error, __) => error.toString() == 'user_id param is mandatory'
           ? UnAuthCartScreen()
@@ -308,8 +315,7 @@ class _DiscountCouponSectionState
                         // context.maybePop().then((_) {
                         // _showDialog();
                         // });
-                       const FadeCircleLoadingIndicator();
-
+                        const FadeCircleLoadingIndicator();
                       } else if (next is AsyncError) {
                         // showErrorDialog(context, next.error.toString());
                       }
@@ -318,40 +324,46 @@ class _DiscountCouponSectionState
                     final async = ref.watch(updateCartControllerProvider);
                     if (async is AsyncLoading) {
                       return SizedBox(
-                        width: MediaQuery.sizeOf(context).width/5,
-                        child: const FadeCircleLoadingIndicator());
+                        width: MediaQuery.sizeOf(context).width / 5,
+                        child: const FadeCircleLoadingIndicator(),
+                      );
                     }
 
-                  return ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 14,
+                    return ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 14,
+                        ),
+                        textStyle: Theme.of(context).textTheme.displaySmall,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      textStyle: Theme.of(context).textTheme.displaySmall,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                      onPressed: () {
+                        if (couponDetails.isNotEmpty) {
+                          ref
+                              .read(updateCartControllerProvider.notifier)
+                              .updateCart(couponCode: '', showLoading: true);
+                        } else if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          ref
+                              .read(updateCartControllerProvider.notifier)
+                              .updateCart(
+                                couponCode: _couponCode,
+                                showLoading: true,
+                              );
+                        }
+                      },
+                      child: Text(
+                        context.tr(
+                          widget.cart.coupons!.isNotEmpty
+                              ? 'cancel'
+                              : 'activate',
+                        ),
                       ),
-                    ),
-                    onPressed: () {
-                      if (couponDetails.isNotEmpty) {
-                        ref
-                            .read(updateCartControllerProvider.notifier)
-                            .updateCart(couponCode: '',showLoading: true);
-                      } else if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        ref
-                            .read(updateCartControllerProvider.notifier)
-                            .updateCart(couponCode: _couponCode,showLoading: true);
-                      }
-                    },
-                    child: Text(
-                      context.tr(
-                        widget.cart.coupons!.isNotEmpty ? 'cancel' : 'activate',
-                      ),
-                    ),
-                  );
-                  }
+                    );
+                  },
                 ),
               ],
             ),

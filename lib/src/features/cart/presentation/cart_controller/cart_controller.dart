@@ -8,10 +8,15 @@ part 'cart_controller.g.dart';
 @riverpod
 class CartController extends _$CartController {
   @override
-  FutureOr<CartResponse> build() {
+  FutureOr<CartResponse> build() async {
     final repository = ref.watch(cartRepositoryProvider);
-    return repository.getCart();
-  }
+   try {
+      return await repository.getCart();
+    } catch (e) {
+      // ❌ لا ترمي exception
+      // ✅ رجّع error controlled
+      rethrow;
+    }  }
 
   void updateCart(CartResponse cart) {
     state = AsyncData(cart);

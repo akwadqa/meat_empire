@@ -179,6 +179,7 @@ class CategoriesScreen extends ConsumerWidget {
     final isExpanded = ref.watch(isExpandedCategoriesBarProvider);
 
     return FloatingActionButton(
+      
       shape: const CircleBorder(),
       backgroundColor: isExpanded ? AppColors.rose : AppColors.primary,
       onPressed: () =>

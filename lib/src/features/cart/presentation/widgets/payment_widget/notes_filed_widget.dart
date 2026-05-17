@@ -29,8 +29,9 @@ class _NotesFieldWidgetState extends State<NotesFieldWidget> {
       children: [
         Text(
           "notes".tr(),
-          style:
-              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 16),
+          style: Theme.of(
+            context,
+          ).textTheme.displaySmall!.copyWith(fontSize: 16),
         ).onlyPadding(start: 12),
         8.verticalSpace,
         TextField(
@@ -38,12 +39,14 @@ class _NotesFieldWidgetState extends State<NotesFieldWidget> {
           decoration: InputDecoration(
             hintText: 'notes_msg'.tr(),
             hintStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  color: AppColors.gray02,
-                  fontSize: 14,
-                ),
+              color: AppColors.gray02,
+              fontSize: 14,
+            ),
           ),
           autofocus: false,
           keyboardType: TextInputType.multiline,
+          textInputAction: TextInputAction.done,
+
           minLines: 4,
           maxLines: 20,
           maxLength: 1000,

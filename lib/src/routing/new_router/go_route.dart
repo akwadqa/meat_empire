@@ -52,6 +52,8 @@ final GlobalKey<NavigatorState> shellKey = GlobalKey<NavigatorState>();
 // }
 
 String normalizeIncomingUri(Uri u) {
+  debugPrint("***********normalizeIncomingUri****************");
+  debugPrint(u.toString());
   if (u.scheme == 'http' || u.scheme == 'https') {
     final path = u.path.replaceAll('/', '');
 

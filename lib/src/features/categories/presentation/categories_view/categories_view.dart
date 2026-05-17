@@ -6,8 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:meat_empire/gen/assets.gen.dart';
 import 'package:meat_empire/src/features/categories/presentation/categories_screen/set_category_id_controller.dart';
 import 'package:meat_empire/src/features/home/domain/home/category/category.dart';
+import 'package:meat_empire/src/features/home/domain/home/layout.dart';
 import 'package:meat_empire/src/features/search/presentation/search_controller/search_category_index_controller.dart';
- 
+
 import 'package:meat_empire/src/routing/new_router/go_routes.dart';
 import 'package:meat_empire/src/shared_widgets/app_cached_network_image.dart';
 
@@ -16,13 +17,16 @@ import '../category_item/category_item.dart';
 
 //* A horizontal list of categories with a "View All" option.
 class CategoriesView extends ConsumerWidget {
-  const CategoriesView({super.key, required this.categories});
+  CategoriesView({super.key, required this.layout});
 
-  final List<Category> categories;
+  // final List<Category> categories;
+  final Layout layout;
 
- 
+  List categories = [];
+  // (layout.data as List<Object>).whereType<Category>().toList();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    categories = (layout.data as List<Object>).whereType<Category>().toList();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: LayoutBuilder(
@@ -57,9 +61,13 @@ class CategoriesView extends ConsumerWidget {
     // final isAllCategory = index == 0;
 
     return CategoryItem(
+      bgColor:layout.bgColor,
       onTap: () => _onCategoryTap(context, ref, index),
       label: categories[index].category,
-      image: AppCachedNetworkImage(imageUrl: categories[index].imageUrl,fit: BoxFit.contain,),
+      image: AppCachedNetworkImage(
+        imageUrl: categories[index].imageUrl,
+        fit: BoxFit.contain,
+      ),
     );
   }
 
@@ -69,19 +77,20 @@ class CategoriesView extends ConsumerWidget {
       selectedCategoryProvider.notifier,
     );
     selectedCategoryNotifier.setCategory(categories[index].categoryId);
-// Future.delayed(Duration(seconds: 2));
-// WidgetsBinding.instance.addPostFrameCallback((_) {
-//   context.tabsRouter.setActiveIndex(1);
-// });
+    // Future.delayed(Duration(seconds: 2));
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   context.tabsRouter.setActiveIndex(1);
+    // });
     ref.read(searchCategoryIndexControllerProvider.notifier).switchState();
 
- Future.microtask(() {
-    context.pushReplacement(GoRoutes.categories,extra: {
-      "categoryId":categories[index].categoryId,
-      "fromHome":true,
+    Future.microtask(() {
+      context.pushReplacement(
+        GoRoutes.categories,
+        extra: {"categoryId": categories[index].categoryId, "fromHome": true},
+      );
+      // context.router.replaceAll([
+      //   CategoriesRoute(categoryId: categories[index].categoryId,fromHome: true),
+      // ]);
     });
-    // context.router.replaceAll([
-    //   CategoriesRoute(categoryId: categories[index].categoryId,fromHome: true),
-    // ]);
-  });
-}}
+  }
+}

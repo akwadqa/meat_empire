@@ -33,7 +33,7 @@ Future<void> main() async {
   runApp(
     DevicePreview(
       // enabled: !kReleaseMode,
-      enabled: false,
+      enabled: true,
       builder: (context) => UncontrolledProviderScope(
         container: container,
         child: EasyLocalization(

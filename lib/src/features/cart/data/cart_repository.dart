@@ -17,30 +17,29 @@ class CartRepository {
 
   const CartRepository(this._networkService);
 
-  Future<CartResponse> getCart() async => _processRequest(
-        () => _networkService.get(EndPoints.cartApi),
-      );
+  Future<CartResponse> getCart() async =>
+      _processRequest(() => _networkService.get(EndPoints.cartApi));
 
   Future<CartResponse> addToCart({
     required int amount,
     required int productId,
     int? userId,
     List<SelectedOption>? selectedOprions,
-  }) async =>
-      _processRequest(
-        () => _networkService.post(EndPoints.cartApi, {
-          if (userId != null) 'user_id': userId,
-          'product_data': [
-            {
-              'amount': amount,
-              'product_id': productId,
-              if (selectedOprions != null && selectedOprions.isNotEmpty)
-                'product_options':
-                    selectedOprions.map((e) => e.toRequestJson()).toList()
-            }
-          ]
-        }),
-      );
+  }) async => _processRequest(
+    () => _networkService.post(EndPoints.cartApi, {
+      if (userId != null) 'user_id': userId,
+      'product_data': [
+        {
+          'amount': amount,
+          'product_id': productId,
+          if (selectedOprions != null && selectedOprions.isNotEmpty)
+            'product_options': selectedOprions
+                .map((e) => e.toRequestJson())
+                .toList(),
+        },
+      ],
+    }),
+  );
 
   Future<CartResponse> updateCart({
     int? productId,
@@ -48,32 +47,35 @@ class CartRepository {
     int? itemId,
     int? userId,
     String? couponCode,
-  }) async =>
-      _processRequest(
-        () => _networkService.put('${EndPoints.cartApi}/1', {
-          if (userId != null) 'user_id': userId,
-          if (productId != null)
-            'cart_product': [
-              {
-                'product_id': productId,
-                if (itemId != null) 'item_id': itemId,
-                'amount': amount
-              }
-            ],
-          if (couponCode != null) 'coupon_code': couponCode
-        }),
-      );
+  }) async => _processRequest(
+    () => _networkService.put('${EndPoints.cartApi}/1', {
+      if (userId != null) 'user_id': userId,
+      if (productId != null)
+        'cart_product': [
+          {
+            'product_id': productId,
+            if (itemId != null) 'item_id': itemId,
+            'amount': amount,
+          },
+        ],
+      if (couponCode != null) 'coupon_code': couponCode,
+    }),
+  );
 
   Future<CartResponse> clearCart() async =>
       _processRequest(() => _networkService.delete('${EndPoints.cartApi}/1'));
 
   Future<CartResponse> _processRequest(
-      Future<dynamic> Function() request) async {
+    Future<dynamic> Function() request,
+  ) async {
     final response = await request();
     final cartResponse = CartResponse.fromJson(response.data);
+
     if (cartResponse.success == true) {
       return cartResponse;
     }
-    throw AppException(cartResponse.message);
+
+    // 🔥 لا ترمي exception
+    return cartResponse;
   }
 }

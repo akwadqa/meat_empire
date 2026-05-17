@@ -295,7 +295,7 @@ class _AddToCartButton extends ConsumerWidget {
       if (current is AsyncData) {
         // Wait for the current build to complete before showing dialog
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.of(context).pop();
+          // Navigator.of(context).pop();
           // context.maybePop().then((_) {
             showCustomDialog(
               context: context,

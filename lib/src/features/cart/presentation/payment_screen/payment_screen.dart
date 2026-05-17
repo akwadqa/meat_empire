@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:meat_empire/src/extenssions/int_extenssion.dart';
 import 'package:meat_empire/src/extenssions/widget_extensions.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
@@ -63,24 +64,60 @@ class PaymentScreen extends ConsumerWidget {
 
   Widget _buildBody(
       BuildContext context, WidgetRef ref, PaymentResponse paymentData) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              25.verticalSpace,
-              CheckoutCartOrderSummary(cart: paymentData.cart!),
-              20.verticalSpace,
-              _buildPaymentMethodForm(paymentData!),
-              15.verticalSpace,
-              _buildNotesField(),
-              25.verticalSpace,
-              _buildSubmitButton(context, ref, paymentData.cart!),
-              20.verticalSpace,
+  FocusNode myFocusNode = FocusNode();
+
+    return KeyboardActions(
+          // 👈 wrap WHOLE card
+          // tapOutsideToDismiss: true,
+          config: KeyboardActionsConfig(
+            keyboardActionsPlatform: KeyboardActionsPlatform.IOS,
+            actions: [
+              KeyboardActionsItem(
+                // displayActionBar: false,
+                focusNode: myFocusNode,
+                toolbarButtons: [
+                  (node) {
+                    return GestureDetector(
+                      onTap: () => node.unfocus(),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(
+                          "Done",
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ],
+                displayDoneButton: true,
+              ),
             ],
+          ),
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                25.verticalSpace,
+                CheckoutCartOrderSummary(cart: paymentData.cart!),
+                20.verticalSpace,
+                _buildPaymentMethodForm(paymentData),
+                15.verticalSpace,
+                  NotesFieldWidget(
+                onChange: (value) => notes = value,
+                // 👇 لازم تضيف هذا
+              ),
+                25.verticalSpace,
+                _buildSubmitButton(context, ref, paymentData.cart!),
+                20.verticalSpace,
+              ],
+            ),
           ),
         ),
       ),

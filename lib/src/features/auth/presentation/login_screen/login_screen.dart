@@ -100,15 +100,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 24.verticalSpace,
-                // AuthText(text: context.tr('dontHaveAccount')),
+                AuthText(text: context.tr('dontHaveAccount')),
                 16.verticalSpace,
-                // SizedBox(
-                //   width: double.infinity,
-                //   child: AuthButton(
-                //     onPressed: () => context.pushReplacement(GoRoutes.signup),
-                //     text: context.tr('createAccount'),
-                //   ),
-                // ),
+                SizedBox(
+                  width: double.infinity,
+                  child: AuthButton(
+                    onPressed: () => context.pushReplacement(GoRoutes.signup),
+                    text: context.tr('createAccount'),
+                  ),
+                ),
                 54.verticalSpace,
               ],
             ),

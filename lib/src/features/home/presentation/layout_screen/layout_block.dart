@@ -17,8 +17,10 @@ class LayoutBlock extends StatelessWidget {
     return switch (layout.type) {
       'banner' => _buildBannerView(),
       'categories' => CategoriesView(
-          categories:
-              (layout.data as List<Object>).whereType<Category>().toList()),
+        layout: layout
+          // categories:
+          //     (layout.data as List<Object>).whereType<Category>().toList()
+              ),
       'products' => ProductsView(layout: layout),
       _ => ProductsView(layout: layout)
     };
