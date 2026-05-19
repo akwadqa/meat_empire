@@ -1,6 +1,7 @@
 abstract class GoRoutes {
   static const String home = '/home';
   static const String login = '/login';
+  static const String verifyOtp = '/verify';
   static const String signup = '/signup';
   static const String productDetails = '/product';
   static const String checkout = '/checkout';

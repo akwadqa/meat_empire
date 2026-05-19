@@ -13,7 +13,7 @@ part of 'account_controller.dart';
 const accountControllerProvider = AccountControllerProvider._();
 
 final class AccountControllerProvider
-    extends $AsyncNotifierProvider<AccountController, ProfileResponse> {
+    extends $AsyncNotifierProvider<AccountController, ProfileResponse?> {
   const AccountControllerProvider._()
     : super(
         from: null,
@@ -33,20 +33,21 @@ final class AccountControllerProvider
   AccountController create() => AccountController();
 }
 
-String _$accountControllerHash() => r'e3289f52bd9e97d6b17a17170fbe9449b11dee1e';
+String _$accountControllerHash() => r'9c4635764c137a937c810883623470d98ff037fa';
 
-abstract class _$AccountController extends $AsyncNotifier<ProfileResponse> {
-  FutureOr<ProfileResponse> build();
+abstract class _$AccountController extends $AsyncNotifier<ProfileResponse?> {
+  FutureOr<ProfileResponse?> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<AsyncValue<ProfileResponse>, ProfileResponse>;
+    final ref =
+        this.ref as $Ref<AsyncValue<ProfileResponse?>, ProfileResponse?>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<ProfileResponse>, ProfileResponse>,
-              AsyncValue<ProfileResponse>,
+              AnyNotifier<AsyncValue<ProfileResponse?>, ProfileResponse?>,
+              AsyncValue<ProfileResponse?>,
               Object?,
               Object?
             >;

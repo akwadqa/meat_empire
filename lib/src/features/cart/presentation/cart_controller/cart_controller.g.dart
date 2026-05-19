@@ -20,7 +20,7 @@ final class CartControllerProvider
         argument: null,
         retry: null,
         name: r'cartControllerProvider',
-        isAutoDispose: false,
+        isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -33,7 +33,7 @@ final class CartControllerProvider
   CartController create() => CartController();
 }
 
-String _$cartControllerHash() => r'8de580c70ad1dfde12751f712c06a82cf791d5dd';
+String _$cartControllerHash() => r'1d746ef60d24f22e5b24c1a1d2dfc85fb43d27e0';
 
 abstract class _$CartController extends $AsyncNotifier<CartResponse> {
   FutureOr<CartResponse> build();

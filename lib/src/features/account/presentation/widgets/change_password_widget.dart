@@ -159,7 +159,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final hashedPassword = data.asData?.value.userProfile?.password;
+            final hashedPassword = data.asData?.value?.userProfile?.password;
 
             return CustomButtonWidget(
               text: "save",

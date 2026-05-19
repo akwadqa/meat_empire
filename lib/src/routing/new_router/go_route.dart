@@ -5,6 +5,7 @@ import 'package:meat_empire/src/features/account/presentation/account_screen/acc
 import 'package:meat_empire/src/features/account/presentation/account_screen/main_account_screen.dart';
 import 'package:meat_empire/src/features/auth/presentation/login_screen/login_screen.dart';
 import 'package:meat_empire/src/features/auth/presentation/signup_screen/signup_screen.dart';
+import 'package:meat_empire/src/features/auth/presentation/verify_otp_screen/verify_otp_screen.dart';
 import 'package:meat_empire/src/features/cart/domain/cart.dart';
 import 'package:meat_empire/src/features/cart/domain/cart_response.dart';
 import 'package:meat_empire/src/features/cart/domain/delivery_slot.dart';
@@ -97,6 +98,7 @@ class AppRouter {
           GoRoutes.cart,
           GoRoutes.account,
           GoRoutes.login, // أضف صفحة تسجيل الدخول هنا
+          GoRoutes.verifyOtp, // السماح بصفحة التحقق من OTP
           GoRoutes.layout, // وأي صفحات أخرى مشابهة
           GoRoutes.categories,
           GoRoutes.myOrders,
@@ -111,7 +113,7 @@ class AppRouter {
 
         final cleanPath = path.replaceAll('/', '');
         if (cleanPath.isEmpty) return null;
-     if (uri.host.contains('meat-empire.com') ||
+        if (uri.host.contains('meat-empire.com') ||
             (path != '/' && !path.startsWith(GoRoutes.home))) {
           final productMatch = RegExp(r'id-(\d+)').firstMatch(path);
           if (productMatch != null) {
@@ -210,6 +212,10 @@ class AppRouter {
         GoRoute(
           path: GoRoutes.login,
           builder: (context, state) => const LoginScreen(),
+        ),
+        GoRoute(
+          path: GoRoutes.verifyOtp,
+          builder: (context, state) => const VerifyOtpScreen(),
         ),
 
         // SIGNUP

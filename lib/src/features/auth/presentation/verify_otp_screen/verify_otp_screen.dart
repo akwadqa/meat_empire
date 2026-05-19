@@ -10,6 +10,8 @@ import 'package:meat_empire/src/features/auth/presentation/email_text_form_field
 import 'package:meat_empire/src/features/auth/presentation/auth_controller/auth_controller.dart';
 import 'package:meat_empire/src/features/auth/presentation/login_screen/login_page_number_field.dart';
 import 'package:meat_empire/src/features/auth/presentation/password_text_field/password_text_field.dart';
+import 'package:meat_empire/src/features/auth/presentation/verify_otp_screen/verification_screen_pin.dart';
+import 'package:meat_empire/src/features/auth/presentation/verify_otp_screen/verification_screen_timer.dart';
 import 'package:meat_empire/src/features/home/presentation/layout_screen/layout_screen.dart';
 
 import 'package:meat_empire/src/routing/new_router/go_routes.dart';
@@ -19,14 +21,14 @@ import '../../../../shared_functions.dart';
 import '../auth_text/auth_text.dart';
 
 @RoutePage()
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class VerifyOtpScreen extends StatefulWidget {
+  const VerifyOtpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<VerifyOtpScreen> createState() => _VerifyOtpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   // String? _email;
 
   // String? _password;
@@ -63,60 +65,72 @@ class _LoginScreenState extends State<LoginScreen> {
                 54.verticalSpace,
                 Assets.images.loginImage.svg(),
                 54.verticalSpace,
-                // EmailTextFormField(onSaved: (value) => _email = value),
-                LoginPageNumberField(_fullPhoneController),
-                // 20.verticalSpace,
-                // PasswordTextField(
-                //   label: context.tr('password'),
-                //   onSaved: (value) => _password = value,
-                // ),
-                54.verticalSpace,
+                VerificationScreenPin(
+                  controller: _fullPhoneController,
+                  // onSaved: (v) {
+                  //   controller.setText(v ?? "99");
+                  //   setState(() {});
+                  // },
+                ),
+                12.verticalSpace,
+
+                VerificationScreenTimer(),
+                12.verticalSpace,
                 SizedBox(
                   width: double.infinity,
                   child: Consumer(
                     builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                      ref.listen(authControllerProvider, (prev, next) {
-                        if (next is AsyncData) {
-                          if (context.mounted) {
-                            if (next.value!.isAuthenticated) {
-                              context.push(GoRoutes.verifyOtp);
-                              // context.pushReplacement(GoRoutes.home);
-                              // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
-                            } else {
-                              context.push(GoRoutes.signup);
-                            }
-                            // context.pushReplacement(GoRoutes.home);
-                            // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+                      // final isVisible = ref
+                      //     .watch(authControllerProvider)
+                      //     .value!
+                      //     .isResendButtonVisible;
 
-                            // if (Navigator.of(context).canPop()) {
-                            //   Navigator.of(context).pop();
-                            //   _showDialog();
-                            // } else {
-                            //   _showDialog();
-                            // }
-                          }
-                        } else if (next is AsyncError) {
-                          if (context.mounted) {
-                            showErrorDialog(context, next.error.toString());
-                          }
-                        }
-                      });
+                      // ref.listen(authControllerProvider, (prev, next) {
+                      //   if (next is AsyncData) {
+                      //     if (context.mounted) {
+                      //       if (next.value!.isAuthenticated) {
+                      //         // context.pushReplacement(GoRoutes.home);
+                      //         // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+                      //       } else {
+                      //         context.push(GoRoutes.signup);
+                      //       }
+                      //       // context.pushReplacement(GoRoutes.home);
+                      //       // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+
+                      //       // if (Navigator.of(context).canPop()) {
+                      //       //   Navigator.of(context).pop();
+                      //       //   _showDialog();
+                      //       // } else {
+                      //       //   _showDialog();
+                      //       // }
+                      //     }
+                      //   } else if (next is AsyncError) {
+                      //     if (context.mounted) {
+                      //       showErrorDialog(context, next.error.toString());
+                      //     }
+                      //   }
+                      // });
 
                       final asyncLogin = ref.watch(authControllerProvider);
                       if (asyncLogin is AsyncLoading) {
                         return FadeCircleLoadingIndicator();
                       }
-                      return ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
-                            ref
-                                .read(authControllerProvider.notifier)
-                                .login(phoneNumber: _fullPhoneController.text);
-                          }
-                        },
-                        child: Text(context.tr('login')),
-                      );
+                      return 
+                          ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  _formKey.currentState!.save();
+                                  ref
+                                      .read(authControllerProvider.notifier)
+                                      .login(
+                                        phoneNumber: _fullPhoneController.text,
+                                        isSendOtp: false,
+                                      );
+                                }
+                              },
+                              child: Text(context.tr('login')),
+                            )
+                          ;
                     },
                   ),
                 ),

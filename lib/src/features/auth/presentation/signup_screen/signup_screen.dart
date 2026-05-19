@@ -179,13 +179,13 @@ class _SignupScreenState extends State<SignupScreen> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                ref.read(authControllerProvider.notifier).signup(
-                      _email!,
-                      _userName!,
-                      _password!,
-                      _confirmPassword!,
-                      _phoneNumber!,
-                    );
+                // ref.read(authControllerProvider.notifier).signup(
+                //       _email!,
+                //       _userName!,
+                //       _password!,
+                //       _confirmPassword!,
+                //       _phoneNumber!,
+                //     );
               }
             },
             child: Text(context.tr('createAccount')),

@@ -40,7 +40,7 @@ class CheckOutScreen extends ConsumerWidget {
     return Scaffold(
       appBar: _buildAppBar(context),
       body: accountSyncData.when(
-        data: (data) => _buildForm(context, data, deliverySlots),
+        data: (data) => _buildForm(context, data!, deliverySlots),
         error: (_, __) => const AppErrorWidget(),
         loading: () => const FadeCircleLoadingIndicator().centered(),
       ),

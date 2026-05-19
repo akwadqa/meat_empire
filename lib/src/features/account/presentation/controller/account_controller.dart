@@ -10,13 +10,21 @@ part 'account_controller.g.dart';
 @riverpod
 class AccountController extends _$AccountController {
   @override
-  FutureOr<ProfileResponse> build() {
-    final userId = ref.watch(userDataProvider)!.$2;
-    return ref.watch(accountRepositoryProvider).getProfile(userId);
+  FutureOr<ProfileResponse?> build() {
+    // final userId = ref.watch(userDataProvider)!.$2;
+    final controller = ref.watch(userDataProvider);
+    int userId = 0;
+    if (controller != null) {
+      userId = ref.watch(userDataProvider)!.$2;
+      return ref.watch(accountRepositoryProvider).getProfile(userId);
+    }
+
   }
 
   Future<void> editAccountInformation(
-      BuildContext context, UserProfile userProfile) async {
+    BuildContext context,
+    UserProfile userProfile,
+  ) async {
     if (state is AsyncData<ProfileResponse>) {
       final currentState = state.value;
       state = AsyncLoading();

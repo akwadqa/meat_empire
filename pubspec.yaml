@@ -41,6 +41,8 @@ dependencies:
   fcm_config: ^3.6.5
   app_links: ^7.0.0
   keyboard_actions: ^4.2.1
+  intl_phone_field: ^3.2.0
+  pinput: ^6.0.2
 
   # mockito: ^5.4.5
   

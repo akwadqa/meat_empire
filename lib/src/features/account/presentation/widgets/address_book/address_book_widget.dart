@@ -36,7 +36,7 @@ class AddressBookWidget extends ConsumerWidget {
 }
 
 Widget _buildAddressBody(
-    BuildContext context, AsyncValue<ProfileResponse> accountSyncData) {
+    BuildContext context, AsyncValue<ProfileResponse?> accountSyncData) {
   return GestureDetector(
     onTap: () {
       FocusScope.of(context).unfocus();

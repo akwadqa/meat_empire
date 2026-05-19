@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -16,42 +17,102 @@ class AuthRepository {
   AuthRepository(this._networkService);
 
   Future<(String authToken, String userId)> _handleAuthResponse(
-      Map<String, dynamic> responseData) async {
-        
+    Map<String, dynamic> responseData,
+  ) async {
     if (responseData.containsKey('complete_auth_token') &&
         responseData.containsKey('user_id')) {
       final String authToken = responseData['complete_auth_token'];
       final String userId = responseData['user_id'];
-      
+
       return (authToken, userId);
     } else {
       throw AppException(responseData['message']);
     }
   }
 
-  Future<(String authToken, String userId)> login(
-      String email, String password,
-      String fcmToken,
-      ) async {
-    final response = await _networkService.post(EndPoints.loginApi, {
-      'user_login': email,
-      'password': password,
-      "fcm_token": fcmToken
+  //   Future<(String authToken, String userId)> login({
+  //     required String phoneNumber,
+  //     required String fcmToken,
+  //     int? sendOtp,
+  //     int? verifyOtp,
+  //     int? otpCode,
+  //   }) async {
+  //     final data = FormData.fromMap({
+  //       'mobile_no': phoneNumber,
+  //       "fcm_token": fcmToken,
+  //       if (sendOtp != null) 'send_otp': sendOtp,
+  //       if (verifyOtp != null) 'verify_otp': verifyOtp,
+  //       if (otpCode != null) 'otp_code': otpCode,
+  //     });
 
+  //     print('''
+
+  //       Number : $phoneNumber
+  //       FCM Token : $fcmToken,
+  //       Send OTP : $sendOtp,
+  //       Verify OTP : $verifyOtp,
+  //       OTP Code : $otpCode
+  // ''');
+  //     final response = await _networkService.post(EndPoints.loginApi, data);
+
+  //     return _handleAuthResponse(response.data);
+  //   }
+
+  Future<(bool isUserExists, String mobileNumber, String otp)> login({
+    required String phoneNumber,
+    required String fcmToken,
+    int? sendOtp,
+    int? verifyOtp,
+    String? otpCode,
+  }) async {
+    final data = FormData.fromMap({
+      'mobile_no': phoneNumber,
+      "fcm_token": fcmToken,
+      if (sendOtp != null) 'send_otp': sendOtp,
+      if (verifyOtp != null) 'verify_otp': verifyOtp,
+      if (otpCode != null) 'otp_code': otpCode,
     });
 
-    return _handleAuthResponse(response.data);
+    print('''
+
+      Number : $phoneNumber
+      FCM Token : $fcmToken,
+      Send OTP : $sendOtp,
+      Verify OTP : $verifyOtp,
+      OTP Code : $otpCode 
+''');
+    final response = await _networkService.post(EndPoints.loginApi, data);
+
+    return (
+      (response.data['validation']['user_exist'] as bool),
+      response.data['mobile_number'].toString(),
+      response.data['otp'].toString(),
+    );
+  }
+
+  Future<(String authToken, String userId)> verifyOtp({
+    required String phonenumber,
+    required String otp,
+  }) async {
+    final data = FormData.fromMap({
+      'mobile_no': phonenumber,
+      // "fcm_token": fcmToken,
+      'verify_otp': 1,
+      'otp_code': otp,
+    });
+    final response = await _networkService.post(EndPoints.loginApi, data);
+
+    return ('', '');
   }
 
   Future<(String authToken, String userId)> signup(
-      String email,
-      String username,
-      String password,
-      String confirmPassword,
-      String phone,
-      String fcmToken,
-      
-      ) async {
+    String email,
+    String username,
+    String password,
+    String confirmPassword,
+    String phone,
+    String fcmToken,
+  ) async {
     final response = await _networkService.post(EndPoints.signUpApi, {
       'email': email,
       'firstname': username.split(' ').first,
@@ -59,7 +120,7 @@ class AuthRepository {
       'password1': password,
       'password2': confirmPassword,
       'phone': phone,
-      "fcm_token": fcmToken
+      "fcm_token": fcmToken,
     });
 
     return _handleAuthResponse(response.data);

@@ -32,11 +32,11 @@ class MainAccountScreen extends ConsumerWidget {
   }
 
   Widget _mainAccountWidget(
-          AsyncValue<ProfileResponse> asyncAccountData, BuildContext context) =>
+          AsyncValue<ProfileResponse?> asyncAccountData, BuildContext context) =>
       asyncAccountData.when(
         data: (data) {
           return AccountScreen(
-            userProfile: data.userProfile!,
+            userProfile: data!.userProfile!,
           );
         },
         error: (_, __) => const AppErrorWidget(),
