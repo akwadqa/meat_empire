@@ -74,50 +74,58 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: Consumer(
-                    builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                      ref.listen(authControllerProvider, (prev, next) {
-                        if (next is AsyncData) {
-                          if (context.mounted) {
-                            if (next.value!.isAuthenticated) {
-                              context.push(GoRoutes.verifyOtp);
-                              // context.pushReplacement(GoRoutes.home);
-                              // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
-                            } else {
-                              context.push(GoRoutes.signup);
-                            }
-                            // context.pushReplacement(GoRoutes.home);
-                            // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+                    builder:
+                        (BuildContext context, WidgetRef ref, Widget? child) {
+                          ref.listen(
+                            authControllerProvider.select(
+                              (val) => val.value!.login,
+                            ),
+                            (prev, next) {
+                              if (prev is AsyncLoading && next is AsyncData) {
+                                final state = ref
+                                    .read(authControllerProvider)
+                                    .value!;
+                                if (context.mounted) {
+                                  if (state.isAuthenticated) {
+                                    context.push(GoRoutes.verifyOtp);
+                                  } else {
+                                    context.push(GoRoutes.signup);
+                                  }
+                                }
+                              } else if (prev is AsyncLoading &&
+                                  next is AsyncError) {
+                                if (context.mounted) {
+                                  showErrorDialog(
+                                    context,
+                                    next!.error.toString(),
+                                  );
+                                }
+                              }
+                            },
+                          );
 
-                            // if (Navigator.of(context).canPop()) {
-                            //   Navigator.of(context).pop();
-                            //   _showDialog();
-                            // } else {
-                            //   _showDialog();
-                            // }
+                          final asyncLogin = ref.watch(
+                            authControllerProvider.select(
+                              (val) => val.value!.login,
+                            ),
+                          );
+                          if (asyncLogin is AsyncLoading) {
+                            return FadeCircleLoadingIndicator();
                           }
-                        } else if (next is AsyncError) {
-                          if (context.mounted) {
-                            showErrorDialog(context, next.error.toString());
-                          }
-                        }
-                      });
-
-                      final asyncLogin = ref.watch(authControllerProvider);
-                      if (asyncLogin is AsyncLoading) {
-                        return FadeCircleLoadingIndicator();
-                      }
-                      return ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
-                            ref
-                                .read(authControllerProvider.notifier)
-                                .login(phoneNumber: _fullPhoneController.text);
-                          }
+                          return ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                ref
+                                    .read(authControllerProvider.notifier)
+                                    .login(
+                                      phoneNumber: _fullPhoneController.text,
+                                    );
+                              }
+                            },
+                            child: Text(context.tr('login')),
+                          );
                         },
-                        child: Text(context.tr('login')),
-                      );
-                    },
                   ),
                 ),
                 24.verticalSpace,

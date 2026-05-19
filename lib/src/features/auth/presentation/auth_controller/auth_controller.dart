@@ -70,7 +70,12 @@ class AuthController extends _$AuthController {
     int? otpCode,
   }) async {
     try {
-      state = const AsyncLoading();
+      final firstTime =
+          state.value?.mobileNumber == null ||
+          state.value!.mobileNumber.hashCode != phoneNumber.hashCode;
+      if (firstTime) {
+        state = AsyncData(state.value!.copyWith(login: const AsyncLoading()));
+      }
       final token = await ref.read(notificationsServiceProvider).myFcmToken();
       final authRepo = ref.watch(authRepositoryProvider);
       final userData = await authRepo.login(
@@ -83,34 +88,15 @@ class AuthController extends _$AuthController {
 
       state = AsyncValue.data(
         state.value!.copyWith(
+          login: AsyncValue.data(''),
           isAuthenticated: userData.$1,
           mobileNumber: userData.$2,
           otp: userData.$3,
         ),
       );
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      state = AsyncData(state.value!.copyWith(login: AsyncValue.error(e, st)));
       // TODO
-    }
-
-    Future<void> verifyOTp({
-      required String phoneNumber,
-      String? otpCode,
-    }) async {
-      try {
-        // state = const AsyncLoading();
-        final token = await ref.read(notificationsServiceProvider).myFcmToken();
-        final authRepo = ref.watch(authRepositoryProvider);
-        final userData = await authRepo.verifyOtp(
-          otp: state.value!.otp!,
-          phonenumber: phoneNumber,
-        );
-
-        state = AsyncValue.data(state.value!);
-      } catch (e, st) {
-        state = AsyncValue.error(e, st);
-        // TODO
-      }
     }
 
     // await _authenticate(
@@ -124,6 +110,83 @@ class AuthController extends _$AuthController {
     //   null,
     //   true,
     // );
+  }
+
+  Future<void> signup({required String username, String? email}) async {
+    try {
+      state = AsyncData(state.value!.copyWith(signup: const AsyncLoading()));
+      final authRepo = ref.watch(authRepositoryProvider);
+      final phone = state.value!.mobileNumber!;
+      final userData = await authRepo.signup(email, username, phone);
+      await authRepo.login(phoneNumber: state.value!.mobileNumber!, sendOtp: 1);
+
+      state = AsyncValue.data(
+        state.value!.copyWith(
+          signup: AsyncValue.data(''),
+          isAuthenticated: false,
+        ),
+      );
+    } catch (e, st) {
+      state = AsyncData(state.value!.copyWith(signup: AsyncValue.error(e, st)));
+    }
+  }
+
+  Future<void> verifyOTp({required String otpCode}) async {
+    try {
+      final current = state.value;
+      state = const AsyncLoading();
+
+      if (current == null || current.mobileNumber == null) {
+        throw AppException("Missing phone number");
+      }
+      final token = await ref.read(notificationsServiceProvider).myFcmToken();
+
+      final authRepo = ref.watch(authRepositoryProvider);
+      final data = await authRepo.verifyOtp(
+        otp: otpCode,
+        fcmToken: token,
+        phonenumber: current.mobileNumber!,
+      );
+      final prefs = await SharedPreferences.getInstance();
+      final deletedAt = prefs.getInt(Keys.deletedAt);
+
+      if (deletedAt != null) {
+        final deletedDate = DateTime.fromMillisecondsSinceEpoch(deletedAt);
+        final diffMinutes = DateTime.now()
+            .difference(deletedDate)
+            .inMinutes; // ⏱ Minutes since deletion
+
+        const blockDurationMinutes = 30; // 🚫 Block login for 30 Minutes
+
+        if (diffMinutes < blockDurationMinutes) {
+          throw AppException("delete_block_message".tr());
+        } else {
+          // ✅ More than 30 Minutes passed, allow login again
+          await prefs.remove(Keys.deletedAt);
+        }
+      }
+
+      await ref.read(notificationsServiceProvider).subscribeFCMTopics();
+      await ref
+          .read(userDataProvider.notifier)
+          .setData(data.$1, int.parse(data.$2));
+
+      print('''
+
+
+
+
+      Auth Token: ${data.$1}
+      User ID: ${data.$2}
+      
+      
+      ''');
+
+      state = AsyncValue.data(current.copyWith(isAuthenticated: true));
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+      // TODO
+    }
   }
 
   // Future<void> signup(

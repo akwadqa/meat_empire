@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -60,7 +62,7 @@ class AuthRepository {
 
   Future<(bool isUserExists, String mobileNumber, String otp)> login({
     required String phoneNumber,
-    required String fcmToken,
+    String? fcmToken,
     int? sendOtp,
     int? verifyOtp,
     String? otpCode,
@@ -82,6 +84,9 @@ class AuthRepository {
       OTP Code : $otpCode 
 ''');
     final response = await _networkService.post(EndPoints.loginApi, data);
+    if (response.data['success'] == false) {
+      throw AppException(response.data['message']);
+    }
 
     return (
       (response.data['validation']['user_exist'] as bool),
@@ -93,36 +98,44 @@ class AuthRepository {
   Future<(String authToken, String userId)> verifyOtp({
     required String phonenumber,
     required String otp,
+    required String fcmToken,
   }) async {
     final data = FormData.fromMap({
       'mobile_no': phonenumber,
-      // "fcm_token": fcmToken,
+      "fcm_token": fcmToken,
       'verify_otp': 1,
-      'otp_code': otp,
+      'otp': otp,
     });
+    print('''
+
+      Number : $phonenumber
+      OTP : $otp
+''');
     final response = await _networkService.post(EndPoints.loginApi, data);
 
-    return ('', '');
+    final token =
+        response.data['complete_auth_token'] ?? response.data['auth_token'];
+    return (token.toString(), response.data['user_id'].toString());
   }
 
   Future<(String authToken, String userId)> signup(
-    String email,
+    String? email,
     String username,
-    String password,
-    String confirmPassword,
     String phone,
-    String fcmToken,
   ) async {
     final response = await _networkService.post(EndPoints.signUpApi, {
       'email': email,
       'firstname': username.split(' ').first,
       'lastname': username.split(' ').last,
-      'password1': password,
-      'password2': confirmPassword,
       'phone': phone,
-      "fcm_token": fcmToken,
     });
+    // .then((val) async {
+    //   await login(phoneNumber: phone, fcmToken: '', sendOtp: 1);
+    // });
+    if (response.data['success'] == false) {
+      throw AppException(response.data['message']);
+    }
 
-    return _handleAuthResponse(response.data);
+    return ('', '');
   }
 }

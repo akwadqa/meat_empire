@@ -139,13 +139,13 @@ String? Function(PhoneNumber?) mobileNumberValidationIntl(
       return context.tr('required');
     }
 
-    if (number.length != 8) {
-      return context.tr('mustBeEightDigits');
-    }
+    // if (number.length != 8) {
+    //   return context.tr('mustBeEightDigits');
+    // }
 
-    if (!RegExp(r'^[3567]\d{7}$').hasMatch(number)) {
-      return context.tr('qatariPhoneNumberValidator');
-    }
+    // if (!RegExp(r'^[3567]\d{7}$').hasMatch(number)) {
+    //   return context.tr('qatariPhoneNumberValidator');
+    // }
 
     return null;
   };

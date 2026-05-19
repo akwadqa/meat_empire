@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -59,24 +61,24 @@ class _SignupScreenState extends State<SignupScreen> {
                 _buildUserNameField(context),
                 20.verticalSpace,
                 EmailTextFormField(onSaved: (value) => _email = value),
-                20.verticalSpace,
-                _buildPhoneNumberField(context),
-                20.verticalSpace,
-                PasswordTextField(
-                  label: context.tr('password'),
-                  onSaved: (value) => _password = value,
-                ),
-                20.verticalSpace,
-                PasswordTextField(
-                  label: context.tr('passwordConfirmation'),
-                  onSaved: (value) => _confirmPassword = value,
-                ),
+                // 20.verticalSpace,
+                // _buildPhoneNumberField(context),
+                // 20.verticalSpace,
+                // PasswordTextField(
+                //   label: context.tr('password'),
+                //   onSaved: (value) => _password = value,
+                // ),
+                // 20.verticalSpace,
+                // PasswordTextField(
+                //   label: context.tr('passwordConfirmation'),
+                //   onSaved: (value) => _confirmPassword = value,
+                // ),
                 54.verticalSpace,
                 _buildSubmitButton(context),
-                26.verticalSpace,
-                AuthText(text: context.tr('haveAccount')),
-                16.verticalSpace,
-                _buildLoginButton(context),
+                // 26.verticalSpace,
+                // AuthText(text: context.tr('haveAccount')),
+                // 16.verticalSpace,
+                // _buildLoginButton(context),
               ],
             ),
           ),
@@ -86,22 +88,63 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Widget _buildHeader(BuildContext context) {
-    return Text(
-      context.tr('createANewAccount'),
-      style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 26),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.tr('createANewAccount'),
+          style: Theme.of(
+            context,
+          ).textTheme.displayLarge!.copyWith(fontSize: 26),
+        ),
+        8.verticalSpace,
+        Text(
+          context.tr('welcomeToMeatEmpire'),
+          style: Theme.of(context).textTheme.displayLarge!.copyWith(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        12.verticalSpace,
+        Text(
+          context.tr('phoneVerified'),
+          style: Theme.of(context).textTheme.displayLarge!.copyWith(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        8.verticalSpace,
+        Consumer(
+          builder: (context, ref, _) {
+            final number = ref.watch(
+              authControllerProvider.select((val) => val.value?.mobileNumber),
+            );
+            return Directionality(
+              textDirection: ui.TextDirection.ltr,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  context.tr('+$number'),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                    fontSize: 16,
+                    color: AppColors.green,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 
   Widget _buildUserNameField(BuildContext context) {
     return TextFormField(
       style: const TextStyle(color: AppColors.gray02),
-      decoration: InputDecoration(
-        labelText: context.tr('userName'),
-      ),
+      decoration: InputDecoration(labelText: context.tr('userName')),
       textInputAction: TextInputAction.next,
-      validator: qValidator([
-        IsRequired(context.tr('required')),
-      ]),
+      validator: qValidator([IsRequired(context.tr('required'))]),
       onSaved: (value) => _userName = value,
     );
   }
@@ -136,9 +179,9 @@ class _SignupScreenState extends State<SignupScreen> {
             Text(
               '+974',
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.black800,
-                  ),
+                fontWeight: FontWeight.w600,
+                color: AppColors.black800,
+              ),
             ),
             const VerticalDivider(
               color: AppColors.stoneGray,
@@ -157,20 +200,26 @@ class _SignupScreenState extends State<SignupScreen> {
       width: double.infinity,
       child: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
-          ref.listen(authControllerProvider, (prev, next) {
+          ref.listen(authControllerProvider.select((val) => val.value!.signup), (
+            prev,
+            next,
+          ) {
             if (next is AsyncData) {
               // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
-              context.pushReplacement(GoRoutes.home);
-              Navigator.of(context).pop();
+              context.push(GoRoutes.verifyOtp);
+
+              // Navigator.of(context).pop();
               // context.maybePop().then((_) {
-                _showDialog();
+              // _showDialog();
               // });
             } else if (next is AsyncError) {
-              showErrorDialog(context, next.error.toString());
+              showErrorDialog(context, next!.error.toString());
             }
           });
 
-          final asyncLogin = ref.watch(authControllerProvider);
+          final asyncLogin = ref.watch(
+            authControllerProvider.select((val) => val.value!.signup),
+          );
           if (asyncLogin is AsyncLoading) {
             return const FadeCircleLoadingIndicator();
           }
@@ -179,13 +228,9 @@ class _SignupScreenState extends State<SignupScreen> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                // ref.read(authControllerProvider.notifier).signup(
-                //       _email!,
-                //       _userName!,
-                //       _password!,
-                //       _confirmPassword!,
-                //       _phoneNumber!,
-                //     );
+                ref
+                    .read(authControllerProvider.notifier)
+                    .signup(email: _email, username: _userName!);
               }
             },
             child: Text(context.tr('createAccount')),

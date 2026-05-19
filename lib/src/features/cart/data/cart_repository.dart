@@ -17,8 +17,12 @@ class CartRepository {
 
   const CartRepository(this._networkService);
 
-  Future<CartResponse> getCart() async =>
-      _processRequest(() => _networkService.get(EndPoints.cartApi));
+  Future<CartResponse> getCart({int? userId}) async => _processRequest(
+    () => _networkService.get(
+      EndPoints.cartApi,
+      queryParameters: {if (userId != null) 'user_id': userId},
+    ),
+  );
 
   Future<CartResponse> addToCart({
     required int amount,

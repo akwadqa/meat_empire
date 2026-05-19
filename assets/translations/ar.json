@@ -144,5 +144,10 @@
     "update_message_required": "إصدار التطبيق الحالي لم يعد مدعومًا. يرجى تحديث التطبيق لمواصلة استخدام خدماتنا."
 ,  
     "variantError": "الرجاء تحديد خيار لكل الخاصيات.",
-    "meat_empire" : "ميتاإمباير"
+    "meat_empire" : "ميتاإمباير",
+    "welcomeToMeatEmpire" : "مرحبًا بك في ميتاإمباير",
+    "phoneVerified" : "تم التحقق من رقم هاتفك.",
+    "verify" : "تحقق",
+    "invalidNumber" : "رقم هاتف غير صالح",
+    "phone_number" : "رقم الهاتف"
 }

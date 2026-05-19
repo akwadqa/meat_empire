@@ -72,14 +72,38 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   //   setState(() {});
                   // },
                 ),
-                12.verticalSpace,
+                // 12.verticalSpace,
 
-                VerificationScreenTimer(),
-                12.verticalSpace,
+                // VerificationScreenTimer(),
+                24.verticalSpace,
                 SizedBox(
                   width: double.infinity,
                   child: Consumer(
                     builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                      ref.listen(authControllerProvider, (prev, next) {
+                        if (next is AsyncData) {
+                          if (context.mounted) {
+                            // if (next.value!.isAuthenticated) {
+                            // context.go(GoRoutes.home);
+                            // } else {
+                            // context.push(GoRoutes.signup);
+                            // }
+                            // context.router.replaceAll([HomeRoute(child:LayoutScreen() )]);
+
+                            if (Navigator.of(context).canPop()) {
+                              Navigator.of(context).pop();
+                              _showDialog();
+                            } else {
+                              _showDialog();
+                            }
+                            context.go(GoRoutes.home);
+                          }
+                        } else if (next is AsyncError) {
+                          if (context.mounted) {
+                            showErrorDialog(context, next.error.toString());
+                          }
+                        }
+                      });
                       // final isVisible = ref
                       //     .watch(authControllerProvider)
                       //     .value!
@@ -115,22 +139,17 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                       if (asyncLogin is AsyncLoading) {
                         return FadeCircleLoadingIndicator();
                       }
-                      return 
-                          ElevatedButton(
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  _formKey.currentState!.save();
-                                  ref
-                                      .read(authControllerProvider.notifier)
-                                      .login(
-                                        phoneNumber: _fullPhoneController.text,
-                                        isSendOtp: false,
-                                      );
-                                }
-                              },
-                              child: Text(context.tr('login')),
-                            )
-                          ;
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            ref
+                                .read(authControllerProvider.notifier)
+                                .verifyOTp(otpCode: _fullPhoneController.text);
+                          }
+                        },
+                        child: Text(context.tr('verify')),
+                      );
                     },
                   ),
                 ),

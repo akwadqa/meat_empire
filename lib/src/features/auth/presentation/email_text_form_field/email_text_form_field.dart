@@ -11,14 +11,12 @@ class EmailTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       style: TextStyle(color: AppColors.gray02),
-      decoration: InputDecoration(
-        labelText: context.tr('email'),
-      ),
+      decoration: InputDecoration(labelText: context.tr('email')),
       textInputAction: TextInputAction.next,
-      validator: qValidator([
-        IsRequired(context.tr('required')),
-        IsEmail(context.tr('emailValidatorMessage'))
-      ]),
+      // validator: qValidator([
+      // IsRequired(context.tr('required')),
+      // IsEmail(context.tr('emailValidatorMessage')),
+      // ]),
       keyboardType: TextInputType.emailAddress,
       onSaved: onSaved,
     );

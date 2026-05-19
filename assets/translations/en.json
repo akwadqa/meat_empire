@@ -141,5 +141,10 @@
     "update_title_required": "New Update Required",
     "update_message_required": "Your current version is no longer supported. Please update the app to continue using our services.",
     "variantError": "Please select a variant for all options.",
-    "meat_empire" : "MEAT EMPIRE"
+    "meat_empire" : "MEAT EMPIRE",
+    "welcomeToMeatEmpire" : "Welcome to Meat Empire",
+    "phoneVerified" : "Your phone number has been verified.",
+    "verify" : "Verify",
+    "invalidNumber" : "Invalid phone number",
+    "phone_number" : "Phone Number"
 }
