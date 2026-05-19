@@ -18,14 +18,13 @@ class AccountController extends _$AccountController {
       userId = ref.watch(userDataProvider)!.$2;
       return ref.watch(accountRepositoryProvider).getProfile(userId);
     }
-
   }
 
   Future<void> editAccountInformation(
     BuildContext context,
     UserProfile userProfile,
   ) async {
-    if (state is AsyncData<ProfileResponse>) {
+    if (state is AsyncData<ProfileResponse?>) {
       final currentState = state.value;
       state = AsyncLoading();
 
