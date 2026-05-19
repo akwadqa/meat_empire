@@ -75,7 +75,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 // 12.verticalSpace,
 
                 // VerificationScreenTimer(),
-                24.verticalSpace,
+                40.verticalSpace,
                 SizedBox(
                   width: double.infinity,
                   child: Consumer(

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:meat_empire/src/constants/keys.dart';
 import 'package:meat_empire/src/core/notifications/services/notification_service.dart';
 import 'package:meat_empire/src/features/auth/application/auth_service.dart';
@@ -171,7 +172,7 @@ class AuthController extends _$AuthController {
           .read(userDataProvider.notifier)
           .setData(data.$1, int.parse(data.$2));
 
-      print('''
+      debugPrint('''
 
 
 

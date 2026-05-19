@@ -12,14 +12,14 @@ import 'src/features/auth/application/auth_service.dart';
 import 'src/riverpod_observer.dart';
 
 Future<void> main() async {
-    await AppInitializer.init();
+  await AppInitializer.init();
 
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // await EasyLocalization.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // final container = await initializeProviders();
-  // await handleSplashScreen(container); 
+  // await handleSplashScreen(container);
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // await EasyLocalization.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -33,7 +33,7 @@ Future<void> main() async {
   runApp(
     DevicePreview(
       // enabled: !kReleaseMode,
-      enabled: true,
+      enabled: false,
       builder: (context) => UncontrolledProviderScope(
         container: container,
         child: EasyLocalization(

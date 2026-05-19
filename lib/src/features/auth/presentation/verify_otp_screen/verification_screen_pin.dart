@@ -13,7 +13,7 @@ class VerificationScreenPin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var pinTheme = PinTheme(
-      // textStyle: AppTextStyle.rubikRegular20.copyWith(color: AppColors.primary),
+      textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.black,fontSize: 16),
       width: 60,
       height: 60,
       decoration: BoxDecoration(

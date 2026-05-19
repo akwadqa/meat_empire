@@ -33,7 +33,7 @@ final class AccountControllerProvider
   AccountController create() => AccountController();
 }
 
-String _$accountControllerHash() => r'9c4635764c137a937c810883623470d98ff037fa';
+String _$accountControllerHash() => r'5d8605b00ae759f446946f125a6927af21e08ba1';
 
 abstract class _$AccountController extends $AsyncNotifier<ProfileResponse?> {
   FutureOr<ProfileResponse?> build();

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -106,13 +107,15 @@ class AuthRepository {
       'verify_otp': 1,
       'otp': otp,
     });
-    print('''
+    debugPrint('''
 
       Number : $phonenumber
       OTP : $otp
 ''');
     final response = await _networkService.post(EndPoints.loginApi, data);
-
+    if (response.data['success'] == false) {
+      throw AppException(response.data['message']);
+    }
     final token =
         response.data['complete_auth_token'] ?? response.data['auth_token'];
     return (token.toString(), response.data['user_id'].toString());

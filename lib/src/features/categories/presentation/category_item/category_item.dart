@@ -55,6 +55,8 @@ class CategoryItem extends StatelessWidget {
           10.verticalSpace,
           Text(
             label,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontWeight: FontWeight.w700,
               color: AppColors.black900,

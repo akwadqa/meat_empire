@@ -37,13 +37,13 @@ class NotificationsService {
     //   print("🎯🎯🎯 [URGENT NOTIF]: ${message.notification?.title}");
     // });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("========= إشعار في المقدمة (Foreground) =========");
+      debugPrint("========= إشعار في المقدمة (Foreground) =========");
       _printData(message);
     });
 
     // 2. النقر على الإشعار والتطبيق في "الخلفية" (Background)
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print("========= تم النقر على الإشعار من الخلفية =========");
+      debugPrint("========= تم النقر على الإشعار من الخلفية =========");
       _navigateToProduct(message);
       _printData(message);
     });
@@ -100,7 +100,7 @@ class NotificationsService {
     RemoteMessage? initialMessage = await FirebaseMessaging.instance
         .getInitialMessage();
     if (initialMessage != null) {
-      print("========= تم فتح التطبيق من حالة الإغلاق التام =========");
+      debugPrint("========= تم فتح التطبيق من حالة الإغلاق التام =========");
       _printData(initialMessage);
       _navigateToProduct(initialMessage);
     }
@@ -108,23 +108,23 @@ class NotificationsService {
 
   void _printData(RemoteMessage message) {
     // طباعة العنوان والمحتوى من قسم الـ notification
-    print("العنوان (Title): ${message.notification?.title}");
-    print("النص (Body): ${message.notification?.body}");
+    debugPrint("العنوان (Title): ${message.notification?.title}");
+    debugPrint("النص (Body): ${message.notification?.body}");
 
     // طباعة البيانات القادمة من قسم الـ data (التي أرسلها CS-Cart)
     if (message.data.isNotEmpty) {
-      print("البيانات القادمة (Data Payload):");
-      print("الوقت (time): ${message.data['time']}");
-      print("المحتوى المرسل (content): ${message.data['content']}");
-      print("المحتوى): ${message.data}");
+      debugPrint("البيانات القادمة (Data Payload):");
+      debugPrint("الوقت (time): ${message.data['time']}");
+      debugPrint("المحتوى المرسل (content): ${message.data['content']}");
+      debugPrint("المحتوى): ${message.data}");
       // _ref
       //     .read(appRouterProvider)
       //     .goRouter
       //     .go(GoRoutes.productDetails, extra: int.parse(id));
     } else {
-      print("تحذير: قسم الـ Data فارغ!");
+      debugPrint("تحذير: قسم الـ Data فارغ!");
     }
-    print("==================================================");
+    debugPrint("==================================================");
   }
 
   void _navigateToProduct(RemoteMessage message) {
