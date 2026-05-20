@@ -44,8 +44,9 @@ class NotificationsService {
     // 2. النقر على الإشعار والتطبيق في "الخلفية" (Background)
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint("========= تم النقر على الإشعار من الخلفية =========");
-      _navigateToProduct(message);
-      _printData(message);
+ WidgetsBinding.instance.addPostFrameCallback((_) {
+    _navigateToProduct(message);
+  });      _printData(message);
     });
 
     // 3. التطبيق كان "مغلقاً تماماً" (Terminated) وتم فتحه بالنقر على الإشعار
@@ -74,11 +75,18 @@ class NotificationsService {
     final token = await _messaging.getToken();
     debugPrint("FCM Token: $token");
 
-    // if (token != null) {
-    await subscribeFCMTopics();
-    // } else {
-    //   debugPrint("⚠️ Token not ready yet, skip subscribing");
-    // }
+   if (token != null) {
+    // 🔥 لا تعمل مباشرة
+    Future.delayed(const Duration(seconds: 2), () async {
+      await subscribeFCMTopics();
+    });
+  }
+  // ✅ كل مرة يتغير التوكن
+_messaging.onTokenRefresh.listen((newToken) async {
+  debugPrint("🔄 Token refreshed: $newToken");
+
+  await subscribeFCMTopics();
+});
     await _initializeLocalNotifications();
     debugPrint("FCMConfig.instance.init3");
 
@@ -100,31 +108,32 @@ class NotificationsService {
     RemoteMessage? initialMessage = await FirebaseMessaging.instance
         .getInitialMessage();
     if (initialMessage != null) {
-      debugPrint("========= تم فتح التطبيق من حالة الإغلاق التام =========");
+      print("========= تم فتح التطبيق من حالة الإغلاق التام =========");
       _printData(initialMessage);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _navigateToProduct(initialMessage);
-    }
+    });    }
   }
 
   void _printData(RemoteMessage message) {
     // طباعة العنوان والمحتوى من قسم الـ notification
-    debugPrint("العنوان (Title): ${message.notification?.title}");
-    debugPrint("النص (Body): ${message.notification?.body}");
+    print("العنوان (Title): ${message.notification?.title}");
+    print("النص (Body): ${message.notification?.body}");
 
     // طباعة البيانات القادمة من قسم الـ data (التي أرسلها CS-Cart)
     if (message.data.isNotEmpty) {
-      debugPrint("البيانات القادمة (Data Payload):");
-      debugPrint("الوقت (time): ${message.data['time']}");
-      debugPrint("المحتوى المرسل (content): ${message.data['content']}");
-      debugPrint("المحتوى): ${message.data}");
+      print("البيانات القادمة (Data Payload):");
+      print("الوقت (time): ${message.data['time']}");
+      print("المحتوى المرسل (content): ${message.data['content']}");
+      print("المحتوى): ${message.data}");
       // _ref
       //     .read(appRouterProvider)
       //     .goRouter
       //     .go(GoRoutes.productDetails, extra: int.parse(id));
     } else {
-      debugPrint("تحذير: قسم الـ Data فارغ!");
+      print("تحذير: قسم الـ Data فارغ!");
     }
-    debugPrint("==================================================");
+    print("==================================================");
   }
 
   void _navigateToProduct(RemoteMessage message) {
@@ -192,7 +201,11 @@ class NotificationsService {
   Future<void> subscribeFCMTopics() async {
     try {
       final platformTopic = Platform.isIOS ? Keys.ios : Keys.android;
+      debugPrint('platformTopic, $platformTopic');
+
       final languageTopic = _ref.read(currentLanguageProvider);
+      debugPrint('platformTopic, $platformTopic');
+      debugPrint('Subscribed to topics: all,  $languageTopic');
 
       await FCMConfig.instance.messaging.subscribeToTopic(Keys.all);
       await FCMConfig.instance.messaging.subscribeToTopic(platformTopic);

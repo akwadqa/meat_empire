@@ -59,7 +59,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 _buildHeader(context),
                 54.verticalSpace,
                 _buildUserNameField(context),
-                20.verticalSpace,
+                40.verticalSpace,
                 EmailTextFormField(onSaved: (value) => _email = value),
                 // 20.verticalSpace,
                 // _buildPhoneNumberField(context),
@@ -140,12 +140,24 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Widget _buildUserNameField(BuildContext context) {
-    return TextFormField(
-      style: const TextStyle(color: AppColors.gray02),
-      decoration: InputDecoration(labelText: context.tr('userName')),
-      textInputAction: TextInputAction.next,
-      validator: qValidator([IsRequired(context.tr('required'))]),
-      onSaved: (value) => _userName = value,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 10,
+      children: [
+        Text(
+          "${context.tr("userName")} *",
+          style: Theme.of(
+            context,
+          ).textTheme.labelMedium!.copyWith(fontSize: 15),
+        ),
+        TextFormField(
+          style: const TextStyle(color: AppColors.gray02),
+          decoration: InputDecoration(labelText: context.tr('userName')),
+          textInputAction: TextInputAction.next,
+          validator: qValidator([IsRequired(context.tr('required'))]),
+          onSaved: (value) => _userName = value,
+        ),
+      ],
     );
   }
 
@@ -228,6 +240,7 @@ class _SignupScreenState extends State<SignupScreen> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
+                FocusScope.of(context).unfocus();
                 ref
                     .read(authControllerProvider.notifier)
                     .signup(email: _email, username: _userName!);

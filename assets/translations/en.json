@@ -146,5 +146,8 @@
     "phoneVerified" : "Your phone number has been verified.",
     "verify" : "Verify",
     "invalidNumber" : "Invalid phone number",
+    
+    "optional": "Optional",
+
     "phone_number" : "Phone Number"
 }
